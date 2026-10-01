@@ -827,18 +827,21 @@ enums:
       - https://github.com/microbiomedata/nmdc-schema/issues/3227
     permissible_values:
       biogeochemistry:
+        title: Biogeochemistry
         description: >-
           Completeness badge. Awarded when the Biosample populates at least
           badge_minimum_slots of the biogeochemistry subset.
         see_also:
           - https://microbiomedata.github.io/nmdc-schema/Biogeochemistry/
       host_information:
+        title: Host Information
         description: >-
           Completeness badge. Awarded when the Biosample populates at least
           badge_minimum_slots of the host_information subset.
         see_also:
           - https://microbiomedata.github.io/nmdc-schema/HostInformation/
       expert_curation:
+        title: Expert Curation
         description: >-
           Provenance badge. Awarded when the Biosample's
           ProvenanceMetadata.source_system_of_record identifies the NMDC

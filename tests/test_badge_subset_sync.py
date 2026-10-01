@@ -176,6 +176,14 @@ class TestBadgeSubsetSync(unittest.TestCase):
                 f"{member_count} member slots, so no record could ever earn it",
             )
 
+    def test_every_badge_has_a_title(self):
+        # The Data Portal displays badge names; a title keeps it from
+        # deriving them from the snake_case value. See
+        # https://github.com/microbiomedata/nmdc-server/issues/2390
+        enum = self.schema_view.get_enum(BADGE_ENUM, strict=True)
+        untitled = sorted(name for name, pv in enum.permissible_values.items() if not pv.title)
+        self.assertListEqual(untitled, [], "MetadataBadgeEnum values without a title")
+
 
 if __name__ == "__main__":
     unittest.main()
