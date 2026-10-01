@@ -8100,25 +8100,12 @@ slots:
     description: Isotopologue (isotope source/substrate/molecule) added to the biological sample.
     title: isotopolog
     comments:
-      - Give the ChEBI compound as CHEBI:<ID>, both in has_raw_value and in term.id. An input with no ChEBI identifier, such as root exudates or cells, goes in hetero_isotopolog instead; NMDC does not use a sentinel identifier for that case.
+      - Inputs such as root exudates or cells, goes in hetero_isotopolog instead; NMDC does not use a sentinel identifier for that case.
     examples:
-      - object:
-          type: nmdc:ControlledIdentifiedTermValue
-          has_raw_value: toluene [CHEBI:17578]
-          term:
-            id: CHEBI:17578
-            name: toluene
-            type: nmdc:OntologyClass
+      - value: water
     slot_uri: MIXS:0001339
-    range: ControlledIdentifiedTermValue
+    range: ChemicalEntityEnum
     multivalued: false
-    range_expression:
-      slot_conditions:
-        term:
-          range_expression:
-            slot_conditions:
-              id:
-                pattern: ^CHEBI:\d+$
     recommended: true
   isotopolog_label:
     description: List whether the isotopologue added to this biological sample was heavy-labelled or natural abundance
@@ -8169,7 +8156,7 @@ slots:
     recommended: true
     range: QuantityValue
   gradient_pos_rel_am:
-    description: The total nucleic acids loaded onto the column in this fraction as a decimal. If uploading 16S rRNA gene (or other amplicon) sequencing data, this value should be calculated from qPCR data. If uploading untargeted sequencing data, this value should be calculated from total DNA concentration.
+    description: The total nucleic acids loaded onto the column in this fraction as a decimal. If uploading 16S rRNA gene (or other amplicon) sequencing data, this value should be calculated from qPCR data. If uploading untargetted sequencing data, this value should be calculated from total DNA concentration.
     title: relative amount of nucleic acids in the gradient position
     examples:
       - object:
@@ -8185,7 +8172,7 @@ slots:
     annotations:
       storage_units: "1"
   isotopolog_atom_frac:
-    description: The fraction of heavy-labelled atoms out of all atoms of a given element in the isotopolog. | and should be orded the same as the isotopolog.
+    description: The fraction of heavy-labelled atoms out of all atoms of a given element in the isotopolog. Multiple values allowed, separated by a | and should be orded the same as the isotopolog.
     title: atom fraction of isotopolog
     todos:
       - This ordered slot provides how to write an example in a spreadsheet, but this will not provide a multivalued ordered slot in a database. As such, this slot also couldn't be marked as multivalued in the yaml.
@@ -8202,19 +8189,15 @@ slots:
     maximum_value: 1
     annotations:
       storage_units: "1"
-    comments:
-      - In NMDC each IsotopologAddition entry describes one added input, an isotopolog or a hetero_isotopolog, and carries at most one atom fraction, so the pipe-separated ordering described for spreadsheets does not apply.
   isotopolog_atom_pos:
-    description: InChI label designating set of all isotopically enriched atoms in isotopologue. | and should be orded the same as the isotopolog.
+    description: InChI label designating set of all isotopically enriched atoms in isotopologue. Multiple values allowed, separated by a | and should be orded the same as the isotopolog.
     title: set of labeled atoms in isotopologue
     examples:
-      - value: itchi:InChI=1S/C7H8/c1-7-5-3-2-4-6-7/h2-6H,1H3/i1+1,2+1,3+1,4+1,5+1,6+1,7+1
+      - value: InChI=1S/C7H8/c1-7-5-3-2-4-6-7/h2-6H,1H3/i1+1,2+1,3+1,4+1,5+1,6+1,7+1
     slot_uri: MIXS:0001347
     range: uriorcurie
     recommended: true
-    pattern: ^inchi:InChI\=1S?\/[A-Za-z0-9\.]+(\+[0-9]+)?(\/[cnpqbtmsih][A-Za-z0-9\-\+\(\)\,\/\?\;\.]+)*$
-    comments:
-      - In NMDC each IsotopologAddition entry describes one added input, an isotopolog or a hetero_isotopolog, and carries at most one set of labeled atoms, so the pipe-separated ordering described for spreadsheets does not apply.
+    pattern: ^InChI=1S?/[A-Za-z0-9.]+(/[^/]+)*/i(?:[0-9]+[+-][0-9]+(?:,[0-9]+[+-][0-9]+)*(?:/h[^/]+)?|/h[^/]+)$
   isotopolog_dose:
     annotations:
       Preferred_unit: ppm
@@ -8257,16 +8240,6 @@ slots:
     slot_uri: MIXS:0001350
     range: QuantityValue
     recommended: true
-  internal_standard:
-    description: Method used for internal standard for SIP fractionation, if an internal standard was used (i.e., spiking in a heavy-labelled DNA sequence).
-    title: internal standard method
-    examples:
-      - object:
-          type: nmdc:Protocol
-          url: https://doi.org/10.1101/2022.12.20.521340
-    slot_uri: MIXS:0001351
-    range: Protocol
-    recommended: true
   samp_collec_device:
     annotations: {}
     description: 'The device used to collect an environmental sample. Recommended values are subclasses of specimen collection device (http://purl.obolibrary.org/obo/OBI_0002814). OBI itself contains only swab/wipe subclasses; environmental sampling devices (corers, grab samplers, passive samplers, etc.) are defined in GENEPIO under the same OBI:0002814 parent. Free-text values are accepted for backward compatibility; new submissions should prefer the form: label [PREFIX:LOCALID].'
@@ -8297,6 +8270,8 @@ slots:
       - literal_form: samp_collect_method
         contexts:
           - https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.3.0
+  internal_standard:
+    range: Protocol
   mixs_env_triad_field:
     annotations:
       tooltip: >-

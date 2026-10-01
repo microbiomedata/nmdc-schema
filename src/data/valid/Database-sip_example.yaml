@@ -1,6 +1,6 @@
 # Example data using new SIP material processing slots. In this example a sample is labeled with 13C for 12 hours, then DNA is extracted, and the sample is fractionated into three fractions.
 material_processing_set:
-  - id: nmdc:labp-99-abcdef2
+  - id: nmdc:isolp-99-abcdef2
     name: labeling of my awesome biosample
     has_input:
       - nmdc:bsm-99-123456
@@ -8,15 +8,11 @@ material_processing_set:
       - nmdc:procsm-99-987654
     isotopolog_additions:
       - isotopolog_label: isotopically labeled
-        isotope: 13C
+        isotopolog_composition:
+          - isotope: 13C
+            type: nmdc:IsotopologComposition
         type: nmdc:IsotopologAddition
-        isotopolog:
-          type: nmdc:ControlledIdentifiedTermValue
-          has_raw_value: toluene [CHEBI:17578]
-          term:
-            id: CHEBI:17578
-            name: toluene
-            type: nmdc:OntologyClass
+        isotopolog: toluene
     isotopolog_approach: single
     isotopolog_incu_time:
       type: nmdc:QuantityValue

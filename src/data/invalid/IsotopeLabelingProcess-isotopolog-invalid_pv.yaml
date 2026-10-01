@@ -1,6 +1,5 @@
-# Invalid for one reason: the entry gives neither isotopolog nor hetero_isotopolog. Exactly one
-# of them names the labeled input.
-id: nmdc:isolp-99-abcdf10
+# Invalid because it uses an invalid permissible value
+id: nmdc:labp-99-abcdef6
 name: labeling of my awesome biosample
 type: nmdc:IsotopeLabelingProcess
 has_input:
@@ -10,7 +9,6 @@ has_output:
 isotopolog_approach: single
 isotopolog_additions:
   - isotopolog_label: isotopically labeled
-    isotopolog_composition:
-      - isotope: 13C
-        type: nmdc:IsotopologComposition
+    isotope: 13C
     type: nmdc:IsotopologAddition
+    isotopolog: my_awesome_chemical_compound

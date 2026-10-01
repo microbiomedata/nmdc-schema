@@ -115,7 +115,6 @@ prefixes:
   wikidata: "http://www.wikidata.org/entity/"
   xsd: "http://www.w3.org/2001/XMLSchema#"
   pubmed: "https://bioregistry.io/pubmed:"
-  inchi: "https://n2t.net/inchi:"
 
 default_prefix: nmdc
 default_range: string
@@ -672,7 +671,7 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:labp-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:isolp-{id_shoulder}-{id_blade}$"
           interpolated: true
       has_input:
         required: true
@@ -687,24 +686,14 @@ classes:
     description: >-
       One isotopolog, or one heterogeneous material with no compound identifier, added during an isotope labeling process, with the isotope it carries, whether it was isotopically labeled or at natural abundance, the atom fraction and position of the label, and the dose.
     slots:
-      - isotope
+      - isotopolog_composition
       - isotopolog
       - hetero_isotopolog
       - isotopolog_label
-      - isotopolog_atom_frac
       - isotopolog_atom_pos
       - isotopolog_dose
       - type
 
-    slot_usage:
-      isotopolog:
-        range_expression:
-          slot_conditions:
-            term:
-              range_expression:
-                slot_conditions:
-                  id:
-                    pattern: '^CHEBI:\d*$'
     rules:
       - title: hetero_isotopolog_required_when_isotopolog_absent
         description: >-
@@ -729,6 +718,15 @@ classes:
             hetero_isotopolog:
               value_presence: ABSENT
 
+  IsotopologComposition:
+    class_uri: nmdc:IsotopologComposition
+    description: >-
+       Contains the isotopes used and at what fraction.
+    slots:
+      - isotope
+      - isotopolog_atom_frac
+      - type
+
   DensityGradientFractionationProcess:
     class_uri: nmdc:DensityGradientFractionationProcess
     is_a: MaterialProcessing
@@ -738,7 +736,7 @@ classes:
       - Isopycnic Centrifugation
       - Density Gradient Centrifugation
     slots:
-      - internal_standard
+      - internal_standard_method
     slot_usage:
       id:
         structured_pattern:
@@ -1318,6 +1316,22 @@ slots:
   # from the current GSC MIxS. NMDC retains them for backward compatibility with
   # submission-schema which references them. No production data uses these slots.
   # ============================================================================
+  isotopolog_composition:
+    title: isotopolog composition
+    description: >-
+      Contains the isotopes used and at what fraction, for an isotopolog added during an isotope labeling process.
+    range: IsotopologComposition
+    multivalued: true
+    inlined_as_list: true
+
+  internal_standard_method:
+    title: internal standard method
+    description: >-
+      Method used for internal standard for SIP fractionation, if an internal standard was used (i.e., spiking in a heavy-labelled DNA sequence).
+    range: Protocol
+    exact_mappings: 
+      - MIXS:0001351
+
   host_family_relation:
     title: host family relationship
     description: >-

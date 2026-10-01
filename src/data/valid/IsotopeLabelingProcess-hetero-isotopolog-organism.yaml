@@ -1,7 +1,7 @@
 # Valid. The only labeled input is an organism, not a molecular entity, so it is named in
 # hetero_isotopolog and isotopolog is omitted. Inspired by https://pubmed.ncbi.nlm.nih.gov/34576747/,
 # which added 13C-labeled T4 phages to activated sludge.
-id: nmdc:labp-99-abcdef8
+id: nmdc:isolp-99-abcdef8
 name: labeling of my awesome biosample
 type: nmdc:IsotopeLabelingProcess
 has_input:
@@ -11,6 +11,8 @@ has_output:
 isotopolog_approach: single
 isotopolog_additions:
   - isotopolog_label: isotopically labeled
-    isotope: 13C
+    isotopolog_composition:
+      - isotope: 13C
+        type: nmdc:IsotopologComposition
     type: nmdc:IsotopologAddition
     hetero_isotopolog: T4 phages

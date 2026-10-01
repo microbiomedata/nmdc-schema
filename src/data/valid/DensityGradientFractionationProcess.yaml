@@ -7,6 +7,6 @@
    - nmdc:procsm-99-9437a2
    - nmdc:procsm-99-9437a3
  type: nmdc:DensityGradientFractionationProcess
- internal_standard:
+ internal_standard_method:
    type: nmdc:Protocol
    url: https://doi.org/10.1101/2022.12.20.521340

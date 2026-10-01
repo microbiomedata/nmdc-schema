@@ -1,6 +1,6 @@
 # Invalid for one reason: the entry gives both isotopolog and hetero_isotopolog. Exactly one
 # of them names the labeled input.
-id: nmdc:labp-99-abcdef9
+id: nmdc:isolp-99-abcdef9
 name: labeling of my awesome biosample
 type: nmdc:IsotopeLabelingProcess
 has_input:
@@ -10,13 +10,9 @@ has_output:
 isotopolog_approach: single
 isotopolog_additions:
   - isotopolog_label: isotopically labeled
-    isotope: 13C
+    isotopolog_composition:
+      - isotope: 13C
+        type: nmdc:IsotopologComposition
     type: nmdc:IsotopologAddition
-    isotopolog:
-      type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: toluene [CHEBI:17578]
-      term:
-        id: CHEBI:17578
-        name: toluene
-        type: nmdc:OntologyClass
-    hetero_isotopolog: toluene
+    isotopolog: toluene
+    hetero_isotopolog: root exudates

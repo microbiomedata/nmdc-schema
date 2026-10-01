@@ -503,4 +503,3 @@ MimsMisip	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v7.
 MimsMisip	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v7.0.1/src/mixs/schema/mixs.yaml	isotopolog_dose			placeholder_class
 MimsMisip	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v7.0.1/src/mixs/schema/mixs.yaml	nucleobase_atom_frac			placeholder_class
 MimsMisip	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v7.0.1/src/mixs/schema/mixs.yaml	isotopolog_incu_time			placeholder_class
-MimsMisip	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v7.0.1/src/mixs/schema/mixs.yaml	internal_standard			placeholder_class

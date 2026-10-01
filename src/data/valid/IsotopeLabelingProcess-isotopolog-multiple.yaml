@@ -1,5 +1,5 @@
-# Valid. Two isotopologs were added to the same sample, each with its own PubChem compound.
-id: nmdc:labp-99-abcdef4
+# Valid. Two different isotopologs were added to the same sample.
+id: nmdc:isolp-99-abcdef4
 name: labeling of my awesome biosample
 type: nmdc:IsotopeLabelingProcess
 has_input:
@@ -9,22 +9,14 @@ has_output:
 isotopolog_approach: multiple
 isotopolog_additions:
   - isotopolog_label: isotopically labeled
-    isotope: 13C
+    isotopolog_composition:
+      - isotope: 13C
+        type: nmdc:IsotopologComposition
     type: nmdc:IsotopologAddition
-    isotopolog:
-      type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: toluene [CHEBI:17578]
-      term:
-        id: CHEBI:17578
-        name: toluene
-        type: nmdc:OntologyClass
+    isotopolog: toluene
   - isotopolog_label: isotopically labeled
-    isotope: 18O
+    isotopolog_composition:
+      - isotope: 18O
+        type: nmdc:IsotopologComposition
     type: nmdc:IsotopologAddition
-    isotopolog:
-      type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: water [CHEBI:15377]
-      term:
-        id: CHEBI:15377
-        name: water
-        type: nmdc:OntologyClass
+    isotopolog: water
