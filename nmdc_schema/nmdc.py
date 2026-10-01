@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-09-16T22:18:16
+# Generation date: 2026-10-01T14:24:59
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -7871,12 +7871,15 @@ class MetadataBadgeEnum(EnumDefinitionImpl):
     """
     biogeochemistry = PermissibleValue(
         text="biogeochemistry",
+        title="Biogeochemistry",
         description="""Completeness badge. Awarded when the Biosample populates at least badge_minimum_slots of the biogeochemistry subset.""")
     host_information = PermissibleValue(
         text="host_information",
+        title="Host Information",
         description="""Completeness badge. Awarded when the Biosample populates at least badge_minimum_slots of the host_information subset.""")
     expert_curation = PermissibleValue(
         text="expert_curation",
+        title="Expert Curation",
         description="""Provenance badge. Awarded when the Biosample's ProvenanceMetadata.source_system_of_record identifies the NMDC submission portal, rather than an ETL process over an external database.""")
 
     _defn = EnumDefinition(
@@ -8615,6 +8618,10 @@ class ProcessingInstitutionEnum(EnumDefinitionImpl):
     Azenta = PermissibleValue(
         text="Azenta",
         title="Azenta Life Sciences",
+        meaning=None)
+    SeqCenter = PermissibleValue(
+        text="SeqCenter",
+        title="SeqCenter",
         meaning=None)
 
     _defn = EnumDefinition(
