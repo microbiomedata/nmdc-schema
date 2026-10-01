@@ -30,13 +30,13 @@ isotopolog_additions:
       has_raw_value: "0.99"
       has_numeric_value: 0.99
       has_unit: "1"
-    isotopolog_atom_pos: inchi:InChI=1S/H2O/h1H2
+    isotopolog_atom_pos: InChI=1S/H2O/h1H2/i1+2
     isotopolog:
       type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: heavy water [CHEBI:41981]
+      has_raw_value: water [CHEBI:15377]
       term:
-        id: CHEBI:41981
-        name: oxidane
+        id: CHEBI:15377
+        name: water
         type: nmdc:OntologyClass
 isotopolog_incu_time:
   type: nmdc:QuantityValue

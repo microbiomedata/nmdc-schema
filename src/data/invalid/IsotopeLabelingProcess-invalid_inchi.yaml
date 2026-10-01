@@ -1,4 +1,5 @@
-# Example inspired by https://doi.org/10.1038/ismej.2014.205, proposed adjustments to modeling
+# Invalid for one reason: isotopolog_atom_pos is missing the leading "InChI=".
+# Example inspired by https://doi.org/10.1038/ismej.2014.205
 id: nmdc:labp-99-abcdef2
 name: labeling of my awesome biosample
 has_input:
@@ -15,15 +16,14 @@ isotopolog_additions:
       has_raw_value: "0.99"
       has_numeric_value: 0.99
       has_unit: "1"
-    isotopolog_atom_pos: inchi:1S/H2O/h1H2
+    isotopolog_atom_pos: 1S/H2O/h1H2/i1+2
     isotopolog:
       type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: heavy water [CHEBI:41981]
+      has_raw_value: water [CHEBI:15377]
       term:
-        id: CHEBI:41981
-        name: oxidane
+        id: CHEBI:15377
+        name: water
         type: nmdc:OntologyClass
-    isotopolog_atom_pos: inchi:1S/H2O/h1H2 
 isotopolog_incu_time:
   type: nmdc:QuantityValue
   has_raw_value: 168 h

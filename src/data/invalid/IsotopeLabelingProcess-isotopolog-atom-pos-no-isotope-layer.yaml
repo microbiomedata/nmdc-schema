@@ -12,7 +12,7 @@ isotopolog_additions:
   - isotopolog_label: isotopically labeled
     isotope: 13C
     type: nmdc:IsotopologAddition
-    isotopolog_atom_pos: inchi:InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)
+    isotopolog_atom_pos: InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)
     isotopolog:
       type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: L-glutamic acid [CHEBI:16015]
