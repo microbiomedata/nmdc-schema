@@ -762,6 +762,7 @@ attributes:
   name:
     name: name
     description: A human readable label for an entity
+    title: Name
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     owner: Protocol
@@ -773,6 +774,7 @@ attributes:
   type:
     name: type
     description: the class_uri of the class that has been instantiated
+    title: Type
     notes:
     - makes it easier to read example data files
     - required for polymorphic MongoDB collections
@@ -819,6 +821,7 @@ attributes:
   description:
     name: description
     description: a human-readable description of a thing
+    title: Description
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: dcterms:description

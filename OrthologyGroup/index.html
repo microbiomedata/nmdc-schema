@@ -618,6 +618,7 @@ attributes:
     description: A list of alternative names used to refer to the entity. The distinction
       between name and alternative names is application-specific.  This should not
       be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)
+    title: Alternative Names
     from_schema: https://w3id.org/nmdc/nmdc
     exact_mappings:
     - dcterms:alternative
@@ -677,6 +678,7 @@ attributes:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand
       for a URI or a complete URI
+    title: ID
     notes:
     - The identifiers for terms from external ontologies can't have their ids constrained
       to the nmdc namespace
@@ -704,6 +706,7 @@ attributes:
   name:
     name: name
     description: A human readable label for an entity
+    title: Name
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     owner: OrthologyGroup
@@ -715,6 +718,7 @@ attributes:
   description:
     name: description
     description: a human-readable description of a thing
+    title: Description
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: dcterms:description
@@ -727,6 +731,7 @@ attributes:
   alternative_identifiers:
     name: alternative_identifiers
     description: A list of alternative identifiers for the entity.
+    title: Alternative Identifiers
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     owner: OrthologyGroup
@@ -739,6 +744,7 @@ attributes:
   type:
     name: type
     description: the class_uri of the class that has been instantiated
+    title: Type
     notes:
     - makes it easier to read example data files
     - required for polymorphic MongoDB collections

@@ -880,6 +880,7 @@ attributes:
   associated_studies:
     name: associated_studies
     description: The study associated with a resource.
+    title: Associated Studies
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     owner: OrganismSample
@@ -912,6 +913,7 @@ attributes:
   embargoed:
     name: embargoed
     description: If true, the data are embargoed and not available for public access.
+    title: Embargoed
     todos:
     - make this required?
     - first apply to Biosample
@@ -928,6 +930,7 @@ attributes:
   provenance_metadata:
     name: provenance_metadata
     description: Provides information about the provenance of a record.
+    title: Provenance Metadata
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     owner: OrganismSample
@@ -1161,6 +1164,7 @@ attributes:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand
       for a URI or a complete URI
+    title: ID
     notes:
     - 'abstracted pattern: prefix:typecode-authshoulder-blade(.version)?(_seqsuffix)?'
     - a minimum length of 3 characters is suggested for typecodes, but 1 or 2 characters
@@ -1196,6 +1200,7 @@ attributes:
   name:
     name: name
     description: A human readable label for an entity
+    title: Name
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     owner: OrganismSample
@@ -1207,6 +1212,7 @@ attributes:
   description:
     name: description
     description: a human-readable description of a thing
+    title: Description
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: dcterms:description
@@ -1219,6 +1225,7 @@ attributes:
   alternative_identifiers:
     name: alternative_identifiers
     description: A list of alternative identifiers for the entity.
+    title: Alternative Identifiers
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     owner: OrganismSample
@@ -1231,6 +1238,7 @@ attributes:
   type:
     name: type
     description: the class_uri of the class that has been instantiated
+    title: Type
     notes:
     - makes it easier to read example data files
     - required for polymorphic MongoDB collections

@@ -5461,6 +5461,7 @@ attributes:
   associated_studies:
     name: associated_studies
     description: The study associated with a resource.
+    title: Associated Studies
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     owner: Biosample
@@ -5481,6 +5482,7 @@ attributes:
       name a completeness subset, but not all do: expert_curation is awarded from
       provenance instead. Awarded by a downstream service, not asserted by submitters.
       Awarding is additive: a badge, once awarded, is not removed from the record.'
+    title: Metadata Quality Badges
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/issues/3227
@@ -5503,6 +5505,7 @@ attributes:
   collected_from:
     name: collected_from
     description: The Site from which a Biosample was collected
+    title: Collected From
     todos:
     - add an OBO slot_uri ?
     comments:
@@ -5519,6 +5522,7 @@ attributes:
   embargoed:
     name: embargoed
     description: If true, the data are embargoed and not available for public access.
+    title: Embargoed
     todos:
     - make this required?
     - first apply to Biosample
@@ -5582,6 +5586,7 @@ attributes:
     pattern: ^img\.taxon:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$
   neon_biosample_identifiers:
     name: neon_biosample_identifiers
+    title: NEON Biosample Identifiers
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     is_a: biosample_identifiers
@@ -5598,6 +5603,7 @@ attributes:
     description: A list of alternative names used to refer to the entity. The distinction
       between name and alternative names is application-specific.  This should not
       be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)
+    title: Alternative Names
     from_schema: https://w3id.org/nmdc/nmdc
     exact_mappings:
     - dcterms:alternative
@@ -5614,6 +5620,7 @@ attributes:
     name: provenance_metadata
     description: Provenance metadata for this Biosample, including when the record
       was added to and last modified in the NMDC database.
+    title: Provenance Metadata
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     owner: Biosample
@@ -5631,6 +5638,7 @@ attributes:
         value: Provide the GOLD biosample IDs associated with this biosample.
     description: Unique identifier for a biosample submitted to GOLD that matches
       the NMDC submitted biosample
+    title: GOLD Biosample Identifiers
     comments:
     - This is the ID provided by GOLD that starts with 'Gb'
     examples:
@@ -5649,6 +5657,7 @@ attributes:
   insdc_biosample_identifiers:
     name: insdc_biosample_identifiers
     description: identifiers for corresponding sample in INSDC
+    title: INSDC Biosample Identifiers
     examples:
     - value: biosample:SAMEA5989477
     - value: biosample:SAMD00212331
@@ -8743,6 +8752,7 @@ attributes:
       packages listed here are further defined in separate subtables. By giving the
       name of the environmental package, a selection of fields can be made from the
       subtables and can be reported
+    title: Environmental Package
     notes:
     - no longer in MIxS as of 6.0?
     from_schema: https://w3id.org/nmdc/nmdc
@@ -10271,6 +10281,7 @@ attributes:
   host_genus:
     name: host_genus
     description: Genus of the host organism that the sample was collected from.
+    title: Host Genus
     notes:
     - GOLD organism_v2 host_name &quot;Zea mays&quot; (n=432 records, queried 2026-04-30)
     - GOLD organism_v2 host_name &quot;Escherichia coli K-12&quot; (Go0084483 Escherichia phage
@@ -10507,6 +10518,7 @@ attributes:
   host_species:
     name: host_species
     description: Species of the host organism that the sample was collected from.
+    title: Host Species
     notes:
     - GOLD organism_v2 host_name &quot;Zea mays&quot; (n=432 records, queried 2026-04-30)
     - GOLD organism_v2 host_name &quot;Escherichia coli K-12&quot; (Go0084483 Escherichia phage
@@ -10536,6 +10548,7 @@ attributes:
   host_strain:
     name: host_strain
     description: Strain of the host organism that the sample was collected from.
+    title: Host Strain
     notes:
     - GOLD organism_v2 host_name &quot;Escherichia coli K-12&quot; (Go0084483 Escherichia phage
       JSE, queried 2026-04-30)
@@ -17275,6 +17288,7 @@ attributes:
     description: An ecosystem is a combination of a physical environment (abiotic
       factors) and all the organisms (biotic factors) that interact with this environment.
       Ecosystem is in position 1/5 in a GOLD path.
+    title: Ecosystem
     comments:
     - The abiotic factors play a profound role on the type and composition of organisms
       in a given environment. The GOLD Ecosystem at the top of the five-level classification
@@ -17298,6 +17312,7 @@ attributes:
     description: Ecosystem categories represent divisions within the ecosystem based
       on specific characteristics of the environment from where an organism or sample
       is isolated. Ecosystem category is in position 2/5 in a GOLD path.
+    title: Ecosystem Category
     comments:
     - The Environmental ecosystem (for example) is divided into Air, Aquatic and Terrestrial.
       Ecosystem categories for Host-associated samples can be individual hosts or
@@ -17319,6 +17334,7 @@ attributes:
       the Ecosystem Category. These common characteristics based grouping is still
       broad but specific to the characteristics of a given environment. Ecosystem
       type is in position 3/5 in a GOLD path.
+    title: Ecosystem Type
     comments:
     - The Aquatic ecosystem category (for example) may have ecosystem types like Marine
       or Thermal springs etc. Ecosystem category Air may have Indoor air or Outdoor
@@ -17339,6 +17355,7 @@ attributes:
     description: Ecosystem subtypes represent further subdivision of Ecosystem types
       into more distinct subtypes. Ecosystem subtype is in position 4/5 in a GOLD
       path.
+    title: Ecosystem Subtype
     comments:
     - Ecosystem Type Marine (Environmental -&gt; Aquatic -&gt; Marine) is further divided
       (for example) into Intertidal zone, Coastal, Pelagic, Intertidal zone etc. in
@@ -17358,6 +17375,7 @@ attributes:
     description: Specific ecosystems represent specific features of the environment
       like aphotic zone in an ocean or gastric mucosa within a host digestive system.
       Specific ecosystem is in position 5/5 in a GOLD path.
+    title: Specific Ecosystem
     comments:
     - Specific ecosystems help to define samples based on very specific characteristics
       of an environment under the five-level classification system.
@@ -17374,6 +17392,7 @@ attributes:
   ecosystem_path_id:
     name: ecosystem_path_id
     description: A unique id representing the GOLD classifiers associated with a sample.
+    title: GOLD Ecosystem Path ID
     examples:
     - value: '6026'
     from_schema: https://w3id.org/nmdc/nmdc
@@ -17386,6 +17405,7 @@ attributes:
     range: integer
   community:
     name: community
+    title: Community
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     owner: Biosample
@@ -17394,6 +17414,7 @@ attributes:
     range: string
   habitat:
     name: habitat
+    title: Habitat
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     owner: Biosample
@@ -17403,6 +17424,7 @@ attributes:
     range: string
   host_name:
     name: host_name
+    title: Host Name
     in_subset:
     - host_information
     from_schema: https://w3id.org/nmdc/nmdc
@@ -17413,6 +17435,7 @@ attributes:
     range: string
   location:
     name: location
+    title: Location
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     owner: Biosample
@@ -17421,6 +17444,7 @@ attributes:
     range: string
   ncbi_taxonomy_name:
     name: ncbi_taxonomy_name
+    title: NCBI Taxonomy Name
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     owner: Biosample
@@ -17429,6 +17453,7 @@ attributes:
     range: string
   proport_woa_temperature:
     name: proport_woa_temperature
+    title: Proport WOA Temperature
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     owner: Biosample
@@ -17439,6 +17464,7 @@ attributes:
     name: salinity_category
     description: 'Categorical description of the sample''s salinity. Examples: halophile,
       halotolerant, hypersaline, euryhaline'
+    title: Salinity Category
     notes:
     - maps to gold:salinity
     from_schema: https://w3id.org/nmdc/nmdc
@@ -17451,6 +17477,7 @@ attributes:
     name: sample_collection_site
     description: 'Free-text description of the place where the sample was collected:
       the geographic or environmental site or named location.'
+    title: Sample Collection Site
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -17470,6 +17497,7 @@ attributes:
     range: string
   soluble_iron_micromol:
     name: soluble_iron_micromol
+    title: Soluble Iron (micromol)
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     owner: Biosample
@@ -17482,6 +17510,7 @@ attributes:
       storage_units:
         tag: storage_units
         value: m
+    title: Subsurface Depth
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     owner: Biosample
@@ -17995,6 +18024,7 @@ attributes:
   infiltrations:
     name: infiltrations
     description: The amount of time it takes to complete each infiltration activity
+    title: Infiltrations
     examples:
     - value: 00:01:32
     - value: 00:00:53
@@ -18262,6 +18292,7 @@ attributes:
   id:
     name: id
     description: An NMDC assigned unique identifier for a biosample submitted to NMDC.
+    title: ID
     notes:
     - 'abstracted pattern: prefix:typecode-authshoulder-blade(.version)?(_seqsuffix)?'
     - a minimum length of 3 characters is suggested for typecodes, but 1 or 2 characters
@@ -18302,6 +18333,7 @@ attributes:
       (INSDC) requires every sample name from a single submitter to be unique. We
       recommend that, in addition to populating this field, you populate the `source_mat_id`
       field with a globally-unique identifier.
+    title: Name
     examples:
     - value: BW-H-17-M
     from_schema: https://w3id.org/nmdc/nmdc
@@ -18316,6 +18348,7 @@ attributes:
   description:
     name: description
     description: a human-readable description of a thing
+    title: Description
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: dcterms:description
@@ -18329,6 +18362,7 @@ attributes:
     name: alternative_identifiers
     description: Unique identifier for a biosample submitted to additional resources.
       Matches the entity that has been submitted to NMDC
+    title: Alternative Identifiers
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     owner: Biosample
@@ -18341,6 +18375,7 @@ attributes:
   type:
     name: type
     description: the class_uri of the class that has been instantiated
+    title: Type
     notes:
     - makes it easier to read example data files
     - required for polymorphic MongoDB collections

@@ -597,6 +597,7 @@ attributes:
   type:
     name: type
     description: the class_uri of the class that has been instantiated
+    title: Type
     notes:
     - makes it easier to read example data files
     - required for polymorphic MongoDB collections
@@ -648,6 +649,7 @@ attributes:
         value: First name, middle initial, and last name of this person.
     description: The full name of the Investigator. It should follow the format FIRST
       [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.
+    title: Name
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     owner: Person
