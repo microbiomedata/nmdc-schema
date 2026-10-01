@@ -136,8 +136,10 @@ enums:
         meaning: CHEBI:38472
       acetic_acid:
         meaning: CHEBI:15366
-        aliases:
-          - acetate
+        structured_aliases:
+          - literal_form: acetate
+            predicate: RELATED_SYNONYM
+            source: https://www.ebi.ac.uk/chebi/CHEBI:30089
         related_mappings:
           - CHEBI:30089 # acetate, the conjugate base
       acetone:
@@ -180,8 +182,10 @@ enums:
         meaning: CHEBI:16236
       formic_acid:
         meaning: CHEBI:30751
-        aliases:
-          - formate
+        structured_aliases:
+          - literal_form: formate
+            predicate: RELATED_SYNONYM
+            source: https://www.ebi.ac.uk/chebi/CHEBI:15740
         related_mappings:
           - CHEBI:15740 # formate, the conjugate base
         comments:
@@ -244,14 +248,18 @@ enums:
         meaning: CHEBI:36420
       alginic_acid:
         meaning: CHEBI:17548
-        aliases:
-          - alginate
+        structured_aliases:
+          - literal_form: alginate
+            predicate: RELATED_SYNONYM
+            source: https://www.ebi.ac.uk/chebi/CHEBI:58187
         related_mappings:
           - CHEBI:58187 # alginate, the conjugate base
       aspartic_acid:
         meaning: CHEBI:22660
-        aliases:
-          - aspartate
+        structured_aliases:
+          - literal_form: aspartate
+            predicate: RELATED_SYNONYM
+            source: https://www.ebi.ac.uk/chebi/CHEBI:132943
         related_mappings:
           - CHEBI:132943 # aspartate, the conjugate base
       atrazine:
@@ -266,8 +274,10 @@ enums:
         meaning: CHEBI:29865
       benzoic_acid:
         meaning: CHEBI:30746
-        aliases:
-          - benzoate
+        structured_aliases:
+          - literal_form: benzoate
+            predicate: RELATED_SYNONYM
+            source: https://www.ebi.ac.uk/chebi/CHEBI:16150
         related_mappings:
           - CHEBI:16150 # benzoate, the conjugate base
       "17beta-estradiol":
@@ -284,8 +294,10 @@ enums:
         meaning: CHEBI:37808
       butyric_acid:
         meaning: CHEBI:30772
-        aliases:
-          - butyrate
+        structured_aliases:
+          - literal_form: butyrate
+            predicate: RELATED_SYNONYM
+            source: https://www.ebi.ac.uk/chebi/CHEBI:17968
         related_mappings:
           - CHEBI:17968 # butyrate, the conjugate base
       carbon_dioxide:
@@ -333,8 +345,10 @@ enums:
         meaning: CHEBI:35194
       lactic_acid:
         meaning: CHEBI:78320
-        aliases:
-          - lactate
+        structured_aliases:
+          - literal_form: lactate
+            predicate: RELATED_SYNONYM
+            source: https://www.ebi.ac.uk/chebi/CHEBI:24996
         related_mappings:
           - CHEBI:24996 # lactate, the conjugate base
       linuron:
@@ -359,8 +373,10 @@ enums:
         meaning: CHEBI:28851
       propionic_acid:
         meaning: CHEBI:30768
-        aliases:
-          - propionate
+        structured_aliases:
+          - literal_form: propionate
+            predicate: RELATED_SYNONYM
+            source: https://www.ebi.ac.uk/chebi/CHEBI:17272
         related_mappings:
           - CHEBI:17272 # propionate, the conjugate base
       pyrene:
@@ -368,8 +384,11 @@ enums:
       sodium_bicarbonate:
         meaning: CHEBI:32139
         aliases:
-          - bicarbonate
           - sodium hydrogencarbonate
+        structured_aliases:
+          - literal_form: bicarbonate
+            predicate: RELATED_SYNONYM
+            source: https://www.ebi.ac.uk/chebi/CHEBI:17544
         related_mappings:
           - CHEBI:17544 # hydrogencarbonate, the anion
       sodium_carbonate:
