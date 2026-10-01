@@ -8175,7 +8175,7 @@ slots:
     annotations:
       storage_units: "1"
   isotopolog_atom_frac:
-    description: 'The fraction of heavy-labelled atoms out of all atoms of a given element in the isotopolog. '
+    description: The fraction of heavy-labelled atoms out of all atoms of a given element in the isotopolog.
     title: atom fraction of isotopolog
     examples:
       - object:

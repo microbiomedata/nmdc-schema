@@ -1034,7 +1034,7 @@
 '.slots.humidity_regm.examples = [{"object": {"type": "nmdc:TextValue", "has_raw_value": "25 gram per cubic meter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M"}}]'
 '.slots.isotopolog.examples = [{"value":"water"}]'
 '.slots.isotopolog.comments = ["Inputs such as root exudates or cells, goes in hetero_isotopolog instead; NMDC does not use a sentinel identifier for that case."]' 
-'.slots.isotopolog_atom_frac.description |= sub("Multiple values allowed, separated by a \\| and should be orded the same as the isotopolog\\."; "")'
+'.slots.isotopolog_atom_frac.description |= sub(" Multiple values allowed, separated by a \\| and should be orded the same as the isotopolog\\."; "")'
 '.slots.isotopolog_atom_pos.description |= sub("Multiple values allowed, separated by a \\| and should be orded the same as the isotopolog\\."; "This slot should be omitted for natural abundance samples")'
 '.slots.gradient_position.description |= sub("denoted with –1"; "denoted with -1")'
 
