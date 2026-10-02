@@ -170,6 +170,7 @@ classes:
 
 slots:
   name:
+    title: Name
     range: string
     description: >-
       A human readable label for an entity
@@ -180,6 +181,7 @@ slots:
     inlined: true
 
   description:
+    title: Description
     range: string
     description: >-
       a human-readable description of a thing
@@ -207,6 +209,7 @@ slots:
     range: string
 
   type:
+    title: Type
     required: true
     range: uriorcurie
     slot_uri: rdf:type

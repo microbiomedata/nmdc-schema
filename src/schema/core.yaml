@@ -1478,6 +1478,7 @@ slots:
     multivalued: true
 
   collected_from:
+    title: Collected From
     description: The Site from which a Biosample was collected
     range: FieldResearchSite
     comments:
@@ -1504,11 +1505,13 @@ slots:
       storage_units: mS/cm
 
   subsurface_depth:
+    title: Subsurface Depth
     range: QuantityValue
     annotations:
       storage_units: m
 
   env_package:
+    title: Environmental Package
     aliases:
       - environmental package
     notes:
