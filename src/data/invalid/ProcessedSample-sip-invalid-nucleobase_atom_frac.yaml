@@ -1,0 +1,15 @@
+# Invalid only because nucleobase_atom_frac is 1.1, above its maximum of 1.
+id: nmdc:procsm-99-labeledfrac1
+type: nmdc:ProcessedSample
+name: 'labeled: fraction 1'
+gradient_position: 1
+gradient_pos_density:
+  type: nmdc:QuantityValue
+  has_minimum_numeric_value: 1.725
+  has_maximum_numeric_value: 1.745
+  has_unit: g/mL
+gradient_pos_rel_am:
+  type: nmdc:QuantityValue
+  has_numeric_value: 0.45
+  has_unit: '1'
+nucleobase_atom_frac: 1.1
