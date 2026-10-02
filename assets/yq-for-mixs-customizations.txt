@@ -212,7 +212,7 @@
 '.slots.water_prod_rate.range |= "QuantityValue"'
 '.slots.wind_speed.range |= "QuantityValue"'
 '.slots.xylene.range |= "QuantityValue"'
-'.slots.isotopolog_atom_pos.range |= "uriorcurie"'
+'.slots.isotopolog_atom_pos.range |= "string"'
 '.slots.internal_standard.range |= "Protocol"'
 
 # Restore multivalued: false for slots that changed from microbiomedata/mixs tag pre-2024-05-15

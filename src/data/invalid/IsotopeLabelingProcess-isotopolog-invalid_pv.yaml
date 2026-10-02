@@ -1,5 +1,5 @@
-# Invalid because it uses an invalid permissible value
-id: nmdc:labp-99-abcdef6
+# Invalid only because isotopolog is not a permissible value of ChemicalEntityEnum.
+id: nmdc:isolp-99-abcdef6
 name: labeling of my awesome biosample
 type: nmdc:IsotopeLabelingProcess
 has_input:
@@ -7,8 +7,10 @@ has_input:
 has_output:
   - nmdc:procsm-99-987654
 isotopolog_approach: single
-isotopolog_additions:
+added_isotopologs:
   - isotopolog_label: isotopically labeled
-    isotope: 13C
+    isotope_atom_fractions:
+      - isotope: 13C
+        type: nmdc:IsotopologComposition
     type: nmdc:IsotopologAddition
     isotopolog: my_awesome_chemical_compound
