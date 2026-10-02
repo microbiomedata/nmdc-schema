@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.24.0.post112.dev0+d5b4f90ea
+version: 11.24.0.post122.dev0+224c388b2
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -6119,6 +6119,9 @@ enums:
       toluene:
         text: toluene
         meaning: CHEBI:17578
+      glycine:
+        text: glycine
+        meaning: CHEBI:15428
   MetaproteomicsAnalysisCategoryEnum:
     name: MetaproteomicsAnalysisCategoryEnum
     description: The category of metaproteomics analysis being performed.
@@ -8834,7 +8837,7 @@ slots:
     keywords:
     - information
     slot_uri: MIXS:0000300
-    range: string
+    range: TextValue
   address:
     name: address
     description: The street name and building number where the sampling occurred
@@ -8856,7 +8859,7 @@ slots:
     - adjacent
     - room
     slot_uri: MIXS:0000219
-    range: string
+    range: TextValue
     pattern: ^([^\s-]{1,2}|[^\s-]+.+[^\s-]+);[1-9][0-9]*$
     structured_pattern:
       syntax: ^{room_name};{room_number}$
@@ -9212,7 +9215,7 @@ slots:
     - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000247
-    range: string
+    range: TextValue
   annual_precpt:
     name: annual_precpt
     annotations:
@@ -9575,7 +9578,7 @@ slots:
         has_raw_value: Campos
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000290
-    range: string
+    range: TextValue
   bathroom_count:
     name: bathroom_count
     description: The number of bathrooms in the building
@@ -9733,7 +9736,7 @@ slots:
     keywords:
     - regimen
     slot_uri: MIXS:0001038
-    range: string
+    range: TextValue
     multivalued: false
   biotic_relationship:
     name: biotic_relationship
@@ -9932,7 +9935,7 @@ slots:
     keywords:
     - type
     slot_uri: MIXS:0000721
-    range: string
+    range: TextValue
   calcium:
     name: calcium
     annotations:
@@ -10305,7 +10308,7 @@ slots:
     keywords:
     - software
     slot_uri: MIXS:0000052
-    range: string
+    range: TextValue
     pattern: ^([^\s-]{1,2}|[^\s-]+.+[^\s-]+);([^\s-]{1,2}|[^\s-]+.+[^\s-]+);([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{software};{version};{parameters}$
@@ -10387,7 +10390,7 @@ slots:
     keywords:
     - environment
     slot_uri: MIXS:0001040
-    range: string
+    range: TextValue
     multivalued: true
     inlined_as_list: true
   collection_date:
@@ -10535,7 +10538,7 @@ slots:
     keywords:
     - vegetation
     slot_uri: MIXS:0000312
-    range: string
+    range: TextValue
   cur_vegetation_meth:
     name: cur_vegetation_meth
     description: Reference or method used in vegetation classification
@@ -11575,7 +11578,7 @@ slots:
     title: field name
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000291
-    range: string
+    range: TextValue
     recommended: true
   filter_type:
     name: filter_type
@@ -11929,7 +11932,7 @@ slots:
     - geographic
     - location
     slot_uri: MIXS:0000010
-    range: string
+    range: TextValue
     pattern: '^([^\s-]{1,2}|[^\s-]+.+[^\s-]+): ([^\s-]{1,2}|[^\s-]+.+[^\s-]+), ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'
     structured_pattern:
       syntax: '^{country}: {region}, {specific_location}$'
@@ -12396,7 +12399,7 @@ slots:
     - host
     - host.
     slot_uri: MIXS:0000866
-    range: string
+    range: TextValue
   host_body_product:
     name: host_body_product
     annotations:
@@ -12489,7 +12492,7 @@ slots:
     - host
     - host.
     slot_uri: MIXS:0000260
-    range: string
+    range: TextValue
   host_common_name:
     name: host_common_name
     annotations:
@@ -12505,7 +12508,7 @@ slots:
     - host
     - host.
     slot_uri: MIXS:0000248
-    range: string
+    range: TextValue
   host_diet:
     name: host_diet
     description: Type of diet depending on the host, for animals omnivore, herbivore
@@ -12519,7 +12522,7 @@ slots:
     - host
     - host.
     slot_uri: MIXS:0000869
-    range: string
+    range: TextValue
     multivalued: true
     inlined_as_list: true
   host_disease_stat:
@@ -12587,7 +12590,7 @@ slots:
     - host
     - host.
     slot_uri: MIXS:0000365
-    range: string
+    range: TextValue
   host_growth_cond:
     name: host_growth_cond
     description: Literature reference giving growth conditions of the host
@@ -12605,7 +12608,7 @@ slots:
     - host
     - host.
     slot_uri: MIXS:0000871
-    range: string
+    range: TextValue
     pattern: ^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)|.*)$
     structured_pattern:
       syntax: ^({PMID}|{DOI}|{URL}|{text})$
@@ -12710,7 +12713,7 @@ slots:
     - host.
     - life
     slot_uri: MIXS:0000251
-    range: string
+    range: TextValue
   host_phenotype:
     name: host_phenotype
     annotations:
@@ -12764,7 +12767,7 @@ slots:
     - host
     - host.
     slot_uri: MIXS:0000261
-    range: string
+    range: TextValue
   host_subject_id:
     name: host_subject_id
     description: A unique identifier by which each subject can be referred to, de-identified
@@ -12777,7 +12780,7 @@ slots:
     - host.
     - identifier
     slot_uri: MIXS:0000861
-    range: string
+    range: TextValue
   host_subspecf_genlin:
     name: host_subspecf_genlin
     annotations:
@@ -12819,7 +12822,7 @@ slots:
     - host
     - host.
     slot_uri: MIXS:0000252
-    range: string
+    range: TextValue
   host_symbiont:
     name: host_symbiont
     annotations:
@@ -13262,7 +13265,7 @@ slots:
     keywords:
     - link
     slot_uri: MIXS:0000340
-    range: string
+    range: TextValue
     pattern: ^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$
     structured_pattern:
       syntax: ^({PMID}|{DOI}|{URL})$
@@ -13299,7 +13302,7 @@ slots:
     - information
     - link
     slot_uri: MIXS:0000328
-    range: string
+    range: TextValue
     pattern: ^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$
     structured_pattern:
       syntax: ^({PMID}|{DOI}|{URL})$
@@ -13330,7 +13333,7 @@ slots:
     keywords:
     - classification
     slot_uri: MIXS:0000330
-    range: string
+    range: TextValue
   local_class_meth:
     name: local_class_meth
     description: Reference or method used in determining the local soil classification
@@ -13749,7 +13752,7 @@ slots:
         has_raw_value: https://phylogenomics.me/protocols/16s-pcr-protocol/
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000038
-    range: string
+    range: TextValue
     pattern: ^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$
     structured_pattern:
       syntax: ^({PMID}|{DOI}|{URL})$
@@ -13767,7 +13770,7 @@ slots:
         has_raw_value: https://mobio.com/media/wysiwyg/pdfs/protocols/12888.pdf
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000037
-    range: string
+    range: TextValue
     pattern: ^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$
     structured_pattern:
       syntax: ^({PMID}|{DOI}|{URL})$
@@ -14338,7 +14341,7 @@ slots:
     - method
     - ph
     slot_uri: MIXS:0001106
-    range: string
+    range: TextValue
   ph_regm:
     name: ph_regm
     description: Information about treatment involving exposure of plants to varying
@@ -14355,7 +14358,7 @@ slots:
     - ph
     - regimen
     slot_uri: MIXS:0001056
-    range: string
+    range: TextValue
     multivalued: true
     inlined_as_list: true
   phaeopigments:
@@ -14488,7 +14491,7 @@ slots:
     - plant
     - product
     slot_uri: MIXS:0001058
-    range: string
+    range: TextValue
   plant_sex:
     name: plant_sex
     description: Sex of the reproductive parts on the whole plant, e.g. pistillate,
@@ -14651,7 +14654,7 @@ slots:
     title: pre-treatment
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000348
-    range: string
+    range: TextValue
   pres_animal_insect:
     name: pres_animal_insect
     annotations:
@@ -14777,7 +14780,7 @@ slots:
     - primary
     - treatment
     slot_uri: MIXS:0000349
-    range: string
+    range: TextValue
   prod_rate:
     name: prod_rate
     annotations:
@@ -14905,7 +14908,7 @@ slots:
     keywords:
     - type
     slot_uri: MIXS:0000350
-    range: string
+    range: TextValue
   redox_potential:
     name: redox_potential
     annotations:
@@ -15015,7 +15018,7 @@ slots:
     title: reservoir name
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000303
-    range: string
+    range: TextValue
     recommended: true
   resins_pc:
     name: resins_pc
@@ -15159,7 +15162,7 @@ slots:
     - door
     - room
     slot_uri: MIXS:0000242
-    range: string
+    range: TextValue
     pattern: ^([^\s-]{1,2}|[^\s-]+.+[^\s-]+);[1-9][0-9]*$
     structured_pattern:
       syntax: ^{room_name};{room_number}$
@@ -15175,7 +15178,7 @@ slots:
     - hallway
     - room
     slot_uri: MIXS:0000238
-    range: string
+    range: TextValue
     pattern: ^([^\s-]{1,2}|[^\s-]+.+[^\s-]+);[1-9][0-9]*$
     structured_pattern:
       syntax: ^{room_name};{room_number}$
@@ -15302,7 +15305,7 @@ slots:
     - room
     - wall
     slot_uri: MIXS:0000243
-    range: string
+    range: TextValue
     pattern: ^([^\s-]{1,2}|[^\s-]+.+[^\s-]+);[1-9][0-9]*$
     structured_pattern:
       syntax: ^{room_name};{room_number}$
@@ -15332,7 +15335,7 @@ slots:
     keywords:
     - condition
     slot_uri: MIXS:0001061
-    range: string
+    range: TextValue
     pattern: ^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)|.*)$
     structured_pattern:
       syntax: ^({PMID}|{DOI}|{URL}|{text})$
@@ -15452,7 +15455,7 @@ slots:
         has_raw_value: agar
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0001063
-    range: string
+    range: TextValue
   root_med_suppl:
     name: root_med_suppl
     annotations:
@@ -15774,7 +15777,7 @@ slots:
     - sample
     - storage
     slot_uri: MIXS:0000116
-    range: string
+    range: TextValue
     pattern: ^P(?:(?:\d+D|\d+M(?:\d+D)?|\d+Y(?:\d+M(?:\d+D)?)?)(?:T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S))?|T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S)|\d+W)$
     structured_pattern:
       syntax: ^{duration}$
@@ -15798,7 +15801,7 @@ slots:
     - sample
     - storage
     slot_uri: MIXS:0000755
-    range: string
+    range: TextValue
   samp_store_temp:
     name: samp_store_temp
     annotations:
@@ -15944,7 +15947,7 @@ slots:
     - sample
     - type
     slot_uri: MIXS:0000998
-    range: string
+    range: TextValue
     pattern: ^([^\s-]{1,2}|[^\s-]+.+[^\s-]+) \[[a-zA-Z]{2,}:[a-zA-Z0-9]\d+\]$
     structured_pattern:
       syntax: ^{termLabel} \[{termID}\]$
@@ -16003,7 +16006,7 @@ slots:
     keywords:
     - sample
     slot_uri: MIXS:0000296
-    range: string
+    range: TextValue
     recommended: true
   saturates_pc:
     name: saturates_pc
@@ -16054,7 +16057,7 @@ slots:
     - environment
     - season
     slot_uri: MIXS:0001068
-    range: string
+    range: TextValue
     multivalued: true
     inlined_as_list: true
   season_precpt:
@@ -16143,7 +16146,7 @@ slots:
     - secondary
     - treatment
     slot_uri: MIXS:0000351
-    range: string
+    range: TextValue
   sediment_type:
     name: sediment_type
     description: Information about the sediment type based on major constituents
@@ -16203,7 +16206,7 @@ slots:
     keywords:
     - type
     slot_uri: MIXS:0000215
-    range: string
+    range: TextValue
   shad_dev_water_mold:
     name: shad_dev_water_mold
     description: Signs of the presence of mold or mildew on the shading device
@@ -16252,7 +16255,7 @@ slots:
     - device
     - material
     slot_uri: MIXS:0000245
-    range: string
+    range: TextValue
   shading_device_type:
     name: shading_device_type
     description: The type of shading device
@@ -16567,7 +16570,7 @@ slots:
     - soil
     - type
     slot_uri: MIXS:0000334
-    range: string
+    range: TextValue
   solar_irradiance:
     name: solar_irradiance
     annotations:
@@ -16702,7 +16705,7 @@ slots:
     - material
     - source
     slot_uri: MIXS:0000026
-    range: string
+    range: TextValue
     multivalued: false
   space_typ_state:
     name: space_typ_state
@@ -16824,7 +16827,7 @@ slots:
     - regimen
     - water
     slot_uri: MIXS:0001069
-    range: string
+    range: TextValue
     multivalued: true
     inlined_as_list: true
   store_cond:
@@ -17173,7 +17176,7 @@ slots:
     keywords:
     - target
     slot_uri: MIXS:0000045
-    range: string
+    range: TextValue
   temp:
     name: temp
     annotations:
@@ -17244,7 +17247,7 @@ slots:
     keywords:
     - treatment
     slot_uri: MIXS:0000352
-    range: string
+    range: TextValue
   tidal_stage:
     name: tidal_stage
     description: Stage of tide
@@ -17279,7 +17282,7 @@ slots:
     - culture
     - growth
     slot_uri: MIXS:0001070
-    range: string
+    range: TextValue
     pattern: ^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)|.*)$
     structured_pattern:
       syntax: ^({PMID}|{DOI}|{URL}|{text})$
@@ -17867,7 +17870,7 @@ slots:
     keywords:
     - type
     slot_uri: MIXS:0000756
-    range: string
+    range: TextValue
     multivalued: false
   vfa:
     name: vfa
@@ -18124,7 +18127,7 @@ slots:
     keywords:
     - type
     slot_uri: MIXS:0000353
-    range: string
+    range: TextValue
   water_cont_soil_meth:
     name: water_cont_soil_meth
     description: Reference or method used in determining the water content of soil
@@ -18345,7 +18348,7 @@ slots:
     - identifier
     - number
     slot_uri: MIXS:0000297
-    range: string
+    range: TextValue
     recommended: true
   wind_direction:
     name: wind_direction
@@ -18360,7 +18363,7 @@ slots:
     - direction
     - wind
     slot_uri: MIXS:0000757
-    range: string
+    range: TextValue
   wind_speed:
     name: wind_speed
     annotations:
@@ -18585,7 +18588,7 @@ slots:
         has_raw_value: doi:10.1016/j.syapm.2018.01.009
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000025
-    range: string
+    range: TextValue
     pattern: ^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$
     structured_pattern:
       syntax: ^({PMID}|{DOI}|{URL})$
@@ -18607,7 +18610,7 @@ slots:
     - growth
     - isolation
     slot_uri: MIXS:0000003
-    range: string
+    range: TextValue
     pattern: ^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$
     structured_pattern:
       syntax: ^({PMID}|{DOI}|{URL})$
@@ -20930,6 +20933,19 @@ classes:
       description: If isotopolog is present, then hetero_isotopolog must be absent,
         so that no entry names the input in both ways.
       title: hetero_isotopolog_absent_when_isotopolog_present
+    - preconditions:
+        slot_conditions:
+          isotopolog_label:
+            name: isotopolog_label
+            equals_string: natural abundance
+      postconditions:
+        slot_conditions:
+          isotopolog_atom_pos:
+            name: isotopolog_atom_pos
+            value_presence: ABSENT
+      description: If isotopolog_label is natural abundance, then isotopolog_atom_pos
+        must be absent, because an InChI isotope layer can only describe enrichment.
+      title: isotopolog_atom_pos_absent_at_natural_abundance
   IsotopologComposition:
     name: IsotopologComposition
     description: Contains the isotopes used and at what fraction.

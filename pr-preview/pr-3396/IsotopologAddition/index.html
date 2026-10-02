@@ -564,6 +564,19 @@ rules:
   description: If isotopolog is present, then hetero_isotopolog must be absent, so
     that no entry names the input in both ways.
   title: hetero_isotopolog_absent_when_isotopolog_present
+- preconditions:
+    slot_conditions:
+      isotopolog_label:
+        name: isotopolog_label
+        equals_string: natural abundance
+  postconditions:
+    slot_conditions:
+      isotopolog_atom_pos:
+        name: isotopolog_atom_pos
+        value_presence: ABSENT
+  description: If isotopolog_label is natural abundance, then isotopolog_atom_pos
+    must be absent, because an InChI isotope layer can only describe enrichment.
+  title: isotopolog_atom_pos_absent_at_natural_abundance
 
 </code></pre>
 </details>
@@ -770,6 +783,19 @@ rules:
   description: If isotopolog is present, then hetero_isotopolog must be absent, so
     that no entry names the input in both ways.
   title: hetero_isotopolog_absent_when_isotopolog_present
+- preconditions:
+    slot_conditions:
+      isotopolog_label:
+        name: isotopolog_label
+        equals_string: natural abundance
+  postconditions:
+    slot_conditions:
+      isotopolog_atom_pos:
+        name: isotopolog_atom_pos
+        value_presence: ABSENT
+  description: If isotopolog_label is natural abundance, then isotopolog_atom_pos
+    must be absent, because an InChI isotope layer can only describe enrichment.
+  title: isotopolog_atom_pos_absent_at_natural_abundance
 
 </code></pre>
 </details>

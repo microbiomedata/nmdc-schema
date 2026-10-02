@@ -450,6 +450,9 @@
 
   Organism : ref_biomaterial
 
+      Organism --&gt; "0..1" TextValue : ref_biomaterial
+    click TextValue href "../TextValue"
+
   Organism : strain_name
 
   Organism : type
@@ -522,7 +525,7 @@
 </tr>
 <tr>
 <td><a href="../ref_biomaterial/">ref_biomaterial</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Reference for the organism, preferentially a DOI when a primary publication...</td>
 <td>direct</td>
 </tr>
@@ -1002,7 +1005,7 @@ attributes:
     owner: Organism
     domain_of:
     - Organism
-    range: string
+    range: TextValue
     structured_pattern:
       syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true

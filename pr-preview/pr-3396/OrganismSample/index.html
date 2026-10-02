@@ -478,6 +478,9 @@
 
   OrganismSample : source_mat_id
 
+      OrganismSample --&gt; "0..1" TextValue : source_mat_id
+    click TextValue href "../TextValue"
+
   OrganismSample : type
 
 
@@ -569,7 +572,7 @@
 </tr>
 <tr>
 <td><a href="../source_mat_id/">source_mat_id</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Culture collection identifier for the source of this organism sample.</td>
 <td>direct</td>
 </tr>
@@ -1135,7 +1138,7 @@ attributes:
     domain_of:
     - Biosample
     - OrganismSample
-    range: string
+    range: TextValue
     multivalued: false
   analysis_type:
     name: analysis_type
