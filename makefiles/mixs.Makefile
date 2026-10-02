@@ -61,7 +61,7 @@ local/mixs_regen/mixs_subset_modified.yaml: local/mixs_regen/mixs_subset.yaml as
 
 	# First, apply global string replacements using yq (replacing sed)
 	yq eval '(.. | select(. == "quantity value")) |= "QuantityValue" | (.. | select(tag == "!!str" and . == "string")) |= "TextValue" | (.. | select(tag == "!!str" and . == "text value")) |= "TextValue"' $(word 1, $^) > $@
-
+	yq -i '(.. | select(tag == "!!str")) |= (sub("isotopologue"; "isotopolog") | sub("Isotopologue"; "Isotopolog"))' $@
 	# Then apply all slot-specific transformations from config file
 	# `|| exit 1` so a customization line that fails under `eval` (e.g. an
 	# interior apostrophe closing the single-quote wrapper) aborts the build

@@ -1,0 +1,38 @@
+# Example inspired by https://doi.org/10.1038/ismej.2014.205, proposed adjustments to modeling
+id: nmdc:isolp-99-abcdef2
+name: labeling of my awesome biosample
+has_input:
+  - nmdc:bsm-99-123456
+has_output:
+  - nmdc:procsm-99-987650
+isotopolog_approach: multiple
+isotopolog_additions:
+  - isotopolog_label: isotopically labeled
+    type: nmdc:IsotopologAddition
+    isotopolog_composition:
+      - isotope: 13C
+        isotopolog_atom_frac:
+          type: nmdc:QuantityValue
+          has_raw_value: "0.99"
+          has_numeric_value: 0.99
+          has_unit: "1"
+        type: nmdc:IsotopologComposition
+    isotopolog: glucose
+  - isotopolog_label: isotopically labeled
+    type: nmdc:IsotopologAddition
+    isotopolog_composition:
+      - isotope: 18O
+        type: nmdc:IsotopologComposition
+        isotopolog_atom_frac:
+          type: nmdc:QuantityValue
+          has_raw_value: "0.99"
+          has_numeric_value: 0.99
+          has_unit: "1"
+    isotopolog_atom_pos: InChI=1S/H2O/h1H2/i/hD2
+    isotopolog: water
+isotopolog_incu_time:
+  type: nmdc:QuantityValue
+  has_raw_value: 168 h
+  has_numeric_value: 168
+  has_unit: h
+type: nmdc:IsotopeLabelingProcess
