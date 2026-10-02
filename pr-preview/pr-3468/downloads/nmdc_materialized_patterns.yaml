@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.24.0.post129.dev0+d14864018
+version: 11.24.0.post130.dev0+ea70ec579
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -6535,6 +6535,15 @@ slots:
     range: IsotopologComposition
     multivalued: true
     inlined_as_list: true
+  internal_standard_method:
+    name: internal_standard_method
+    description: Method used for internal standard for SIP fractionation, if an internal
+      standard was used (i.e., spiking in a heavy-labelled DNA sequence).
+    title: internal standard method
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - MIXS:0001351
+    range: Protocol
   hetero_isotopolog:
     name: hetero_isotopolog
     description: 'An input to the labeling that has no ChEBI identifier, described
@@ -6598,15 +6607,6 @@ slots:
     - dcm:organization_id
     range: string
     pattern: ^ror:0[a-hj-km-np-tv-z0-9]{6}[0-9]{2}$
-  internal_standard_method:
-    name: internal_standard_method
-    description: Method used for internal standard for SIP fractionation, if an internal
-      standard was used (i.e., spiking in a heavy-labelled DNA sequence).
-    title: internal standard method
-    from_schema: https://w3id.org/nmdc/nmdc
-    exact_mappings:
-    - MIXS:0001351
-    range: Protocol
   host_family_relation:
     name: host_family_relation
     annotations:
