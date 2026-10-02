@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-09-16T22:18:16
+# Generation date: 2026-10-01T22:22:39
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -293,6 +293,14 @@ class ExtractionId(MaterialProcessingId):
 
 
 class LibraryPreparationId(MaterialProcessingId):
+    pass
+
+
+class IsotopeLabelingProcessId(MaterialProcessingId):
+    pass
+
+
+class DensityGradientFractionationProcessId(MaterialProcessingId):
     pass
 
 
@@ -701,6 +709,87 @@ class Database(YAMLRoot):
         self._normalize_inlined_as_list(slot_name="study_set", slot_type=Study, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="workflow_execution_set", slot_type=WorkflowExecution, key_name="id", keyed=True)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class IsotopologAddition(YAMLRoot):
+    """
+    One isotopolog, or one heterogeneous material with no compound identifier, added during an isotope labeling
+    process, with the isotope it carries, whether it was isotopically labeled or at natural abundance, the atom
+    fraction and position of the label, and the dose.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC["IsotopologAddition"]
+    class_class_curie: ClassVar[str] = "nmdc:IsotopologAddition"
+    class_name: ClassVar[str] = "IsotopologAddition"
+    class_model_uri: ClassVar[URIRef] = NMDC.IsotopologAddition
+
+    isotopolog_label: Union[str, "IsotopologLabelEnum"] = None
+    type: Union[str, URIorCURIE] = None
+    isotopolog_composition: Optional[Union[Union[dict, "IsotopologComposition"], list[Union[dict, "IsotopologComposition"]]]] = empty_list()
+    isotopolog: Optional[Union[str, "ChemicalEntityEnum"]] = None
+    hetero_isotopolog: Optional[str] = None
+    isotopolog_atom_pos: Optional[Union[str, URIorCURIE]] = None
+    isotopolog_dose: Optional[Union[dict, "QuantityValue"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.isotopolog_label):
+            self.MissingRequiredField("isotopolog_label")
+        if not isinstance(self.isotopolog_label, IsotopologLabelEnum):
+            self.isotopolog_label = IsotopologLabelEnum(self.isotopolog_label)
+
+        if self._is_empty(self.type):
+            self.MissingRequiredField("type")
+        self.type = str(self.class_class_curie)
+
+        self._normalize_inlined_as_list(slot_name="isotopolog_composition", slot_type=IsotopologComposition, key_name="isotope", keyed=False)
+
+        if self.isotopolog is not None and not isinstance(self.isotopolog, ChemicalEntityEnum):
+            self.isotopolog = ChemicalEntityEnum(self.isotopolog)
+
+        if self.hetero_isotopolog is not None and not isinstance(self.hetero_isotopolog, str):
+            self.hetero_isotopolog = str(self.hetero_isotopolog)
+
+        if self.isotopolog_atom_pos is not None and not isinstance(self.isotopolog_atom_pos, URIorCURIE):
+            self.isotopolog_atom_pos = URIorCURIE(self.isotopolog_atom_pos)
+
+        if self.isotopolog_dose is not None and not isinstance(self.isotopolog_dose, QuantityValue):
+            self.isotopolog_dose = QuantityValue(**as_dict(self.isotopolog_dose))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class IsotopologComposition(YAMLRoot):
+    """
+    Contains the isotopes used and at what fraction.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC["IsotopologComposition"]
+    class_class_curie: ClassVar[str] = "nmdc:IsotopologComposition"
+    class_name: ClassVar[str] = "IsotopologComposition"
+    class_model_uri: ClassVar[URIRef] = NMDC.IsotopologComposition
+
+    isotope: Union[str, "IsotopeEnum"] = None
+    type: Union[str, URIorCURIE] = None
+    isotopolog_atom_frac: Optional[Union[dict, "QuantityValue"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.isotope):
+            self.MissingRequiredField("isotope")
+        if not isinstance(self.isotope, IsotopeEnum):
+            self.isotope = IsotopeEnum(self.isotope)
+
+        if self._is_empty(self.type):
+            self.MissingRequiredField("type")
+        self.type = str(self.class_class_curie)
+
+        if self.isotopolog_atom_frac is not None and not isinstance(self.isotopolog_atom_frac, QuantityValue):
+            self.isotopolog_atom_frac = QuantityValue(**as_dict(self.isotopolog_atom_frac))
 
         super().__post_init__(**kwargs)
 
@@ -3918,6 +4007,10 @@ class ProcessedSample(Sample):
     dna_concentration: Optional[float] = None
     external_database_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
     sampled_portion: Optional[Union[Union[str, "SamplePortionEnum"], list[Union[str, "SamplePortionEnum"]]]] = empty_list()
+    gradient_position: Optional[int] = None
+    gradient_pos_density: Optional[Union[dict, QuantityValue]] = None
+    gradient_pos_rel_am: Optional[Union[dict, QuantityValue]] = None
+    nucleobase_atom_frac: Optional[float] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -3941,6 +4034,18 @@ class ProcessedSample(Sample):
         if not isinstance(self.sampled_portion, list):
             self.sampled_portion = [self.sampled_portion] if self.sampled_portion is not None else []
         self.sampled_portion = [v if isinstance(v, SamplePortionEnum) else SamplePortionEnum(v) for v in self.sampled_portion]
+
+        if self.gradient_position is not None and not isinstance(self.gradient_position, int):
+            self.gradient_position = int(self.gradient_position)
+
+        if self.gradient_pos_density is not None and not isinstance(self.gradient_pos_density, QuantityValue):
+            self.gradient_pos_density = QuantityValue(**as_dict(self.gradient_pos_density))
+
+        if self.gradient_pos_rel_am is not None and not isinstance(self.gradient_pos_rel_am, QuantityValue):
+            self.gradient_pos_rel_am = QuantityValue(**as_dict(self.gradient_pos_rel_am))
+
+        if self.nucleobase_atom_frac is not None and not isinstance(self.nucleobase_atom_frac, float):
+            self.nucleobase_atom_frac = float(self.nucleobase_atom_frac)
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -4668,6 +4773,109 @@ class LibraryPreparation(MaterialProcessing):
 
         if self.adapters is not None and not isinstance(self.adapters, str):
             self.adapters = str(self.adapters)
+
+        super().__post_init__(**kwargs)
+        if self._is_empty(self.type):
+            self.MissingRequiredField("type")
+        self.type = str(self.class_class_curie)
+
+
+@dataclass(repr=False)
+class IsotopeLabelingProcess(MaterialProcessing):
+    """
+    A material processing in which substances or materials, isotopically labeled or at natural abundance, are added to
+    a sample so that uptake of the isotope by the resident organisms can be traced.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC["IsotopeLabelingProcess"]
+    class_class_curie: ClassVar[str] = "nmdc:IsotopeLabelingProcess"
+    class_name: ClassVar[str] = "IsotopeLabelingProcess"
+    class_model_uri: ClassVar[URIRef] = NMDC.IsotopeLabelingProcess
+
+    id: Union[str, IsotopeLabelingProcessId] = None
+    type: Union[str, URIorCURIE] = None
+    has_input: Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]] = None
+    has_output: Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]] = None
+    isotopolog_additions: Optional[Union[Union[dict, IsotopologAddition], list[Union[dict, IsotopologAddition]]]] = empty_list()
+    isotopolog_approach: Optional[Union[str, "IsotopologApproachEnum"]] = None
+    isotopolog_incu_time: Optional[Union[dict, QuantityValue]] = None
+    substances_used: Optional[Union[Union[dict, PortionOfSubstance], list[Union[dict, PortionOfSubstance]]]] = empty_list()
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, IsotopeLabelingProcessId):
+            self.id = IsotopeLabelingProcessId(self.id)
+
+        if self._is_empty(self.has_input):
+            self.MissingRequiredField("has_input")
+        if not isinstance(self.has_input, list):
+            self.has_input = [self.has_input] if self.has_input is not None else []
+        self.has_input = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_input]
+
+        if self._is_empty(self.has_output):
+            self.MissingRequiredField("has_output")
+        if not isinstance(self.has_output, list):
+            self.has_output = [self.has_output] if self.has_output is not None else []
+        self.has_output = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_output]
+
+        self._normalize_inlined_as_list(slot_name="isotopolog_additions", slot_type=IsotopologAddition, key_name="isotopolog_label", keyed=False)
+
+        if self.isotopolog_approach is not None and not isinstance(self.isotopolog_approach, IsotopologApproachEnum):
+            self.isotopolog_approach = IsotopologApproachEnum(self.isotopolog_approach)
+
+        if self.isotopolog_incu_time is not None and not isinstance(self.isotopolog_incu_time, QuantityValue):
+            self.isotopolog_incu_time = QuantityValue(**as_dict(self.isotopolog_incu_time))
+
+        self._normalize_inlined_as_list(slot_name="substances_used", slot_type=PortionOfSubstance, key_name="type", keyed=False)
+
+        super().__post_init__(**kwargs)
+        if self._is_empty(self.type):
+            self.MissingRequiredField("type")
+        self.type = str(self.class_class_curie)
+
+
+@dataclass(repr=False)
+class DensityGradientFractionationProcess(MaterialProcessing):
+    """
+    A material processing that separates a sample, typically extracted nucleic acids, into fractions by buoyant
+    density, usually by isopycnic centrifugation. The output fractions can record their gradient position, buoyant
+    density and relative nucleic acid amount.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC["DensityGradientFractionationProcess"]
+    class_class_curie: ClassVar[str] = "nmdc:DensityGradientFractionationProcess"
+    class_name: ClassVar[str] = "DensityGradientFractionationProcess"
+    class_model_uri: ClassVar[URIRef] = NMDC.DensityGradientFractionationProcess
+
+    id: Union[str, DensityGradientFractionationProcessId] = None
+    type: Union[str, URIorCURIE] = None
+    has_input: Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]] = None
+    has_output: Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]] = None
+    internal_standard_method: Optional[Union[dict, "Protocol"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, DensityGradientFractionationProcessId):
+            self.id = DensityGradientFractionationProcessId(self.id)
+
+        if self._is_empty(self.has_input):
+            self.MissingRequiredField("has_input")
+        if not isinstance(self.has_input, list):
+            self.has_input = [self.has_input] if self.has_input is not None else []
+        self.has_input = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_input]
+
+        if self._is_empty(self.has_output):
+            self.MissingRequiredField("has_output")
+        if not isinstance(self.has_output, list):
+            self.has_output = [self.has_output] if self.has_output is not None else []
+        self.has_output = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_output]
+
+        if self.internal_standard_method is not None and not isinstance(self.internal_standard_method, Protocol):
+            self.internal_standard_method = Protocol(**as_dict(self.internal_standard_method))
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -7044,6 +7252,7 @@ class ProtocolCategoryEnum(EnumDefinitionImpl):
     texture_measurement = PermissibleValue(text="texture_measurement")
     dna_extraction = PermissibleValue(text="dna_extraction")
     phenol_chloroform_extraction = PermissibleValue(text="phenol_chloroform_extraction")
+    stable_isotope_probing = PermissibleValue(text="stable_isotope_probing")
 
     _defn = EnumDefinition(
         name="ProtocolCategoryEnum",
@@ -7318,6 +7527,9 @@ class ChemicalEntityEnum(EnumDefinitionImpl):
     water = PermissibleValue(
         text="water",
         meaning=CHEBI["15377"])
+    toluene = PermissibleValue(
+        text="toluene",
+        meaning=CHEBI["17578"])
 
     _defn = EnumDefinition(
         name="ChemicalEntityEnum",
@@ -7793,6 +8005,10 @@ class UnitEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="g/cm3",
                 description="""The Unified Code for Units of Measure (UCUM) representation of grams per cubic centimeter."""))
+        setattr(cls, "g/mL",
+            PermissibleValue(
+                text="g/mL",
+                description="The Unified Code for Units of Measure (UCUM) representation of grams per milliliter."))
         setattr(cls, "g/L",
             PermissibleValue(
                 text="g/L",
@@ -8616,6 +8832,10 @@ class ProcessingInstitutionEnum(EnumDefinitionImpl):
         text="Azenta",
         title="Azenta Life Sciences",
         meaning=None)
+    SeqCenter = PermissibleValue(
+        text="SeqCenter",
+        title="SeqCenter",
+        meaning=None)
 
     _defn = EnumDefinition(
         name="ProcessingInstitutionEnum",
@@ -9008,6 +9228,8 @@ class ProtocolForEnum(EnumDefinitionImpl):
     StorageProcess = PermissibleValue(text="StorageProcess")
     SubSamplingProcess = PermissibleValue(text="SubSamplingProcess")
     WorkflowExecution = PermissibleValue(text="WorkflowExecution")
+    DensityGradientFractionationProcess = PermissibleValue(text="DensityGradientFractionationProcess")
+    IsotopeLabelingProcess = PermissibleValue(text="IsotopeLabelingProcess")
 
     _defn = EnumDefinition(
         name="ProtocolForEnum",
@@ -10728,6 +10950,53 @@ class WindowVertPosEnum(EnumDefinitionImpl):
         name="WindowVertPosEnum",
     )
 
+class IsotopeEnum(EnumDefinitionImpl):
+
+    _defn = EnumDefinition(
+        name="IsotopeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "13C",
+            PermissibleValue(
+                text="13C",
+                description="Carbon with 13C isotope"))
+        setattr(cls, "15N",
+            PermissibleValue(
+                text="15N",
+                description="Nitrogen with 15N isotope"))
+        setattr(cls, "2H",
+            PermissibleValue(
+                text="2H",
+                description="Hydrogen with 2H isotope"))
+        setattr(cls, "18O",
+            PermissibleValue(
+                text="18O",
+                description="Oxygen with 18O isotope"))
+
+class IsotopologApproachEnum(EnumDefinitionImpl):
+
+    single = PermissibleValue(text="single")
+    multiple = PermissibleValue(text="multiple")
+
+    _defn = EnumDefinition(
+        name="IsotopologApproachEnum",
+    )
+
+class IsotopologLabelEnum(EnumDefinitionImpl):
+
+    _defn = EnumDefinition(
+        name="IsotopologLabelEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "isotopically labeled",
+            PermissibleValue(text="isotopically labeled"))
+        setattr(cls, "natural abundance",
+            PermissibleValue(text="natural abundance"))
+
 class HostSexEnum(EnumDefinitionImpl):
 
     female = PermissibleValue(text="female")
@@ -10968,6 +11237,12 @@ class SubmissionStatusEnum(EnumDefinitionImpl):
 class slots:
     pass
 
+slots.isotopolog_additions = Slot(uri=NMDC.isotopolog_additions, name="isotopolog_additions", curie=NMDC.curie('isotopolog_additions'),
+                   model_uri=NMDC.isotopolog_additions, domain=None, range=Optional[Union[Union[dict, IsotopologAddition], list[Union[dict, IsotopologAddition]]]])
+
+slots.hetero_isotopolog = Slot(uri=NMDC.hetero_isotopolog, name="hetero_isotopolog", curie=NMDC.curie('hetero_isotopolog'),
+                   model_uri=NMDC.hetero_isotopolog, domain=None, range=Optional[str])
+
 slots.email = Slot(uri=SCHEMA.email, name="email", curie=SCHEMA.curie('email'),
                    model_uri=NMDC.email, domain=None, range=Optional[str])
 
@@ -10981,6 +11256,12 @@ slots.orcid = Slot(uri=NMDC.orcid, name="orcid", curie=NMDC.curie('orcid'),
 slots.ror = Slot(uri=NMDC.ror, name="ror", curie=NMDC.curie('ror'),
                    model_uri=NMDC.ror, domain=None, range=Optional[str],
                    pattern=re.compile(r'^ror:0[a-hj-km-np-tv-z0-9]{6}[0-9]{2}$'))
+
+slots.isotopolog_composition = Slot(uri=NMDC.isotopolog_composition, name="isotopolog_composition", curie=NMDC.curie('isotopolog_composition'),
+                   model_uri=NMDC.isotopolog_composition, domain=None, range=Optional[Union[Union[dict, IsotopologComposition], list[Union[dict, IsotopologComposition]]]])
+
+slots.internal_standard_method = Slot(uri=NMDC.internal_standard_method, name="internal_standard_method", curie=NMDC.curie('internal_standard_method'),
+                   model_uri=NMDC.internal_standard_method, domain=None, range=Optional[Union[dict, Protocol]])
 
 slots.host_family_relation = Slot(uri=MIXS['0000872'], name="host_family_relation", curie=MIXS.curie('0000872'),
                    model_uri=NMDC.host_family_relation, domain=None, range=Optional[Union[str, list[str]]])
@@ -13631,12 +13912,52 @@ slots.lib_layout = Slot(uri=MIXS['0000041'], name="lib_layout", curie=MIXS.curie
 slots.adapters = Slot(uri=MIXS['0000048'], name="adapters", curie=MIXS.curie('0000048'),
                    model_uri=NMDC.adapters, domain=None, range=Optional[str])
 
+slots.isotope = Slot(uri=MIXS['0001338'], name="isotope", curie=MIXS.curie('0001338'),
+                   model_uri=NMDC.isotope, domain=None, range=Union[str, "IsotopeEnum"])
+
+slots.isotopolog = Slot(uri=MIXS['0001339'], name="isotopolog", curie=MIXS.curie('0001339'),
+                   model_uri=NMDC.isotopolog, domain=None, range=Optional[Union[str, "ChemicalEntityEnum"]])
+
+slots.isotopolog_label = Slot(uri=MIXS['0001340'], name="isotopolog_label", curie=MIXS.curie('0001340'),
+                   model_uri=NMDC.isotopolog_label, domain=None, range=Union[str, "IsotopologLabelEnum"])
+
+slots.isotopolog_approach = Slot(uri=MIXS['0001341'], name="isotopolog_approach", curie=MIXS.curie('0001341'),
+                   model_uri=NMDC.isotopolog_approach, domain=None, range=Optional[Union[str, "IsotopologApproachEnum"]])
+
+slots.gradient_position = Slot(uri=MIXS['0001342'], name="gradient_position", curie=MIXS.curie('0001342'),
+                   model_uri=NMDC.gradient_position, domain=None, range=Optional[int])
+
+slots.gradient_pos_density = Slot(uri=MIXS['0001343'], name="gradient_pos_density", curie=MIXS.curie('0001343'),
+                   model_uri=NMDC.gradient_pos_density, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.gradient_pos_rel_am = Slot(uri=MIXS['0001344'], name="gradient_pos_rel_am", curie=MIXS.curie('0001344'),
+                   model_uri=NMDC.gradient_pos_rel_am, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.isotopolog_atom_frac = Slot(uri=MIXS['0001346'], name="isotopolog_atom_frac", curie=MIXS.curie('0001346'),
+                   model_uri=NMDC.isotopolog_atom_frac, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.isotopolog_atom_pos = Slot(uri=MIXS['0001347'], name="isotopolog_atom_pos", curie=MIXS.curie('0001347'),
+                   model_uri=NMDC.isotopolog_atom_pos, domain=None, range=Optional[Union[str, URIorCURIE]],
+                   pattern=re.compile(r'^InChI=1S?/[A-Za-z0-9.]+(/[^/]+)*/i(?:[0-9]+[+-][0-9]+(?:,[0-9]+[+-][0-9]+)*(?:/h[^/]+)?|/h[^/]+)$'))
+
+slots.isotopolog_dose = Slot(uri=MIXS['0001348'], name="isotopolog_dose", curie=MIXS.curie('0001348'),
+                   model_uri=NMDC.isotopolog_dose, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.nucleobase_atom_frac = Slot(uri=MIXS['0001349'], name="nucleobase_atom_frac", curie=MIXS.curie('0001349'),
+                   model_uri=NMDC.nucleobase_atom_frac, domain=None, range=Optional[float])
+
+slots.isotopolog_incu_time = Slot(uri=MIXS['0001350'], name="isotopolog_incu_time", curie=MIXS.curie('0001350'),
+                   model_uri=NMDC.isotopolog_incu_time, domain=None, range=Optional[Union[dict, QuantityValue]])
+
 slots.samp_collec_device = Slot(uri=MIXS['0000002'], name="samp_collec_device", curie=MIXS.curie('0000002'),
                    model_uri=NMDC.samp_collec_device, domain=None, range=Optional[str],
                    pattern=re.compile(r'^([^\[\]]+|.+ \[[A-Za-z][A-Za-z0-9_]*:[A-Za-z0-9_]+\])$'))
 
 slots.samp_collec_method = Slot(uri=MIXS['0001225'], name="samp_collec_method", curie=MIXS.curie('0001225'),
                    model_uri=NMDC.samp_collec_method, domain=None, range=Optional[str])
+
+slots.internal_standard = Slot(uri=MIXS.internal_standard, name="internal_standard", curie=MIXS.curie('internal_standard'),
+                   model_uri=NMDC.internal_standard, domain=None, range=Optional[Union[dict, Protocol]])
 
 slots.mixs_env_triad_field = Slot(uri=MIXS.mixs_env_triad_field, name="mixs_env_triad_field", curie=MIXS.curie('mixs_env_triad_field'),
                    model_uri=NMDC.mixs_env_triad_field, domain=None, range=Optional[Union[dict, ControlledIdentifiedTermValue]])
@@ -13812,6 +14133,26 @@ slots.LibraryPreparation_id = Slot(uri=NMDC.id, name="LibraryPreparation_id", cu
 
 slots.LibraryPreparation_pcr_cond = Slot(uri=MIXS['0000049'], name="LibraryPreparation_pcr_cond", curie=MIXS.curie('0000049'),
                    model_uri=NMDC.LibraryPreparation_pcr_cond, domain=LibraryPreparation, range=Optional[str])
+
+slots.IsotopeLabelingProcess_id = Slot(uri=NMDC.id, name="IsotopeLabelingProcess_id", curie=NMDC.curie('id'),
+                   model_uri=NMDC.IsotopeLabelingProcess_id, domain=IsotopeLabelingProcess, range=Union[str, IsotopeLabelingProcessId],
+                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
+
+slots.IsotopeLabelingProcess_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="IsotopeLabelingProcess_has_input", curie=NMDC.curie('basic_classes/has_input'),
+                   model_uri=NMDC.IsotopeLabelingProcess_has_input, domain=IsotopeLabelingProcess, range=Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]])
+
+slots.IsotopeLabelingProcess_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="IsotopeLabelingProcess_has_output", curie=NMDC.curie('basic_classes/has_output'),
+                   model_uri=NMDC.IsotopeLabelingProcess_has_output, domain=IsotopeLabelingProcess, range=Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]])
+
+slots.DensityGradientFractionationProcess_id = Slot(uri=NMDC.id, name="DensityGradientFractionationProcess_id", curie=NMDC.curie('id'),
+                   model_uri=NMDC.DensityGradientFractionationProcess_id, domain=DensityGradientFractionationProcess, range=Union[str, DensityGradientFractionationProcessId],
+                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
+
+slots.DensityGradientFractionationProcess_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="DensityGradientFractionationProcess_has_input", curie=NMDC.curie('basic_classes/has_input'),
+                   model_uri=NMDC.DensityGradientFractionationProcess_has_input, domain=DensityGradientFractionationProcess, range=Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]])
+
+slots.DensityGradientFractionationProcess_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="DensityGradientFractionationProcess_has_output", curie=NMDC.curie('basic_classes/has_output'),
+                   model_uri=NMDC.DensityGradientFractionationProcess_has_output, domain=DensityGradientFractionationProcess, range=Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]])
 
 slots.CollectingBiosamplesFromSite_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="CollectingBiosamplesFromSite_has_input", curie=NMDC.curie('basic_classes/has_input'),
                    model_uri=NMDC.CollectingBiosamplesFromSite_has_input, domain=CollectingBiosamplesFromSite, range=Union[Union[str, SiteId], list[Union[str, SiteId]]])

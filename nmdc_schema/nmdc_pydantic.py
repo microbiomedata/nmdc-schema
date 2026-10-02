@@ -228,6 +228,10 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
                           'prefix_reference': 'https://bioregistry.io/cas:'},
                   'ccug': {'prefix_prefix': 'ccug',
                            'prefix_reference': 'https://www.ccug.se/strain?id='},
+                  'chrono': {'prefix_prefix': 'chrono',
+                             'prefix_reference': 'http://rs.tdwg.org/chrono/terms/'},
+                  'dc': {'prefix_prefix': 'dc',
+                         'prefix_reference': 'http://purl.org/dc/elements/1.1/'},
                   'dcm': {'prefix_prefix': 'dcm',
                           'prefix_reference': 'https://kbase.github.io/credit_engine/'},
                   'dcterms': {'prefix_prefix': 'dcterms',
@@ -1004,6 +1008,7 @@ class ProtocolCategoryEnum(str, Enum):
     texture_measurement = "texture_measurement"
     dna_extraction = "dna_extraction"
     phenol_chloroform_extraction = "phenol_chloroform_extraction"
+    stable_isotope_probing = "stable_isotope_probing"
 
 
 class ChromatographicCategoryEnum(str, Enum):
@@ -1497,6 +1502,10 @@ class UnitEnum(str, Enum):
     gSOLIDUScm3 = "g/cm3"
     """
     The Unified Code for Units of Measure (UCUM) representation of grams per cubic centimeter.
+    """
+    gSOLIDUSmL = "g/mL"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of grams per milliliter.
     """
     gSOLIDUSL = "g/L"
     """
@@ -2218,6 +2227,7 @@ class ProcessingInstitutionEnum(str, Enum):
     Argonne_National_Laboratory = "ANL"
     University_of_California_Davis_Genome_Center = "UCD_Genome_Center"
     Azenta_Life_Sciences = "Azenta"
+    SeqCenter = "SeqCenter"
 
 
 class DataCategoryEnum(str, Enum):
@@ -2561,6 +2571,8 @@ class ProtocolForEnum(str, Enum):
     StorageProcess = "StorageProcess"
     SubSamplingProcess = "SubSamplingProcess"
     WorkflowExecution = "WorkflowExecution"
+    DensityGradientFractionationProcess = "DensityGradientFractionationProcess"
+    IsotopeLabelingProcess = "IsotopeLabelingProcess"
 
 
 class PloidyEnum(str, Enum):
@@ -3513,6 +3525,35 @@ class WindowVertPosEnum(str, Enum):
     top = "top"
 
 
+class IsotopeEnum(str, Enum):
+    number_13C = "13C"
+    """
+    Carbon with 13C isotope
+    """
+    number_15N = "15N"
+    """
+    Nitrogen with 15N isotope
+    """
+    number_2H = "2H"
+    """
+    Hydrogen with 2H isotope
+    """
+    number_18O = "18O"
+    """
+    Oxygen with 18O isotope
+    """
+
+
+class IsotopologApproachEnum(str, Enum):
+    single = "single"
+    multiple = "multiple"
+
+
+class IsotopologLabelEnum(str, Enum):
+    isotopically_labeled = "isotopically labeled"
+    natural_abundance = "natural abundance"
+
+
 class HostSexEnum(str, Enum):
     female = "female"
     hermaphrodite = "hermaphrodite"
@@ -3707,6 +3748,7 @@ class ChemicalEntityEnum(str, Enum):
     trimethylchlorosilane = "trimethylchlorosilane"
     trypsin = "trypsin"
     water = "water"
+    toluene = "toluene"
 
 
 class MetaproteomicsAnalysisCategoryEnum(str, Enum):
@@ -3852,6 +3894,8 @@ class Agent(ConfiguredBaseModel):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -3955,6 +3999,8 @@ class Person(Agent):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -4049,6 +4095,8 @@ class Organization(Agent):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -4130,6 +4178,8 @@ class EukEval(ConfiguredBaseModel):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -4212,6 +4262,8 @@ class FunctionalAnnotationAggMember(ConfiguredBaseModel):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -4282,13 +4334,179 @@ class Database(ConfiguredBaseModel):
     genome_feature_set: Optional[list[GenomeFeature]] = Field(default=None, description="""This property links a database object to the set of all features""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
     instrument_set: Optional[list[Instrument]] = Field(default=None, description="""This property links a database object to the set of instruments within it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
     manifest_set: Optional[list[Manifest]] = Field(default=None, description="""This property links a database object to the set of manifests within it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
-    material_processing_set: Optional[list[Union[MaterialProcessing,Pooling,Isolation,Culturing,Extraction,LibraryPreparation,SubSamplingProcess,MixingProcess,FiltrationProcess,ChromatographicSeparationProcess,DissolvingProcess,ChemicalConversionProcess]]] = Field(default=None, description="""This property links a database object to the set of material processing within it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
+    material_processing_set: Optional[list[Union[MaterialProcessing,Pooling,Isolation,Culturing,Extraction,LibraryPreparation,IsotopeLabelingProcess,DensityGradientFractionationProcess,SubSamplingProcess,MixingProcess,FiltrationProcess,ChromatographicSeparationProcess,DissolvingProcess,ChemicalConversionProcess]]] = Field(default=None, description="""This property links a database object to the set of material processing within it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
     organism_sample_set: Optional[list[OrganismSample]] = Field(default=None, description="""This property links a database object to the set of organism samples within it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
     organism_set: Optional[list[Organism]] = Field(default=None, description="""This property links a database object to the set of organisms within it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
     processed_sample_set: Optional[list[ProcessedSample]] = Field(default=None, description="""This property links a database object to the set of processed samples within it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
     storage_process_set: Optional[list[StorageProcess]] = Field(default=None, description="""This property links a database object to the set of storage processes within it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
     study_set: Optional[list[Study]] = Field(default=None, description="""This property links a database object to the set of studies within it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
     workflow_execution_set: Optional[list[Union[WorkflowExecution,AnnotatingWorkflow,MetagenomeAssembly,MetatranscriptomeAssembly,MetatranscriptomeExpressionAnalysis,MagsAnalysis,ReadQcAnalysis,ReadBasedTaxonomyAnalysis,MetabolomicsAnalysis,NomAnalysis,MetagenomeAnnotation,MetatranscriptomeAnnotation,MetaproteomicsAnalysis]]] = Field(default=None, description="""This property links a database object to the set of workflow executions.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
+
+
+class IsotopologAddition(ConfiguredBaseModel):
+    """
+    One isotopolog, or one heterogeneous material with no compound identifier, added during an isotope labeling process, with the isotope it carries, whether it was isotopically labeled or at natural abundance, the atom fraction and position of the label, and the dose.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:IsotopologAddition',
+         'from_schema': 'https://w3id.org/nmdc/nmdc',
+         'rules': [{'description': 'If isotopolog is absent, then hetero_isotopolog is '
+                                   'required, so that every entry names the input in '
+                                   'one of the two ways.',
+                    'postconditions': {'slot_conditions': {'hetero_isotopolog': {'name': 'hetero_isotopolog',
+                                                                                 'required': True}}},
+                    'preconditions': {'slot_conditions': {'isotopolog': {'name': 'isotopolog',
+                                                                         'value_presence': 'ABSENT'}}},
+                    'title': 'hetero_isotopolog_required_when_isotopolog_absent'},
+                   {'description': 'If isotopolog is present, then hetero_isotopolog '
+                                   'must be absent, so that no entry names the input '
+                                   'in both ways.',
+                    'postconditions': {'slot_conditions': {'hetero_isotopolog': {'name': 'hetero_isotopolog',
+                                                                                 'value_presence': 'ABSENT'}}},
+                    'preconditions': {'slot_conditions': {'isotopolog': {'name': 'isotopolog',
+                                                                         'value_presence': 'PRESENT'}}},
+                    'title': 'hetero_isotopolog_absent_when_isotopolog_present'}]})
+
+    isotopolog_composition: Optional[list[IsotopologComposition]] = Field(default=None, title="isotopolog composition", description="""Contains the isotopes used and at what fraction, for an isotopolog added during an isotope labeling process.""", json_schema_extra = { "linkml_meta": {'domain_of': ['IsotopologAddition']} })
+    isotopolog: Optional[ChemicalEntityEnum] = Field(default=None, title="isotopolog", description="""Isotopologue (isotope source/substrate/molecule) added to the biological sample.""", json_schema_extra = { "linkml_meta": {'comments': ['Inputs such as root exudates or cells, goes in '
+                      'hetero_isotopolog instead; NMDC does not use a sentinel '
+                      'identifier for that case.'],
+         'domain_of': ['IsotopologAddition'],
+         'examples': [{'value': 'water'}],
+         'recommended': True,
+         'slot_uri': 'MIXS:0001339'} })
+    hetero_isotopolog: Optional[str] = Field(default=None, title="heterogeneous isotopolog", description="""An input to the labeling that has no ChEBI identifier, described in free text: an undefined mixture such as root exudates or plant litter, or cells or biomass such as T4 phages. A defined compound with a ChEBI identifier goes in isotopolog instead.""", json_schema_extra = { "linkml_meta": {'comments': ['Exactly one of isotopolog and hetero_isotopolog is given on '
+                      'each IsotopologAddition entry; the rules on that class enforce '
+                      'it.',
+                      'hetero_isotopolog is a column of the MISIP supplementary tables '
+                      '(Simpson et al. 2024, '
+                      'https://doi.org/10.1093/gigascience/giae071) and is not yet a '
+                      'MIxS slot.'],
+         'domain_of': ['IsotopologAddition'],
+         'examples': [{'value': 'root exudates'}, {'value': 'T4 phages'}],
+         'see_also': ['https://github.com/GenomicsStandardsConsortium/mixs/issues/1409']} })
+    isotopolog_label: IsotopologLabelEnum = Field(default=..., title="isotopolog label status", description="""List whether the isotopologue added to this biological sample was heavy-labelled or natural abundance""", json_schema_extra = { "linkml_meta": {'domain_of': ['IsotopologAddition'],
+         'examples': [{'value': 'natural abundance'},
+                      {'value': 'isotopically labeled'}],
+         'slot_uri': 'MIXS:0001340'} })
+    isotopolog_atom_pos: Optional[str] = Field(default=None, title="set of labeled atoms in isotopologue", description="""InChI label designating set of all isotopically enriched atoms in isotopologue. Multiple values allowed, separated by a | and should be orded the same as the isotopolog.""", json_schema_extra = { "linkml_meta": {'domain_of': ['IsotopologAddition'],
+         'examples': [{'value': 'InChI=1S/C7H8/c1-7-5-3-2-4-6-7/h2-6H,1H3/i1+1,2+1,3+1,4+1,5+1,6+1,7+1'}],
+         'recommended': True,
+         'slot_uri': 'MIXS:0001347'} })
+    isotopolog_dose: Optional[QuantityValue] = Field(default=None, title="dose of isotopolog", description="""The concentration (in ppm) of isotopolog added to environmental matrix as a total mass per volume.""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit', 'value': 'ppm'},
+                         'storage_units': {'tag': 'storage_units', 'value': '[ppm]'}},
+         'comments': ['isotopolog mass / total volume soil; ppm of isotopologue in '
+                      'total container volume'],
+         'domain_of': ['IsotopologAddition'],
+         'examples': [{'object': {'has_numeric_value': 10,
+                                  'has_raw_value': '10 [ppm]',
+                                  'has_unit': '[ppm]',
+                                  'type': 'nmdc:QuantityValue'}}],
+         'recommended': True,
+         'slot_uri': 'MIXS:0001348'} })
+    type: Literal["https://w3id.org/nmdc/IsotopologAddition","nmdc:IsotopologAddition"] = Field(default="nmdc:IsotopologAddition", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'comments': ['Deprecating this slot was proposed and rejected: without it, a '
+                      'document read back from a polymorphic MongoDB collection cannot '
+                      'be resolved to the class it instantiates. It is required on '
+                      'every class for that reason, rather than as a convention '
+                      'inherited from LinkML.'],
+         'designates_type': True,
+         'domain_of': ['Agent',
+                       'EukEval',
+                       'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
+                       'GenomeFeature',
+                       'FunctionalAnnotation',
+                       'AttributeValue',
+                       'NamedThing',
+                       'OntologyRelation',
+                       'FailureCategorization',
+                       'Protocol',
+                       'CreditAssociation',
+                       'Doi',
+                       'ProvenanceMetadata',
+                       'MobilePhaseSegment',
+                       'PortionOfSubstance',
+                       'MagBin',
+                       'MetaboliteIdentification'],
+         'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
+         'notes': ['makes it easier to read example data files',
+                   'required for polymorphic MongoDB collections'],
+         'slot_uri': 'rdf:type',
+         'structured_aliases': [{'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                 'literal_form': 'workflow_execution_class',
+                                 'predicate': 'NARROW_SYNONYM'}]} })
+
+    @field_validator('isotopolog_atom_pos')
+    def pattern_isotopolog_atom_pos(cls, v):
+        pattern=re.compile(r"^InChI=1S?/[A-Za-z0-9.]+(/[^/]+)*/i(?:[0-9]+[+-][0-9]+(?:,[0-9]+[+-][0-9]+)*(?:/h[^/]+)?|/h[^/]+)$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid isotopolog_atom_pos format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid isotopolog_atom_pos format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class IsotopologComposition(ConfiguredBaseModel):
+    """
+    Contains the isotopes used and at what fraction.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:IsotopologComposition',
+         'from_schema': 'https://w3id.org/nmdc/nmdc'})
+
+    isotope: IsotopeEnum = Field(default=..., title="isotope", description="""The element and mass number of the stable isotope used in isotopologue labeling.""", json_schema_extra = { "linkml_meta": {'domain_of': ['IsotopologComposition'],
+         'examples': [{'value': '13C'}, {'value': '15N'}],
+         'slot_uri': 'MIXS:0001338'} })
+    isotopolog_atom_frac: Optional[QuantityValue] = Field(default=None, title="atom fraction of isotopolog", description="""The fraction of heavy-labelled atoms out of all atoms of a given element in the isotopolog. Multiple values allowed, separated by a | and should be orded the same as the isotopolog.""", json_schema_extra = { "linkml_meta": {'annotations': {'storage_units': {'tag': 'storage_units', 'value': '1'}},
+         'domain_of': ['IsotopologComposition'],
+         'examples': [{'object': {'has_numeric_value': 0.95,
+                                  'has_raw_value': '0.95',
+                                  'has_unit': '1',
+                                  'type': 'nmdc:QuantityValue'}}],
+         'range_expression': {'slot_conditions': {'has_numeric_value': {'maximum_value': 1,
+                                                                        'minimum_value': 0,
+                                                                        'name': 'has_numeric_value'}}},
+         'recommended': True,
+         'slot_uri': 'MIXS:0001346',
+         'todos': ['This ordered slot provides how to write an example in a '
+                   'spreadsheet, but this will not provide a multivalued ordered slot '
+                   "in a database. As such, this slot also couldn't be marked as "
+                   'multivalued in the yaml.']} })
+    type: Literal["https://w3id.org/nmdc/IsotopologComposition","nmdc:IsotopologComposition"] = Field(default="nmdc:IsotopologComposition", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'comments': ['Deprecating this slot was proposed and rejected: without it, a '
+                      'document read back from a polymorphic MongoDB collection cannot '
+                      'be resolved to the class it instantiates. It is required on '
+                      'every class for that reason, rather than as a convention '
+                      'inherited from LinkML.'],
+         'designates_type': True,
+         'domain_of': ['Agent',
+                       'EukEval',
+                       'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
+                       'GenomeFeature',
+                       'FunctionalAnnotation',
+                       'AttributeValue',
+                       'NamedThing',
+                       'OntologyRelation',
+                       'FailureCategorization',
+                       'Protocol',
+                       'CreditAssociation',
+                       'Doi',
+                       'ProvenanceMetadata',
+                       'MobilePhaseSegment',
+                       'PortionOfSubstance',
+                       'MagBin',
+                       'MetaboliteIdentification'],
+         'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
+         'notes': ['makes it easier to read example data files',
+                   'required for polymorphic MongoDB collections'],
+         'slot_uri': 'rdf:type',
+         'structured_aliases': [{'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                 'literal_form': 'workflow_execution_class',
+                                 'predicate': 'NARROW_SYNONYM'}]} })
 
 
 class GenomeFeature(ConfiguredBaseModel):
@@ -4331,6 +4549,8 @@ class GenomeFeature(ConfiguredBaseModel):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -4405,6 +4625,8 @@ class FunctionalAnnotation(ConfiguredBaseModel):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -4473,6 +4695,8 @@ class AttributeValue(ConfiguredBaseModel):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -4534,6 +4758,8 @@ class QuantityValue(AttributeValue):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -4578,6 +4804,8 @@ class ImageValue(AttributeValue):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -4618,6 +4846,8 @@ class TextValue(AttributeValue):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -4658,6 +4888,8 @@ class TimestampValue(AttributeValue):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -4700,6 +4932,8 @@ class ControlledTermValue(AttributeValue):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -4742,6 +4976,8 @@ class ControlledIdentifiedTermValue(ControlledTermValue):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -4811,6 +5047,8 @@ class GeolocationValue(AttributeValue):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -4938,6 +5176,8 @@ class PropertyAssertion(AttributeValue):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -4999,6 +5239,8 @@ class NamedThing(ConfiguredBaseModel):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -5094,6 +5336,8 @@ class OntologyClass(NamedThing):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -5186,6 +5430,8 @@ class FunctionalAnnotationTerm(OntologyClass):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -5287,6 +5533,8 @@ class OrthologyGroup(FunctionalAnnotationTerm):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -5404,6 +5652,8 @@ class NcbiTaxon(OntologyClass):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -5489,6 +5739,8 @@ class OntologyRelation(ConfiguredBaseModel):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -5534,6 +5786,8 @@ class FailureCategorization(ConfiguredBaseModel):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -5598,6 +5852,8 @@ class MaterialEntity(NamedThing):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -5698,6 +5954,8 @@ class Instrument(MaterialEntity):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -6029,6 +6287,8 @@ class Organism(MaterialEntity):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -6147,6 +6407,8 @@ class PlannedProcess(NamedThing):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -6275,6 +6537,8 @@ class CollectingBiosamplesFromSite(PlannedProcess):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -6377,6 +6641,7 @@ class StorageProcess(PlannedProcess):
                                             'name': 'substances_used'}}})
 
     substances_used: Optional[list[PortionOfSubstance]] = Field(default=None, description="""The substance(s) that a processed sample is stored in.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Extraction',
+                       'IsotopeLabelingProcess',
                        'StorageProcess',
                        'DissolvingProcess',
                        'ChemicalConversionProcess',
@@ -6450,6 +6715,8 @@ class StorageProcess(PlannedProcess):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -6540,6 +6807,8 @@ class Protocol(ConfiguredBaseModel):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -6602,6 +6871,8 @@ class CreditAssociation(ConfiguredBaseModel):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -6674,6 +6945,8 @@ class Doi(ConfiguredBaseModel):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -7117,6 +7390,8 @@ class Study(NamedThing):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -7350,6 +7625,8 @@ class InformationObject(NamedThing):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -7440,6 +7717,8 @@ class Configuration(InformationObject):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -7557,6 +7836,8 @@ class MassSpectrometryConfiguration(Configuration):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -7675,6 +7956,8 @@ class ChromatographyConfiguration(Configuration):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -7770,6 +8053,8 @@ class Manifest(InformationObject):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -7886,6 +8171,8 @@ class CalibrationInformation(InformationObject):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -8058,6 +8345,8 @@ class DataObject(InformationObject):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -8227,6 +8516,8 @@ class DataEmitterProcess(PlannedProcess):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -8395,6 +8686,8 @@ class DataGeneration(DataEmitterProcess):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -8609,6 +8902,8 @@ class NucleotideSequencing(DataGeneration):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -8890,6 +9185,8 @@ class MassSpectrometry(DataGeneration):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -9177,6 +9474,8 @@ class WorkflowExecution(DataEmitterProcess):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -9340,6 +9639,8 @@ class ProvenanceMetadata(ConfiguredBaseModel):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -9468,6 +9769,8 @@ class AnnotatingWorkflow(WorkflowExecution):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -9694,6 +9997,8 @@ class MetagenomeAnnotation(AnnotatingWorkflow):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -9872,6 +10177,8 @@ class Sample(MaterialEntity):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -10370,7 +10677,7 @@ class Biosample(Sample):
     associated_studies: list[str] = Field(default=..., description="""The study associated with a resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'Biosample', 'OrganismSample'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'}} })
-    badges: Optional[list[MetadataBadgeEnum]] = Field(default=None, description="""Metadata-quality badges awarded to this record. Each value names one badge, which is present or absent; there are no levels or tiers. Most badges name a completeness subset, but not all do: expert_curation is awarded from provenance instead. Awarded by a downstream service, not asserted by submitters, and recalculated whenever the record's ProvenanceMetadata.mod_date changes.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
+    badges: Optional[list[MetadataBadgeEnum]] = Field(default=None, description="""Metadata-quality badges awarded to this record. Each value names one badge, which is present or absent; there are no levels or tiers. Most badges name a completeness subset, but not all do: expert_curation is awarded from provenance instead. Awarded by a downstream service, not asserted by submitters. Awarding is additive: a badge, once awarded, is not removed from the record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/3227']} })
     biosample_categories: Optional[list[BiosampleCategoryEnum]] = Field(default=None, title="Categories the biosample belongs to", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample']} })
     collected_from: Optional[str] = Field(default=None, description="""The Site from which a Biosample was collected""", json_schema_extra = { "linkml_meta": {'comments': ['this illustrates implementing a Biosample relation with a '
@@ -13485,7 +13792,7 @@ class Biosample(Sample):
                          'Preferred_unit': {'tag': 'Preferred_unit',
                                             'value': 'milligram per liter'}},
          'domain_of': ['Biosample'],
-         'examples': [{'object': {'has_raw_value': 'KH2PO4;170  milligram per liter',
+         'examples': [{'object': {'has_raw_value': 'KH2PO4;170 milligram per liter',
                                   'type': 'nmdc:TextValue'}}],
          'keywords': ['macronutrients'],
          'slot_uri': 'MIXS:0000578',
@@ -13496,7 +13803,7 @@ class Biosample(Sample):
                          'Preferred_unit': {'tag': 'Preferred_unit',
                                             'value': 'milligram per liter'}},
          'domain_of': ['Biosample'],
-         'examples': [{'object': {'has_raw_value': 'H3BO3;6.2  milligram per liter',
+         'examples': [{'object': {'has_raw_value': 'H3BO3;6.2 milligram per liter',
                                   'type': 'nmdc:TextValue'}}],
          'keywords': ['micronutrients'],
          'slot_uri': 'MIXS:0000579',
@@ -15319,6 +15626,8 @@ class Biosample(Sample):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -18227,6 +18536,7 @@ class MobilePhaseSegment(ConfiguredBaseModel):
                                   'has_unit': 'h',
                                   'type': 'nmdc:QuantityValue'}}]} })
     substances_used: Optional[list[PortionOfSubstance]] = Field(default=None, description="""The substances that are combined to enable a ChemicalConversionProcess.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Extraction',
+                       'IsotopeLabelingProcess',
                        'StorageProcess',
                        'DissolvingProcess',
                        'ChemicalConversionProcess',
@@ -18240,6 +18550,8 @@ class MobilePhaseSegment(ConfiguredBaseModel):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -18346,6 +18658,8 @@ class MaterialProcessing(PlannedProcess):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -18514,6 +18828,8 @@ class Pooling(MaterialProcessing):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -18683,6 +18999,8 @@ class Isolation(MaterialProcessing):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -18853,6 +19171,8 @@ class Culturing(MaterialProcessing):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -18963,6 +19283,7 @@ class Extraction(MaterialProcessing):
                                    'name': 'volume'}}})
 
     substances_used: Optional[list[PortionOfSubstance]] = Field(default=None, description="""The substances that are combined to enable a ChemicalConversionProcess.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Extraction',
+                       'IsotopeLabelingProcess',
                        'StorageProcess',
                        'DissolvingProcess',
                        'ChemicalConversionProcess',
@@ -19051,6 +19372,8 @@ class Extraction(MaterialProcessing):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -19278,6 +19601,8 @@ class LibraryPreparation(MaterialProcessing):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -19381,6 +19706,359 @@ class LibraryPreparation(MaterialProcessing):
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):libprp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid id format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid id format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+    @field_validator('alternative_identifiers')
+    def pattern_alternative_identifiers(cls, v):
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid alternative_identifiers format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid alternative_identifiers format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class IsotopeLabelingProcess(MaterialProcessing):
+    """
+    A material processing in which substances or materials, isotopically labeled or at natural abundance, are added to a sample so that uptake of the isotope by the resident organisms can be traced.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:IsotopeLabelingProcess',
+         'from_schema': 'https://w3id.org/nmdc/nmdc',
+         'slot_usage': {'has_input': {'name': 'has_input',
+                                      'pattern': '^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                      'required': True,
+                                      'structured_pattern': {'interpolated': True,
+                                                             'syntax': '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$'}},
+                        'has_output': {'name': 'has_output', 'required': True},
+                        'id': {'name': 'id',
+                               'pattern': '^(nmdc):isolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                               'structured_pattern': {'interpolated': True,
+                                                      'syntax': '{id_nmdc_prefix}:isolp-{id_shoulder}-{id_blade}$'}}}})
+
+    isotopolog_additions: Optional[list[IsotopologAddition]] = Field(default=None, description="""The isotopologs, or heterogeneous materials, added during this isotope labeling process, one entry per isotopolog and isotope.""", json_schema_extra = { "linkml_meta": {'domain_of': ['IsotopeLabelingProcess'], 'recommended': True} })
+    isotopolog_approach: Optional[IsotopologApproachEnum] = Field(default=None, title="Labeling approach (number of labeled isotopologs supplied)", description="""The labelling approach of this SIP experiment. Details if multiple isotopically labelled isotopologues were added to samples (\"multiple\"), or was only one isotopologue added to each sample (\"single\").""", json_schema_extra = { "linkml_meta": {'domain_of': ['IsotopeLabelingProcess'],
+         'examples': [{'value': 'single'}, {'value': 'multiple'}],
+         'recommended': True,
+         'slot_uri': 'MIXS:0001341'} })
+    isotopolog_incu_time: Optional[QuantityValue] = Field(default=None, title="isotopolog incubation time", description="""Total time of incubation after isotopologue addition in hours""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit', 'value': 'hours'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'h'}},
+         'domain_of': ['IsotopeLabelingProcess'],
+         'examples': [{'object': {'has_numeric_value': 12,
+                                  'has_raw_value': '12 h',
+                                  'has_unit': 'h',
+                                  'type': 'nmdc:QuantityValue'}}],
+         'recommended': True,
+         'slot_uri': 'MIXS:0001350'} })
+    substances_used: Optional[list[PortionOfSubstance]] = Field(default=None, description="""The substances that are combined to enable a ChemicalConversionProcess.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Extraction',
+                       'IsotopeLabelingProcess',
+                       'StorageProcess',
+                       'DissolvingProcess',
+                       'ChemicalConversionProcess',
+                       'MobilePhaseSegment']} })
+    instrument_used: Optional[list[str]] = Field(default=None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'MaterialProcessing'],
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
+    has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'aliases': ['input'],
+         'domain_of': ['PlannedProcess'],
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$'}} })
+    has_output: list[str] = Field(default=..., description="""An output from a process.""", json_schema_extra = { "linkml_meta": {'aliases': ['output'],
+         'domain_of': ['PlannedProcess'],
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$'}} })
+    processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlannedProcess']} })
+    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
+    start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'comments': ['We are using string representations of dates until all '
+                      'components of our ecosystem can handle ISO 8610 dates',
+                      'The date should be formatted as YYYY-MM-DD'],
+         'domain_of': ['PlannedProcess'],
+         'todos': ['add date string validation pattern']} })
+    end_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was ended""", json_schema_extra = { "linkml_meta": {'comments': ['We are using string representations of dates until all '
+                      'components of our ecosystem can handle ISO 8610 dates',
+                      'The date should be formatted as YYYY-MM-DD'],
+         'domain_of': ['PlannedProcess'],
+         'todos': ['add date string validation pattern']} })
+    qc_status: Optional[StatusEnum] = Field(default=None, description="""Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlannedProcess']} })
+    qc_comment: Optional[str] = Field(default=None, description="""Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlannedProcess']} })
+    has_failure_categorization: Optional[list[FailureCategorization]] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['PlannedProcess']} })
+    id: str = Field(default=..., description="""A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'],
+         'examples': [{'description': 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248',
+                       'value': 'nmdc:mgmag-00-x012.1_7_c1'}],
+         'notes': ['abstracted pattern: '
+                   'prefix:typecode-authshoulder-blade(.version)?(_seqsuffix)?',
+                   'a minimum length of 3 characters is suggested for typecodes, but 1 '
+                   'or 2 characters will be accepted',
+                   'typecodes must correspond 1:1 to a class in the NMDC schema. this '
+                   'will be checked via per-class id slot usage assertions',
+                   'minting authority shoulders should probably be enumerated and '
+                   'checked in the pattern'],
+         'structured_aliases': [{'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                 'literal_form': 'workflow_execution_id',
+                                 'predicate': 'NARROW_SYNONYM'},
+                                {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                 'literal_form': 'data_object_id',
+                                 'predicate': 'NARROW_SYNONYM'}],
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '{id_nmdc_prefix}:isolp-{id_shoulder}-{id_blade}$'}} })
+    name: Optional[str] = Field(default=None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Agent', 'NamedThing', 'Protocol']} })
+    description: Optional[str] = Field(default=None, description="""a human-readable description of a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['ImageValue', 'NamedThing', 'Protocol'],
+         'slot_uri': 'dcterms:description'} })
+    alternative_identifiers: Optional[list[str]] = Field(default=None, description="""A list of alternative identifiers for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing', 'MetaboliteIdentification']} })
+    type: Literal["https://w3id.org/nmdc/IsotopeLabelingProcess","nmdc:IsotopeLabelingProcess"] = Field(default="nmdc:IsotopeLabelingProcess", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'comments': ['Deprecating this slot was proposed and rejected: without it, a '
+                      'document read back from a polymorphic MongoDB collection cannot '
+                      'be resolved to the class it instantiates. It is required on '
+                      'every class for that reason, rather than as a convention '
+                      'inherited from LinkML.'],
+         'designates_type': True,
+         'domain_of': ['Agent',
+                       'EukEval',
+                       'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
+                       'GenomeFeature',
+                       'FunctionalAnnotation',
+                       'AttributeValue',
+                       'NamedThing',
+                       'OntologyRelation',
+                       'FailureCategorization',
+                       'Protocol',
+                       'CreditAssociation',
+                       'Doi',
+                       'ProvenanceMetadata',
+                       'MobilePhaseSegment',
+                       'PortionOfSubstance',
+                       'MagBin',
+                       'MetaboliteIdentification'],
+         'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
+         'notes': ['makes it easier to read example data files',
+                   'required for polymorphic MongoDB collections'],
+         'slot_uri': 'rdf:type',
+         'structured_aliases': [{'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                 'literal_form': 'workflow_execution_class',
+                                 'predicate': 'NARROW_SYNONYM'}]} })
+
+    @field_validator('instrument_used')
+    def pattern_instrument_used(cls, v):
+        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid instrument_used format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid instrument_used format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+    @field_validator('has_input')
+    def pattern_has_input(cls, v):
+        pattern=re.compile(r"^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid has_input format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid has_input format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+    @field_validator('has_output')
+    def pattern_has_output(cls, v):
+        pattern=re.compile(r"^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid has_output format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid has_output format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+    @field_validator('id')
+    def pattern_id(cls, v):
+        pattern=re.compile(r"^(nmdc):isolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid id format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid id format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+    @field_validator('alternative_identifiers')
+    def pattern_alternative_identifiers(cls, v):
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid alternative_identifiers format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid alternative_identifiers format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class DensityGradientFractionationProcess(MaterialProcessing):
+    """
+    A material processing that separates a sample, typically extracted nucleic acids, into fractions by buoyant density, usually by isopycnic centrifugation. The output fractions can record their gradient position, buoyant density and relative nucleic acid amount.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['Isopycnic Centrifugation', 'Density Gradient Centrifugation'],
+         'class_uri': 'nmdc:DensityGradientFractionationProcess',
+         'from_schema': 'https://w3id.org/nmdc/nmdc',
+         'slot_usage': {'has_input': {'name': 'has_input',
+                                      'pattern': '^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                      'required': True,
+                                      'structured_pattern': {'interpolated': True,
+                                                             'syntax': '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$'}},
+                        'has_output': {'name': 'has_output', 'required': True},
+                        'id': {'name': 'id',
+                               'pattern': '^(nmdc):fracp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                               'structured_pattern': {'interpolated': True,
+                                                      'syntax': '{id_nmdc_prefix}:fracp-{id_shoulder}-{id_blade}$'}}}})
+
+    internal_standard_method: Optional[Protocol] = Field(default=None, title="internal standard method", description="""Method used for internal standard for SIP fractionation, if an internal standard was used (i.e., spiking in a heavy-labelled DNA sequence).""", json_schema_extra = { "linkml_meta": {'domain_of': ['DensityGradientFractionationProcess'],
+         'exact_mappings': ['MIXS:0001351']} })
+    instrument_used: Optional[list[str]] = Field(default=None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'MaterialProcessing'],
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
+    has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'aliases': ['input'],
+         'domain_of': ['PlannedProcess'],
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$'}} })
+    has_output: list[str] = Field(default=..., description="""An output from a process.""", json_schema_extra = { "linkml_meta": {'aliases': ['output'],
+         'domain_of': ['PlannedProcess'],
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$'}} })
+    processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlannedProcess']} })
+    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
+    start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'comments': ['We are using string representations of dates until all '
+                      'components of our ecosystem can handle ISO 8610 dates',
+                      'The date should be formatted as YYYY-MM-DD'],
+         'domain_of': ['PlannedProcess'],
+         'todos': ['add date string validation pattern']} })
+    end_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was ended""", json_schema_extra = { "linkml_meta": {'comments': ['We are using string representations of dates until all '
+                      'components of our ecosystem can handle ISO 8610 dates',
+                      'The date should be formatted as YYYY-MM-DD'],
+         'domain_of': ['PlannedProcess'],
+         'todos': ['add date string validation pattern']} })
+    qc_status: Optional[StatusEnum] = Field(default=None, description="""Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlannedProcess']} })
+    qc_comment: Optional[str] = Field(default=None, description="""Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).""", json_schema_extra = { "linkml_meta": {'domain_of': ['PlannedProcess']} })
+    has_failure_categorization: Optional[list[FailureCategorization]] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['PlannedProcess']} })
+    id: str = Field(default=..., description="""A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'],
+         'examples': [{'description': 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248',
+                       'value': 'nmdc:mgmag-00-x012.1_7_c1'}],
+         'notes': ['abstracted pattern: '
+                   'prefix:typecode-authshoulder-blade(.version)?(_seqsuffix)?',
+                   'a minimum length of 3 characters is suggested for typecodes, but 1 '
+                   'or 2 characters will be accepted',
+                   'typecodes must correspond 1:1 to a class in the NMDC schema. this '
+                   'will be checked via per-class id slot usage assertions',
+                   'minting authority shoulders should probably be enumerated and '
+                   'checked in the pattern'],
+         'structured_aliases': [{'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                 'literal_form': 'workflow_execution_id',
+                                 'predicate': 'NARROW_SYNONYM'},
+                                {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                 'literal_form': 'data_object_id',
+                                 'predicate': 'NARROW_SYNONYM'}],
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '{id_nmdc_prefix}:fracp-{id_shoulder}-{id_blade}$'}} })
+    name: Optional[str] = Field(default=None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Agent', 'NamedThing', 'Protocol']} })
+    description: Optional[str] = Field(default=None, description="""a human-readable description of a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['ImageValue', 'NamedThing', 'Protocol'],
+         'slot_uri': 'dcterms:description'} })
+    alternative_identifiers: Optional[list[str]] = Field(default=None, description="""A list of alternative identifiers for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing', 'MetaboliteIdentification']} })
+    type: Literal["https://w3id.org/nmdc/DensityGradientFractionationProcess","nmdc:DensityGradientFractionationProcess"] = Field(default="nmdc:DensityGradientFractionationProcess", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'comments': ['Deprecating this slot was proposed and rejected: without it, a '
+                      'document read back from a polymorphic MongoDB collection cannot '
+                      'be resolved to the class it instantiates. It is required on '
+                      'every class for that reason, rather than as a convention '
+                      'inherited from LinkML.'],
+         'designates_type': True,
+         'domain_of': ['Agent',
+                       'EukEval',
+                       'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
+                       'GenomeFeature',
+                       'FunctionalAnnotation',
+                       'AttributeValue',
+                       'NamedThing',
+                       'OntologyRelation',
+                       'FailureCategorization',
+                       'Protocol',
+                       'CreditAssociation',
+                       'Doi',
+                       'ProvenanceMetadata',
+                       'MobilePhaseSegment',
+                       'PortionOfSubstance',
+                       'MagBin',
+                       'MetaboliteIdentification'],
+         'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
+         'notes': ['makes it easier to read example data files',
+                   'required for polymorphic MongoDB collections'],
+         'slot_uri': 'rdf:type',
+         'structured_aliases': [{'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                 'literal_form': 'workflow_execution_class',
+                                 'predicate': 'NARROW_SYNONYM'}]} })
+
+    @field_validator('instrument_used')
+    def pattern_instrument_used(cls, v):
+        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid instrument_used format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid instrument_used format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+    @field_validator('has_input')
+    def pattern_has_input(cls, v):
+        pattern=re.compile(r"^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid has_input format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid has_input format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+    @field_validator('has_output')
+    def pattern_has_output(cls, v):
+        pattern=re.compile(r"^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid has_output format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid has_output format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+    @field_validator('id')
+    def pattern_id(cls, v):
+        pattern=re.compile(r"^(nmdc):fracp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -19523,6 +20201,8 @@ class SubSamplingProcess(MaterialProcessing):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -19703,6 +20383,8 @@ class MixingProcess(MaterialProcessing):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -19898,6 +20580,8 @@ class FiltrationProcess(MaterialProcessing):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -20075,6 +20759,8 @@ class ChromatographicSeparationProcess(MaterialProcessing):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -20198,6 +20884,7 @@ class DissolvingProcess(MaterialProcessing):
                        'ChemicalConversionProcess'],
          'notes': ['Not to be confused with the MIXS:0000113']} })
     substances_used: Optional[list[PortionOfSubstance]] = Field(default=None, description="""The substances that are combined to enable a ChemicalConversionProcess.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Extraction',
+                       'IsotopeLabelingProcess',
                        'StorageProcess',
                        'DissolvingProcess',
                        'ChemicalConversionProcess',
@@ -20260,6 +20947,8 @@ class DissolvingProcess(MaterialProcessing):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -20386,6 +21075,7 @@ class ChemicalConversionProcess(MaterialProcessing):
                        'ChemicalConversionProcess'],
          'notes': ['Not to be confused with the MIXS:0000113']} })
     substances_used: Optional[list[PortionOfSubstance]] = Field(default=None, description="""The substances that are combined to enable a ChemicalConversionProcess.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Extraction',
+                       'IsotopeLabelingProcess',
                        'StorageProcess',
                        'DissolvingProcess',
                        'ChemicalConversionProcess',
@@ -20450,6 +21140,8 @@ class ChemicalConversionProcess(MaterialProcessing):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -20569,6 +21261,8 @@ class PortionOfSubstance(ConfiguredBaseModel):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -20631,6 +21325,38 @@ class ProcessedSample(Sample):
          'domain_of': ['ProcessedSample', 'OrganismSample'],
          'is_a': 'alternative_identifiers'} })
     sampled_portion: Optional[list[SamplePortionEnum]] = Field(default=None, description="""The portion of the sample that is taken for downstream activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SubSamplingProcess', 'ProcessedSample']} })
+    gradient_position: Optional[int] = Field(default=None, title="gradient position", description="""A number designating the gradient position from heaviest (=1) to lightest. Unfractionated samples, from which fractionated samples were derived, should be denoted with -1.""", ge=-1, json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedSample'],
+         'examples': [{'value': '1'}, {'value': '-1'}],
+         'slot_uri': 'MIXS:0001342'} })
+    gradient_pos_density: Optional[QuantityValue] = Field(default=None, title="density of gradient position", description="""Buoyant density of this fraction""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit', 'value': 'g/mL'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'g/mL'}},
+         'domain_of': ['ProcessedSample'],
+         'examples': [{'object': {'has_numeric_value': 1.725,
+                                  'has_raw_value': '1.725 g/mL',
+                                  'has_unit': 'g/mL',
+                                  'type': 'nmdc:QuantityValue'}},
+                      {'object': {'has_maximum_numeric_value': 1.735,
+                                  'has_minimum_numeric_value': 1.725,
+                                  'has_raw_value': '1.725-1.735 g/mL',
+                                  'has_unit': 'g/mL',
+                                  'type': 'nmdc:QuantityValue'}}],
+         'recommended': True,
+         'slot_uri': 'MIXS:0001343'} })
+    gradient_pos_rel_am: Optional[QuantityValue] = Field(default=None, title="relative amount of nucleic acids in the gradient position", description="""The total nucleic acids loaded onto the column in this fraction as a decimal. If uploading 16S rRNA gene (or other amplicon) sequencing data, this value should be calculated from qPCR data. If uploading untargetted sequencing data, this value should be calculated from total DNA concentration.""", json_schema_extra = { "linkml_meta": {'annotations': {'storage_units': {'tag': 'storage_units', 'value': '1'}},
+         'domain_of': ['ProcessedSample'],
+         'examples': [{'object': {'has_numeric_value': 0.1,
+                                  'has_raw_value': '0.1',
+                                  'has_unit': '1',
+                                  'type': 'nmdc:QuantityValue'}}],
+         'range_expression': {'slot_conditions': {'has_numeric_value': {'maximum_value': 1,
+                                                                        'minimum_value': 0,
+                                                                        'name': 'has_numeric_value'}}},
+         'recommended': True,
+         'slot_uri': 'MIXS:0001344'} })
+    nucleobase_atom_frac: Optional[float] = Field(default=None, title="nucleobase excess atom fraction", description="""Excess atom fraction of the nucleobases in this fraction.""", ge=0, le=1, json_schema_extra = { "linkml_meta": {'domain_of': ['ProcessedSample'],
+         'examples': [{'value': '0.25'}],
+         'recommended': True,
+         'slot_uri': 'MIXS:0001349'} })
     id: str = Field(default=..., description="""A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'],
          'examples': [{'description': 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248',
                        'value': 'nmdc:mgmag-00-x012.1_7_c1'}],
@@ -20663,6 +21389,8 @@ class ProcessedSample(Sample):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -21019,6 +21747,8 @@ class OrganismSample(Sample):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -21157,6 +21887,8 @@ class Site(MaterialEntity):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -21319,6 +22051,8 @@ class FieldResearchSite(Site):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -21465,6 +22199,8 @@ class MagBin(ConfiguredBaseModel):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -21509,6 +22245,8 @@ class MetaboliteIdentification(ConfiguredBaseModel):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -21586,6 +22324,8 @@ class GeneProduct(NamedThing):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -21805,6 +22545,8 @@ class MetagenomeAssembly(WorkflowExecution):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -22110,6 +22852,8 @@ class MetatranscriptomeAssembly(WorkflowExecution):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -22379,6 +23123,8 @@ class MetatranscriptomeAnnotation(AnnotatingWorkflow):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -22655,6 +23401,8 @@ class MetatranscriptomeExpressionAnalysis(WorkflowExecution):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -22925,6 +23673,8 @@ class MagsAnalysis(WorkflowExecution):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -23183,6 +23933,8 @@ class ReadQcAnalysis(WorkflowExecution):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -23422,6 +24174,8 @@ class ReadBasedTaxonomyAnalysis(WorkflowExecution):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -23687,6 +24441,8 @@ class MetabolomicsAnalysis(WorkflowExecution):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -23944,6 +24700,8 @@ class MetaproteomicsAnalysis(AnnotatingWorkflow):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -24194,6 +24952,8 @@ class NomAnalysis(WorkflowExecution):
          'domain_of': ['Agent',
                        'EukEval',
                        'FunctionalAnnotationAggMember',
+                       'IsotopologAddition',
+                       'IsotopologComposition',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
@@ -24342,6 +25102,8 @@ Organization.model_rebuild()
 EukEval.model_rebuild()
 FunctionalAnnotationAggMember.model_rebuild()
 Database.model_rebuild()
+IsotopologAddition.model_rebuild()
+IsotopologComposition.model_rebuild()
 GenomeFeature.model_rebuild()
 FunctionalAnnotation.model_rebuild()
 AttributeValue.model_rebuild()
@@ -24394,6 +25156,8 @@ Isolation.model_rebuild()
 Culturing.model_rebuild()
 Extraction.model_rebuild()
 LibraryPreparation.model_rebuild()
+IsotopeLabelingProcess.model_rebuild()
+DensityGradientFractionationProcess.model_rebuild()
 SubSamplingProcess.model_rebuild()
 MixingProcess.model_rebuild()
 FiltrationProcess.model_rebuild()

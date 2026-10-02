@@ -337,6 +337,12 @@ prefixes:
   nbrc:
     prefix_prefix: nbrc
     prefix_reference: http://www.nbrc.nite.go.jp/NBRC2/NBRCCatalogueDetailServlet?ID=NBRC&CAT=
+  chrono:
+    prefix_prefix: chrono
+    prefix_reference: http://rs.tdwg.org/chrono/terms/
+  dc:
+    prefix_prefix: dc
+    prefix_reference: http://purl.org/dc/elements/1.1/
   TAXRANK:
     prefix_prefix: TAXRANK
     prefix_reference: http://purl.obolibrary.org/obo/TAXRANK_
@@ -1078,6 +1084,8 @@ enums:
         text: dna_extraction
       phenol_chloroform_extraction:
         text: phenol_chloroform_extraction
+      stable_isotope_probing:
+        text: stable_isotope_probing
   ChromatographicCategoryEnum:
     name: ChromatographicCategoryEnum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -1891,6 +1899,12 @@ enums:
           grams per cubic centimeter.
         aliases:
         - grams per cubic centimeter
+      g/mL:
+        text: g/mL
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          grams per milliliter.
+        aliases:
+        - grams per milliliter
       g/L:
         text: g/L
         description: The Unified Code for Units of Measure (UCUM) representation of
@@ -3039,6 +3053,10 @@ enums:
         text: Azenta
         meaning: https://www.azenta.com/
         title: Azenta Life Sciences
+      SeqCenter:
+        text: SeqCenter
+        meaning: https://www.seqcenter.com/
+        title: SeqCenter
   DataCategoryEnum:
     name: DataCategoryEnum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -3720,6 +3738,10 @@ enums:
         text: SubSamplingProcess
       WorkflowExecution:
         text: WorkflowExecution
+      DensityGradientFractionationProcess:
+        text: DensityGradientFractionationProcess
+      IsotopeLabelingProcess:
+        text: IsotopeLabelingProcess
   PloidyEnum:
     name: PloidyEnum
     description: The ploidy state of an organism's genome, drawn from the ploidy classes
@@ -5512,6 +5534,38 @@ enums:
         text: middle
       top:
         text: top
+  IsotopeEnum:
+    name: IsotopeEnum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      13C:
+        text: 13C
+        description: Carbon with 13C isotope
+      15N:
+        text: 15N
+        description: Nitrogen with 15N isotope
+      2H:
+        text: 2H
+        description: Hydrogen with 2H isotope
+      18O:
+        text: 18O
+        description: Oxygen with 18O isotope
+  IsotopologApproachEnum:
+    name: IsotopologApproachEnum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      single:
+        text: single
+      multiple:
+        text: multiple
+  IsotopologLabelEnum:
+    name: IsotopologLabelEnum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      isotopically labeled:
+        text: isotopically labeled
+      natural abundance:
+        text: natural abundance
   HostSexEnum:
     name: HostSexEnum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6059,6 +6113,9 @@ enums:
         - Any form of water used in an experiment including deionized water, distilled
           water, and ultrapure water. Protocol or materials and methods should be
           consulted for exact type of water used in an experiment.
+      toluene:
+        text: toluene
+        meaning: CHEBI:17578
   MetaproteomicsAnalysisCategoryEnum:
     name: MetaproteomicsAnalysisCategoryEnum
     description: The category of metaproteomics analysis being performed.
@@ -6200,6 +6257,35 @@ enums:
           on the data portal. The submitter cannot edit.
         title: Released
 slots:
+  isotopolog_additions:
+    name: isotopolog_additions
+    description: The isotopologs, or heterogeneous materials, added during this isotope
+      labeling process, one entry per isotopolog and isotope.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: IsotopologAddition
+    recommended: true
+    multivalued: true
+    inlined_as_list: true
+  hetero_isotopolog:
+    name: hetero_isotopolog
+    description: 'An input to the labeling that has no ChEBI identifier, described
+      in free text: an undefined mixture such as root exudates or plant litter, or
+      cells or biomass such as T4 phages. A defined compound with a ChEBI identifier
+      goes in isotopolog instead.'
+    title: heterogeneous isotopolog
+    comments:
+    - Exactly one of isotopolog and hetero_isotopolog is given on each IsotopologAddition
+      entry; the rules on that class enforce it.
+    - hetero_isotopolog is a column of the MISIP supplementary tables (Simpson et
+      al. 2024, https://doi.org/10.1093/gigascience/giae071) and is not yet a MIxS
+      slot.
+    examples:
+    - value: root exudates
+    - value: T4 phages
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/GenomicsStandardsConsortium/mixs/issues/1409
+    range: string
   email:
     name: email
     description: An email address for an entity such as a person. This should be the
@@ -6243,6 +6329,24 @@ slots:
     - dcm:organization_id
     range: string
     pattern: ^ror:0[a-hj-km-np-tv-z0-9]{6}[0-9]{2}$
+  isotopolog_composition:
+    name: isotopolog_composition
+    description: Contains the isotopes used and at what fraction, for an isotopolog
+      added during an isotope labeling process.
+    title: isotopolog composition
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: IsotopologComposition
+    multivalued: true
+    inlined_as_list: true
+  internal_standard_method:
+    name: internal_standard_method
+    description: Method used for internal standard for SIP fractionation, if an internal
+      standard was used (i.e., spiking in a heavy-labelled DNA sequence).
+    title: internal standard method
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - MIXS:0001351
+    range: Protocol
   host_family_relation:
     name: host_family_relation
     annotations:
@@ -7144,8 +7248,8 @@ slots:
     description: 'Metadata-quality badges awarded to this record. Each value names
       one badge, which is present or absent; there are no levels or tiers. Most badges
       name a completeness subset, but not all do: expert_curation is awarded from
-      provenance instead. Awarded by a downstream service, not asserted by submitters,
-      and recalculated whenever the record''s ProvenanceMetadata.mod_date changes.'
+      provenance instead. Awarded by a downstream service, not asserted by submitters.
+      Awarding is additive: a badge, once awarded, is not removed from the record.'
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/issues/3227
@@ -15235,7 +15339,7 @@ slots:
     examples:
     - object:
         type: nmdc:TextValue
-        has_raw_value: KH2PO4;170  milligram per liter
+        has_raw_value: KH2PO4;170 milligram per liter
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - macronutrients
@@ -15257,7 +15361,7 @@ slots:
     examples:
     - object:
         type: nmdc:TextValue
-        has_raw_value: H3BO3;6.2  milligram per liter
+        has_raw_value: H3BO3;6.2 milligram per liter
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - micronutrients
@@ -18501,6 +18605,227 @@ slots:
       syntax: ^{primer_adapter_codes}+;{primer_adapter_codes}+$
       interpolated: true
       partial_match: true
+  isotope:
+    name: isotope
+    description: The element and mass number of the stable isotope used in isotopologue
+      labeling.
+    title: isotope
+    examples:
+    - value: 13C
+    - value: 15N
+    from_schema: https://w3id.org/nmdc/nmdc
+    slot_uri: MIXS:0001338
+    range: IsotopeEnum
+    required: true
+    multivalued: false
+  isotopolog:
+    name: isotopolog
+    description: Isotopologue (isotope source/substrate/molecule) added to the biological
+      sample.
+    title: isotopolog
+    comments:
+    - Inputs such as root exudates or cells, goes in hetero_isotopolog instead; NMDC
+      does not use a sentinel identifier for that case.
+    examples:
+    - value: water
+    from_schema: https://w3id.org/nmdc/nmdc
+    slot_uri: MIXS:0001339
+    range: ChemicalEntityEnum
+    recommended: true
+    multivalued: false
+  isotopolog_label:
+    name: isotopolog_label
+    description: List whether the isotopologue added to this biological sample was
+      heavy-labelled or natural abundance
+    title: isotopolog label status
+    examples:
+    - value: natural abundance
+    - value: isotopically labeled
+    from_schema: https://w3id.org/nmdc/nmdc
+    slot_uri: MIXS:0001340
+    range: IsotopologLabelEnum
+    required: true
+  isotopolog_approach:
+    name: isotopolog_approach
+    description: The labelling approach of this SIP experiment. Details if multiple
+      isotopically labelled isotopologues were added to samples ("multiple"), or was
+      only one isotopologue added to each sample ("single").
+    title: Labeling approach (number of labeled isotopologs supplied)
+    examples:
+    - value: single
+    - value: multiple
+    from_schema: https://w3id.org/nmdc/nmdc
+    slot_uri: MIXS:0001341
+    range: IsotopologApproachEnum
+    recommended: true
+  gradient_position:
+    name: gradient_position
+    description: A number designating the gradient position from heaviest (=1) to
+      lightest. Unfractionated samples, from which fractionated samples were derived,
+      should be denoted with -1.
+    title: gradient position
+    examples:
+    - value: '1'
+    - value: '-1'
+    from_schema: https://w3id.org/nmdc/nmdc
+    slot_uri: MIXS:0001342
+    range: integer
+    minimum_value: -1
+  gradient_pos_density:
+    name: gradient_pos_density
+    annotations:
+      Preferred_unit:
+        tag: Preferred_unit
+        value: g/mL
+      storage_units:
+        tag: storage_units
+        value: g/mL
+    description: Buoyant density of this fraction
+    title: density of gradient position
+    examples:
+    - object:
+        type: nmdc:QuantityValue
+        has_raw_value: 1.725 g/mL
+        has_numeric_value: 1.725
+        has_unit: g/mL
+    - object:
+        type: nmdc:QuantityValue
+        has_raw_value: 1.725-1.735 g/mL
+        has_minimum_numeric_value: 1.725
+        has_maximum_numeric_value: 1.735
+        has_unit: g/mL
+    from_schema: https://w3id.org/nmdc/nmdc
+    slot_uri: MIXS:0001343
+    range: QuantityValue
+    recommended: true
+  gradient_pos_rel_am:
+    name: gradient_pos_rel_am
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: '1'
+    description: The total nucleic acids loaded onto the column in this fraction as
+      a decimal. If uploading 16S rRNA gene (or other amplicon) sequencing data, this
+      value should be calculated from qPCR data. If uploading untargetted sequencing
+      data, this value should be calculated from total DNA concentration.
+    title: relative amount of nucleic acids in the gradient position
+    examples:
+    - object:
+        type: nmdc:QuantityValue
+        has_raw_value: '0.1'
+        has_numeric_value: 0.1
+        has_unit: '1'
+    from_schema: https://w3id.org/nmdc/nmdc
+    slot_uri: MIXS:0001344
+    range: QuantityValue
+    range_expression:
+      slot_conditions:
+        has_numeric_value:
+          name: has_numeric_value
+          minimum_value: 0
+          maximum_value: 1
+    recommended: true
+  isotopolog_atom_frac:
+    name: isotopolog_atom_frac
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: '1'
+    description: The fraction of heavy-labelled atoms out of all atoms of a given
+      element in the isotopolog. Multiple values allowed, separated by a | and should
+      be orded the same as the isotopolog.
+    title: atom fraction of isotopolog
+    todos:
+    - This ordered slot provides how to write an example in a spreadsheet, but this
+      will not provide a multivalued ordered slot in a database. As such, this slot
+      also couldn't be marked as multivalued in the yaml.
+    examples:
+    - object:
+        type: nmdc:QuantityValue
+        has_raw_value: '0.95'
+        has_numeric_value: 0.95
+        has_unit: '1'
+    from_schema: https://w3id.org/nmdc/nmdc
+    slot_uri: MIXS:0001346
+    range: QuantityValue
+    range_expression:
+      slot_conditions:
+        has_numeric_value:
+          name: has_numeric_value
+          minimum_value: 0
+          maximum_value: 1
+    recommended: true
+  isotopolog_atom_pos:
+    name: isotopolog_atom_pos
+    description: InChI label designating set of all isotopically enriched atoms in
+      isotopologue. Multiple values allowed, separated by a | and should be orded
+      the same as the isotopolog.
+    title: set of labeled atoms in isotopologue
+    examples:
+    - value: InChI=1S/C7H8/c1-7-5-3-2-4-6-7/h2-6H,1H3/i1+1,2+1,3+1,4+1,5+1,6+1,7+1
+    from_schema: https://w3id.org/nmdc/nmdc
+    slot_uri: MIXS:0001347
+    range: uriorcurie
+    recommended: true
+    pattern: ^InChI=1S?/[A-Za-z0-9.]+(/[^/]+)*/i(?:[0-9]+[+-][0-9]+(?:,[0-9]+[+-][0-9]+)*(?:/h[^/]+)?|/h[^/]+)$
+  isotopolog_dose:
+    name: isotopolog_dose
+    annotations:
+      Preferred_unit:
+        tag: Preferred_unit
+        value: ppm
+      storage_units:
+        tag: storage_units
+        value: '[ppm]'
+    description: The concentration (in ppm) of isotopolog added to environmental matrix
+      as a total mass per volume.
+    title: dose of isotopolog
+    comments:
+    - isotopolog mass / total volume soil; ppm of isotopologue in total container
+      volume
+    examples:
+    - object:
+        type: nmdc:QuantityValue
+        has_raw_value: 10 [ppm]
+        has_numeric_value: 10
+        has_unit: '[ppm]'
+    from_schema: https://w3id.org/nmdc/nmdc
+    slot_uri: MIXS:0001348
+    range: QuantityValue
+    recommended: true
+  nucleobase_atom_frac:
+    name: nucleobase_atom_frac
+    description: Excess atom fraction of the nucleobases in this fraction.
+    title: nucleobase excess atom fraction
+    examples:
+    - value: '0.25'
+    from_schema: https://w3id.org/nmdc/nmdc
+    slot_uri: MIXS:0001349
+    range: float
+    recommended: true
+    minimum_value: 0
+    maximum_value: 1
+  isotopolog_incu_time:
+    name: isotopolog_incu_time
+    annotations:
+      Preferred_unit:
+        tag: Preferred_unit
+        value: hours
+      storage_units:
+        tag: storage_units
+        value: h
+    description: Total time of incubation after isotopologue addition in hours
+    title: isotopolog incubation time
+    examples:
+    - object:
+        type: nmdc:QuantityValue
+        has_raw_value: 12 h
+        has_numeric_value: 12
+        has_unit: h
+    from_schema: https://w3id.org/nmdc/nmdc
+    slot_uri: MIXS:0001350
+    range: QuantityValue
+    recommended: true
   samp_collec_device:
     name: samp_collec_device
     description: 'The device used to collect an environmental sample. Recommended
@@ -18542,6 +18867,10 @@ slots:
     - sample
     slot_uri: MIXS:0001225
     range: string
+  internal_standard:
+    name: internal_standard
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: Protocol
   mixs_env_triad_field:
     name: mixs_env_triad_field
     annotations:
@@ -20497,6 +20826,119 @@ classes:
         description: Description of reaction conditions and components of polymerase
           chain reaction performed during library preparation
     class_uri: nmdc:LibraryPreparation
+  IsotopeLabelingProcess:
+    name: IsotopeLabelingProcess
+    description: A material processing in which substances or materials, isotopically
+      labeled or at natural abundance, are added to a sample so that uptake of the
+      isotope by the resident organisms can be traced.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: MaterialProcessing
+    slots:
+    - isotopolog_additions
+    - isotopolog_approach
+    - isotopolog_incu_time
+    - substances_used
+    slot_usage:
+      id:
+        name: id
+        pattern: ^(nmdc):isolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+        structured_pattern:
+          syntax: '{id_nmdc_prefix}:isolp-{id_shoulder}-{id_blade}$'
+          interpolated: true
+      has_input:
+        name: has_input
+        required: true
+        pattern: ^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+        structured_pattern:
+          syntax: '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$'
+          interpolated: true
+      has_output:
+        name: has_output
+        required: true
+    class_uri: nmdc:IsotopeLabelingProcess
+  IsotopologAddition:
+    name: IsotopologAddition
+    description: One isotopolog, or one heterogeneous material with no compound identifier,
+      added during an isotope labeling process, with the isotope it carries, whether
+      it was isotopically labeled or at natural abundance, the atom fraction and position
+      of the label, and the dose.
+    from_schema: https://w3id.org/nmdc/nmdc
+    slots:
+    - isotopolog_composition
+    - isotopolog
+    - hetero_isotopolog
+    - isotopolog_label
+    - isotopolog_atom_pos
+    - isotopolog_dose
+    - type
+    class_uri: nmdc:IsotopologAddition
+    rules:
+    - preconditions:
+        slot_conditions:
+          isotopolog:
+            name: isotopolog
+            value_presence: ABSENT
+      postconditions:
+        slot_conditions:
+          hetero_isotopolog:
+            name: hetero_isotopolog
+            required: true
+      description: If isotopolog is absent, then hetero_isotopolog is required, so
+        that every entry names the input in one of the two ways.
+      title: hetero_isotopolog_required_when_isotopolog_absent
+    - preconditions:
+        slot_conditions:
+          isotopolog:
+            name: isotopolog
+            value_presence: PRESENT
+      postconditions:
+        slot_conditions:
+          hetero_isotopolog:
+            name: hetero_isotopolog
+            value_presence: ABSENT
+      description: If isotopolog is present, then hetero_isotopolog must be absent,
+        so that no entry names the input in both ways.
+      title: hetero_isotopolog_absent_when_isotopolog_present
+  IsotopologComposition:
+    name: IsotopologComposition
+    description: Contains the isotopes used and at what fraction.
+    from_schema: https://w3id.org/nmdc/nmdc
+    slots:
+    - isotope
+    - isotopolog_atom_frac
+    - type
+    class_uri: nmdc:IsotopologComposition
+  DensityGradientFractionationProcess:
+    name: DensityGradientFractionationProcess
+    description: A material processing that separates a sample, typically extracted
+      nucleic acids, into fractions by buoyant density, usually by isopycnic centrifugation.
+      The output fractions can record their gradient position, buoyant density and
+      relative nucleic acid amount.
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - Isopycnic Centrifugation
+    - Density Gradient Centrifugation
+    is_a: MaterialProcessing
+    slots:
+    - internal_standard_method
+    slot_usage:
+      id:
+        name: id
+        pattern: ^(nmdc):fracp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+        structured_pattern:
+          syntax: '{id_nmdc_prefix}:fracp-{id_shoulder}-{id_blade}$'
+          interpolated: true
+      has_input:
+        name: has_input
+        required: true
+        pattern: ^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+        structured_pattern:
+          syntax: '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$'
+          interpolated: true
+      has_output:
+        name: has_output
+        required: true
+    class_uri: nmdc:DensityGradientFractionationProcess
   CollectingBiosamplesFromSite:
     name: CollectingBiosamplesFromSite
     title: Collecting Biosamples From Site
@@ -22904,6 +23346,10 @@ classes:
     - dna_concentration
     - external_database_identifiers
     - sampled_portion
+    - gradient_position
+    - gradient_pos_density
+    - gradient_pos_rel_am
+    - nucleobase_atom_frac
     slot_usage:
       id:
         name: id

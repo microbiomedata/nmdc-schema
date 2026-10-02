@@ -233,7 +233,9 @@ enums:
             Any form of water used in an experiment including deionized water, distilled water, and ultrapure water.
             Protocol or materials and methods should be consulted for exact type of water used in an experiment.
       toluene:
-        meaning: CHEBI:17578      
+        meaning: CHEBI:17578
+      glycine:
+        meaning: CHEBI:15428
 
 classes:
 

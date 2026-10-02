@@ -735,7 +735,7 @@
                     "description": "Measurement of bacterial carbon production"
                 },
                 "badges": {
-                    "description": "Metadata-quality badges awarded to this record. Each value names one badge, which is present or absent; there are no levels or tiers. Most badges name a completeness subset, but not all do: expert_curation is awarded from provenance instead. Awarded by a downstream service, not asserted by submitters, and recalculated whenever the record's ProvenanceMetadata.mod_date changes.",
+                    "description": "Metadata-quality badges awarded to this record. Each value names one badge, which is present or absent; there are no levels or tiers. Most badges name a completeness subset, but not all do: expert_curation is awarded from provenance instead. Awarded by a downstream service, not asserted by submitters. Awarding is additive: a badge, once awarded, is not removed from the record.",
                     "items": {
                         "$ref": "#/$defs/MetadataBadgeEnum"
                     },
@@ -5785,7 +5785,8 @@
                 "trichloroacetic_acid",
                 "trimethylchlorosilane",
                 "trypsin",
-                "water"
+                "water",
+                "toluene"
             ],
             "title": "ChemicalEntityEnum",
             "type": "string"
@@ -7166,6 +7167,12 @@
                                 "$ref": "#/$defs/LibraryPreparation"
                             },
                             {
+                                "$ref": "#/$defs/IsotopeLabelingProcess"
+                            },
+                            {
+                                "$ref": "#/$defs/DensityGradientFractionationProcess"
+                            },
+                            {
                                 "$ref": "#/$defs/SubSamplingProcess"
                             },
                             {
@@ -7283,6 +7290,140 @@
                 }
             },
             "title": "Database",
+            "type": "object"
+        },
+        "DensityGradientFractionationProcess": {
+            "additionalProperties": false,
+            "description": "A material processing that separates a sample, typically extracted nucleic acids, into fractions by buoyant density, usually by isopycnic centrifugation. The output fractions can record their gradient position, buoyant density and relative nucleic acid amount.",
+            "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "a human-readable description of a thing",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "end_date": {
+                    "description": "The date on which any process or activity was ended",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_failure_categorization": {
+                    "items": {
+                        "$ref": "#/$defs/FailureCategorization"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_input": {
+                    "description": "An input to a process.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "has_output": {
+                    "description": "An output from a process.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                    "type": "string"
+                },
+                "instrument_used": {
+                    "description": "What instrument was used during DataGeneration or MaterialProcessing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "internal_standard_method": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Protocol"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Method used for internal standard for SIP fractionation, if an internal standard was used (i.e., spiking in a heavy-labelled DNA sequence)."
+                },
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "processing_institution": {
+                    "$ref": "#/$defs/ProcessingInstitutionEnum",
+                    "description": "The organization that processed the sample."
+                },
+                "protocol_link": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Protocol"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "qc_comment": {
+                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "qc_status": {
+                    "$ref": "#/$defs/StatusEnum",
+                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
+                },
+                "start_date": {
+                    "description": "The date on which any process or activity was started",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "description": "the class_uri of the class that has been instantiated",
+                    "enum": [
+                        "nmdc:DensityGradientFractionationProcess"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "has_input",
+                "has_output",
+                "id",
+                "type"
+            ],
+            "title": "DensityGradientFractionationProcess",
             "type": "object"
         },
         "DeposEnvEnum": {
@@ -9385,6 +9526,342 @@
             ],
             "title": "Isolation",
             "type": "object"
+        },
+        "IsotopeEnum": {
+            "description": "",
+            "enum": [
+                "13C",
+                "15N",
+                "2H",
+                "18O"
+            ],
+            "title": "IsotopeEnum",
+            "type": "string"
+        },
+        "IsotopeLabelingProcess": {
+            "additionalProperties": false,
+            "description": "A material processing in which substances or materials, isotopically labeled or at natural abundance, are added to a sample so that uptake of the isotope by the resident organisms can be traced.",
+            "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "a human-readable description of a thing",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "end_date": {
+                    "description": "The date on which any process or activity was ended",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_failure_categorization": {
+                    "items": {
+                        "$ref": "#/$defs/FailureCategorization"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_input": {
+                    "description": "An input to a process.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "has_output": {
+                    "description": "An output from a process.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                    "type": "string"
+                },
+                "instrument_used": {
+                    "description": "What instrument was used during DataGeneration or MaterialProcessing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "isotopolog_additions": {
+                    "description": "The isotopologs, or heterogeneous materials, added during this isotope labeling process, one entry per isotopolog and isotope.",
+                    "items": {
+                        "$ref": "#/$defs/IsotopologAddition"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "isotopolog_approach": {
+                    "$ref": "#/$defs/IsotopologApproachEnum",
+                    "description": "The labelling approach of this SIP experiment. Details if multiple isotopically labelled isotopologues were added to samples (\"multiple\"), or was only one isotopologue added to each sample (\"single\")."
+                },
+                "isotopolog_incu_time": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Total time of incubation after isotopologue addition in hours"
+                },
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "processing_institution": {
+                    "$ref": "#/$defs/ProcessingInstitutionEnum",
+                    "description": "The organization that processed the sample."
+                },
+                "protocol_link": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Protocol"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "qc_comment": {
+                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "qc_status": {
+                    "$ref": "#/$defs/StatusEnum",
+                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
+                },
+                "start_date": {
+                    "description": "The date on which any process or activity was started",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "substances_used": {
+                    "description": "The substances that are combined to enable a ChemicalConversionProcess.",
+                    "items": {
+                        "$ref": "#/$defs/PortionOfSubstance"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "description": "the class_uri of the class that has been instantiated",
+                    "enum": [
+                        "nmdc:IsotopeLabelingProcess"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "has_input",
+                "has_output",
+                "id",
+                "type"
+            ],
+            "title": "IsotopeLabelingProcess",
+            "type": "object"
+        },
+        "IsotopologAddition": {
+            "additionalProperties": false,
+            "allOf": [
+                {
+                    "if": {
+                        "not": {
+                            "required": [
+                                "isotopolog"
+                            ]
+                        },
+                        "properties": {
+                            "isotopolog": {}
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "hetero_isotopolog": {}
+                        },
+                        "required": [
+                            "hetero_isotopolog"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "isotopolog": {}
+                        },
+                        "required": [
+                            "isotopolog"
+                        ]
+                    },
+                    "then": {
+                        "not": {
+                            "required": [
+                                "hetero_isotopolog"
+                            ]
+                        },
+                        "properties": {
+                            "hetero_isotopolog": {}
+                        }
+                    }
+                }
+            ],
+            "description": "One isotopolog, or one heterogeneous material with no compound identifier, added during an isotope labeling process, with the isotope it carries, whether it was isotopically labeled or at natural abundance, the atom fraction and position of the label, and the dose.",
+            "properties": {
+                "hetero_isotopolog": {
+                    "description": "An input to the labeling that has no ChEBI identifier, described in free text: an undefined mixture such as root exudates or plant litter, or cells or biomass such as T4 phages. A defined compound with a ChEBI identifier goes in isotopolog instead.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "isotopolog": {
+                    "$ref": "#/$defs/ChemicalEntityEnum",
+                    "description": "Isotopologue (isotope source/substrate/molecule) added to the biological sample."
+                },
+                "isotopolog_atom_pos": {
+                    "description": "InChI label designating set of all isotopically enriched atoms in isotopologue. Multiple values allowed, separated by a | and should be orded the same as the isotopolog.",
+                    "pattern": "^InChI=1S?/[A-Za-z0-9.]+(/[^/]+)*/i(?:[0-9]+[+-][0-9]+(?:,[0-9]+[+-][0-9]+)*(?:/h[^/]+)?|/h[^/]+)$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "isotopolog_composition": {
+                    "description": "Contains the isotopes used and at what fraction, for an isotopolog added during an isotope labeling process.",
+                    "items": {
+                        "$ref": "#/$defs/IsotopologComposition"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "isotopolog_dose": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The concentration (in ppm) of isotopolog added to environmental matrix as a total mass per volume."
+                },
+                "isotopolog_label": {
+                    "$ref": "#/$defs/IsotopologLabelEnum",
+                    "description": "List whether the isotopologue added to this biological sample was heavy-labelled or natural abundance"
+                },
+                "type": {
+                    "description": "the class_uri of the class that has been instantiated",
+                    "enum": [
+                        "nmdc:IsotopologAddition"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "isotopolog_label",
+                "type"
+            ],
+            "title": "IsotopologAddition",
+            "type": "object"
+        },
+        "IsotopologApproachEnum": {
+            "description": "",
+            "enum": [
+                "single",
+                "multiple"
+            ],
+            "title": "IsotopologApproachEnum",
+            "type": "string"
+        },
+        "IsotopologComposition": {
+            "additionalProperties": false,
+            "description": "Contains the isotopes used and at what fraction.",
+            "properties": {
+                "isotope": {
+                    "$ref": "#/$defs/IsotopeEnum",
+                    "description": "The element and mass number of the stable isotope used in isotopologue labeling."
+                },
+                "isotopolog_atom_frac": {
+                    "allOf": [
+                        {
+                            "properties": {
+                                "has_numeric_value": {
+                                    "maximum": 1,
+                                    "minimum": 0
+                                }
+                            }
+                        }
+                    ],
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The fraction of heavy-labelled atoms out of all atoms of a given element in the isotopolog. Multiple values allowed, separated by a | and should be orded the same as the isotopolog."
+                },
+                "type": {
+                    "description": "the class_uri of the class that has been instantiated",
+                    "enum": [
+                        "nmdc:IsotopologComposition"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "isotope",
+                "type"
+            ],
+            "title": "IsotopologComposition",
+            "type": "object"
+        },
+        "IsotopologLabelEnum": {
+            "description": "",
+            "enum": [
+                "isotopically labeled",
+                "natural abundance"
+            ],
+            "title": "IsotopologLabelEnum",
+            "type": "string"
         },
         "LibLayoutEnum": {
             "description": "",
@@ -14733,6 +15210,46 @@
                         "null"
                     ]
                 },
+                "gradient_pos_density": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Buoyant density of this fraction"
+                },
+                "gradient_pos_rel_am": {
+                    "allOf": [
+                        {
+                            "properties": {
+                                "has_numeric_value": {
+                                    "maximum": 1,
+                                    "minimum": 0
+                                }
+                            }
+                        }
+                    ],
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The total nucleic acids loaded onto the column in this fraction as a decimal. If uploading 16S rRNA gene (or other amplicon) sequencing data, this value should be calculated from qPCR data. If uploading untargetted sequencing data, this value should be calculated from total DNA concentration."
+                },
+                "gradient_position": {
+                    "description": "A number designating the gradient position from heaviest (=1) to lightest. Unfractionated samples, from which fractionated samples were derived, should be denoted with -1.",
+                    "minimum": -1,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
@@ -14742,6 +15259,15 @@
                     "description": "A human readable label for an entity",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "nucleobase_atom_frac": {
+                    "description": "Excess atom fraction of the nucleobases in this fraction.",
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": [
+                        "number",
                         "null"
                     ]
                 },
@@ -14780,7 +15306,8 @@
                 "Battelle",
                 "ANL",
                 "UCD_Genome_Center",
-                "Azenta"
+                "Azenta",
+                "SeqCenter"
             ],
             "title": "ProcessingInstitutionEnum",
             "type": "string"
@@ -14955,7 +15482,8 @@
                 "respiration_measurement",
                 "texture_measurement",
                 "dna_extraction",
-                "phenol_chloroform_extraction"
+                "phenol_chloroform_extraction",
+                "stable_isotope_probing"
             ],
             "title": "ProtocolCategoryEnum",
             "type": "string"
@@ -14994,7 +15522,9 @@
                 "ReadQcAnalysis",
                 "StorageProcess",
                 "SubSamplingProcess",
-                "WorkflowExecution"
+                "WorkflowExecution",
+                "DensityGradientFractionationProcess",
+                "IsotopeLabelingProcess"
             ],
             "title": "ProtocolForEnum",
             "type": "string"
@@ -17059,6 +17589,7 @@
                 "mg",
                 "umol/L/h",
                 "g/cm3",
+                "g/mL",
                 "g/L",
                 "wk",
                 "[g]",
@@ -17600,6 +18131,12 @@
                     },
                     {
                         "$ref": "#/$defs/LibraryPreparation"
+                    },
+                    {
+                        "$ref": "#/$defs/IsotopeLabelingProcess"
+                    },
+                    {
+                        "$ref": "#/$defs/DensityGradientFractionationProcess"
                     },
                     {
                         "$ref": "#/$defs/SubSamplingProcess"
