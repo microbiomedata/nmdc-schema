@@ -28,7 +28,7 @@ added_isotopologs:
           has_raw_value: "0.99"
           has_numeric_value: 0.99
           has_unit: "1"
-    isotopolog_atom_pos: InChI=1S/H2O/h1H2/i/hD2
+    isotopolog_atom_pos: InChI=1S/H2O/h1H2/i1+2
     isotopolog: water
 isotopolog_incu_time:
   type: nmdc:QuantityValue
