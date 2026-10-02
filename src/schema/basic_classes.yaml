@@ -53,6 +53,7 @@ classes:
       - description
       - alternative_identifiers
       - type
+      - provenance_metadata
 
   OntologyClass:
     class_uri: nmdc:OntologyClass
@@ -384,7 +385,6 @@ classes:
 
       - alternative_descriptions
       - alternative_names
-      - provenance_metadata
       - alternative_titles
 
       - ecosystem
@@ -568,7 +568,6 @@ classes:
       - instrument_used
       - has_credit_associations
       - instrument_instance_specifier
-      - provenance_metadata
     slot_usage:
       has_input:
         required: true
