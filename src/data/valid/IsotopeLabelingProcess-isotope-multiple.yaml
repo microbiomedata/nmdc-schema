@@ -6,10 +6,10 @@ has_input:
 has_output:
   - nmdc:procsm-99-987650
 isotopolog_approach: multiple
-isotopolog_additions:
+added_isotopologs:
   - isotopolog_label: isotopically labeled
     type: nmdc:IsotopologAddition
-    isotopolog_composition:
+    isotope_atom_fractions:
       - isotope: 13C
         isotopolog_atom_frac:
           type: nmdc:QuantityValue
@@ -20,7 +20,7 @@ isotopolog_additions:
     isotopolog: glucose
   - isotopolog_label: isotopically labeled
     type: nmdc:IsotopologAddition
-    isotopolog_composition:
+    isotope_atom_fractions:
       - isotope: 18O
         type: nmdc:IsotopologComposition
         isotopolog_atom_frac:

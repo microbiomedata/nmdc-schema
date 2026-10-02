@@ -6,9 +6,9 @@ material_processing_set:
       - nmdc:bsm-99-123456
     has_output:
       - nmdc:procsm-99-987654
-    isotopolog_additions:
+    added_isotopologs:
       - isotopolog_label: isotopically labeled
-        isotopolog_composition:
+        isotope_atom_fractions:
           - isotope: 13C
             type: nmdc:IsotopologComposition
         type: nmdc:IsotopologAddition
