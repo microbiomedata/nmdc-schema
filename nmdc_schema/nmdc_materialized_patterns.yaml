@@ -2052,12 +2052,14 @@ enums:
         text: biogeochemistry
         description: Completeness badge. Awarded when the Biosample populates at least
           badge_minimum_slots of the biogeochemistry subset.
+        title: Biogeochemistry
         see_also:
         - https://microbiomedata.github.io/nmdc-schema/Biogeochemistry/
       host_information:
         text: host_information
         description: Completeness badge. Awarded when the Biosample populates at least
           badge_minimum_slots of the host_information subset.
+        title: Host Information
         see_also:
         - https://microbiomedata.github.io/nmdc-schema/HostInformation/
       expert_curation:
@@ -2065,6 +2067,7 @@ enums:
         description: Provenance badge. Awarded when the Biosample's ProvenanceMetadata.source_system_of_record
           identifies the NMDC submission portal, rather than an ETL process over an
           external database.
+        title: Expert Curation
         see_also:
         - https://microbiomedata.github.io/nmdc-schema/source_system_of_record/
   LibraryStrategyEnum:
@@ -3039,6 +3042,10 @@ enums:
         text: Azenta
         meaning: https://www.azenta.com/
         title: Azenta Life Sciences
+      SeqCenter:
+        text: SeqCenter
+        meaning: https://www.seqcenter.com/
+        title: SeqCenter
   DataCategoryEnum:
     name: DataCategoryEnum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6940,6 +6947,7 @@ slots:
   name:
     name: name
     description: A human readable label for an entity
+    title: Name
     from_schema: https://w3id.org/nmdc/nmdc
     range: string
   term:
@@ -6951,6 +6959,7 @@ slots:
   description:
     name: description
     description: a human-readable description of a thing
+    title: Description
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: dcterms:description
     range: string
@@ -6984,6 +6993,7 @@ slots:
   type:
     name: type
     description: the class_uri of the class that has been instantiated
+    title: Type
     notes:
     - makes it easier to read example data files
     - required for polymorphic MongoDB collections
@@ -7144,8 +7154,9 @@ slots:
     description: 'Metadata-quality badges awarded to this record. Each value names
       one badge, which is present or absent; there are no levels or tiers. Most badges
       name a completeness subset, but not all do: expert_curation is awarded from
-      provenance instead. Awarded by a downstream service, not asserted by submitters,
-      and recalculated whenever the record''s ProvenanceMetadata.mod_date changes.'
+      provenance instead. Awarded by a downstream service, not asserted by submitters.
+      Awarding is additive: a badge, once awarded, is not removed from the record.'
+    title: Metadata Quality Badges
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/issues/3227
@@ -7293,6 +7304,7 @@ slots:
   infiltrations:
     name: infiltrations
     description: The amount of time it takes to complete each infiltration activity
+    title: Infiltrations
     examples:
     - value: 00:01:32
     - value: 00:00:53
@@ -7308,12 +7320,14 @@ slots:
     pattern: ^(?:[0-9]|[1-9][0-9]|9[0-9]|0[0-9]|0[0-5][0-9]):[0-5][0-9]:[0-5][0-9]$
   soluble_iron_micromol:
     name: soluble_iron_micromol
+    title: Soluble Iron (micromol)
     from_schema: https://w3id.org/nmdc/nmdc
     range: string
   sample_collection_site:
     name: sample_collection_site
     description: 'Free-text description of the place where the sample was collected:
       the geographic or environmental site or named location.'
+    title: Sample Collection Site
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -7331,31 +7345,37 @@ slots:
     name: salinity_category
     description: 'Categorical description of the sample''s salinity. Examples: halophile,
       halotolerant, hypersaline, euryhaline'
+    title: Salinity Category
     notes:
     - maps to gold:salinity
     from_schema: https://w3id.org/nmdc/nmdc
     range: string
   proport_woa_temperature:
     name: proport_woa_temperature
+    title: Proport WOA Temperature
     from_schema: https://w3id.org/nmdc/nmdc
     range: string
   location:
     name: location
+    title: Location
     from_schema: https://w3id.org/nmdc/nmdc
     range: string
   host_name:
     name: host_name
+    title: Host Name
     in_subset:
     - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     range: string
   community:
     name: community
+    title: Community
     from_schema: https://w3id.org/nmdc/nmdc
     range: string
   embargoed:
     name: embargoed
     description: If true, the data are embargoed and not available for public access.
+    title: Embargoed
     todos:
     - make this required?
     - first apply to Biosample
@@ -7366,6 +7386,7 @@ slots:
     recommended: true
   habitat:
     name: habitat
+    title: Habitat
     from_schema: https://w3id.org/nmdc/nmdc
     range: string
   version:
@@ -7444,6 +7465,7 @@ slots:
   ecosystem_path_id:
     name: ecosystem_path_id
     description: A unique id representing the GOLD classifiers associated with a sample.
+    title: GOLD Ecosystem Path ID
     examples:
     - value: '6026'
     from_schema: https://w3id.org/nmdc/nmdc
@@ -7470,6 +7492,7 @@ slots:
     description: An ecosystem is a combination of a physical environment (abiotic
       factors) and all the organisms (biotic factors) that interact with this environment.
       Ecosystem is in position 1/5 in a GOLD path.
+    title: Ecosystem
     comments:
     - The abiotic factors play a profound role on the type and composition of organisms
       in a given environment. The GOLD Ecosystem at the top of the five-level classification
@@ -7487,6 +7510,7 @@ slots:
     description: Ecosystem categories represent divisions within the ecosystem based
       on specific characteristics of the environment from where an organism or sample
       is isolated. Ecosystem category is in position 2/5 in a GOLD path.
+    title: Ecosystem Category
     comments:
     - The Environmental ecosystem (for example) is divided into Air, Aquatic and Terrestrial.
       Ecosystem categories for Host-associated samples can be individual hosts or
@@ -7502,6 +7526,7 @@ slots:
       the Ecosystem Category. These common characteristics based grouping is still
       broad but specific to the characteristics of a given environment. Ecosystem
       type is in position 3/5 in a GOLD path.
+    title: Ecosystem Type
     comments:
     - The Aquatic ecosystem category (for example) may have ecosystem types like Marine
       or Thermal springs etc. Ecosystem category Air may have Indoor air or Outdoor
@@ -7516,6 +7541,7 @@ slots:
     description: Ecosystem subtypes represent further subdivision of Ecosystem types
       into more distinct subtypes. Ecosystem subtype is in position 4/5 in a GOLD
       path.
+    title: Ecosystem Subtype
     comments:
     - Ecosystem Type Marine (Environmental -> Aquatic -> Marine) is further divided
       (for example) into Intertidal zone, Coastal, Pelagic, Intertidal zone etc. in
@@ -7529,6 +7555,7 @@ slots:
     description: Specific ecosystems represent specific features of the environment
       like aphotic zone in an ocean or gastric mucosa within a host digestive system.
       Specific ecosystem is in position 5/5 in a GOLD path.
+    title: Specific Ecosystem
     comments:
     - Specific ecosystems help to define samples based on very specific characteristics
       of an environment under the five-level classification system.
@@ -7548,6 +7575,7 @@ slots:
     range: string
   ncbi_taxonomy_name:
     name: ncbi_taxonomy_name
+    title: NCBI Taxonomy Name
     from_schema: https://w3id.org/nmdc/nmdc
     range: string
   ncbi_project_name:
@@ -7626,6 +7654,7 @@ slots:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand
       for a URI or a complete URI
+    title: ID
     notes:
     - 'abstracted pattern: prefix:typecode-authshoulder-blade(.version)?(_seqsuffix)?'
     - a minimum length of 3 characters is suggested for typecodes, but 1 or 2 characters
@@ -7673,6 +7702,7 @@ slots:
     description: A list of alternative names used to refer to the entity. The distinction
       between name and alternative names is application-specific.  This should not
       be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)
+    title: Alternative Names
     from_schema: https://w3id.org/nmdc/nmdc
     exact_mappings:
     - dcterms:alternative
@@ -7689,6 +7719,7 @@ slots:
   alternative_identifiers:
     name: alternative_identifiers
     description: A list of alternative identifiers for the entity.
+    title: Alternative Identifiers
     from_schema: https://w3id.org/nmdc/nmdc
     range: uriorcurie
     multivalued: true
@@ -7852,6 +7883,7 @@ slots:
   host_genus:
     name: host_genus
     description: Genus of the host organism that the sample was collected from.
+    title: Host Genus
     notes:
     - GOLD organism_v2 host_name "Zea mays" (n=432 records, queried 2026-04-30)
     - GOLD organism_v2 host_name "Escherichia coli K-12" (Go0084483 Escherichia phage
@@ -7876,6 +7908,7 @@ slots:
   host_species:
     name: host_species
     description: Species of the host organism that the sample was collected from.
+    title: Host Species
     notes:
     - GOLD organism_v2 host_name "Zea mays" (n=432 records, queried 2026-04-30)
     - GOLD organism_v2 host_name "Escherichia coli K-12" (Go0084483 Escherichia phage
@@ -7900,6 +7933,7 @@ slots:
   host_strain:
     name: host_strain
     description: Strain of the host organism that the sample was collected from.
+    title: Host Strain
     notes:
     - GOLD organism_v2 host_name "Escherichia coli K-12" (Go0084483 Escherichia phage
       JSE, queried 2026-04-30)
@@ -8135,6 +8169,7 @@ slots:
     abstract: true
   neon_biosample_identifiers:
     name: neon_biosample_identifiers
+    title: NEON Biosample Identifiers
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: biosample_identifiers
     mixins:
@@ -8142,6 +8177,7 @@ slots:
   gold_biosample_identifiers:
     name: gold_biosample_identifiers
     description: identifiers for corresponding sample in GOLD
+    title: GOLD Biosample Identifiers
     examples:
     - value: gold:Gb0312930
     from_schema: https://w3id.org/nmdc/nmdc
@@ -8166,6 +8202,7 @@ slots:
   insdc_biosample_identifiers:
     name: insdc_biosample_identifiers
     description: identifiers for corresponding sample in INSDC
+    title: INSDC Biosample Identifiers
     examples:
     - value: biosample:SAMEA5989477
     - value: biosample:SAMD00212331
@@ -8360,6 +8397,7 @@ slots:
   associated_studies:
     name: associated_studies
     description: The study associated with a resource.
+    title: Associated Studies
     from_schema: https://w3id.org/nmdc/nmdc
     range: Study
     required: true
@@ -8627,6 +8665,7 @@ slots:
   provenance_metadata:
     name: provenance_metadata
     description: Provides information about the provenance of a record.
+    title: Provenance Metadata
     from_schema: https://w3id.org/nmdc/nmdc
     range: ProvenanceMetadata
   abs_air_humidity:
@@ -18590,6 +18629,7 @@ slots:
   collected_from:
     name: collected_from
     description: The Site from which a Biosample was collected
+    title: Collected From
     todos:
     - add an OBO slot_uri ?
     comments:
@@ -18622,6 +18662,7 @@ slots:
       storage_units:
         tag: storage_units
         value: m
+    title: Subsurface Depth
     from_schema: https://w3id.org/nmdc/nmdc
     range: QuantityValue
   env_package:
@@ -18631,6 +18672,7 @@ slots:
       packages listed here are further defined in separate subtables. By giving the
       name of the environmental package, a selection of fields can be made from the
       subtables and can be reported
+    title: Environmental Package
     notes:
     - no longer in MIxS as of 6.0?
     from_schema: https://w3id.org/nmdc/nmdc
