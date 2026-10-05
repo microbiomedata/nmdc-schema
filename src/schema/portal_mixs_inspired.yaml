@@ -31,32 +31,6 @@ slots:
     string_serialization: '{time, seconds optional}'
     slot_group: MIxS Inspired
     recommended: true
-  collection_time_inc:
-    deprecated: >-
-      This slot is directly replaced by collection_time. Any instances that would use collection_time_inc
-      should use collection_time instead.
-    deprecated_element_has_exact_replacement: collection_time
-    last_updated_on: "2026-09-04T00:00:00Z"
-    modified_by: orcid:0009-0008-4013-7737 #James Tessmer
-    contributors:
-      - orcid:0009-0008-4013-7737 #James Tessmer
-    description: Time the incubation was harvested/collected/ended. Only relevant
-      for incubation samples.
-    title: incubation collection time, GMT
-    notes:
-      - MIxS collection_date accepts (truncated) ISO8601. DH taking seconds optional
-        time only
-    comments:
-      - 'Time should be entered as HH:MM(:SS) in GMT. See here for a converter: https://www.worldtimebuddy.com/pst-to-gmt-converter'
-    examples:
-      - value: '13:33'
-      - value: '13:33:55'
-    see_also:
-      - MIXS:0000011
-    rank: 3
-    string_serialization: '{time, seconds optional}'
-    slot_group: MIxS Inspired
-    recommended: true
   experimental_factor_other:
     description: Other details about your sample that you feel can't be accurately
       represented in the available columns.

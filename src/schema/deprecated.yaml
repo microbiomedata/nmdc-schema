@@ -285,6 +285,33 @@ slots:
     range: SampleStateEnum
     deprecated: "not used https://github.com/microbiomedata/nmdc-schema/issues/2353"
     last_updated_on: "2025-04-15T00:00:00Z"
+  collection_time_inc:
+    name: collection_time_inc
+    description: Time the incubation was harvested/collected/ended. Only relevant
+      for incubation samples.
+    title: incubation collection time, GMT
+    deprecated: This slot is directly replaced by collection_time. Any instances that
+      would use collection_time_inc should use collection_time instead.
+    notes:
+    - MIxS collection_date accepts (truncated) ISO8601. DH taking seconds optional
+      time only
+    comments:
+    - 'Time should be entered as HH:MM(:SS) in GMT. See here for a converter: https://www.worldtimebuddy.com/pst-to-gmt-converter'
+    examples:
+    - value: '13:33'
+    - value: '13:33:55'
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - MIXS:0000011
+    deprecated_element_has_exact_replacement: collection_time
+    contributors:
+    - orcid:0009-0008-4013-7737
+    last_updated_on: '2026-09-04T00:00:00+00:00'
+    modified_by: orcid:0009-0008-4013-7737
+    rank: 3
+    string_serialization: '{time, seconds optional}'
+    slot_group: MIxS Inspired
+    recommended: true
   collection_date_inc:
     deprecated: >-
       No longer needed. The harvest date is the harvested sample's own

@@ -1517,7 +1517,6 @@ subsurface_depth:
   type: nmdc:QuantityValue
 dna_isolate_meth: DNA
 collection_time: 05:42+0000
-collection_time_inc: 13:42+0000
 experimental_factor_other: unconstrained text, but presumably expects 'term label
   [term id]'
 filter_method: Basix PES, 13-100-106 FisherSci is an example value, but unconstrained
