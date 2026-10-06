@@ -61,18 +61,18 @@ enums:
       chemical speciation mapping:
         description: Identification and/or measurement of specific forms (isotopes, redox state, molecular structure, etc.) of one or more elements in a sample.
       isotope profiling:
-        description: Measurement of the isotope content of a sample.
+        description: Measurement of the stable isotope content of a sample. Typical measurements target hydrogen, carbon, nitrogen, and oxygen analyses.
       imaging - xray:
-        description: Analysis that uses X-rays to produce an image of a sample.
+        description: A technique that uses X-rays to generate an image of a sample based on how strongly the different components absorb X-rays. Resulting images may be assembled into a 3D computer model.
       imaging - electron:
-        description: Analysis that uses beams of electrons to scan a sample and generate images.
+        description: A microscopy technique that uses beams of electrons to scan a sample and generate images.
       imaging - ion:
         description: Analysis that uses ions to scan a sample and generate images. 
       imaging - light:
         description: Analysis that uses visible light to generate images of a sample.
       hydraulic properties:
         description: Measurement of the relative permeability-saturation-capillary pressure of a sample.
-      other analyses:
+      other emsl analyses:
         description: Other analyses planned at EMSL that are not listed here.
   SubmissionStatusEnum:
     permissible_values:
