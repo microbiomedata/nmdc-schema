@@ -54,6 +54,26 @@ enums:
         broad_mappings:
           - OBI:0001177
         title: Isolate transcriptome sequencing
+      proteomics:
+        description: Mass-spectrometry based analysis of proteins from a single organism.
+      molecular structure:
+        description: Analysis of the configuration and arrangement of atoms within molecules of a sample.
+      chemical speciation mapping:
+        description: Identification and/or measurement of specific forms (isotopes, redox state, molecular structure, etc.) of one or more elements in a sample.
+      isotope profiling:
+        description: Measurement of the isotope content of a sample.
+      imaging - xray:
+        description: Analysis that uses X-rays to produce an image of a sample.
+      imaging - electron:
+        description: Analysis that uses beams of electrons to scan a sample and generate images.
+      imaging - ion:
+        description: Analysis that uses ions to scan a sample and generate images. 
+      imaging - light:
+        description: Analysis that uses visible light to generate images of a sample.
+      hydraulic properties:
+        description: Measurement of the relative permeability-saturation-capillary pressure of a sample.
+      other analyses:
+        description: Other analyses planned at EMSL that are not listed here.
   SubmissionStatusEnum:
     permissible_values:
       InProgress:
