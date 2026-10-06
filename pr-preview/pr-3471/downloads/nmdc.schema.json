@@ -73,7 +73,7 @@
                 "imaging - ion",
                 "imaging - light",
                 "hydraulic properties",
-                "other analyses"
+                "other emsl analyses"
             ],
             "title": "AnalysisTypeEnum",
             "type": "string"
@@ -17731,5 +17731,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.24.1.post2.dev0+8a80cbfe9"
+    "version": "11.24.1.post3.dev0+ac2b6c205"
 }
