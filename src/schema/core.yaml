@@ -136,6 +136,12 @@ enums:
         meaning: CHEBI:38472
       acetic_acid:
         meaning: CHEBI:15366
+        structured_aliases:
+          - literal_form: acetate
+            predicate: RELATED_SYNONYM
+            source: https://www.ebi.ac.uk/chebi/CHEBI:30089
+        related_mappings:
+          - CHEBI:30089 # acetate, the conjugate base
       acetone:
         meaning: CHEBI:15347
       alphaLP:
@@ -176,6 +182,12 @@ enums:
         meaning: CHEBI:16236
       formic_acid:
         meaning: CHEBI:30751
+        structured_aliases:
+          - literal_form: formate
+            predicate: RELATED_SYNONYM
+            source: https://www.ebi.ac.uk/chebi/CHEBI:15740
+        related_mappings:
+          - CHEBI:15740 # formate, the conjugate base
         comments:
           - >-
             A carboxylic acid that is the simplest aliphatic carboxylic acid, comprising a hydrogen atom
@@ -232,10 +244,193 @@ enums:
           - >-
             Any form of water used in an experiment including deionized water, distilled water, and ultrapure water.
             Protocol or materials and methods should be consulted for exact type of water used in an experiment.
-      toluene:
-        meaning: CHEBI:17578
+      acridine:
+        meaning: CHEBI:36420
+      alginic_acid:
+        meaning: CHEBI:17548
+        structured_aliases:
+          - literal_form: alginate
+            predicate: RELATED_SYNONYM
+            source: https://www.ebi.ac.uk/chebi/CHEBI:58187
+        related_mappings:
+          - CHEBI:58187 # alginate, the conjugate base
+      aspartic_acid:
+        meaning: CHEBI:22660
+        structured_aliases:
+          - literal_form: aspartate
+            predicate: RELATED_SYNONYM
+            source: https://www.ebi.ac.uk/chebi/CHEBI:132943
+        related_mappings:
+          - CHEBI:132943 # aspartate, the conjugate base
+      atrazine:
+        meaning: CHEBI:15930
+      "benz[a]anthracene":
+        meaning: CHEBI:51348
+        aliases:
+          - tetraphene
+      benzene:
+        meaning: CHEBI:16716
+      "benzo[a]pyrene":
+        meaning: CHEBI:29865
+      benzoic_acid:
+        meaning: CHEBI:30746
+        structured_aliases:
+          - literal_form: benzoate
+            predicate: RELATED_SYNONYM
+            source: https://www.ebi.ac.uk/chebi/CHEBI:16150
+        related_mappings:
+          - CHEBI:16150 # benzoate, the conjugate base
+      "17beta-estradiol":
+        meaning: CHEBI:16469
+      biphenyl:
+        meaning: CHEBI:17097
+      bisphenol_A:
+        meaning: CHEBI:33216
+      bisphenol_S:
+        meaning: CHEBI:34372
+        aliases:
+          - "4,4'-sulfonyldiphenol"
+      butane:
+        meaning: CHEBI:37808
+      butyric_acid:
+        meaning: CHEBI:30772
+        structured_aliases:
+          - literal_form: butyrate
+            predicate: RELATED_SYNONYM
+            source: https://www.ebi.ac.uk/chebi/CHEBI:17968
+        related_mappings:
+          - CHEBI:17968 # butyrate, the conjugate base
+      carbon_dioxide:
+        meaning: CHEBI:16526
+      carbon_monoxide:
+        meaning: CHEBI:17245
+      cellobiose:
+        meaning: CHEBI:17057
+      chloromethane:
+        meaning: CHEBI:36014
+      ciprofloxacin:
+        meaning: CHEBI:100241
+      dibenzothiophene:
+        meaning: CHEBI:23681
+      dibutyl_phthalate:
+        meaning: CHEBI:34687
+      "2,4-dichlorophenol":
+        meaning: CHEBI:16738
+      dimethylsulfoniopropionate:
+        meaning: CHEBI:16457
+        aliases:
+          - DMSP
+          - "S,S-dimethyl-beta-propiothetin"
+      dinitrogen:
+        meaning: CHEBI:17997
+        aliases:
+          - N2
+      "1,4-dioxane":
+        meaning: CHEBI:47032
+      dodecane:
+        meaning: CHEBI:28817
+      ethyl_tert-butyl_ether:
+        meaning: CHEBI:141564
+        aliases:
+          - ETBE
+      fluoranthene:
+        meaning: CHEBI:33083
+      glucosamine:
+        meaning: CHEBI:5417
+      glycerol:
+        meaning: CHEBI:17754
       glycine:
         meaning: CHEBI:15428
+      hexadecane:
+        meaning: CHEBI:45296
+      isoprene:
+        meaning: CHEBI:35194
+      lactic_acid:
+        meaning: CHEBI:78320
+        structured_aliases:
+          - literal_form: lactate
+            predicate: RELATED_SYNONYM
+            source: https://www.ebi.ac.uk/chebi/CHEBI:24996
+        related_mappings:
+          - CHEBI:24996 # lactate, the conjugate base
+      linuron:
+        meaning: CHEBI:6482
+      methane:
+        meaning: CHEBI:16183
+      methionine:
+        meaning: CHEBI:16811
+      methylamine:
+        meaning: CHEBI:16830
+        aliases:
+          - monomethylamine
+      "2-methylnaphthalene":
+        meaning: CHEBI:50720
+      naphthalene:
+        meaning: CHEBI:16482
+      "4-nitrophenol":
+        meaning: CHEBI:16836
+        aliases:
+          - p-nitrophenol
+      phenanthrene:
+        meaning: CHEBI:28851
+      propionic_acid:
+        meaning: CHEBI:30768
+        structured_aliases:
+          - literal_form: propionate
+            predicate: RELATED_SYNONYM
+            source: https://www.ebi.ac.uk/chebi/CHEBI:17272
+        related_mappings:
+          - CHEBI:17272 # propionate, the conjugate base
+      pyrene:
+        meaning: CHEBI:39106
+      sodium_bicarbonate:
+        meaning: CHEBI:32139
+        aliases:
+          - sodium hydrogencarbonate
+        structured_aliases:
+          - literal_form: bicarbonate
+            predicate: RELATED_SYNONYM
+            source: https://www.ebi.ac.uk/chebi/CHEBI:17544
+        related_mappings:
+          - CHEBI:17544 # hydrogencarbonate, the anion
+      sodium_carbonate:
+        meaning: CHEBI:29377
+      sulfadiazine:
+        meaning: CHEBI:9328
+      sulfamethazine:
+        meaning: CHEBI:102265
+      sulfamethoxazole:
+        meaning: CHEBI:9332
+      "6-sulfo-D-quinovose":
+        meaning: CHEBI:77198
+        aliases:
+          - sulfoquinovose
+      sulfolane:
+        meaning: CHEBI:74794
+      taurine:
+        meaning: CHEBI:15891
+      toluene:
+        meaning: CHEBI:17578
+      "3,5,6-trichloro-2-pyridinol":
+        meaning: CHEBI:143794
+      triclosan:
+        meaning: CHEBI:164200
+      trimethylamine:
+        meaning: CHEBI:18139
+      urea:
+        meaning: CHEBI:16199
+      vanillin:
+        meaning: CHEBI:18346
+      veratric_acid:
+        meaning: CHEBI:296881
+        aliases:
+          - "3,4-dimethoxybenzoic acid"
+      vinyl_chloride:
+        meaning: CHEBI:28509
+        aliases:
+          - chloroethene
+      xylose:
+        meaning: CHEBI:18222
 
 classes:
 

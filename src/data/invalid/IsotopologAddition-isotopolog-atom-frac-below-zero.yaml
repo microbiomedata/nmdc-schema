@@ -1,0 +1,12 @@
+# Invalid only because isotopolog_atom_frac.has_numeric_value is -0.5, below the minimum of 0 (an atom fraction is the share of the element's atoms that carry the isotope).
+isotopolog_label: isotopically labeled
+type: nmdc:IsotopologAddition
+isotopolog: toluene
+isotope_atom_fractions:
+- isotope: 13C
+  type: nmdc:IsotopologComposition
+  isotopolog_atom_frac:
+    type: nmdc:QuantityValue
+    has_raw_value: '-0.5'
+    has_numeric_value: -0.5
+    has_unit: '1'

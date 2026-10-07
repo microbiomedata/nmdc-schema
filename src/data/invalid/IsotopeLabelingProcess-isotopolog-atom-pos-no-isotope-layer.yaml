@@ -1,6 +1,6 @@
-# Invalid for one reason: the entry gives neither isotopolog nor hetero_isotopolog. Exactly one
-# of them names the labeled input.
-id: nmdc:isolp-99-abcdf10
+# Invalid only because isotopolog_atom_pos has no isotope layer (/i...), so it does not say
+# which atoms are labeled. The InChI is unlabeled toluene.
+id: nmdc:isolp-99-abcde12
 name: labeling of my awesome biosample
 type: nmdc:IsotopeLabelingProcess
 has_input:
@@ -14,3 +14,5 @@ added_isotopologs:
       - isotope: 13C
         type: nmdc:IsotopologComposition
     type: nmdc:IsotopologAddition
+    isotopolog_atom_pos: InChI=1S/C7H8/c1-7-5-3-2-4-6-7/h2-6H,1H3
+    isotopolog: toluene
