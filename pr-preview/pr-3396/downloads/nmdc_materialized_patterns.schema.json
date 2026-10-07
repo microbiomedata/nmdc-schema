@@ -10098,7 +10098,7 @@
                 },
                 "isotopolog_atom_pos": {
                     "description": "InChI label designating set of all isotopically enriched atoms in isotopolog. This slot should be omitted for natural abundance samples",
-                    "pattern": "^InChI=1S?/[A-Za-z0-9.]+(/[^/]+)*/i(?:[0-9]+[+-][0-9]+(?:,[0-9]+[+-][0-9]+)*(?:/h[^/]+)?|/h[^/]+)$",
+                    "pattern": "^InChI=1S?/[^\\s/]+(?:/[^\\s/i][^\\s/]*)*/i(?=[^\\s/]*(?:[0-9][+-][0-9]|[0-9][DT])|/h[^\\s/]*[DT])[^\\s/]*(?:/[^\\s/]+)*$",
                     "type": [
                         "string",
                         "null"
@@ -18672,6 +18672,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.24.1.post101.dev0+44fd0e467"
+    "version": "11.24.1.post102.dev0+f274c0f46"
 }
 

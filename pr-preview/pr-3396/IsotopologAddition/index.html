@@ -677,7 +677,7 @@ attributes:
     - IsotopologAddition
     range: string
     recommended: true
-    pattern: ^InChI=1S?/[A-Za-z0-9.]+(/[^/]+)*/i(?:[0-9]+[+-][0-9]+(?:,[0-9]+[+-][0-9]+)*(?:/h[^/]+)?|/h[^/]+)$
+    pattern: ^InChI=1S?/[^\s/]+(?:/[^\s/i][^\s/]*)*/i(?=[^\s/]*(?:[0-9][+-][0-9]|[0-9][DT])|/h[^\s/]*[DT])[^\s/]*(?:/[^\s/]+)*$
   isotopolog_dose:
     name: isotopolog_dose
     annotations:

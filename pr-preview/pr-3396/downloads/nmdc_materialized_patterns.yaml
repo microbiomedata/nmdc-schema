@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.24.1.post101.dev0+44fd0e467
+version: 11.24.1.post102.dev0+f274c0f46
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -19053,7 +19053,7 @@ slots:
     slot_uri: MIXS:0001347
     range: string
     recommended: true
-    pattern: ^InChI=1S?/[A-Za-z0-9.]+(/[^/]+)*/i(?:[0-9]+[+-][0-9]+(?:,[0-9]+[+-][0-9]+)*(?:/h[^/]+)?|/h[^/]+)$
+    pattern: ^InChI=1S?/[^\s/]+(?:/[^\s/i][^\s/]*)*/i(?=[^\s/]*(?:[0-9][+-][0-9]|[0-9][DT])|/h[^\s/]*[DT])[^\s/]*(?:/[^\s/]+)*$
   isotopolog_dose:
     name: isotopolog_dose
     annotations:
