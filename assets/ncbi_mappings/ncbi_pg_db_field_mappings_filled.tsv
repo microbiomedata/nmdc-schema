@@ -85,7 +85,6 @@ Biosample	climate_environment	climate_environment
 Biosample	collected_from		
 Biosample	collection_date	collection_date	
 Biosample	collection_time		
-Biosample	collection_time_inc		
 Biosample	community		
 Biosample	conduc	conduc	
 Biosample	cool_syst_id		
