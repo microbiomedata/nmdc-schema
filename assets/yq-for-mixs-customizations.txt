@@ -40,7 +40,9 @@
 '.slots.samp_collec_device.comments = ["GENEPIO'\''s subtree of OBI:0002814 includes grouping classes such as GENEPIO:0100941 (grab sampling device), GENEPIO:0100942 (composite sampling device), GENEPIO:0100943 (core sampling device), and GENEPIO:0100948 (passive sampling device).", "ENVO has no device classes; do not use ENVO terms here.", "Existing NMDC biosamples populate this slot with free text (e.g., \"corer\", \"Van Dorn\"). New submissions are encouraged to use the form: label [PREFIX:LOCALID]."]'
 
 '.slots.samp_collec_device.pattern |= "^([^\\[\\]]+|.+ \\[[A-Za-z][A-Za-z0-9_]*:[A-Za-z0-9_]+\\])$"'
-'.slots.isotopolog_atom_pos.pattern = "^InChI=1S?/[A-Za-z0-9.]+(/[^/]+)*/i(?:[0-9]+[+-][0-9]+(?:,[0-9]+[+-][0-9]+)*(?:/h[^/]+)?|/h[^/]+)$"'
+# Accept an InChI isotope layer that names a salt component (/i;1+1 or /i1+1;) or
+# deuterium or tritium by atom position (/i1D3). https://github.com/microbiomedata/nmdc-schema/issues/3469
+'.slots.isotopolog_atom_pos.pattern = "^InChI=1S?/[^\s/]+(?:/[^\s/i][^\s/]*)*/i(?=[^\s/]*(?:[0-9][+-][0-9]|[0-9][DT])|/h[^\s/]*[DT])[^\s/]*(?:/[^\s/]+)*$"'
 # Fix broken/inaccessible ontology URLs in inherited MIxS slot descriptions
 # (sister fixes to samp_collec_device above; same broken-link family as #1480).
 #
