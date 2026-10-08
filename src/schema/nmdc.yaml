@@ -1376,7 +1376,8 @@ slots:
     annotations:
       method_for: salinity
       Expected_value: "PMID,DOI or url"
-    slot_uri: MIXS:0000341
+    exact_mappings:
+      - MIXS:0000341
 
   soil_text_measure:
     title: soil texture measurement
