@@ -56,11 +56,14 @@ def normalize(name: str) -> str:
     return singular(re.sub(r"[_\s-]", "", name).lower())
 
 
-def mixs_names() -> frozenset[str]:
-    """Return the class, slot and enum names defined in the imported MIxS module."""
+def mixs_elements() -> frozenset[tuple[str, str]]:
+    """Return (kind, name) for the classes, slots and enums defined in the imported MIxS module."""
     doc = yaml.safe_load(MIXS_MODULE.read_text())
+    kinds = {"classes": "class", "slots": "slot", "enums": "enum"}
     return frozenset(
-        name for kind in ("classes", "slots", "enums") for name in doc.get(kind) or {}
+        (kind, name)
+        for section, kind in kinds.items()
+        for name in doc.get(section) or {}
     )
 
 
@@ -70,7 +73,7 @@ def colliding_names(
     """Return each group of two or more elements whose names normalize to the same string.
 
     Elements are (kind, name), so a class and a slot with the identical name count as a pair.
-    A group made up only of imported names is skipped, because CONTRIBUTING.md exempts imported
+    A group made up only of imported elements, matched by kind and name, is skipped, because CONTRIBUTING.md exempts imported
     elements from the naming conventions. A new NMDC name that collides with an imported one still counts.
     """
     groups = defaultdict(set)
@@ -80,18 +83,18 @@ def colliding_names(
     return {
         frozenset(members)
         for members in groups.values()
-        if len(members) > 1 and not all(name in imported for _, name in members)
+        if len(members) > 1 and not members <= imported
     }
 
 
 def test_no_new_element_names_collide() -> None:
-    new = colliding_names(SchemaView(SOURCE_SCHEMA), mixs_names()) - GRANDFATHERED
+    new = colliding_names(SchemaView(SOURCE_SCHEMA), mixs_elements()) - GRANDFATHERED
     assert new == set(), f"Rename one element in each group: {[sorted(g) for g in new]}"
 
 
 def test_grandfathered_list_has_no_fixed_entries() -> None:
     assert (
-        GRANDFATHERED - colliding_names(SchemaView(SOURCE_SCHEMA), mixs_names())
+        GRANDFATHERED - colliding_names(SchemaView(SOURCE_SCHEMA), mixs_elements())
         == set()
     )
 
@@ -131,15 +134,14 @@ slots:
 """
 
 
-def test_groups_of_only_imported_names_are_skipped() -> None:
+def test_groups_of_only_imported_elements_are_skipped() -> None:
     view = SchemaView(TOY_SCHEMA)
-    assert colliding_names(view, frozenset({"Sample"})) == {
-        frozenset({("class", "Process"), ("slot", "processes")})
-    }
-    # A collision between an imported name and a new name still counts.
-    assert frozenset({("class", "Process"), ("slot", "processes")}) in colliding_names(
-        view, frozenset({"Process"})
-    )
+    both_processes = frozenset({("class", "Process"), ("slot", "processes")})
+    both_samples = frozenset({("class", "Sample"), ("slot", "Sample")})
+    # Both Process elements imported: skipped.
+    assert colliding_names(view, both_processes) == {both_samples}
+    # Only the Sample slot imported, and a new Sample class with the exact same spelling: still a collision.
+    assert both_samples in colliding_names(view, frozenset({("slot", "Sample")}))
 
 
 def test_identical_and_plural_names_of_different_kinds_collide() -> None:
