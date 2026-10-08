@@ -19,12 +19,18 @@ PROCESS_METHOD_SLOTS = {
     "dna_lr_isolate_meth",
     "filter_method",
     "heat_sys_deliv_meth",
-    "internal_standard_method",
     "rna_isolate_meth",
     "samp_collec_method",
     "samp_sort_meth",
     "separation_method",
     "seq_meth",
+}
+
+
+# Method slots that describe one other slot but can't be paired yet, each with the issue that
+# blocks it. Remove an entry and add its method_for annotation once the issue is fixed.
+PENDING_METHOD_SLOTS = {
+    "internal_standard_method": "https://github.com/microbiomedata/nmdc-schema/issues/3500",
 }
 
 
@@ -54,6 +60,7 @@ def test_every_method_slot_is_paired_or_listed_as_a_process():
         if METHOD_SLOT_NAME.search(name)
         and name not in pairs
         and name not in PROCESS_METHOD_SLOTS
+        and name not in PENDING_METHOD_SLOTS
     )
     assert unpaired == [], (
         f"Add a method_for annotation or list these in PROCESS_METHOD_SLOTS: {unpaired}"
