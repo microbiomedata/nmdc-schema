@@ -61,7 +61,7 @@ enums:
       chemical speciation mapping:
         description: Identification and/or measurement of specific forms (isotopes, redox state, molecular structure, etc.) of one or more elements in a sample.
       isotope profiling:
-        description: Measurement of the stable isotope content of a sample. Typical measurements target hydrogen, carbon, nitrogen, and oxygen analyses.
+        description: Measurement of stable isotope ratios in a sample, typically for hydrogen, carbon, nitrogen, or oxygen.
       imaging - xray:
         description: A technique that uses X-rays to generate an image of a sample based on how strongly the different components absorb X-rays. Resulting images may be assembled into a 3D computer model.
       imaging - electron:
