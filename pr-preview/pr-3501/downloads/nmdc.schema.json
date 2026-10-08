@@ -4503,7 +4503,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Explain how and for how long the sample was stored before DNA extraction (for example, fresh/frozen/other). Include factors that may influence nucleic acid recovery or library construction. For example, specify temperature, humidity, presence of microbial overgrowth etc.."
+                    "description": "Explain how and for how long the sample was stored before DNA extraction (for example, fresh/frozen/other). Include factors that may influence nucleic acid recovery or library construction. For example, specify temperature, humidity, presence of microbial overgrowth etc."
                 },
                 "substructure_type": {
                     "description": "The substructure or under building is that largely hidden section of the building which is built off the foundations to the ground floor level",
@@ -18332,5 +18332,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.24.1.post122.dev0+0db15db32"
+    "version": "11.24.1.post123.dev0+d14d2e723"
 }

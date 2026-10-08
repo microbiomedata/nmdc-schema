@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.24.1.post122.dev0+0db15db32
+version: 11.24.1.post123.dev0+d14d2e723
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -17150,7 +17150,7 @@ slots:
     description: Explain how and for how long the sample was stored before DNA extraction
       (for example, fresh/frozen/other). Include factors that may influence nucleic
       acid recovery or library construction. For example, specify temperature, humidity,
-      presence of microbial overgrowth etc..
+      presence of microbial overgrowth etc.
     title: storage conditions
     examples:
     - object:
@@ -19198,8 +19198,8 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: samp_collect_method
-      contexts:
-      - https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v7.0.1
+      predicate: EXACT_SYNONYM
+      source: https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v7.0.1
     keywords:
     - method
     - sample
@@ -19223,8 +19223,8 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: estimated_genome_size
-      contexts:
-      - https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v7.0.1
+      predicate: EXACT_SYNONYM
+      source: https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v7.0.1
     keywords:
     - size
     slot_uri: MIXS:0000024
