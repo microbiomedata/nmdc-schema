@@ -13,6 +13,7 @@ ALLOWED_ANNOTATION_KEYS = {
     "Expected_value",
     "badge_minimum_slots",
     "file_name_pattern",
+    "method_for",
     "units_alignment_excuse",
     "occurrence",
     "originally",

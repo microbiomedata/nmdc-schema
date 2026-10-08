@@ -1200,3 +1200,24 @@
 '.slots.sieving.examples = [{"object": {"type": "nmdc:TextValue", "has_raw_value": "combined 2 cores | 4mm sieved"}}, {"object": {"type": "nmdc:TextValue", "has_raw_value": "4 mm sieved and homogenized"}}, {"object": {"type": "nmdc:TextValue", "has_raw_value": "50 g | 5 cores | 2 mm sieved"}}]'
 '.slots.misc_param.examples = [{"object": {"type": "nmdc:PropertyAssertion", "has_attribute_label": "Bicarbonate ion concentration", "has_numeric_value": 2075, "has_unit": "micromole per kilogram", "has_raw_value": "Bicarbonate ion concentration;2075 micromole per kilogram"}}]'
 '.slots.gradient_pos_rel_am.examples  = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "0.1", "has_numeric_value": 0.1, "has_unit": "1"}}]'
+
+# Record which slot each MIxS method slot describes, as a method_for annotation.
+# Pairs come from https://github.com/microbiomedata/nmdc-schema/issues/1433.
+# soil_texture_meth describes soil_text_measure, NMDC's slot for soil texture; MIxS's soil_texture is not imported.
+# See https://github.com/microbiomedata/nmdc-schema/issues/3481
+'.slots.al_sat_meth.annotations.method_for = {"tag": "method_for", "value": "al_sat"}'
+'.slots.alkalinity_method.annotations.method_for = {"tag": "method_for", "value": "alkalinity"}'
+'.slots.biocide_admin_method.annotations.method_for = {"tag": "method_for", "value": "biocide"}'
+'.slots.chem_treat_method.annotations.method_for = {"tag": "method_for", "value": "chem_treatment"}'
+'.slots.cur_vegetation_meth.annotations.method_for = {"tag": "method_for", "value": "cur_vegetation"}'
+'.slots.heavy_metals_meth.annotations.method_for = {"tag": "method_for", "value": "heavy_metals"}'
+'.slots.horizon_meth.annotations.method_for = {"tag": "method_for", "value": "soil_horizon"}'
+'.slots.local_class_meth.annotations.method_for = {"tag": "method_for", "value": "local_class"}'
+'.slots.micro_biomass_meth.annotations.method_for = {"tag": "method_for", "value": "microbial_biomass"}'
+'.slots.ph_meth.annotations.method_for = {"tag": "method_for", "value": "ph"}'
+'.slots.prev_land_use_meth.annotations.method_for = {"tag": "method_for", "value": "previous_land_use"}'
+'.slots.soil_texture_meth.annotations.method_for = {"tag": "method_for", "value": "soil_text_measure"}'
+'.slots.soil_type_meth.annotations.method_for = {"tag": "method_for", "value": "soil_type"}'
+'.slots.tot_nitro_cont_meth.annotations.method_for = {"tag": "method_for", "value": "tot_nitro_content"}'
+'.slots.tot_org_c_meth.annotations.method_for = {"tag": "method_for", "value": "tot_org_carb"}'
+'.slots.water_cont_soil_meth.annotations.method_for = {"tag": "method_for", "value": "water_content"}'
