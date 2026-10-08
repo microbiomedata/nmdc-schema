@@ -926,20 +926,12 @@ portal submission guidance, and upcoming changes.</p>
     -d $(DEST) $(SOURCE_SCHEMA_PATH)
 </code></pre>
 <p>This produces <code>project/owl/nmdc.owl.ttl</code> (~1.3 MB). The config file
-(<code>gen-project-config.yaml</code>) has one JSON Schema option and three OWL options:</p>
+(<code>gen-project-config.yaml</code>) currently has <strong>no OWL-specific settings</strong> -- only a
+JSON Schema option:</p>
 <pre><code class="language-yaml">generator_args:
   jsonschema:
     include_range_class_descendants: true
-  owl:
-    skip_vacuous_min_zero_cardinality_axioms: false
-    skip_vacuous_local_range_axioms: false
-    consolidate_cardinality_axioms: false
 </code></pre>
-<p>The three OWL options are set to their current defaults. linkml warns that each
-default will change to <code>true</code> in a future release, which would drop or merge
-about 1,900 of the roughly 3,100 restrictions in <code>nmdc.owl.ttl</code>. Setting them
-keeps the output stable until we decide to adopt the new defaults
-(<a href="https://github.com/microbiomedata/nmdc-schema/issues/3413">#3413</a>).</p>
 <p>The OWL output is gitignored, not included in the PyPI package, and not published
 in the docs. Per <a href="https://github.com/microbiomedata/nmdc-schema/issues/2749">#2749</a>,
 nobody appears to consume it. There is no standalone <code>linkml generate owl</code>
@@ -1106,24 +1098,6 @@ the project generator merges default args with config args and passes them as
 <td><code>target_profile</code></td>
 <td><code>str</code> (<code>dl</code>, <code>full</code>)</td>
 <td><code>dl</code></td>
-</tr>
-<tr>
-<td><code>--skip-vacuous-min-zero-cardinality-axioms / --no-...</code></td>
-<td><code>skip_vacuous_min_zero_cardinality_axioms</code></td>
-<td><code>bool</code></td>
-<td><code>false</code>, changing to <code>true</code></td>
-</tr>
-<tr>
-<td><code>--skip-vacuous-local-range-axioms / --no-...</code></td>
-<td><code>skip_vacuous_local_range_axioms</code></td>
-<td><code>bool</code></td>
-<td><code>false</code>, changing to <code>true</code></td>
-</tr>
-<tr>
-<td><code>--consolidate-cardinality-axioms / --no-...</code></td>
-<td><code>consolidate_cardinality_axioms</code></td>
-<td><code>bool</code></td>
-<td><code>false</code>, changing to <code>true</code></td>
 </tr>
 </tbody>
 </table>
