@@ -31,6 +31,7 @@ from functools import lru_cache
 from pathlib import Path
 
 import click
+import linkml_runtime
 import yaml
 
 logger = logging.getLogger(__name__)
@@ -106,6 +107,31 @@ def defined_at(ref: str, built: bool) -> frozenset[Key]:
     return frozenset(found)
 
 
+def linkml_type_names() -> frozenset[str]:
+    """Return the names of the types defined by linkml:types, read from the installed linkml_runtime."""
+    types_yaml = (
+        Path(linkml_runtime.__file__).parent
+        / "linkml_model"
+        / "model"
+        / "schema"
+        / "types.yaml"
+    )
+    return frozenset(yaml.safe_load(types_yaml.read_text())["types"])
+
+
+def combine_current(
+    source: frozenset[Key], built: frozenset[Key], imported_types: frozenset[str]
+) -> set[Key]:
+    """Return the source inventory plus the built file's types that come from linkml:types.
+
+    Only imported LinkML types are taken from the built file. An NMDC-defined type that was
+    removed from the source but survives in a stale built file is not counted as current.
+    """
+    return set(source) | {
+        key for key in built if key[0] == "types" and key[2] in imported_types
+    }
+
+
 def current_inventory(ref: str) -> set[Key]:
     """Return what REF defines now.
 
@@ -113,9 +139,9 @@ def current_inventory(ref: str) -> set[Key]:
     merged PR removed from the source. Source files are used, plus the types that the built
     files import from linkml:types, which no source file defines.
     """
-    found = set(defined_at(ref, built=False))
-    found |= {key for key in defined_at(ref, built=True) if key[0] == "types"}
-    return found
+    return combine_current(
+        defined_at(ref, built=False), defined_at(ref, built=True), linkml_type_names()
+    )
 
 
 def removal_commits(keys: set[Key], last: str, gone: str) -> dict[Key, str]:
