@@ -686,6 +686,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annotations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -774,6 +785,21 @@
 has_raw_value: &quot;https://www.epa.gov/sites/production/files/2015-12/documents/9040c.pdf&quot;
 </code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="annotations">Annotations</h3>
+<table>
+<thead>
+<tr>
+<th>property</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>method_for</td>
+<td>ph</td>
+</tr>
+</tbody>
+</table>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
@@ -797,6 +823,10 @@ has_raw_value: &quot;https://www.epa.gov/sites/production/files/2015-12/document
 <details>
 
 <pre><code class="language-yaml">name: ph_meth
+annotations:
+  method_for:
+    tag: method_for
+    value: ph
 description: Reference or method used in determining pH
 title: pH method
 examples:

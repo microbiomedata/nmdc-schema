@@ -6027,6 +6027,10 @@ attributes:
       partial_match: true
   al_sat_meth:
     name: al_sat_meth
+    annotations:
+      method_for:
+        tag: method_for
+        value: al_sat
     description: Reference or method used in determining Aluminum saturation
     title: aluminum saturation method/ extreme unusual properties
     todos:
@@ -6089,6 +6093,10 @@ attributes:
       partial_match: true
   alkalinity_method:
     name: alkalinity_method
+    annotations:
+      method_for:
+        tag: method_for
+        value: alkalinity
     description: Method used for alkalinity measurement
     title: alkalinity method
     examples:
@@ -6785,6 +6793,9 @@ attributes:
       Preferred_unit:
         tag: Preferred_unit
         value: milligram per liter
+      method_for:
+        tag: method_for
+        value: biocide
     description: Method of biocide administration (dose, frequency, duration, time
       elapsed between last biociding and sampling) (e.g. 150 mg/l; weekly; 4 hr; 3
       days)
@@ -7474,6 +7485,9 @@ attributes:
       Preferred_unit:
         tag: Preferred_unit
         value: milligram per liter
+      method_for:
+        tag: method_for
+        value: chem_treatment
     description: Method of chemical administration(dose, frequency, duration, time
       elapsed between administration and sampling) (e.g. 50 mg/l; twice a week; 1
       hr; 0 days)
@@ -7785,6 +7799,10 @@ attributes:
     range: TextValue
   cur_vegetation_meth:
     name: cur_vegetation_meth
+    annotations:
+      method_for:
+        tag: method_for
+        value: cur_vegetation
     description: Reference or method used in vegetation classification
     title: current vegetation method
     todos:
@@ -9922,6 +9940,10 @@ attributes:
     inlined_as_list: true
   heavy_metals_meth:
     name: heavy_metals_meth
+    annotations:
+      method_for:
+        tag: method_for
+        value: heavy_metals
     description: Reference or method used in determining heavy metals
     title: heavy metals method/ extreme unusual properties
     comments:
@@ -10003,6 +10025,10 @@ attributes:
     inlined_as_list: true
   horizon_meth:
     name: horizon_meth
+    annotations:
+      method_for:
+        tag: method_for
+        value: soil_horizon
     description: Reference or method used in determining the horizon
     title: horizon method
     examples:
@@ -11261,6 +11287,10 @@ attributes:
     range: TextValue
   local_class_meth:
     name: local_class_meth
+    annotations:
+      method_for:
+        tag: method_for
+        value: local_class
     description: Reference or method used in determining the local soil classification
     title: soil_taxonomic/local classification method
     examples:
@@ -11464,6 +11494,10 @@ attributes:
       partial_match: true
   micro_biomass_meth:
     name: micro_biomass_meth
+    annotations:
+      method_for:
+        tag: method_for
+        value: microbial_biomass
     description: Reference or method used in determining microbial biomass
     title: microbial biomass method
     comments:
@@ -12317,6 +12351,10 @@ attributes:
     range: float
   ph_meth:
     name: ph_meth
+    annotations:
+      method_for:
+        tag: method_for
+        value: ph
     description: Reference or method used in determining pH
     title: pH method
     comments:
@@ -12740,6 +12778,10 @@ attributes:
       partial_match: true
   prev_land_use_meth:
     name: prev_land_use_meth
+    annotations:
+      method_for:
+        tag: method_for
+        value: previous_land_use
     description: Reference or method used in determining previous land use and dates
     title: history/previous land use method
     examples:
@@ -13712,6 +13754,9 @@ attributes:
   salinity_meth:
     name: salinity_meth
     annotations:
+      method_for:
+        tag: method_for
+        value: salinity
       Expected_value:
         tag: Expected_value
         value: PMID,DOI or url
@@ -14950,6 +14995,10 @@ attributes:
     multivalued: false
   soil_texture_meth:
     name: soil_texture_meth
+    annotations:
+      method_for:
+        tag: method_for
+        value: soil_text_measure
     description: Reference or method used in determining soil texture
     title: soil texture method
     examples:
@@ -14992,6 +15041,10 @@ attributes:
     range: TextValue
   soil_type_meth:
     name: soil_type_meth
+    annotations:
+      method_for:
+        tag: method_for
+        value: soil_type
     description: Reference or method used in determining soil series name or other
       lower-level classification
     title: soil type method
@@ -16036,6 +16089,10 @@ attributes:
       partial_match: true
   tot_nitro_cont_meth:
     name: tot_nitro_cont_meth
+    annotations:
+      method_for:
+        tag: method_for
+        value: tot_nitro_content
     description: Reference or method used in determining the total nitrogen
     title: total nitrogen content method
     examples:
@@ -16090,6 +16147,10 @@ attributes:
       partial_match: true
   tot_org_c_meth:
     name: tot_org_c_meth
+    annotations:
+      method_for:
+        tag: method_for
+        value: tot_org_carb
     description: Reference or method used in determining total organic carbon
     title: total organic carbon method
     examples:
@@ -16774,6 +16835,10 @@ attributes:
     range: TextValue
   water_cont_soil_meth:
     name: water_cont_soil_meth
+    annotations:
+      method_for:
+        tag: method_for
+        value: water_content
     description: Reference or method used in determining the water content of soil
     title: water content method
     todos:
@@ -17658,6 +17723,10 @@ attributes:
     recommended: true
   micro_biomass_c_meth:
     name: micro_biomass_c_meth
+    annotations:
+      method_for:
+        tag: method_for
+        value: microbial_biomass_c
     description: Reference or method used in determining microbial biomass carbon
     title: microbial biomass carbon method
     todos:
@@ -17680,6 +17749,10 @@ attributes:
     recommended: true
   micro_biomass_n_meth:
     name: micro_biomass_n_meth
+    annotations:
+      method_for:
+        tag: method_for
+        value: microbial_biomass_n
     description: Reference or method used in determining microbial biomass nitrogen
     title: microbial biomass nitrogen method
     comments:
@@ -17762,6 +17835,10 @@ attributes:
     range: string
   non_microb_biomass_method:
     name: non_microb_biomass_method
+    annotations:
+      method_for:
+        tag: method_for
+        value: non_microb_biomass
     description: Reference or method used in determining biomass
     title: non-microbial biomass method
     comments:
@@ -17781,6 +17858,10 @@ attributes:
     range: string
   org_nitro_method:
     name: org_nitro_method
+    annotations:
+      method_for:
+        tag: method_for
+        value: org_nitro
     description: Method used for obtaining organic nitrogen
     title: organic nitrogen method
     comments:
