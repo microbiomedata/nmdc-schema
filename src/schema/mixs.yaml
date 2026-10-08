@@ -1220,6 +1220,8 @@ slots:
       syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
+    annotations:
+      method_for: al_sat
   alkalinity:
     annotations:
       Preferred_unit: milliequivalent per liter, milligram per liter
@@ -1252,6 +1254,8 @@ slots:
       - method
     slot_uri: MIXS:0000298
     range: string
+    annotations:
+      method_for: alkalinity
   alkyl_diethers:
     description: Concentration of alkyl diethers
     title: alkyl diethers
@@ -1665,6 +1669,7 @@ slots:
     annotations:
       Expected_value: measurement value;frequency;duration;duration
       Preferred_unit: milligram per liter
+      method_for: biocide
     description: Method of biocide administration (dose, frequency, duration, time elapsed between last biociding and sampling) (e.g. 150 mg/l; weekly; 4 hr; 3 days)
     title: biocide administration method
     keywords:
@@ -2083,6 +2088,7 @@ slots:
     annotations:
       Expected_value: measurement value;frequency;duration;duration
       Preferred_unit: milligram per liter
+      method_for: chem_treatment
     description: Method of chemical administration(dose, frequency, duration, time elapsed between administration and sampling) (e.g. 50 mg/l; twice a week; 1 hr; 0 days)
     title: chemical treatment method
     keywords:
@@ -2284,6 +2290,8 @@ slots:
       syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
+    annotations:
+      method_for: cur_vegetation
   date_last_rain:
     description: The date of the last time it rained
     title: date last rain
@@ -3520,6 +3528,8 @@ slots:
       interpolated: true
       partial_match: true
     inlined_as_list: true
+    annotations:
+      method_for: heavy_metals
   height_carper_fiber:
     annotations:
       Preferred_unit: centimeter
@@ -3561,6 +3571,8 @@ slots:
       syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
+    annotations:
+      method_for: soil_horizon
   host_age:
     annotations:
       Preferred_unit: year, day, hour
@@ -4309,6 +4321,8 @@ slots:
       syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
+    annotations:
+      method_for: local_class
   magnesium:
     annotations:
       Preferred_unit: mole per liter, milligram per liter, parts per million, micromole per kilogram
@@ -4437,6 +4451,8 @@ slots:
       - microbial
     slot_uri: MIXS:0000339
     range: string
+    annotations:
+      method_for: microbial_biomass
   microbial_biomass:
     annotations:
       Preferred_unit: ton, kilogram, gram per kilogram soil
@@ -5012,6 +5028,8 @@ slots:
       - ph
     slot_uri: MIXS:0001106
     range: TextValue
+    annotations:
+      method_for: ph
   ph_regm:
     description: Information about treatment involving exposure of plants to varying levels of ph of the growth media, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimen
     title: pH regimen
@@ -5275,6 +5293,8 @@ slots:
       syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
+    annotations:
+      method_for: previous_land_use
   previous_land_use:
     annotations:
       Expected_value: land use name;date
@@ -6568,6 +6588,8 @@ slots:
       - texture
     slot_uri: MIXS:0000336
     range: string
+    annotations:
+      method_for: soil_text_measure
   soil_type:
     annotations:
       Expected_value: ENVO:00001998
@@ -6595,6 +6617,8 @@ slots:
       - type
     slot_uri: MIXS:0000334
     range: TextValue
+    annotations:
+      method_for: soil_type
   solar_irradiance:
     annotations:
       Preferred_unit: kilowatts per square meter per day, ergs per square centimeter per second
@@ -7269,6 +7293,8 @@ slots:
       syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
+    annotations:
+      method_for: tot_nitro_content
   tot_nitro_content:
     description: Total nitrogen content of the sample
     title: total nitrogen content
@@ -7308,6 +7334,8 @@ slots:
       syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
+    annotations:
+      method_for: tot_org_carb
   tot_org_carb:
     annotations:
       Preferred_unit: gram Carbon per kilogram sample material
@@ -7720,6 +7748,8 @@ slots:
       - water
     slot_uri: MIXS:0000323
     range: string
+    annotations:
+      method_for: water_content
   water_content:
     annotations:
       Preferred_unit: gram per gram or cubic centimeter per cubic centimeter

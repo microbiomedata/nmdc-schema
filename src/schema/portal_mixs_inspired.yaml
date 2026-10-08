@@ -95,6 +95,8 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_group: MIxS Inspired
     recommended: true
+    annotations:
+      method_for: microbial_biomass_c
   micro_biomass_n_meth:
     description: Reference or method used in determining microbial biomass nitrogen
     title: microbial biomass nitrogen method
@@ -108,6 +110,8 @@ slots:
     rank: 13
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_group: MIxS Inspired
+    annotations:
+      method_for: microbial_biomass_n
   microbial_biomass_c:
     in_subset:
       - biogeochemistry
@@ -166,6 +170,8 @@ slots:
     rank: 9
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_group: MIxS Inspired
+    annotations:
+      method_for: non_microb_biomass
   org_nitro_method:
     description: Method used for obtaining organic nitrogen
     title: organic nitrogen method
@@ -180,6 +186,8 @@ slots:
     rank: 14
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_group: MIxS Inspired
+    annotations:
+      method_for: org_nitro
   other_treatment:
     description: Other treatments applied to your samples that are not applicable
       to the provided fields
