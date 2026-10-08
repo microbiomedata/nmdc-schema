@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.24.1.post150.dev0+05c6e23cc
+version: 11.24.1.post151.dev0+03b6d8c46
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -6504,10 +6504,12 @@ enums:
           sample and generate images.
       imaging - ion:
         text: imaging - ion
-        description: Analysis that uses ions to scan a sample and generate images.
+        description: A microscopy technique that uses ions to scan a sample and generate
+          images.
       imaging - light:
         text: imaging - light
-        description: Analysis that uses visible light to generate images of a sample.
+        description: A microscopy technique that uses visible light to generate images
+          of a sample.
       hydraulic properties:
         text: hydraulic properties
         description: Measurement of the relative permeability-saturation-capillary
