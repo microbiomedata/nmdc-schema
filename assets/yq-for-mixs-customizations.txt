@@ -1,7 +1,7 @@
 # =============================================================================
 # MIxS Customizations for NMDC Schema
 # =============================================================================
-# Target: GSC MIxS v6.3.0
+# Target: GSC MIxS v7.0.1 (most slots; see assets/import_mixs_slots_regardless.tsv)
 # Documentation: src/docs/mixs-v6.3.0-customizations.md
 # =============================================================================
 
@@ -10,10 +10,13 @@
 # See https://github.com/microbiomedata/nmdc-schema/issues/1368
 '.slots.samp_collec_device = .slots.samp_collect_device | del(.slots.samp_collect_device)'
 '.slots.samp_collec_method = .slots.samp_collect_method | del(.slots.samp_collect_method)'
+# MIxS v7.0.0 renamed estimated_size to estimated_genome_size (same ID, MIXS:0000024). NMDC keeps the old name for now.
+'.slots.estimated_size = .slots.estimated_genome_size | del(.slots.estimated_genome_size)'
 
 # Add structured aliases to document the GSC canonical names for renamed slots
-'.slots.samp_collec_device.structured_aliases = [{"literal_form": "samp_collect_device", "contexts": ["https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.3.0"]}]'
-'.slots.samp_collec_method.structured_aliases = [{"literal_form": "samp_collect_method", "contexts": ["https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.3.0"]}]'
+'.slots.samp_collec_device.structured_aliases = [{"literal_form": "samp_collect_device", "contexts": ["https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v7.0.1"]}]'
+'.slots.samp_collec_method.structured_aliases = [{"literal_form": "samp_collect_method", "contexts": ["https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v7.0.1"]}]'
+'.slots.estimated_size.structured_aliases = [{"literal_form": "estimated_genome_size", "contexts": ["https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v7.0.1"]}]'
 
 # Tighten samp_collec_device — see PR #3005 / issue #1480
 # Upstream MIxS description has broken links (ENVO root 404; GENEPIO_0002094 obsolete).
@@ -241,6 +244,9 @@
 'del(.slots.env_broad_scale.required)'
 'del(.slots.env_local_scale.required)'
 'del(.slots.env_medium.required)'
+# MIxS v7.0.0 made env_medium multivalued (GSC commit b911b48bc). NMDC data stores one value per biosample,
+# so keep it single-valued until a migration is planned. See https://github.com/microbiomedata/nmdc-schema/issues/3480
+'del(.slots.env_medium.multivalued)'
 'del(.slots.filter_type.required)'
 'del(.slots.geo_loc_name.required)'
 'del(.slots.hc_produced.required)'
@@ -354,6 +360,8 @@
 '.slots.phaeopigments.range |= "TextValue"'
 '.slots.phosplipid_fatt_acid.range |= "TextValue"'
 '.slots.plant_growth_med.range |= "ControlledTermValue"'
+# MIxS v7.0.0 added a plain value example; NMDC's wrapper range needs the object form.
+'.slots.plant_growth_med.examples = [{"object": {"type": "nmdc:ControlledTermValue", "has_raw_value": "hydroponic plant culture media exposure [PECO:0007067]"}}]'
 '.slots.plant_struc.range |= "ControlledTermValue"'
 '.slots.pollutants.range |= "TextValue"'
 '.slots.porosity.range |= "TextValue"'
