@@ -10,11 +10,14 @@ from collections import defaultdict
 
 from linkml_runtime import SchemaView
 
+import yaml
+
 from tests import ROOT
 
 # The source schema, not the generated nmdc_materialized_patterns.yaml, so the check sees
 # edits under src/schema/ before `make all` regenerates the artifact.
 SOURCE_SCHEMA = ROOT / "src" / "schema" / "nmdc.yaml"
+MIXS_MODULE = ROOT / "src" / "schema" / "mixs.yaml"
 
 # Groups that existed when this test was added (2026-10-08), as (kind, name). Don't add to this list.
 GRANDFATHERED = {
@@ -31,10 +34,17 @@ ELEMENT_KINDS = {
 
 
 def singular(word: str) -> str:
-    """Return a lowercase word without a regular English plural ending."""
+    """Return a lowercase word without a regular English plural ending.
+
+    The endings handled are the ones CONTRIBUTING.md names: -ies (categories), -yses (analyses),
+    -es after s, x, z, ch and sh (processes, statuses, boxes), and a final -s (samples). Irregular
+    plurals are not handled.
+    """
     if word.endswith("ies") and len(word) > 4:
         return word[:-3] + "y"
-    if word.endswith(("sses", "xes", "zes", "ches", "shes")):
+    if word.endswith("yses"):
+        return word[:-4] + "ysis"
+    if word.endswith(("sses", "uses", "xes", "zes", "ches", "shes")):
         return word[:-2]
     if word.endswith("s") and not word.endswith(("ss", "us", "is")):
         return word[:-1]
@@ -46,25 +56,44 @@ def normalize(name: str) -> str:
     return singular(re.sub(r"[_\s-]", "", name).lower())
 
 
-def colliding_names(view: SchemaView) -> set[frozenset[tuple[str, str]]]:
+def mixs_names() -> frozenset[str]:
+    """Return the class, slot and enum names defined in the imported MIxS module."""
+    doc = yaml.safe_load(MIXS_MODULE.read_text())
+    return frozenset(
+        name for kind in ("classes", "slots", "enums") for name in doc.get(kind) or {}
+    )
+
+
+def colliding_names(
+    view: SchemaView, imported: frozenset[str] = frozenset()
+) -> set[frozenset[tuple[str, str]]]:
     """Return each group of two or more elements whose names normalize to the same string.
 
     Elements are (kind, name), so a class and a slot with the identical name count as a pair.
+    A group made up only of imported names is skipped, because CONTRIBUTING.md exempts imported
+    elements from the naming conventions. A new NMDC name that collides with an imported one still counts.
     """
     groups = defaultdict(set)
     for kind, getter in ELEMENT_KINDS.items():
         for name in getter(view):
             groups[normalize(name)].add((kind, name))
-    return {frozenset(members) for members in groups.values() if len(members) > 1}
+    return {
+        frozenset(members)
+        for members in groups.values()
+        if len(members) > 1 and not all(name in imported for _, name in members)
+    }
 
 
 def test_no_new_element_names_collide() -> None:
-    new = colliding_names(SchemaView(SOURCE_SCHEMA)) - GRANDFATHERED
+    new = colliding_names(SchemaView(SOURCE_SCHEMA), mixs_names()) - GRANDFATHERED
     assert new == set(), f"Rename one element in each group: {[sorted(g) for g in new]}"
 
 
 def test_grandfathered_list_has_no_fixed_entries() -> None:
-    assert GRANDFATHERED - colliding_names(SchemaView(SOURCE_SCHEMA)) == set()
+    assert (
+        GRANDFATHERED - colliding_names(SchemaView(SOURCE_SCHEMA), mixs_names())
+        == set()
+    )
 
 
 def test_normalize() -> None:
@@ -78,6 +107,10 @@ def test_normalize() -> None:
     assert normalize("process") == "process"
     assert normalize("status") == "status"
     assert normalize("analysis") == "analysis"
+    assert normalize("statuses") == normalize("Status")
+    assert normalize("buses") == normalize("Bus")
+    assert normalize("analyses") == normalize("Analysis")
+    assert normalize("cases") == normalize("case")
 
 
 TOY_SCHEMA = """
@@ -96,6 +129,17 @@ slots:
   processes: {}
   depth: {}
 """
+
+
+def test_groups_of_only_imported_names_are_skipped() -> None:
+    view = SchemaView(TOY_SCHEMA)
+    assert colliding_names(view, frozenset({"Sample"})) == {
+        frozenset({("class", "Process"), ("slot", "processes")})
+    }
+    # A collision between an imported name and a new name still counts.
+    assert frozenset({("class", "Process"), ("slot", "processes")}) in colliding_names(
+        view, frozenset({"Process"})
+    )
 
 
 def test_identical_and_plural_names_of_different_kinds_collide() -> None:
