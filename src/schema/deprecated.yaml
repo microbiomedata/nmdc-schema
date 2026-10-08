@@ -143,6 +143,16 @@ classes:
     exact_mappings:
       - biolink:ChemicalSubstance
 
+  PersonValue:
+    description: An attribute value representing a person
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/3385 (Reroot `PersonValue`
+      to remove `has_raw_value`, add parent and sister classes for consortium handling, rename slot and
+      class accordingly, and implement migrator). Last released in v11.23.0. Recorded from git history for
+      https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    deprecated_element_has_possible_replacement: Person
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+
 slots:
   dna_organisms:
     description: List any organisms known or suspected to grow in co-culture, as well
@@ -344,3 +354,492 @@ slots:
     string_serialization: '{date, arbitrary precision}'
     slot_group: MIxS Inspired
     recommended: true
+
+  applies_to_person:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/3385 (Reroot `PersonValue`
+      to remove `has_raw_value`, add parent and sister classes for consortium handling, rename slot and
+      class accordingly, and implement migrator). Last released in v11.23.0. Recorded from git history for
+      https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    deprecated_element_has_possible_replacement: applies_to_agent
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  core field:
+    description: basic fields
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2773 (Migrate MIxS import
+      to GSC release v6.2.2). Last released in v11.14.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  direct_infusion_category:
+    description: used when a processed sample is introduced into a mass spectrometer without chromatographic
+      separation
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2248 (Remove `direct_infusion_category`
+      and `DirectInfusionEnum`). Last released in v11.0.3. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  dna_cont_type:
+    description: Tube or plate (96-well)
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2607 (Remove unused JGI only
+      slots from Biosample Class). Last released in v11.10.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  dna_cont_well:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2607 (Remove unused JGI only
+      slots from Biosample Class). Last released in v11.10.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  dna_container_id:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2607 (Remove unused JGI only
+      slots from Biosample Class). Last released in v11.10.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  dna_dnase:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2607 (Remove unused JGI only
+      slots from Biosample Class). Last released in v11.10.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  dna_project_contact:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2607 (Remove unused JGI only
+      slots from Biosample Class). Last released in v11.10.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  dna_samp_id:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2607 (Remove unused JGI only
+      slots from Biosample Class). Last released in v11.10.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  dna_sample_format:
+    description: Solution in which the DNA sample has been suspended
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2607 (Remove unused JGI only
+      slots from Biosample Class). Last released in v11.10.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  dna_sample_name:
+    description: Give the DNA sample a name that is meaningful to you. Sample names must be unique across
+      all JGI projects and contain a-z, A-Z, 0-9, - and _ only.
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2607 (Remove unused JGI only
+      slots from Biosample Class). Last released in v11.10.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  dna_seq_project:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2607 (Remove unused JGI only
+      slots from Biosample Class). Last released in v11.10.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  dna_seq_project_name:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2607 (Remove unused JGI only
+      slots from Biosample Class). Last released in v11.10.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  dna_seq_project_pi:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2607 (Remove unused JGI only
+      slots from Biosample Class). Last released in v11.10.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  dna_volume:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2607 (Remove unused JGI only
+      slots from Biosample Class). Last released in v11.10.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  dnase_rna:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2607 (Remove unused JGI only
+      slots from Biosample Class). Last released in v11.10.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  environment field:
+    description: field describing environmental aspect of a sample
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2773 (Migrate MIxS import
+      to GSC release v6.2.2). Last released in v11.14.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  has_calibration:
+    description: a calibration instance associated with a process
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2282 (Introduce `generates_calibration`
+      and `uses_calibration` slots, examples, and migrator). Last released in v11.2.0. Recorded from git
+      history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  investigation field:
+    description: field describing aspect of the investigation/study to which the sample belongs
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2773 (Migrate MIxS import
+      to GSC release v6.2.2). Last released in v11.14.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  nucleic acid sequence source field:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2773 (Migrate MIxS import
+      to GSC release v6.2.2). Last released in v11.14.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  proposal_dna:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2607 (Remove unused JGI only
+      slots from Biosample Class). Last released in v11.10.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  proposal_rna:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2607 (Remove unused JGI only
+      slots from Biosample Class). Last released in v11.10.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  rna_absorb1:
+    description: 260/280 measurement of RNA sample purity
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2607 (Remove unused JGI only
+      slots from Biosample Class). Last released in v11.10.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  rna_absorb2:
+    description: 260/230 measurement of RNA sample purity
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2607 (Remove unused JGI only
+      slots from Biosample Class). Last released in v11.10.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  rna_concentration:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2607 (Remove unused JGI only
+      slots from Biosample Class). Last released in v11.10.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  rna_cont_type:
+    description: Tube or plate (96-well)
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2607 (Remove unused JGI only
+      slots from Biosample Class). Last released in v11.10.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  rna_cont_well:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2607 (Remove unused JGI only
+      slots from Biosample Class). Last released in v11.10.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  rna_container_id:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2607 (Remove unused JGI only
+      slots from Biosample Class). Last released in v11.10.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  rna_project_contact:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2607 (Remove unused JGI only
+      slots from Biosample Class). Last released in v11.10.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  rna_samp_id:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2607 (Remove unused JGI only
+      slots from Biosample Class). Last released in v11.10.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  rna_sample_format:
+    description: Solution in which the RNA sample has been suspended
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2607 (Remove unused JGI only
+      slots from Biosample Class). Last released in v11.10.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  rna_sample_name:
+    description: Give the RNA sample a name that is meaningful to you. Sample names must be unique across
+      all JGI projects and contain a-z, A-Z, 0-9, - and _ only.
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2607 (Remove unused JGI only
+      slots from Biosample Class). Last released in v11.10.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  rna_seq_project:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2607 (Remove unused JGI only
+      slots from Biosample Class). Last released in v11.10.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  rna_seq_project_name:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2607 (Remove unused JGI only
+      slots from Biosample Class). Last released in v11.10.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  rna_seq_project_pi:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2607 (Remove unused JGI only
+      slots from Biosample Class). Last released in v11.10.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  rna_volume:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2607 (Remove unused JGI only
+      slots from Biosample Class). Last released in v11.10.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  sample_growth_conditions:
+    description: Free-text description of the in-vitro conditions under which the organism sample was grown
+      or maintained — culture media, growth chamber settings, facility type, or other lab-controlled growth
+      context. For environmental site context see `sample_collection_site`; for the source matrix the organism
+      came out of see `sample_isolated_from`.
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/3155 (Remove sample_isolated_from
+      and sample_growth_conditions from OrganismSample (#3131)). Last released in v11.20.1. Recorded from
+      git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  sample_isolated_from:
+    description: Free-text description of the environmental or biological matrix from which the organism
+      sample was isolated — the *what* it came out of (e.g. iron-rich microbial mat, leaf tissue, catalog
+      vial). For the *where* (geographic / environmental site of collection) see `sample_collection_site`;
+      for in-vitro growth conditions (lab maintenance, culture media, growth chambers) see `sample_growth_conditions`.
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/3155 (Remove sample_isolated_from
+      and sample_growth_conditions from OrganismSample (#3131)). Last released in v11.20.1. Recorded from
+      git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  sample_isolation_method:
+    description: Method, protocol, or kit used to extract DNA/RNA from the sample.
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/3184 (Rework PloidyEnum and
+      clean up ploidy/classified_as descriptions; remove sample_isolation_method (issue 3182)). Last released
+      in v11.20.1. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  sequencing field:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2773 (Migrate MIxS import
+      to GSC release v6.2.2). Last released in v11.14.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+
+enums:
+  AnalyteCategoryEnum:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2249 (Remodeling of range
+      for analyte_cateogry). Last released in v11.2.1. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  DNASampleFormatEnum:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2607 (Remove unused JGI only
+      slots from Biosample Class). Last released in v11.10.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  DirectInfusionEnum:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2248 (Remove `direct_infusion_category`
+      and `DirectInfusionEnum`). Last released in v11.0.3. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  JgiContTypeEnum:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2607 (Remove unused JGI only
+      slots from Biosample Class). Last released in v11.10.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  RNASampleFormatEnum:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2607 (Remove unused JGI only
+      slots from Biosample Class). Last released in v11.10.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  TargetGeneEnum:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/3246 (Rename TargetGeneEnum
+      to TargetGeneOrLocusEnum; add rRNA operon values). Last released in v11.21.0. Recorded from git history
+      for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    deprecated_element_has_exact_replacement: TargetGeneOrLocusEnum
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  ceil_cond_enum:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2773 (Migrate MIxS import
+      to GSC release v6.2.2). Last released in v11.14.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    deprecated_element_has_exact_replacement: DamagedEnum
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  ceil_texture_enum:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2773 (Migrate MIxS import
+      to GSC release v6.2.2). Last released in v11.14.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    deprecated_element_has_exact_replacement: CeilingWallTextureEnum
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  door_cond_enum:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2773 (Migrate MIxS import
+      to GSC release v6.2.2). Last released in v11.14.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    deprecated_element_has_exact_replacement: DamagedRupturedEnum
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  door_loc_enum:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2773 (Migrate MIxS import
+      to GSC release v6.2.2). Last released in v11.14.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    deprecated_element_has_exact_replacement: CompassDirections8Enum
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  door_type_wood_enum:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2773 (Migrate MIxS import
+      to GSC release v6.2.2). Last released in v11.14.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  ext_wall_orient_enum:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2773 (Migrate MIxS import
+      to GSC release v6.2.2). Last released in v11.14.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    deprecated_element_has_exact_replacement: CompassDirections8Enum
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  ext_window_orient_enum:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2773 (Migrate MIxS import
+      to GSC release v6.2.2). Last released in v11.14.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    deprecated_element_has_exact_replacement: CompassDirections8Enum
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  floor_cond_enum:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2773 (Migrate MIxS import
+      to GSC release v6.2.2). Last released in v11.14.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    deprecated_element_has_exact_replacement: DamagedEnum
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  floor_finish_mat_enum:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2773 (Migrate MIxS import
+      to GSC release v6.2.2). Last released in v11.14.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  hcr_geol_age_enum:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2773 (Migrate MIxS import
+      to GSC release v6.2.2). Last released in v11.14.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    deprecated_element_has_exact_replacement: GeolAgeEnum
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  heat_deliv_loc_enum:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2773 (Migrate MIxS import
+      to GSC release v6.2.2). Last released in v11.14.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    deprecated_element_has_exact_replacement: CompassDirections8Enum
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  int_wall_cond_enum:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2773 (Migrate MIxS import
+      to GSC release v6.2.2). Last released in v11.14.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    deprecated_element_has_exact_replacement: DamagedEnum
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  organism_count_enum:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2773 (Migrate MIxS import
+      to GSC release v6.2.2). Last released in v11.14.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  plant_growth_med_enum:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2773 (Migrate MIxS import
+      to GSC release v6.2.2). Last released in v11.14.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  room_type_enum:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2773 (Migrate MIxS import
+      to GSC release v6.2.2). Last released in v11.14.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  samp_floor_enum:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2773 (Migrate MIxS import
+      to GSC release v6.2.2). Last released in v11.14.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  samp_md_enum:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2773 (Migrate MIxS import
+      to GSC release v6.2.2). Last released in v11.14.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  shading_device_cond_enum:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2773 (Migrate MIxS import
+      to GSC release v6.2.2). Last released in v11.14.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    deprecated_element_has_exact_replacement: DamagedRupturedEnum
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  sr_geol_age_enum:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2773 (Migrate MIxS import
+      to GSC release v6.2.2). Last released in v11.14.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    deprecated_element_has_exact_replacement: GeolAgeEnum
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  vis_media_enum:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2773 (Migrate MIxS import
+      to GSC release v6.2.2). Last released in v11.14.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  wall_loc_enum:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2773 (Migrate MIxS import
+      to GSC release v6.2.2). Last released in v11.14.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    deprecated_element_has_exact_replacement: CompassDirections8Enum
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  wall_texture_enum:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2773 (Migrate MIxS import
+      to GSC release v6.2.2). Last released in v11.14.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    deprecated_element_has_possible_replacement: CeilingWallTextureEnum
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  window_cond_enum:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2773 (Migrate MIxS import
+      to GSC release v6.2.2). Last released in v11.14.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    deprecated_element_has_exact_replacement: DamagedRupturedEnum
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  window_loc_enum:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2773 (Migrate MIxS import
+      to GSC release v6.2.2). Last released in v11.14.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    deprecated_element_has_exact_replacement: CompassDirections8Enum
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+
+subsets:
+  checklist:
+    description: A MIxS checklist. These can be combined with packages
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2286 (removed subsets). Last
+      released in v11.2.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  checklist_package_combination:
+    description: A combination of a checklist and a package
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2286 (removed subsets). Last
+      released in v11.2.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  data object subset:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/3338 (Delete the unimported
+      src/schema/nmdc_subsets.yaml). Last released in v11.22.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  data_portal_subset:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/3338 (Delete the unimported
+      src/schema/nmdc_subsets.yaml). Last released in v11.22.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  environment:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/3338 (Delete the unimported
+      src/schema/nmdc_subsets.yaml). Last released in v11.22.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  investigation:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/3338 (Delete the unimported
+      src/schema/nmdc_subsets.yaml). Last released in v11.22.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  mixs extension:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2286 (removed subsets). Last
+      released in v11.2.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  mixs_environmental_triad:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2286 (removed subsets). Last
+      released in v11.2.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  nucleic acid sequence source:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/3338 (Delete the unimported
+      src/schema/nmdc_subsets.yaml). Last released in v11.22.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  package:
+    description: A MIxS package. These can be combined with checklists
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2286 (removed subsets). Last
+      released in v11.2.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  proteases:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/3338 (Delete the unimported
+      src/schema/nmdc_subsets.yaml). Last released in v11.22.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  sample subset:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/3338 (Delete the unimported
+      src/schema/nmdc_subsets.yaml). Last released in v11.22.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  sequencing:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/3338 (Delete the unimported
+      src/schema/nmdc_subsets.yaml). Last released in v11.22.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+  workflow subset:
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/3338 (Delete the unimported
+      src/schema/nmdc_subsets.yaml). Last released in v11.22.0. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066
+
+types:
+  unit:
+    uri: xsd:string
+    base: str
+    deprecated: Removed in https://github.com/microbiomedata/nmdc-schema/pull/2523 (Make has_unit required
+      and range of UnitEnum, add migrator, add reporting and transaction framework for mongodb adapters.).
+      Last released in v11.9.2-rc2. Recorded from git history for https://github.com/microbiomedata/nmdc-schema/issues/3476.
+    deprecated_element_has_possible_replacement: UnitEnum
+    last_updated_on: '2026-10-07T00:00:00Z'
+    modified_by: orcid:0000-0001-9076-6066

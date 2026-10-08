@@ -420,3 +420,11 @@ assets/element-scrutiny.tsv: nmdc_schema/nmdc_materialized_patterns.yaml
 	$(RUN) python src/scripts/scrutinize_elements.py \
 		--schema-file $< \
 		--output-file assets/element-scrutiny.tsv
+
+# Elements and permissible values that some release tag defined and the current
+# source does not, with the commit and PR that removed each one (#3476).
+# The inputs are git history, so this is phony; run `git fetch --tags` first.
+.PHONY: retired-element-catalog
+retired-element-catalog:
+	$(RUN) python src/scripts/schema_element_history.py --ref HEAD \
+		--output assets/schema_element_history/retired_elements.tsv
