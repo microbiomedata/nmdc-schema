@@ -2,6 +2,11 @@
 
 Some frequently asked questions about developing the NMDC Schema.
 
+### How do I coordinate a schema change with downstream consumers?
+
+See [Downstream schema compatibility](downstream-compatibility.md) for the consumer
+registry, candidate-test responsibilities, and release/migration coordination.
+
 ### What are some effective strategies for collaborative schema development?
 
 [LinkML Collaborative Development](https://linkml.io/linkml/howtos/collaborative-development.html)
