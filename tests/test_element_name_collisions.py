@@ -10,7 +10,11 @@ from collections import defaultdict
 
 from linkml_runtime import SchemaView
 
-from tests import SCHEMA_FILE
+from tests import ROOT
+
+# The source schema, not the generated nmdc_materialized_patterns.yaml, so the check sees
+# edits under src/schema/ before `make all` regenerates the artifact.
+SOURCE_SCHEMA = ROOT / "src" / "schema" / "nmdc.yaml"
 
 # Pairs that existed when this test was added (2026-10-08). Don't add to this list.
 GRANDFATHERED = {
@@ -39,16 +43,16 @@ def colliding_names(view: SchemaView) -> set[frozenset[str]]:
     return {frozenset(names) for names in groups.values() if len(names) > 1}
 
 
-def test_no_new_element_names_collide():
-    new = colliding_names(SchemaView(SCHEMA_FILE)) - GRANDFATHERED
+def test_no_new_element_names_collide() -> None:
+    new = colliding_names(SchemaView(SOURCE_SCHEMA)) - GRANDFATHERED
     assert new == set(), f"Rename one element in each group: {[sorted(g) for g in new]}"
 
 
-def test_grandfathered_list_has_no_fixed_entries():
-    assert GRANDFATHERED - colliding_names(SchemaView(SCHEMA_FILE)) == set()
+def test_grandfathered_list_has_no_fixed_entries() -> None:
+    assert GRANDFATHERED - colliding_names(SchemaView(SOURCE_SCHEMA)) == set()
 
 
-def test_normalize():
+def test_normalize() -> None:
     assert normalize("provenance_metadata") == normalize("ProvenanceMetadata")
     assert normalize("isotopolog_additions") == normalize("IsotopologAddition")
     assert normalize("ctg_n50") != normalize("ctg_l50")
