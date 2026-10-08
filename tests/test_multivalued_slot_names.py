@@ -10,7 +10,11 @@ import re
 import yaml
 from linkml_runtime import SchemaView
 
-from tests import ROOT, SCHEMA_FILE
+from tests import ROOT
+
+# The source schema, not the generated nmdc_materialized_patterns.yaml, so the check sees
+# edits under src/schema/ before `make all` regenerates the artifact.
+SOURCE_SCHEMA = ROOT / "src" / "schema" / "nmdc.yaml"
 
 MIXS_MODULE = ROOT / "src" / "schema" / "mixs.yaml"
 
@@ -61,26 +65,26 @@ def singular_multivalued_slots(view: SchemaView) -> list[str]:
     )
 
 
-def test_new_multivalued_slots_have_plural_names():
-    found = singular_multivalued_slots(SchemaView(SCHEMA_FILE))
+def test_new_multivalued_slots_have_plural_names() -> None:
+    found = singular_multivalued_slots(SchemaView(SOURCE_SCHEMA))
     new = sorted(set(found) - GRANDFATHERED)
     assert new == [], f"Name these multivalued slots as plurals: {new}"
 
 
-def test_grandfathered_list_has_no_fixed_entries():
+def test_grandfathered_list_has_no_fixed_entries() -> None:
     # Once a grandfathered slot is renamed or removed, drop it from the list.
-    found = set(singular_multivalued_slots(SchemaView(SCHEMA_FILE)))
+    found = set(singular_multivalued_slots(SchemaView(SOURCE_SCHEMA)))
     assert sorted(GRANDFATHERED - found) == []
 
 
-def test_is_plural():
+def test_is_plural() -> None:
     assert is_plural("studies") and is_plural("data") and is_plural("inputs")
     assert (
         not is_plural("image") and not is_plural("process") and not is_plural("class")
     )
 
 
-def test_relationship_names_are_exempt():
+def test_relationship_names_are_exempt() -> None:
     assert RELATIONSHIP_NAME.search("has_input")
     assert RELATIONSHIP_NAME.search("part_of")
     assert RELATIONSHIP_NAME.search("was_informed_by")
