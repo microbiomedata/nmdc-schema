@@ -16,6 +16,7 @@ version: 0.0.0
 imports:
   - annotation # also brings core and portal_*
   - workflow_execution_activity
+  - slot_level_provenance # DRAFT: see PR #3071 and issue #3072
 
 prefixes:
   BFO: "http://purl.obolibrary.org/obo/BFO_"
