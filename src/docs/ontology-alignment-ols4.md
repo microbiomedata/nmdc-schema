@@ -45,6 +45,7 @@ Key options:
 | `--schema` | `src/schema/nmdc.yaml` | Schema to iterate |
 | `--element-types` | `classes,slots,enums,pvs` | Which element types to search |
 | `--ontology` | (all) | Restrict to one ontology (e.g. `obi`, `envo`) |
+| `--element` | (all) | Search only this class, slot or enum; repeatable. For an enum, `pvs` covers its permissible values |
 | `--rows` | 5 | Results per query |
 | `--delay` | 0.5 | Seconds between API requests |
 | `--skip-mapped` | off | Skip elements that already have mappings |
