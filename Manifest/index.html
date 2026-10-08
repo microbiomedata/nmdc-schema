@@ -574,6 +574,7 @@ slot_usage:
     name: id
     structured_pattern:
       syntax: '{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$'
+      interpolated: true
 class_uri: nmdc:Manifest
 
 </code></pre>
@@ -594,6 +595,7 @@ slot_usage:
     name: id
     structured_pattern:
       syntax: '{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$'
+      interpolated: true
 attributes:
   manifest_category:
     name: manifest_category
@@ -642,6 +644,7 @@ attributes:
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$'
+      interpolated: true
   name:
     name: name
     description: A human readable label for an entity

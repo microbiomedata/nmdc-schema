@@ -655,6 +655,7 @@ slot_usage:
     name: id
     structured_pattern:
       syntax: '{id_nmdc_prefix}:mixpro-{id_shoulder}-{id_blade}$'
+      interpolated: true
   has_output:
     name: has_output
     description: The mixed sample.
@@ -689,6 +690,7 @@ slot_usage:
     name: id
     structured_pattern:
       syntax: '{id_nmdc_prefix}:mixpro-{id_shoulder}-{id_blade}$'
+      interpolated: true
   has_output:
     name: has_output
     description: The mixed sample.
@@ -880,6 +882,7 @@ attributes:
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:mixpro-{id_shoulder}-{id_blade}$'
+      interpolated: true
   name:
     name: name
     description: A human readable label for an entity
