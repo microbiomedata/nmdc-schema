@@ -128,10 +128,22 @@ def select_named(named_elements: dict, names: tuple[str, ...]) -> dict:
     return {name: element for name, element in named_elements.items() if name in names}
 
 
-def unknown_element_names(names: tuple[str, ...], sv: SchemaView) -> list[str]:
-    """Return the names that are not a class, slot or enum in the schema, in the given order."""
-    known = set(sv.all_classes()) | set(sv.all_slots()) | set(sv.all_enums())
-    return [name for name in names if name not in known]
+def unmatched_element_names(
+    names: tuple[str, ...], sv: SchemaView, types: set[str]
+) -> list[str]:
+    """Return the names that no selected element type would search, in the given order.
+
+    An enum name matches when either 'enums' or 'pvs' is selected, since 'pvs'
+    searches that enum's permissible values.
+    """
+    searchable: set[str] = set()
+    if "classes" in types:
+        searchable |= set(sv.all_classes())
+    if "slots" in types:
+        searchable |= set(sv.all_slots())
+    if types & {"enums", "pvs"}:
+        searchable |= set(sv.all_enums())
+    return [name for name in names if name not in searchable]
 
 
 def build_query(name: str, description: Optional[str]) -> str:
@@ -273,10 +285,10 @@ def main(
     types = {t.strip().lower() for t in element_types.split(",")}
     sv = SchemaView(schema)
     if elements:
-        unknown = unknown_element_names(elements, sv)
-        if unknown:
+        unmatched = unmatched_element_names(elements, sv, types)
+        if unmatched:
             raise click.BadParameter(
-                f"not a class, slot or enum in {schema}: {', '.join(unknown)}",
+                f"not a class, slot or enum that --element-types {element_types} searches in {schema}: {', '.join(unmatched)}",
                 param_hint="--element",
             )
     all_rows: list[dict] = []
@@ -377,11 +389,6 @@ def main(
                         total_queries,
                         len(all_rows),
                     )
-
-    if elements and total_queries + skipped == 0:
-        raise click.UsageError(
-            f"--element {', '.join(elements)} matched nothing in --element-types {element_types}"
-        )
 
     # Write output
     output_path = Path(output)

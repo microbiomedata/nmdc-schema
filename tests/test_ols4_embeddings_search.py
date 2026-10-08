@@ -103,6 +103,17 @@ def test_unknown_element_is_an_error_not_an_empty_run(run_search):
 def test_element_outside_the_selected_types_is_an_error(run_search, tmp_path):
     result, searched = run_search("--element", "Sample", "--element-types", "pvs")
     assert result.exit_code != 0
-    assert "matched nothing" in result.output
+    assert "Sample" in result.output
+    assert searched == []
+    assert not (tmp_path / "out.tsv").exists()
+
+
+def test_one_unmatched_name_among_valid_ones_is_an_error(run_search, tmp_path):
+    result, searched = run_search(
+        "--element", "AnalysisTypeEnum", "--element", "Sample", "--element-types", "pvs"
+    )
+    assert result.exit_code != 0
+    assert "Sample" in result.output
+    assert "AnalysisTypeEnum" not in result.output.split("searches in")[-1]
     assert searched == []
     assert not (tmp_path / "out.tsv").exists()
