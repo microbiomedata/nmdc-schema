@@ -1075,7 +1075,6 @@ classes:
       
       ## MIxS Inspired fields
       - collection_time
-      - collection_time_inc
       - experimental_factor_other
       - filter_method
       - isotope_exposure
