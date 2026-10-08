@@ -1,4 +1,4 @@
-db.biosample_set.aggregate([
+db.data_generation_set.aggregate([
   {
     $lookup: {
       from: "study_set",
