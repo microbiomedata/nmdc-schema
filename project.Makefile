@@ -428,3 +428,13 @@ assets/element-scrutiny.tsv: nmdc_schema/nmdc_materialized_patterns.yaml
 retired-element-catalog:
 	$(RUN) python src/scripts/schema_element_history.py --ref HEAD \
 		--output assets/schema_element_history/retired_elements.tsv
+
+# Lines that mention a retired element name in files that no build or test
+# checks (#3477). A lead list for cleanup, not a pass/fail check: some files
+# mention old names on purpose. Written to local/, which is not committed.
+.PHONY: retired-element-mentions
+retired-element-mentions:
+	mkdir -p local
+	$(RUN) python src/scripts/find_retired_element_mentions.py \
+		--catalog assets/schema_element_history/retired_elements.tsv \
+		--output local/retired_element_mentions.tsv
