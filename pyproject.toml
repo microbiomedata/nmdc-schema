@@ -106,7 +106,7 @@ dev = [
     # floor downstream, where the <11.0.0 ceiling then made the 11.0.0 and 11.0.1
     # advisories unreachable. Here in dev the ceiling no longer propagates to
     # consumers, so it keeps the repo's upper-bound policy.
-    "pymdown-extensions>=11.0.1,<12.0.0",
+    "pymdown-extensions>=11.0.1,<13.0.0",
     "pyroma>=4.2,<6.0",
     "pytest>=8.4.2,<10.0.0",
     # We use `refscan` to generate diagrams of inter-collection relationships
