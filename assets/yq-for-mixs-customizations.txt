@@ -13,10 +13,10 @@
 # MIxS v7.0.0 renamed estimated_size to estimated_genome_size (same ID, MIXS:0000024). NMDC keeps the old name for now.
 '.slots.estimated_size = .slots.estimated_genome_size | del(.slots.estimated_genome_size)'
 
-# Add structured aliases to document the GSC canonical names for renamed slots
-'.slots.samp_collec_device.structured_aliases = [{"literal_form": "samp_collect_device", "contexts": ["https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v7.0.1"]}]'
-'.slots.samp_collec_method.structured_aliases = [{"literal_form": "samp_collect_method", "contexts": ["https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v7.0.1"]}]'
-'.slots.estimated_size.structured_aliases = [{"literal_form": "estimated_genome_size", "contexts": ["https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v7.0.1"]}]'
+# Add structured aliases to document the GSC canonical names for renamed slots.
+# samp_collec_device gets none: its aliases are deleted below, because its slot_uri already links to MIxS.
+'.slots.samp_collec_method.structured_aliases = [{"literal_form": "samp_collect_method", "predicate": "EXACT_SYNONYM", "source": "https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v7.0.1"}]'
+'.slots.estimated_size.structured_aliases = [{"literal_form": "estimated_genome_size", "predicate": "EXACT_SYNONYM", "source": "https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v7.0.1"}]'
 
 # Tighten samp_collec_device — see PR #3005 / issue #1480
 # Upstream MIxS description has broken links (ENVO root 404; GENEPIO_0002094 obsolete).
@@ -401,6 +401,8 @@
 '.slots.store_cond.range |= "TextValue"'
 # submission-schema has historically used an enum for store_cond, which doesn't align with the MIxS pattern
 'del(.slots.store_cond.structured_pattern)'
+# MIxS v7.0.1's description ends with a doubled period.
+'.slots.store_cond.description |= sub("\\.\\.$"; ".")'
 
 '.slots.samp_collec_device.range |= "string"'
 '.slots.samp_collec_method.range |= "string"'

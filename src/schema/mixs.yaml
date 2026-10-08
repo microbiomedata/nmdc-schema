@@ -6804,7 +6804,7 @@ slots:
     multivalued: true
     inlined_as_list: true
   store_cond:
-    description: Explain how and for how long the sample was stored before DNA extraction (for example, fresh/frozen/other). Include factors that may influence nucleic acid recovery or library construction. For example, specify temperature, humidity, presence of microbial overgrowth etc..
+    description: Explain how and for how long the sample was stored before DNA extraction (for example, fresh/frozen/other). Include factors that may influence nucleic acid recovery or library construction. For example, specify temperature, humidity, presence of microbial overgrowth etc.
     title: storage conditions
     examples:
       - object:
@@ -8295,8 +8295,8 @@ slots:
     range: string
     structured_aliases:
       - literal_form: samp_collect_method
-        contexts:
-          - https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v7.0.1
+        predicate: EXACT_SYNONYM
+        source: https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v7.0.1
   estimated_size:
     description: The estimated size of the genome prior to sequencing. Of particular importance in the sequencing of (eukaryotic) genome which could remain in draft form for a long or unspecified period
     title: estimated genome size
@@ -8307,8 +8307,8 @@ slots:
     slot_uri: MIXS:0000024
     structured_aliases:
       - literal_form: estimated_genome_size
-        contexts:
-          - https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v7.0.1
+        predicate: EXACT_SYNONYM
+        source: https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v7.0.1
     range: integer
     minimum_value: 1
     examples:
