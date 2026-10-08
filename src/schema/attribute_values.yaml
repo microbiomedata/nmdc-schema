@@ -225,8 +225,9 @@ slots:
         rather than as a convention inherited from LinkML.
     structured_aliases:
       - literal_form: workflow_execution_class
-        contexts:
-          - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+        source: https://github.com/microbiomedata/nmdc_automation/blob/main/data_management/README.md
+        notes:
+          - JGI Analysis Tracker (JAT) macro nmdc_metadata.yaml, in an access-restricted Bitbucket repository (https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml); source is the public NMDC page describing how JAT is used.
         predicate: NARROW_SYNONYM
     examples:
       - value: nmdc:Biosample
