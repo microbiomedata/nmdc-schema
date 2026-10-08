@@ -85,7 +85,6 @@ Biosample	climate_environment	TextValue
 Biosample	collected_from	FieldResearchSite		
 Biosample	collection_date	TimestampValue		
 Biosample	collection_time	string		
-Biosample	collection_time_inc	string		
 Biosample	community	string		
 Biosample	conduc	QuantityValue		
 Biosample	cool_syst_id	TextValue		
