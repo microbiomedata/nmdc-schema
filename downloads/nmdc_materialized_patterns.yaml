@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.24.1.post2.dev0+cbb23d647
+version: 11.24.1.post104.dev0+5c5947fe4
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -337,6 +337,12 @@ prefixes:
   nbrc:
     prefix_prefix: nbrc
     prefix_reference: http://www.nbrc.nite.go.jp/NBRC2/NBRCCatalogueDetailServlet?ID=NBRC&CAT=
+  chrono:
+    prefix_prefix: chrono
+    prefix_reference: http://rs.tdwg.org/chrono/terms/
+  dc:
+    prefix_prefix: dc
+    prefix_reference: http://purl.org/dc/elements/1.1/
   TAXRANK:
     prefix_prefix: TAXRANK
     prefix_reference: http://purl.obolibrary.org/obo/TAXRANK_
@@ -1078,6 +1084,8 @@ enums:
         text: dna_extraction
       phenol_chloroform_extraction:
         text: phenol_chloroform_extraction
+      stable_isotope_probing:
+        text: stable_isotope_probing
   ChromatographicCategoryEnum:
     name: ChromatographicCategoryEnum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -1891,6 +1899,12 @@ enums:
           grams per cubic centimeter.
         aliases:
         - grams per cubic centimeter
+      g/mL:
+        text: g/mL
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          grams per milliliter.
+        aliases:
+        - grams per milliliter
       g/L:
         text: g/L
         description: The Unified Code for Units of Measure (UCUM) representation of
@@ -3727,6 +3741,10 @@ enums:
         text: SubSamplingProcess
       WorkflowExecution:
         text: WorkflowExecution
+      DensityGradientFractionationProcess:
+        text: DensityGradientFractionationProcess
+      IsotopeLabelingProcess:
+        text: IsotopeLabelingProcess
   PloidyEnum:
     name: PloidyEnum
     description: The ploidy state of an organism's genome, drawn from the ploidy classes
@@ -5519,6 +5537,38 @@ enums:
         text: middle
       top:
         text: top
+  IsotopeEnum:
+    name: IsotopeEnum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      13C:
+        text: 13C
+        description: Carbon with 13C isotope
+      15N:
+        text: 15N
+        description: Nitrogen with 15N isotope
+      2H:
+        text: 2H
+        description: Hydrogen with 2H isotope
+      18O:
+        text: 18O
+        description: Oxygen with 18O isotope
+  IsotopologApproachEnum:
+    name: IsotopologApproachEnum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      single:
+        text: single
+      multiple:
+        text: multiple
+  IsotopologLabelEnum:
+    name: IsotopologLabelEnum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      isotopically labeled:
+        text: isotopically labeled
+      natural abundance:
+        text: natural abundance
   HostSexEnum:
     name: HostSexEnum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -5935,6 +5985,12 @@ enums:
       acetic_acid:
         text: acetic_acid
         meaning: CHEBI:15366
+        structured_aliases:
+        - literal_form: acetate
+          predicate: RELATED_SYNONYM
+          source: https://www.ebi.ac.uk/chebi/CHEBI:30089
+        related_mappings:
+        - CHEBI:30089
       acetone:
         text: acetone
         meaning: CHEBI:15347
@@ -5991,6 +6047,12 @@ enums:
         comments:
         - A carboxylic acid that is the simplest aliphatic carboxylic acid, comprising
           a hydrogen atom joined to the methyl group of methanol.
+        structured_aliases:
+        - literal_form: formate
+          predicate: RELATED_SYNONYM
+          source: https://www.ebi.ac.uk/chebi/CHEBI:15740
+        related_mappings:
+        - CHEBI:15740
       glucose:
         text: glucose
         meaning: CHEBI:17234
@@ -6066,6 +6128,254 @@ enums:
         - Any form of water used in an experiment including deionized water, distilled
           water, and ultrapure water. Protocol or materials and methods should be
           consulted for exact type of water used in an experiment.
+      acridine:
+        text: acridine
+        meaning: CHEBI:36420
+      alginic_acid:
+        text: alginic_acid
+        meaning: CHEBI:17548
+        structured_aliases:
+        - literal_form: alginate
+          predicate: RELATED_SYNONYM
+          source: https://www.ebi.ac.uk/chebi/CHEBI:58187
+        related_mappings:
+        - CHEBI:58187
+      aspartic_acid:
+        text: aspartic_acid
+        meaning: CHEBI:22660
+        structured_aliases:
+        - literal_form: aspartate
+          predicate: RELATED_SYNONYM
+          source: https://www.ebi.ac.uk/chebi/CHEBI:132943
+        related_mappings:
+        - CHEBI:132943
+      atrazine:
+        text: atrazine
+        meaning: CHEBI:15930
+      benz[a]anthracene:
+        text: benz[a]anthracene
+        meaning: CHEBI:51348
+        aliases:
+        - tetraphene
+      benzene:
+        text: benzene
+        meaning: CHEBI:16716
+      benzo[a]pyrene:
+        text: benzo[a]pyrene
+        meaning: CHEBI:29865
+      benzoic_acid:
+        text: benzoic_acid
+        meaning: CHEBI:30746
+        structured_aliases:
+        - literal_form: benzoate
+          predicate: RELATED_SYNONYM
+          source: https://www.ebi.ac.uk/chebi/CHEBI:16150
+        related_mappings:
+        - CHEBI:16150
+      17beta-estradiol:
+        text: 17beta-estradiol
+        meaning: CHEBI:16469
+      biphenyl:
+        text: biphenyl
+        meaning: CHEBI:17097
+      bisphenol_A:
+        text: bisphenol_A
+        meaning: CHEBI:33216
+      bisphenol_S:
+        text: bisphenol_S
+        meaning: CHEBI:34372
+        aliases:
+        - 4,4'-sulfonyldiphenol
+      butane:
+        text: butane
+        meaning: CHEBI:37808
+      butyric_acid:
+        text: butyric_acid
+        meaning: CHEBI:30772
+        structured_aliases:
+        - literal_form: butyrate
+          predicate: RELATED_SYNONYM
+          source: https://www.ebi.ac.uk/chebi/CHEBI:17968
+        related_mappings:
+        - CHEBI:17968
+      carbon_dioxide:
+        text: carbon_dioxide
+        meaning: CHEBI:16526
+      carbon_monoxide:
+        text: carbon_monoxide
+        meaning: CHEBI:17245
+      cellobiose:
+        text: cellobiose
+        meaning: CHEBI:17057
+      chloromethane:
+        text: chloromethane
+        meaning: CHEBI:36014
+      ciprofloxacin:
+        text: ciprofloxacin
+        meaning: CHEBI:100241
+      dibenzothiophene:
+        text: dibenzothiophene
+        meaning: CHEBI:23681
+      dibutyl_phthalate:
+        text: dibutyl_phthalate
+        meaning: CHEBI:34687
+      2,4-dichlorophenol:
+        text: 2,4-dichlorophenol
+        meaning: CHEBI:16738
+      dimethylsulfoniopropionate:
+        text: dimethylsulfoniopropionate
+        meaning: CHEBI:16457
+        aliases:
+        - DMSP
+        - S,S-dimethyl-beta-propiothetin
+      dinitrogen:
+        text: dinitrogen
+        meaning: CHEBI:17997
+        aliases:
+        - N2
+      1,4-dioxane:
+        text: 1,4-dioxane
+        meaning: CHEBI:47032
+      dodecane:
+        text: dodecane
+        meaning: CHEBI:28817
+      ethyl_tert-butyl_ether:
+        text: ethyl_tert-butyl_ether
+        meaning: CHEBI:141564
+        aliases:
+        - ETBE
+      fluoranthene:
+        text: fluoranthene
+        meaning: CHEBI:33083
+      glucosamine:
+        text: glucosamine
+        meaning: CHEBI:5417
+      glycerol:
+        text: glycerol
+        meaning: CHEBI:17754
+      glycine:
+        text: glycine
+        meaning: CHEBI:15428
+      hexadecane:
+        text: hexadecane
+        meaning: CHEBI:45296
+      isoprene:
+        text: isoprene
+        meaning: CHEBI:35194
+      lactic_acid:
+        text: lactic_acid
+        meaning: CHEBI:78320
+        structured_aliases:
+        - literal_form: lactate
+          predicate: RELATED_SYNONYM
+          source: https://www.ebi.ac.uk/chebi/CHEBI:24996
+        related_mappings:
+        - CHEBI:24996
+      linuron:
+        text: linuron
+        meaning: CHEBI:6482
+      methane:
+        text: methane
+        meaning: CHEBI:16183
+      methionine:
+        text: methionine
+        meaning: CHEBI:16811
+      methylamine:
+        text: methylamine
+        meaning: CHEBI:16830
+        aliases:
+        - monomethylamine
+      2-methylnaphthalene:
+        text: 2-methylnaphthalene
+        meaning: CHEBI:50720
+      naphthalene:
+        text: naphthalene
+        meaning: CHEBI:16482
+      4-nitrophenol:
+        text: 4-nitrophenol
+        meaning: CHEBI:16836
+        aliases:
+        - p-nitrophenol
+      phenanthrene:
+        text: phenanthrene
+        meaning: CHEBI:28851
+      propionic_acid:
+        text: propionic_acid
+        meaning: CHEBI:30768
+        structured_aliases:
+        - literal_form: propionate
+          predicate: RELATED_SYNONYM
+          source: https://www.ebi.ac.uk/chebi/CHEBI:17272
+        related_mappings:
+        - CHEBI:17272
+      pyrene:
+        text: pyrene
+        meaning: CHEBI:39106
+      sodium_bicarbonate:
+        text: sodium_bicarbonate
+        meaning: CHEBI:32139
+        aliases:
+        - sodium hydrogencarbonate
+        structured_aliases:
+        - literal_form: bicarbonate
+          predicate: RELATED_SYNONYM
+          source: https://www.ebi.ac.uk/chebi/CHEBI:17544
+        related_mappings:
+        - CHEBI:17544
+      sodium_carbonate:
+        text: sodium_carbonate
+        meaning: CHEBI:29377
+      sulfadiazine:
+        text: sulfadiazine
+        meaning: CHEBI:9328
+      sulfamethazine:
+        text: sulfamethazine
+        meaning: CHEBI:102265
+      sulfamethoxazole:
+        text: sulfamethoxazole
+        meaning: CHEBI:9332
+      6-sulfo-D-quinovose:
+        text: 6-sulfo-D-quinovose
+        meaning: CHEBI:77198
+        aliases:
+        - sulfoquinovose
+      sulfolane:
+        text: sulfolane
+        meaning: CHEBI:74794
+      taurine:
+        text: taurine
+        meaning: CHEBI:15891
+      toluene:
+        text: toluene
+        meaning: CHEBI:17578
+      3,5,6-trichloro-2-pyridinol:
+        text: 3,5,6-trichloro-2-pyridinol
+        meaning: CHEBI:143794
+      triclosan:
+        text: triclosan
+        meaning: CHEBI:164200
+      trimethylamine:
+        text: trimethylamine
+        meaning: CHEBI:18139
+      urea:
+        text: urea
+        meaning: CHEBI:16199
+      vanillin:
+        text: vanillin
+        meaning: CHEBI:18346
+      veratric_acid:
+        text: veratric_acid
+        meaning: CHEBI:296881
+        aliases:
+        - 3,4-dimethoxybenzoic acid
+      vinyl_chloride:
+        text: vinyl_chloride
+        meaning: CHEBI:28509
+        aliases:
+        - chloroethene
+      xylose:
+        text: xylose
+        meaning: CHEBI:18222
   MetaproteomicsAnalysisCategoryEnum:
     name: MetaproteomicsAnalysisCategoryEnum
     description: The category of metaproteomics analysis being performed.
@@ -6207,6 +6517,53 @@ enums:
           on the data portal. The submitter cannot edit.
         title: Released
 slots:
+  added_isotopologs:
+    name: added_isotopologs
+    description: The isotopologs, or heterogeneous materials, added during this isotope
+      labeling process, one entry per isotopolog and isotope.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: IsotopologAddition
+    recommended: true
+    multivalued: true
+    inlined_as_list: true
+  isotope_atom_fractions:
+    name: isotope_atom_fractions
+    description: Contains the isotopes used and at what fraction, for an isotopolog
+      added during an isotope labeling process.
+    title: isotope atom fractions
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: IsotopologComposition
+    multivalued: true
+    inlined_as_list: true
+  internal_standard_method:
+    name: internal_standard_method
+    description: Method used for internal standard for SIP fractionation, if an internal
+      standard was used (i.e., spiking in a heavy-labelled DNA sequence).
+    title: internal standard method
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - MIXS:0001351
+    range: Protocol
+  hetero_isotopolog:
+    name: hetero_isotopolog
+    description: 'An input to the labeling that has no ChEBI identifier, described
+      in free text: an undefined mixture such as root exudates or plant litter, or
+      cells or biomass such as T4 phages. A defined compound with a ChEBI identifier
+      goes in isotopolog instead.'
+    title: heterogeneous isotopolog
+    comments:
+    - Exactly one of isotopolog and hetero_isotopolog is given on each IsotopologAddition
+      entry; the rules on that class enforce it.
+    - hetero_isotopolog is a column of the MISIP supplementary tables (Simpson et
+      al. 2024, https://doi.org/10.1093/gigascience/giae071) and is not yet a MIxS
+      slot.
+    examples:
+    - value: root exudates
+    - value: T4 phages
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/GenomicsStandardsConsortium/mixs/issues/1409
+    range: string
   email:
     name: email
     description: An email address for an entity such as a person. This should be the
@@ -15274,7 +15631,7 @@ slots:
     examples:
     - object:
         type: nmdc:TextValue
-        has_raw_value: KH2PO4;170  milligram per liter
+        has_raw_value: KH2PO4;170 milligram per liter
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - macronutrients
@@ -15296,7 +15653,7 @@ slots:
     examples:
     - object:
         type: nmdc:TextValue
-        has_raw_value: H3BO3;6.2  milligram per liter
+        has_raw_value: H3BO3;6.2 milligram per liter
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - micronutrients
@@ -18540,6 +18897,220 @@ slots:
       syntax: ^{primer_adapter_codes}+;{primer_adapter_codes}+$
       interpolated: true
       partial_match: true
+  isotope:
+    name: isotope
+    description: The element and mass number of the stable isotope used in isotopolog
+      labeling.
+    title: isotope
+    examples:
+    - value: 13C
+    - value: 15N
+    from_schema: https://w3id.org/nmdc/nmdc
+    slot_uri: MIXS:0001338
+    range: IsotopeEnum
+    required: true
+    multivalued: false
+  isotopolog:
+    name: isotopolog
+    description: Isotopolog (isotope source/substrate/molecule) added to the biological
+      sample.
+    title: isotopolog
+    comments:
+    - Inputs such as root exudates or cells, goes in hetero_isotopolog instead; NMDC
+      does not use a sentinel identifier for that case.
+    examples:
+    - value: water
+    from_schema: https://w3id.org/nmdc/nmdc
+    slot_uri: MIXS:0001339
+    range: ChemicalEntityEnum
+    recommended: true
+    multivalued: false
+  isotopolog_label:
+    name: isotopolog_label
+    description: List whether the isotopolog added to this biological sample was heavy-labelled
+      or natural abundance
+    title: isotopolog label status
+    examples:
+    - value: natural abundance
+    - value: isotopically labeled
+    from_schema: https://w3id.org/nmdc/nmdc
+    slot_uri: MIXS:0001340
+    range: IsotopologLabelEnum
+    required: true
+  isotopolog_approach:
+    name: isotopolog_approach
+    description: The labelling approach of this SIP experiment. Details if multiple
+      isotopically labelled isotopologs were added to samples ("multiple"), or was
+      only one isotopolog added to each sample ("single").
+    title: Labeling approach (number of labeled isotopologs supplied)
+    examples:
+    - value: single
+    - value: multiple
+    from_schema: https://w3id.org/nmdc/nmdc
+    slot_uri: MIXS:0001341
+    range: IsotopologApproachEnum
+    recommended: true
+  gradient_position:
+    name: gradient_position
+    description: A number designating the gradient position from heaviest (=1) to
+      lightest. Unfractionated samples, from which fractionated samples were derived,
+      should be denoted with -1.
+    title: gradient position
+    examples:
+    - value: '1'
+    - value: '-1'
+    from_schema: https://w3id.org/nmdc/nmdc
+    slot_uri: MIXS:0001342
+    range: integer
+    minimum_value: -1
+  gradient_pos_density:
+    name: gradient_pos_density
+    annotations:
+      Preferred_unit:
+        tag: Preferred_unit
+        value: g/mL
+      storage_units:
+        tag: storage_units
+        value: g/mL
+    description: Buoyant density of this fraction
+    title: density of gradient position
+    examples:
+    - object:
+        type: nmdc:QuantityValue
+        has_raw_value: 1.725 g/mL
+        has_numeric_value: 1.725
+        has_unit: g/mL
+    - object:
+        type: nmdc:QuantityValue
+        has_raw_value: 1.725-1.735 g/mL
+        has_minimum_numeric_value: 1.725
+        has_maximum_numeric_value: 1.735
+        has_unit: g/mL
+    from_schema: https://w3id.org/nmdc/nmdc
+    slot_uri: MIXS:0001343
+    range: QuantityValue
+    recommended: true
+  gradient_pos_rel_am:
+    name: gradient_pos_rel_am
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: '1'
+    description: The total nucleic acids loaded onto the column in this fraction as
+      a decimal. If uploading 16S rRNA gene (or other amplicon) sequencing data, this
+      value should be calculated from qPCR data. If uploading untargetted sequencing
+      data, this value should be calculated from total DNA concentration.
+    title: relative amount of nucleic acids in the gradient position
+    examples:
+    - object:
+        type: nmdc:QuantityValue
+        has_raw_value: '0.1'
+        has_numeric_value: 0.1
+        has_unit: '1'
+    from_schema: https://w3id.org/nmdc/nmdc
+    slot_uri: MIXS:0001344
+    range: QuantityValue
+    range_expression:
+      slot_conditions:
+        has_numeric_value:
+          name: has_numeric_value
+          minimum_value: 0
+          maximum_value: 1
+    recommended: true
+  isotopolog_atom_frac:
+    name: isotopolog_atom_frac
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: '1'
+    description: The fraction of heavy-labelled atoms out of all atoms of a given
+      element in the isotopolog.
+    title: atom fraction of isotopolog
+    examples:
+    - object:
+        type: nmdc:QuantityValue
+        has_raw_value: '0.95'
+        has_numeric_value: 0.95
+        has_unit: '1'
+    from_schema: https://w3id.org/nmdc/nmdc
+    slot_uri: MIXS:0001346
+    range: QuantityValue
+    range_expression:
+      slot_conditions:
+        has_numeric_value:
+          name: has_numeric_value
+          minimum_value: 0
+          maximum_value: 1
+    recommended: true
+  isotopolog_atom_pos:
+    name: isotopolog_atom_pos
+    description: InChI label designating set of all isotopically enriched atoms in
+      isotopolog. This slot should be omitted for natural abundance samples
+    title: set of labeled atoms in isotopolog
+    examples:
+    - value: InChI=1S/C7H8/c1-7-5-3-2-4-6-7/h2-6H,1H3/i1+1,2+1,3+1,4+1,5+1,6+1,7+1
+    from_schema: https://w3id.org/nmdc/nmdc
+    slot_uri: MIXS:0001347
+    range: string
+    recommended: true
+    pattern: ^InChI=1S?/[^\s/]+(?:/[^\s/i][^\s/]*)*/i(?=[^\s/]*(?:[0-9][+-][0-9]|[0-9][DT])|/h[^\s/]*[DT])[^\s/]*(?:/[^\s/]+)*$
+  isotopolog_dose:
+    name: isotopolog_dose
+    annotations:
+      Preferred_unit:
+        tag: Preferred_unit
+        value: ppm
+      storage_units:
+        tag: storage_units
+        value: '[ppm]'
+    description: The concentration (in ppm) of isotopolog added to environmental matrix
+      as a total mass per volume.
+    title: dose of isotopolog
+    comments:
+    - isotopolog mass / total volume soil; ppm of isotopolog in total container volume
+    examples:
+    - object:
+        type: nmdc:QuantityValue
+        has_raw_value: 10 [ppm]
+        has_numeric_value: 10
+        has_unit: '[ppm]'
+    from_schema: https://w3id.org/nmdc/nmdc
+    slot_uri: MIXS:0001348
+    range: QuantityValue
+    recommended: true
+  nucleobase_atom_frac:
+    name: nucleobase_atom_frac
+    description: Excess atom fraction of the nucleobases in this fraction.
+    title: nucleobase excess atom fraction
+    examples:
+    - value: '0.25'
+    from_schema: https://w3id.org/nmdc/nmdc
+    slot_uri: MIXS:0001349
+    range: float
+    recommended: true
+    minimum_value: 0
+    maximum_value: 1
+  isotopolog_incu_time:
+    name: isotopolog_incu_time
+    annotations:
+      Preferred_unit:
+        tag: Preferred_unit
+        value: hours
+      storage_units:
+        tag: storage_units
+        value: h
+    description: Total time of incubation after isotopolog addition in hours
+    title: isotopolog incubation time
+    examples:
+    - object:
+        type: nmdc:QuantityValue
+        has_raw_value: 12 h
+        has_numeric_value: 12
+        has_unit: h
+    from_schema: https://w3id.org/nmdc/nmdc
+    slot_uri: MIXS:0001350
+    range: QuantityValue
+    recommended: true
   samp_collec_device:
     name: samp_collec_device
     description: 'The device used to collect an environmental sample. Recommended
@@ -18581,6 +19152,10 @@ slots:
     - sample
     slot_uri: MIXS:0001225
     range: string
+  internal_standard:
+    name: internal_standard
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: Protocol
   mixs_env_triad_field:
     name: mixs_env_triad_field
     annotations:
@@ -20539,6 +21114,132 @@ classes:
         description: Description of reaction conditions and components of polymerase
           chain reaction performed during library preparation
     class_uri: nmdc:LibraryPreparation
+  IsotopeLabelingProcess:
+    name: IsotopeLabelingProcess
+    description: A material processing in which substances or materials, isotopically
+      labeled or at natural abundance, are added to a sample so that uptake of the
+      isotope by the resident organisms can be traced.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: MaterialProcessing
+    slots:
+    - added_isotopologs
+    - isotopolog_approach
+    - isotopolog_incu_time
+    - substances_used
+    slot_usage:
+      id:
+        name: id
+        pattern: ^(nmdc):isolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+        structured_pattern:
+          syntax: '{id_nmdc_prefix}:isolp-{id_shoulder}-{id_blade}$'
+          interpolated: true
+      has_input:
+        name: has_input
+        required: true
+        pattern: ^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+        structured_pattern:
+          syntax: '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$'
+          interpolated: true
+      has_output:
+        name: has_output
+        required: true
+    class_uri: nmdc:IsotopeLabelingProcess
+  IsotopologAddition:
+    name: IsotopologAddition
+    description: One isotopolog, or one heterogeneous material with no compound identifier,
+      added during an isotope labeling process, with the isotope it carries, whether
+      it was isotopically labeled or at natural abundance, the atom fraction and position
+      of the label, and the dose.
+    from_schema: https://w3id.org/nmdc/nmdc
+    slots:
+    - isotope_atom_fractions
+    - isotopolog
+    - hetero_isotopolog
+    - isotopolog_label
+    - isotopolog_atom_pos
+    - isotopolog_dose
+    - type
+    class_uri: nmdc:IsotopologAddition
+    rules:
+    - preconditions:
+        slot_conditions:
+          isotopolog:
+            name: isotopolog
+            value_presence: ABSENT
+      postconditions:
+        slot_conditions:
+          hetero_isotopolog:
+            name: hetero_isotopolog
+            required: true
+      description: If isotopolog is absent, then hetero_isotopolog is required, so
+        that every entry names the input in one of the two ways.
+      title: hetero_isotopolog_required_when_isotopolog_absent
+    - preconditions:
+        slot_conditions:
+          isotopolog:
+            name: isotopolog
+            value_presence: PRESENT
+      postconditions:
+        slot_conditions:
+          hetero_isotopolog:
+            name: hetero_isotopolog
+            value_presence: ABSENT
+      description: If isotopolog is present, then hetero_isotopolog must be absent,
+        so that no entry names the input in both ways.
+      title: hetero_isotopolog_absent_when_isotopolog_present
+    - preconditions:
+        slot_conditions:
+          isotopolog_label:
+            name: isotopolog_label
+            equals_string: natural abundance
+      postconditions:
+        slot_conditions:
+          isotopolog_atom_pos:
+            name: isotopolog_atom_pos
+            value_presence: ABSENT
+      description: If isotopolog_label is natural abundance, then isotopolog_atom_pos
+        must be absent, because an InChI isotope layer can only describe enrichment.
+      title: isotopolog_atom_pos_absent_at_natural_abundance
+  IsotopologComposition:
+    name: IsotopologComposition
+    description: Contains the isotopes used and at what fraction.
+    from_schema: https://w3id.org/nmdc/nmdc
+    slots:
+    - isotope
+    - isotopolog_atom_frac
+    - type
+    class_uri: nmdc:IsotopologComposition
+  DensityGradientFractionationProcess:
+    name: DensityGradientFractionationProcess
+    description: A material processing that separates a sample, typically extracted
+      nucleic acids, into fractions by buoyant density, usually by isopycnic centrifugation.
+      The output fractions can record their gradient position, buoyant density and
+      relative nucleic acid amount.
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - Isopycnic Centrifugation
+    - Density Gradient Centrifugation
+    is_a: MaterialProcessing
+    slots:
+    - internal_standard_method
+    slot_usage:
+      id:
+        name: id
+        pattern: ^(nmdc):fracp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+        structured_pattern:
+          syntax: '{id_nmdc_prefix}:fracp-{id_shoulder}-{id_blade}$'
+          interpolated: true
+      has_input:
+        name: has_input
+        required: true
+        pattern: ^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+        structured_pattern:
+          syntax: '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$'
+          interpolated: true
+      has_output:
+        name: has_output
+        required: true
+    class_uri: nmdc:DensityGradientFractionationProcess
   CollectingBiosamplesFromSite:
     name: CollectingBiosamplesFromSite
     title: Collecting Biosamples From Site
@@ -22946,6 +23647,10 @@ classes:
     - dna_concentration
     - external_database_identifiers
     - sampled_portion
+    - gradient_position
+    - gradient_pos_density
+    - gradient_pos_rel_am
+    - nucleobase_atom_frac
     slot_usage:
       id:
         name: id

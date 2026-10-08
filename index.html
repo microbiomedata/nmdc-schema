@@ -897,6 +897,14 @@ environmental context of samples.</p>
 <td>A feature localized to an interval along a genome</td>
 </tr>
 <tr>
+<td><a href="IsotopologAddition/">IsotopologAddition</a></td>
+<td>One isotopolog, or one heterogeneous material with no compound identifier,...</td>
+</tr>
+<tr>
+<td><a href="IsotopologComposition/">IsotopologComposition</a></td>
+<td>Contains the isotopes used and at what fraction.</td>
+</tr>
+<tr>
 <td><a href="MagBin/">MagBin</a></td>
 <td></td>
 </tr>
@@ -1105,6 +1113,10 @@ environmental context of samples.</p>
 <td>A material processing that grows an organism under controlled conditions....</td>
 </tr>
 <tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DensityGradientFractionationProcess/">DensityGradientFractionationProcess</a></td>
+<td>A material processing that separates a sample, typically extracted nucleic...</td>
+</tr>
+<tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DissolvingProcess/">DissolvingProcess</a></td>
 <td>A mixing step where a soluble component is mixed with a liquid component.</td>
 </tr>
@@ -1119,6 +1131,10 @@ environmental context of samples.</p>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Isolation/">Isolation</a></td>
 <td>A material processing that separates an organism from a mixed sample by...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="IsotopeLabelingProcess/">IsotopeLabelingProcess</a></td>
+<td>A material processing in which substances or materials, isotopically labeled...</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="LibraryPreparation/">LibraryPreparation</a></td>
@@ -1198,6 +1214,10 @@ environmental context of samples.</p>
 <tr>
 <td><a href="add_recov_method/">add_recov_method</a></td>
 <td>Additional (i.e. Secondary, tertiary, etc.) recovery methods deployed for...</td>
+</tr>
+<tr>
+<td><a href="added_isotopologs/">added_isotopologs</a></td>
+<td>The isotopologs, or heterogeneous materials, added during this isotope...</td>
 </tr>
 <tr>
 <td><a href="additional_info/">additional_info</a></td>
@@ -2368,6 +2388,18 @@ environmental context of samples.</p>
 <td>identifiers for corresponding project(s) in GOLD</td>
 </tr>
 <tr>
+<td><a href="gradient_pos_density/">gradient_pos_density</a></td>
+<td>Buoyant density of this fraction</td>
+</tr>
+<tr>
+<td><a href="gradient_pos_rel_am/">gradient_pos_rel_am</a></td>
+<td>The total nucleic acids loaded onto the column in this fraction as a...</td>
+</tr>
+<tr>
+<td><a href="gradient_position/">gradient_position</a></td>
+<td>A number designating the gradient position from heaviest (=1) to lightest....</td>
+</tr>
+<tr>
 <td><a href="gravidity/">gravidity</a></td>
 <td>Whether or not subject is gravid, and if yes date due or date...</td>
 </tr>
@@ -2566,6 +2598,10 @@ environmental context of samples.</p>
 <tr>
 <td><a href="herbicide_regm/">herbicide_regm</a></td>
 <td>Information about treatment involving use of herbicides; information about...</td>
+</tr>
+<tr>
+<td><a href="hetero_isotopolog/">hetero_isotopolog</a></td>
+<td>An input to the labeling that has no ChEBI identifier, described in free...</td>
 </tr>
 <tr>
 <td><a href="highest_similarity_score/">highest_similarity_score</a></td>
@@ -2844,6 +2880,14 @@ environmental context of samples.</p>
 <td>whether internal calibration was used, if false, external calibration was used</td>
 </tr>
 <tr>
+<td><a href="internal_standard/">internal_standard</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="internal_standard_method/">internal_standard_method</a></td>
+<td>Method used for internal standard for SIP fractionation, if an internal...</td>
+</tr>
+<tr>
 <td><a href="ionization_source/">ionization_source</a></td>
 <td>The ionization source used to introduce processed samples into a mass spectrometer</td>
 </tr>
@@ -2872,8 +2916,44 @@ environmental context of samples.</p>
 <td>Isolate or mutant name.</td>
 </tr>
 <tr>
+<td><a href="isotope/">isotope</a></td>
+<td>The element and mass number of the stable isotope used in isotopolog labeling.</td>
+</tr>
+<tr>
+<td><a href="isotope_atom_fractions/">isotope_atom_fractions</a></td>
+<td>Contains the isotopes used and at what fraction, for an isotopolog added...</td>
+</tr>
+<tr>
 <td><a href="isotope_exposure/">isotope_exposure</a></td>
 <td>List isotope exposure or addition applied to your sample.</td>
+</tr>
+<tr>
+<td><a href="isotopolog/">isotopolog</a></td>
+<td>Isotopolog (isotope source/substrate/molecule) added to the biological sample.</td>
+</tr>
+<tr>
+<td><a href="isotopolog_approach/">isotopolog_approach</a></td>
+<td>The labelling approach of this SIP experiment. Details if multiple...</td>
+</tr>
+<tr>
+<td><a href="isotopolog_atom_frac/">isotopolog_atom_frac</a></td>
+<td>The fraction of heavy-labelled atoms out of all atoms of a given element in...</td>
+</tr>
+<tr>
+<td><a href="isotopolog_atom_pos/">isotopolog_atom_pos</a></td>
+<td>InChI label designating set of all isotopically enriched atoms in...</td>
+</tr>
+<tr>
+<td><a href="isotopolog_dose/">isotopolog_dose</a></td>
+<td>The concentration (in ppm) of isotopolog added to environmental matrix as a...</td>
+</tr>
+<tr>
+<td><a href="isotopolog_incu_time/">isotopolog_incu_time</a></td>
+<td>Total time of incubation after isotopolog addition in hours</td>
+</tr>
+<tr>
+<td><a href="isotopolog_label/">isotopolog_label</a></td>
+<td>List whether the isotopolog added to this biological sample was...</td>
 </tr>
 <tr>
 <td><a href="iw_bt_date_well/">iw_bt_date_well</a></td>
@@ -3242,6 +3322,10 @@ environmental context of samples.</p>
 <tr>
 <td><a href="nucl_acid_ext/">nucl_acid_ext</a></td>
 <td>A link to a literature reference, electronic resource or a standard...</td>
+</tr>
+<tr>
+<td><a href="nucleobase_atom_frac/">nucleobase_atom_frac</a></td>
+<td>Excess atom fraction of the nucleobases in this fraction.</td>
 </tr>
 <tr>
 <td><a href="num_16s/">num_16s</a></td>
@@ -5052,6 +5136,18 @@ environmental context of samples.</p>
 </tr>
 <tr>
 <td><a href="IonizationSourceEnum/">IonizationSourceEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="IsotopeEnum/">IsotopeEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="IsotopologApproachEnum/">IsotopologApproachEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="IsotopologLabelEnum/">IsotopologLabelEnum</a></td>
 <td></td>
 </tr>
 <tr>

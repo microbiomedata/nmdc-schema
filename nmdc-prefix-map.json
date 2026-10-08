@@ -62,6 +62,8 @@
    "biosample": "https://bioregistry.io/biosample:",
    "cas": "https://bioregistry.io/cas:",
    "ccug": "https://www.ccug.se/strain?id=",
+   "chrono": "http://rs.tdwg.org/chrono/terms/",
+   "dc": "http://purl.org/dc/elements/1.1/",
    "dcm": "https://kbase.github.io/credit_engine/",
    "dcterms": "http://purl.org/dc/terms/",
    "doi": "https://bioregistry.io/doi:",

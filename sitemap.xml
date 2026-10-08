@@ -229,6 +229,10 @@
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/DensityGradientFractionationProcess/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/DeposEnvEnum/</loc>
          <lastmod>2026-10-08</lastmod>
     </url>
@@ -474,6 +478,30 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/Isolation/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/IsotopeEnum/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/IsotopeLabelingProcess/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/IsotopologAddition/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/IsotopologApproachEnum/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/IsotopologComposition/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/IsotopologLabelEnum/</loc>
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>
@@ -1094,6 +1122,10 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/add_recov_method/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/added_isotopologs/</loc>
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>
@@ -2277,6 +2309,18 @@
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/gradient_pos_density/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/gradient_pos_rel_am/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/gradient_position/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/gravidity/</loc>
          <lastmod>2026-10-08</lastmod>
     </url>
@@ -2474,6 +2518,10 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/herbicide_regm/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/hetero_isotopolog/</loc>
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>
@@ -2757,6 +2805,14 @@
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/internal_standard/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/internal_standard_method/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/ionization_source/</loc>
          <lastmod>2026-10-08</lastmod>
     </url>
@@ -2785,7 +2841,43 @@
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/isotope/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/isotope_atom_fractions/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/isotope_exposure/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/isotopolog/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/isotopolog_approach/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/isotopolog_atom_frac/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/isotopolog_atom_pos/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/isotopolog_dose/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/isotopolog_incu_time/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/isotopolog_label/</loc>
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>
@@ -3174,6 +3266,10 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/nucl_acid_ext/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/nucleobase_atom_frac/</loc>
          <lastmod>2026-10-08</lastmod>
     </url>
     <url>
