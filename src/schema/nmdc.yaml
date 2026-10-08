@@ -420,7 +420,8 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$" 
+          syntax: "{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$"
+          interpolated: true
 
   CalibrationInformation:
       class_uri: nmdc:CalibrationInformation
@@ -740,6 +741,7 @@ classes:
       id:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:mixpro-{id_shoulder}-{id_blade}$"
+          interpolated: true
       has_output:
         description: The mixed sample.
         structured_pattern:
@@ -826,6 +828,7 @@ classes:
       id:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:cspro-{id_shoulder}-{id_blade}$"
+          interpolated: true
       has_output:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
