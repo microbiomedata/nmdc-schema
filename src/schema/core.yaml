@@ -1475,6 +1475,7 @@ classes:
       - dna_absorb1
       - dna_concentration
       - external_database_identifiers
+      - first_of_class_in_chain
       - sampled_portion
       # output of SIP fractionation related slots
       - gradient_position
@@ -1502,6 +1503,7 @@ classes:
       - associated_studies
       - expected_organism
       - embargoed
+      - first_of_class_in_chain
       - provenance_metadata
       - external_database_identifiers
       - gold_organism_identifiers
