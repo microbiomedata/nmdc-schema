@@ -67,9 +67,9 @@ enums:
       imaging - electron:
         description: A microscopy technique that uses beams of electrons to scan a sample and generate images.
       imaging - ion:
-        description: Analysis that uses ions to scan a sample and generate images. 
+        description: A microscopy technique that uses ions to scan a sample and generate images. 
       imaging - light:
-        description: Analysis that uses visible light to generate images of a sample.
+        description: A microscopy technique that uses visible light to generate images of a sample.
       hydraulic properties:
         description: Measurement of the relative permeability-saturation-capillary pressure (k-s-p) relations of a sample.
       other emsl analyses:
