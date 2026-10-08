@@ -2,9 +2,9 @@
 
 Retired names come from two places: the definitions in ``src/schema/deprecated.yaml``
 and the catalog written by ``schema_element_history.py`` (elements some release defined
-and the current schema does not). A name the current schema still defines, as any kind
-of element, is dropped, so a slot retired from one module and redefined in another is
-not reported.
+and the current schema does not). A name the current schema still defines is dropped, so
+a slot retired from one module and redefined in another is not reported. With
+``--permissible-values``, a value that any current enum still has is dropped too.
 
 By default the scan covers tracked files outside the paths that something already
 checks: schema sources (linted), example data (validated), the ``nmdc_schema`` package
@@ -14,8 +14,8 @@ may mention a retired name on purpose.
 
 Names that are ordinary lowercase words or phrases (``soil``, ``part of``) are not scanned
 by default, because early schema versions used many of them and they match ordinary text.
-Pass ``--plain-words`` to include them. Permissible values are not scanned by default because short values such as ``soil``
-match ordinary text. Pass ``--permissible-values`` to include them.
+Pass ``--plain-words`` to include them. Permissible values are not scanned by default for
+the same reason. Pass ``--permissible-values`` to include them.
 
 Usage:
     poetry run python src/scripts/find_retired_element_mentions.py \\
@@ -30,57 +30,110 @@ import re
 import subprocess
 import sys
 from collections import Counter
+from collections.abc import Iterable
 from pathlib import Path
 
 import click
 
 sys.path.insert(0, str(Path(__file__).parent))
-from schema_element_history import (
+from schema_element_history import (  # noqa: E402
     DEPRECATED,
+    Key,
     blobs_at,
     current_inventory,
     inventory_of_blob,
-)  # noqa: E402
+)
 
 logger = logging.getLogger(__name__)
 
 IDENTIFIER_LIKE = re.compile(r"^[A-Za-z0-9]*(_|[a-z0-9][A-Z]|^[A-Z])")
+WORD = re.compile(r"[A-Za-z0-9_]+")
 LOCK_FILES = ("poetry.lock", "uv.lock")
 CHECKED_PATHS = ("src/schema", "src/data", "nmdc_schema", "tests", ".github")
+
+
+def build_names(
+    deprecated: Iterable[Key],
+    catalog_rows: Iterable[dict[str, str]],
+    current: Iterable[Key],
+    permissible_values: bool,
+) -> dict[str, dict[str, str]]:
+    """Return retired names mapped to their kind, last release and deprecated.yaml status.
+
+    A name is dropped when the current schema defines it as an element, or, when
+    permissible values are included, as a value of any current enum.
+    """
+    current = set(current)
+    active = {name for kind, _, name in current if kind != "permissible_values"}
+    if permissible_values:
+        active |= {name for kind, _, name in current if kind == "permissible_values"}
+    names: dict[str, dict[str, str]] = {}
+
+    def add(name: str, kind: str, last_tag: str, recorded: str) -> None:
+        entry = names.setdefault(
+            name, {"kind": kind, "last_tag": "", "in_deprecated_yaml": ""}
+        )
+        if kind not in entry["kind"].split(","):
+            entry["kind"] = f"{entry['kind']},{kind}"
+        if last_tag and not entry["last_tag"]:
+            entry["last_tag"] = last_tag
+        if recorded:
+            entry["in_deprecated_yaml"] = "yes"
+
+    for kind, _, name in deprecated:
+        if kind != "permissible_values" or permissible_values:
+            add(name, kind, "", "yes")
+    for row in catalog_rows:
+        if row["kind"] != "permissible_values" or permissible_values:
+            add(row["name"], row["kind"], row["last_tag"], row["in_deprecated_yaml"])
+    return {name: info for name, info in names.items() if name not in active}
+
+
+def keep_identifier_like(names: dict[str, dict[str, str]]) -> dict[str, dict[str, str]]:
+    """Drop names that are ordinary lowercase words or phrases."""
+    return {
+        name: info
+        for name, info in names.items()
+        if IDENTIFIER_LIKE.match(name) and " " not in name
+    }
+
+
+def phrase_patterns(names: Iterable[str]) -> dict[str, re.Pattern[str]]:
+    """Return a whole-word pattern for each name that is not a single word, such as `part of`."""
+    return {
+        name: re.compile(rf"(?<![A-Za-z0-9_]){re.escape(name)}(?![A-Za-z0-9_])")
+        for name in names
+        if not WORD.fullmatch(name)
+    }
+
+
+def names_in_line(
+    line: str, names: dict[str, dict[str, str]], phrases: dict[str, re.Pattern[str]]
+) -> set[str]:
+    """Return the retired names that appear in a line as whole words."""
+    found = {token for token in WORD.findall(line) if token in names}
+    found |= {name for name, pattern in phrases.items() if pattern.search(line)}
+    return found
+
+
+def is_skipped(path: str, skipped: tuple[str, ...]) -> bool:
+    """Return True when a path is one of the skipped paths or inside one."""
+    return any(path == p or path.startswith(f"{p}/") for p in skipped)
 
 
 def retired_names(
     catalog: Path | None, ref: str, permissible_values: bool
 ) -> dict[str, dict[str, str]]:
-    """Return retired names mapped to what is known about them."""
-    current = current_inventory(ref)
-    current_names = {name for kind, _, name in current if kind != "permissible_values"}
-    names: dict[str, dict[str, str]] = {}
+    """Read deprecated.yaml and the catalog at ref and return the retired names."""
+    deprecated: set[Key] = set()
     for path, blob in blobs_at(ref, built=False):
         if path == DEPRECATED:
-            for kind, enum, name in inventory_of_blob(blob):
-                if kind != "permissible_values" or permissible_values:
-                    names.setdefault(
-                        name,
-                        {
-                            "kind": kind,
-                            "enum": enum,
-                            "last_tag": "",
-                            "in_deprecated_yaml": "yes",
-                        },
-                    )
+            deprecated |= inventory_of_blob(blob)
+    rows: list[dict[str, str]] = []
     if catalog:
         with catalog.open() as fh:
-            for row in csv.DictReader(fh, delimiter="\t"):
-                if row["kind"] == "permissible_values" and not permissible_values:
-                    continue
-                entry = names.setdefault(
-                    row["name"],
-                    {**row, "in_deprecated_yaml": row["in_deprecated_yaml"]},
-                )
-                if row["kind"] not in entry["kind"].split(","):
-                    entry["kind"] = f"{entry['kind']},{row['kind']}"
-    return {name: info for name, info in names.items() if name not in current_names}
+            rows = list(csv.DictReader(fh, delimiter="\t"))
+    return build_names(deprecated, rows, current_inventory(ref), permissible_values)
 
 
 def tracked_text_files(ref: str, skipped: tuple[str, ...]) -> list[tuple[str, str]]:
@@ -92,11 +145,7 @@ def tracked_text_files(ref: str, skipped: tuple[str, ...]) -> list[tuple[str, st
     for line in listing.splitlines():
         meta, path = line.split("\t", 1)
         mode, kind, blob = meta.split()
-        if (
-            kind != "blob"
-            or mode == "120000"
-            or any(path == p or path.startswith(f"{p}/") for p in skipped)
-        ):
+        if kind != "blob" or mode == "120000" or is_skipped(path, skipped):
             continue
         entries.append((path, blob))
     batch = subprocess.run(
@@ -159,23 +208,15 @@ def main(
     logging.basicConfig(level=logging.INFO, format="%(message)s")
     names = retired_names(catalog, ref, permissible_values)
     if not plain_words:
-        names = {
-            name: info
-            for name, info in names.items()
-            if IDENTIFIER_LIKE.match(name) and " " not in name
-        }
+        names = keep_identifier_like(names)
     logger.info("%d retired names", len(names))
-    spaced = {name for name in names if not re.fullmatch(r"[A-Za-z0-9_]+", name)}
+    phrases = phrase_patterns(names)
     skipped = () if include_checked else CHECKED_PATHS
     skipped += (DEPRECATED, "assets/schema_element_history", *LOCK_FILES)
-    word = re.compile(r"[A-Za-z0-9_]+")
     rows = []
     for path, text in tracked_text_files(ref, skipped):
         for number, line in enumerate(text.splitlines(), start=1):
-            found = {token for token in word.findall(line) if token in names}
-            # Names containing spaces, such as old subset names, are matched as phrases.
-            found |= {name for name in spaced if name in line}
-            for name in sorted(found):
+            for name in sorted(names_in_line(line, names, phrases)):
                 info = names[name]
                 rows.append(
                     {
@@ -183,8 +224,8 @@ def main(
                         "line": number,
                         "name": name,
                         "kind": info["kind"],
-                        "last_tag": info.get("last_tag", ""),
-                        "in_deprecated_yaml": info.get("in_deprecated_yaml", ""),
+                        "last_tag": info["last_tag"],
+                        "in_deprecated_yaml": info["in_deprecated_yaml"],
                         "text": line.strip()[:200],
                     }
                 )
@@ -205,14 +246,15 @@ def main(
         )
         writer.writeheader()
         writer.writerows(rows)
-    by_dir = Counter("/".join(row["path"].split("/")[:2]) for row in rows)
-    by_name = Counter(row["name"] for row in rows)
+    lines = {(row["path"], row["line"]) for row in rows}
     logger.info(
-        "%d matching lines in %d files", len(rows), len({row["path"] for row in rows})
+        "%d matching lines in %d files", len(lines), len({row["path"] for row in rows})
     )
-    for where, count in by_dir.most_common(20):
+    for where, count in Counter(
+        "/".join(path.split("/")[:2]) for path, _ in lines
+    ).most_common(20):
         logger.info("  %6d  %s", count, where)
-    for name, count in by_name.most_common(20):
+    for name, count in Counter(row["name"] for row in rows).most_common(20):
         logger.info("  %6d  %s", count, name)
 
 
