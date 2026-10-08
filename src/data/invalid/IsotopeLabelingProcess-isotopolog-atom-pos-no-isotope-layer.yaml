@@ -1,0 +1,18 @@
+# Invalid only because isotopolog_atom_pos has no isotope layer (/i...), so it does not say
+# which atoms are labeled. The InChI is unlabeled toluene.
+id: nmdc:isolp-99-abcde12
+name: labeling of my awesome biosample
+type: nmdc:IsotopeLabelingProcess
+has_input:
+  - nmdc:bsm-99-123456
+has_output:
+  - nmdc:procsm-99-987654
+isotopolog_approach: single
+added_isotopologs:
+  - isotopolog_label: isotopically labeled
+    isotope_atom_fractions:
+      - isotope: 13C
+        type: nmdc:IsotopologComposition
+    type: nmdc:IsotopologAddition
+    isotopolog_atom_pos: InChI=1S/C7H8/c1-7-5-3-2-4-6-7/h2-6H,1H3
+    isotopolog: toluene
