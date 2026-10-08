@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.24.1.post148.dev0+b00299ae4
+version: 11.24.1.post149.dev0+1aa3055ca
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -6491,8 +6491,8 @@ enums:
           redox state, molecular structure, etc.) of one or more elements in a sample.
       isotope profiling:
         text: isotope profiling
-        description: Measurement of the stable isotope content of a sample. Typical
-          measurements target hydrogen, carbon, nitrogen, and oxygen analyses.
+        description: Measurement of stable isotope ratios in a sample, typically for
+          hydrogen, carbon, nitrogen, or oxygen.
       imaging - xray:
         text: imaging - xray
         description: A technique that uses X-rays to generate an image of a sample
