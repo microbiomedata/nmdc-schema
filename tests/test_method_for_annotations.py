@@ -7,7 +7,11 @@ import re
 
 from linkml_runtime import SchemaView
 
-from tests import SCHEMA_FILE
+from tests import ROOT
+
+# The source schema, not the generated nmdc_materialized_patterns.yaml, so the check sees
+# edits under src/schema/ before `make all` regenerates the artifact.
+SOURCE_SCHEMA = ROOT / "src" / "schema" / "nmdc.yaml"
 
 METHOD_SLOT_NAME = re.compile(r"_(meth|method|methods|protocol)$")
 
@@ -43,16 +47,16 @@ def method_for_pairs(view: SchemaView) -> dict[str, str]:
     return pairs
 
 
-def test_method_for_names_a_slot_that_exists():
-    view = SchemaView(SCHEMA_FILE)
+def test_method_for_names_a_slot_that_exists() -> None:
+    view = SchemaView(SOURCE_SCHEMA)
     missing = {
         m: t for m, t in method_for_pairs(view).items() if t not in view.all_slots()
     }
     assert missing == {}
 
 
-def test_every_method_slot_is_paired_or_listed_as_a_process():
-    view = SchemaView(SCHEMA_FILE)
+def test_every_method_slot_is_paired_or_listed_as_a_process() -> None:
+    view = SchemaView(SOURCE_SCHEMA)
     pairs = method_for_pairs(view)
     unpaired = sorted(
         name
@@ -67,13 +71,13 @@ def test_every_method_slot_is_paired_or_listed_as_a_process():
     )
 
 
-def test_process_method_slots_have_no_method_for():
-    view = SchemaView(SCHEMA_FILE)
+def test_process_method_slots_have_no_method_for() -> None:
+    view = SchemaView(SOURCE_SCHEMA)
     assert sorted(set(method_for_pairs(view)) & PROCESS_METHOD_SLOTS) == []
 
 
-def test_every_class_with_a_method_slot_also_has_the_slot_it_describes():
-    view = SchemaView(SCHEMA_FILE)
+def test_every_class_with_a_method_slot_also_has_the_slot_it_describes() -> None:
+    view = SchemaView(SOURCE_SCHEMA)
     problems = []
     for method, target in method_for_pairs(view).items():
         for class_name in view.all_classes():
