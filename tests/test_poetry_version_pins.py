@@ -20,6 +20,7 @@ PINNED_FILES = [
     *sorted((ROOT / ".github" / "workflows").glob("*.y*ml")),
     ROOT / "Dockerfile",
     ROOT / "DEVELOPMENT.md",
+    ROOT / "CLAUDE.md",
 ]
 
 
