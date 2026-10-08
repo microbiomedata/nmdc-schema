@@ -16,31 +16,46 @@ from tests import ROOT
 # edits under src/schema/ before `make all` regenerates the artifact.
 SOURCE_SCHEMA = ROOT / "src" / "schema" / "nmdc.yaml"
 
-# Pairs that existed when this test was added (2026-10-08). Don't add to this list.
+# Groups that existed when this test was added (2026-10-08), as (kind, name). Don't add to this list.
 GRANDFATHERED = {
-    frozenset({"provenance_metadata", "ProvenanceMetadata"}),
+    frozenset({("slot", "provenance_metadata"), ("class", "ProvenanceMetadata")}),
+}
+
+ELEMENT_KINDS = {
+    "class": SchemaView.all_classes,
+    "slot": SchemaView.all_slots,
+    "enum": SchemaView.all_enums,
+    "type": SchemaView.all_types,
+    "subset": SchemaView.all_subsets,
 }
 
 
+def singular(word: str) -> str:
+    """Return a lowercase word without a regular English plural ending."""
+    if word.endswith("ies") and len(word) > 4:
+        return word[:-3] + "y"
+    if word.endswith(("sses", "xes", "zes", "ches", "shes")):
+        return word[:-2]
+    if word.endswith("s") and not word.endswith(("ss", "us", "is")):
+        return word[:-1]
+    return word
+
+
 def normalize(name: str) -> str:
-    """Return a name lowercased, without separators, and without a final plural "s"."""
-    flat = re.sub(r"[_\s-]", "", name).lower()
-    return flat[:-1] if flat.endswith("s") and not flat.endswith("ss") else flat
+    """Return a name lowercased, without separators, and without a plural ending."""
+    return singular(re.sub(r"[_\s-]", "", name).lower())
 
 
-def colliding_names(view: SchemaView) -> set[frozenset[str]]:
-    """Return each group of two or more element names that normalize to the same string."""
+def colliding_names(view: SchemaView) -> set[frozenset[tuple[str, str]]]:
+    """Return each group of two or more elements whose names normalize to the same string.
+
+    Elements are (kind, name), so a class and a slot with the identical name count as a pair.
+    """
     groups = defaultdict(set)
-    for getter in (
-        view.all_classes,
-        view.all_slots,
-        view.all_enums,
-        view.all_types,
-        view.all_subsets,
-    ):
-        for name in getter():
-            groups[normalize(name)].add(name)
-    return {frozenset(names) for names in groups.values() if len(names) > 1}
+    for kind, getter in ELEMENT_KINDS.items():
+        for name in getter(view):
+            groups[normalize(name)].add((kind, name))
+    return {frozenset(members) for members in groups.values() if len(members) > 1}
 
 
 def test_no_new_element_names_collide() -> None:
@@ -55,6 +70,37 @@ def test_grandfathered_list_has_no_fixed_entries() -> None:
 def test_normalize() -> None:
     assert normalize("provenance_metadata") == normalize("ProvenanceMetadata")
     assert normalize("isotopolog_additions") == normalize("IsotopologAddition")
+    assert normalize("processes") == normalize("Process")
+    assert normalize("categories") == normalize("Category")
+    assert normalize("boxes") == normalize("box")
     assert normalize("ctg_n50") != normalize("ctg_l50")
     assert normalize("nitrate_nitrogen") != normalize("nitrite_nitrogen")
     assert normalize("process") == "process"
+    assert normalize("status") == "status"
+    assert normalize("analysis") == "analysis"
+
+
+TOY_SCHEMA = """
+id: https://example.org/toy
+name: toy
+prefixes:
+  linkml: https://w3id.org/linkml/
+default_prefix: toy
+imports:
+  - linkml:types
+classes:
+  Sample: {}
+  Process: {}
+slots:
+  Sample: {}
+  processes: {}
+  depth: {}
+"""
+
+
+def test_identical_and_plural_names_of_different_kinds_collide() -> None:
+    found = colliding_names(SchemaView(TOY_SCHEMA))
+    assert found == {
+        frozenset({("class", "Sample"), ("slot", "Sample")}),
+        frozenset({("class", "Process"), ("slot", "processes")}),
+    }
