@@ -1205,13 +1205,6 @@
                         "null"
                     ]
                 },
-                "collection_time_inc": {
-                    "description": "Time the incubation was harvested/collected/ended. Only relevant for incubation samples.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "community": {
                     "type": [
                         "string",
@@ -18672,6 +18665,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.24.1.post104.dev0+5c5947fe4"
+    "version": "11.24.1.post106.dev0+fce7487be"
 }
 

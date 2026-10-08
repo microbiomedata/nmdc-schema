@@ -3872,12 +3872,6 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../collection_time_inc/">collection_time_inc</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
-<td>Time the incubation was harvested/collected/ended. Only relevant for...</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../experimental_factor_other/">experimental_factor_other</a></td>
 <td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
 <td>Other details about your sample that you feel can't be accurately...</td>
@@ -4674,7 +4668,6 @@ slots:
 - dna_isolate_meth
 - rna_isolate_meth
 - collection_time
-- collection_time_inc
 - experimental_factor_other
 - filter_method
 - isotope_exposure
@@ -17563,37 +17556,6 @@ attributes:
     see_also:
     - MIXS:0000011
     rank: 1
-    string_serialization: '{time, seconds optional}'
-    owner: Biosample
-    domain_of:
-    - Biosample
-    slot_group: MIxS Inspired
-    range: string
-    recommended: true
-  collection_time_inc:
-    name: collection_time_inc
-    description: Time the incubation was harvested/collected/ended. Only relevant
-      for incubation samples.
-    title: incubation collection time, GMT
-    deprecated: This slot is directly replaced by collection_time. Any instances that
-      would use collection_time_inc should use collection_time instead.
-    notes:
-    - MIxS collection_date accepts (truncated) ISO8601. DH taking seconds optional
-      time only
-    comments:
-    - 'Time should be entered as HH:MM(:SS) in GMT. See here for a converter: https://www.worldtimebuddy.com/pst-to-gmt-converter'
-    examples:
-    - value: '13:33'
-    - value: '13:33:55'
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - MIXS:0000011
-    deprecated_element_has_exact_replacement: collection_time
-    contributors:
-    - orcid:0009-0008-4013-7737
-    last_updated_on: '2026-09-04T00:00:00+00:00'
-    modified_by: orcid:0009-0008-4013-7737
-    rank: 3
     string_serialization: '{time, seconds optional}'
     owner: Biosample
     domain_of:
