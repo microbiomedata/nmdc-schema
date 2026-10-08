@@ -115,6 +115,25 @@ def extract_score(element: dict) -> str:
     return ""
 
 
+def select_named(named_elements: dict, names: tuple[str, ...]) -> dict:
+    """Keep only the elements whose names are listed, or all of them when none are.
+
+    >>> select_named({"A": 1, "B": 2}, ("B",))
+    {'B': 2}
+    >>> select_named({"A": 1, "B": 2}, ())
+    {'A': 1, 'B': 2}
+    """
+    if not names:
+        return named_elements
+    return {name: element for name, element in named_elements.items() if name in names}
+
+
+def unknown_element_names(names: tuple[str, ...], sv: SchemaView) -> list[str]:
+    """Return the names that are not a class, slot or enum in the schema, in the given order."""
+    known = set(sv.all_classes()) | set(sv.all_slots()) | set(sv.all_enums())
+    return [name for name in names if name not in known]
+
+
 def build_query(name: str, description: Optional[str]) -> str:
     """Build a search query from element name and description."""
     # Expand CamelCase
@@ -218,6 +237,15 @@ def search_element(
     help="Comma-separated element types to search",
 )
 @click.option(
+    "--element",
+    "elements",
+    multiple=True,
+    help=(
+        "Search only this class, slot or enum (repeatable). For an enum, its "
+        "permissible values are searched when 'pvs' is in --element-types"
+    ),
+)
+@click.option(
     "--skip-mapped/--include-mapped",
     default=False,
     show_default=True,
@@ -232,6 +260,7 @@ def main(
     delay: float,
     ontology: Optional[str],
     element_types: str,
+    elements: tuple[str, ...],
     skip_mapped: bool,
     verbose: bool,
 ):
@@ -243,6 +272,13 @@ def main(
 
     types = {t.strip().lower() for t in element_types.split(",")}
     sv = SchemaView(schema)
+    if elements:
+        unknown = unknown_element_names(elements, sv)
+        if unknown:
+            raise click.BadParameter(
+                f"not a class, slot or enum in {schema}: {', '.join(unknown)}",
+                param_hint="--element",
+            )
     all_rows: list[dict] = []
     total_queries = 0
     skipped = 0
@@ -258,7 +294,7 @@ def main(
 
     # Classes
     if "classes" in types:
-        classes = sv.all_classes()
+        classes = select_named(sv.all_classes(), elements)
         logger.info("Searching %d classes...", len(classes))
         for name, cls in classes.items():
             if skip_mapped and has_mappings(cls):
@@ -275,7 +311,7 @@ def main(
 
     # Slots
     if "slots" in types:
-        all_slots = sv.all_slots()
+        all_slots = select_named(sv.all_slots(), elements)
         logger.info("Searching %d slots...", len(all_slots))
         for name, slot in all_slots.items():
             if skip_mapped and has_mappings(slot):
@@ -292,7 +328,7 @@ def main(
 
     # Enums
     if "enums" in types:
-        all_enums = sv.all_enums()
+        all_enums = select_named(sv.all_enums(), elements)
         logger.info("Searching %d enums...", len(all_enums))
         for name, enum in all_enums.items():
             if skip_mapped and has_mappings(enum):
@@ -309,7 +345,7 @@ def main(
 
     # Permissible values
     if "pvs" in types:
-        all_enums = sv.all_enums()
+        all_enums = select_named(sv.all_enums(), elements)
         pv_count = sum(
             len(e.permissible_values) for e in all_enums.values() if e.permissible_values
         )
@@ -341,6 +377,11 @@ def main(
                         total_queries,
                         len(all_rows),
                     )
+
+    if elements and total_queries + skipped == 0:
+        raise click.UsageError(
+            f"--element {', '.join(elements)} matched nothing in --element-types {element_types}"
+        )
 
     # Write output
     output_path = Path(output)
