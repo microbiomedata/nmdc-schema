@@ -16,19 +16,40 @@ from tests import ROOT
 
 PIN = re.compile(r"poetry==(\d+\.\d+\.\d+)")
 
-PINNED_FILES = [
-    *sorted((ROOT / ".github" / "workflows").glob("*.y*ml")),
+WORKFLOWS = ROOT / ".github" / "workflows"
+
+# Files that install or document poetry and so must each carry a pin. Removing a
+# pin from one of these should fail the test, not leave that install unpinned.
+EXPECTED_PIN_FILES = [
+    WORKFLOWS / "check-links.yaml",
+    WORKFLOWS / "deploy-docs.yaml",
+    WORKFLOWS / "lint.yaml",
+    WORKFLOWS / "main.yaml",
+    WORKFLOWS / "pypi-publish.yaml",
+    WORKFLOWS / "schema-pattern-lint.yml",
+    WORKFLOWS / "test-pages-build.yaml",
     ROOT / "Dockerfile",
     ROOT / "DEVELOPMENT.md",
     ROOT / "CLAUDE.md",
 ]
 
+# Also scan every workflow, so a pin added to a new workflow is checked too.
+SCANNED_FILES = sorted(set(EXPECTED_PIN_FILES) | set(WORKFLOWS.glob("*.y*ml")))
+
 
 class TestPoetryVersionPins(unittest.TestCase):
 
+    def test_expected_files_are_pinned(self):
+        unpinned = [
+            str(path.relative_to(ROOT))
+            for path in EXPECTED_PIN_FILES
+            if not PIN.search(path.read_text())
+        ]
+        self.assertEqual(unpinned, [], f"no poetry==X.Y.Z pin found in: {unpinned}")
+
     def test_poetry_pins_agree(self):
         versions = {}
-        for path in PINNED_FILES:
+        for path in SCANNED_FILES:
             for version in PIN.findall(path.read_text()):
                 versions.setdefault(version, []).append(str(path.relative_to(ROOT)))
         self.assertTrue(versions, "found no poetry==X.Y.Z pins; did the install commands change?")
