@@ -71,7 +71,7 @@ enums:
       imaging - light:
         description: Analysis that uses visible light to generate images of a sample.
       hydraulic properties:
-        description: Measurement of the relative permeability-saturation-capillary pressure of a sample.
+        description: Measurement of the relative permeability-saturation-capillary pressure (k-s-p) relations of a sample.
       other emsl analyses:
         description: Other analyses planned at EMSL that are not listed here.
   SubmissionStatusEnum:
