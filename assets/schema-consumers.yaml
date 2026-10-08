@@ -39,8 +39,6 @@ consumers:
         declaration: pyproject.toml
       - package: nmdc-lakehouse-schema
         declaration: pyproject.toml
-        status: adoption_pending
-        adoption_issue: https://github.com/microbiomedata/nmdc-lakehouse/issues/332
     candidate_issue: https://github.com/microbiomedata/nmdc-schema/issues/3428
     release_update_issue: https://github.com/microbiomedata/nmdc-lakehouse/issues/343
     rollout_issues:
