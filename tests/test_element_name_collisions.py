@@ -68,7 +68,7 @@ def mixs_elements() -> frozenset[tuple[str, str]]:
 
 
 def colliding_names(
-    view: SchemaView, imported: frozenset[str] = frozenset()
+    view: SchemaView, imported: frozenset[tuple[str, str]] = frozenset()
 ) -> set[frozenset[tuple[str, str]]]:
     """Return each group of two or more elements whose names normalize to the same string.
 
