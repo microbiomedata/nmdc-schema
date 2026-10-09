@@ -33,27 +33,28 @@ ELEMENT_KINDS = {
 }
 
 
-def singular(word: str) -> str:
-    """Return a lowercase word without a regular English plural ending.
+def singular_forms(word: str) -> set[str]:
+    """Return every form a lowercase word could have without a regular English plural ending.
 
-    The endings handled are the ones CONTRIBUTING.md names: -ies (categories), -yses (analyses),
-    -es after s, x, z, ch and sh (processes, statuses, boxes), and a final -s (samples). Irregular
-    plurals are not handled.
+    Endings are ambiguous (`houses` is `house` + s, `buses` is `bus` + es), so every reading is
+    kept, and two names collide if any of their forms match. The endings are the ones
+    CONTRIBUTING.md names: -s, -es, -ies and -yses.
     """
+    forms = {word}
+    if word.endswith("s") and not word.endswith("ss"):
+        forms.add(word[:-1])
+    if word.endswith("es"):
+        forms.add(word[:-2])
     if word.endswith("ies") and len(word) > 4:
-        return word[:-3] + "y"
+        forms.add(word[:-3] + "y")
     if word.endswith("yses"):
-        return word[:-4] + "ysis"
-    if word.endswith(("sses", "uses", "xes", "zes", "ches", "shes")):
-        return word[:-2]
-    if word.endswith("s") and not word.endswith(("ss", "us", "is")):
-        return word[:-1]
-    return word
+        forms.add(word[:-4] + "ysis")
+    return forms
 
 
-def normalize(name: str) -> str:
-    """Return a name lowercased, without separators, and without a plural ending."""
-    return singular(re.sub(r"[_\s-]", "", name).lower())
+def name_forms(name: str) -> set[str]:
+    """Return a name's possible singular forms, lowercased and without separators."""
+    return singular_forms(re.sub(r"[_\s-]", "", name).lower())
 
 
 def mixs_elements() -> frozenset[tuple[str, str]]:
@@ -70,7 +71,7 @@ def mixs_elements() -> frozenset[tuple[str, str]]:
 def colliding_names(
     view: SchemaView, imported: frozenset[tuple[str, str]] = frozenset()
 ) -> set[frozenset[tuple[str, str]]]:
-    """Return each group of two or more elements whose names normalize to the same string.
+    """Return each group of two or more elements that share a possible singular form.
 
     Elements are (kind, name), so a class and a slot with the identical name count as a pair.
     A group made up only of imported elements, matched by kind and name, is skipped, because CONTRIBUTING.md exempts imported
@@ -79,7 +80,8 @@ def colliding_names(
     groups = defaultdict(set)
     for kind, getter in ELEMENT_KINDS.items():
         for name in getter(view):
-            groups[normalize(name)].add((kind, name))
+            for form in name_forms(name):
+                groups[form].add((kind, name))
     return {
         frozenset(members)
         for members in groups.values()
@@ -99,21 +101,25 @@ def test_grandfathered_list_has_no_fixed_entries() -> None:
     )
 
 
-def test_normalize() -> None:
-    assert normalize("provenance_metadata") == normalize("ProvenanceMetadata")
-    assert normalize("isotopolog_additions") == normalize("IsotopologAddition")
-    assert normalize("processes") == normalize("Process")
-    assert normalize("categories") == normalize("Category")
-    assert normalize("boxes") == normalize("box")
-    assert normalize("ctg_n50") != normalize("ctg_l50")
-    assert normalize("nitrate_nitrogen") != normalize("nitrite_nitrogen")
-    assert normalize("process") == "process"
-    assert normalize("status") == "status"
-    assert normalize("analysis") == "analysis"
-    assert normalize("statuses") == normalize("Status")
-    assert normalize("buses") == normalize("Bus")
-    assert normalize("analyses") == normalize("Analysis")
-    assert normalize("cases") == normalize("case")
+def collide(a: str, b: str) -> bool:
+    return bool(name_forms(a) & name_forms(b))
+
+
+def test_name_forms() -> None:
+    assert collide("provenance_metadata", "ProvenanceMetadata")
+    assert collide("isotopolog_additions", "IsotopologAddition")
+    assert collide("processes", "Process")
+    assert collide("categories", "Category")
+    assert collide("statuses", "Status")
+    assert collide("buses", "Bus")
+    assert collide("analyses", "Analysis")
+    assert collide("houses", "House")
+    assert collide("causes", "Cause")
+    assert collide("phases", "Phase")
+    assert collide("boxes", "box")
+    assert not collide("ctg_n50", "ctg_l50")
+    assert not collide("nitrate_nitrogen", "nitrite_nitrogen")
+    assert not collide("status", "statue")
 
 
 TOY_SCHEMA = """
