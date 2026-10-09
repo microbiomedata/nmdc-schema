@@ -215,7 +215,6 @@
 '.slots.wind_speed.range |= "QuantityValue"'
 '.slots.xylene.range |= "QuantityValue"'
 '.slots.isotopolog_atom_pos.range |= "string"'
-'.slots.internal_standard.range |= "Protocol"'
 
 # Restore multivalued: false for slots that changed from microbiomedata/mixs tag pre-2024-05-15
 # to GSC MIxS v6.3.0 (release tag v6.3.0, commit fb3271909f5ab3277d4c869e816bc9e334cb816f).
@@ -264,7 +263,6 @@
 'del(.slots.gradient_position.required)'
 'del(.slots.isotopolog.required)'
 'del(.slots.isotopolog_approach.required)'
-'del(.slots.internal_standard.structured_pattern)'
 'del(.slots.isotopolog.structured_pattern)'
 'del(.slots.gradient_pos_density.structured_pattern)'
 'del(.slots.gradient_pos_density.todos)'
