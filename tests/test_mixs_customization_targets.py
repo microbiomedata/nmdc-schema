@@ -9,13 +9,10 @@ that name, which leaves an empty stub slot in src/schema/mixs.yaml. That happene
 import csv
 import re
 
-import yaml
-
 from tests import ROOT
 
 IMPORT_LIST = ROOT / "assets" / "import_mixs_slots_regardless.tsv"
 CUSTOMIZATIONS = ROOT / "assets" / "yq-for-mixs-customizations.txt"
-INJECTED = ROOT / "assets" / "other_mixs_yaml_files"
 
 SLOT_REFERENCE = re.compile(r"\.slots\.([A-Za-z0-9_]+)")
 RENAME = re.compile(r"^'\.slots\.([A-Za-z0-9_]+) = \.slots\.[A-Za-z0-9_]+")
@@ -31,11 +28,14 @@ def active_lines() -> list[str]:
 
 
 def known_slots() -> set[str]:
-    """Return slots that exist when the customizations run: imported, injected, or created by a rename."""
+    """Return slots that exist when the customizations run: imported, or created by a rename.
+
+    Files in assets/other_mixs_yaml_files/ other than the mixs_template.yaml recipient model are
+    injected after the customizations run (makefiles/mixs.Makefile), so their slots don't count.
+    The recipient model defines no slots.
+    """
     with IMPORT_LIST.open() as fh:
         known = {row["slot"] for row in csv.DictReader(fh, delimiter="\t")}
-    for path in INJECTED.glob("*.yaml"):
-        known |= set((yaml.safe_load(path.read_text()) or {}).get("slots") or {})
     for line in active_lines():
         match = RENAME.match(line)
         if match:
