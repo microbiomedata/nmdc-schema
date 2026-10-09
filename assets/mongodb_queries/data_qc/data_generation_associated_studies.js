@@ -1,6 +1,6 @@
-// Find each biosample associated_studies value that matches no study_set id.
+// Find each data generation associated_studies value that matches no study_set id.
 // associated_studies holds a list, so it is unwound first: one result per dangling value.
-db.biosample_set.aggregate([
+db.data_generation_set.aggregate([
   {
     $unwind: "$associated_studies"
   },
