@@ -5,6 +5,7 @@ ending are ignored, such as the `provenance_metadata` slot and the `ProvenanceMe
 See https://github.com/microbiomedata/nmdc-schema/issues/3466.
 """
 
+import csv
 import re
 from collections import defaultdict
 
@@ -19,6 +20,7 @@ from tests import ROOT
 SOURCE_SCHEMA = ROOT / "src" / "schema" / "nmdc.yaml"
 MIXS_MODULE = ROOT / "src" / "schema" / "mixs.yaml"
 INJECTED = ROOT / "assets" / "other_mixs_yaml_files"
+IMPORT_LIST = ROOT / "assets" / "import_mixs_slots_regardless.tsv"
 
 # Groups that existed when this test was added (2026-10-08), as (kind, name). Don't add to this list.
 GRANDFATHERED = {
@@ -77,6 +79,12 @@ def mixs_elements() -> frozenset[tuple[str, str]]:
     injected = set()
     for path in INJECTED.glob("*.yaml"):
         injected |= elements(yaml.safe_load(path.read_text()))
+    # Some of those files only patch imported slots (env_broad_scale gets a tooltip), so a slot on
+    # the import list stays upstream whatever else touches it.
+    with IMPORT_LIST.open() as fh:
+        injected -= {
+            ("slot", row["slot"]) for row in csv.DictReader(fh, delimiter="\t")
+        }
     return frozenset(elements(yaml.safe_load(MIXS_MODULE.read_text())) - injected)
 
 
@@ -157,6 +165,7 @@ def test_injected_nmdc_definitions_are_not_exempt() -> None:
     assert ("enum", "CurLandUseEnum") not in upstream
     assert ("slot", "mixs_env_triad_field") not in upstream
     assert ("slot", "ph") in upstream
+    assert ("slot", "env_broad_scale") in upstream
 
 
 def test_groups_of_only_imported_elements_are_skipped() -> None:
