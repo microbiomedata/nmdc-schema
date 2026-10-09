@@ -18,6 +18,7 @@ from tests import ROOT
 # edits under src/schema/ before `make all` regenerates the artifact.
 SOURCE_SCHEMA = ROOT / "src" / "schema" / "nmdc.yaml"
 MIXS_MODULE = ROOT / "src" / "schema" / "mixs.yaml"
+INJECTED = ROOT / "assets" / "other_mixs_yaml_files"
 
 # Groups that existed when this test was added (2026-10-08), as (kind, name). Don't add to this list.
 GRANDFATHERED = {
@@ -58,14 +59,25 @@ def name_forms(name: str) -> set[str]:
 
 
 def mixs_elements() -> frozenset[tuple[str, str]]:
-    """Return (kind, name) for the classes, slots and enums defined in the imported MIxS module."""
-    doc = yaml.safe_load(MIXS_MODULE.read_text())
+    """Return (kind, name) for the upstream MIxS classes, slots and enums in the imported module.
+
+    src/schema/mixs.yaml also holds NMDC-authored definitions injected from
+    assets/other_mixs_yaml_files/ (for example CurLandUseEnum), which follow NMDC's rules and are
+    left out here.
+    """
     kinds = {"classes": "class", "slots": "slot", "enums": "enum"}
-    return frozenset(
-        (kind, name)
-        for section, kind in kinds.items()
-        for name in doc.get(section) or {}
-    )
+
+    def elements(doc: dict) -> set[tuple[str, str]]:
+        return {
+            (kind, name)
+            for section, kind in kinds.items()
+            for name in (doc or {}).get(section) or {}
+        }
+
+    injected = set()
+    for path in INJECTED.glob("*.yaml"):
+        injected |= elements(yaml.safe_load(path.read_text()))
+    return frozenset(elements(yaml.safe_load(MIXS_MODULE.read_text())) - injected)
 
 
 def colliding_names(
@@ -138,6 +150,13 @@ slots:
   processes: {}
   depth: {}
 """
+
+
+def test_injected_nmdc_definitions_are_not_exempt() -> None:
+    upstream = mixs_elements()
+    assert ("enum", "CurLandUseEnum") not in upstream
+    assert ("slot", "mixs_env_triad_field") not in upstream
+    assert ("slot", "ph") in upstream
 
 
 def test_groups_of_only_imported_elements_are_skipped() -> None:
