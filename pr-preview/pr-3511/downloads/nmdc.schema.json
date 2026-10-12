@@ -172,7 +172,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -180,7 +179,6 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -357,12 +355,10 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Actual mass of water vapor present in the air water vapor mixture.",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Actual mass of water vapor present in the air water vapor mixture."
                 },
                 "add_recov_method": {
                     "description": "Additional (i.e. Secondary, tertiary, etc.) recovery methods deployed for increase of hydrocarbon recovery from resource and start date for each one of them. If \"other\" is specified, please propose entry in \"additional info\" field",
-                    "pattern": "^({add_recov_methods});{date_time_stamp}$",
                     "type": [
                         "string",
                         "null"
@@ -381,7 +377,6 @@
                 },
                 "address": {
                     "description": "The street name and building number where the sampling occurred",
-                    "pattern": "^{integer} {text}$",
                     "type": [
                         "string",
                         "null"
@@ -396,8 +391,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "List of rooms (room number, room name) immediately adjacent to the sampling room",
-                    "pattern": "^{room_name};{room_number}$"
+                    "description": "List of rooms (room number, room name) immediately adjacent to the sampling room"
                 },
                 "aero_struc": {
                     "$ref": "#/$defs/AeroStrucEnum",
@@ -406,8 +400,7 @@
                 "agrochem_addition": {
                     "description": "Addition of fertilizers, pesticides, etc. - amount and time of applications",
                     "items": {
-                        "$ref": "#/$defs/TextValue",
-                        "pattern": "^{agrochemical_name};{amount} {unit};{date_time_stamp}$"
+                        "$ref": "#/$defs/TextValue"
                     },
                     "type": [
                         "array",
@@ -417,7 +410,6 @@
                 "air_PM_concen": {
                     "description": "Concentration of substances that remain suspended in the air, and comprise mixtures of organic and inorganic substances (PM10 and PM2.5); can report multiple PM's by entering numeric values preceded by name of PM",
                     "items": {
-                        "pattern": "^{particulate_matter_name};{float} {unit}$",
                         "type": "string"
                     },
                     "type": [
@@ -434,8 +426,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Temperature of the air at the time of sampling",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Temperature of the air at the time of sampling"
                 },
                 "air_temp_regm": {
                     "description": "Information about treatment involving an exposure to varying temperatures; should include the temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include different temperature regimens",
@@ -456,12 +447,10 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The relative abundance of aluminum in the sample",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "The relative abundance of aluminum in the sample"
                 },
                 "al_sat_meth": {
                     "description": "Reference or method used in determining Aluminum saturation",
-                    "pattern": "^({PMID}|{DOI}|{URL})$",
                     "type": [
                         "string",
                         "null"
@@ -476,8 +465,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Alkalinity, the ability of a solution to neutralize acids to the equivalence point of carbonate or bicarbonate",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Alkalinity, the ability of a solution to neutralize acids to the equivalence point of carbonate or bicarbonate"
                 },
                 "alkalinity_method": {
                     "description": "Method used for alkalinity measurement",
@@ -495,8 +483,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of alkyl diethers",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of alkyl diethers"
                 },
                 "alt": {
                     "anyOf": [
@@ -507,8 +494,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Heights of objects such as airplanes, space shuttles, rockets, atmospheric balloons and heights of places such as atmospheric layers and clouds. It is used to measure the height of an object which is above the earth's surface. In this context, the altitude measurement is the vertical distance between the earth's surface above sea level and the sampled position in the air",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Heights of objects such as airplanes, space shuttles, rockets, atmospheric balloons and heights of places such as atmospheric layers and clouds. It is used to measure the height of an object which is above the earth's surface. In this context, the altitude measurement is the vertical distance between the earth's surface above sea level and the sampled position in the air"
                 },
                 "alternative_identifiers": {
                     "description": "Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC",
@@ -540,8 +526,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Measurement of aminopeptidase activity",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Measurement of aminopeptidase activity"
                 },
                 "ammonium": {
                     "anyOf": [
@@ -552,8 +537,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of ammonium in the sample",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of ammonium in the sample"
                 },
                 "ammonium_nitrogen": {
                     "anyOf": [
@@ -575,8 +559,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The unit of illuminance and luminous emittance, measuring luminous flux per unit area",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "The unit of illuminance and luminous emittance, measuring luminous flux per unit area"
                 },
                 "analysis_type": {
                     "description": "Select all the data types associated or available for this biosample",
@@ -608,8 +591,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The average of all annual precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "The average of all annual precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps"
                 },
                 "annual_temp": {
                     "anyOf": [
@@ -620,8 +602,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Mean annual temperature",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Mean annual temperature"
                 },
                 "antibiotic_regm": {
                     "description": "Information about treatment involving antibiotic administration; should include the name of antibiotic, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple antibiotic regimens",
@@ -642,8 +623,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "API gravity is a measure of how heavy or light a petroleum liquid is compared to water (source: https://en.wikipedia.org/wiki/API_gravity)",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "API gravity is a measure of how heavy or light a petroleum liquid is compared to water (source: https://en.wikipedia.org/wiki/API_gravity)"
                 },
                 "arch_struc": {
                     "$ref": "#/$defs/ArchStrucEnum",
@@ -658,8 +638,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Saturate, Aromatic, Resin and Asphaltene (SARA) is an analysis method that divides crude oil components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)",
-                    "pattern": "^{name};{float} {unit}$"
+                    "description": "Saturate, Aromatic, Resin and Asphaltene (SARA) is an analysis method that divides crude oil components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)"
                 },
                 "asphaltenes_pc": {
                     "anyOf": [
@@ -670,13 +649,11 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Saturate, Aromatic, Resin and Asphaltene (SARA) is an analysis method that divides crude oil components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)",
-                    "pattern": "^{name};{float} {unit}$"
+                    "description": "Saturate, Aromatic, Resin and Asphaltene (SARA) is an analysis method that divides crude oil components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)"
                 },
                 "associated_studies": {
                     "description": "The study associated with a resource.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -700,8 +677,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The average of dew point measures taken at the beginning of every hour over a 24 hour period on the sampling day",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "The average of dew point measures taken at the beginning of every hour over a 24 hour period on the sampling day"
                 },
                 "avg_occup": {
                     "anyOf": [
@@ -723,8 +699,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The average of temperatures taken at the beginning of every hour over a 24 hour period on the sampling day",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "The average of temperatures taken at the beginning of every hour over a 24 hour period on the sampling day"
                 },
                 "bac_prod": {
                     "anyOf": [
@@ -735,8 +710,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Bacterial production in the water column measured by isotope uptake",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Bacterial production in the water column measured by isotope uptake"
                 },
                 "bac_resp": {
                     "anyOf": [
@@ -747,8 +721,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Measurement of bacterial respiration in the water column",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Measurement of bacterial respiration in the water column"
                 },
                 "bacteria_carb_prod": {
                     "anyOf": [
@@ -759,8 +732,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Measurement of bacterial carbon production",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Measurement of bacterial carbon production"
                 },
                 "badges": {
                     "description": "Metadata-quality badges awarded to this record. Each value names one badge, which is present or absent; there are no levels or tiers. Most badges name a completeness subset, but not all do: expert_curation is awarded from provenance instead. Awarded by a downstream service, not asserted by submitters. Awarding is additive: a badge, once awarded, is not removed from the record.",
@@ -781,8 +753,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Force per unit area exerted against a surface by the weight of air above that surface",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Force per unit area exerted against a surface by the weight of air above that surface"
                 },
                 "basin": {
                     "anyOf": [
@@ -826,8 +797,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of benzene in the sample",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of benzene in the sample"
                 },
                 "biochem_oxygen_dem": {
                     "anyOf": [
@@ -838,8 +808,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Amount of dissolved oxygen needed by aerobic biological organisms in a body of water to break down organic material present in a given water sample at certain temperature over a specific time period",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Amount of dissolved oxygen needed by aerobic biological organisms in a body of water to break down organic material present in a given water sample at certain temperature over a specific time period"
                 },
                 "biocide": {
                     "description": "List of biocides (commercial name of product and supplier) and date of administration",
@@ -902,8 +871,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of bishomohopanol",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of bishomohopanol"
                 },
                 "blood_press_diast": {
                     "anyOf": [
@@ -914,8 +882,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Resting diastolic blood pressure, measured as mm mercury",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Resting diastolic blood pressure, measured as mm mercury"
                 },
                 "blood_press_syst": {
                     "anyOf": [
@@ -926,8 +893,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Resting systolic blood pressure, measured as mm mercury",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Resting systolic blood pressure, measured as mm mercury"
                 },
                 "bromide": {
                     "anyOf": [
@@ -938,8 +904,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of bromide",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of bromide"
                 },
                 "build_docs": {
                     "$ref": "#/$defs/BuildDocsEnum",
@@ -968,8 +933,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The age of the built structure since construction",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "The age of the built structure since construction"
                 },
                 "built_struc_set": {
                     "$ref": "#/$defs/BuiltStrucSetEnum",
@@ -1006,8 +970,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of calcium in the sample",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of calcium in the sample"
                 },
                 "carb_dioxide": {
                     "anyOf": [
@@ -1018,8 +981,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Carbon dioxide (gas) amount or concentration at the time of sampling",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Carbon dioxide (gas) amount or concentration at the time of sampling"
                 },
                 "carb_monoxide": {
                     "anyOf": [
@@ -1030,8 +992,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Carbon monoxide (gas) amount or concentration at the time of sampling",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Carbon monoxide (gas) amount or concentration at the time of sampling"
                 },
                 "carb_nitro_ratio": {
                     "anyOf": [
@@ -1053,8 +1014,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The area of the ceiling space within the room",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "The area of the ceiling space within the room"
                 },
                 "ceil_cond": {
                     "$ref": "#/$defs/DamagedEnum",
@@ -1081,8 +1041,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The ability of the ceiling to provide inertia against temperature fluctuations. Generally this means concrete that is exposed. A metal deck that supports a concrete slab will act thermally as long as it is exposed to room air flow",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "The ability of the ceiling to provide inertia against temperature fluctuations. Generally this means concrete that is exposed. A metal deck that supports a concrete slab will act thermally as long as it is exposed to room air flow"
                 },
                 "ceil_type": {
                     "$ref": "#/$defs/CeilTypeEnum",
@@ -1128,8 +1087,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "A measure of the capacity of water to consume oxygen during the decomposition of organic matter and the oxidation of inorganic chemicals such as ammonia and nitrite",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "A measure of the capacity of water to consume oxygen during the decomposition of organic matter and the oxidation of inorganic chemicals such as ammonia and nitrite"
                 },
                 "chem_treat_method": {
                     "description": "Method of chemical administration(dose, frequency, duration, time elapsed between administration and sampling) (e.g. 50 mg/l; twice a week; 1 hr; 0 days)",
@@ -1154,8 +1112,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of chloride in the sample",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of chloride in the sample"
                 },
                 "chlorophyll": {
                     "anyOf": [
@@ -1166,8 +1123,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of chlorophyll",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of chlorophyll"
                 },
                 "climate_environment": {
                     "description": "Treatment involving an exposure to a particular climate; treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple climates",
@@ -1181,7 +1137,6 @@
                 },
                 "collected_from": {
                     "description": "The Site from which a Biosample was collected",
-                    "pattern": "^(?:{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$)$",
                     "type": [
                         "string",
                         "null"
@@ -1220,8 +1175,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Electrical conductivity of water",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Electrical conductivity of water"
                 },
                 "cool_syst_id": {
                     "anyOf": [
@@ -1254,8 +1208,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Name or reference for the hydroponic or in vitro culture rooting medium; can be the name of a commonly used medium or reference to a specific medium, e.g. Murashige and Skoog medium. If the medium has not been formally published, use the rooting medium descriptors",
-                    "pattern": "^(?:^({text}|{PMID}|{DOI}|{URL})$)$"
+                    "description": "Name or reference for the hydroponic or in vitro culture rooting medium; can be the name of a commonly used medium or reference to a specific medium, e.g. Murashige and Skoog medium. If the medium has not been formally published, use the rooting medium descriptors"
                 },
                 "cur_land_use": {
                     "description": "Present state of sample site",
@@ -1277,7 +1230,6 @@
                 },
                 "cur_vegetation_meth": {
                     "description": "Reference or method used in vegetation classification",
-                    "pattern": "^({PMID}|{DOI}|{URL})$",
                     "type": [
                         "string",
                         "null"
@@ -1303,8 +1255,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Density of the sample, which is its mass per unit volume (aka volumetric mass density)",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Density of the sample, which is its mass per unit volume (aka volumetric mass density)"
                 },
                 "depos_env": {
                     "$ref": "#/$defs/DeposEnvEnum",
@@ -1319,8 +1270,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The vertical distance below local surface. For sediment or soil samples depth is measured from sediment or soil surface, respectively. Depth can be reported as an interval for subsurface samples",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "The vertical distance below local surface. For sediment or soil samples depth is measured from sediment or soil surface, respectively. Depth can be reported as an interval for subsurface samples"
                 },
                 "description": {
                     "description": "a human-readable description of a thing",
@@ -1338,8 +1288,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The temperature to which a given parcel of humid air must be cooled, at constant barometric pressure, for water vapor to condense into water",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "The temperature to which a given parcel of humid air must be cooled, at constant barometric pressure, for water vapor to condense into water"
                 },
                 "diether_lipids": {
                     "description": "Concentration of diether lipids; can include multiple types of diether lipids",
@@ -1360,8 +1309,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of dissolved carbon dioxide in the sample or liquid portion of the sample",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of dissolved carbon dioxide in the sample or liquid portion of the sample"
                 },
                 "diss_hydrogen": {
                     "anyOf": [
@@ -1372,8 +1320,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of dissolved hydrogen",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of dissolved hydrogen"
                 },
                 "diss_inorg_carb": {
                     "anyOf": [
@@ -1384,8 +1331,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Dissolved inorganic carbon concentration in the sample, typically measured after filtering the sample using a 0.45 micrometer filter",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Dissolved inorganic carbon concentration in the sample, typically measured after filtering the sample using a 0.45 micrometer filter"
                 },
                 "diss_inorg_nitro": {
                     "anyOf": [
@@ -1396,8 +1342,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of dissolved inorganic nitrogen",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of dissolved inorganic nitrogen"
                 },
                 "diss_inorg_phosp": {
                     "anyOf": [
@@ -1408,8 +1353,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of dissolved inorganic phosphorus in the sample",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of dissolved inorganic phosphorus in the sample"
                 },
                 "diss_iron": {
                     "anyOf": [
@@ -1420,8 +1364,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of dissolved iron in the sample",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of dissolved iron in the sample"
                 },
                 "diss_org_carb": {
                     "anyOf": [
@@ -1432,8 +1375,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of dissolved organic carbon in the sample, liquid portion of the sample, or aqueous phase of the fluid",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of dissolved organic carbon in the sample, liquid portion of the sample, or aqueous phase of the fluid"
                 },
                 "diss_org_nitro": {
                     "anyOf": [
@@ -1444,8 +1386,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Dissolved organic nitrogen concentration measured as; total dissolved nitrogen - NH4 - NO3 - NO2",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Dissolved organic nitrogen concentration measured as; total dissolved nitrogen - NH4 - NO3 - NO2"
                 },
                 "diss_oxygen": {
                     "anyOf": [
@@ -1456,8 +1397,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of dissolved oxygen",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of dissolved oxygen"
                 },
                 "diss_oxygen_fluid": {
                     "anyOf": [
@@ -1468,8 +1408,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of dissolved oxygen in the oil field produced fluids as it contributes to oxygen-corrosion and microbial activity (e.g. Mic)",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of dissolved oxygen in the oil field produced fluids as it contributes to oxygen-corrosion and microbial activity (e.g. Mic)"
                 },
                 "dna_isolate_meth": {
                     "description": "Describe the method/protocol/kit used to extract DNA/RNA.",
@@ -1511,8 +1450,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The size of the door",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "The size of the door"
                 },
                 "door_type": {
                     "$ref": "#/$defs/DoorTypeEnum",
@@ -1542,8 +1480,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Visible waveband radiance and irradiance measurements in the water column",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Visible waveband radiance and irradiance measurements in the water column"
                 },
                 "drainage_class": {
                     "$ref": "#/$defs/DrainageClassEnum",
@@ -1597,12 +1534,10 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Percentage of volatile solids removed from the anaerobic digestor",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Percentage of volatile solids removed from the anaerobic digestor"
                 },
                 "elev": {
                     "description": "Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface, while altitude is used for points above the surface, such as an aircraft in flight or a spacecraft in orbit",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$",
                     "type": [
                         "number",
                         "null"
@@ -1649,18 +1584,15 @@
                 },
                 "env_broad_scale": {
                     "$ref": "#/$defs/ControlledIdentifiedTermValue",
-                    "description": "Report the major environmental system the sample or specimen came from. The system(s) identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO s biome class:  http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS",
-                    "pattern": "^{termLabel} \\[{termID}\\]$"
+                    "description": "Report the major environmental system the sample or specimen came from. The system(s) identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO s biome class:  http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS"
                 },
                 "env_local_scale": {
                     "$ref": "#/$defs/ControlledIdentifiedTermValue",
-                    "description": "Report the entity or entities which are in the sample or specimen s local vicinity and which you believe have significant causal influences on your sample or specimen. We recommend using EnvO terms which are of smaller spatial grain than your entry for env_broad_scale. Terms, such as anatomical sites, from other OBO Library ontologies which interoperate with EnvO (e.g. UBERON) are accepted in this field. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS",
-                    "pattern": "^{termLabel} \\[{termID}\\]$"
+                    "description": "Report the entity or entities which are in the sample or specimen s local vicinity and which you believe have significant causal influences on your sample or specimen. We recommend using EnvO terms which are of smaller spatial grain than your entry for env_broad_scale. Terms, such as anatomical sites, from other OBO Library ontologies which interoperate with EnvO (e.g. UBERON) are accepted in this field. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS"
                 },
                 "env_medium": {
                     "$ref": "#/$defs/ControlledIdentifiedTermValue",
-                    "description": "Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of 'environmental material' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top)",
-                    "pattern": "^{termLabel} \\[{termID}\\]$"
+                    "description": "Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of 'environmental material' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top)"
                 },
                 "env_package": {
                     "anyOf": [
@@ -1693,8 +1625,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of ethylbenzene in the sample",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of ethylbenzene in the sample"
                 },
                 "exp_duct": {
                     "anyOf": [
@@ -1705,8 +1636,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The amount of exposed ductwork in the room",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "The amount of exposed ductwork in the room"
                 },
                 "exp_pipe": {
                     "anyOf": [
@@ -1717,8 +1647,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The number of exposed pipes in the room",
-                    "pattern": "^{integer} {text}$"
+                    "description": "The number of exposed pipes in the room"
                 },
                 "experimental_factor": {
                     "anyOf": [
@@ -1838,8 +1767,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The time period since installment of the carpet or flooring",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "The time period since installment of the carpet or flooring"
                 },
                 "floor_area": {
                     "anyOf": [
@@ -1850,8 +1778,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The area of the floor space within the room",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "The area of the floor space within the room"
                 },
                 "floor_cond": {
                     "$ref": "#/$defs/DamagedEnum",
@@ -1888,8 +1815,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The ability of the floor to provide inertia against temperature fluctuations",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "The ability of the floor to provide inertia against temperature fluctuations"
                 },
                 "floor_water_mold": {
                     "$ref": "#/$defs/FloorWaterMoldEnum",
@@ -1904,8 +1830,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Raw or converted fluorescence of water",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Raw or converted fluorescence of water"
                 },
                 "freq_clean": {
                     "anyOf": [
@@ -1927,8 +1852,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The number of times a meal is cooked per week",
-                    "pattern": "^{integer} {text}$"
+                    "description": "The number of times a meal is cooked per week"
                 },
                 "fungicide_regm": {
                     "description": "Information about treatment involving use of fungicides; should include the name of fungicide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple fungicide regimens",
@@ -1970,7 +1894,6 @@
                 },
                 "genetic_mod": {
                     "description": "Genetic modifications of the genome of an organism, which may occur naturally by spontaneous mutation, or be introduced by some experimental means, e.g. specification of a transgene or the gene knocked-out or details of transient transfection",
-                    "pattern": "^(?:^({PMID}|{DOI}|{URL})$)$",
                     "type": [
                         "string",
                         "null"
@@ -1985,8 +1908,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (http://purl.bioontology.org/ontology/GAZ)",
-                    "pattern": "^{country}: {region}, {specific_location}$"
+                    "description": "The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (http://purl.bioontology.org/ontology/GAZ)"
                 },
                 "glucosidase_act": {
                     "anyOf": [
@@ -1997,8 +1919,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Measurement of glucosidase activity",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Measurement of glucosidase activity"
                 },
                 "gold_biosample_identifiers": {
                     "description": "Unique identifier for a biosample submitted to GOLD that matches the NMDC submitted biosample",
@@ -2098,8 +2019,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Original formation water salinity (prior to secondary recovery e.g. Waterflooding) expressed as TDS",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Original formation water salinity (prior to secondary recovery e.g. Waterflooding) expressed as TDS"
                 },
                 "hcr_geol_age": {
                     "$ref": "#/$defs/GeolAgeEnum",
@@ -2114,8 +2034,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Original pressure of the hydrocarbon resource",
-                    "pattern": "^{float} *- *{float} {unit}$"
+                    "description": "Original pressure of the hydrocarbon resource"
                 },
                 "hcr_temp": {
                     "anyOf": [
@@ -2126,8 +2045,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Original temperature of the hydrocarbon resource",
-                    "pattern": "^{float} *- *{float} {unit}$"
+                    "description": "Original temperature of the hydrocarbon resource"
                 },
                 "heat_cool_type": {
                     "description": "Methods of conditioning or heating a room or building",
@@ -2174,7 +2092,6 @@
                 "heavy_metals_meth": {
                     "description": "Reference or method used in determining heavy metals",
                     "items": {
-                        "pattern": "^({PMID}|{DOI}|{URL})$",
                         "type": "string"
                     },
                     "type": [
@@ -2191,8 +2108,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The average carpet fiber height in the indoor environment",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "The average carpet fiber height in the indoor environment"
                 },
                 "herbicide_regm": {
                     "description": "Information about treatment involving use of herbicides; information about treatment involving use of growth hormones; should include the name of herbicide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens",
@@ -2206,7 +2122,6 @@
                 },
                 "horizon_meth": {
                     "description": "Reference or method used in determining the horizon",
-                    "pattern": "^({PMID}|{DOI}|{URL})$",
                     "type": [
                         "string",
                         "null"
@@ -2221,8 +2136,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Age of host at the time of sampling; relevant scale depends on species and study, e.g. Could be seconds for amoebae or centuries for trees",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Age of host at the time of sampling; relevant scale depends on species and study, e.g. Could be seconds for amoebae or centuries for trees"
                 },
                 "host_body_habitat": {
                     "anyOf": [
@@ -2272,8 +2186,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Core body temperature of the host when sample was collected",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Core body temperature of the host when sample was collected"
                 },
                 "host_color": {
                     "anyOf": [
@@ -2323,8 +2236,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Measurement of dry mass",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Measurement of dry mass"
                 },
                 "host_family_relation": {
                     "description": "Familial relationships to other hosts in the same study; can include multiple relationships.",
@@ -2363,8 +2275,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Literature reference giving growth conditions of the host",
-                    "pattern": "^({PMID}|{DOI}|{URL}|{text})$"
+                    "description": "Literature reference giving growth conditions of the host"
                 },
                 "host_height": {
                     "anyOf": [
@@ -2375,8 +2286,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The height of subject",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "The height of subject"
                 },
                 "host_last_meal": {
                     "description": "Content of last meal and time since feeding; can include multiple values",
@@ -2397,8 +2307,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The length of subject",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "The length of subject"
                 },
                 "host_life_stage": {
                     "anyOf": [
@@ -2525,8 +2434,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Total mass of the host at collection, the unit depends on host",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Total mass of the host at collection, the unit depends on host"
                 },
                 "host_wet_mass": {
                     "anyOf": [
@@ -2537,8 +2445,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Measurement of wet mass",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Measurement of wet mass"
                 },
                 "humidity": {
                     "anyOf": [
@@ -2549,8 +2456,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Amount of water vapour in the air, at the time of sampling",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Amount of water vapour in the air, at the time of sampling"
                 },
                 "humidity_regm": {
                     "description": "Information about treatment involving an exposure to varying degree of humidity; information about treatment involving use of growth hormones; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens",
@@ -2564,7 +2470,7 @@
                 },
                 "id": {
                     "description": "An NMDC assigned unique identifier for a biosample submitted to NMDC.",
-                    "pattern": "^(?:{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "igsn_biosample_identifiers": {
@@ -2606,8 +2512,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Percentage of industrial effluents received by wastewater treatment plant",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Percentage of industrial effluents received by wastewater treatment plant"
                 },
                 "infiltrations": {
                     "description": "The amount of time it takes to complete each infiltration activity",
@@ -2650,8 +2555,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The recorded value at sampling time (power density)",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "The recorded value at sampling time (power density)"
                 },
                 "int_wall_cond": {
                     "$ref": "#/$defs/DamagedEnum",
@@ -2684,8 +2588,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Proportion of the produced fluids derived from injected water at the time of sampling. (e.g. 87%)",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Proportion of the produced fluids derived from injected water at the time of sampling. (e.g. 87%)"
                 },
                 "last_clean": {
                     "anyOf": [
@@ -2707,8 +2610,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The geographical origin of the sample as defined by latitude and longitude. The values should be reported in decimal degrees, limited to 8 decimal points, and in WGS84 system",
-                    "pattern": "^{lat} {lon}$"
+                    "description": "The geographical origin of the sample as defined by latitude and longitude. The values should be reported in decimal degrees, limited to 8 decimal points, and in WGS84 system"
                 },
                 "lbc_thirty": {
                     "anyOf": [
@@ -2741,8 +2643,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Measurement of light intensity",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Measurement of light intensity"
                 },
                 "light_regm": {
                     "anyOf": [
@@ -2774,8 +2675,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Link to additional analysis results performed on the sample",
-                    "pattern": "^({PMID}|{DOI}|{URL})$"
+                    "description": "Link to additional analysis results performed on the sample"
                 },
                 "link_class_info": {
                     "description": "Link to digitized soil maps or other soil classification information",
@@ -2793,8 +2693,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Link to climate resource",
-                    "pattern": "^({PMID}|{DOI}|{URL})$"
+                    "description": "Link to climate resource"
                 },
                 "lithology": {
                     "$ref": "#/$defs/LithologyEnum",
@@ -2813,7 +2712,6 @@
                 },
                 "local_class_meth": {
                     "description": "Reference or method used in determining the local soil classification",
-                    "pattern": "^({PMID}|{DOI}|{URL})$",
                     "type": [
                         "string",
                         "null"
@@ -2834,8 +2732,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of magnesium in the sample",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of magnesium in the sample"
                 },
                 "manganese": {
                     "anyOf": [
@@ -2857,8 +2754,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The maximum amount of people allowed in the indoor environment",
-                    "pattern": "^{integer} {text}$"
+                    "description": "The maximum amount of people allowed in the indoor environment"
                 },
                 "mean_frict_vel": {
                     "anyOf": [
@@ -2869,8 +2765,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Measurement of mean friction velocity",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Measurement of mean friction velocity"
                 },
                 "mean_peak_frict_vel": {
                     "anyOf": [
@@ -2881,8 +2776,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Measurement of mean peak friction velocity",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Measurement of mean peak friction velocity"
                 },
                 "mech_struc": {
                     "$ref": "#/$defs/MechStrucEnum",
@@ -2907,8 +2801,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Methane (gas) amount or concentration at the time of sampling",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Methane (gas) amount or concentration at the time of sampling"
                 },
                 "micro_biomass_c_meth": {
                     "description": "Reference or method used in determining microbial biomass carbon",
@@ -2940,8 +2833,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units"
                 },
                 "microbial_biomass_c": {
                     "description": "The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer.",
@@ -3016,8 +2908,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of nitrate in the sample",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of nitrate in the sample"
                 },
                 "nitrate_nitrogen": {
                     "anyOf": [
@@ -3039,8 +2930,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of nitrite in the sample",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of nitrite in the sample"
                 },
                 "nitrite_nitrogen": {
                     "anyOf": [
@@ -3062,8 +2952,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of nitrogen (total)",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of nitrogen (total)"
                 },
                 "non_microb_biomass": {
                     "description": "Amount of biomass; should include the name for the part of biomass measured, e.g.insect, plant, total. Can include multiple measurements separated by ;",
@@ -3098,8 +2987,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The number of pets residing in the sampled space",
-                    "pattern": "^{integer} {text}$"
+                    "description": "The number of pets residing in the sampled space"
                 },
                 "number_plants": {
                     "anyOf": [
@@ -3110,8 +2998,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The number of plant(s) in the sampling space",
-                    "pattern": "^{integer} {text}$"
+                    "description": "The number of plant(s) in the sampling space"
                 },
                 "number_resident": {
                     "anyOf": [
@@ -3122,8 +3009,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The number of individuals currently occupying in the sampling location",
-                    "pattern": "^{integer} {text}$"
+                    "description": "The number of individuals currently occupying in the sampling location"
                 },
                 "occup_density_samp": {
                     "anyOf": [
@@ -3149,8 +3035,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Number of occupants present at time of sample within the given space",
-                    "pattern": "^{integer} {text}$"
+                    "description": "Number of occupants present at time of sample within the given space"
                 },
                 "org_carb": {
                     "anyOf": [
@@ -3161,8 +3046,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of organic carbon",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of organic carbon"
                 },
                 "org_count_qpcr_info": {
                     "description": "If qpcr was used for the cell count, the target gene name, the primer sequence and the cycling conditions should also be provided. (Example: 16S rrna; FWD:ACGTAGCTATGACGT REV:GTGCTAGTCGAGTAC; initial denaturation:90C_5min; denaturation:90C_2min; annealing:52C_30 sec; elongation:72C_30 sec; 90 C for 1 min; final elongation:72C_5min; 30 cycles)",
@@ -3180,8 +3064,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of organic matter",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of organic matter"
                 },
                 "org_nitro": {
                     "anyOf": [
@@ -3192,8 +3075,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of organic nitrogen",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of organic nitrogen"
                 },
                 "org_nitro_method": {
                     "description": "Method used for obtaining organic nitrogen",
@@ -3238,8 +3120,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Depth of the original oil water contact (OWC) zone (average) (m TVDSS)",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Depth of the original oil water contact (OWC) zone (average) (m TVDSS)"
                 },
                 "oxy_stat_samp": {
                     "$ref": "#/$defs/OxyStatSampEnum",
@@ -3254,8 +3135,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Oxygen (gas) amount or concentration at the time of sampling",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Oxygen (gas) amount or concentration at the time of sampling"
                 },
                 "part_org_carb": {
                     "anyOf": [
@@ -3266,8 +3146,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of particulate organic carbon",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of particulate organic carbon"
                 },
                 "part_org_nitro": {
                     "anyOf": [
@@ -3278,8 +3157,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of particulate organic nitrogen",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of particulate organic nitrogen"
                 },
                 "particle_class": {
                     "description": "Particles are classified, based on their size, into six general categories:clay, silt, sand, gravel, cobbles, and boulders; should include amount of particle preceded by the name of the particle type; can include multiple values",
@@ -3331,8 +3209,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of petroleum hydrocarbon",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of petroleum hydrocarbon"
                 },
                 "ph": {
                     "description": "pH measurement of the sample, or liquid portion of sample, or aqueous phase of the fluid",
@@ -3381,8 +3258,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of phosphate",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of phosphate"
                 },
                 "phosplipid_fatt_acid": {
                     "description": "Concentration of phospholipid fatty acids; can include multiple values",
@@ -3403,8 +3279,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Measurement of photon flux",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Measurement of photon flux"
                 },
                 "plant_growth_med": {
                     "anyOf": [
@@ -3447,8 +3322,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Name of plant structure the sample was obtained from; for Plant Ontology (PO) terms, see http://obofoundry.org/ontology/po.html, e.g. petiole epidermis (PO:0000051). If an individual flower is sampled, the sex of it can be recorded here.",
-                    "pattern": "^{termLabel} \\[{termID}\\]$"
+                    "description": "Name of plant structure the sample was obtained from; for Plant Ontology (PO) terms, see http://obofoundry.org/ontology/po.html, e.g. petiole epidermis (PO:0000051). If an individual flower is sampled, the sex of it can be recorded here."
                 },
                 "pollutants": {
                     "description": "Pollutant types and, amount or concentrations measured at the time of sampling; can report multiple pollutants by entering numeric values preceded by name of pollutant",
@@ -3480,8 +3354,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of potassium in the sample",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of potassium in the sample"
                 },
                 "pour_point": {
                     "anyOf": [
@@ -3492,8 +3365,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Temperature at which a liquid becomes semi solid and loses its flow characteristics. In crude oil a high pour point is generally associated with a high paraffin content, typically found in crude deriving from a larger proportion of plant material. (source: https://en.wikipedia.org/wiki/pour_point)",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Temperature at which a liquid becomes semi solid and loses its flow characteristics. In crude oil a high pour point is generally associated with a high paraffin content, typically found in crude deriving from a larger proportion of plant material. (source: https://en.wikipedia.org/wiki/pour_point)"
                 },
                 "pre_treatment": {
                     "anyOf": [
@@ -3522,12 +3394,10 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Pressure to which the sample is subject to, in atmospheres",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Pressure to which the sample is subject to, in atmospheres"
                 },
                 "prev_land_use_meth": {
                     "description": "Reference or method used in determining previous land use and dates",
-                    "pattern": "^({PMID}|{DOI}|{URL})$",
                     "type": [
                         "string",
                         "null"
@@ -3549,8 +3419,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Measurement of primary production, generally measured as isotope uptake",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Measurement of primary production, generally measured as isotope uptake"
                 },
                 "primary_treatment": {
                     "anyOf": [
@@ -3572,8 +3441,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Oil and/or gas production rates per well (e.g. 524 m3 / day)",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Oil and/or gas production rates per well (e.g. 524 m3 / day)"
                 },
                 "prod_start_date": {
                     "anyOf": [
@@ -3658,8 +3526,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Redox potential, measured relative to a hydrogen cell, indicating oxidation or reduction potential",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Redox potential, measured relative to a hydrogen cell, indicating oxidation or reduction potential"
                 },
                 "rel_air_humidity": {
                     "anyOf": [
@@ -3670,8 +3537,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Partial vapor and air pressure, density of the vapor and air, or by the actual mass of the vapor and air",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Partial vapor and air pressure, density of the vapor and air, or by the actual mass of the vapor and air"
                 },
                 "rel_humidity_out": {
                     "anyOf": [
@@ -3682,8 +3548,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The recorded outside relative humidity value at the time of sampling",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "The recorded outside relative humidity value at the time of sampling"
                 },
                 "rel_samp_loc": {
                     "$ref": "#/$defs/RelSampLocEnum",
@@ -3716,8 +3581,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Saturate, Aromatic, Resin and Asphaltene (SARA) is an analysis method that divides crude oil components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)",
-                    "pattern": "^{name};{float} {unit}$"
+                    "description": "Saturate, Aromatic, Resin and Asphaltene (SARA) is an analysis method that divides crude oil components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)"
                 },
                 "rna_isolate_meth": {
                     "description": "Describe the method/protocol/kit used to extract DNA/RNA.",
@@ -3735,8 +3599,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The rate at which outside air replaces indoor air in a given space",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "The rate at which outside air replaces indoor air in a given space"
                 },
                 "room_architec_elem": {
                     "description": "The unique details and component parts that, together, form the architecture of a distinguishable space within a built structure",
@@ -3784,8 +3647,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Distance between doors (meters) in the hallway between the sampling room and adjacent rooms",
-                    "pattern": "^{integer} {text}$"
+                    "description": "Distance between doors (meters) in the hallway between the sampling room and adjacent rooms"
                 },
                 "room_door_share": {
                     "anyOf": [
@@ -3796,8 +3658,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "List of room(s) (room number, room name) sharing a door with the sampling room",
-                    "pattern": "^{room_name};{room_number}$"
+                    "description": "List of room(s) (room number, room name) sharing a door with the sampling room"
                 },
                 "room_hallway": {
                     "anyOf": [
@@ -3808,8 +3669,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "List of room(s) (room number, room name) located in the same hallway as sampling room",
-                    "pattern": "^{room_name};{room_number}$"
+                    "description": "List of room(s) (room number, room name) located in the same hallway as sampling room"
                 },
                 "room_loc": {
                     "$ref": "#/$defs/RoomLocEnum",
@@ -3831,8 +3691,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The net floor area of sampling room. Net area excludes wall thicknesses",
-                    "pattern": "^{integer} {text}$"
+                    "description": "The net floor area of sampling room. Net area excludes wall thicknesses"
                 },
                 "room_occup": {
                     "anyOf": [
@@ -3843,8 +3702,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Count of room occupancy at time of sampling",
-                    "pattern": "^{integer} {text}$"
+                    "description": "Count of room occupancy at time of sampling"
                 },
                 "room_samp_pos": {
                     "$ref": "#/$defs/RoomSampPosEnum",
@@ -3866,8 +3724,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Volume of sampling room",
-                    "pattern": "^{integer} {text}$"
+                    "description": "Volume of sampling room"
                 },
                 "room_wall_share": {
                     "anyOf": [
@@ -3878,8 +3735,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "List of room(s) (room number, room name) sharing a wall with the sampling room",
-                    "pattern": "^{room_name};{room_number}$"
+                    "description": "List of room(s) (room number, room name) sharing a wall with the sampling room"
                 },
                 "room_window_count": {
                     "description": "Number of windows in the room",
@@ -3897,8 +3753,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Relevant rooting conditions such as field plot size, sowing density, container dimensions, number of plants per container",
-                    "pattern": "^({PMID}|{DOI}|{URL}|{text})$"
+                    "description": "Relevant rooting conditions such as field plot size, sowing density, container dimensions, number of plants per container"
                 },
                 "root_med_carbon": {
                     "anyOf": [
@@ -3986,8 +3841,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The total concentration of all dissolved salts in a liquid or solid sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often, it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "The total concentration of all dissolved salts in a liquid or solid sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often, it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater"
                 },
                 "salinity_category": {
                     "description": "Categorical description of the sample's salinity. Examples: halophile, halotolerant, hypersaline, euryhaline",
@@ -3998,7 +3852,6 @@
                 },
                 "salinity_meth": {
                     "description": "Reference or method used in determining salinity.",
-                    "pattern": "^(?:^(PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$)$",
                     "type": [
                         "string",
                         "null"
@@ -4058,8 +3911,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Metal corrosion rate is the speed of metal deterioration due to environmental conditions. As environmental conditions change corrosion rates change accordingly. Therefore, long term corrosion rates are generally more informative than short term rates and for that reason they are preferred during reporting. In the case of suspected MIC, corrosion rate measurements at the time of sampling might provide insights into the involvement of certain microbial community members in MIC as well as potential microbial interplays",
-                    "pattern": "^{float} *- *{float} {unit}$"
+                    "description": "Metal corrosion rate is the speed of metal deterioration due to environmental conditions. As environmental conditions change corrosion rates change accordingly. Therefore, long term corrosion rates are generally more informative than short term rates and for that reason they are preferred during reporting. In the case of suspected MIC, corrosion rate measurements at the time of sampling might provide insights into the involvement of certain microbial community members in MIC as well as potential microbial interplays"
                 },
                 "samp_mat_process": {
                     "anyOf": [
@@ -4102,8 +3954,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Preservative added to the sample (e.g. Rnalater, alcohol, formaldehyde, etc.). Where appropriate include volume added (e.g. Rnalater; 2 ml)",
-                    "pattern": "^{name};{float} {unit}$"
+                    "description": "Preservative added to the sample (e.g. Rnalater, alcohol, formaldehyde, etc.). Where appropriate include volume added (e.g. Rnalater; 2 ml)"
                 },
                 "samp_room_id": {
                     "anyOf": [
@@ -4125,8 +3976,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The total amount or size (volume (ml), mass (g) or area (m2) ) of sample collected",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "The total amount or size (volume (ml), mass (g) or area (m2) ) of sample collected"
                 },
                 "samp_sort_meth": {
                     "description": "Method by which samples are sorted; open face filter collecting total suspended particles, prefilter to remove particles larger than X micrometers in diameter, where common values of X would be 10 and 2.5 full size sorting in a cascade impactor",
@@ -4147,8 +3997,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Duration for which the sample was stored. Indicate the duration for which the sample was stored written in ISO 8601 format",
-                    "pattern": "^{duration}$"
+                    "description": "Duration for which the sample was stored. Indicate the duration for which the sample was stored written in ISO 8601 format"
                 },
                 "samp_store_loc": {
                     "anyOf": [
@@ -4170,8 +4019,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Temperature at which sample was stored",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Temperature at which sample was stored"
                 },
                 "samp_subtype": {
                     "$ref": "#/$defs/SampSubtypeEnum",
@@ -4186,8 +4034,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "NCBI taxon id of the sample.  Maybe be a single taxon or mixed taxa sample. Use 'synthetic metagenome  for mock community/positive controls, or 'blank sample' for negative controls",
-                    "pattern": "^{text} \\[{NCBItaxon_id}\\]$"
+                    "description": "NCBI taxon id of the sample.  Maybe be a single taxon or mixed taxa sample. Use 'synthetic metagenome  for mock community/positive controls, or 'blank sample' for negative controls"
                 },
                 "samp_time_out": {
                     "anyOf": [
@@ -4231,8 +4078,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The type of material from which the sample was obtained. For the Hydrocarbon package, samples include types like core, rock trimmings, drill cuttings, piping section, coupon, pigging debris, solid deposit, produced fluid, produced water, injected water, swabs, etc. For the Food Package, samples are usually categorized as food, body products or tissues, or environmental material. This field accepts terms listed under environmental specimen (http://purl.obolibrary.org/obo/GENEPIO_0001246)",
-                    "pattern": "^{termLabel} \\[{termID}\\]$"
+                    "description": "The type of material from which the sample was obtained. For the Hydrocarbon package, samples include types like core, rock trimmings, drill cuttings, piping section, coupon, pigging debris, solid deposit, produced fluid, produced water, injected water, swabs, etc. For the Food Package, samples are usually categorized as food, body products or tissues, or environmental material. This field accepts terms listed under environmental specimen (http://purl.obolibrary.org/obo/GENEPIO_0001246)"
                 },
                 "samp_weather": {
                     "$ref": "#/$defs/SampWeatherEnum",
@@ -4286,8 +4132,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Saturate, Aromatic, Resin and Asphaltene (SARA) is an analysis method that divides crude oil components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)",
-                    "pattern": "^{name};{float} {unit}$"
+                    "description": "Saturate, Aromatic, Resin and Asphaltene (SARA) is an analysis method that divides crude oil components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)"
                 },
                 "season": {
                     "$ref": "#/$defs/SeasonEnum",
@@ -4312,8 +4157,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The average of all seasonal precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "The average of all seasonal precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps"
                 },
                 "season_temp": {
                     "anyOf": [
@@ -4324,8 +4168,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Mean seasonal temperature",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Mean seasonal temperature"
                 },
                 "season_use": {
                     "$ref": "#/$defs/SeasonUseEnum",
@@ -4407,8 +4250,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of silicate",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of silicate"
                 },
                 "size_frac": {
                     "anyOf": [
@@ -4430,8 +4272,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Refers to the mesh/pore size used to pre-filter/pre-sort the sample. Materials smaller than the size threshold are excluded from the sample",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Refers to the mesh/pore size used to pre-filter/pre-sort the sample. Materials smaller than the size threshold are excluded from the sample"
                 },
                 "size_frac_up": {
                     "anyOf": [
@@ -4442,8 +4283,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Mesh or pore size of the device used to retain the sample. Materials larger than the size threshold are excluded from the sample.",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Mesh or pore size of the device used to retain the sample. Materials larger than the size threshold are excluded from the sample."
                 },
                 "slope_aspect": {
                     "anyOf": [
@@ -4454,8 +4294,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The direction a slope faces. While looking down a slope use a compass to record the direction you are facing (direction or degrees). This measure provides an indication of sun and wind exposure that will influence soil temperature and evapotranspiration.",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "The direction a slope faces. While looking down a slope use a compass to record the direction you are facing (direction or degrees). This measure provides an indication of sun and wind exposure that will influence soil temperature and evapotranspiration."
                 },
                 "slope_gradient": {
                     "anyOf": [
@@ -4466,8 +4305,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Commonly called 'slope'. The angle between ground surface and a horizontal line (in percent). This is the direction that overland water would flow. This measure is usually taken with a hand level meter or clinometer",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Commonly called 'slope'. The angle between ground surface and a horizontal line (in percent). This is the direction that overland water would flow. This measure is usually taken with a hand level meter or clinometer"
                 },
                 "sludge_retent_time": {
                     "anyOf": [
@@ -4478,8 +4316,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The time activated sludge remains in reactor",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "The time activated sludge remains in reactor"
                 },
                 "sodium": {
                     "anyOf": [
@@ -4490,8 +4327,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Sodium concentration in the sample",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Sodium concentration in the sample"
                 },
                 "soil_horizon": {
                     "$ref": "#/$defs/SoilHorizonEnum",
@@ -4542,8 +4378,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The amount of solar energy that arrives at a specific area of a surface during a specific time interval",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "The amount of solar energy that arrives at a specific area of a surface during a specific time interval"
                 },
                 "soluble_inorg_mat": {
                     "description": "Concentration of substances such as ammonia, road-salt, sea-salt, cyanide, hydrogen sulfide, thiocyanates, thiosulfates, etc",
@@ -4580,8 +4415,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of soluble reactive phosphorus",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of soluble reactive phosphorus"
                 },
                 "source_mat_id": {
                     "anyOf": [
@@ -4618,8 +4452,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The mass of water vapour in a unit mass of moist air, usually expressed as grams of vapour per kilogram of air, or, in air conditioning, as grains per pound",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "The mass of water vapour in a unit mass of moist air, usually expressed as grams of vapour per kilogram of air, or, in air conditioning, as grains per pound"
                 },
                 "sr_dep_env": {
                     "$ref": "#/$defs/SrDepEnvEnum",
@@ -4701,8 +4534,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of sulfate in the sample",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of sulfate in the sample"
                 },
                 "sulfate_fw": {
                     "anyOf": [
@@ -4713,8 +4545,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Original sulfate concentration in the hydrocarbon resource",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Original sulfate concentration in the hydrocarbon resource"
                 },
                 "sulfide": {
                     "anyOf": [
@@ -4725,8 +4556,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of sulfide in the sample",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of sulfide in the sample"
                 },
                 "surf_air_cont": {
                     "description": "Contaminant identified on surface",
@@ -4747,8 +4577,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Surfaces: water activity as a function of air and material moisture",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Surfaces: water activity as a function of air and material moisture"
                 },
                 "surf_material": {
                     "$ref": "#/$defs/SurfMaterialEnum",
@@ -4763,8 +4592,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Water held on a surface",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Water held on a surface"
                 },
                 "surf_moisture_ph": {
                     "description": "ph measurement of surface",
@@ -4782,8 +4610,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Temperature of the surface at the time of sampling",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Temperature of the surface at the time of sampling"
                 },
                 "suspend_part_matter": {
                     "anyOf": [
@@ -4794,8 +4621,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of suspended particulate matter",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of suspended particulate matter"
                 },
                 "suspend_solids": {
                     "description": "Concentration of substances including a wide variety of material, such as silt, decaying plant and animal matter; can include multiple substances",
@@ -4816,8 +4642,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Total Acid Number (TAN) is a measurement of acidity that is determined by the amount of potassium hydroxide in milligrams that is needed to neutralize the acids in one gram of oil. It is an important quality measurement of crude oil. (source: https://en.wikipedia.org/wiki/Total_acid_number)",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Total Acid Number (TAN) is a measurement of acidity that is determined by the amount of potassium hydroxide in milligrams that is needed to neutralize the acids in one gram of oil. It is an important quality measurement of crude oil. (source: https://en.wikipedia.org/wiki/Total_acid_number)"
                 },
                 "technical_reps": {
                     "description": "If sending technical replicates of the same sample, indicate the replicate count.",
@@ -4835,8 +4660,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Temperature of the sample at the time of sampling",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Temperature of the sample at the time of sampling"
                 },
                 "temp_out": {
                     "anyOf": [
@@ -4847,8 +4671,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The recorded temperature value at sampling time outside",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "The recorded temperature value at sampling time outside"
                 },
                 "tertiary_treatment": {
                     "anyOf": [
@@ -4884,8 +4707,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Description of plant tissue culture growth media used",
-                    "pattern": "^({PMID}|{DOI}|{URL}|{text})$"
+                    "description": "Description of plant tissue culture growth media used"
                 },
                 "toluene": {
                     "anyOf": [
@@ -4896,8 +4718,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of toluene in the sample",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of toluene in the sample"
                 },
                 "tot_carb": {
                     "anyOf": [
@@ -4908,8 +4729,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Total carbon content",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Total carbon content"
                 },
                 "tot_depth_water_col": {
                     "anyOf": [
@@ -4920,8 +4740,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Measurement of total depth of water column",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Measurement of total depth of water column"
                 },
                 "tot_diss_nitro": {
                     "anyOf": [
@@ -4932,8 +4751,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Total dissolved nitrogen concentration, reported as nitrogen, measured by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Total dissolved nitrogen concentration, reported as nitrogen, measured by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen"
                 },
                 "tot_inorg_nitro": {
                     "anyOf": [
@@ -4944,8 +4762,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Total inorganic nitrogen content",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Total inorganic nitrogen content"
                 },
                 "tot_iron": {
                     "anyOf": [
@@ -4956,8 +4773,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of total iron in the sample",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of total iron in the sample"
                 },
                 "tot_nitro": {
                     "anyOf": [
@@ -4968,12 +4784,10 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Total nitrogen concentration of water samples, calculated by: total nitrogen = total dissolved nitrogen + particulate nitrogen. Can also be measured without filtering, reported as nitrogen",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Total nitrogen concentration of water samples, calculated by: total nitrogen = total dissolved nitrogen + particulate nitrogen. Can also be measured without filtering, reported as nitrogen"
                 },
                 "tot_nitro_cont_meth": {
                     "description": "Reference or method used in determining the total nitrogen",
-                    "pattern": "^({PMID}|{DOI}|{URL})$",
                     "type": [
                         "string",
                         "null"
@@ -4988,12 +4802,10 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Total nitrogen content of the sample",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Total nitrogen content of the sample"
                 },
                 "tot_org_c_meth": {
                     "description": "Reference or method used in determining total organic carbon",
-                    "pattern": "^({PMID}|{DOI}|{URL})$",
                     "type": [
                         "string",
                         "null"
@@ -5008,8 +4820,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Total organic carbon content",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Total organic carbon content"
                 },
                 "tot_part_carb": {
                     "anyOf": [
@@ -5020,8 +4831,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Total particulate carbon content",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Total particulate carbon content"
                 },
                 "tot_phosp": {
                     "anyOf": [
@@ -5032,8 +4842,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Total phosphorus concentration in the sample, calculated by: total phosphorus = total dissolved phosphorus + particulate phosphorus",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Total phosphorus concentration in the sample, calculated by: total phosphorus = total dissolved phosphorus + particulate phosphorus"
                 },
                 "tot_phosphate": {
                     "anyOf": [
@@ -5044,8 +4853,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Total amount or concentration of phosphate",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Total amount or concentration of phosphate"
                 },
                 "tot_sulfur": {
                     "anyOf": [
@@ -5056,8 +4864,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of total sulfur in the sample",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of total sulfur in the sample"
                 },
                 "train_line": {
                     "$ref": "#/$defs/TrainLineEnum",
@@ -5080,8 +4887,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Measure of the amount of cloudiness or haziness in water caused by individual particles",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Measure of the amount of cloudiness or haziness in water caused by individual particles"
                 },
                 "tvdss_of_hcr_press": {
                     "anyOf": [
@@ -5092,8 +4898,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "True vertical depth subsea (TVDSS) of the hydrocarbon resource where the original pressure was measured (e.g. 1578 m)",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "True vertical depth subsea (TVDSS) of the hydrocarbon resource where the original pressure was measured (e.g. 1578 m)"
                 },
                 "tvdss_of_hcr_temp": {
                     "anyOf": [
@@ -5104,8 +4909,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "True vertical depth subsea (TVDSS) of the hydrocarbon resource where the original temperature was measured (e.g. 1345 m)",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "True vertical depth subsea (TVDSS) of the hydrocarbon resource where the original temperature was measured (e.g. 1345 m)"
                 },
                 "typ_occup_density": {
                     "description": "Customary or normal density of occupants",
@@ -5130,8 +4934,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Ventilation rate of the system in the sampled premises",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Ventilation rate of the system in the sampled premises"
                 },
                 "ventilation_type": {
                     "anyOf": [
@@ -5153,8 +4956,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of Volatile Fatty Acids in the sample",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of Volatile Fatty Acids in the sample"
                 },
                 "vfa_fw": {
                     "anyOf": [
@@ -5165,8 +4967,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Original volatile fatty acid concentration in the hydrocarbon resource",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Original volatile fatty acid concentration in the hydrocarbon resource"
                 },
                 "vis_media": {
                     "description": "The building visual media",
@@ -5205,8 +5006,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The total area of the sampled room's walls",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "The total area of the sampled room's walls"
                 },
                 "wall_const_type": {
                     "$ref": "#/$defs/WallConstTypeEnum",
@@ -5225,8 +5025,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The average height of the walls in the sampled room",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "The average height of the walls in the sampled room"
                 },
                 "wall_loc": {
                     "$ref": "#/$defs/CompassDirections8Enum",
@@ -5249,8 +5048,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The ability of the wall to provide inertia against temperature fluctuations. Generally this means concrete or concrete block that is either exposed or covered only with paint",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "The ability of the wall to provide inertia against temperature fluctuations. Generally this means concrete or concrete block that is either exposed or covered only with paint"
                 },
                 "wall_water_mold": {
                     "$ref": "#/$defs/MoldVisibilityEnum",
@@ -5277,7 +5075,6 @@
                 "water_content": {
                     "description": "Water content measurement",
                     "items": {
-                        "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$",
                         "type": "string"
                     },
                     "type": [
@@ -5294,8 +5091,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Measurement of magnitude and direction of flow within a fluid",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Measurement of magnitude and direction of flow within a fluid"
                 },
                 "water_cut": {
                     "anyOf": [
@@ -5306,8 +5102,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Current amount of water (%) in a produced fluid stream; or the average of the combined streams",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Current amount of water (%) in a produced fluid stream; or the average of the combined streams"
                 },
                 "water_feat_size": {
                     "anyOf": [
@@ -5318,8 +5113,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The size of the water feature",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "The size of the water feature"
                 },
                 "water_feat_type": {
                     "$ref": "#/$defs/WaterFeatTypeEnum",
@@ -5334,8 +5128,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Water production rates per well (e.g. 987 m3 / day)",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Water production rates per well (e.g. 987 m3 / day)"
                 },
                 "water_temp_regm": {
                     "description": "Information about treatment involving an exposure to water with varying degree of temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens",
@@ -5392,8 +5185,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "speed of wind measured at the time of sampling",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "speed of wind measured at the time of sampling"
                 },
                 "window_cond": {
                     "$ref": "#/$defs/DamagedRupturedEnum",
@@ -5462,8 +5254,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of xylene in the sample",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$"
+                    "description": "Concentration of xylene in the sample"
                 },
                 "zinc": {
                     "anyOf": [
@@ -5631,7 +5422,6 @@
                 },
                 "calibration_object": {
                     "description": "the file containing the calibration data object",
-                    "pattern": "^(?:^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                     "type": [
                         "string",
                         "null"
@@ -5654,7 +5444,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "internal_calibration": {
@@ -5835,7 +5625,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -5846,7 +5635,6 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -5856,13 +5644,12 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:{id_nmdc_prefix}:chcpr-{id_shoulder}-{id_blade}$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -6112,7 +5899,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -6123,7 +5909,6 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                         "type": "string"
                     },
                     "type": [
@@ -6133,13 +5918,12 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):cspro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -6251,7 +6035,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "name": {
@@ -6353,7 +6137,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(frsite|site)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -6361,14 +6144,13 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):clsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "name": {
@@ -6692,7 +6474,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -6700,20 +6481,18 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):cultp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -6992,7 +6771,6 @@
                 "associated_studies": {
                     "description": "The study associated with a resource.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(sty)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -7033,7 +6811,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -7041,7 +6818,6 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -7064,7 +6840,6 @@
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -7193,13 +6968,12 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "in_manifest": {
                     "description": "one or more combinations of other DataObjects that can be analyzed together",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -7262,7 +7036,6 @@
                     ]
                 },
                 "was_generated_by": {
-                    "pattern": "^(?:{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$)$",
                     "type": [
                         "string",
                         "null"
@@ -7613,7 +7386,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -7621,20 +7393,18 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):fracp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -7784,7 +7554,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -7795,7 +7564,6 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -7805,13 +7573,12 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):dispro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -8220,7 +7987,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -8228,14 +7994,13 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):extrp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "input_mass": {
@@ -8252,7 +8017,6 @@
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -8505,7 +8269,6 @@
                 },
                 "elev": {
                     "description": "Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface, while altitude is used for points above the surface, such as an aircraft in flight or a spacecraft in orbit",
-                    "pattern": "^{scientific_float}( *- *{scientific_float})? *{text}$",
                     "type": [
                         "number",
                         "null"
@@ -8520,8 +8283,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (http://purl.bioontology.org/ontology/GAZ)",
-                    "pattern": "^{country}: {region}, {specific_location}$"
+                    "description": "The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (http://purl.bioontology.org/ontology/GAZ)"
                 },
                 "habitat": {
                     "type": [
@@ -8531,7 +8293,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "lat_lon": {
@@ -8543,8 +8305,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The geographical origin of the sample as defined by latitude and longitude. The values should be reported in decimal degrees, limited to 8 decimal points, and in WGS84 system",
-                    "pattern": "^{lat} {lon}$"
+                    "description": "The geographical origin of the sample as defined by latitude and longitude. The values should be reported in decimal degrees, limited to 8 decimal points, and in WGS84 system"
                 },
                 "local_class": {
                     "anyOf": [
@@ -8567,7 +8328,6 @@
                 "part_of": {
                     "description": "Links a resource to another resource that either logically or physically includes it.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -8814,7 +8574,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -8825,7 +8584,6 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                         "type": "string"
                     },
                     "type": [
@@ -8835,13 +8593,12 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):filtpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -9014,7 +8771,6 @@
                 },
                 "was_generated_by": {
                     "description": "provenance for the annotation.",
-                    "pattern": "^(?:{id_nmdc_prefix}:(wfmgan)-{id_shoulder}-{id_blade}{id_version}$)$",
                     "type": [
                         "string",
                         "null"
@@ -9048,7 +8804,6 @@
                     "type": "string"
                 },
                 "was_generated_by": {
-                    "pattern": "^(?:^(nmdc):(wfmgan|wfmp|wfmtan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
                     "type": "string"
                 }
             },
@@ -9592,7 +9347,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "model": {
@@ -9743,7 +9498,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -9751,20 +9505,18 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):isnp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -9890,7 +9642,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -9898,20 +9649,18 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):isolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -10206,7 +9955,6 @@
             "properties": {
                 "adapters": {
                     "description": "Adapters provide priming sequences for both amplification and sequencing of the sample-library fragments. Both adapters should be reported; in uppercase letters",
-                    "pattern": "^{primer_adapter_codes}+;{primer_adapter_codes}+$",
                     "type": [
                         "string",
                         "null"
@@ -10249,7 +9997,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -10257,20 +10004,18 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):libprp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -10326,8 +10071,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "A link to a literature reference, electronic resource or a standard operating procedure (SOP), that describes the enzymatic amplification (PCR, TMA, NASBA) of specific nucleic acids",
-                    "pattern": "^({PMID}|{DOI}|{URL})$"
+                    "description": "A link to a literature reference, electronic resource or a standard operating procedure (SOP), that describes the enzymatic amplification (PCR, TMA, NASBA) of specific nucleic acids"
                 },
                 "pcr_cond": {
                     "description": "Description of reaction conditions and components of polymerase chain reaction performed during library preparation",
@@ -10344,7 +10088,6 @@
                 },
                 "pcr_primers": {
                     "description": "PCR primers that were used to amplify the sequence of the targeted gene, locus or subfragment. This field should contain all the primers used for a single PCR reaction if multiple forward or reverse primers are present in a single PCR reaction. The primer sequence should be reported in uppercase letters",
-                    "pattern": "^(?:FWD:{primer_adapter_codes}+;REV:{primer_adapter_codes}+)$",
                     "type": [
                         "string",
                         "null"
@@ -10780,7 +10523,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -10788,7 +10530,6 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -10798,7 +10539,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "img_identifiers": {
@@ -10891,7 +10632,6 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(?:{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}$)$",
                     "type": [
                         "string",
                         "null"
@@ -10930,7 +10670,6 @@
                 "was_informed_by": {
                     "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -10972,7 +10711,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "manifest_category": {
@@ -11108,7 +10847,6 @@
                 "associated_studies": {
                     "description": "The study associated with a resource.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(sty)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -11133,7 +10871,6 @@
                 },
                 "generates_calibration": {
                     "description": "calibration information is generated a process",
-                    "pattern": "^(?:^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                     "type": [
                         "string",
                         "null"
@@ -11141,7 +10878,6 @@
                 },
                 "has_chromatography_configuration": {
                     "description": "The identifier of the associated ChromatographyConfiguration, providing information about how a sample was introduced into the mass spectrometer.",
-                    "pattern": "^(?:^(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                     "type": [
                         "string",
                         "null"
@@ -11169,20 +10905,17 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "has_mass_spectrometry_configuration": {
                     "description": "The identifier of the associated MassSpectrometryConfiguration.",
-                    "pattern": "^(?:^(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                     "type": "string"
                 },
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -11192,7 +10925,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):(dgms|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "instrument_instance_specifier": {
@@ -11205,7 +10938,6 @@
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -11314,7 +11046,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "ionization_source": {
@@ -11498,7 +11230,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -11509,7 +11240,6 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -11525,7 +11255,6 @@
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -11756,7 +11485,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -11773,7 +11501,6 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -11783,7 +11510,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "metabolomics_analysis_category": {
@@ -11856,7 +11583,6 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(?:{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$)$",
                     "type": [
                         "string",
                         "null"
@@ -11872,7 +11598,6 @@
                 "uses_calibration": {
                     "description": "calibration information is used by a process",
                     "items": {
-                        "pattern": "^(?:^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                         "type": "string"
                     },
                     "type": [
@@ -11890,7 +11615,6 @@
                 "was_informed_by": {
                     "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -12024,7 +11748,7 @@
                 "gold_analysis_project_identifiers": {
                     "description": "identifiers for corresponding analysis projects in GOLD",
                     "items": {
-                        "pattern": "^(?:^gold:Ga[0-9]+$)$",
+                        "pattern": "^gold:Ga[0-9]+$",
                         "type": "string"
                     },
                     "type": [
@@ -12044,7 +11768,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -12052,7 +11775,6 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -12062,7 +11784,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "img_identifiers": {
@@ -12151,7 +11873,6 @@
                 "was_informed_by": {
                     "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -12364,7 +12085,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -12372,7 +12092,6 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -12382,7 +12101,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "insdc_assembly_identifiers": {
@@ -12545,7 +12264,6 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(?:{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$)$",
                     "type": [
                         "string",
                         "null"
@@ -12568,7 +12286,6 @@
                 "was_informed_by": {
                     "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -12690,7 +12407,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -12698,7 +12414,6 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -12708,7 +12423,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "mean_peptide_count": {
@@ -12799,7 +12514,6 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(?:{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}$)$",
                     "type": [
                         "string",
                         "null"
@@ -12836,7 +12550,6 @@
                 "was_informed_by": {
                     "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -12959,7 +12672,7 @@
                 "gold_analysis_project_identifiers": {
                     "description": "identifiers for corresponding analysis projects in GOLD",
                     "items": {
-                        "pattern": "^(?:^gold:Ga[0-9]+$)$",
+                        "pattern": "^gold:Ga[0-9]+$",
                         "type": "string"
                     },
                     "type": [
@@ -12979,7 +12692,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -12987,7 +12699,6 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -12997,7 +12708,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "img_identifiers": {
@@ -13064,7 +12775,6 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(?:{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$)$",
                     "type": [
                         "string",
                         "null"
@@ -13087,7 +12797,6 @@
                 "was_informed_by": {
                     "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -13300,7 +13009,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -13308,7 +13016,6 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -13318,7 +13025,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "insdc_assembly_identifiers": {
@@ -13481,7 +13188,6 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(?:{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$)$",
                     "type": [
                         "string",
                         "null"
@@ -13504,7 +13210,6 @@
                 "was_informed_by": {
                     "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -13626,7 +13331,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -13634,7 +13338,6 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -13644,7 +13347,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "img_identifiers": {
@@ -13711,7 +13414,6 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(?:{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}$)$",
                     "type": [
                         "string",
                         "null"
@@ -13734,7 +13436,6 @@
                 "was_informed_by": {
                     "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -13804,7 +13505,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -13815,7 +13515,6 @@
                 "has_output": {
                     "description": "The mixed sample.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                         "type": "string"
                     },
                     "type": [
@@ -13825,13 +13524,12 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):mixpro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -14194,7 +13892,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -14202,7 +13899,6 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -14212,7 +13908,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "name": {
@@ -14281,7 +13977,6 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(?:{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$)$",
                     "type": [
                         "string",
                         "null"
@@ -14297,7 +13992,6 @@
                 "uses_calibration": {
                     "description": "calibration information is used by a process",
                     "items": {
-                        "pattern": "^(?:^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                         "type": "string"
                     },
                     "type": [
@@ -14315,7 +14009,6 @@
                 "was_informed_by": {
                     "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -14355,7 +14048,6 @@
                 "associated_studies": {
                     "description": "The study associated with a resource.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(sty)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -14407,7 +14099,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -14415,7 +14106,6 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -14425,7 +14115,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):(dgns|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "insdc_bioproject_identifiers": {
@@ -14460,7 +14150,6 @@
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -14736,7 +14425,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "isolate_name": {
@@ -14776,8 +14465,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Reference for the organism, preferentially a DOI when a primary publication or genome report exists; PMID and URL are also accepted per the MIxS ref_biomaterial pattern (`{PMID}|{DOI}|{URL}`). Reuses MIxS ref_biomaterial (MIXS:0000025).",
-                    "pattern": "^({PMID}|{DOI}|{URL})$"
+                    "description": "Reference for the organism, preferentially a DOI when a primary publication or genome report exists; PMID and URL are also accepted per the MIxS ref_biomaterial pattern (`{PMID}|{DOI}|{URL}`). Reuses MIxS ref_biomaterial (MIXS:0000025)."
                 },
                 "strain_name": {
                     "description": "Strain or cultivar name of the organism.",
@@ -14829,7 +14517,6 @@
                 "associated_studies": {
                     "description": "The study associated with a resource.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -14861,7 +14548,6 @@
                 },
                 "expected_organism": {
                     "description": "The organism that the submitter expects to be present in this sample. May be contradicted by sequencing results.",
-                    "pattern": "^(?:{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$)$",
                     "type": [
                         "string",
                         "null"
@@ -14902,7 +14588,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:{id_nmdc_prefix}:osm-{id_shoulder}-{id_blade}$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "name": {
@@ -15385,7 +15071,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "minItems": 2,
@@ -15394,7 +15079,6 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                         "type": "string"
                     },
                     "maxItems": 1,
@@ -15403,13 +15087,12 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):poolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -15644,7 +15327,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "name": {
@@ -16150,7 +15833,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -16158,7 +15840,6 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -16168,7 +15849,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "name": {
@@ -16223,7 +15904,6 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(?:{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}$)$",
                     "type": [
                         "string",
                         "null"
@@ -16246,7 +15926,6 @@
                 "was_informed_by": {
                     "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -16368,7 +16047,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -16376,7 +16054,6 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -16386,7 +16063,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "input_base_count": {
@@ -16483,7 +16160,6 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(?:{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$)$",
                     "type": [
                         "string",
                         "null"
@@ -16506,7 +16182,6 @@
                 "was_informed_by": {
                     "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -17051,7 +16726,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                         "type": "string"
                     },
                     "type": [
@@ -17062,7 +16736,6 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                         "type": "string"
                     },
                     "type": [
@@ -17072,7 +16745,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):storpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "name": {
@@ -17316,7 +16989,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "insdc_bioproject_identifiers": {
@@ -17385,7 +17058,6 @@
                 "part_of": {
                     "description": "Links a study or consortium to a parent (or umbrella) study or consortium.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -17540,7 +17212,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -17551,7 +17222,6 @@
                 "has_output": {
                     "description": "The subsample.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -17561,13 +17231,12 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):subspr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -18258,7 +17927,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": "array"
@@ -18266,7 +17934,6 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$)$",
                         "type": "string"
                     },
                     "type": [
@@ -18384,7 +18051,7 @@
     "$schema": "https://json-schema.org/draft/2019-09/schema",
     "additionalProperties": true,
     "description": "An abstract holder for any set of metadata and data. It does not need to correspond to an actual managed database top level holder class. When translated to JSON-Schema this is the 'root' object. It should contain pointers to other objects of interest. For MongoDB, the lists of objects that Database slots point to correspond to **collections**.",
-    "metamodel_version": "1.12.0",
+    "metamodel_version": "1.11.0",
     "properties": {
         "biosample_set": {
             "description": "This property links a database object to the set of samples within it.",
@@ -18665,5 +18332,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.24.1.post155.dev0+f65c7538c"
+    "version": "11.24.1.post156.dev0+3bf0b32fd"
 }
