@@ -1,0 +1,11 @@
+# Invalid for one reason: gradient_pos_rel_am.has_numeric_value is -0.5, outside 0 to 1.
+# It is this fraction's share of the nucleic acid loaded onto the gradient.
+id: nmdc:procsm-99-9437a1
+name: my awesome biosample after fractionation
+type: nmdc:ProcessedSample
+gradient_position: 1
+gradient_pos_rel_am:
+  type: nmdc:QuantityValue
+  has_raw_value: "-0.5"
+  has_numeric_value: -0.5
+  has_unit: "1"

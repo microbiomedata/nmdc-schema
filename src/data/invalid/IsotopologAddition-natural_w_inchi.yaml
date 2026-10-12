@@ -1,0 +1,8 @@
+#specifying nautral abundance and an inchi is not allowed
+isotopolog_label: natural abundance
+type: nmdc:IsotopologAddition
+isotope_atom_fractions:
+  - isotope: 18O
+    type: nmdc:IsotopologComposition
+isotopolog_atom_pos: InChI=1S/H2O/h1H2/i/hD2
+isotopolog: water

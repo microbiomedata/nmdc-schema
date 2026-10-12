@@ -1,0 +1,13 @@
+# Invalid only because isotopolog_dose is a plain string, not a QuantityValue.
+isotopolog_label: isotopically labeled
+type: nmdc:IsotopologAddition
+isotopolog: toluene
+isotope_atom_fractions:
+- isotope: 13C
+  type: nmdc:IsotopologComposition
+  isotopolog_atom_frac:
+    type: nmdc:QuantityValue
+    has_raw_value: '0.99'
+    has_numeric_value: 0.99
+    has_unit: '1'
+isotopolog_dose: 10 [ppm]

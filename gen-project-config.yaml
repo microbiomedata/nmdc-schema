@@ -1,3 +1,9 @@
 generator_args:
   jsonschema:
     include_range_class_descendants: true
+  owl:
+    # linkml plans to flip these three defaults to true. Pin today's behavior so
+    # nmdc.owl.ttl only changes when we choose it. See issue 3413.
+    skip_vacuous_min_zero_cardinality_axioms: false
+    skip_vacuous_local_range_axioms: false
+    consolidate_cardinality_axioms: false

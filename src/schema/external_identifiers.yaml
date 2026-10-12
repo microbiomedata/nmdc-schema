@@ -221,11 +221,13 @@ slots:
     is_a: external_database_identifiers
 
   neon_biosample_identifiers:
+    title: NEON Biosample Identifiers
     is_a: biosample_identifiers
     mixins:
       - neon_identifiers
 
   gold_biosample_identifiers:
+    title: GOLD Biosample Identifiers
     is_a: biosample_identifiers
     mixins:
       - gold_identifiers
@@ -250,6 +252,7 @@ slots:
 
 
   insdc_biosample_identifiers:
+    title: INSDC Biosample Identifiers
     is_a: biosample_identifiers
     mixins:
       - insdc_identifiers

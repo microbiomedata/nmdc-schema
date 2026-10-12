@@ -1,0 +1,25 @@
+id: nmdc:isolp-99-inchip4
+name: labeling with position-specific deuterium isotopologs
+type: nmdc:IsotopeLabelingProcess
+has_input:
+  - nmdc:bsm-99-inchip4
+has_output:
+  - nmdc:procsm-99-inchip4
+isotopolog_approach: multiple
+added_isotopologs:
+  - isotopolog_label: isotopically labeled
+    isotope_atom_fractions:
+      - isotope: 2H
+        type: nmdc:IsotopologComposition
+    type: nmdc:IsotopologAddition
+    isotopolog: methanol
+    # methanol-d4, CID 71568
+    isotopolog_atom_pos: InChI=1S/CH4O/c1-2/h2H,1H3/i1D3,2D
+  - isotopolog_label: isotopically labeled
+    isotope_atom_fractions:
+      - isotope: 2H
+        type: nmdc:IsotopologComposition
+    type: nmdc:IsotopologAddition
+    isotopolog: ethanol
+    # ethanol-d6, CID 102138
+    isotopolog_atom_pos: InChI=1S/C2H6O/c1-2-3/h3H,2H2,1H3/i1D3,2D2,3D

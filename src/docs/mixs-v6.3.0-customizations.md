@@ -106,6 +106,10 @@ GSC MIxS v6.3.0 changed 158 measurement slots from `quantity value` to `string` 
 
 **Affected slots include**: `abs_air_humidity`, `air_temp`, `al_sat`, `alkalinity`, `alt`, `ammonium`, `depth`, `temp`, `salinity`, and 149 others.
 
+### Spelling: isotopolog
+
+MIxS names its stable isotope probing (SIP) slots `isotopolog_*` and mostly writes "isotopolog", but MIxS v7.0.1 also writes "isotopologue" 9 times in those slots' titles and descriptions. On import, `makefiles/mixs.Makefile` rewrites "isotopologue" to "isotopolog" (and "Isotopologue" to "Isotopolog") inside every string, so imported text matches the slot names and our SIP classes, and differs from the MIxS wording. Unlike the other global replacements, which swap whole values, this one edits substrings.
+
 ### Required Field Deletions (30 slots)
 
 GSC MIxS v6.3.0 made 35 slots required. NMDC deletes `required: true` from 30 slots because existing biosamples don't have these fields:

@@ -1,0 +1,11 @@
+# Invalid only because gradient_pos_density is a plain string, not a QuantityValue.
+id: nmdc:procsm-99-labeledfrac1
+type: nmdc:ProcessedSample
+name: 'labeled: fraction 1'
+gradient_position: 1
+gradient_pos_density: 1.735 g/mL
+gradient_pos_rel_am:
+  type: nmdc:QuantityValue
+  has_numeric_value: 0.45
+  has_unit: '1'
+nucleobase_atom_frac: 0.25

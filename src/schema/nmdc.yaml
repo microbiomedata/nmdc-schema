@@ -76,6 +76,7 @@ prefixes:
   biosample: "https://bioregistry.io/biosample:"
   cas: "https://bioregistry.io/cas:"
   dcterms: "http://purl.org/dc/terms/"
+  dcm: "https://kbase.github.io/credit_engine/"
   doi: "https://bioregistry.io/doi:"
   edam.data: "http://edamontology.org/data_" # for doi_value and DataCategoryEnum only
   edam.format: "http://edamontology.org/format_" # for 'Configuration toml' PV only only
@@ -132,6 +133,7 @@ emit_prefixes:
   - orcid
   - rdf
   - rdfs
+  - ror
   - skos
   - xsd
 
@@ -187,6 +189,60 @@ settings:
   version: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
 
 classes:
+
+  Agent:
+    abstract: true
+    class_uri: nmdc:Agent
+    description: A person or organization bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent's activity.
+    slots:
+      - type
+      - name
+      - profile_image_url
+      - websites
+    exact_mappings:
+      - prov:Agent
+    slot_usage:
+      name:
+        required: true
+
+  Person:
+    class_uri: nmdc:Person
+    is_a: Agent
+    description: A person, typically a researcher associated with a study or data generation.
+    slots:
+      - email
+      - orcid
+    exact_mappings:
+      - prov:Person
+    slot_usage:
+      orcid:
+        annotations:
+          tooltip: Open Researcher and Contributor ID for this person. See https://orcid.org
+      email:
+        annotations:
+          tooltip: Email address for this person.
+      name:
+        description: >-
+          The full name of the Investigator.
+          It should follow the format FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.
+        annotations:
+          tooltip: First name, middle initial, and last name of this person.
+
+  Organization:
+    class_uri: nmdc:Organization
+    is_a: Agent
+    description: A social or legal institution such as a company, society, consortium, etc.
+    slots:
+      - ror
+    exact_mappings:
+      - prov:Organization
+    close_mappings:
+      - dcm:Organization
+    slot_usage:
+      name:
+        description: The name of the organization.
+        close_mappings:
+          - dcm:organization_name
 
   EukEval:
     description: This class contains information pertaining to evaluating if a Metagenome-Assembled Genome (MAG) is eukaryotic.
@@ -364,7 +420,8 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$" 
+          syntax: "{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$"
+          interpolated: true
 
   CalibrationInformation:
       class_uri: nmdc:CalibrationInformation
@@ -602,6 +659,109 @@ classes:
       pcr_cond:
         description: Description of reaction conditions and components of polymerase chain reaction performed during library preparation
 
+  IsotopeLabelingProcess:
+    class_uri: nmdc:IsotopeLabelingProcess
+    is_a: MaterialProcessing
+    description: >-
+      A material processing in which substances or materials, isotopically labeled or at natural abundance, are added to a sample so that uptake of the isotope by the resident organisms can be traced.
+    slots:
+      - added_isotopologs
+      - isotopolog_approach
+      - isotopolog_incu_time
+      - substances_used
+    slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:isolp-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      has_input:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      has_output:
+        required: true
+
+  IsotopologAddition:
+    class_uri: nmdc:IsotopologAddition
+    description: >-
+      One isotopolog, or one heterogeneous material with no compound identifier, added during an isotope labeling process, with the isotope it carries, whether it was isotopically labeled or at natural abundance, the atom fraction and position of the label, and the dose.
+    slots:
+      - isotope_atom_fractions
+      - isotopolog
+      - hetero_isotopolog
+      - isotopolog_label
+      - isotopolog_atom_pos
+      - isotopolog_dose
+      - type
+
+    rules:
+      - title: hetero_isotopolog_required_when_isotopolog_absent
+        description: >-
+          If isotopolog is absent, then hetero_isotopolog is required, so that every entry names the input in one of the two ways.
+        preconditions:
+          slot_conditions:
+            isotopolog:
+              value_presence: ABSENT
+        postconditions:
+          slot_conditions:
+            hetero_isotopolog:
+              required: true
+      - title: hetero_isotopolog_absent_when_isotopolog_present
+        description: >-
+          If isotopolog is present, then hetero_isotopolog must be absent, so that no entry names the input in both ways.
+        preconditions:
+          slot_conditions:
+            isotopolog:
+              value_presence: PRESENT
+        postconditions:
+          slot_conditions:
+            hetero_isotopolog:
+              value_presence: ABSENT
+      - title: isotopolog_atom_pos_absent_at_natural_abundance
+        description: >-
+          If isotopolog_label is natural abundance, then isotopolog_atom_pos must be absent, because an InChI isotope layer can only describe enrichment.
+        preconditions:
+          slot_conditions:
+            isotopolog_label:
+              equals_string: natural abundance
+        postconditions:
+          slot_conditions:
+            isotopolog_atom_pos:
+              value_presence: ABSENT
+
+  IsotopologComposition:
+    class_uri: nmdc:IsotopologComposition
+    description: >-
+       Contains the isotopes used and at what fraction.
+    slots:
+      - isotope
+      - isotopolog_atom_frac
+      - type
+
+  DensityGradientFractionationProcess:
+    class_uri: nmdc:DensityGradientFractionationProcess
+    is_a: MaterialProcessing
+    description: >-
+      A material processing that separates a sample, typically extracted nucleic acids, into fractions by buoyant density, usually by isopycnic centrifugation. The output fractions can record their gradient position, buoyant density and relative nucleic acid amount.
+    aliases:
+      - Isopycnic Centrifugation
+      - Density Gradient Centrifugation
+    slots:
+      - internal_standard_method
+    slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:fracp-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      has_input:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      has_output:
+        required: true
+
   CollectingBiosamplesFromSite:
     class_uri: nmdc:CollectingBiosamplesFromSite
     is_a: PlannedProcess
@@ -684,6 +844,7 @@ classes:
       id:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:mixpro-{id_shoulder}-{id_blade}$"
+          interpolated: true
       has_output:
         description: The mixed sample.
         structured_pattern:
@@ -770,6 +931,7 @@ classes:
       id:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:cspro-{id_shoulder}-{id_blade}$"
+          interpolated: true
       has_output:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
@@ -1056,6 +1218,7 @@ enums:
       texture_measurement:
       dna_extraction:
       phenol_chloroform_extraction: { }
+      stable_isotope_probing: { }
 
   ChromatographicCategoryEnum:
     permissible_values:
@@ -1098,6 +1261,85 @@ enums:
         is_a: organic_layer
 
 slots:
+# SIP (stable isotope probing) slots defined by NMDC. The MIxS MISIP slots they group are imported in mixs.yaml.
+  added_isotopologs:
+    description: >-
+      The isotopologs, or heterogeneous materials, added during this isotope labeling process, one entry per isotopolog and isotope.
+    range: IsotopologAddition
+    multivalued: true
+    inlined_as_list: true
+    recommended: true
+
+  isotope_atom_fractions:
+    title: isotope atom fractions
+    description: >-
+      Contains the isotopes used and at what fraction, for an isotopolog added during an isotope labeling process.
+    range: IsotopologComposition
+    multivalued: true
+    inlined_as_list: true
+
+  internal_standard_method:
+    title: internal standard method
+    description: >-
+      Method used for internal standard for SIP fractionation, if an internal standard was used (i.e., spiking in a heavy-labelled DNA sequence).
+    range: Protocol
+    exact_mappings: 
+      - MIXS:0001351
+
+  hetero_isotopolog:
+    title: heterogeneous isotopolog
+    description: >-
+      An input to the labeling that has no ChEBI identifier, described in free text: an undefined mixture such as root exudates or plant litter, or cells or biomass such as T4 phages. A defined compound with a ChEBI identifier goes in isotopolog instead.
+    comments:
+      - Exactly one of isotopolog and hetero_isotopolog is given on each IsotopologAddition entry; the rules on that class enforce it.
+      - hetero_isotopolog is a column of the MISIP supplementary tables (Simpson et al. 2024, https://doi.org/10.1093/gigascience/giae071) and is not yet a MIxS slot.
+    see_also:
+      - https://github.com/GenomicsStandardsConsortium/mixs/issues/1409
+    examples:
+      - value: root exudates
+      - value: T4 phages
+    range: string
+
+  email:
+    description: >-
+      An email address for an entity such as a person.
+      This should be the primary email address used.
+    range: string
+    slot_uri: schema:email
+
+  profile_image_url:
+    description: A url that points to an image of this person or organization.
+    range: string
+
+  orcid:
+    description: The ORCID of a person.
+    range: string
+    pattern: '^orcid:\d{4}-\d{4}-\d{4}-\d{3}(\d|X)$'
+    comments:
+      - Canonical form is the Bioregistry CURIE with prefix `orcid`.
+    examples:
+      - value: orcid:0000-0002-7086-765X
+    see_also:
+      - https://bioregistry.io/registry/orcid
+    close_mappings:
+      - dcm:contributor_id
+
+  ror:
+    description: The Research Organization Registry identifier of an organization.
+    range: string
+    pattern: '^ror:0[a-hj-km-np-tv-z0-9]{6}[0-9]{2}$'
+    comments:
+      - Canonical form is the Bioregistry CURIE with prefix `ror`.
+      - Optional. Institutions usually have a ROR; many consortia do not.
+    examples:
+      - value: ror:05cwx3318
+        description: National Microbiome Data Collaborative
+    see_also:
+      - https://bioregistry.io/registry/ror
+      - https://ror.org
+    close_mappings:
+      - dcm:organization_id
+
   # ============================================================================
   # Legacy MIxS slots removed from GSC MIxS commit 0368da846b197bef1c0dd27a9cf337a8aeea17f2
   # These slots were present in microbiomedata/mixs tag pre-2024-05-15 but removed
@@ -1135,6 +1377,7 @@ slots:
       syntax: "^({PMID}|{DOI}|{URL})$"
       interpolated: true
     annotations:
+      method_for: salinity
       Expected_value: "PMID,DOI or url"
     slot_uri: MIXS:0000341
 

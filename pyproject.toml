@@ -31,7 +31,7 @@ dependencies = [
     # resolves to the latest click. See #2985.
     "click>=8.0.0,<9.0.0",
     "click-log>=0.4.0,<0.5.0",
-    "deprecated>=1.0.0,<2.0.0",
+    "deprecated>=1.0.0,<4.0.0",
     # (GHSA-65pc-fj4g-8rjx bypass of CVE-2024-3651)
     "idna>=3.15,<4.0.0",
     "jsonasobj2>=1.0.0,<2.0.0",
@@ -100,14 +100,13 @@ dev = [
     "mypy>=1.10.0,<3.0.0",
     "oaklib>=0.6.23,<1.0.0",
     "pandas>=2.2.3,<4.0.0",
-    "psycopg2-binary>=2.9.10,<3.0.0",
     "pylint>=3.2.2,<5.0.0",
     # Security floor for a docs-only transitive of mkdocs-material and
     # mkdocs-mermaid2-plugin. It sat in [project.dependencies] purely to push a
     # floor downstream, where the <11.0.0 ceiling then made the 11.0.0 and 11.0.1
     # advisories unreachable. Here in dev the ceiling no longer propagates to
     # consumers, so it keeps the repo's upper-bound policy.
-    "pymdown-extensions>=11.0.1,<12.0.0",
+    "pymdown-extensions>=11.0.1,<13.0.0",
     "pyroma>=4.2,<6.0",
     "pytest>=8.4.2,<10.0.0",
     # We use `refscan` to generate diagrams of inter-collection relationships

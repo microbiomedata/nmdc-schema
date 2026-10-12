@@ -9,17 +9,6 @@ material_processing_set:
     end_date: '2021-01-15'
     library_type: DNA
     type: nmdc:LibraryPreparation
-processed_sample_set:
-  - id: nmdc:procsm-99-xyz12
-    name: first processed sample set
-    type: nmdc:ProcessedSample
-  - id: nmdc:procsm-99-xyz22
-    name: first DNA extract
-    type: nmdc:ProcessedSample
-  - id: nmdc:procsm-99-xyz32
-    name: first library
-    type: nmdc:ProcessedSample
-material_processing_set:
   - id: nmdc:extrp-99-abcdef
     name: first dna extraction set
     has_input:
@@ -31,6 +20,28 @@ material_processing_set:
     extraction_targets: 
       - DNA
     type: nmdc:Extraction
+  - id: nmdc:poolp-99-abcdef
+    type: nmdc:Pooling
+    name: first pooling process
+    description: This is the first pooling process that has ever occurred on earth
+    has_input:
+      - nmdc:bsm-99-abcdef12
+      - nmdc:bsm-99-abcdef22
+      - nmdc:bsm-99-abcdef32
+    has_output:
+      - nmdc:procsm-99-xyz12
+    start_date: '2021-01-14'
+    end_date: '2021-01-14'
+processed_sample_set:
+  - id: nmdc:procsm-99-xyz12
+    name: first processed sample set
+    type: nmdc:ProcessedSample
+  - id: nmdc:procsm-99-xyz22
+    name: first DNA extract
+    type: nmdc:ProcessedSample
+  - id: nmdc:procsm-99-xyz32
+    name: first library
+    type: nmdc:ProcessedSample
 biosample_set:
   - id: nmdc:bsm-99-abcdef12
     name: my_awesome_sample_1
@@ -162,18 +173,3 @@ data_object_set:
     name: 1472_51293.filtered.fastq.gz
     type: nmdc:DataObject
     url: https://data.microbiomedata.org/data/1472_51293/qa/1472_51293.filtered.fastq.gz
-
-material_processing_set:
-  - id: nmdc:poolp-99-abcdef
-    type: nmdc:Pooling
-    name: first pooling process
-    description: This is the first pooling process that has ever occurred on earth
-    has_input:
-      - nmdc:bsm-99-abcdef12
-      - nmdc:bsm-99-abcdef22
-      - nmdc:bsm-99-abcdef32
-    has_output:
-      - nmdc:procsm-99-xyz12
-    start_date: '2021-01-14'
-    end_date: '2021-01-14'
-

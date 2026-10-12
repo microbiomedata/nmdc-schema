@@ -22,14 +22,23 @@ $(RUN) linkml generate project \
 ```
 
 This produces `project/owl/nmdc.owl.ttl` (~1.3 MB). The config file
-(`gen-project-config.yaml`) currently has **no OWL-specific settings** -- only a
-JSON Schema option:
+(`gen-project-config.yaml`) has one JSON Schema option and three OWL options:
 
 ```yaml
 generator_args:
   jsonschema:
     include_range_class_descendants: true
+  owl:
+    skip_vacuous_min_zero_cardinality_axioms: false
+    skip_vacuous_local_range_axioms: false
+    consolidate_cardinality_axioms: false
 ```
+
+The three OWL options are set to their current defaults. linkml warns that each
+default will change to `true` in a future release, which would drop or merge
+about 1,900 of the roughly 3,100 restrictions in `nmdc.owl.ttl`. Setting them
+keeps the output stable until we decide to adopt the new defaults
+([#3413](https://github.com/microbiomedata/nmdc-schema/issues/3413)).
 
 The OWL output is gitignored, not included in the PyPI package, and not published
 in the docs. Per [#2749](https://github.com/microbiomedata/nmdc-schema/issues/2749),
@@ -106,6 +115,9 @@ CLI dashes become underscores. Boolean `--flag/--no-flag` pairs become
 | *(no CLI flag)* | `simplify` | `bool` | `true` |
 | *(no CLI flag)* | `use_swrl` | `bool` | `false` |
 | *(no CLI flag)* | `target_profile` | `str` (`dl`, `full`) | `dl` |
+| `--skip-vacuous-min-zero-cardinality-axioms / --no-...` | `skip_vacuous_min_zero_cardinality_axioms` | `bool` | `false`, changing to `true` |
+| `--skip-vacuous-local-range-axioms / --no-...` | `skip_vacuous_local_range_axioms` | `bool` | `false`, changing to `true` |
+| `--consolidate-cardinality-axioms / --no-...` | `consolidate_cardinality_axioms` | `bool` | `false`, changing to `true` |
 
 ### Cross-generator common options (also work under `owl:`)
 
