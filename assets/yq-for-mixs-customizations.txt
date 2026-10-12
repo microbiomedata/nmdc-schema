@@ -948,6 +948,7 @@
 # asserted range. Units validated against UnitEnum; type designator included. Slots needing
 # UCUM additions, value fixes, or non-UCUM/dimensionless handling are deferred to the units PR.
 
+# isotope: MIxS example "13C | 15N" packs two values into one string; NMDC makes isotope single-valued, so each isotope is its own example.
 '.slots.isotope.examples = [{"value": "13C"}, {"value": "15N"}]'
 
 '.slots.abs_air_humidity.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "9 g/g", "has_numeric_value": 9, "has_unit": "g/g"}}]'
@@ -1015,6 +1016,7 @@
 '.slots.gaseous_environment.examples = [{"object": {"type": "nmdc:TextValue", "has_raw_value": "nitric oxide;0.5 micromole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M"}}]'
 '.slots.geo_loc_name.examples = [{"object": {"type": "nmdc:TextValue", "has_raw_value": "USA: Maryland, Bethesda"}}]'
 '.slots.glucosidase_act.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "5 mol/L/h", "has_numeric_value": 5, "has_unit": "mol/L/h"}}]'
+# gradient_pos_density: MIxS examples are strings ("1.725 g/mL", "1.725-1.735 g/mL"); NMDC ranges the slot to QuantityValue, so they become a value and a min/max range in g/mL.
 '.slots.gradient_pos_density.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "1.725 g/mL", "has_numeric_value": 1.725, "has_unit": "g/mL"}}, {"object": {"type": "nmdc:QuantityValue", "has_raw_value": "1.725-1.735 g/mL", "has_minimum_numeric_value": 1.725, "has_maximum_numeric_value": 1.735, "has_unit": "g/mL"}}]'
 '.slots.gravidity.examples = [{"object": {"type": "nmdc:TextValue", "has_raw_value": "yes;due date:2018-05-11"}}]'
 '.slots.gravity.examples = [{"object": {"type": "nmdc:TextValue", "has_raw_value": "12 g;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M"}}]'
@@ -1034,6 +1036,7 @@
 '.slots.host_tot_mass.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "2500 g", "has_numeric_value": 2500, "has_unit": "g"}}]'
 '.slots.host_wet_mass.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "1500 g", "has_numeric_value": 1500, "has_unit": "g"}}]'
 '.slots.humidity_regm.examples = [{"object": {"type": "nmdc:TextValue", "has_raw_value": "25 gram per cubic meter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M"}}]'
+# isotopolog: MIxS examples are "toluene [pubchem.compound:1140]" and the sentinel "0"; NMDC ranges the slot to ChemicalEntityEnum and uses no sentinel, so the example is a permissible value.
 '.slots.isotopolog.examples = [{"value":"water"}]'
 '.slots.isotopolog.comments = ["Inputs such as root exudates or cells, goes in hetero_isotopolog instead; NMDC does not use a sentinel identifier for that case."]' 
 '.slots.isotopolog_atom_frac.description |= sub(" Multiple values allowed, separated by a \\| and should be orded the same as the isotopolog\\."; "")'
@@ -1041,9 +1044,13 @@
 '.slots.gradient_position.description |= sub("denoted with –1"; "denoted with -1")'
 
 
+# isotopolog_atom_frac: MIxS examples are strings, one listing two values ("0.95 | 0.98"); NMDC ranges the slot to a single QuantityValue with unit 1.
 '.slots.isotopolog_atom_frac.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "0.95","has_numeric_value": 0.95, "has_unit": "1"}}]'
+# isotopolog_atom_pos: MIxS examples drop the InChI= prefix, list two InChIs in one string, or say "undefined"; the NMDC pattern requires one full InChI with an isotope layer.
 '.slots.isotopolog_atom_pos.examples = [{"value":"InChI=1S/C7H8/c1-7-5-3-2-4-6-7/h2-6H,1H3/i1+1,2+1,3+1,4+1,5+1,6+1,7+1"}]'
+# isotopolog_dose: MIxS example is the string "10 ppm"; NMDC ranges the slot to QuantityValue with the UCUM unit [ppm].
 '.slots.isotopolog_dose.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "10 [ppm]", "has_numeric_value": 10, "has_unit": "[ppm]"}}]'
+# isotopolog_incu_time: MIxS example is the string "12 hour"; NMDC ranges the slot to QuantityValue with the UCUM unit h.
 '.slots.isotopolog_incu_time.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "12 h", "has_numeric_value": 12, "has_unit": "h"}}]'
 '.slots.iw_bt_date_well.examples = [{"object": {"type": "nmdc:TimestampValue", "has_raw_value": "2013-03-25T12:42:31+01:00"}}]'
 '.slots.last_clean.examples = [{"object": {"type": "nmdc:TimestampValue", "has_raw_value": "2013-03-25T12:42:31+01:00"}}]'
@@ -1199,6 +1206,7 @@
 '.slots.link_climate_info.examples = [{"object": {"type": "nmdc:TextValue", "has_raw_value": "https://www.int-res.com/abstracts/cr/v14/n3/p161-173/"}}, {"object": {"type": "nmdc:TextValue", "has_raw_value": "doi:10.3354/cr014161"}}]'
 '.slots.sieving.examples = [{"object": {"type": "nmdc:TextValue", "has_raw_value": "combined 2 cores | 4mm sieved"}}, {"object": {"type": "nmdc:TextValue", "has_raw_value": "4 mm sieved and homogenized"}}, {"object": {"type": "nmdc:TextValue", "has_raw_value": "50 g | 5 cores | 2 mm sieved"}}]'
 '.slots.misc_param.examples = [{"object": {"type": "nmdc:PropertyAssertion", "has_attribute_label": "Bicarbonate ion concentration", "has_numeric_value": 2075, "has_unit": "micromole per kilogram", "has_raw_value": "Bicarbonate ion concentration;2075 micromole per kilogram"}}]'
+# gradient_pos_rel_am: MIxS example is the string "0.10" on a float-ranged slot; NMDC ranges the slot to QuantityValue with unit 1.
 '.slots.gradient_pos_rel_am.examples  = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "0.1", "has_numeric_value": 0.1, "has_unit": "1"}}]'
 
 # Record which slot each MIxS method slot describes, as a method_for annotation.
