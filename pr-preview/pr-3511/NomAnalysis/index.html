@@ -796,6 +796,7 @@ attributes:
     - NomAnalysis
     range: CalibrationInformation
     multivalued: true
+    pattern: ^(?:^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -916,6 +917,7 @@ attributes:
     range: MassSpectrometry
     required: true
     multivalued: true
+    pattern: ^(?:^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -947,6 +949,7 @@ attributes:
     - DataObject
     - WorkflowExecution
     range: NomAnalysis
+    pattern: ^(?:^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$'
       interpolated: true
@@ -963,6 +966,7 @@ attributes:
     range: DataObject
     required: true
     multivalued: true
+    pattern: ^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -978,6 +982,7 @@ attributes:
     - PlannedProcess
     range: DataObject
     multivalued: true
+    pattern: ^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -1097,7 +1102,7 @@ attributes:
     - NamedThing
     range: uriorcurie
     required: true
-    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+    pattern: ^(?:^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$'
       interpolated: true

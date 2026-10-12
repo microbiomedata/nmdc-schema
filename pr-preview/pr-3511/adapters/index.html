@@ -767,7 +767,12 @@
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../String/">String</a></li>
+<li>
+<p>Range: <a href="../String/">String</a></p>
+</li>
+<li>
+<p>Regex pattern: <code>^[ACGTRYSWKMBDHVNI]+;[ACGTRYSWKMBDHVNI]+$</code></p>
+</li>
 </ul>
 <h2 id="examples">Examples</h2>
 <ul>
@@ -809,6 +814,7 @@ slot_uri: MIXS:0000048
 domain_of:
 - LibraryPreparation
 range: string
+pattern: ^[ACGTRYSWKMBDHVNI]+;[ACGTRYSWKMBDHVNI]+$
 structured_pattern:
   syntax: ^{primer_adapter_codes}+;{primer_adapter_codes}+$
   interpolated: true

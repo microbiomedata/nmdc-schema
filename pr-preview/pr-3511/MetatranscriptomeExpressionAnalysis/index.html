@@ -884,6 +884,7 @@ attributes:
     range: NucleotideSequencing
     required: true
     multivalued: true
+    pattern: ^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -915,6 +916,7 @@ attributes:
     - DataObject
     - WorkflowExecution
     range: MetatranscriptomeExpressionAnalysis
+    pattern: ^(?:^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}$'
       interpolated: true
@@ -931,6 +933,7 @@ attributes:
     range: DataObject
     required: true
     multivalued: true
+    pattern: ^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -946,6 +949,7 @@ attributes:
     - PlannedProcess
     range: DataObject
     multivalued: true
+    pattern: ^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -1065,7 +1069,7 @@ attributes:
     - NamedThing
     range: uriorcurie
     required: true
-    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+    pattern: ^(?:^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}$'
       interpolated: true
