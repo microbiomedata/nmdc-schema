@@ -814,6 +814,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#spelling-isotopolog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spelling: isotopolog
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#required-field-deletions-30-slots" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1320,6 +1331,8 @@
 <li>Enables numeric queries and unit validation</li>
 </ul>
 <p><strong>Affected slots include</strong>: <code>abs_air_humidity</code>, <code>air_temp</code>, <code>al_sat</code>, <code>alkalinity</code>, <code>alt</code>, <code>ammonium</code>, <code>depth</code>, <code>temp</code>, <code>salinity</code>, and 149 others.</p>
+<h3 id="spelling-isotopolog">Spelling: isotopolog</h3>
+<p>MIxS names its stable isotope probing (SIP) slots <code>isotopolog_*</code> and mostly writes "isotopolog", but MIxS v7.0.1 also writes "isotopologue" 9 times in those slots' titles and descriptions. On import, <code>makefiles/mixs.Makefile</code> rewrites "isotopologue" to "isotopolog" (and "Isotopologue" to "Isotopolog") inside every string, so imported text matches the slot names and our SIP classes, and differs from the MIxS wording. Unlike the other global replacements, which swap whole values, this one edits substrings.</p>
 <h3 id="required-field-deletions-30-slots">Required Field Deletions (30 slots)</h3>
 <p>GSC MIxS v6.3.0 made 35 slots required. NMDC deletes <code>required: true</code> from 30 slots because existing biosamples don't have these fields:</p>
 <p><code>abs_air_humidity</code>, <code>add_recov_method</code>, <code>api</code>, <code>basin</code>, <code>build_occup_type</code>, <code>building_setting</code>, <code>collection_date</code>, <code>env_broad_scale</code>, <code>env_local_scale</code>, <code>env_medium</code>, <code>filter_type</code>, <code>geo_loc_name</code>, <code>hc_produced</code>, <code>hcr</code>, <code>heat_cool_type</code>, <code>indoor_space</code>, <code>iwf</code>, <code>lat_lon</code>, <code>light_type</code>, <code>occup_density_samp</code>, <code>occup_samp</code>, <code>rel_air_humidity</code>, <code>samp_collect_point</code>, <code>samp_name</code>, <code>samp_taxon_id</code>, <code>samp_type</code>, <code>seq_meth</code>, <code>space_typ_state</code>, <code>typ_occup_density</code>, <code>water_cut</code></p>
