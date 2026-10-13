@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.24.1.post156.dev0+73fa931aa
+version: 11.24.1.post160.dev0+3c5307539
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -19217,10 +19217,6 @@ slots:
     - sample
     slot_uri: MIXS:0001225
     range: string
-  internal_standard:
-    name: internal_standard
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: Protocol
   mixs_env_triad_field:
     name: mixs_env_triad_field
     annotations:
