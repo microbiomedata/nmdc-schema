@@ -42,20 +42,26 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+          fetch-depth: 0  # poetry-dynamic-versioning derives the version from git tags
 
       - name: Install Poetry
-        run: pipx install poetry==2.5.1
+        run: |
+          pipx install poetry==2.5.1
+          pipx inject poetry "poetry-dynamic-versioning[plugin]"
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: ${{ matrix.python-version }}
 
-      # Build the artifacts and the wheel with the locked versions, as the release does.
+      # Build the artifacts and the wheel with the locked versions, using the
+      # same steps as pypi-publish.yaml.
       - name: Build schema artifacts and wheel
         run: |
           poetry install --no-interaction
+          poetry dynamic-versioning
           make squeaky-clean all
+          make -C units fast
           poetry build
 
       # A fresh environment with no lock: pip picks the newest allowed versions.
