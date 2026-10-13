@@ -9,7 +9,7 @@ it: constructed paths, excluded files, and external consumers need separate chec
 ``CONTRIBUTING.md``).
 
 **Names a deprecated element.** A file under ``assets/`` that mentions a class, slot,
-enum, or type defined in ``src/schema/deprecated.yaml``. The two-release deprecation
+enum, type, or subset defined in ``src/schema/deprecated.yaml``. The two-release deprecation
 process in ``src/docs/schema_element_deprecation_guide.md`` strips references out of
 the schema source; until 2026-08 it said nothing about ``assets/``, so mapping files
 kept naming elements the schema no longer exposes.
