@@ -84,7 +84,7 @@ classes:
       id:
         pattern: '^NCBITaxon:\d+$'
         examples:
-          - value: NCBITaxon:511145
+          - value: 'NCBITaxon:511145'
         comments:
           - >-
             Validation is intentionally limited to NCBITaxon CURIEs. If GTDB, LPSN, or SeqCode
