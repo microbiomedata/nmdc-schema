@@ -13,6 +13,7 @@ its one structured alias (on samp_collec_method) comes from MIxS with
 ``contexts``. Change that through the MIxS customization pipeline, not here.
 """
 
+from collections.abc import Iterator
 from pathlib import Path
 
 import yaml
@@ -20,7 +21,7 @@ import yaml
 GENERATED_FILES = {"mixs.yaml"}
 
 
-def structured_aliases(node, path=""):
+def structured_aliases(node: object, path: str = "") -> Iterator[tuple[str, object]]:
     """Yield (location, alias) for every structured alias at any depth."""
     if isinstance(node, dict):
         for key, value in node.items():
@@ -34,7 +35,7 @@ def structured_aliases(node, path=""):
             yield from structured_aliases(item, path)
 
 
-def test_structured_aliases_name_their_source():
+def test_structured_aliases_name_their_source() -> None:
     repository_root = Path(__file__).resolve().parents[1]
     problems = []
     for schema_path in sorted((repository_root / "src" / "schema").glob("*.yaml")):
