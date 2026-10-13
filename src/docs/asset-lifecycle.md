@@ -24,9 +24,11 @@ stale assets illustrate the problem:
 
 ## The rule
 
-Every file tracked under `assets/` must be named by something else in the repo: a Makefile
+Every file tracked under `assets/` must be named by something outside `assets/`: a Makefile
 target that builds it, a script or test that reads it, or a document that explains what it
-is for. If none of those is true, it is a retirement candidate.
+is for. If none of those is true, it is a retirement candidate. A README inside `assets/`
+does not count, because it is an asset itself; name the file from `src/docs/` or from the
+code that uses it instead.
 
 `tests/test_no_new_unreferenced_assets.py` checks for literal references going forward. It
 runs in `make test` and so in CI. Files that predate the check are listed in its allowlist,

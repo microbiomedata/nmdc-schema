@@ -135,8 +135,8 @@ def _run_git(args, repo_root):
 
 def tracked_assets(repo_root):
     """Every file tracked by git under ``assets/``, as repo-relative POSIX paths."""
-    output = _run_git(["ls-files", ASSETS_DIR], repo_root)
-    return sorted(line for line in output.splitlines() if line)
+    output = _run_git(["ls-files", "-z", ASSETS_DIR], repo_root)
+    return sorted(line for line in output.split("\0") if line)
 
 
 def deprecated_element_names(repo_root):
@@ -161,8 +161,8 @@ def _searchable_files(repo_root):
     referenced, since the ratchet's whole premise is that only committed content
     counts as a consumer.
     """
-    output = _run_git(["ls-files"], repo_root)
-    for line in output.splitlines():
+    output = _run_git(["ls-files", "-z"], repo_root)
+    for line in output.split("\0"):
         if not line:
             continue
         relative = Path(line)
@@ -188,11 +188,31 @@ def _read_text(path):
         return ""
 
 
+def _file_name_pattern(name):
+    """Match ``name`` only where it is the whole file name or path, not part of a longer one.
+
+    A plain substring test would let ``pv_template.tsv`` count as referenced by a
+    mention of ``enum_pv_template.tsv``. A slash or a quote may come before the name,
+    and a sentence-ending period may follow it, but a further extension or a backup
+    suffix (``~``) may not. Markdown underscore emphasis (``_name_``) does not match;
+    write file names in backticks.
+
+    >>> bool(_file_name_pattern("pv_template.tsv").search("assets/enum_pv_template.tsv"))
+    False
+    >>> bool(_file_name_pattern("pv_template.tsv").search("cat $DIR/pv_template.tsv."))
+    True
+    >>> bool(_file_name_pattern("pv_template.tsv").search("pv_template.tsv.gz"))
+    False
+    """
+    return re.compile(rf"(?<![\w.-]){re.escape(name)}(?![\w~+-]|\.\w)")
+
+
 def find_asset_findings(repo_root):
     """Build one :class:`AssetFinding` per tracked asset.
 
     An asset counts as referenced if any searchable file outside ``assets/`` contains
-    its repo-relative path, or its bare filename when that filename is distinctive
+    its repo-relative path, or its bare filename, as a whole name (see
+    ``_file_name_pattern``), when that filename is distinctive
     enough to trust: unique among tracked assets, and not a name known to collide
     with something unrelated (see ``GENERIC_BASENAMES``). The bare-filename fallback
     exists because Makefiles and scripts often build the path from a variable, so
@@ -217,10 +237,15 @@ def find_asset_findings(repo_root):
         trust_basename = (
             basename_counts[basename] == 1 and basename not in GENERIC_BASENAMES
         )
+        names = [asset, basename] if trust_basename else [asset]
+        patterns = [_file_name_pattern(name) for name in names]
         referenced_by = sorted(
             str(path.relative_to(repo_root))
             for path, text in corpus.items()
-            if asset in text or (trust_basename and basename in text)
+            if any(
+                name in text and pattern.search(text)
+                for name, pattern in zip(names, patterns)
+            )
         )
         asset_text = _read_text(repo_root / asset)
         named = tuple(

@@ -19,12 +19,16 @@ from src.scripts.report_asset_usage import (
 )
 
 DEPRECATED_SCHEMA = """
-classes: {}
+classes:
+  OldClass: {}
 slots:
   old_slot: {}
-enums: {}
-types: {}
-subsets: {}
+enums:
+  OldEnum: {}
+types:
+  old_type: {}
+subsets:
+  old_subset: {}
 """
 
 
@@ -173,6 +177,70 @@ def test_audit_examples_do_not_count_as_consumers(repo, audit_file):
 def test_deprecated_element_is_detected(repo):
     finding = _find(find_asset_findings(repo), "assets/misc/old_mapping.tsv")
     assert finding.is_unreferenced
+    assert finding.deprecated_elements == ("old_slot",)
+
+
+@pytest.mark.parametrize(
+    "element", ["OldClass", "old_slot", "OldEnum", "old_type", "old_subset"]
+)
+def test_each_deprecated_section_is_read(repo, element):
+    """Every section of deprecated.yaml must feed the check, not only slots."""
+    asset = "assets/misc/names_one_element.tsv"
+    _write(repo / asset, f"{element}\tsomething\n")
+    subprocess.run(["git", "add", asset], cwd=repo, check=True)
+
+    finding = _find(find_asset_findings(repo), asset)
+    assert finding.deprecated_elements == (element,)
+
+
+def test_generic_basename_fallback_is_refused_even_when_unique(repo):
+    """A GENERIC_BASENAMES name must need a full path even if only one asset has it.
+
+    The README.md fixtures above are also duplicates, so they cannot show that the
+    denylist itself does anything.
+    """
+    asset = "assets/solo/.gitkeep"
+    consumer = "scripts/make_dirs.sh"
+    _write(repo / asset)
+    _write(repo / consumer, "touch $DIR/.gitkeep\n")
+    subprocess.run(["git", "add", asset, consumer], cwd=repo, check=True)
+
+    finding = _find(find_asset_findings(repo), asset)
+    assert finding.is_unreferenced
+
+
+@pytest.mark.parametrize(
+    ("mention", "counts"),
+    [
+        ("cat $DIR/pv_template.tsv\n", True),
+        ("See pv_template.tsv.\n", True),
+        ("cat assets/enum_pv_template.tsv\n", False),
+        ("cat $DIR/pv_template.tsv.gz\n", False),
+        ("rm -f assets/misc/pv_template.tsv~\n", False),
+    ],
+)
+def test_file_name_must_match_as_a_whole_name(repo, mention, counts):
+    """A longer file name that contains the asset's name is not a reference to it."""
+    asset = "assets/misc/pv_template.tsv"
+    consumer = "scripts/uses_template.sh"
+    _write(repo / asset, "data\n")
+    _write(repo / consumer, mention)
+    subprocess.run(["git", "add", asset, consumer], cwd=repo, check=True)
+
+    finding = _find(find_asset_findings(repo), asset)
+    assert finding.is_unreferenced is not counts
+
+
+def test_non_ascii_file_names_are_read_unquoted(repo):
+    """git quotes non-ASCII paths unless -z is used; the quoted form matches nothing."""
+    asset = "assets/misc/café_mappings.tsv"
+    consumer = "scripts/load_cafe.py"
+    _write(repo / asset, "old_slot\n")
+    _write(repo / consumer, f"open('{asset}')\n")
+    subprocess.run(["git", "add", asset, consumer], cwd=repo, check=True)
+
+    finding = _find(find_asset_findings(repo), asset)
+    assert finding.referenced_by == (consumer,)
     assert finding.deprecated_elements == ("old_slot",)
 
 
