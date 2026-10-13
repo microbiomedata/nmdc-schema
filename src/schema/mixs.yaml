@@ -8304,8 +8304,6 @@ slots:
       - literal_form: samp_collect_method
         contexts:
           - https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.3.0
-  internal_standard:
-    range: Protocol
   mixs_env_triad_field:
     annotations:
       tooltip: >-
