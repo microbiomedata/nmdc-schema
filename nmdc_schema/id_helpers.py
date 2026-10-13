@@ -45,7 +45,8 @@ def get_compatible_typecodes(slot_pattern: str) -> List[str]:
     #       consume all but the final hyphen in the slot pattern. By doing a lazy match, we prevent the capture
     #       group from consuming any hyphens at all.
     #
-    id_pattern = re.compile(r"^\^\(nmdc\):(.+?)-")
+    # LinkML 1.12 wraps an already-anchored pattern as `^(?:...)$`.
+    id_pattern = re.compile(r"^\^(?:\(\?:)?\^?\(nmdc\):(.+?)-")
 
     # Use the regular expression to extract the typecode portion of the specified slot pattern.
     match_obj = id_pattern.match(slot_pattern)
