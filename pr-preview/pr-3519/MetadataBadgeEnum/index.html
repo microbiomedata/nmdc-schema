@@ -760,17 +760,17 @@
 <tr>
 <td>biogeochemistry</td>
 <td>None</td>
-<td>Completeness badge. Awarded when the Biosample populates at least...</td>
+<td>A badge for a Biosample that has values for at least the minimum number of...</td>
 </tr>
 <tr>
 <td>host_information</td>
 <td>None</td>
-<td>Completeness badge. Awarded when the Biosample populates at least...</td>
+<td>A badge for a Biosample that has values for at least the minimum number of...</td>
 </tr>
 <tr>
 <td>expert_curation</td>
 <td>None</td>
-<td>Provenance badge. Awarded when the Biosample's...</td>
+<td>A badge for a Biosample whose metadata was submitted through the NMDC...</td>
 </tr>
 </tbody>
 </table>
@@ -792,7 +792,7 @@
 <h2 id="comments">Comments</h2>
 <ul>
 <li>A completeness badge has the same name as a badge subset, meaning a subset whose in_subset includes badge_topic. It is awarded when the Biosample populates at least badge_minimum_slots of that subset's slots. tests/test_badge_subset_sync.py checks that these values and subsets match.</li>
-<li>A provenance badge is awarded from where the metadata came from. It has no subset, and its description names the slot it is awarded from.</li>
+<li>A provenance badge is awarded from where the metadata came from. It has no subset, and its comments name the slot it is awarded from.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
@@ -814,7 +814,7 @@ comments:
   badge_minimum_slots of that subset's slots. tests/test_badge_subset_sync.py checks
   that these values and subsets match.
 - A provenance badge is awarded from where the metadata came from. It has no subset,
-  and its description names the slot it is awarded from.
+  and its comments name the slot it is awarded from.
 from_schema: https://w3id.org/nmdc/nmdc
 see_also:
 - https://github.com/microbiomedata/nmdc-schema/issues/3227
@@ -822,24 +822,33 @@ rank: 1000
 permissible_values:
   biogeochemistry:
     text: biogeochemistry
-    description: Completeness badge. Awarded when the Biosample populates at least
-      badge_minimum_slots of the biogeochemistry subset.
+    description: A badge for a Biosample that has values for at least the minimum
+      number of slots set by the Biogeochemistry subset.
     title: Biogeochemistry
+    comments:
+    - Completeness badge. Awarded when the Biosample populates at least badge_minimum_slots
+      of the biogeochemistry subset.
     see_also:
     - https://microbiomedata.github.io/nmdc-schema/Biogeochemistry/
   host_information:
     text: host_information
-    description: Completeness badge. Awarded when the Biosample populates at least
-      badge_minimum_slots of the host_information subset.
+    description: A badge for a Biosample that has values for at least the minimum
+      number of slots set by the Host Information subset.
     title: Host Information
+    comments:
+    - Completeness badge. Awarded when the Biosample populates at least badge_minimum_slots
+      of the host_information subset.
     see_also:
     - https://microbiomedata.github.io/nmdc-schema/HostInformation/
   expert_curation:
     text: expert_curation
-    description: Provenance badge. Awarded when the Biosample's ProvenanceMetadata.source_system_of_record
+    description: A badge for a Biosample whose metadata was submitted through the
+      NMDC Submission Portal.
+    title: Expert Curation
+    comments:
+    - Provenance badge. Awarded when the Biosample's ProvenanceMetadata.source_system_of_record
       identifies the NMDC submission portal, rather than an ETL process over an external
       database.
-    title: Expert Curation
     see_also:
     - https://microbiomedata.github.io/nmdc-schema/source_system_of_record/
 
