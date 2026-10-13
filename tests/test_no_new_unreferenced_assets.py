@@ -48,21 +48,6 @@ _GIT_PLACEHOLDERS = {
     "assets/misc/.gitkeep",
 }
 
-# Ad-hoc MongoDB queries, run by hand against production rather than by any code here.
-# Whether they belong in this repo at all is
-# https://github.com/microbiomedata/nmdc-schema/issues/3068 (relocate prod-analytics
-# code out of nmdc-schema).
-_MANUAL_MONGO_QUERIES = {
-    "assets/mongodb_queries/data_qc/biosample_part_of_study.js",
-    "assets/mongodb_queries/data_qc/data_generation_has_input_biosample_or_processed_sample.js",
-    "assets/mongodb_queries/data_qc/data_generation_has_output_data_objects.js",
-    "assets/mongodb_queries/data_qc/data_object_was_generated_by_workflow_execution_or_data_generation.js",
-    "assets/mongodb_queries/data_qc/material_processing_has_input_biosample_or_processed_sample.js",
-    "assets/mongodb_queries/delete_bioscales_data_objects.js",
-    "assets/mongodb_queries/delete_data_generation_has_output_ref_integrity_exceptions.js",
-    "assets/mongodb_queries/find_id_nonconforming_data_objects.js",
-}
-
 # Outputs of code that has since been deleted, or examples superseded by a class rename.
 # Named for retirement in https://github.com/microbiomedata/nmdc-schema/issues/2968
 # (remove ncbi_postgres_nmdc_exact_term_matching.py and assets/ncbi_mappings/) and
@@ -76,20 +61,28 @@ _ORPHANED_OUTPUTS = {
     "assets/ncbi_mappings/ncbi_pg_db_field_mappings.tsv",
     "assets/ncbi_mappings/ncbi_pg_db_field_mappings_filled.tsv",
     "assets/ncbi_mappings/ncbi_pg_db_fields.txt",
-    "assets/mongodb_queries/data_qc/functional_annotation_agg_metagenome_metatranscriptome_annotation_id.js",
 }
 
-EXPECTED_UNREFERENCED = (
-    _REFERENCE_DATA | _MANUAL_MONGO_QUERIES | _ORPHANED_OUTPUTS | _GIT_PLACEHOLDERS
-)
+EXPECTED_UNREFERENCED = _REFERENCE_DATA | _ORPHANED_OUTPUTS | _GIT_PLACEHOLDERS
 
 # The subset of the above that also names an element in deprecated.yaml. These are
 # retirement candidates; the search does not establish that they have no consumers.
 # This set should only ever shrink.
 EXPECTED_UNREFERENCED_AND_DEPRECATED = {
-    "assets/mongodb_queries/data_qc/functional_annotation_agg_metagenome_metatranscriptome_annotation_id.js",
     "assets/ncbi_mappings/ncbi_pg_db_field_mappings.tsv",
     "assets/ncbi_mappings/ncbi_pg_db_field_mappings_filled.tsv",
+    # False positives: these use the retired subset names environment, package and
+    # sequencing, or the retired type name unit, as ordinary words. Remove them when
+    # https://github.com/microbiomedata/nmdc-schema/issues/3514 stops the detector
+    # matching those names.
+    "assets/from-sssom-dir/biosample_ebs_water_packages_unclassified_taxa_sssom.tsv",
+    "assets/from-sssom-dir/biosample_env_package_normalizastion.tsv",
+    "assets/from-sssom-dir/per_biosample_scoped_ebs_mapping_results.tsv",
+    "assets/misc/neon_raw_data_file_mappings.tsv",
+    "assets/ncbi_mappings/README.md",
+    "assets/ncbi_mappings/ncbi_pg_db_fields.txt",
+    "assets/neon_table_types.tsv",
+    "assets/pref-unit-slots-claude-ucum-expanded-curated-with-has-problem.tsv",
 }
 
 
