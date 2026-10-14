@@ -86,7 +86,7 @@ def settings_block(keys: set[str], settings: dict[str, str]) -> str:
     missing = sorted(keys - settings.keys())
     if missing:
         raise KeyError(
-            f"placeholders with no value in nmdc.yaml settings: {', '.join(missing)}"
+            f"placeholders with no value in the source schema's settings: {', '.join(missing)}"
         )
     body = yaml.safe_dump(
         {"settings": {key: settings[key] for key in sorted(keys)}},
