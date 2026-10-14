@@ -28,6 +28,7 @@ from src.scripts.sync_module_settings import (
     strip_settings_block,
     synced_text,
     required_setting_keys,
+    slot_usage_index,
     used_setting_keys,
 )
 
@@ -57,10 +58,14 @@ def _interpolated_syntaxes(node: object) -> list[str]:
     return found
 
 
+# Built once for the session instead of once per module.
+SLOT_USAGE_INDEX = slot_usage_index(SCHEMA_DIR)
+
 MODULES_WITH_PATTERNS = sorted(
     path.name
     for path in SCHEMA_DIR.glob("*.yaml")
-    if path.name != SOURCE_SCHEMA.name and required_setting_keys(_load(path))
+    if path.name != SOURCE_SCHEMA.name
+    and required_setting_keys(_load(path), SCHEMA_DIR, SLOT_USAGE_INDEX)
 )
 
 # Every module but nmdc.yaml, so a block left behind after a module's last placeholder is
@@ -84,7 +89,9 @@ def test_modules_with_interpolated_patterns_are_found() -> None:
 def test_module_declares_every_setting_its_patterns_use(module_name: str) -> None:
     module = _load(SCHEMA_DIR / module_name)
     declared = set((module.get("settings") or {}).keys())
-    missing = sorted(required_setting_keys(module) - declared)
+    missing = sorted(
+        required_setting_keys(module, SCHEMA_DIR, SLOT_USAGE_INDEX) - declared
+    )
     assert not missing, f"{module_name} uses settings it does not declare: {missing}"
 
 
@@ -92,7 +99,9 @@ def test_module_declares_every_setting_its_patterns_use(module_name: str) -> Non
 def test_module_declares_no_unused_settings(module_name: str) -> None:
     module = _load(SCHEMA_DIR / module_name)
     declared = set((module.get("settings") or {}).keys())
-    extra = sorted(declared - required_setting_keys(module))
+    extra = sorted(
+        declared - required_setting_keys(module, SCHEMA_DIR, SLOT_USAGE_INDEX)
+    )
     assert not extra, (
         f"{module_name} declares settings none of its patterns use: {extra}"
     )
