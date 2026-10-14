@@ -139,6 +139,10 @@ only-include = ["nmdc_schema"]
 # before the release artifacts are generated, so both carry the same version.
 vcs = "git"
 style = "pep440"
+# Dependabot runs `uv lock` without git history, which otherwise fails with "This does
+# not appear to be a Git project" (https://github.com/ninoseki/uv-dynamic-versioning/blob/main/docs/tips.md#dependabot).
+# `make set-version` refuses this fallback, so a release cannot ship as 0.0.0.
+fallback-version = "0.0.0"
 
 [tool.uv]
 # linkml 1.12 needs pyshexc>=0.10.3, which needs chardet>=7.4.1, but every pronto
