@@ -16,13 +16,15 @@ The migration maintains backward compatibility with existing NMDC MongoDB data w
 
 ## Upgrade to v7.0.1 (2026-10-08)
 
-The import now reads GSC MIxS release `v7.0.1` for all 504 slots in `assets/import_mixs_slots_regardless.tsv`. Before this, 492 came from `v6.3.0` and 12 already came from `v7.0.1`. Of the 492 slots that moved, 485 are unchanged in v7.0.1. The rest needed these decisions, all made in `assets/yq-for-mixs-customizations.txt` (https://github.com/microbiomedata/nmdc-schema/issues/3480):
+The import now reads GSC MIxS release `v7.0.1` for all 504 slots in `assets/import_mixs_slots_regardless.tsv`. Before this, 492 came from `v6.3.0` and 12 already came from `v7.0.1`. Of the 492 slots that moved, 485 are unchanged in v7.0.1. Three of the changes needed decisions, all made in `assets/yq-for-mixs-customizations.txt` (https://github.com/microbiomedata/nmdc-schema/issues/3480):
 
-- `estimated_size`: MIxS renamed it `estimated_genome_size`, with the same ID, MIXS:0000024. NMDC imports `estimated_genome_size` and renames it back, so existing data stays valid. The MIxS name is recorded as a structured alias.
-- `env_medium`: MIxS made it multivalued. NMDC data stores one value per biosample, so NMDC removes `multivalued` until a migration is planned.
-- `plant_growth_med`: MIxS added an example written as a plain value. NMDC's range is the `ControlledTermValue` wrapper class, so the example is rewritten in object form.
+- `estimated_size`: MIxS v6.3.1 renamed it `estimated_genome_size`, with the same ID, MIXS:0000024. NMDC imports `estimated_genome_size` and renames it back, so existing data stays valid. The MIxS name is recorded as a structured alias. The title becomes "estimated genome size", from MIxS.
+- `env_medium`: MIxS v7.0.0 made it multivalued. NMDC data stores one value per biosample, so NMDC removes `multivalued` until a migration is planned.
+- `plant_growth_med`: MIxS v7.0.0 added an example written as a plain value. NMDC's range is the `ControlledTermValue` wrapper class, so the example is rewritten in object form.
 
-The other changes are descriptions, examples, a `see_also` link, a comment on `season_temp`, and a corrected grouping in the `seq_meth` pattern.
+The other changes are descriptions, examples, a `see_also` link, a comment on `season_temp`, and a corrected grouping in the `seq_meth` pattern. The new `store_cond` description ends with a doubled period in MIxS v7.0.0 and v7.0.1, which the yq file removes.
+
+`estimated_size` is the only slot MIxS renamed between v6.3.0 and v7.0.1, and MIxS removed no slots in that range. `prod_label_claims` changed ID, from `MIXS:prod_label_claims` to `MIXS:0001337`, but nmdc-schema doesn't use it. `salinity_meth`, defined in `src/schema/nmdc.yaml`, used `slot_uri: MIXS:0000341`, an ID that is in neither MIxS v6.3.0 nor v7.0.1. It now uses the default `nmdc:` URI, with MIXS:0000341 kept as an exact mapping.
 
 The rest of this document describes the earlier move to v6.3.0.
 

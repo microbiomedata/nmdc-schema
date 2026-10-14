@@ -10,7 +10,7 @@
 # See https://github.com/microbiomedata/nmdc-schema/issues/1368
 '.slots.samp_collec_device = .slots.samp_collect_device | del(.slots.samp_collect_device)'
 '.slots.samp_collec_method = .slots.samp_collect_method | del(.slots.samp_collect_method)'
-# MIxS v7.0.0 renamed estimated_size to estimated_genome_size (same ID, MIXS:0000024). NMDC keeps the old name for now.
+# MIxS v6.3.1 renamed estimated_size to estimated_genome_size (same ID, MIXS:0000024). NMDC keeps the old name for now.
 '.slots.estimated_size = .slots.estimated_genome_size | del(.slots.estimated_genome_size)'
 
 # Add structured aliases to document the GSC canonical names for renamed slots.
