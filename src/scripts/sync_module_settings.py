@@ -60,6 +60,33 @@ def used_setting_keys(node: object) -> set[str]:
     return keys
 
 
+def slot_usage_setting_keys(
+    slot_names: set[str], schema_dir: Path = SCHEMA_DIR
+) -> set[str]:
+    """Return the placeholders that slot_usage patterns, in any module, use on these slots.
+
+    linkml 1.12 gen-python builds a class-specific slot such as Biosample_id from slot_usage,
+    but fills its pattern with the settings of the module that defines the base slot (id, in
+    basic_slots.yaml), so that module needs these keys as well.
+    See https://github.com/microbiomedata/nmdc-schema/pull/3529.
+    """
+    keys: set[str] = set()
+    for path in sorted(schema_dir.glob("*.yaml")):
+        parsed = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+        for class_def in (parsed.get("classes") or {}).values():
+            for slot_name, usage in ((class_def or {}).get("slot_usage") or {}).items():
+                if slot_name in slot_names:
+                    keys.update(used_setting_keys(usage))
+    return keys
+
+
+def required_setting_keys(parsed: dict, schema_dir: Path = SCHEMA_DIR) -> set[str]:
+    """Return the settings a module must declare: its own patterns' and its slots' slot_usage patterns'."""
+    return used_setting_keys(parsed) | slot_usage_setting_keys(
+        set(parsed.get("slots") or {}), schema_dir
+    )
+
+
 def source_settings(source_schema: Path = SOURCE_SCHEMA) -> dict[str, str]:
     """Return the settings declared in the source schema as plain strings."""
     with source_schema.open(encoding="utf-8") as f:
@@ -107,7 +134,7 @@ def synced_text(module: Path, settings: dict[str, str]) -> str:
         raise ValueError(
             f"{module} declares its own settings outside the generated block"
         )
-    keys = used_setting_keys(parsed)
+    keys = required_setting_keys(parsed, module.parent)
     if not keys:
         return base
     return base + "\n" + settings_block(keys, settings)
