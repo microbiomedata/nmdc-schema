@@ -898,7 +898,6 @@ attributes:
     domain_of:
     - LibraryPreparation
     range: TextValue
-    pattern: ^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*))$
     structured_pattern:
       syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
@@ -956,7 +955,6 @@ attributes:
     domain_of:
     - LibraryPreparation
     range: string
-    pattern: ^(?:FWD:[ACGTRYSWKMBDHVNI]+;REV:[ACGTRYSWKMBDHVNI]+)$
     structured_pattern:
       syntax: FWD:{primer_adapter_codes}+;REV:{primer_adapter_codes}+
       interpolated: true
@@ -1068,7 +1066,6 @@ attributes:
     domain_of:
     - LibraryPreparation
     range: string
-    pattern: ^[ACGTRYSWKMBDHVNI]+;[ACGTRYSWKMBDHVNI]+$
     structured_pattern:
       syntax: ^{primer_adapter_codes}+;{primer_adapter_codes}+$
       interpolated: true
@@ -1084,7 +1081,6 @@ attributes:
     - MaterialProcessing
     range: Instrument
     multivalued: true
-    pattern: ^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -1101,7 +1097,6 @@ attributes:
     range: Sample
     required: true
     multivalued: true
-    pattern: ^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -1118,7 +1113,6 @@ attributes:
     range: ProcessedSample
     required: true
     multivalued: true
-    pattern: ^(?:^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -1237,7 +1231,7 @@ attributes:
     - NamedThing
     range: uriorcurie
     required: true
-    pattern: ^(?:^(nmdc):libprp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}$'
       interpolated: true

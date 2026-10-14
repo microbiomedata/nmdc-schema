@@ -851,7 +851,6 @@ attributes:
     range: Study
     required: true
     multivalued: true
-    pattern: ^(?:^(nmdc):(sty)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(sty)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -866,7 +865,6 @@ attributes:
     - MaterialProcessing
     range: Instrument
     multivalued: true
-    pattern: ^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -941,7 +939,6 @@ attributes:
     range: Sample
     required: true
     multivalued: true
-    pattern: ^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -957,7 +954,6 @@ attributes:
     - PlannedProcess
     range: DataObject
     multivalued: true
-    pattern: ^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
       interpolated: true

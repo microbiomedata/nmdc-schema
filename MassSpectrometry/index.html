@@ -881,7 +881,6 @@ attributes:
     domain_of:
     - MassSpectrometry
     range: CalibrationInformation
-    pattern: ^(?:^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -895,7 +894,6 @@ attributes:
     domain_of:
     - MassSpectrometry
     range: ChromatographyConfiguration
-    pattern: ^(?:^(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -909,7 +907,6 @@ attributes:
     - MassSpectrometry
     range: MassSpectrometryConfiguration
     required: true
-    pattern: ^(?:^(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -940,7 +937,6 @@ attributes:
     range: Study
     required: true
     multivalued: true
-    pattern: ^(?:^(nmdc):(sty)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(sty)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -955,7 +951,6 @@ attributes:
     - MaterialProcessing
     range: Instrument
     multivalued: true
-    pattern: ^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -1030,7 +1025,6 @@ attributes:
     range: Sample
     required: true
     multivalued: true
-    pattern: ^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -1046,7 +1040,6 @@ attributes:
     - PlannedProcess
     range: DataObject
     multivalued: true
-    pattern: ^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -1165,7 +1158,7 @@ attributes:
     - NamedThing
     range: uriorcurie
     required: true
-    pattern: ^(?:^(nmdc):(dgms|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(dgms|omprc)-{id_shoulder}-{id_blade}$'
       interpolated: true

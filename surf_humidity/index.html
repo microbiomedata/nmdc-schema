@@ -795,9 +795,6 @@
 <li>
 <p>Recommended: True</p>
 </li>
-<li>
-<p>Regex pattern: <code>^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$</code></p>
-</li>
 </ul>
 <h2 id="examples">Examples</h2>
 <pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
@@ -875,8 +872,6 @@ domain_of:
 - Biosample
 range: QuantityValue
 recommended: true
-pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-  *.*$
 structured_pattern:
   syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
   interpolated: true

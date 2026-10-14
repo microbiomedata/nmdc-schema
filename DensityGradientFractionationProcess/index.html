@@ -712,7 +712,6 @@ attributes:
     - MaterialProcessing
     range: Instrument
     multivalued: true
-    pattern: ^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -729,7 +728,6 @@ attributes:
     range: Sample
     required: true
     multivalued: true
-    pattern: ^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -746,7 +744,6 @@ attributes:
     range: ProcessedSample
     required: true
     multivalued: true
-    pattern: ^(?:^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -865,7 +862,7 @@ attributes:
     - NamedThing
     range: uriorcurie
     required: true
-    pattern: ^(?:^(nmdc):fracp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:fracp-{id_shoulder}-{id_blade}$'
       interpolated: true

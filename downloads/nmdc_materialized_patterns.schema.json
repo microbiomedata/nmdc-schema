@@ -182,7 +182,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -190,7 +190,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -686,7 +686,7 @@
                 "associated_studies": {
                     "description": "The study associated with a resource.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -1191,7 +1191,7 @@
                 },
                 "collected_from": {
                     "description": "The Site from which a Biosample was collected",
-                    "pattern": "^(?:^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": [
                         "string",
                         "null"
@@ -1265,7 +1265,7 @@
                         }
                     ],
                     "description": "Name or reference for the hydroponic or in vitro culture rooting medium; can be the name of a commonly used medium or reference to a specific medium, e.g. Murashige and Skoog medium. If the medium has not been formally published, use the rooting medium descriptors",
-                    "pattern": "^(?:^(.*|PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$)$"
+                    "pattern": "^(.*|PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$"
                 },
                 "cur_land_use": {
                     "description": "Present state of sample site",
@@ -1980,7 +1980,7 @@
                 },
                 "genetic_mod": {
                     "description": "Genetic modifications of the genome of an organism, which may occur naturally by spontaneous mutation, or be introduced by some experimental means, e.g. specification of a transgene or the gene knocked-out or details of transient transfection",
-                    "pattern": "^(?:^(PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$)$",
+                    "pattern": "^(PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$",
                     "type": [
                         "string",
                         "null"
@@ -2574,7 +2574,7 @@
                 },
                 "id": {
                     "description": "An NMDC assigned unique identifier for a biosample submitted to NMDC.",
-                    "pattern": "^(?:^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
                 },
                 "igsn_biosample_identifiers": {
@@ -4008,7 +4008,7 @@
                 },
                 "salinity_meth": {
                     "description": "Reference or method used in determining salinity.",
-                    "pattern": "^(?:^(PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$)$",
+                    "pattern": "^(PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$",
                     "type": [
                         "string",
                         "null"
@@ -5641,7 +5641,7 @@
                 },
                 "calibration_object": {
                     "description": "the file containing the calibration data object",
-                    "pattern": "^(?:^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": [
                         "string",
                         "null"
@@ -5664,7 +5664,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
                 },
                 "internal_calibration": {
@@ -5845,7 +5845,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -5856,7 +5856,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -5866,13 +5866,13 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):chcpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(nmdc):chcpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -6122,7 +6122,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -6133,7 +6133,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -6143,13 +6143,13 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):cspro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(nmdc):cspro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -6261,7 +6261,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
                 },
                 "name": {
@@ -6363,7 +6363,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(frsite|site)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(frsite|site)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -6371,14 +6371,14 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):clsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(nmdc):clsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
                 },
                 "name": {
@@ -6702,7 +6702,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -6710,20 +6710,20 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):cultp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(nmdc):cultp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -7002,7 +7002,7 @@
                 "associated_studies": {
                     "description": "The study associated with a resource.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(sty)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(sty)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -7043,7 +7043,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -7051,7 +7051,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -7074,7 +7074,7 @@
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -7203,13 +7203,13 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
                 },
                 "in_manifest": {
                     "description": "one or more combinations of other DataObjects that can be analyzed together",
                     "items": {
-                        "pattern": "^(?:^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -7272,7 +7272,7 @@
                     ]
                 },
                 "was_generated_by": {
-                    "pattern": "^(?:^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$|^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$|^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": [
                         "string",
                         "null"
@@ -7623,7 +7623,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -7631,20 +7631,20 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):fracp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(nmdc):fracp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -7794,7 +7794,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -7805,7 +7805,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -7815,13 +7815,13 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):dispro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(nmdc):dispro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -8230,7 +8230,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -8238,14 +8238,14 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):extrp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(nmdc):extrp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
                 },
                 "input_mass": {
@@ -8262,7 +8262,7 @@
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -8541,7 +8541,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
                 },
                 "lat_lon": {
@@ -8577,7 +8577,7 @@
                 "part_of": {
                     "description": "Links a resource to another resource that either logically or physically includes it.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -8824,7 +8824,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -8835,7 +8835,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -8845,13 +8845,13 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):filtpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(nmdc):filtpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -9024,7 +9024,7 @@
                 },
                 "was_generated_by": {
                     "description": "provenance for the annotation.",
-                    "pattern": "^(?:^(nmdc):(wfmgan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(nmdc):(wfmgan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": [
                         "string",
                         "null"
@@ -9058,7 +9058,7 @@
                     "type": "string"
                 },
                 "was_generated_by": {
-                    "pattern": "^(?:^(nmdc):(wfmgan|wfmp|wfmtan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(nmdc):(wfmgan|wfmp|wfmtan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": "string"
                 }
             },
@@ -9602,7 +9602,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
                 },
                 "model": {
@@ -9753,7 +9753,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -9761,20 +9761,20 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):isnp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(nmdc):isnp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -9900,7 +9900,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -9908,20 +9908,20 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):isolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(nmdc):isolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -10259,7 +10259,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -10267,20 +10267,20 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):libprp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(nmdc):libprp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -10354,7 +10354,7 @@
                 },
                 "pcr_primers": {
                     "description": "PCR primers that were used to amplify the sequence of the targeted gene, locus or subfragment. This field should contain all the primers used for a single PCR reaction if multiple forward or reverse primers are present in a single PCR reaction. The primer sequence should be reported in uppercase letters",
-                    "pattern": "^(?:FWD:[ACGTRYSWKMBDHVNI]+;REV:[ACGTRYSWKMBDHVNI]+)$",
+                    "pattern": "FWD:[ACGTRYSWKMBDHVNI]+;REV:[ACGTRYSWKMBDHVNI]+",
                     "type": [
                         "string",
                         "null"
@@ -10790,7 +10790,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -10798,7 +10798,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -10808,7 +10808,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": "string"
                 },
                 "img_identifiers": {
@@ -10901,7 +10901,7 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(?:^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": [
                         "string",
                         "null"
@@ -10940,7 +10940,7 @@
                 "was_informed_by": {
                     "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -10982,7 +10982,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
                 },
                 "manifest_category": {
@@ -11118,7 +11118,7 @@
                 "associated_studies": {
                     "description": "The study associated with a resource.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(sty)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(sty)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -11143,7 +11143,7 @@
                 },
                 "generates_calibration": {
                     "description": "calibration information is generated a process",
-                    "pattern": "^(?:^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": [
                         "string",
                         "null"
@@ -11151,7 +11151,7 @@
                 },
                 "has_chromatography_configuration": {
                     "description": "The identifier of the associated ChromatographyConfiguration, providing information about how a sample was introduced into the mass spectrometer.",
-                    "pattern": "^(?:^(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": [
                         "string",
                         "null"
@@ -11179,20 +11179,20 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "has_mass_spectrometry_configuration": {
                     "description": "The identifier of the associated MassSpectrometryConfiguration.",
-                    "pattern": "^(?:^(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
                 },
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -11202,7 +11202,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):(dgms|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(nmdc):(dgms|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
                 },
                 "instrument_instance_specifier": {
@@ -11215,7 +11215,7 @@
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -11324,7 +11324,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
                 },
                 "ionization_source": {
@@ -11508,7 +11508,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -11519,7 +11519,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -11535,7 +11535,7 @@
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -11766,7 +11766,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -11783,7 +11783,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -11793,7 +11793,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": "string"
                 },
                 "metabolomics_analysis_category": {
@@ -11866,7 +11866,7 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(?:^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": [
                         "string",
                         "null"
@@ -11882,7 +11882,7 @@
                 "uses_calibration": {
                     "description": "calibration information is used by a process",
                     "items": {
-                        "pattern": "^(?:^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -11900,7 +11900,7 @@
                 "was_informed_by": {
                     "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -12034,7 +12034,7 @@
                 "gold_analysis_project_identifiers": {
                     "description": "identifiers for corresponding analysis projects in GOLD",
                     "items": {
-                        "pattern": "^(?:^gold:Ga[0-9]+$)$",
+                        "pattern": "^gold:Ga[0-9]+$",
                         "type": "string"
                     },
                     "type": [
@@ -12054,7 +12054,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -12062,7 +12062,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -12072,7 +12072,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):wfmgan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(nmdc):wfmgan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": "string"
                 },
                 "img_identifiers": {
@@ -12161,7 +12161,7 @@
                 "was_informed_by": {
                     "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -12374,7 +12374,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -12382,7 +12382,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -12392,7 +12392,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": "string"
                 },
                 "insdc_assembly_identifiers": {
@@ -12555,7 +12555,7 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(?:^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": [
                         "string",
                         "null"
@@ -12578,7 +12578,7 @@
                 "was_informed_by": {
                     "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -12700,7 +12700,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -12708,7 +12708,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -12718,7 +12718,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": "string"
                 },
                 "mean_peptide_count": {
@@ -12809,7 +12809,7 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(?:^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": [
                         "string",
                         "null"
@@ -12846,7 +12846,7 @@
                 "was_informed_by": {
                     "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -12969,7 +12969,7 @@
                 "gold_analysis_project_identifiers": {
                     "description": "identifiers for corresponding analysis projects in GOLD",
                     "items": {
-                        "pattern": "^(?:^gold:Ga[0-9]+$)$",
+                        "pattern": "^gold:Ga[0-9]+$",
                         "type": "string"
                     },
                     "type": [
@@ -12989,7 +12989,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -12997,7 +12997,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -13007,7 +13007,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": "string"
                 },
                 "img_identifiers": {
@@ -13074,7 +13074,7 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(?:^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": [
                         "string",
                         "null"
@@ -13097,7 +13097,7 @@
                 "was_informed_by": {
                     "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -13310,7 +13310,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -13318,7 +13318,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -13328,7 +13328,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": "string"
                 },
                 "insdc_assembly_identifiers": {
@@ -13491,7 +13491,7 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(?:^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": [
                         "string",
                         "null"
@@ -13514,7 +13514,7 @@
                 "was_informed_by": {
                     "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -13636,7 +13636,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -13644,7 +13644,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -13654,7 +13654,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": "string"
                 },
                 "img_identifiers": {
@@ -13721,7 +13721,7 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(?:^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": [
                         "string",
                         "null"
@@ -13744,7 +13744,7 @@
                 "was_informed_by": {
                     "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -13814,7 +13814,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -13825,7 +13825,7 @@
                 "has_output": {
                     "description": "The mixed sample.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -13835,13 +13835,13 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):mixpro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(nmdc):mixpro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -14204,7 +14204,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -14212,7 +14212,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -14222,7 +14222,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": "string"
                 },
                 "name": {
@@ -14291,7 +14291,7 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(?:^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": [
                         "string",
                         "null"
@@ -14307,7 +14307,7 @@
                 "uses_calibration": {
                     "description": "calibration information is used by a process",
                     "items": {
-                        "pattern": "^(?:^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -14325,7 +14325,7 @@
                 "was_informed_by": {
                     "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -14365,7 +14365,7 @@
                 "associated_studies": {
                     "description": "The study associated with a resource.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(sty)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(sty)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -14417,7 +14417,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -14425,7 +14425,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -14435,7 +14435,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):(dgns|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(nmdc):(dgns|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
                 },
                 "insdc_bioproject_identifiers": {
@@ -14470,7 +14470,7 @@
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -14746,7 +14746,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
                 },
                 "isolate_name": {
@@ -14839,7 +14839,7 @@
                 "associated_studies": {
                     "description": "The study associated with a resource.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -14871,7 +14871,7 @@
                 },
                 "expected_organism": {
                     "description": "The organism that the submitter expects to be present in this sample. May be contradicted by sequencing results.",
-                    "pattern": "^(?:^(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": [
                         "string",
                         "null"
@@ -14912,7 +14912,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):osm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(nmdc):osm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
                 },
                 "name": {
@@ -15395,7 +15395,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "minItems": 2,
@@ -15404,7 +15404,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "maxItems": 1,
@@ -15413,13 +15413,13 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):poolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(nmdc):poolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -15654,7 +15654,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
                 },
                 "name": {
@@ -16160,7 +16160,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -16168,7 +16168,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -16178,7 +16178,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": "string"
                 },
                 "name": {
@@ -16233,7 +16233,7 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(?:^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": [
                         "string",
                         "null"
@@ -16256,7 +16256,7 @@
                 "was_informed_by": {
                     "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -16378,7 +16378,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -16386,7 +16386,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -16396,7 +16396,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": "string"
                 },
                 "input_base_count": {
@@ -16493,7 +16493,7 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(?:^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": [
                         "string",
                         "null"
@@ -16516,7 +16516,7 @@
                 "was_informed_by": {
                     "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -17061,7 +17061,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -17072,7 +17072,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -17082,7 +17082,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):storpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(nmdc):storpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
                 },
                 "name": {
@@ -17326,7 +17326,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
                 },
                 "insdc_bioproject_identifiers": {
@@ -17395,7 +17395,7 @@
                 "part_of": {
                     "description": "Links a study or consortium to a parent (or umbrella) study or consortium.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -17550,7 +17550,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -17561,7 +17561,7 @@
                 "has_output": {
                     "description": "The subsample.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -17571,13 +17571,13 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(?:^(nmdc):subspr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(nmdc):subspr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -18268,7 +18268,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -18276,7 +18276,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -18394,7 +18394,7 @@
     "$schema": "https://json-schema.org/draft/2019-09/schema",
     "additionalProperties": false,
     "description": "An abstract holder for any set of metadata and data. It does not need to correspond to an actual managed database top level holder class. When translated to JSON-Schema this is the 'root' object. It should contain pointers to other objects of interest. For MongoDB, the lists of objects that Database slots point to correspond to **collections**.",
-    "metamodel_version": "1.12.0",
+    "metamodel_version": "1.11.0",
     "properties": {
         "biosample_set": {
             "description": "This property links a database object to the set of samples within it.",
@@ -18675,6 +18675,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.24.1.post190.dev0+ca17a32db"
+    "version": "11.24.1.post192.dev0+c6cc5dcd5"
 }
 
