@@ -8318,3 +8318,37 @@ slots:
     contributors:
       - orcid:0000-0001-9076-6066 # Mark Andrew Miller
 default_range: string
+
+# Settings below are copied from nmdc.yaml by src/scripts/sync_module_settings.py.
+# Do not edit them here; edit nmdc.yaml and rerun the script.
+# See https://github.com/microbiomedata/nmdc-schema/issues/3523
+settings:
+  DOI: doi:10\.\d{2,9}/.*
+  NCBItaxon_id: NCBITaxon:\d+
+  PMID: PMID:\d+
+  URL: https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)
+  add_recov_methods: Water Injection|Dump Flood|Gas Injection|Wag Immiscible Injection|Polymer Addition|Surfactant Addition|Not Applicable|other
+  agrochemical_name: .*
+  amount: '[-+]?[0-9]*\.?[0-9]+'
+  country: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  date_time_stamp: (\d{4})(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01])(T([01]\d|2[0-3]):([0-5]\d)(:([0-5]\d))?(\.\d+)?(Z|([+-][01]\d:[0-5]\d))?)?)?)?
+  duration: P(?:(?:\d+D|\d+M(?:\d+D)?|\d+Y(?:\d+M(?:\d+D)?)?)(?:T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S))?|T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S)|\d+W)
+  float: '[-+]?[0-9]*\.?[0-9]+'
+  integer: '[1-9][0-9]*'
+  lat: (-?((?:[0-8]?[0-9](?:\.\d{0,8})?)|90))
+  lon: -?[0-9]+(?:\.[0-9]{0,8})?$|^-?(1[0-7]{1,2})
+  name: .*
+  parameters: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  particulate_matter_name: .*
+  primer_adapter_codes: '[ACGTRYSWKMBDHVNI]'
+  region: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  room_name: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  room_number: '[1-9][0-9]*'
+  scientific_float: '[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?'
+  software: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  specific_location: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  termID: '[a-zA-Z]{2,}:[a-zA-Z0-9]\d+'
+  termLabel: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  text: .*
+  unit: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  version: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
