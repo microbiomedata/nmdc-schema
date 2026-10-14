@@ -62,6 +62,12 @@ MODULES_WITH_PATTERNS = sorted(
     if path.name != SOURCE_SCHEMA.name and used_setting_keys(_load(path))
 )
 
+# Every module but nmdc.yaml, so a block left behind after a module's last placeholder is
+# removed is still found as stale.
+ALL_MODULES = sorted(
+    path.name for path in SCHEMA_DIR.glob("*.yaml") if path.name != SOURCE_SCHEMA.name
+)
+
 
 def test_modules_with_interpolated_patterns_are_found() -> None:
     """Guard against the parametrized tests below silently checking nothing."""
@@ -81,7 +87,7 @@ def test_module_declares_every_setting_its_patterns_use(module_name: str) -> Non
     assert not missing, f"{module_name} uses settings it does not declare: {missing}"
 
 
-@pytest.mark.parametrize("module_name", MODULES_WITH_PATTERNS)
+@pytest.mark.parametrize("module_name", ALL_MODULES)
 def test_module_declares_no_unused_settings(module_name: str) -> None:
     module = _load(SCHEMA_DIR / module_name)
     declared = set((module.get("settings") or {}).keys())
@@ -130,7 +136,7 @@ def test_nmdc_yaml_patterns_resolve_with_its_own_settings() -> None:
 def test_settings_copies_are_up_to_date() -> None:
     """The same check as `sync_module_settings.py --check` over every module."""
     result = CliRunner().invoke(
-        main, ["--check", *(str(SCHEMA_DIR / name) for name in MODULES_WITH_PATTERNS)]
+        main, ["--check", *(str(SCHEMA_DIR / name) for name in ALL_MODULES)]
     )
     assert result.exit_code == 0, result.output
 
@@ -212,6 +218,24 @@ def test_sync_removes_the_block_when_no_pattern_needs_it(tmp_path: Path) -> None
     assert (
         synced_text(path, {"x": "y"}) == "id: https://example.org/plain\nname: plain\n"
     )
+
+
+def test_check_finds_a_block_left_after_the_last_placeholder_is_removed(
+    tmp_path: Path,
+) -> None:
+    path = tmp_path / "plain.yaml"
+    path.write_text(
+        "id: https://example.org/plain\nname: plain\n\n"
+        + MARKER
+        + "settings:\n  x: 'y'\n",
+        encoding="utf-8",
+    )
+    source = tmp_path / "source.yaml"
+    source.write_text(
+        "id: https://example.org/s\nname: s\nsettings:\n  x: 'y'\n", encoding="utf-8"
+    )
+    result = CliRunner().invoke(main, ["--check", "--source", str(source), str(path)])
+    assert result.exit_code == 1
 
 
 def test_sync_rejects_a_placeholder_with_no_value(module_file: Path) -> None:
