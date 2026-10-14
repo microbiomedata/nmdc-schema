@@ -1654,3 +1654,12 @@ enums:
       aneuploid:
         meaning: PATO:0001385
         description: A chromosome number that is not an exact multiple of the haploid set (extra or missing chromosomes).
+
+# Settings below are copied from nmdc.yaml by src/scripts/sync_module_settings.py.
+# Do not edit them here; edit nmdc.yaml and rerun the script.
+# See https://github.com/microbiomedata/nmdc-schema/issues/3523
+settings:
+  id_blade: ([A-Za-z0-9]{1,})
+  id_nmdc_prefix: ^(nmdc)
+  id_shoulder: ([0-9][a-z]{0,6}[0-9])
+  id_version: (\.[1-9]{1}[0-9]{0,})
