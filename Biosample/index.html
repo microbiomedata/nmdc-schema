@@ -823,7 +823,7 @@
 <tr>
 <td><a href="../badges/">badges</a></td>
 <td>* <br/> <a href="../MetadataBadgeEnum/">MetadataBadgeEnum</a></td>
-<td>Metadata-quality badges awarded to this record. Each value names one badge,...</td>
+<td>Metadata quality badges awarded to this record.</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -5497,12 +5497,14 @@ attributes:
       interpolated: true
   badges:
     name: badges
-    description: 'Metadata-quality badges awarded to this record. Each value names
-      one badge, which is present or absent; there are no levels or tiers. Most badges
-      name a completeness subset, but not all do: expert_curation is awarded from
-      provenance instead. Awarded by a downstream service, not asserted by submitters.
-      Awarding is additive: a badge, once awarded, is not removed from the record.'
+    description: Metadata quality badges awarded to this record.
     title: Metadata Quality Badges
+    comments:
+    - A record either has a badge or doesn't. Badges have no levels.
+    - Most badges are awarded for populating enough slots in a badge subset. expert_curation
+      is awarded from the record's provenance instead.
+    - Badges are awarded by a downstream service, not entered by submitters.
+    - A badge is not removed once it has been awarded.
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/issues/3227

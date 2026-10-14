@@ -663,6 +663,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#see-also" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -744,7 +755,7 @@
 
 
 <h1 id="slot-metadata-quality-badges-badges">Slot: Metadata Quality Badges (badges)</h1>
-<p><em>Metadata-quality badges awarded to this record. Each value names one badge, which is present or absent; there are no levels or tiers. Most badges name a completeness subset, but not all do: expert_curation is awarded from provenance instead. Awarded by a downstream service, not asserted by submitters. Awarding is additive: a badge, once awarded, is not removed from the record.</em></p>
+<p><em>Metadata quality badges awarded to this record.</em></p>
 <div>
 <p>URI: <a href="https://w3id.org/nmdc/badges">nmdc:badges</a></p>
 <!-- no inheritance hierarchy -->
@@ -774,6 +785,13 @@
 <p>Multivalued: True</p>
 </li>
 </ul>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>A record either has a badge or doesn't. Badges have no levels.</li>
+<li>Most badges are awarded for populating enough slots in a badge subset. expert_curation is awarded from the record's provenance instead.</li>
+<li>Badges are awarded by a downstream service, not entered by submitters.</li>
+<li>A badge is not removed once it has been awarded.</li>
+</ul>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="https://github.com/microbiomedata/nmdc-schema/issues/3227">https://github.com/microbiomedata/nmdc-schema/issues/3227</a></li>
@@ -802,12 +820,14 @@
 <details>
 
 <pre><code class="language-yaml">name: badges
-description: 'Metadata-quality badges awarded to this record. Each value names one
-  badge, which is present or absent; there are no levels or tiers. Most badges name
-  a completeness subset, but not all do: expert_curation is awarded from provenance
-  instead. Awarded by a downstream service, not asserted by submitters. Awarding is
-  additive: a badge, once awarded, is not removed from the record.'
+description: Metadata quality badges awarded to this record.
 title: Metadata Quality Badges
+comments:
+- A record either has a badge or doesn't. Badges have no levels.
+- Most badges are awarded for populating enough slots in a badge subset. expert_curation
+  is awarded from the record's provenance instead.
+- Badges are awarded by a downstream service, not entered by submitters.
+- A badge is not removed once it has been awarded.
 from_schema: https://w3id.org/nmdc/nmdc
 see_also:
 - https://github.com/microbiomedata/nmdc-schema/issues/3227

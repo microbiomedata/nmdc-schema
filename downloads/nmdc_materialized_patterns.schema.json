@@ -763,7 +763,7 @@
                     "pattern": "^[-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$"
                 },
                 "badges": {
-                    "description": "Metadata-quality badges awarded to this record. Each value names one badge, which is present or absent; there are no levels or tiers. Most badges name a completeness subset, but not all do: expert_curation is awarded from provenance instead. Awarded by a downstream service, not asserted by submitters. Awarding is additive: a badge, once awarded, is not removed from the record.",
+                    "description": "Metadata quality badges awarded to this record.",
                     "items": {
                         "$ref": "#/$defs/MetadataBadgeEnum"
                     },
@@ -11920,7 +11920,7 @@
             "type": "string"
         },
         "MetadataBadgeEnum": {
-            "description": "Metadata-quality badges a Biosample can be awarded. Each permissible value names one badge topic and is present or absent; there are no levels or tiers. Badges are awarded in two ways. A completeness badge names a badge subset (a subset whose in_subset includes badge_topic) and is awarded when the record populates at least that subset's badge_minimum_slots slots; a test keeps those permissible values and subsets in sync. A provenance badge is awarded from a recorded fact about where the metadata came from, has no subset, and names its source in its own description.",
+            "description": "Metadata quality badges that a Biosample can be awarded.",
             "enum": [
                 "biogeochemistry",
                 "host_information",
@@ -14003,7 +14003,7 @@
         },
         "NcbiTaxon": {
             "additionalProperties": false,
-            "description": "A taxonomy term from NCBI Taxonomy. NcbiTaxon instances are identified by NCBITaxon CURIEs (e.g. NCBITaxon:511145) and stored in ontology_class_set alongside other OntologyClass instances. No NMDC-minted identifiers are assigned. Support for additional taxonomic authorities (GTDB, LPSN, SeqCode) would be represented by separate classes or by widening this class's id_prefixes in a follow-on PR.",
+            "description": "A taxon from NCBI Taxonomy, identified by its NCBITaxon CURIE.",
             "properties": {
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
@@ -14686,7 +14686,7 @@
         },
         "Organism": {
             "additionalProperties": false,
-            "description": "A material entity that is a living or once-living individual. Organism instances represent the biological identity of what is in a sample, not the sample itself. Sub-species identity (strain, cultivar, lab isolate) is captured by slots on this class rather than via a separate Strain subclass.",
+            "description": "A material entity that is a living or once-living individual.",
             "properties": {
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
@@ -18665,6 +18665,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.24.1.post163.dev0+03ba5a2be"
+    "version": "11.24.1.post167.dev0+72628b33b"
 }
 

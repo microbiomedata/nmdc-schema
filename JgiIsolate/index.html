@@ -722,11 +722,12 @@
 
 
 <h1 id="subset-jgiisolate">Subset: JgiIsolate</h1>
-<p><em>Slots that map to a field on the JGI Isolate (NA) v19 submission form, identified by a structured_alias whose literal_form is the exact form field name. Membership is the alias: a slot is in this subset if and only if it carries a JGI Isolate v19 structured_alias. Most members are new NMDC slots for organism identity, strain verification, purity assessment, and biosafety classification; a few are reused MIxS slots (for example host_taxid, source_mat_id, estimated_size) whose JGI mapping is recorded via the alias rather than by a new slot.</em></p>
+<p><em>The slots that have a structured_alias whose literal_form is a field name on the JGI Isolate (NA) v19 submission form.</em></p>
 <div>
 <p>URI: <a href="./">JgiIsolate</a></p>
 <h2 id="comments">Comments</h2>
 <ul>
+<li>Most members are NMDC slots for organism identity, strain verification, purity and biosafety. A few are MIxS slots, such as host_taxid, source_mat_id and estimated_size.</li>
 <li>The form template itself is access-restricted; each alias source points to the public JGI submission overview. To keep this subset exhaustive, add in_subset jgi_isolate wherever a JGI Isolate v19 structured_alias is added, at the same scope the alias lives (global slot or class slot_usage).</li>
 </ul>
 <h2 id="see-also">See Also</h2>
