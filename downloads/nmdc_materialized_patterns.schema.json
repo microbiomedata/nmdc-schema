@@ -63,7 +63,17 @@
                 "bulk chemistry",
                 "amplicon sequencing assay",
                 "isolate genome sequencing",
-                "isolate transcriptome sequencing"
+                "isolate transcriptome sequencing",
+                "proteomics",
+                "molecular structure",
+                "chemical speciation mapping",
+                "isotope profiling",
+                "imaging - xray",
+                "imaging - electron",
+                "imaging - ion",
+                "imaging - light",
+                "hydraulic properties",
+                "other emsl analyses"
             ],
             "title": "AnalysisTypeEnum",
             "type": "string"
@@ -18665,6 +18675,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.24.1.post167.dev0+72628b33b"
+    "version": "11.24.1.post176.dev0+b6926b73f"
 }
 

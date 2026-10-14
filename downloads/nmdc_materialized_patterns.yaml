@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.24.1.post167.dev0+72628b33b
+version: 11.24.1.post176.dev0+b6926b73f
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -6483,6 +6483,45 @@ enums:
         title: Isolate transcriptome sequencing
         broad_mappings:
         - OBI:0001177
+      proteomics:
+        text: proteomics
+        description: Mass spectrometry-based analysis of proteins from a single organism.
+      molecular structure:
+        text: molecular structure
+        description: Analysis of the configuration and arrangement of atoms within
+          molecules of a sample.
+      chemical speciation mapping:
+        text: chemical speciation mapping
+        description: Identification and/or measurement of specific forms (isotopes,
+          redox state, molecular structure, etc.) of one or more elements in a sample.
+      isotope profiling:
+        text: isotope profiling
+        description: Measurement of stable isotope ratios in a sample, typically for
+          hydrogen, carbon, nitrogen, or oxygen.
+      imaging - xray:
+        text: imaging - xray
+        description: A technique that uses X-rays to generate an image of a sample
+          based on how strongly the different components absorb X-rays. Resulting
+          images may be assembled into a 3D computer model.
+      imaging - electron:
+        text: imaging - electron
+        description: A microscopy technique that uses beams of electrons to scan a
+          sample and generate images.
+      imaging - ion:
+        text: imaging - ion
+        description: A microscopy technique that uses ions to scan a sample and generate
+          images.
+      imaging - light:
+        text: imaging - light
+        description: A microscopy technique that uses visible light to generate images
+          of a sample.
+      hydraulic properties:
+        text: hydraulic properties
+        description: Measurement of the relative permeability-saturation-capillary
+          pressure (k-s-p) relations of a sample.
+      other emsl analyses:
+        text: other emsl analyses
+        description: Other analyses planned at EMSL that are not listed here.
   SubmissionStatusEnum:
     name: SubmissionStatusEnum
     from_schema: https://w3id.org/nmdc/nmdc
