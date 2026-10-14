@@ -19,9 +19,7 @@ from pathlib import Path
 import yaml
 
 # (file, literal_form) pairs known to use contexts. Don't add to this set.
-# samp_collect_method is fixed in assets/yq-for-mixs-customizations.txt by
-# https://github.com/microbiomedata/nmdc-schema/pull/3501; remove it from here when that merges.
-GRANDFATHERED = {("mixs.yaml", "samp_collect_method")}
+GRANDFATHERED: set[tuple[str, str]] = set()
 
 
 def structured_aliases(node: object, path: str = "") -> Iterator[tuple[str, object]]:
