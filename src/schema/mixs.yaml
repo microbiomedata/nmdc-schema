@@ -8316,8 +8316,6 @@ slots:
     maximum_value: 100000000000
     notes:
       - The maximum_value here (1e11 bp = 100,000 Mb) is the eukaryote ceiling from JGI esplims. The tighter microbe ceiling (5,000 Mb) and the category-conditional required rule are enforced in submission-schema via class rules on IsolateInterface, keyed on biosafety_mat_cat.
-  internal_standard:
-    range: Protocol
   mixs_env_triad_field:
     annotations:
       tooltip: >-

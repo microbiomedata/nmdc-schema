@@ -77,22 +77,20 @@ classes:
   NcbiTaxon:
     class_uri: nmdc:NcbiTaxon
     is_a: OntologyClass
-    description: >-
-      A taxonomy term from NCBI Taxonomy. NcbiTaxon instances are identified by NCBITaxon CURIEs
-      (e.g. NCBITaxon:511145) and stored in ontology_class_set alongside other OntologyClass
-      instances. No NMDC-minted identifiers are assigned. Support for additional taxonomic
-      authorities (GTDB, LPSN, SeqCode) would be represented by separate classes or by
-      widening this class's id_prefixes in a follow-on PR.
+    description: A taxon from NCBI Taxonomy, identified by its NCBITaxon CURIE.
     id_prefixes:
       - NCBITaxon
     slot_usage:
       id:
         pattern: '^NCBITaxon:\d+$'
+        examples:
+          - value: 'NCBITaxon:511145'
         comments:
           - >-
             Validation is intentionally limited to NCBITaxon CURIEs. If GTDB, LPSN, or SeqCode
             support is added, widen this pattern in lockstep with id_prefixes and example data.
     comments:
+      - NMDC does not mint identifiers for NcbiTaxon records.
       - >-
         Follows the OrthologyGroup pattern: a concrete, directly-instantiated semantic subclass of
         OntologyClass with no additional slots, no typecode, and no dedicated Database collection.
@@ -190,11 +188,7 @@ classes:
   Organism:
     class_uri: nmdc:Organism
     is_a: MaterialEntity
-    description: >-
-      A material entity that is a living or once-living individual. Organism instances
-      represent the biological identity of what is in a sample, not the sample itself.
-      Sub-species identity (strain, cultivar, lab isolate) is captured by slots on this
-      class rather than via a separate Strain subclass.
+    description: A material entity that is a living or once-living individual.
     slots:
       - classified_as
       - organism_genus
