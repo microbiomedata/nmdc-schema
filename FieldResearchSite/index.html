@@ -776,6 +776,8 @@ attributes:
     - FieldResearchSite
     - Biosample
     range: float
+    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
+      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -802,6 +804,7 @@ attributes:
     - FieldResearchSite
     - Biosample
     range: TextValue
+    pattern: '^([^\s-]{1,2}|[^\s-]+.+[^\s-]+): ([^\s-]{1,2}|[^\s-]+.+[^\s-]+), ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'
     structured_pattern:
       syntax: '^{country}: {region}, {specific_location}$'
       interpolated: true
@@ -839,6 +842,7 @@ attributes:
     - FieldResearchSite
     - Biosample
     range: GeolocationValue
+    pattern: ^(-?((?:[0-8]?[0-9](?:\.\d{0,8})?)|90)) -?[0-9]+(?:\.[0-9]{0,8})?$|^-?(1[0-7]{1,2})$
     structured_pattern:
       syntax: ^{lat} {lon}$
       interpolated: true
@@ -876,6 +880,7 @@ attributes:
     - FieldResearchSite
     range: FieldResearchSite
     multivalued: true
+    pattern: ^(?:^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -937,7 +942,7 @@ attributes:
     - NamedThing
     range: uriorcurie
     required: true
-    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+    pattern: ^(?:^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'
       interpolated: true

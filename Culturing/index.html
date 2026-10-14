@@ -678,6 +678,7 @@ attributes:
     - MaterialProcessing
     range: Instrument
     multivalued: true
+    pattern: ^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -694,6 +695,7 @@ attributes:
     range: OrganismSample
     required: true
     multivalued: true
+    pattern: ^(?:^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -710,6 +712,7 @@ attributes:
     range: OrganismSample
     required: true
     multivalued: true
+    pattern: ^(?:^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -828,7 +831,7 @@ attributes:
     - NamedThing
     range: uriorcurie
     required: true
-    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+    pattern: ^(?:^(nmdc):cultp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:cultp-{id_shoulder}-{id_blade}$'
       interpolated: true

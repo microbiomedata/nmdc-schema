@@ -767,7 +767,12 @@
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../String/">String</a></li>
+<li>
+<p>Range: <a href="../String/">String</a></p>
+</li>
+<li>
+<p>Regex pattern: <code>^(Water Injection|Dump Flood|Gas Injection|Wag Immiscible Injection|Polymer Addition|Surfactant Addition|Not Applicable|other);(\d{4})(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01])(T([01]\d|2[0-3]):([0-5]\d)(:([0-5]\d))?(\.\d+)?(Z|([+-][01]\d:[0-5]\d))?)?)?)?$</code></p>
+</li>
 </ul>
 <h2 id="examples">Examples</h2>
 <ul>
@@ -815,6 +820,8 @@ slot_uri: MIXS:0001009
 domain_of:
 - Biosample
 range: string
+pattern: ^(Water Injection|Dump Flood|Gas Injection|Wag Immiscible Injection|Polymer
+  Addition|Surfactant Addition|Not Applicable|other);(\d{4})(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01])(T([01]\d|2[0-3]):([0-5]\d)(:([0-5]\d))?(\.\d+)?(Z|([+-][01]\d:[0-5]\d))?)?)?)?$
 structured_pattern:
   syntax: ^({add_recov_methods});{date_time_stamp}$
   interpolated: true

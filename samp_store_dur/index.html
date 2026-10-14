@@ -767,7 +767,12 @@
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../TextValue/">TextValue</a></li>
+<li>
+<p>Range: <a href="../TextValue/">TextValue</a></p>
+</li>
+<li>
+<p>Regex pattern: <code>^P(?:(?:\d+D|\d+M(?:\d+D)?|\d+Y(?:\d+M(?:\d+D)?)?)(?:T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S))?|T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S)|\d+W)$</code></p>
+</li>
 </ul>
 <h2 id="examples">Examples</h2>
 <pre><code class="language-yaml">type: &quot;nmdc:TextValue&quot;
@@ -815,6 +820,7 @@ slot_uri: MIXS:0000116
 domain_of:
 - Biosample
 range: TextValue
+pattern: ^P(?:(?:\d+D|\d+M(?:\d+D)?|\d+Y(?:\d+M(?:\d+D)?)?)(?:T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S))?|T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S)|\d+W)$
 structured_pattern:
   syntax: ^{duration}$
   interpolated: true
