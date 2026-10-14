@@ -141,7 +141,7 @@ vcs = "git"
 style = "pep440"
 # Dependabot runs `uv lock` without git history, which otherwise fails with "This does
 # not appear to be a Git project" (https://github.com/ninoseki/uv-dynamic-versioning/blob/main/docs/tips.md#dependabot).
-# `make set-version` refuses this fallback, so a release cannot ship as 0.0.0.
+# `make set-version` refuses any 0.0.0-based version, so a release cannot ship without a tag.
 fallback-version = "0.0.0"
 
 [tool.uv]
