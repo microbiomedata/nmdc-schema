@@ -14,9 +14,9 @@ updates:
       github-actions:
         patterns: ["*"]
 
-  # Python dependencies (Dependabot reads pyproject.toml for the pip ecosystem).
+  # Python dependencies (Dependabot reads pyproject.toml and uv.lock for the uv ecosystem).
   #
-  # versioning-strategy: lockfile-only -> Dependabot updates ONLY poetry.lock,
+  # versioning-strategy: lockfile-only -> Dependabot updates ONLY uv.lock,
   # never the version floors in pyproject.toml. nmdc-schema is a library, so
   # raising a [project.dependencies] floor would propagate a tighter constraint
   # to consumers (submission-schema, nmdc-runtime, nmdc-server) and can force
@@ -24,7 +24,7 @@ updates:
   # the latest compatible versions (what we want for CI) without forcing
   # anything downstream. Deliberate floor changes (e.g. widening the linkml /
   # click caps) are made by hand, with the release chain coordinated.
-  - package-ecosystem: pip
+  - package-ecosystem: uv
     directory: /
     schedule:
       interval: weekly

@@ -143,7 +143,7 @@ CLI dashes become underscores. Boolean `--flag/--no-flag` pairs become
 The experimental CLI command from PR #2484:
 
 ```bash
-poetry run linkml generate owl \
+uv run linkml generate owl \
   --add-ols-annotations --metadata-profile ols --add-root-classes \
   --metaclasses --mergeimports --use-native-uris --useuris \
   --default-permissible-value-type "http://www.w3.org/2002/07/owl#Class" \

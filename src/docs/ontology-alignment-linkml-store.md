@@ -20,7 +20,7 @@ an **alternative retrieval path** that:
 ## Prerequisites
 
 ```bash
-poetry install --with dev,deps
+uv sync
 ```
 
 **API keys** (set as environment variables):
@@ -64,7 +64,7 @@ Harvests ontology terms via oaklib or BioPortal, embeds them locally with
 linkml-store's `LLMIndexer`, and searches for NMDC schema elements.
 
 ```bash
-poetry run python src/scripts/linkml_store_embeddings_search.py --help
+uv run python src/scripts/linkml_store_embeddings_search.py --help
 ```
 
 Key options:

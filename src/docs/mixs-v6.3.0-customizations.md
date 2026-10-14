@@ -302,7 +302,7 @@ Use one line from `assets/yq-for-mixs-customizations.txt` verbatim as `<your yq 
 ```bash
 cp src/schema/mixs.yaml /tmp/mixs.yaml
 yq -i <your yq expression> /tmp/mixs.yaml   # lines in assets/yq-for-mixs-customizations.txt already include their surrounding single quotes; paste one verbatim (no extra quoting), then revert the scratch copy afterward
-poetry run linkml generate linkml --format yaml --materialize-patterns \
+uv run linkml generate linkml --format yaml --materialize-patterns \
   --no-materialize-attributes --output /tmp/materialized.yaml src/schema/nmdc.yaml
 yq eval '.slots.<slot>.pattern' /tmp/materialized.yaml
 ```

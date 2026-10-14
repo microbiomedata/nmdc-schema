@@ -47,6 +47,6 @@ This document helps **existing contributors** understand changes to the units an
 
 ## Getting Current Info
 
-- **Available commands**: `poetry run --help`
+- **Available commands**: `uv run --help`
 - **Available targets**: `make help`
 - **File structure**: See `units/docs/README.md`
