@@ -5492,7 +5492,6 @@ attributes:
     range: Study
     required: true
     multivalued: true
-    pattern: ^(?:^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -5539,7 +5538,6 @@ attributes:
     domain_of:
     - Biosample
     range: FieldResearchSite
-    pattern: ^(?:^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -5774,8 +5772,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -5802,8 +5798,6 @@ attributes:
     domain_of:
     - Biosample
     range: string
-    pattern: ^(Water Injection|Dump Flood|Gas Injection|Wag Immiscible Injection|Polymer
-      Addition|Surfactant Addition|Not Applicable|other);(\d{4})(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01])(T([01]\d|2[0-3]):([0-5]\d)(:([0-5]\d))?(\.\d+)?(Z|([+-][01]\d:[0-5]\d))?)?)?)?$
     structured_pattern:
       syntax: ^({add_recov_methods});{date_time_stamp}$
       interpolated: true
@@ -5833,7 +5827,6 @@ attributes:
     domain_of:
     - Biosample
     range: string
-    pattern: ^[1-9][0-9]* .*$
     structured_pattern:
       syntax: ^{integer} {text}$
       interpolated: true
@@ -5853,7 +5846,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    pattern: ^([^\s-]{1,2}|[^\s-]+.+[^\s-]+);[1-9][0-9]*$
     structured_pattern:
       syntax: ^{room_name};{room_number}$
       interpolated: true
@@ -5897,7 +5889,6 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
-    pattern: ^.*;[-+]?[0-9]*\.?[0-9]+ ([^\s-]{1,2}|[^\s-]+.+[^\s-]+);(\d{4})(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01])(T([01]\d|2[0-3]):([0-5]\d)(:([0-5]\d))?(\.\d+)?(Z|([+-][01]\d:[0-5]\d))?)?)?)?$
     structured_pattern:
       syntax: ^{agrochemical_name};{amount} {unit};{date_time_stamp}$
       interpolated: true
@@ -5925,7 +5916,6 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
-    pattern: ^.*;[-+]?[0-9]*\.?[0-9]+ ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{particulate_matter_name};{float} {unit}$
       interpolated: true
@@ -5957,8 +5947,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -6035,8 +6023,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -6070,7 +6056,6 @@ attributes:
     domain_of:
     - Biosample
     range: string
-    pattern: ^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*))$
     structured_pattern:
       syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
@@ -6104,8 +6089,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -6151,8 +6134,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -6185,8 +6166,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -6215,8 +6194,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -6247,8 +6224,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -6274,8 +6249,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -6326,8 +6299,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -6359,8 +6330,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -6416,8 +6385,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -6455,7 +6422,6 @@ attributes:
     - Biosample
     range: TextValue
     recommended: true
-    pattern: ^.*;[-+]?[0-9]*\.?[0-9]+ ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{name};{float} {unit}$
       interpolated: true
@@ -6479,7 +6445,6 @@ attributes:
     - Biosample
     range: TextValue
     recommended: true
-    pattern: ^.*;[-+]?[0-9]*\.?[0-9]+ ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{name};{float} {unit}$
       interpolated: true
@@ -6534,8 +6499,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -6582,8 +6545,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -6614,8 +6575,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -6644,8 +6603,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -6674,8 +6631,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -6707,8 +6662,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -6781,8 +6734,6 @@ attributes:
     - Biosample
     range: QuantityValue
     recommended: true
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -6809,8 +6760,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -6973,8 +6922,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -7001,8 +6948,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -7029,8 +6974,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -7059,8 +7002,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -7136,8 +7077,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -7199,8 +7138,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -7233,8 +7170,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -7265,8 +7200,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -7332,8 +7265,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -7426,8 +7357,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -7545,8 +7474,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -7628,8 +7555,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -7662,8 +7587,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -7744,8 +7667,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -7808,7 +7729,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    pattern: ^(?:^(.*|PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*))$)$
     structured_pattern:
       syntax: ^({text}|{PMID}|{DOI}|{URL})$
       interpolated: true
@@ -7905,7 +7825,6 @@ attributes:
     domain_of:
     - Biosample
     range: string
-    pattern: ^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*))$
     structured_pattern:
       syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
@@ -7955,8 +7874,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -8004,8 +7921,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -8035,8 +7950,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -8096,8 +8009,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -8128,8 +8039,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -8168,8 +8077,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -8207,8 +8114,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -8240,8 +8145,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -8269,8 +8172,6 @@ attributes:
     - Biosample
     range: QuantityValue
     recommended: true
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -8308,8 +8209,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -8340,8 +8239,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -8375,8 +8272,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -8403,8 +8298,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -8532,8 +8425,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -8634,8 +8525,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -8691,8 +8580,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -8724,8 +8611,6 @@ attributes:
     - FieldResearchSite
     - Biosample
     range: float
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -8806,7 +8691,6 @@ attributes:
     - Biosample
     range: ControlledIdentifiedTermValue
     required: true
-    pattern: ^([^\s-]{1,2}|[^\s-]+.+[^\s-]+) \[[a-zA-Z]{2,}:[a-zA-Z0-9]\d+\]$
     structured_pattern:
       syntax: ^{termLabel} \[{termID}\]$
       interpolated: true
@@ -8855,7 +8739,6 @@ attributes:
     - Biosample
     range: ControlledIdentifiedTermValue
     required: true
-    pattern: ^([^\s-]{1,2}|[^\s-]+.+[^\s-]+) \[[a-zA-Z]{2,}:[a-zA-Z0-9]\d+\]$
     structured_pattern:
       syntax: ^{termLabel} \[{termID}\]$
       interpolated: true
@@ -8898,7 +8781,6 @@ attributes:
     - Biosample
     range: ControlledIdentifiedTermValue
     required: true
-    pattern: ^([^\s-]{1,2}|[^\s-]+.+[^\s-]+) \[[a-zA-Z]{2,}:[a-zA-Z0-9]\d+\]$
     structured_pattern:
       syntax: ^{termLabel} \[{termID}\]$
       interpolated: true
@@ -8957,8 +8839,6 @@ attributes:
     - Biosample
     range: QuantityValue
     recommended: true
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -8981,8 +8861,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -9004,7 +8882,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[1-9][0-9]* .*$
     structured_pattern:
       syntax: ^{integer} {text}$
       interpolated: true
@@ -9273,8 +9150,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -9300,8 +9175,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -9398,8 +9271,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -9446,8 +9317,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -9492,7 +9361,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[1-9][0-9]* .*$
     structured_pattern:
       syntax: ^{integer} {text}$
       interpolated: true
@@ -9623,7 +9491,6 @@ attributes:
     domain_of:
     - Biosample
     range: string
-    pattern: ^(?:^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*))$)$
     structured_pattern:
       syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
@@ -9649,7 +9516,6 @@ attributes:
     - FieldResearchSite
     - Biosample
     range: TextValue
-    pattern: '^([^\s-]{1,2}|[^\s-]+.+[^\s-]+): ([^\s-]{1,2}|[^\s-]+.+[^\s-]+), ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'
     structured_pattern:
       syntax: '^{country}: {region}, {specific_location}$'
       interpolated: true
@@ -9678,8 +9544,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -9900,8 +9764,6 @@ attributes:
     - Biosample
     range: QuantityValue
     recommended: true
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -9944,7 +9806,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+ *- *[-+]?[0-9]*\.?[0-9]+ ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{float} *- *{float} {unit}$
       interpolated: true
@@ -9972,7 +9833,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+ *- *[-+]?[0-9]*\.?[0-9]+ ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{float} *- *{float} {unit}$
       interpolated: true
@@ -10109,7 +9969,6 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
-    pattern: ^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*))$
     structured_pattern:
       syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
@@ -10134,8 +9993,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -10189,7 +10046,6 @@ attributes:
     domain_of:
     - Biosample
     range: string
-    pattern: ^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*))$
     structured_pattern:
       syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
@@ -10225,8 +10081,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -10336,8 +10190,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -10430,8 +10282,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -10528,7 +10378,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    pattern: ^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*)|.*)$
     structured_pattern:
       syntax: ^({PMID}|{DOI}|{URL}|{text})$
       interpolated: true
@@ -10563,8 +10412,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -10624,8 +10471,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -10932,8 +10777,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -10969,8 +10812,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -11001,8 +10842,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -11093,8 +10932,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -11146,8 +10983,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -11219,8 +11054,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -11268,7 +11101,6 @@ attributes:
     - FieldResearchSite
     - Biosample
     range: GeolocationValue
-    pattern: ^(-?((?:[0-8]?[0-9](?:\.\d{0,8})?)|90)) -?[0-9]+(?:\.[0-9]{0,8})?$|^-?(1[0-7]{1,2})$
     structured_pattern:
       syntax: ^{lat} {lon}$
       interpolated: true
@@ -11300,8 +11132,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -11373,7 +11203,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    pattern: ^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*))$
     structured_pattern:
       syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
@@ -11419,7 +11248,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    pattern: ^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*))$
     structured_pattern:
       syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
@@ -11479,7 +11307,6 @@ attributes:
     domain_of:
     - Biosample
     range: string
-    pattern: ^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*))$
     structured_pattern:
       syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
@@ -11514,8 +11341,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -11537,7 +11362,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[1-9][0-9]* .*$
     structured_pattern:
       syntax: ^{integer} {text}$
       interpolated: true
@@ -11569,8 +11393,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -11603,8 +11425,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -11670,8 +11490,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -11723,8 +11541,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -11846,8 +11662,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -11880,8 +11694,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -11917,8 +11729,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -11966,7 +11776,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[1-9][0-9]* .*$
     structured_pattern:
       syntax: ^{integer} {text}$
       interpolated: true
@@ -11988,7 +11797,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[1-9][0-9]* .*$
     structured_pattern:
       syntax: ^{integer} {text}$
       interpolated: true
@@ -12010,7 +11818,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[1-9][0-9]* .*$
     structured_pattern:
       syntax: ^{integer} {text}$
       interpolated: true
@@ -12074,7 +11881,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[1-9][0-9]* .*$
     structured_pattern:
       syntax: ^{integer} {text}$
       interpolated: true
@@ -12108,8 +11914,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -12170,8 +11974,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -12200,8 +12002,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -12282,8 +12082,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -12331,8 +12129,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -12363,8 +12159,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -12401,8 +12195,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -12537,8 +12329,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -12669,8 +12459,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -12722,8 +12510,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -12815,7 +12601,6 @@ attributes:
     domain_of:
     - Biosample
     range: ControlledTermValue
-    pattern: ^([^\s-]{1,2}|[^\s-]+.+[^\s-]+) \[[a-zA-Z]{2,}:[a-zA-Z0-9]\d+\]$
     structured_pattern:
       syntax: ^{termLabel} \[{termID}\]$
       interpolated: true
@@ -12896,8 +12681,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -12923,8 +12706,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -12993,8 +12774,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -13022,7 +12801,6 @@ attributes:
     domain_of:
     - Biosample
     range: string
-    pattern: ^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*))$
     structured_pattern:
       syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
@@ -13077,8 +12855,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -13125,8 +12901,6 @@ attributes:
     - Biosample
     range: QuantityValue
     recommended: true
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -13288,8 +13062,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -13325,8 +13097,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -13358,8 +13128,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -13411,7 +13179,6 @@ attributes:
     - Biosample
     range: TextValue
     recommended: true
-    pattern: ^.*;[-+]?[0-9]*\.?[0-9]+ ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{name};{float} {unit}$
       interpolated: true
@@ -13438,8 +13205,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -13551,7 +13316,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    pattern: ^[1-9][0-9]* .*$
     structured_pattern:
       syntax: ^{integer} {text}$
       interpolated: true
@@ -13571,7 +13335,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    pattern: ^([^\s-]{1,2}|[^\s-]+.+[^\s-]+);[1-9][0-9]*$
     structured_pattern:
       syntax: ^{room_name};{room_number}$
       interpolated: true
@@ -13591,7 +13354,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    pattern: ^([^\s-]{1,2}|[^\s-]+.+[^\s-]+);[1-9][0-9]*$
     structured_pattern:
       syntax: ^{room_name};{room_number}$
       interpolated: true
@@ -13646,7 +13408,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    pattern: ^[1-9][0-9]* .*$
     structured_pattern:
       syntax: ^{integer} {text}$
       interpolated: true
@@ -13668,7 +13429,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[1-9][0-9]* .*$
     structured_pattern:
       syntax: ^{integer} {text}$
       interpolated: true
@@ -13731,7 +13491,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    pattern: ^[1-9][0-9]* .*$
     structured_pattern:
       syntax: ^{integer} {text}$
       interpolated: true
@@ -13751,7 +13510,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    pattern: ^([^\s-]{1,2}|[^\s-]+.+[^\s-]+);[1-9][0-9]*$
     structured_pattern:
       syntax: ^{room_name};{room_number}$
       interpolated: true
@@ -13789,7 +13547,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    pattern: ^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*)|.*)$
     structured_pattern:
       syntax: ^({PMID}|{DOI}|{URL}|{text})$
       interpolated: true
@@ -13992,8 +13749,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -14023,7 +13778,6 @@ attributes:
     - Biosample
     range: string
     multivalued: false
-    pattern: ^(?:^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*))$)$
     structured_pattern:
       syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
@@ -14201,7 +13955,6 @@ attributes:
     - Biosample
     range: TextValue
     recommended: true
-    pattern: ^[-+]?[0-9]*\.?[0-9]+ *- *[-+]?[0-9]*\.?[0-9]+ ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{float} *- *{float} {unit}$
       interpolated: true
@@ -14308,7 +14061,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    pattern: ^.*;[-+]?[0-9]*\.?[0-9]+ ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{name};{float} {unit}$
       interpolated: true
@@ -14353,8 +14105,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -14401,7 +14151,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    pattern: ^P(?:(?:\d+D|\d+M(?:\d+D)?|\d+Y(?:\d+M(?:\d+D)?)?)(?:T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S))?|T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S)|\d+W)$
     structured_pattern:
       syntax: ^{duration}$
       interpolated: true
@@ -14457,8 +14206,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -14501,7 +14248,6 @@ attributes:
     domain_of:
     - Biosample
     range: ControlledIdentifiedTermValue
-    pattern: ^.* \[NCBITaxon:\d+\]$
     structured_pattern:
       syntax: ^{text} \[{NCBItaxon_id}\]$
       interpolated: true
@@ -14603,7 +14349,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    pattern: ^([^\s-]{1,2}|[^\s-]+.+[^\s-]+) \[[a-zA-Z]{2,}:[a-zA-Z0-9]\d+\]$
     structured_pattern:
       syntax: ^{termLabel} \[{termID}\]$
       interpolated: true
@@ -14657,7 +14402,6 @@ attributes:
     - Biosample
     range: TextValue
     recommended: true
-    pattern: ^.*;[-+]?[0-9]*\.?[0-9]+ ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{name};{float} {unit}$
       interpolated: true
@@ -14739,8 +14483,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -14773,8 +14515,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -14987,8 +14727,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -15043,8 +14781,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -15076,8 +14812,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -15115,8 +14849,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -15161,8 +14893,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -15187,8 +14917,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -15219,8 +14947,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -15366,8 +15092,6 @@ attributes:
     - Biosample
     range: QuantityValue
     multivalued: false
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -15455,8 +15179,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -15554,8 +15276,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -15720,8 +15440,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -15747,8 +15465,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -15781,8 +15497,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -15832,8 +15546,6 @@ attributes:
     - Biosample
     range: QuantityValue
     recommended: true
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -15882,8 +15594,6 @@ attributes:
     - Biosample
     range: QuantityValue
     recommended: true
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -15934,8 +15644,6 @@ attributes:
     - Biosample
     range: QuantityValue
     recommended: true
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -15968,8 +15676,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -16026,8 +15732,6 @@ attributes:
     - Biosample
     range: QuantityValue
     recommended: true
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -16058,8 +15762,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -16091,8 +15793,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -16162,7 +15862,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    pattern: ^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*)|.*)$
     structured_pattern:
       syntax: ^({PMID}|{DOI}|{URL}|{text})$
       interpolated: true
@@ -16186,8 +15885,6 @@ attributes:
     - Biosample
     range: QuantityValue
     recommended: true
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -16223,8 +15920,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -16257,8 +15952,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -16295,8 +15988,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -16329,8 +16020,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -16358,8 +16047,6 @@ attributes:
     - Biosample
     range: QuantityValue
     recommended: true
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -16398,8 +16085,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -16427,7 +16112,6 @@ attributes:
     domain_of:
     - Biosample
     range: string
-    pattern: ^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*))$
     structured_pattern:
       syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
@@ -16459,8 +16143,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -16488,7 +16170,6 @@ attributes:
     domain_of:
     - Biosample
     range: string
-    pattern: ^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*))$
     structured_pattern:
       syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
@@ -16525,8 +16206,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -16560,8 +16239,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -16596,8 +16273,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -16623,8 +16298,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -16653,8 +16326,6 @@ attributes:
     - Biosample
     range: QuantityValue
     recommended: true
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -16729,8 +16400,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -16759,8 +16428,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -16789,8 +16456,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -16836,8 +16501,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -16883,8 +16546,6 @@ attributes:
     - Biosample
     range: QuantityValue
     recommended: true
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -16909,8 +16570,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -17005,8 +16664,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -17065,8 +16722,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -17143,8 +16798,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -17244,8 +16897,6 @@ attributes:
     - Biosample
     range: string
     multivalued: true
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -17276,8 +16927,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -17311,8 +16960,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -17339,8 +16986,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -17385,8 +17030,6 @@ attributes:
     - Biosample
     range: QuantityValue
     recommended: true
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -17524,8 +17167,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -17725,8 +17366,6 @@ attributes:
     - Biosample
     range: QuantityValue
     recommended: true
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)?
-      *.*$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
@@ -18754,7 +18393,7 @@ attributes:
     - NamedThing
     range: uriorcurie
     required: true
-    pattern: ^(?:^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$'
       interpolated: true

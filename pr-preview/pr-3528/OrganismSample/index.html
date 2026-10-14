@@ -903,7 +903,6 @@ attributes:
     range: Study
     required: true
     multivalued: true
-    pattern: ^(?:^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -920,7 +919,6 @@ attributes:
     domain_of:
     - OrganismSample
     range: Organism
-    pattern: ^(?:^(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -1207,7 +1205,7 @@ attributes:
     - NamedThing
     range: uriorcurie
     required: true
-    pattern: ^(?:^(nmdc):osm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:osm-{id_shoulder}-{id_blade}$'
       interpolated: true
