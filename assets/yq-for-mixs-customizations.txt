@@ -10,7 +10,7 @@
 # See https://github.com/microbiomedata/nmdc-schema/issues/1368
 '.slots.samp_collec_device = .slots.samp_collect_device | del(.slots.samp_collect_device)'
 '.slots.samp_collec_method = .slots.samp_collect_method | del(.slots.samp_collect_method)'
-# MIxS v6.3.1 renamed estimated_size to estimated_genome_size (same ID, MIXS:0000024). NMDC keeps the old name for now.
+# MIxS v6.3.1 renamed estimated_size to estimated_genome_size (same ID, MIXS:0000024). NMDC keeps the old name for now. See https://github.com/microbiomedata/nmdc-schema/issues/3526
 '.slots.estimated_size = .slots.estimated_genome_size | del(.slots.estimated_genome_size)'
 
 # Add structured aliases to document the GSC canonical names for renamed slots.
@@ -244,7 +244,7 @@
 'del(.slots.env_local_scale.required)'
 'del(.slots.env_medium.required)'
 # MIxS v7.0.0 made env_medium multivalued (GSC commit b911b48bc). NMDC data stores one value per biosample,
-# so keep it single-valued until a migration is planned. See https://github.com/microbiomedata/nmdc-schema/issues/3480
+# so keep it single-valued for now. See https://github.com/microbiomedata/nmdc-schema/issues/3527
 'del(.slots.env_medium.multivalued)'
 'del(.slots.filter_type.required)'
 'del(.slots.geo_loc_name.required)'
