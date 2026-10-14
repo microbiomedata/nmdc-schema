@@ -65,4 +65,7 @@ del(.classes) |
 # syntax uses placeholders like {scientific_float}, {text}, {URL} that need
 # settings for pattern interpolation. Those settings are defined in
 # src/schema/nmdc.yaml instead, so they're available during materialization.
+# makefiles/mixs.Makefile then copies the keys mixs.yaml uses back in from
+# nmdc.yaml, because linkml 1.12 only interpolates a pattern with its own
+# module's settings (https://github.com/microbiomedata/nmdc-schema/issues/3523).
 del(.settings)
