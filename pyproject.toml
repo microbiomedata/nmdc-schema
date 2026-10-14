@@ -139,6 +139,10 @@ only-include = ["nmdc_schema"]
 # before the release artifacts are generated, so both carry the same version.
 vcs = "git"
 style = "pep440"
+# Dependabot runs `uv lock` without git history, which otherwise fails with "This does
+# not appear to be a Git project" (https://github.com/ninoseki/uv-dynamic-versioning/blob/main/docs/tips.md#dependabot).
+# `make set-version` refuses this fallback, so a release cannot ship as 0.0.0.
+fallback-version = "0.0.0"
 
 [tool.uv]
 # Install both groups by default, as `make install` did with `poetry install --with dev,deps`.

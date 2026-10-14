@@ -63,6 +63,7 @@ install:
 # and the package carry the same version. Do not commit the result.
 set-version:
 	version="$$(uvx --from 'uv-dynamic-versioning>=0.5.0,<1.0.0' uv-dynamic-versioning)" && \
+	if [ "$$version" = "0.0.0" ]; then echo "set-version: no version from git tags (fetch the tags first)" >&2; exit 1; fi && \
 	sed -i.bak -E "s/^version: .*/version: $$version/" src/schema/nmdc.yaml && \
 	rm src/schema/nmdc.yaml.bak && \
 	grep -n '^version:' src/schema/nmdc.yaml
