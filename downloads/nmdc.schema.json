@@ -5220,7 +5220,13 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Specification of the media for growing the plants or tissue cultured samples, e.g. soil, aeroponic, hydroponic, in vitro solid culture medium, in vitro liquid culture medium. Recommended value is a specific value from the Plant Environment Ontology (PECO), plant growth medium exposure (http://purl.obolibrary.org/obo/PECO_0007147), or other controlled vocabulary."
+                    "description": "Specification of the media for growing the plants or tissue cultured samples, e.g. soil, aeroponic, hydroponic, in vitro solid culture medium, in vitro liquid culture medium. Recommended value is a specific value from the Plant Environment Ontology (PECO), plant growth medium exposure (http://purl.obolibrary.org/obo/PECO_0007147), or other controlled vocabulary.",
+                    "examples": [
+                        {
+                            "has_raw_value": "hydroponic plant culture media exposure [PECO:0007067]",
+                            "type": "nmdc:ControlledTermValue"
+                        }
+                    ]
                 },
                 "plant_product": {
                     "anyOf": [
@@ -5336,7 +5342,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Temperature at which a liquid becomes semi solid and loses its flow characteristics. In crude oil a high pour point is generally associated with a high paraffin content, typically found in crude deriving from a larger proportion of plant material. (source: https://en.wikipedia.org/wiki/pour_point)",
+                    "description": "Temperature at which a liquid becomes semi solid and loses its flow characteristics. In crude oil a high pour point is generally associated with a high paraffin content, typically found in crude deriving from a larger proportion of plant material.",
                     "pattern": "^[-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$"
                 },
                 "pre_treatment": {
@@ -6501,7 +6507,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The season when sampling occurred. Any of the four periods into which the year is divided by the equinoxes and solstices. This field accepts terms listed under season (http://purl.obolibrary.org/obo/NCIT_C94729)",
+                    "description": "The season when sampling occurred. Any of the four periods into which the year is divided by the equinoxes and solstices.",
                     "examples": [
                         "autumn [NCIT:C94733]"
                     ]
@@ -7179,7 +7185,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Explain how and for how long the soil sample was stored before DNA extraction (fresh/frozen/other)",
+                    "description": "How and for how long the sample was stored before DNA extraction.",
                     "examples": [
                         {
                             "has_raw_value": "-20 degree Celsius freezer;P2Y10D",
@@ -23562,5 +23568,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.25.0rc2.post10.dev0+0a562e8f8"
+    "version": "11.25.0rc2.post21.dev0+ecfb8c72f"
 }

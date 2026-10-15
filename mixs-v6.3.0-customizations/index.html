@@ -652,6 +652,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#upgrade-to-v701-2026-10-08" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Upgrade to v7.0.1 (2026-10-08)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#slot-and-enum-inventory-changes" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1136,6 +1147,16 @@
 - <strong>Commit</strong>: <code>fb3271909f5ab3277d4c869e816bc9e334cb816f</code>
 - <strong>URL</strong>: <code>https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.3.0/src/mixs/schema/mixs.yaml</code></p>
 <p><strong>Validation:</strong> After migration, all 13,847 production biosamples validate successfully against the updated schema.</p>
+<h2 id="upgrade-to-v701-2026-10-08">Upgrade to v7.0.1 (2026-10-08)</h2>
+<p>The import now reads GSC MIxS release <code>v7.0.1</code> for all 504 slots in <code>assets/import_mixs_slots_regardless.tsv</code>. Before this, 492 came from <code>v6.3.0</code> and 12 already came from <code>v7.0.1</code>. Of the 492 slots that moved, 485 are unchanged in v7.0.1. Three of the changes needed decisions, all made in <code>assets/yq-for-mixs-customizations.txt</code> (<a href="https://github.com/microbiomedata/nmdc-schema/issues/3480">https://github.com/microbiomedata/nmdc-schema/issues/3480</a>):</p>
+<ul>
+<li><code>estimated_size</code>: MIxS v6.3.1 renamed it <code>estimated_genome_size</code>, with the same ID, MIXS:0000024. NMDC imports <code>estimated_genome_size</code> and renames it back, so existing data stays valid. The MIxS name is recorded as a structured alias. The title becomes "estimated genome size", from MIxS. Whether to adopt the MIxS name is tracked in <a href="https://github.com/microbiomedata/nmdc-schema/issues/3526">https://github.com/microbiomedata/nmdc-schema/issues/3526</a>.</li>
+<li><code>env_medium</code>: MIxS v7.0.0 made it multivalued. NMDC data stores one value per biosample, so NMDC removes <code>multivalued</code>. Whether to make it multivalued is tracked in <a href="https://github.com/microbiomedata/nmdc-schema/issues/3527">https://github.com/microbiomedata/nmdc-schema/issues/3527</a>.</li>
+<li><code>plant_growth_med</code>: MIxS v7.0.0 added an example written as a plain value. NMDC's range is the <code>ControlledTermValue</code> wrapper class, so the example is rewritten in object form.</li>
+</ul>
+<p>The other changes are descriptions, examples, a <code>see_also</code> link, a comment on <code>season_temp</code>, and a corrected grouping in the <code>seq_meth</code> pattern. The new <code>store_cond</code> description combines its definition with submitter guidance and examples, and ends with a doubled period. The yq file keeps the definition in <code>description</code> and moves the guidance to <code>comments</code>.</p>
+<p><code>estimated_size</code> is the only slot MIxS renamed between v6.3.0 and v7.0.1, and MIxS removed no slots in that range. <code>prod_label_claims</code> changed ID, from <code>MIXS:prod_label_claims</code> to <code>MIXS:0001337</code>, but nmdc-schema doesn't use it. <code>salinity_meth</code>, defined in <code>src/schema/nmdc.yaml</code>, used <code>slot_uri: MIXS:0000341</code>, an ID that is in neither MIxS v6.3.0 nor v7.0.1. It now uses the default <code>nmdc:</code> URI, and no mapping to MIXS:0000341 is asserted because that identifier no longer resolves.</p>
+<p>The rest of this document describes the earlier move to v6.3.0.</p>
 <h2 id="slot-and-enum-inventory-changes">Slot and Enum Inventory Changes</h2>
 <p>This section summarizes all inventory differences between main branch (old NMDC MIxS fork) and this branch (GSC MIxS v6.3.0).</p>
 <h3 id="summary">Summary</h3>

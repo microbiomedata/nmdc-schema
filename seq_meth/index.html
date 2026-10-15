@@ -743,7 +743,7 @@
 <p>Range: <a href="../String/">String</a></p>
 </li>
 <li>
-<p>Regex pattern: <code>^.*|(([^\s-]{1,2}|[^\s-]+.+[^\s-]+) \[[a-zA-Z]{2,}:[a-zA-Z0-9]\d+\])$</code></p>
+<p>Regex pattern: <code>^(.*|(([^\s-]{1,2}|[^\s-]+.+[^\s-]+) \[[a-zA-Z]{2,}:[a-zA-Z0-9]\d+\]))$</code></p>
 </li>
 </ul>
 <h2 id="examples">Examples</h2>
@@ -785,9 +785,9 @@ keywords:
 - method
 slot_uri: MIXS:0000050
 range: string
-pattern: ^.*|(([^\s-]{1,2}|[^\s-]+.+[^\s-]+) \[[a-zA-Z]{2,}:[a-zA-Z0-9]\d+\])$
+pattern: ^(.*|(([^\s-]{1,2}|[^\s-]+.+[^\s-]+) \[[a-zA-Z]{2,}:[a-zA-Z0-9]\d+\]))$
 structured_pattern:
-  syntax: ^{text}|({termLabel} \[{termID}\])$
+  syntax: ^({text}|({termLabel} \[{termID}\]))$
   interpolated: true
   partial_match: true
 

@@ -663,6 +663,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -758,6 +769,10 @@
 <ul>
 <li>Range: <a href="../ControlledTermValue/">ControlledTermValue</a></li>
 </ul>
+<h2 id="examples">Examples</h2>
+<pre><code class="language-yaml">type: &quot;nmdc:ControlledTermValue&quot;
+has_raw_value: &quot;hydroponic plant culture media exposure [PECO:0007067]&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -788,6 +803,10 @@ description: Specification of the media for growing the plants or tissue culture
   Ontology (PECO), plant growth medium exposure (http://purl.obolibrary.org/obo/PECO_0007147),
   or other controlled vocabulary.
 title: plant growth medium
+examples:
+- object:
+    type: nmdc:ControlledTermValue
+    has_raw_value: hydroponic plant culture media exposure [PECO:0007067]
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

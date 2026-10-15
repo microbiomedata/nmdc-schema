@@ -21,7 +21,7 @@
     
     
       
-        <title>Slot: estimated size (estimated_size) - NMDC Schema Documentation</title>
+        <title>Slot: estimated genome size (estimated_size) - NMDC Schema Documentation</title>
       
     
     
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-estimated-size-estimated_size" class="md-skip">
+        <a href="#slot-estimated-genome-size-estimated_size" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: estimated size (estimated_size)
+              Slot: estimated genome size (estimated_size)
             
           </span>
         </div>
@@ -754,7 +754,7 @@
   
 
 
-<h1 id="slot-estimated-size-estimated_size">Slot: estimated size (estimated_size)</h1>
+<h1 id="slot-estimated-genome-size-estimated_size">Slot: estimated genome size (estimated_size)</h1>
 <p><em>The estimated size of the genome prior to sequencing. Of particular importance in the sequencing of (eukaryotic) genome which could remain in draft form for a long or unspecified period</em></p>
 <div>
 <p>URI: <a href="https://w3id.org/mixs/0000024">MIXS:0000024</a></p>
@@ -823,7 +823,7 @@
 description: The estimated size of the genome prior to sequencing. Of particular importance
   in the sequencing of (eukaryotic) genome which could remain in draft form for a
   long or unspecified period
-title: estimated size
+title: estimated genome size
 notes:
 - The maximum_value here (1e11 bp = 100,000 Mb) is the eukaryote ceiling from JGI
   esplims. The tighter microbe ceiling (5,000 Mb) and the category-conditional required
@@ -834,6 +834,10 @@ comments:
 examples:
 - value: '300000'
 from_schema: https://w3id.org/nmdc/nmdc
+structured_aliases:
+- literal_form: estimated_genome_size
+  predicate: EXACT_SYNONYM
+  source: https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v7.0.1
 rank: 1000
 keywords:
 - size
