@@ -186,7 +186,7 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}"
           interpolated: true
         examples:
           - value: nmdc:inst-11-075j3n79
@@ -207,7 +207,7 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}"
           interpolated: true
         examples:
           - value: nmdc:orgn-99-6dwrrh
@@ -411,7 +411,7 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}"
           interpolated: true
         examples:
           - value: nmdc:sty-11-076c9980
@@ -457,7 +457,7 @@ classes:
           - Value is the id of the umbrella study or consortium.
         range: Study
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}"
           interpolated: true
       protocol_link:
         multivalued: true
@@ -522,14 +522,14 @@ classes:
         required: true
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}"
           interpolated: true
         examples:
           - value: nmdc:dobj-11-00017y47
             description: a production DataObject
       was_generated_by:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}|{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}"
           interpolated: true
       data_object_type:
         required: true
@@ -583,17 +583,17 @@ classes:
         required: true
         range: Sample
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}"
           interpolated: true
       associated_studies:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(sty)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:(sty)-{id_shoulder}-{id_blade}"
           interpolated:
             true
       has_output:
         range: DataObject
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}"
           interpolated:
             true
       provenance_metadata:
@@ -656,12 +656,12 @@ classes:
       has_input:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}"
           interpolated: true
         range: DataObject
       has_output:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}"
           interpolated: true
         range: DataObject
       processing_institution:
@@ -739,7 +739,7 @@ slots:
     range: Study
     multivalued: true
     structured_pattern:
-      syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$"
+      syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}"
       interpolated: true
     required: true
   part_of:
@@ -897,7 +897,7 @@ slots:
     multivalued: true
     description: What instrument was used during DataGeneration or MaterialProcessing.
     structured_pattern:
-      syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$"
+      syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}"
       interpolated: true
 
   instrument_instance_specifier:
@@ -911,7 +911,7 @@ slots:
     comments:
       - A DataObject can be part of multiple manifests, for example, a DataObject could be part of a manifest for a single run of an instrument and a manifest for technical replicates of a single sample.
     structured_pattern:
-      syntax: "{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$"
+      syntax: "{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}"
       interpolated: true  
 
   manifest_category:
@@ -1667,6 +1667,6 @@ enums:
 # See https://github.com/microbiomedata/nmdc-schema/issues/3523
 settings:
   id_blade: ([A-Za-z0-9]{1,})
-  id_nmdc_prefix: ^(nmdc)
+  id_nmdc_prefix: (nmdc)
   id_shoulder: ([0-9][a-z]{0,6}[0-9])
   id_version: (\.[1-9]{1}[0-9]{0,})
