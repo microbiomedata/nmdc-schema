@@ -33,15 +33,7 @@
          <lastmod>2026-10-15</lastmod>
     </url>
     <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/BadgeTopic/</loc>
-         <lastmod>2026-10-15</lastmod>
-    </url>
-    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/BinQualityEnum/</loc>
-         <lastmod>2026-10-15</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/Biogeochemistry/</loc>
          <lastmod>2026-10-15</lastmod>
     </url>
     <url>
@@ -118,14 +110,6 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/CeilingWallTextureEnum/</loc>
-         <lastmod>2026-10-15</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/Checklist/</loc>
-         <lastmod>2026-10-15</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/ChecklistPackageCombination/</loc>
          <lastmod>2026-10-15</lastmod>
     </url>
     <url>
@@ -226,14 +210,6 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/DataObject/</loc>
-         <lastmod>2026-10-15</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/DataObjectSubset/</loc>
-         <lastmod>2026-10-15</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/DataPortalSubset/</loc>
          <lastmod>2026-10-15</lastmod>
     </url>
     <url>
@@ -338,10 +314,6 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/EluentIntroductionCategoryEnum/</loc>
-         <lastmod>2026-10-15</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/Environment/</loc>
          <lastmod>2026-10-15</lastmod>
     </url>
     <url>
@@ -505,10 +477,6 @@
          <lastmod>2026-10-15</lastmod>
     </url>
     <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/HostInformation/</loc>
-         <lastmod>2026-10-15</lastmod>
-    </url>
-    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/HostSexEnum/</loc>
          <lastmod>2026-10-15</lastmod>
     </url>
@@ -553,10 +521,6 @@
          <lastmod>2026-10-15</lastmod>
     </url>
     <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/Investigation/</loc>
-         <lastmod>2026-10-15</lastmod>
-    </url>
-    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/IonizationSourceEnum/</loc>
          <lastmod>2026-10-15</lastmod>
     </url>
@@ -590,10 +554,6 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/JgiContTypeEnum/</loc>
-         <lastmod>2026-10-15</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/JgiIsolate/</loc>
          <lastmod>2026-10-15</lastmod>
     </url>
     <url>
@@ -749,14 +709,6 @@
          <lastmod>2026-10-15</lastmod>
     </url>
     <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/MixsEnvironmentalTriad/</loc>
-         <lastmod>2026-10-15</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/MixsExtension/</loc>
-         <lastmod>2026-10-15</lastmod>
-    </url>
-    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/MobilePhaseSegment/</loc>
          <lastmod>2026-10-15</lastmod>
     </url>
@@ -786,10 +738,6 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/NomAnalysis/</loc>
-         <lastmod>2026-10-15</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/NucleicAcidSequenceSource/</loc>
          <lastmod>2026-10-15</lastmod>
     </url>
     <url>
@@ -838,10 +786,6 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/OxyStatSampEnum/</loc>
-         <lastmod>2026-10-15</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/Package/</loc>
          <lastmod>2026-10-15</lastmod>
     </url>
     <url>
@@ -902,10 +846,6 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/PropertyAssertion/</loc>
-         <lastmod>2026-10-15</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/Proteases/</loc>
          <lastmod>2026-10-15</lastmod>
     </url>
     <url>
@@ -1021,10 +961,6 @@
          <lastmod>2026-10-15</lastmod>
     </url>
     <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/SampleSubset/</loc>
-         <lastmod>2026-10-15</lastmod>
-    </url>
-    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/SampleTypeEnum/</loc>
          <lastmod>2026-10-15</lastmod>
     </url>
@@ -1046,10 +982,6 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/SeqQualityCheckEnum/</loc>
-         <lastmod>2026-10-15</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/Sequencing/</loc>
          <lastmod>2026-10-15</lastmod>
     </url>
     <url>
@@ -1281,10 +1213,6 @@
          <lastmod>2026-10-15</lastmod>
     </url>
     <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/WorkflowSubset/</loc>
-         <lastmod>2026-10-15</lastmod>
-    </url>
-    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/YesNoEnum/</loc>
          <lastmod>2026-10-15</lastmod>
     </url>
@@ -1505,6 +1433,10 @@
          <lastmod>2026-10-15</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/badge_topic/</loc>
+         <lastmod>2026-10-15</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/badges/</loc>
          <lastmod>2026-10-15</lastmod>
     </url>
@@ -1562,6 +1494,10 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/biogas_temperature/</loc>
+         <lastmod>2026-10-15</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/biogeochemistry/</loc>
          <lastmod>2026-10-15</lastmod>
     </url>
     <url>
@@ -1706,6 +1642,14 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/ceil_water_mold/</loc>
+         <lastmod>2026-10-15</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/checklist/</loc>
+         <lastmod>2026-10-15</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/checklist_package_combination/</loc>
          <lastmod>2026-10-15</lastmod>
     </url>
     <url>
@@ -1917,7 +1861,15 @@
          <lastmod>2026-10-15</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/data_object_subset/</loc>
+         <lastmod>2026-10-15</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/data_object_type/</loc>
+         <lastmod>2026-10-15</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/data_portal_subset/</loc>
          <lastmod>2026-10-15</lastmod>
     </url>
     <url>
@@ -2262,6 +2214,10 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/env_package/</loc>
+         <lastmod>2026-10-15</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/environment/</loc>
          <lastmod>2026-10-15</lastmod>
     </url>
     <url>
@@ -2857,6 +2813,10 @@
          <lastmod>2026-10-15</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/host_information/</loc>
+         <lastmod>2026-10-15</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/host_last_meal/</loc>
          <lastmod>2026-10-15</lastmod>
     </url>
@@ -3069,6 +3029,10 @@
          <lastmod>2026-10-15</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/investigation/</loc>
+         <lastmod>2026-10-15</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/investigation_field/</loc>
          <lastmod>2026-10-15</lastmod>
     </url>
@@ -3150,6 +3114,10 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/jgi-isolate-field-routing/</loc>
+         <lastmod>2026-10-15</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/jgi_isolate/</loc>
          <lastmod>2026-10-15</lastmod>
     </url>
     <url>
@@ -3433,6 +3401,14 @@
          <lastmod>2026-10-15</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/mixs_environmental_triad/</loc>
+         <lastmod>2026-10-15</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/mixs_extension/</loc>
+         <lastmod>2026-10-15</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/mod_date/</loc>
          <lastmod>2026-10-15</lastmod>
     </url>
@@ -3526,6 +3502,10 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/nucl_acid_ext/</loc>
+         <lastmod>2026-10-15</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/nucleic_acid_sequence_source/</loc>
          <lastmod>2026-10-15</lastmod>
     </url>
     <url>
@@ -3710,6 +3690,10 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/oxygen/</loc>
+         <lastmod>2026-10-15</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/package/</loc>
          <lastmod>2026-10-15</lastmod>
     </url>
     <url>
@@ -3942,6 +3926,10 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/proposal_rna/</loc>
+         <lastmod>2026-10-15</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/proteases/</loc>
          <lastmod>2026-10-15</lastmod>
     </url>
     <url>
@@ -4401,6 +4389,10 @@
          <lastmod>2026-10-15</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/sample_subset/</loc>
+         <lastmod>2026-10-15</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/sample_type/</loc>
          <lastmod>2026-10-15</lastmod>
     </url>
@@ -4514,6 +4506,10 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/seqid/</loc>
+         <lastmod>2026-10-15</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/sequencing/</loc>
          <lastmod>2026-10-15</lastmod>
     </url>
     <url>
@@ -5198,6 +5194,10 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/workflow_execution_set/</loc>
+         <lastmod>2026-10-15</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/workflow_subset/</loc>
          <lastmod>2026-10-15</lastmod>
     </url>
     <url>
