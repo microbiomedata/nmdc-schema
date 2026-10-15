@@ -580,6 +580,12 @@ aliases:
 - FunctionalAnnotation
 is_a: OntologyClass
 abstract: true
+slot_usage:
+  id:
+    name: id
+    examples:
+    - value: PFAM:PF00206
+      description: the Pfam Lyase_1 family, a gene_function_id in production functional_annotation_agg
 class_uri: nmdc:FunctionalAnnotationTerm
 
 </code></pre>
@@ -595,6 +601,12 @@ aliases:
 - FunctionalAnnotation
 is_a: OntologyClass
 abstract: true
+slot_usage:
+  id:
+    name: id
+    examples:
+    - value: PFAM:PF00206
+      description: the Pfam Lyase_1 family, a gene_function_id in production functional_annotation_agg
 attributes:
   alternative_names:
     name: alternative_names
@@ -666,7 +678,8 @@ attributes:
     - The identifiers for terms from external ontologies can't have their ids constrained
       to the nmdc namespace
     examples:
-    - value: ENVO:00002030
+    - value: PFAM:PF00206
+      description: the Pfam Lyase_1 family, a gene_function_id in production functional_annotation_agg
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: workflow_execution_id
