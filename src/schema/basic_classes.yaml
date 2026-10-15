@@ -912,7 +912,7 @@ slots:
   qc_failure_where:
     range: FailureWhereEnum
     description: >-
-      Describes the nmdc schema class that corresonds to where the failure occurred.
+      Describes the nmdc schema class that corresponds to where the failure occurred.
       Most commonly this would be the same as Class that generated the results.
     comments:
       - If the assembly size was too small to proceed to annotation failure_where would be MetagenomeAssembly.

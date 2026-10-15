@@ -348,7 +348,7 @@ The following slots have been added, specifically on `MassSpectrometryConfigurat
 * `polarity_mode`
 * `resolution_categories`
 
-These new slots are examplars of the increased emphasis on enumeration ranges (and the avoidance of the word 'type' in
+These new slots are exemplars of the increased emphasis on enumeration ranges (and the avoidance of the word 'type' in
 slot names other than `type`):
 
 - `analyte_category`
@@ -508,7 +508,7 @@ the [id](https://microbiomedata.github.io/nmdc-schema/id/#linkml-source) slot as
 from [NamedThing](https://microbiomedata.github.io/nmdc-schema/NamedThing/). Therefore, the value of
 an `associated_studies` slot in a data file must be the `id` of a `Study`.
 
-**In the absense of any other data or constraints**, the nmdc-schema will consider the following assertion valid for
+**In the absence of any other data or constraints**, the nmdc-schema will consider the following assertion valid for
 a `Biosample`, even if `xyz` isn't defined in the same data source:
 
 ```yaml
@@ -520,7 +520,7 @@ If `xyz` is defined in the data source **and** it does not pass validation as a 
 be considered invalid. Unfortunately, the definitions and mentions of nmdc-schema instances are frequently split across
 different MongoDB collections, so validating that a referred instance is really of the right type is non-trivial.
 
-As a very lightweight guard against referring to instances of the wrong type, `stuctured_pattern`s were added
+As a very lightweight guard against referring to instances of the wrong type, `structured_pattern`s were added
 to `slot_usage`s in berkeley-schema-fy24, and also independently in nmdc-schema v10 during the development of
 berkeley-schema-fy24/v11. In addition to being incomplete, this solution introduces some minor problems into the schema,
 and it relies on some other advanced LinkML features. Still, it has been useful in debugging some schema/data problems
@@ -621,7 +621,7 @@ That might be seen as asserting that `MaterialProcessing`'s `range` is **either*
 but `has_input` has the global `range` of `NamedThing`, so the effective range for `has_input` in `MaterialProcessing`
 is the union of `NamedThing`, `Biosample` and  `ProcessedSample`.
 
-Note that the `slot_usage` `strucutred_pattern` essentially asserts two different `strucutured_pattern` `syntax`es, due
+Note that the `slot_usage` `structured_pattern` essentially asserts two different `structured_pattern` `syntax`es, due
 to the use of the `|` character: "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$" for `Biosample`s and
 "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$" for `ProcessedSample`s.
 
