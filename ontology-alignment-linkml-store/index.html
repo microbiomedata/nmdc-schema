@@ -820,7 +820,7 @@ an <strong>alternative retrieval path</strong> that:</p>
 <li>Produces comparable SSSOM-style output for direct comparison with OLS4</li>
 </ul>
 <h2 id="prerequisites">Prerequisites</h2>
-<pre><code class="language-bash">poetry install --with dev,deps
+<pre><code class="language-bash">uv sync
 </code></pre>
 <p><strong>API keys</strong> (set as environment variables):
 - <code>OPENAI_API_KEY</code> — required for all linkml-store targets
@@ -853,7 +853,7 @@ make alignment-linkml-store-bioportal
 <h3 id="linkml_store_embeddings_searchpy-local-semantic-retrieval"><code>linkml_store_embeddings_search.py</code> — local semantic retrieval</h3>
 <p>Harvests ontology terms via oaklib or BioPortal, embeds them locally with
 linkml-store's <code>LLMIndexer</code>, and searches for NMDC schema elements.</p>
-<pre><code class="language-bash">poetry run python src/scripts/linkml_store_embeddings_search.py --help
+<pre><code class="language-bash">uv run python src/scripts/linkml_store_embeddings_search.py --help
 </code></pre>
 <p>Key options:</p>
 <table>

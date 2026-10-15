@@ -1193,7 +1193,7 @@ the project generator merges default args with config args and passes them as
 </table>
 <h3 id="example-equivalent-config-for-the-pr-2484-experimental-profile">Example: equivalent config for the PR #2484 experimental profile</h3>
 <p>The experimental CLI command from PR #2484:</p>
-<pre><code class="language-bash">poetry run linkml generate owl \
+<pre><code class="language-bash">uv run linkml generate owl \
   --add-ols-annotations --metadata-profile ols --add-root-classes \
   --metaclasses --mergeimports --use-native-uris --useuris \
   --default-permissible-value-type &quot;http://www.w3.org/2002/07/owl#Class&quot; \
