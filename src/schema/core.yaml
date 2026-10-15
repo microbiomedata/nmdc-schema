@@ -17,7 +17,8 @@ prefixes:
   CHEBI: "http://purl.obolibrary.org/obo/CHEBI_"
   EC: 'https://bioregistry.io/eccode:'
   FBcv: "http://purl.obolibrary.org/obo/FBcv_" # for Biosample only
-  GENEPIO: "http://purl.obolibrary.org/obo/GENEPIO_" # for library_preparation_kit, contig identifier and count only
+  GENEPIO: "http://purl.obolibrary.org/obo/GENEPIO_"
+  NCBI_BIOSAMPLE_ATTRIBUTE: "https://www.ncbi.nlm.nih.gov/biosample/docs/attributes/#"
   KEGG.COMPOUND: "https://bioregistry.io/kegg.compound:"
   MISO: "http://purl.obolibrary.org/obo/MISO_"
   MS: "http://purl.obolibrary.org/obo/MS_"
@@ -908,6 +909,7 @@ classes:
       - samp_md
       - samp_name
       - samp_preserv
+      - samp_purpose
       - samp_room_id
       - samp_size
       - samp_sort_meth
@@ -1675,6 +1677,20 @@ slots:
     title: Collected From
     description: The Site from which a Biosample was collected
     range: FieldResearchSite
+    close_mappings:
+      - GENEPIO:0100760
+      - NCBI_BIOSAMPLE_ATTRIBUTE:sampling_site_id
+    see_also:
+      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    notes:
+      - >-
+        Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification 4.4.4 standard
+        (follow `see_also` for reference documentation) we can see that slot capturing details
+        about the sampling site ID (submitter-assigned identifier reused for every sample taken from
+        the same site) is closely related to `collected_from` in the NMDC schema.
+      - >-
+        Close match to the sampling_site_id attribute of the PHA4GE.wwsurv.1.0 package, for the same reason.
     comments:
       - this illustrates implementing a Biosample relation with a (binary) slot
     todos:

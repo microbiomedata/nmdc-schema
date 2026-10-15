@@ -14,6 +14,7 @@ default_range: string
 prefixes:
   schema: "http://schema.org/"
   nmdc: "https://w3id.org/nmdc/"
+  OM: "http://www.ontology-of-units-of-measure.org/resource/om-2/" # for the degree Celsius unit mapping (OM:degreeCelsius)
 
 classes:
   AttributeValue:
