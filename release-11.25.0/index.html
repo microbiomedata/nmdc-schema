@@ -762,14 +762,14 @@
 <td>tested 2026-10-15 against a pre-release of 11.25.0, compared with a linkml 1.11.1 build; <a href="https://github.com/microbiomedata/nmdc-schema/issues/3424">https://github.com/microbiomedata/nmdc-schema/issues/3424</a></td>
 </tr>
 <tr>
-<td>slot examples appear in the JSON Schema, including one <code>id</code> example per class</td>
+<td>slot examples appear in the JSON Schema, including one <code>id</code> example on each concrete class</td>
 <td><code>nmdc:bsm-11-001pmq31</code> on <code>Biosample</code></td>
 <td>tested 2026-10-15; <a href="https://github.com/microbiomedata/nmdc-schema/pull/3545">https://github.com/microbiomedata/nmdc-schema/pull/3545</a></td>
 </tr>
 <tr>
 <td>the OWL build logs many more "Multiple owl types" warnings</td>
 <td>203 with 1.12.1, 1 with 1.11.1</td>
-<td>observed in the build log 2026-10-15; effect on the OWL file not checked</td>
+<td>measured 2026-10-15 by running <code>linkml generate owl</code> on main before the anchor change (<a href="https://github.com/microbiomedata/nmdc-schema/issues/3506">https://github.com/microbiomedata/nmdc-schema/issues/3506</a>); effect on the OWL file not checked</td>
 </tr>
 </tbody>
 </table>
@@ -797,7 +797,7 @@
 <tr>
 <td>nmdc-server</td>
 <td><code>nmdc-schema==11.24.0</code> and <code>nmdc-submission-schema==11.24.0</code> (<code>pyproject.toml:27-28</code>); web app at <code>v11.24.1</code> (<code>web/package.json:46</code>)</td>
-<td>Nothing required for nmdc-schema 11.25.0. Keep <code>nmdc-submission-schema==11.24.0</code> until <a href="https://github.com/microbiomedata/nmdc-server/issues/2401">https://github.com/microbiomedata/nmdc-server/issues/2401</a> is fixed; that break comes from submission-schema's new titles, not from nmdc-schema.</td>
+<td>Nothing required for nmdc-schema 11.25.0. Keep <code>nmdc-submission-schema==11.24.0</code> until <a href="https://github.com/microbiomedata/nmdc-server/issues/2401">https://github.com/microbiomedata/nmdc-server/issues/2401</a> is fixed; that break comes from the titles nmdc-schema 11.24.1 added to nine Biosample slots (<a href="https://github.com/microbiomedata/nmdc-schema/pull/3451">https://github.com/microbiomedata/nmdc-schema/pull/3451</a>), which reach the portal through nmdc-submission-schema 11.25.0; nothing new in nmdc-schema 11.25.0 causes it.</td>
 <td>imports tested 2026-10-15 against a pre-release of 11.25.0; tests need Postgres and were not run</td>
 <td><a href="https://github.com/microbiomedata/nmdc-server/issues/2401">https://github.com/microbiomedata/nmdc-server/issues/2401</a></td>
 </tr>
@@ -827,14 +827,14 @@
 <td>source versions 11.23.0 and 11.24.0 hard-coded</td>
 <td>Accept 11.25.0 as a source version, and move to an nmdc-lakehouse-schema release that supports it.</td>
 <td>tested 2026-10-15 against a pre-release of 11.25.0: 1061 pass, 11 fail on the hard-coded versions</td>
-<td><a href="https://github.com/microbiomedata/nmdc-lakehouse/issues/395">https://github.com/microbiomedata/nmdc-lakehouse/issues/395</a></td>
+<td><a href="https://github.com/microbiomedata/nmdc-lakehouse/issues/395">https://github.com/microbiomedata/nmdc-lakehouse/issues/395</a>, draft fix <a href="https://github.com/microbiomedata/nmdc-lakehouse/pull/396">https://github.com/microbiomedata/nmdc-lakehouse/pull/396</a></td>
 </tr>
 <tr>
 <td>nmdc-lakehouse-schema</td>
 <td><code>source-latest = ["nmdc-schema==11.24.0"]</code> (<code>pyproject.toml:46</code>); <code>SUPPORTED_SOURCE_VERSIONS</code> is 11.23.0 and 11.24.0 (<code>artifacts.py:5-6</code>)</td>
-<td>Move the source pin and supported versions to 11.25.0, generate and publish the matching flat artifact, and update the expected class count from 61 to 62. Until then <code>flat_schema_resource("11.25.0")</code> raises <code>ValueError</code>.</td>
+<td>Move the source pin and supported versions to 11.25.0, generate and publish the matching flat artifact, and derive the expected class count from the schema instead of hard-coding 61 (<a href="https://github.com/microbiomedata/nmdc-lakehouse-schema/pull/28">https://github.com/microbiomedata/nmdc-lakehouse-schema/pull/28</a>). Until then <code>flat_schema_resource("11.25.0")</code> raises <code>ValueError</code>.</td>
 <td>read 2026-10-15; class count tested against a pre-release of 11.25.0</td>
-<td><a href="https://github.com/microbiomedata/nmdc-lakehouse/issues/395">https://github.com/microbiomedata/nmdc-lakehouse/issues/395</a></td>
+<td><a href="https://github.com/microbiomedata/nmdc-lakehouse-schema/issues/29">https://github.com/microbiomedata/nmdc-lakehouse-schema/issues/29</a></td>
 </tr>
 <tr>
 <td>nmdc_automation</td>
@@ -845,7 +845,7 @@
 </tr>
 <tr>
 <td>nmdc-ingest-agent</td>
-<td></td>
+<td><code>nmdc-schema&gt;=11.21.0,&lt;12</code> (<code>pyproject.toml:36</code>)</td>
 <td>Nothing new; its <code>TargetGeneEnum</code> failure predates 11.25.0.</td>
 <td>tested: same failures on 11.24.1</td>
 <td><a href="https://github.com/microbiomedata/nmdc-ingest-agent/issues/62">https://github.com/microbiomedata/nmdc-ingest-agent/issues/62</a></td>
@@ -869,7 +869,7 @@
 <h2 id="known-gaps-in-11250">Known gaps in 11.25.0</h2>
 <ol>
 <li>Full-URI <code>type</code> (<a href="https://github.com/microbiomedata/nmdc-schema/issues/3537">https://github.com/microbiomedata/nmdc-schema/issues/3537</a>). Validation accepts <code>"type": "https://w3id.org/nmdc/Study"</code>, but nmdc-runtime reads <code>type</code> as a CURIE (read: <code>metadata.py:168</code>, <code>alldocs.py:317</code>, <code>linked_instances.py:209</code>). Production has no URI <code>type</code> values (counted 2026-10-15). Each fix considered has a cost: <a href="https://github.com/microbiomedata/nmdc-schema/issues/3537#issuecomment-6194946359">https://github.com/microbiomedata/nmdc-schema/issues/3537#issuecomment-6194946359</a></li>
-<li>Nulls (<a href="https://github.com/microbiomedata/nmdc-schema/issues/3424">https://github.com/microbiomedata/nmdc-schema/issues/3424</a>). <code>null</code> satisfies optional enum- and class-ranged slots, including some that class rules require. Production's only explicit nulls are <code>description</code> on all 22,722 <code>ontology_class_set</code> documents (counted 2026-10-15). ontology-loader stopped writing them in <a href="https://github.com/microbiomedata/ontology-loader/pull/92">https://github.com/microbiomedata/ontology-loader/pull/92</a>; the stored ones remain.</li>
+<li>Nulls (<a href="https://github.com/microbiomedata/nmdc-schema/issues/3424">https://github.com/microbiomedata/nmdc-schema/issues/3424</a>). <code>null</code> satisfies optional enum- and class-ranged slots, including some that class rules require. Production's only explicit nulls are <code>description</code> on all 22,722 <code>ontology_class_set</code> documents (counted 2026-10-15). <a href="https://github.com/microbiomedata/ontology-loader/pull/92">https://github.com/microbiomedata/ontology-loader/pull/92</a> stops ontology-loader writing them, but it is not in a release yet and nmdc-runtime still pins ontology-loader 0.2.2; the stored ones remain.</li>
 <li>Typecodes are still derived from id patterns rather than declared in the schema.</li>
 </ol>
 <p>Security: Dependabot alert 58 (setuptools, medium) was dismissed because oaklib caps setuptools below the fixed version. No code-scanning alerts were open on 2026-10-15.</p>
@@ -878,8 +878,8 @@
 <ul>
 <li>Add back the dev-group caps on <code>linkml</code> and <code>linkml-runtime</code> below 1.12 that <a href="https://github.com/microbiomedata/nmdc-schema/pull/3529">https://github.com/microbiomedata/nmdc-schema/pull/3529</a> removed, as <a href="https://github.com/microbiomedata/nmdc-schema/pull/3532">https://github.com/microbiomedata/nmdc-schema/pull/3532</a> had them, then relock and rebuild.</li>
 <li>Also revert <a href="https://github.com/microbiomedata/nmdc-schema/pull/3549">https://github.com/microbiomedata/nmdc-schema/pull/3549</a>. linkml 1.11.1 ignores <code>partial_match</code> and adds no anchors, so without our own anchors the id patterns would be unanchored (tested 2026-10-15).</li>
-<li>A linkml 1.11.1 build of a pre-release of 11.25.0 was tested against the consumers above on 2026-10-15. nmdc-runtime's minter found its typecodes without <a href="https://github.com/microbiomedata/nmdc-runtime/pull/1659">https://github.com/microbiomedata/nmdc-runtime/pull/1659</a>. The other results matched the table above: nmdc-server was checked for imports only, nmdc-ingest-agent and nmdc-lakehouse had the failures listed there, and the rest passed.</li>
-<li>The JSON Schema would then carry none of the changes in the generated-files table, and no examples (0 with 1.11.1 compared with 655 with 1.12.1, tested 2026-10-15).</li>
+<li>A linkml 1.11.1 build of a pre-release of 11.25.0 was tested against the consumers above on 2026-10-15. nmdc-runtime's minter found its typecodes without <a href="https://github.com/microbiomedata/nmdc-runtime/pull/1659">https://github.com/microbiomedata/nmdc-runtime/pull/1659</a>. The other results matched the table above: nmdc-server was checked for imports only, nmdc-ingest-agent, nmdc-lakehouse and nmdc-lakehouse-schema had the failures listed there, nmdc_mass_spectrometry_metadata_generation had 4 failures that need credentials, and the rest passed.</li>
+<li>The JSON Schema would then carry none of the changes in the generated-files table, and no examples (0 with 1.11.1; 656 in the 1.12.1 build, measured 2026-10-15).</li>
 <li>Consumers need nothing different, since the published dependency ranges do not change.</li>
 <li>Not tested: a 1.11.1 build of current main.</li>
 </ul>
