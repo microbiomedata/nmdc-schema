@@ -809,6 +809,7 @@
 <ul>
 <li><a href="https://github.com/GenomicsStandardsConsortium/mixs/commit/e0df7c79f7e742903ccea8007b6ad9c8dcd33308">https://github.com/GenomicsStandardsConsortium/mixs/commit/e0df7c79f7e742903ccea8007b6ad9c8dcd33308</a></li>
 <li><a href="https://github.com/GenomicsStandardsConsortium/mixs/issues/1361">https://github.com/GenomicsStandardsConsortium/mixs/issues/1361</a></li>
+<li><a href="https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/mixs6.1.1">https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/mixs6.1.1</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
@@ -840,8 +841,8 @@
 </thead>
 <tbody>
 <tr>
-<td>exact</td>
-<td>MIXS:0000341</td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -862,9 +863,8 @@ notes:
 - MIxS defined this slot as MIXS:0000341 through v6.1.1. It was dropped in MIxS v6.2.0
   by GenomicsStandardsConsortium/mixs commit e0df7c79f (2023-10-04), with no deprecation,
   rename or successor.
-- 'MIXS:0000341 is kept as an exact mapping because MIxS retired the identifier without
-  changing its meaning. The slot uses the default nmdc: URI because MIxS no longer
-  declares the identifier.'
+- 'MIXS:0000341 no longer resolves (https://w3id.org/mixs/0000341 returned 404 on
+  2026-10-15), so no mapping to it is asserted. The slot uses the default nmdc: URI.'
 - Retained for submission-schema compatibility.
 examples:
 - value: doi:10.1016/j.ecss.2011.11.024
@@ -873,8 +873,7 @@ from_schema: https://w3id.org/nmdc/nmdc
 see_also:
 - https://github.com/GenomicsStandardsConsortium/mixs/commit/e0df7c79f7e742903ccea8007b6ad9c8dcd33308
 - https://github.com/GenomicsStandardsConsortium/mixs/issues/1361
-exact_mappings:
-- MIXS:0000341
+- https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/mixs6.1.1
 rank: 1000
 domain_of:
 - Biosample

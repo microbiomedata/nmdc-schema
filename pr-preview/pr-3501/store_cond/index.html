@@ -674,6 +674,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -744,7 +755,7 @@
 
 
 <h1 id="slot-storage-conditions-store_cond">Slot: storage conditions (store_cond)</h1>
-<p><em>Explain how and for how long the sample was stored before DNA extraction (for example, fresh/frozen/other). Include factors that may influence nucleic acid recovery or library construction. For example, specify temperature, humidity, presence of microbial overgrowth etc.</em></p>
+<p><em>How and for how long the sample was stored before DNA extraction.</em></p>
 <div>
 <p>URI: <a href="https://w3id.org/mixs/0000327">MIXS:0000327</a></p>
 <!-- no inheritance hierarchy -->
@@ -773,6 +784,10 @@
 <pre><code class="language-yaml">type: &quot;nmdc:TextValue&quot;
 has_raw_value: &quot;-20 degree Celsius freezer;P2Y10D&quot;
 </code></pre>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>State whether the sample was fresh, frozen or stored another way, and record factors that may affect nucleic acid recovery or library construction: temperature, humidity and microbial overgrowth.</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -797,11 +812,17 @@ has_raw_value: &quot;-20 degree Celsius freezer;P2Y10D&quot;
 <details>
 
 <pre><code class="language-yaml">name: store_cond
-description: Explain how and for how long the sample was stored before DNA extraction
-  (for example, fresh/frozen/other). Include factors that may influence nucleic acid
-  recovery or library construction. For example, specify temperature, humidity, presence
-  of microbial overgrowth etc.
+description: How and for how long the sample was stored before DNA extraction.
 title: storage conditions
+notes:
+- The MIxS v7.0.1 description (MIXS:0000327) combines the definition, submitter guidance
+  and example values in one string. NMDC keeps only the definition in description
+  and moves the guidance to comments, so that description holds a definition and example
+  values stay in examples.
+comments:
+- 'State whether the sample was fresh, frozen or stored another way, and record factors
+  that may affect nucleic acid recovery or library construction: temperature, humidity
+  and microbial overgrowth.'
 examples:
 - object:
     type: nmdc:TextValue
