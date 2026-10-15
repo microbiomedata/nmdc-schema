@@ -55,6 +55,9 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+        examples:
+          - value: nmdc:wfmgas-11-0080kf19.1
+            description: a production MetagenomeAssembly
       was_informed_by:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
@@ -103,6 +106,9 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+        examples:
+          - value: nmdc:wfmtas-11-0mkm0r71.1
+            description: a production MetatranscriptomeAssembly
       was_informed_by:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
@@ -125,6 +131,9 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+        examples:
+          - value: nmdc:wfmtan-11-0k6a3d73.1
+            description: a production MetatranscriptomeAnnotation
       img_identifiers:
         maximum_cardinality: 1
       was_informed_by:
@@ -153,6 +162,9 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+        examples:
+          - value: nmdc:wfmtex-11-0g2kt843.1
+            description: a production MetatranscriptomeExpressionAnalysis
       img_identifiers:
         maximum_cardinality: 1
       was_informed_by:
@@ -187,6 +199,9 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+        examples:
+          - value: nmdc:wfmag-11-002wf438.1
+            description: a production MagsAnalysis
       img_identifiers:
         maximum_cardinality: 1
       was_informed_by:
@@ -217,6 +232,9 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+        examples:
+          - value: nmdc:wfrqc-11-00qx5818.1
+            description: a production ReadQcAnalysis
       was_informed_by:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
@@ -238,6 +256,9 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+        examples:
+          - value: nmdc:wfrbt-11-0083q358.1
+            description: a production ReadBasedTaxonomyAnalysis
       was_informed_by:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
@@ -264,6 +285,9 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+        examples:
+          - value: nmdc:wfmb-11-00cysq13.1
+            description: a production MetabolomicsAnalysis
       was_informed_by:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$"
@@ -295,6 +319,9 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+        examples:
+          - value: nmdc:wfmp-11-08mtnm81.1
+            description: a production MetaproteomicsAnalysis
       was_informed_by:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$"
@@ -318,6 +345,9 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+        examples:
+          - value: nmdc:wfnom-11-00db2d48.2
+            description: a production NomAnalysis
       was_informed_by:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$"

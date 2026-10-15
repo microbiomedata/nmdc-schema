@@ -459,6 +459,9 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:chcpr-{id_shoulder}-{id_blade}$"
           interpolated: true
+        examples:
+          - value: nmdc:chcpr-11-004nv334
+            description: a production ChemicalConversionProcess
 
   AnnotatingWorkflow:
     class_uri: nmdc:AnnotatingWorkflow
@@ -478,6 +481,9 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+        examples:
+          - value: nmdc:wfmgan-11-001c1246.1
+            description: a production MetagenomeAnnotation
       img_identifiers:
         maximum_cardinality: 1
       was_informed_by:
@@ -519,6 +525,9 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$"
           interpolated: true
+        examples:
+          - value: nmdc:frsite-11-0mqbhb55
+            description: a production FieldResearchSite
       part_of:
         range: FieldResearchSite
         structured_pattern:
@@ -1143,6 +1152,9 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$"
           interpolated: true
+        examples:
+          - value: nmdc:bsm-11-001pmq31
+            description: a production Biosample
 
       gold_biosample_identifiers:
         description: Unique identifier for a biosample submitted to GOLD that matches the NMDC submitted biosample
@@ -1487,6 +1499,9 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
           interpolated: true
+        examples:
+          - value: nmdc:procsm-11-0013mk17
+            description: a production ProcessedSample
 
   OrganismSample:
     class_uri: nmdc:OrganismSample
@@ -1516,6 +1531,9 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:osm-{id_shoulder}-{id_blade}$"
           interpolated: true
+        examples:
+          - value: nmdc:osm-11-cult0001
+            description: an OrganismSample from the schema's example data; production has none
       expected_organism:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$"
@@ -1654,6 +1672,11 @@ classes:
       - gtpo
     exact_mappings:
       - biolink:GeneProduct
+    slot_usage:
+      id:
+        examples:
+          - value: UniProtKB:P0A7V8
+            description: E. coli K-12 small ribosomal subunit protein uS4
 
 slots:
 
