@@ -80,5 +80,15 @@ because submission-schema still imports it (`config/nmdc_schema_import.yaml` lin
 2026-09-16).
 
 Other repositories may depend on an element too, without going through this import mechanism. 
-`report_asset_usage.py` above only sees this repository; there is no automated check across the rest 
-of the ecosystem yet.
+`report_asset_usage.py` above only sees this repository, so search the rest of the microbiomedata 
+organization for the element's name before finalizing a deprecation:
+
+```bash
+gh search code --owner microbiomedata "<element name>" --limit 100 \
+  --json repository,path \
+  --jq '.[] | select(.repository.nameWithOwner != "microbiomedata/nmdc-schema") | "\(.repository.nameWithOwner) \(.path)"'
+```
+
+For each hit, remove or update the reference in that repository, or open an issue there and link it 
+from the nmdc-schema pull request. GitHub code search only covers each repository's default branch 
+and does not index all code, so an empty result does not prove that nothing uses the element.
