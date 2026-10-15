@@ -8,10 +8,12 @@ See https://github.com/microbiomedata/nmdc-schema/issues/3539.
 mixs.yaml is generated from MIxS and is not checked here.
 """
 
+import re
 from importlib.metadata import version
 from pathlib import Path
 
 import pytest
+
 import yaml
 from linkml_runtime import SchemaView
 
@@ -53,7 +55,13 @@ def _anchored_syntaxes(schema_dir: Path) -> list[tuple[str, str, str]]:
             if (module.name, path) in KEEP_ANCHORS:
                 continue
             syntax = pattern.get("syntax", "")
-            if syntax.startswith("^") or syntax.endswith("$"):
+            # An anchor at either end, or one on either side of a top-level `|`, is ours to
+            # drop: linkml's ^(?:...)$ wrapper already anchors every alternative.
+            if (
+                syntax.startswith("^")
+                or syntax.endswith("$")
+                or re.search(r"(?<!\\)\$\||\|\^", syntax)
+            ):
                 found.append((module.name, path, syntax))
     return found
 
