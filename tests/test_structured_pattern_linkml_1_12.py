@@ -250,7 +250,11 @@ def test_typecodes_are_the_same_for_wrapped_and_unwrapped_id_patterns(
             continue
         if pattern.startswith("^(?:") and pattern.endswith(")$"):
             pattern = pattern[len("^(?:") : -len(")$")]
-        unwrapped = get_compatible_typecodes(pattern)
+        # From 11.25.0 our own patterns carry no anchors, so the inner pattern may not start
+        # with ^ (https://github.com/microbiomedata/nmdc-schema/issues/3539). Compare the
+        # wrapped form with the plain anchored form 11.24.x shipped.
+        anchored = pattern if pattern.startswith("^") else f"^{pattern}"
+        unwrapped = get_compatible_typecodes(anchored)
         if not unwrapped:
             continue
         checked += 1
