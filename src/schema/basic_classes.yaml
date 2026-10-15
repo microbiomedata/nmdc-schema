@@ -69,6 +69,9 @@ classes:
       id:
         notes:
           - The identifiers for terms from external ontologies can't have their ids constrained to the nmdc namespace
+        examples:
+          - value: ENVO:00002030
+            description: the ENVO term aquatic biome
     exact_mappings:
       - biolink:OntologyClass
       - owl:Class
@@ -77,22 +80,20 @@ classes:
   NcbiTaxon:
     class_uri: nmdc:NcbiTaxon
     is_a: OntologyClass
-    description: >-
-      A taxonomy term from NCBI Taxonomy. NcbiTaxon instances are identified by NCBITaxon CURIEs
-      (e.g. NCBITaxon:511145) and stored in ontology_class_set alongside other OntologyClass
-      instances. No NMDC-minted identifiers are assigned. Support for additional taxonomic
-      authorities (GTDB, LPSN, SeqCode) would be represented by separate classes or by
-      widening this class's id_prefixes in a follow-on PR.
+    description: A taxon from NCBI Taxonomy, identified by its NCBITaxon CURIE.
     id_prefixes:
       - NCBITaxon
     slot_usage:
       id:
         pattern: '^NCBITaxon:\d+$'
+        examples:
+          - value: 'NCBITaxon:511145'
         comments:
           - >-
             Validation is intentionally limited to NCBITaxon CURIEs. If GTDB, LPSN, or SeqCode
             support is added, widen this pattern in lockstep with id_prefixes and example data.
     comments:
+      - NMDC does not mint identifiers for NcbiTaxon records.
       - >-
         Follows the OrthologyGroup pattern: a concrete, directly-instantiated semantic subclass of
         OntologyClass with no additional slots, no typecode, and no dedicated Database collection.
@@ -187,14 +188,13 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$"
           interpolated: true
+        examples:
+          - value: nmdc:inst-11-075j3n79
+            description: a production Instrument
   Organism:
     class_uri: nmdc:Organism
     is_a: MaterialEntity
-    description: >-
-      A material entity that is a living or once-living individual. Organism instances
-      represent the biological identity of what is in a sample, not the sample itself.
-      Sub-species identity (strain, cultivar, lab isolate) is captured by slots on this
-      class rather than via a separate Strain subclass.
+    description: A material entity that is a living or once-living individual.
     slots:
       - classified_as
       - organism_genus
@@ -209,6 +209,9 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$"
           interpolated: true
+        examples:
+          - value: nmdc:orgn-99-6dwrrh
+            description: an Organism from the schema's example data; production has none
       classified_as:
         range: NcbiTaxon
         description: Taxonomic classification of this organism.
@@ -410,6 +413,9 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$"
           interpolated: true
+        examples:
+          - value: nmdc:sty-11-076c9980
+            description: a production Study
       name:
         annotations:
           tooltip: Provide a name for the study your samples will belong with.
@@ -518,6 +524,9 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$"
           interpolated: true
+        examples:
+          - value: nmdc:dobj-11-00017y47
+            description: a production DataObject
       was_generated_by:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$"
@@ -919,7 +928,7 @@ slots:
   qc_failure_where:
     range: FailureWhereEnum
     description: >-
-      Describes the nmdc schema class that corresonds to where the failure occurred.
+      Describes the nmdc schema class that corresponds to where the failure occurred.
       Most commonly this would be the same as Class that generated the results.
     comments:
       - If the assembly size was too small to proceed to annotation failure_where would be MetagenomeAssembly.
@@ -1652,3 +1661,12 @@ enums:
       aneuploid:
         meaning: PATO:0001385
         description: A chromosome number that is not an exact multiple of the haploid set (extra or missing chromosomes).
+
+# Settings below are copied from nmdc.yaml by src/scripts/sync_module_settings.py.
+# Do not edit them here; edit nmdc.yaml and rerun the script.
+# See https://github.com/microbiomedata/nmdc-schema/issues/3523
+settings:
+  id_blade: ([A-Za-z0-9]{1,})
+  id_nmdc_prefix: ^(nmdc)
+  id_shoulder: ([0-9][a-z]{0,6}[0-9])
+  id_version: (\.[1-9]{1}[0-9]{0,})

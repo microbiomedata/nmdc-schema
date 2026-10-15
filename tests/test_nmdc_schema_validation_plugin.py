@@ -3,7 +3,7 @@ import yaml
 from linkml.validator import Validator
 from linkml.validator.plugins import JsonschemaValidationPlugin
 
-from nmdc_schema_validation_plugin import NmdcSchemaValidationPlugin
+from nmdc_schema.nmdc_schema_validation_plugin import NmdcSchemaValidationPlugin
 from tests import SCHEMA_FILE, ROOT
 
 

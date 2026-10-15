@@ -5116,6 +5116,10 @@ slots:
   plant_growth_med:
     description: Specification of the media for growing the plants or tissue cultured samples, e.g. soil, aeroponic, hydroponic, in vitro solid culture medium, in vitro liquid culture medium. Recommended value is a specific value from the Plant Environment Ontology (PECO), plant growth medium exposure (http://purl.obolibrary.org/obo/PECO_0007147), or other controlled vocabulary.
     title: plant growth medium
+    examples:
+      - object:
+          type: nmdc:ControlledTermValue
+          has_raw_value: hydroponic plant culture media exposure [PECO:0007067]
     keywords:
       - growth
       - plant
@@ -5231,8 +5235,10 @@ slots:
     annotations:
       Preferred_unit: degree Celsius
       storage_units: Cel
-    description: 'Temperature at which a liquid becomes semi solid and loses its flow characteristics. In crude oil a high pour point is generally associated with a high paraffin content, typically found in crude deriving from a larger proportion of plant material. (source: https://en.wikipedia.org/wiki/pour_point)'
+    description: Temperature at which a liquid becomes semi solid and loses its flow characteristics. In crude oil a high pour point is generally associated with a high paraffin content, typically found in crude deriving from a larger proportion of plant material.
     title: pour point
+    see_also:
+      - https://en.wikipedia.org/wiki/pour_point
     slot_uri: MIXS:0000127
     range: QuantityValue
     structured_pattern:
@@ -6222,7 +6228,7 @@ slots:
       interpolated: true
       partial_match: true
   season:
-    description: The season when sampling occurred. Any of the four periods into which the year is divided by the equinoxes and solstices. This field accepts terms listed under season (http://purl.obolibrary.org/obo/NCIT_C94729)
+    description: The season when sampling occurred. Any of the four periods into which the year is divided by the equinoxes and solstices.
     title: season
     examples:
       - value: autumn [NCIT:C94733]
@@ -6271,6 +6277,8 @@ slots:
       storage_units: Cel
     description: Mean seasonal temperature
     title: mean seasonal temperature
+    comments:
+      - this slot should not be populated unless season is also populated
     examples:
       - object:
           type: nmdc:QuantityValue
@@ -6327,7 +6335,7 @@ slots:
     slot_uri: MIXS:0000050
     range: string
     structured_pattern:
-      syntax: ^{text}|({termLabel} \[{termID}\])$
+      syntax: ^({text}|({termLabel} \[{termID}\]))$
       interpolated: true
       partial_match: true
   seq_quality_check:
@@ -6796,7 +6804,7 @@ slots:
     multivalued: true
     inlined_as_list: true
   store_cond:
-    description: Explain how and for how long the soil sample was stored before DNA extraction (fresh/frozen/other)
+    description: How and for how long the sample was stored before DNA extraction.
     title: storage conditions
     examples:
       - object:
@@ -6807,6 +6815,10 @@ slots:
       - storage
     slot_uri: MIXS:0000327
     range: TextValue
+    comments:
+      - 'State whether the sample was fresh, frozen or stored another way, and record factors that may affect nucleic acid recovery or library construction: temperature, humidity and microbial overgrowth.'
+    notes:
+      - The MIxS v7.0.1 description (MIXS:0000327) combines the definition, submitter guidance and example values in one string. NMDC keeps only the definition in description and moves the guidance to comments, so that description holds a definition and example values stay in examples.
   substructure_type:
     description: The substructure or under building is that largely hidden section of the building which is built off the foundations to the ground floor level
     title: substructure type
@@ -8047,21 +8059,6 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
-  estimated_size:
-    description: The estimated size of the genome prior to sequencing. Of particular importance in the sequencing of (eukaryotic) genome which could remain in draft form for a long or unspecified period
-    title: estimated size
-    keywords:
-      - size
-    slot_uri: MIXS:0000024
-    range: integer
-    minimum_value: 1
-    comments:
-      - JGI reports values in megabases (Mb); NMDC stores them in base pairs (bp).
-    examples:
-      - value: "300000"
-    maximum_value: 100000000000
-    notes:
-      - The maximum_value here (1e11 bp = 100,000 Mb) is the eukaryote ceiling from JGI esplims. The tighter microbe ceiling (5,000 Mb) and the category-conditional required rule are enforced in submission-schema via class rules on IsolateInterface, keyed on biosafety_mat_cat.
   ploidy:
     description: The ploidy level of the genome (e.g. allopolyploid, haploid, diploid, triploid, tetraploid). It has implications for the downstream study of duplicated gene and regions of the genomes (and perhaps for difficulties in assembly). For terms, please select terms listed under class ploidy (PATO:001374) of Phenotypic Quality Ontology (PATO), and for a browser of PATO (v 2018-03-27) please refer to http://purl.bioontology.org/ontology/PATO
     title: ploidy
@@ -8302,8 +8299,27 @@ slots:
     range: string
     structured_aliases:
       - literal_form: samp_collect_method
-        contexts:
-          - https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.3.0
+        predicate: EXACT_SYNONYM
+        source: https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v7.0.1
+  estimated_size:
+    description: The estimated size of the genome prior to sequencing. Of particular importance in the sequencing of (eukaryotic) genome which could remain in draft form for a long or unspecified period
+    title: estimated genome size
+    comments:
+      - JGI reports values in megabases (Mb); NMDC stores them in base pairs (bp).
+    keywords:
+      - size
+    slot_uri: MIXS:0000024
+    structured_aliases:
+      - literal_form: estimated_genome_size
+        predicate: EXACT_SYNONYM
+        source: https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v7.0.1
+    range: integer
+    minimum_value: 1
+    examples:
+      - value: "300000"
+    maximum_value: 100000000000
+    notes:
+      - The maximum_value here (1e11 bp = 100,000 Mb) is the eukaryote ceiling from JGI esplims. The tighter microbe ceiling (5,000 Mb) and the category-conditional required rule are enforced in submission-schema via class rules on IsolateInterface, keyed on biosafety_mat_cat.
   mixs_env_triad_field:
     annotations:
       tooltip: >-
@@ -8318,3 +8334,37 @@ slots:
     contributors:
       - orcid:0000-0001-9076-6066 # Mark Andrew Miller
 default_range: string
+
+# Settings below are copied from nmdc.yaml by src/scripts/sync_module_settings.py.
+# Do not edit them here; edit nmdc.yaml and rerun the script.
+# See https://github.com/microbiomedata/nmdc-schema/issues/3523
+settings:
+  DOI: doi:10\.\d{2,9}/.*
+  NCBItaxon_id: NCBITaxon:\d+
+  PMID: PMID:\d+
+  URL: https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)
+  add_recov_methods: Water Injection|Dump Flood|Gas Injection|Wag Immiscible Injection|Polymer Addition|Surfactant Addition|Not Applicable|other
+  agrochemical_name: .*
+  amount: '[-+]?[0-9]*\.?[0-9]+'
+  country: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  date_time_stamp: (\d{4})(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01])(T([01]\d|2[0-3]):([0-5]\d)(:([0-5]\d))?(\.\d+)?(Z|([+-][01]\d:[0-5]\d))?)?)?)?
+  duration: P(?:(?:\d+D|\d+M(?:\d+D)?|\d+Y(?:\d+M(?:\d+D)?)?)(?:T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S))?|T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S)|\d+W)
+  float: '[-+]?[0-9]*\.?[0-9]+'
+  integer: '[1-9][0-9]*'
+  lat: (-?((?:[0-8]?[0-9](?:\.\d{0,8})?)|90))
+  lon: -?[0-9]+(?:\.[0-9]{0,8})?$|^-?(1[0-7]{1,2})
+  name: .*
+  parameters: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  particulate_matter_name: .*
+  primer_adapter_codes: '[ACGTRYSWKMBDHVNI]'
+  region: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  room_name: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  room_number: '[1-9][0-9]*'
+  scientific_float: '[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?'
+  software: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  specific_location: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  termID: '[a-zA-Z]{2,}:[a-zA-Z0-9]\d+'
+  termLabel: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  text: .*
+  unit: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  version: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)

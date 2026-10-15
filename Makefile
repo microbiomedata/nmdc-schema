@@ -6,8 +6,7 @@ SHELL := bash
 .SUFFIXES:
 .SECONDARY:
 
-# Suppress false RequestsDependencyWarning from requests — see #2889
-RUN = PYTHONWARNINGS="ignore:::requests" poetry run
+RUN = uv run
 SCHEMA_NAME = nmdc_schema
 DOCDIR = docs
 SOURCE_SCHEMA_PATH = src/schema/nmdc.yaml
@@ -18,7 +17,7 @@ PYMODEL = $(SCHEMA_NAME)
 EXAMPLEDIR = examples
 TEMPLATEDIR = doc-templates
 
-.PHONY: all clean diagrams examples-clean install site site-clean site-copy squeaky-clean test test-python test-with-examples
+.PHONY: all clean diagrams examples-clean install set-version site site-clean site-copy squeaky-clean test test-python test-with-examples
 
 
 # note: "help" MUST be the first target in the file,
@@ -26,7 +25,7 @@ TEMPLATEDIR = doc-templates
 
 help: status
 	@echo ""
-	@echo "This project requires that dependencies are loaded into a poetry environment with 'poetry install'"
+	@echo "This project requires that dependencies are loaded into a uv environment with 'uv sync'"
 	@echo "Most typical usage: 'make squeaky-clean all test'"
 	@echo "Documentation publication is handled by a GitHub merge action"
 	@echo "  but users can generate a local documentation site with 'make testdoc'"
@@ -55,7 +54,18 @@ setup: install gen-project gendoc git-init-add
 
 # install any dependencies required for building
 install:
-	poetry install --with dev,deps
+	uv sync
+
+# Replace the 0.0.0 placeholder `version:` in src/schema/nmdc.yaml with the
+# version uv-dynamic-versioning derives from the git tags. The release, docs and
+# test-newest-deps workflows run this before generating artifacts, so the schema
+# and the package carry the same version. Do not commit the result.
+set-version:
+	version="$$(uvx --from 'uv-dynamic-versioning>=0.5.0,<1.0.0' uv-dynamic-versioning)" && \
+	case "$$version" in 0.0.0*) echo "set-version: no version from git tags, got $$version (fetch the tags first)" >&2; exit 1;; esac && \
+	sed -i.bak -E "s/^version: .*/version: $$version/" src/schema/nmdc.yaml && \
+	rm src/schema/nmdc.yaml.bak && \
+	grep -n '^version:' src/schema/nmdc.yaml
 
 
 # EXPERIMENTAL
@@ -276,7 +286,7 @@ git-add: .cruft.json
 		mkdocs.yml \
 		nmdc_schema \
 		notebooks \
-		poetry.lock \
+		uv.lock \
 		project.Makefile \
 		project/ \
 		pyproject.toml \
@@ -384,7 +394,7 @@ check-invalids-for-single-failure:
 	for file in src/data/invalid/*.yaml; do \
 		echo "$$file:"; \
 		target_class=$$(basename $$file | cut -d'-' -f1); \
-		cmd="poetry run linkml validate --schema nmdc_schema/nmdc_materialized_patterns.yaml --target-class $$target_class $$file"; \
+		cmd="uv run linkml validate --schema nmdc_schema/nmdc_materialized_patterns.yaml --target-class $$target_class $$file"; \
 		output=$$($$cmd 2>&1 || true); \
 		echo "$$output" | sort | uniq; \
 	done

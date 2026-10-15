@@ -31,7 +31,7 @@ For example:
 ```yaml
   doi_value:
     description: >-
-      A digital object identifier, which is intended to persistantly identify some resource on the web.
+      A digital object identifier, which is intended to persistently identify some resource on the web.
     required: true
     aliases:
       - DOI
@@ -270,7 +270,7 @@ The text that comes immediately after the `nmdc` prefix and colon, and before th
 Typecodes must correspond 1:1 to a class in the NMDC schema. The typecodes currently in use are available from the
 nmdc-runtime API: https://api.microbiomedata.org/nmdcschema/typecodes
 
-Please see [identifers](identifiers.md) for more information on the minting of identifiers in NMDC directly, and
+Please see [identifiers](identifiers.md) for more information on the minting of identifiers in NMDC directly, and
 for more discussion on identifier resolution and harmonization in NMDC.
 
 
