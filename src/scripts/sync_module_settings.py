@@ -10,7 +10,7 @@ the single place to edit a value.
 The block is written at the end of the module, after a marker comment, and is replaced on each
 run. Run it after changing a setting in nmdc.yaml or a pattern in a module:
 
-    poetry run python src/scripts/sync_module_settings.py src/schema/core.yaml ...
+    uv run python src/scripts/sync_module_settings.py src/schema/core.yaml ...
 
 With --check, nothing is written and the exit status is 1 if any module is out of date.
 See https://github.com/microbiomedata/nmdc-schema/issues/3523.

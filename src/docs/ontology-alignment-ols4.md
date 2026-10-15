@@ -35,7 +35,7 @@ make ols4-embeddings-search
 Iterates schema elements, queries OLS4, writes raw SSSOM-style TSV.
 
 ```bash
-poetry run python src/scripts/ols4_embeddings_search.py --help
+uv run python src/scripts/ols4_embeddings_search.py --help
 ```
 
 Key options:
@@ -60,7 +60,7 @@ appended after a colon: `"Biosample: A material sample..."`.
 Enriches raw search results with schema context and lexical diagnostics.
 
 ```bash
-poetry run python src/scripts/ols4_embeddings_postprocess.py \
+uv run python src/scripts/ols4_embeddings_postprocess.py \
   --semantic-results assets/ontology_alignment/ols4_embeddings_results.tsv
 ```
 

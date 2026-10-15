@@ -1,7 +1,7 @@
 # Ontology alignment via OLS4 embeddings + LinkML-side comparison
 #
 # Prerequisites:
-#   poetry install --with dev,deps
+#   uv sync
 #
 # For OLS4 targets: no API key needed (public endpoint)
 # For linkml-store targets: OPENAI_API_KEY and optionally BIOPORTAL_API_KEY (loaded from local/.env)
