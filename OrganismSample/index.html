@@ -742,12 +742,12 @@ slot_usage:
       description: an OrganismSample from the schema's example data; production has
         none
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:osm-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:osm-{id_shoulder}-{id_blade}'
       interpolated: true
   expected_organism:
     name: expected_organism
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}'
       interpolated: true
   source_mat_id:
     name: source_mat_id
@@ -838,12 +838,12 @@ slot_usage:
       description: an OrganismSample from the schema's example data; production has
         none
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:osm-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:osm-{id_shoulder}-{id_blade}'
       interpolated: true
   expected_organism:
     name: expected_organism
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}'
       interpolated: true
   source_mat_id:
     name: source_mat_id
@@ -911,9 +911,9 @@ attributes:
     range: Study
     required: true
     multivalued: true
-    pattern: ^(?:^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}'
       interpolated: true
   expected_organism:
     name: expected_organism
@@ -928,9 +928,9 @@ attributes:
     domain_of:
     - OrganismSample
     range: Organism
-    pattern: ^(?:^(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}'
       interpolated: true
   embargoed:
     name: embargoed
@@ -1225,9 +1225,9 @@ attributes:
     - NamedThing
     range: uriorcurie
     required: true
-    pattern: ^(?:^(nmdc):osm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):osm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:osm-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:osm-{id_shoulder}-{id_blade}'
       interpolated: true
   name:
     name: name

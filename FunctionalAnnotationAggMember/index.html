@@ -516,7 +516,7 @@ slot_usage:
     range: AnnotatingWorkflow
     required: true
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(wfmgan|wfmp|wfmtan)-{id_shoulder}-{id_blade}{id_version}$'
+      syntax: '{id_nmdc_prefix}:(wfmgan|wfmp|wfmtan)-{id_shoulder}-{id_blade}{id_version}'
       interpolated: true
   count:
     name: count
@@ -541,7 +541,7 @@ slot_usage:
     range: AnnotatingWorkflow
     required: true
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(wfmgan|wfmp|wfmtan)-{id_shoulder}-{id_blade}{id_version}$'
+      syntax: '{id_nmdc_prefix}:(wfmgan|wfmp|wfmtan)-{id_shoulder}-{id_blade}{id_version}'
       interpolated: true
   count:
     name: count
@@ -564,9 +564,9 @@ attributes:
     - DataObject
     range: AnnotatingWorkflow
     required: true
-    pattern: ^(?:^(nmdc):(wfmgan|wfmp|wfmtan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
+    pattern: ^(?:(nmdc):(wfmgan|wfmp|wfmtan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(wfmgan|wfmp|wfmtan)-{id_shoulder}-{id_blade}{id_version}$'
+      syntax: '{id_nmdc_prefix}:(wfmgan|wfmp|wfmtan)-{id_shoulder}-{id_blade}{id_version}'
       interpolated: true
   gene_function_id:
     name: gene_function_id

@@ -658,7 +658,7 @@ slot_usage:
     - value: nmdc:orgn-99-6dwrrh
       description: an Organism from the schema's example data; production has none
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}'
       interpolated: true
   classified_as:
     name: classified_as
@@ -731,7 +731,7 @@ slot_usage:
     - value: nmdc:orgn-99-6dwrrh
       description: an Organism from the schema's example data; production has none
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}'
       interpolated: true
   classified_as:
     name: classified_as
@@ -1065,9 +1065,9 @@ attributes:
     - NamedThing
     range: uriorcurie
     required: true
-    pattern: ^(?:^(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}'
       interpolated: true
   name:
     name: name

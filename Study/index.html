@@ -923,7 +923,7 @@ slot_usage:
     - value: nmdc:sty-11-076c9980
       description: a production Study
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}'
       interpolated: true
   name:
     name: name
@@ -991,7 +991,7 @@ slot_usage:
     - Value is the id of the umbrella study or consortium.
     range: Study
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}'
       interpolated: true
   protocol_link:
     name: protocol_link
@@ -1050,7 +1050,7 @@ slot_usage:
     - value: nmdc:sty-11-076c9980
       description: a production Study
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}'
       interpolated: true
   name:
     name: name
@@ -1118,7 +1118,7 @@ slot_usage:
     - Value is the id of the umbrella study or consortium.
     range: Study
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}'
       interpolated: true
   protocol_link:
     name: protocol_link
@@ -1614,9 +1614,9 @@ attributes:
     - FieldResearchSite
     range: Study
     multivalued: true
-    pattern: ^(?:^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}'
       interpolated: true
   protocol_link:
     name: protocol_link
@@ -1734,9 +1734,9 @@ attributes:
     - NamedThing
     range: uriorcurie
     required: true
-    pattern: ^(?:^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}'
       interpolated: true
   name:
     name: name

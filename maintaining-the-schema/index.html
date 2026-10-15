@@ -1084,20 +1084,26 @@ the values of slots to use a prefix that isn't declared, but no checks are autom
 <h2 id="validating-a-slot-that-mentions-another-classs-id">Validating a slot that mentions another class's id</h2>
 <p>When a slot's range is a class that is not inlined, the value in the data is the <code>id</code> of an instance of that class.
 Two different things could be checked about that value, and only one of them is enforced by the schema.</p>
-<p><strong>The shape of the id is enforced by the schema.</strong> A <code>structured_pattern</code> in the class's <code>slot_usage</code> constrains the
-value to the id pattern of the intended class. For example, <code>Biosample.slot_usage.associated_studies</code>:</p>
+<p><strong>The shape of the id is enforced by the schema.</strong> A <code>structured_pattern</code> on the slot, or in a class's <code>slot_usage</code>,
+constrains the value to the id pattern of the intended class. For example, the <code>associated_studies</code> slot in
+<code>src/schema/basic_classes.yaml</code>:</p>
 <pre><code class="language-yaml">associated_studies:
-  required: true
   range: Study
+  multivalued: true
   structured_pattern:
-    syntax: &quot;{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$&quot;
+    syntax: &quot;{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}&quot;
     interpolated: true
 </code></pre>
-<p>The pattern only takes effect after materialization, so validate against <code>nmdc_schema/nmdc_materialized_patterns.yaml</code>
-rather than the source schema. In the materialized artifact the syntax above becomes
-<code>^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$</code>, so <code>associated_studies: [xyz]</code> fails. This is why so many
-<code>slot_usage</code> blocks carry a <code>structured_pattern</code>: it is the only in-schema guard against pointing a slot at an id of
-the wrong class.</p>
+<p>With linkml-runtime 1.12 or later, <code>SchemaView.induced_slot()</code> fills in the settings and turns this into
+<code>^(?:(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$</code>, so <code>associated_studies: [xyz]</code> fails whether you
+validate against the source schema or against <code>nmdc_schema/nmdc_materialized_patterns.yaml</code>. linkml adds the <code>^(?:</code> and
+<code>)$</code> itself because <code>partial_match</code> is not set, so the <code>syntax</code> leaves out <code>^</code> and <code>$</code>
+(<a href="https://github.com/microbiomedata/nmdc-schema/issues/3539">https://github.com/microbiomedata/nmdc-schema/issues/3539</a>). With an older linkml-runtime, only the materialized
+artifact carries the pattern. This is why so many <code>slot_usage</code> blocks carry a <code>structured_pattern</code>: it is the only
+in-schema guard against pointing a slot at an id of the wrong class.</p>
+<p>linkml 1.12 deprecates the <code>--materialize-patterns</code> option. The Makefile still passes it when it builds
+<code>nmdc_schema/nmdc_materialized_patterns.yaml</code>. Without it that file holds 42 <code>pattern</code> values instead of 356, and tools
+that read the file with linkml-runtime older than 1.12, such as submission-schema's build, would not see the rest.</p>
 <p><strong>The existence of the referent is not checked by the schema.</strong> Schema validation is per-document: a value that
 matches the pattern but names a record that does not exist will pass. Nothing in LinkML or the generated JSON Schema
 can see the rest of the database.</p>

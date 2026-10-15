@@ -731,7 +731,7 @@ slot_usage:
     - value: nmdc:wfmgan-11-001c1246.1
       description: a production MetagenomeAnnotation
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}$'
+      syntax: '{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}'
       interpolated: true
   img_identifiers:
     name: img_identifiers
@@ -740,12 +740,12 @@ slot_usage:
     name: was_informed_by
     range: NucleotideSequencing
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}'
       interpolated: true
   gold_analysis_project_identifiers:
     name: gold_analysis_project_identifiers
     structured_pattern:
-      syntax: ^gold:Ga[0-9]+$
+      syntax: gold:Ga[0-9]+
       interpolated: true
 class_uri: nmdc:MetagenomeAnnotation
 
@@ -765,7 +765,7 @@ slot_usage:
     - value: nmdc:wfmgan-11-001c1246.1
       description: a production MetagenomeAnnotation
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}$'
+      syntax: '{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}'
       interpolated: true
   img_identifiers:
     name: img_identifiers
@@ -774,12 +774,12 @@ slot_usage:
     name: was_informed_by
     range: NucleotideSequencing
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}'
       interpolated: true
   gold_analysis_project_identifiers:
     name: gold_analysis_project_identifiers
     structured_pattern:
-      syntax: ^gold:Ga[0-9]+$
+      syntax: gold:Ga[0-9]+
       interpolated: true
 attributes:
   img_identifiers:
@@ -821,9 +821,9 @@ attributes:
     - MetatranscriptomeAnnotation
     range: external_identifier
     multivalued: true
-    pattern: ^(?:^gold:Ga[0-9]+$)$
+    pattern: ^(?:gold:Ga[0-9]+)$
     structured_pattern:
-      syntax: ^gold:Ga[0-9]+$
+      syntax: gold:Ga[0-9]+
       interpolated: true
   ended_at_time:
     name: ended_at_time
@@ -923,9 +923,9 @@ attributes:
     range: NucleotideSequencing
     required: true
     multivalued: true
-    pattern: ^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}'
       interpolated: true
   processing_institution_workflow_metadata:
     name: processing_institution_workflow_metadata
@@ -968,9 +968,9 @@ attributes:
     range: DataObject
     required: true
     multivalued: true
-    pattern: ^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}'
       interpolated: true
   has_output:
     name: has_output
@@ -984,9 +984,9 @@ attributes:
     - PlannedProcess
     range: DataObject
     multivalued: true
-    pattern: ^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}'
       interpolated: true
   processing_institution:
     name: processing_institution
@@ -1113,9 +1113,9 @@ attributes:
     - NamedThing
     range: uriorcurie
     required: true
-    pattern: ^(?:^(nmdc):wfmgan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
+    pattern: ^(?:(nmdc):wfmgan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}$'
+      syntax: '{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}'
       interpolated: true
   name:
     name: name

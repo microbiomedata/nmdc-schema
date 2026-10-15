@@ -619,21 +619,21 @@ slot_usage:
     - value: nmdc:cultp-11-inc00001
       description: a Culturing from the schema's example data; production has none
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:cultp-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:cultp-{id_shoulder}-{id_blade}'
       interpolated: true
   has_input:
     name: has_input
     range: OrganismSample
     required: true
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}'
       interpolated: true
   has_output:
     name: has_output
     range: OrganismSample
     required: true
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}'
       interpolated: true
 class_uri: nmdc:Culturing
 
@@ -656,21 +656,21 @@ slot_usage:
     - value: nmdc:cultp-11-inc00001
       description: a Culturing from the schema's example data; production has none
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:cultp-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:cultp-{id_shoulder}-{id_blade}'
       interpolated: true
   has_input:
     name: has_input
     range: OrganismSample
     required: true
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}'
       interpolated: true
   has_output:
     name: has_output
     range: OrganismSample
     required: true
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}'
       interpolated: true
 attributes:
   instrument_used:
@@ -684,9 +684,9 @@ attributes:
     - MaterialProcessing
     range: Instrument
     multivalued: true
-    pattern: ^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}'
       interpolated: true
   has_input:
     name: has_input
@@ -701,9 +701,9 @@ attributes:
     range: OrganismSample
     required: true
     multivalued: true
-    pattern: ^(?:^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}'
       interpolated: true
   has_output:
     name: has_output
@@ -718,9 +718,9 @@ attributes:
     range: OrganismSample
     required: true
     multivalued: true
-    pattern: ^(?:^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}'
       interpolated: true
   processing_institution:
     name: processing_institution
@@ -846,9 +846,9 @@ attributes:
     - NamedThing
     range: uriorcurie
     required: true
-    pattern: ^(?:^(nmdc):cultp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):cultp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:cultp-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:cultp-{id_shoulder}-{id_blade}'
       interpolated: true
   name:
     name: name

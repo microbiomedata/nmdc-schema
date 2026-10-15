@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.25.0rc2.post27.dev0+e4c7ee387
+version: 11.25.0rc2.post32.dev0+ec7686ce0
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -6731,9 +6731,9 @@ slots:
       index
     from_schema: https://w3id.org/nmdc/nmdc
     range: CalibrationInformation
-    pattern: ^(?:^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}'
       interpolated: true
   uses_calibration:
     name: uses_calibration
@@ -6744,18 +6744,18 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     range: CalibrationInformation
     multivalued: true
-    pattern: ^(?:^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}'
       interpolated: true
   calibration_object:
     name: calibration_object
     description: the file containing the calibration data object
     from_schema: https://w3id.org/nmdc/nmdc
     range: DataObject
-    pattern: ^(?:^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}'
       interpolated: true
   internal_calibration:
     name: internal_calibration
@@ -8819,9 +8819,9 @@ slots:
     range: Study
     required: true
     multivalued: true
-    pattern: ^(?:^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}'
       interpolated: true
   part_of:
     name: part_of
@@ -9013,9 +9013,9 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     range: Instrument
     multivalued: true
-    pattern: ^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}'
       interpolated: true
   instrument_instance_specifier:
     name: instrument_instance_specifier
@@ -9034,9 +9034,9 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     range: Manifest
     multivalued: true
-    pattern: ^(?:^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}'
       interpolated: true
   manifest_category:
     name: manifest_category
@@ -20763,9 +20763,9 @@ classes:
         examples:
         - value: nmdc:dgns-11-0002a657
           description: a production NucleotideSequencing
-        pattern: ^(?:^(nmdc):(dgns|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):(dgns|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}'
           interpolated: true
       analyte_category:
         name: analyte_category
@@ -20790,22 +20790,22 @@ classes:
         examples:
         - value: nmdc:dgms-11-0056ry09
           description: a production MassSpectrometry
-        pattern: ^(?:^(nmdc):(dgms|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):(dgms|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(dgms|omprc)-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:(dgms|omprc)-{id_shoulder}-{id_blade}'
           interpolated: true
       has_chromatography_configuration:
         name: has_chromatography_configuration
-        pattern: ^(?:^(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}'
           interpolated: true
       has_mass_spectrometry_configuration:
         name: has_mass_spectrometry_configuration
         required: true
-        pattern: ^(?:^(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}'
           interpolated: true
       analyte_category:
         name: analyte_category
@@ -20895,9 +20895,9 @@ classes:
         examples:
         - value: nmdc:mscon-11-0ary3w56
           description: a production MassSpectrometryConfiguration
-        pattern: ^(?:^(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}'
           interpolated: true
       mass_spectrometry_acquisition_strategy:
         name: mass_spectrometry_acquisition_strategy
@@ -20944,9 +20944,9 @@ classes:
         examples:
         - value: nmdc:chrcon-11-0stw8m53
           description: a production ChromatographyConfiguration
-        pattern: ^(?:^(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}'
           interpolated: true
       chromatographic_category:
         name: chromatographic_category
@@ -20973,9 +20973,9 @@ classes:
         examples:
         - value: nmdc:manif-11-06t11y76
           description: a production Manifest
-        pattern: ^(?:^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}'
           interpolated: true
     class_uri: nmdc:Manifest
   CalibrationInformation:
@@ -21000,9 +21000,9 @@ classes:
         examples:
         - value: nmdc:calib-11-015nyk25
           description: a production CalibrationInformation
-        pattern: ^(?:^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}'
           interpolated: true
     class_uri: nmdc:CalibrationInformation
     rules:
@@ -21046,9 +21046,9 @@ classes:
         name: was_generated_by
         range: AnnotatingWorkflow
         required: true
-        pattern: ^(?:^(nmdc):(wfmgan|wfmp|wfmtan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
+        pattern: ^(?:(nmdc):(wfmgan|wfmp|wfmtan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(wfmgan|wfmp|wfmtan)-{id_shoulder}-{id_blade}{id_version}$'
+          syntax: '{id_nmdc_prefix}:(wfmgan|wfmp|wfmtan)-{id_shoulder}-{id_blade}{id_version}'
           interpolated: true
       count:
         name: count
@@ -21105,9 +21105,9 @@ classes:
       has_output:
         name: has_output
         required: true
-        pattern: ^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}'
           interpolated: true
         minimum_cardinality: 1
         maximum_cardinality: 1
@@ -21116,9 +21116,9 @@ classes:
         examples:
         - value: nmdc:poolp-11-00azgg46
           description: a production Pooling
-        pattern: ^(?:^(nmdc):poolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):poolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:poolp-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:poolp-{id_shoulder}-{id_blade}'
           interpolated: true
     class_uri: nmdc:Pooling
   Isolation:
@@ -21137,24 +21137,24 @@ classes:
         - value: nmdc:isnp-99-mukr6y
           description: an Isolation from the schema's example data; production has
             none
-        pattern: ^(?:^(nmdc):isnp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):isnp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:isnp-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:isnp-{id_shoulder}-{id_blade}'
           interpolated: true
       has_input:
         name: has_input
         required: true
-        pattern: ^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}'
           interpolated: true
       has_output:
         name: has_output
         range: OrganismSample
         required: true
-        pattern: ^(?:^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}'
           interpolated: true
     class_uri: nmdc:Isolation
   Culturing:
@@ -21173,25 +21173,25 @@ classes:
         - value: nmdc:cultp-11-inc00001
           description: a Culturing from the schema's example data; production has
             none
-        pattern: ^(?:^(nmdc):cultp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):cultp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:cultp-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:cultp-{id_shoulder}-{id_blade}'
           interpolated: true
       has_input:
         name: has_input
         range: OrganismSample
         required: true
-        pattern: ^(?:^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}'
           interpolated: true
       has_output:
         name: has_output
         range: OrganismSample
         required: true
-        pattern: ^(?:^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}'
           interpolated: true
     class_uri: nmdc:Culturing
   Extraction:
@@ -21212,9 +21212,9 @@ classes:
       has_input:
         name: has_input
         required: true
-        pattern: ^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}'
           interpolated: true
       has_output:
         name: has_output
@@ -21224,9 +21224,9 @@ classes:
         examples:
         - value: nmdc:extrp-11-0051av38
           description: a production Extraction
-        pattern: ^(?:^(nmdc):extrp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):extrp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:extrp-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:extrp-{id_shoulder}-{id_blade}'
           interpolated: true
       volume:
         name: volume
@@ -21270,9 +21270,9 @@ classes:
         examples:
         - value: nmdc:libprp-11-002djk98
           description: a production LibraryPreparation
-        pattern: ^(?:^(nmdc):libprp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):libprp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}'
           interpolated: true
       pcr_cond:
         name: pcr_cond
@@ -21298,16 +21298,16 @@ classes:
         - value: nmdc:isolp-99-inchip4
           description: an IsotopeLabelingProcess from the schema's example data; production
             has none
-        pattern: ^(?:^(nmdc):isolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):isolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:isolp-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:isolp-{id_shoulder}-{id_blade}'
           interpolated: true
       has_input:
         name: has_input
         required: true
-        pattern: ^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}'
           interpolated: true
       has_output:
         name: has_output
@@ -21398,16 +21398,16 @@ classes:
         - value: nmdc:fracp-99-labeled
           description: a DensityGradientFractionationProcess from the schema's example
             data; production has none
-        pattern: ^(?:^(nmdc):fracp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):fracp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:fracp-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:fracp-{id_shoulder}-{id_blade}'
           interpolated: true
       has_input:
         name: has_input
         required: true
-        pattern: ^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}'
           interpolated: true
       has_output:
         name: has_output
@@ -21427,17 +21427,17 @@ classes:
         name: has_input
         range: Site
         required: true
-        pattern: ^(?:^(nmdc):(frsite|site)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):(frsite|site)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(frsite|site)-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:(frsite|site)-{id_shoulder}-{id_blade}'
           interpolated: true
       has_output:
         name: has_output
         range: Biosample
         required: true
-        pattern: ^(?:^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}'
           interpolated: true
       id:
         name: id
@@ -21445,9 +21445,9 @@ classes:
         - value: nmdc:clsite-99-Cq00d1
           description: a CollectingBiosamplesFromSite from the schema's example data;
             production has none
-        pattern: ^(?:^(nmdc):clsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):clsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}'
           interpolated: true
     class_uri: nmdc:CollectingBiosamplesFromSite
   SubSamplingProcess:
@@ -21485,9 +21485,9 @@ classes:
         examples:
         - value: nmdc:subspr-11-004wpx78
           description: a production SubSamplingProcess
-        pattern: ^(?:^(nmdc):subspr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):subspr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:subspr-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:subspr-{id_shoulder}-{id_blade}'
           interpolated: true
       volume:
         name: volume
@@ -21526,16 +21526,16 @@ classes:
         - value: nmdc:mixpro-11-A74
           description: a MixingProcess from the schema's example data; production
             has none
-        pattern: ^(?:^(nmdc):mixpro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):mixpro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:mixpro-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:mixpro-{id_shoulder}-{id_blade}'
           interpolated: true
       has_output:
         name: has_output
         description: The mixed sample.
-        pattern: ^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}'
           interpolated: true
     class_uri: nmdc:MixingProcess
   FiltrationProcess:
@@ -21567,18 +21567,18 @@ classes:
         examples:
         - value: nmdc:filtpr-11-00hdy977
           description: a production FiltrationProcess
-        pattern: ^(?:^(nmdc):filtpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):filtpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:filtpr-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:filtpr-{id_shoulder}-{id_blade}'
           interpolated: true
       volume:
         name: volume
         description: The volume of sample filtered.
       has_output:
         name: has_output
-        pattern: ^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}'
           interpolated: true
     class_uri: nmdc:FiltrationProcess
   StorageProcess:
@@ -21604,23 +21604,23 @@ classes:
         - value: nmdc:storpr-99-zUCd5N
           description: a StorageProcess from the schema's example data; production
             has none
-        pattern: ^(?:^(nmdc):storpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):storpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:storpr-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:storpr-{id_shoulder}-{id_blade}'
           interpolated: true
       has_input:
         name: has_input
         range: Sample
-        pattern: ^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}'
           interpolated: true
       has_output:
         name: has_output
         range: ProcessedSample
-        pattern: ^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}'
           interpolated: true
     class_uri: nmdc:StorageProcess
   ChromatographicSeparationProcess:
@@ -21643,15 +21643,15 @@ classes:
         examples:
         - value: nmdc:cspro-11-00gba548
           description: a production ChromatographicSeparationProcess
-        pattern: ^(?:^(nmdc):cspro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):cspro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:cspro-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:cspro-{id_shoulder}-{id_blade}'
           interpolated: true
       has_output:
         name: has_output
-        pattern: ^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}'
           interpolated: true
     class_uri: nmdc:ChromatographicSeparationProcess
   DissolvingProcess:
@@ -21678,9 +21678,9 @@ classes:
         examples:
         - value: nmdc:dispro-11-00wpzz21
           description: a production DissolvingProcess
-        pattern: ^(?:^(nmdc):dispro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):dispro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:dispro-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:dispro-{id_shoulder}-{id_blade}'
           interpolated: true
     class_uri: nmdc:DissolvingProcess
   GenomeFeature:
@@ -21790,9 +21790,9 @@ classes:
         - To be consistent with the rest of the NMDC schema we use the PROV annotation
           model, rather than GPAD
         range: MetagenomeAnnotation
-        pattern: ^(?:^(nmdc):(wfmgan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
+        pattern: ^(?:(nmdc):(wfmgan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(wfmgan)-{id_shoulder}-{id_blade}{id_version}$'
+          syntax: '{id_nmdc_prefix}:(wfmgan)-{id_shoulder}-{id_blade}{id_version}'
           interpolated: true
     class_uri: nmdc:FunctionalAnnotation
   AttributeValue:
@@ -22122,9 +22122,9 @@ classes:
         examples:
         - value: nmdc:inst-11-075j3n79
           description: a production Instrument
-        pattern: ^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}'
           interpolated: true
     class_uri: nmdc:Instrument
     unique_keys:
@@ -22163,9 +22163,9 @@ classes:
         - value: nmdc:orgn-99-6dwrrh
           description: an Organism from the schema's example data; production has
             none
-        pattern: ^(?:^(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}'
           interpolated: true
       classified_as:
         name: classified_as
@@ -22381,9 +22381,9 @@ classes:
         examples:
         - value: nmdc:sty-11-076c9980
           description: a production Study
-        pattern: ^(?:^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}'
           interpolated: true
       name:
         name: name
@@ -22452,9 +22452,9 @@ classes:
         comments:
         - Value is the id of the umbrella study or consortium.
         range: Study
-        pattern: ^(?:^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}'
           interpolated: true
       protocol_link:
         name: protocol_link
@@ -22519,15 +22519,15 @@ classes:
         examples:
         - value: nmdc:dobj-11-00017y47
           description: a production DataObject
-        pattern: ^(?:^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}'
           interpolated: true
       was_generated_by:
         name: was_generated_by
-        pattern: ^(?:^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$|^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})|(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}|{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}'
           interpolated: true
       data_object_type:
         name: data_object_type
@@ -22591,22 +22591,22 @@ classes:
         name: has_input
         range: Sample
         required: true
-        pattern: ^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}'
           interpolated: true
       associated_studies:
         name: associated_studies
-        pattern: ^(?:^(nmdc):(sty)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):(sty)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(sty)-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:(sty)-{id_shoulder}-{id_blade}'
           interpolated: true
       has_output:
         name: has_output
         range: DataObject
-        pattern: ^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}'
           interpolated: true
       provenance_metadata:
         name: provenance_metadata
@@ -22651,16 +22651,16 @@ classes:
         name: has_input
         range: DataObject
         required: true
-        pattern: ^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}'
           interpolated: true
       has_output:
         name: has_output
         range: DataObject
-        pattern: ^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}'
           interpolated: true
       processing_institution:
         name: processing_institution
@@ -22767,9 +22767,9 @@ classes:
         examples:
         - value: nmdc:chcpr-11-004nv334
           description: a production ChemicalConversionProcess
-        pattern: ^(?:^(nmdc):chcpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):chcpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:chcpr-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:chcpr-{id_shoulder}-{id_blade}'
           interpolated: true
     class_uri: nmdc:ChemicalConversionProcess
   AnnotatingWorkflow:
@@ -22795,9 +22795,9 @@ classes:
         examples:
         - value: nmdc:wfmgan-11-001c1246.1
           description: a production MetagenomeAnnotation
-        pattern: ^(?:^(nmdc):wfmgan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
+        pattern: ^(?:(nmdc):wfmgan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}$'
+          syntax: '{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}'
           interpolated: true
       img_identifiers:
         name: img_identifiers
@@ -22805,15 +22805,15 @@ classes:
       was_informed_by:
         name: was_informed_by
         range: NucleotideSequencing
-        pattern: ^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}'
           interpolated: true
       gold_analysis_project_identifiers:
         name: gold_analysis_project_identifiers
-        pattern: ^(?:^gold:Ga[0-9]+$)$
+        pattern: ^(?:gold:Ga[0-9]+)$
         structured_pattern:
-          syntax: ^gold:Ga[0-9]+$
+          syntax: gold:Ga[0-9]+
           interpolated: true
     class_uri: nmdc:MetagenomeAnnotation
   FieldResearchSite:
@@ -22847,16 +22847,16 @@ classes:
         examples:
         - value: nmdc:frsite-11-0mqbhb55
           description: a production FieldResearchSite
-        pattern: ^(?:^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}'
           interpolated: true
       part_of:
         name: part_of
         range: FieldResearchSite
-        pattern: ^(?:^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}'
           interpolated: true
     class_uri: nmdc:FieldResearchSite
   Sample:
@@ -23448,9 +23448,9 @@ classes:
           was added to and last modified in the NMDC database.
       collected_from:
         name: collected_from
-        pattern: ^(?:^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}'
           interpolated: true
       elev:
         name: elev
@@ -23470,9 +23470,9 @@ classes:
         examples:
         - value: nmdc:bsm-11-001pmq31
           description: a production Biosample
-        pattern: ^(?:^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}'
           interpolated: true
       gold_biosample_identifiers:
         name: gold_biosample_identifiers
@@ -23841,16 +23841,16 @@ classes:
       has_input:
         name: has_input
         range: Sample
-        pattern: ^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}'
           interpolated: true
       has_output:
         name: has_output
         range: ProcessedSample
-        pattern: ^(?:^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}'
           interpolated: true
     class_uri: nmdc:MaterialProcessing
   PortionOfSubstance:
@@ -23891,9 +23891,9 @@ classes:
         examples:
         - value: nmdc:procsm-11-0013mk17
           description: a production ProcessedSample
-        pattern: ^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}'
           interpolated: true
     class_uri: nmdc:ProcessedSample
   OrganismSample:
@@ -23943,15 +23943,15 @@ classes:
         - value: nmdc:osm-11-cult0001
           description: an OrganismSample from the schema's example data; production
             has none
-        pattern: ^(?:^(nmdc):osm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):osm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:osm-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:osm-{id_shoulder}-{id_blade}'
           interpolated: true
       expected_organism:
         name: expected_organism
-        pattern: ^(?:^(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}'
           interpolated: true
       source_mat_id:
         name: source_mat_id
@@ -24119,23 +24119,23 @@ classes:
         examples:
         - value: nmdc:wfmgas-11-0080kf19.1
           description: a production MetagenomeAssembly
-        pattern: ^(?:^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
+        pattern: ^(?:(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$'
+          syntax: '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}'
           interpolated: true
       was_informed_by:
         name: was_informed_by
         range: NucleotideSequencing
-        pattern: ^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}'
           interpolated: true
       superseded_by:
         name: superseded_by
         range: MetagenomeAssembly
-        pattern: ^(?:^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
+        pattern: ^(?:(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$'
+          syntax: '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}'
           interpolated: true
     class_uri: nmdc:MetagenomeAssembly
   MetatranscriptomeAssembly:
@@ -24177,23 +24177,23 @@ classes:
         examples:
         - value: nmdc:wfmtas-11-0mkm0r71.1
           description: a production MetatranscriptomeAssembly
-        pattern: ^(?:^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
+        pattern: ^(?:(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$'
+          syntax: '{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}'
           interpolated: true
       was_informed_by:
         name: was_informed_by
         range: NucleotideSequencing
-        pattern: ^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}'
           interpolated: true
       superseded_by:
         name: superseded_by
         range: MetatranscriptomeAssembly
-        pattern: ^(?:^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
+        pattern: ^(?:(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$'
+          syntax: '{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}'
           interpolated: true
     class_uri: nmdc:MetatranscriptomeAssembly
   MetatranscriptomeAnnotation:
@@ -24209,9 +24209,9 @@ classes:
         examples:
         - value: nmdc:wfmtan-11-0k6a3d73.1
           description: a production MetatranscriptomeAnnotation
-        pattern: ^(?:^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
+        pattern: ^(?:(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$'
+          syntax: '{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}'
           interpolated: true
       img_identifiers:
         name: img_identifiers
@@ -24219,22 +24219,22 @@ classes:
       was_informed_by:
         name: was_informed_by
         range: NucleotideSequencing
-        pattern: ^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}'
           interpolated: true
       gold_analysis_project_identifiers:
         name: gold_analysis_project_identifiers
-        pattern: ^(?:^gold:Ga[0-9]+$)$
+        pattern: ^(?:gold:Ga[0-9]+)$
         structured_pattern:
-          syntax: ^gold:Ga[0-9]+$
+          syntax: gold:Ga[0-9]+
           interpolated: true
       superseded_by:
         name: superseded_by
         range: MetatranscriptomeAnnotation
-        pattern: ^(?:^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
+        pattern: ^(?:(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$'
+          syntax: '{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}'
           interpolated: true
     class_uri: nmdc:MetatranscriptomeAnnotation
   MetatranscriptomeExpressionAnalysis:
@@ -24251,9 +24251,9 @@ classes:
         examples:
         - value: nmdc:wfmtex-11-0g2kt843.1
           description: a production MetatranscriptomeExpressionAnalysis
-        pattern: ^(?:^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
+        pattern: ^(?:(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}$'
+          syntax: '{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}'
           interpolated: true
       img_identifiers:
         name: img_identifiers
@@ -24261,16 +24261,16 @@ classes:
       was_informed_by:
         name: was_informed_by
         range: NucleotideSequencing
-        pattern: ^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}'
           interpolated: true
       superseded_by:
         name: superseded_by
         range: MetatranscriptomeExpressionAnalysis
-        pattern: ^(?:^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
+        pattern: ^(?:(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}$'
+          syntax: '{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}'
           interpolated: true
     class_uri: nmdc:MetatranscriptomeExpressionAnalysis
   MagsAnalysis:
@@ -24294,9 +24294,9 @@ classes:
         examples:
         - value: nmdc:wfmag-11-002wf438.1
           description: a production MagsAnalysis
-        pattern: ^(?:^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
+        pattern: ^(?:(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}$'
+          syntax: '{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}'
           interpolated: true
       img_identifiers:
         name: img_identifiers
@@ -24304,16 +24304,16 @@ classes:
       was_informed_by:
         name: was_informed_by
         range: NucleotideSequencing
-        pattern: ^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}'
           interpolated: true
       superseded_by:
         name: superseded_by
         range: MagsAnalysis
-        pattern: ^(?:^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
+        pattern: ^(?:(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}$'
+          syntax: '{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}'
           interpolated: true
     class_uri: nmdc:MagsAnalysis
   ReadQcAnalysis:
@@ -24338,23 +24338,23 @@ classes:
         examples:
         - value: nmdc:wfrqc-11-00qx5818.1
           description: a production ReadQcAnalysis
-        pattern: ^(?:^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
+        pattern: ^(?:(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$'
+          syntax: '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}'
           interpolated: true
       was_informed_by:
         name: was_informed_by
         range: NucleotideSequencing
-        pattern: ^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}'
           interpolated: true
       superseded_by:
         name: superseded_by
         range: ReadQcAnalysis
-        pattern: ^(?:^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
+        pattern: ^(?:(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$'
+          syntax: '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}'
           interpolated: true
     class_uri: nmdc:ReadQcAnalysis
   ReadBasedTaxonomyAnalysis:
@@ -24370,23 +24370,23 @@ classes:
         examples:
         - value: nmdc:wfrbt-11-0083q358.1
           description: a production ReadBasedTaxonomyAnalysis
-        pattern: ^(?:^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
+        pattern: ^(?:(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}$'
+          syntax: '{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}'
           interpolated: true
       was_informed_by:
         name: was_informed_by
         range: NucleotideSequencing
-        pattern: ^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}'
           interpolated: true
       superseded_by:
         name: superseded_by
         range: ReadBasedTaxonomyAnalysis
-        pattern: ^(?:^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
+        pattern: ^(?:(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}$'
+          syntax: '{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}'
           interpolated: true
     class_uri: nmdc:ReadBasedTaxonomyAnalysis
   MetabolomicsAnalysis:
@@ -24406,23 +24406,23 @@ classes:
         examples:
         - value: nmdc:wfmb-11-00cysq13.1
           description: a production MetabolomicsAnalysis
-        pattern: ^(?:^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
+        pattern: ^(?:(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$'
+          syntax: '{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}'
           interpolated: true
       was_informed_by:
         name: was_informed_by
         range: MassSpectrometry
-        pattern: ^(?:^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}'
           interpolated: true
       superseded_by:
         name: superseded_by
         range: MetabolomicsAnalysis
-        pattern: ^(?:^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
+        pattern: ^(?:(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$'
+          syntax: '{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}'
           interpolated: true
       peak_count:
         name: peak_count
@@ -24452,23 +24452,23 @@ classes:
         examples:
         - value: nmdc:wfmp-11-08mtnm81.1
           description: a production MetaproteomicsAnalysis
-        pattern: ^(?:^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
+        pattern: ^(?:(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}$'
+          syntax: '{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}'
           interpolated: true
       was_informed_by:
         name: was_informed_by
         range: MassSpectrometry
-        pattern: ^(?:^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}'
           interpolated: true
       superseded_by:
         name: superseded_by
         range: MetaproteomicsAnalysis
-        pattern: ^(?:^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
+        pattern: ^(?:(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}$'
+          syntax: '{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}'
           interpolated: true
     class_uri: nmdc:MetaproteomicsAnalysis
   NomAnalysis:
@@ -24485,23 +24485,23 @@ classes:
         examples:
         - value: nmdc:wfnom-11-00db2d48.2
           description: a production NomAnalysis
-        pattern: ^(?:^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
+        pattern: ^(?:(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$'
+          syntax: '{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}'
           interpolated: true
       was_informed_by:
         name: was_informed_by
         range: MassSpectrometry
-        pattern: ^(?:^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+        pattern: ^(?:(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}'
           interpolated: true
       superseded_by:
         name: superseded_by
         range: NomAnalysis
-        pattern: ^(?:^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
+        pattern: ^(?:(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$'
+          syntax: '{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}'
           interpolated: true
       peak_assignment_count:
         name: peak_assignment_count
@@ -24513,7 +24513,7 @@ source_file: src/schema/nmdc.yaml
 settings:
   id_nmdc_prefix:
     setting_key: id_nmdc_prefix
-    setting_value: ^(nmdc)
+    setting_value: (nmdc)
   id_shoulder:
     setting_key: id_shoulder
     setting_value: ([0-9][a-z]{0,6}[0-9])
@@ -24525,7 +24525,7 @@ settings:
     setting_value: (\.[1-9]{1}[0-9]{0,})
   id_locus:
     setting_key: id_locus
-    setting_value: (_[A-Za-z0-9_\.-]+)?$
+    setting_value: (_[A-Za-z0-9_\.-]+)?
   add_recov_methods:
     setting_key: add_recov_methods
     setting_value: Water Injection|Dump Flood|Gas Injection|Wag Immiscible Injection|Polymer

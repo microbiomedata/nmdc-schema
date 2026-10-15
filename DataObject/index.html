@@ -847,12 +847,12 @@ slot_usage:
     - value: nmdc:dobj-11-00017y47
       description: a production DataObject
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}'
       interpolated: true
   was_generated_by:
     name: was_generated_by
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}|{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}'
       interpolated: true
   data_object_type:
     name: data_object_type
@@ -899,12 +899,12 @@ slot_usage:
     - value: nmdc:dobj-11-00017y47
       description: a production DataObject
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}'
       interpolated: true
   was_generated_by:
     name: was_generated_by
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}|{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}'
       interpolated: true
   data_object_type:
     name: data_object_type
@@ -1046,9 +1046,9 @@ attributes:
     - FunctionalAnnotation
     - DataObject
     range: DataEmitterProcess
-    pattern: ^(?:^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$|^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})|(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}|{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}'
       interpolated: true
   in_manifest:
     name: in_manifest
@@ -1065,9 +1065,9 @@ attributes:
     - DataObject
     range: Manifest
     multivalued: true
-    pattern: ^(?:^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}'
       interpolated: true
   superseded_by:
     name: superseded_by
@@ -1123,9 +1123,9 @@ attributes:
     - NamedThing
     range: uriorcurie
     required: true
-    pattern: ^(?:^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}'
       interpolated: true
   name:
     name: name

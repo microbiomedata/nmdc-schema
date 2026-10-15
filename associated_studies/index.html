@@ -786,7 +786,7 @@
 <p>Required: True</p>
 </li>
 <li>
-<p>Regex pattern: <code>^(?:^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$</code></p>
+<p>Regex pattern: <code>^(?:(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$</code></p>
 </li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
@@ -824,9 +824,9 @@ domain_of:
 range: Study
 required: true
 multivalued: true
-pattern: ^(?:^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+pattern: ^(?:(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
 structured_pattern:
-  syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
+  syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}'
   interpolated: true
 
 </code></pre>

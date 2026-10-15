@@ -636,7 +636,7 @@ slot_usage:
     - value: nmdc:mscon-11-0ary3w56
       description: a production MassSpectrometryConfiguration
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}'
       interpolated: true
   mass_spectrometry_acquisition_strategy:
     name: mass_spectrometry_acquisition_strategy
@@ -683,7 +683,7 @@ slot_usage:
     - value: nmdc:mscon-11-0ary3w56
       description: a production MassSpectrometryConfiguration
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}'
       interpolated: true
   mass_spectrometry_acquisition_strategy:
     name: mass_spectrometry_acquisition_strategy
@@ -831,9 +831,9 @@ attributes:
     - NamedThing
     range: uriorcurie
     required: true
-    pattern: ^(?:^(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}'
       interpolated: true
   name:
     name: name

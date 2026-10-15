@@ -626,24 +626,24 @@ slot_usage:
     name: id
     required: true
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:pex-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:pex-{id_shoulder}-{id_blade}'
       interpolated: true
   has_input:
     name: has_input
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}'
       interpolated: true
   has_output:
     name: has_output
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}'
       interpolated: true
   has_process_parts:
     name: has_process_parts
     description: The MaterialProcessing steps that are discrete parts of the ProtocolExecution.
     required: true
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(extrp|filtpr|dispro|poolp|libprp|subspr|mixpro|chcpr|cspro)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(extrp|filtpr|dispro|poolp|libprp|subspr|mixpro|chcpr|cspro)-{id_shoulder}-{id_blade}'
       interpolated: true
 class_uri: nmdc:ProtocolExecution
 
@@ -662,24 +662,24 @@ slot_usage:
     name: id
     required: true
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:pex-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:pex-{id_shoulder}-{id_blade}'
       interpolated: true
   has_input:
     name: has_input
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}'
       interpolated: true
   has_output:
     name: has_output
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}'
       interpolated: true
   has_process_parts:
     name: has_process_parts
     description: The MaterialProcessing steps that are discrete parts of the ProtocolExecution.
     required: true
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(extrp|filtpr|dispro|poolp|libprp|subspr|mixpro|chcpr|cspro)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(extrp|filtpr|dispro|poolp|libprp|subspr|mixpro|chcpr|cspro)-{id_shoulder}-{id_blade}'
       interpolated: true
 attributes:
   has_process_parts:
@@ -695,9 +695,9 @@ attributes:
     range: PlannedProcess
     required: true
     multivalued: true
-    pattern: ^(?:^(nmdc):(extrp|filtpr|dispro|poolp|libprp|subspr|mixpro|chcpr|cspro)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):(extrp|filtpr|dispro|poolp|libprp|subspr|mixpro|chcpr|cspro)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(extrp|filtpr|dispro|poolp|libprp|subspr|mixpro|chcpr|cspro)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(extrp|filtpr|dispro|poolp|libprp|subspr|mixpro|chcpr|cspro)-{id_shoulder}-{id_blade}'
       interpolated: true
   protocol_execution_category:
     name: protocol_execution_category
@@ -721,9 +721,9 @@ attributes:
     - PlannedProcess
     range: NamedThing
     multivalued: true
-    pattern: ^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}'
       interpolated: true
   has_output:
     name: has_output
@@ -737,9 +737,9 @@ attributes:
     - PlannedProcess
     range: NamedThing
     multivalued: true
-    pattern: ^(?:^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}'
       interpolated: true
   processing_institution:
     name: processing_institution
@@ -862,9 +862,9 @@ attributes:
     - NamedThing
     range: uriorcurie
     required: true
-    pattern: ^(?:^(nmdc):pex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):pex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:pex-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:pex-{id_shoulder}-{id_blade}'
       interpolated: true
   name:
     name: name

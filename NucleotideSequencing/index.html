@@ -798,7 +798,7 @@ slot_usage:
     - value: nmdc:dgns-11-0002a657
       description: a production NucleotideSequencing
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}'
       interpolated: true
   analyte_category:
     name: analyte_category
@@ -822,7 +822,7 @@ slot_usage:
     - value: nmdc:dgns-11-0002a657
       description: a production NucleotideSequencing
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}'
       interpolated: true
   analyte_category:
     name: analyte_category
@@ -925,9 +925,9 @@ attributes:
     range: Study
     required: true
     multivalued: true
-    pattern: ^(?:^(nmdc):(sty)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):(sty)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(sty)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(sty)-{id_shoulder}-{id_blade}'
       interpolated: true
   instrument_used:
     name: instrument_used
@@ -940,9 +940,9 @@ attributes:
     - MaterialProcessing
     range: Instrument
     multivalued: true
-    pattern: ^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}'
       interpolated: true
   has_credit_associations:
     name: has_credit_associations
@@ -1015,9 +1015,9 @@ attributes:
     range: Sample
     required: true
     multivalued: true
-    pattern: ^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}'
       interpolated: true
   has_output:
     name: has_output
@@ -1031,9 +1031,9 @@ attributes:
     - PlannedProcess
     range: DataObject
     multivalued: true
-    pattern: ^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}'
       interpolated: true
   processing_institution:
     name: processing_institution
@@ -1159,9 +1159,9 @@ attributes:
     - NamedThing
     range: uriorcurie
     required: true
-    pattern: ^(?:^(nmdc):(dgns|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):(dgns|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}'
       interpolated: true
   name:
     name: name

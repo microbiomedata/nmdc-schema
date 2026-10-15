@@ -612,7 +612,7 @@ slot_usage:
     - value: nmdc:chrcon-11-0stw8m53
       description: a production ChromatographyConfiguration
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}'
       interpolated: true
   chromatographic_category:
     name: chromatographic_category
@@ -647,7 +647,7 @@ slot_usage:
     - value: nmdc:chrcon-11-0stw8m53
       description: a production ChromatographyConfiguration
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}'
       interpolated: true
   chromatographic_category:
     name: chromatographic_category
@@ -768,9 +768,9 @@ attributes:
     - NamedThing
     range: uriorcurie
     required: true
-    pattern: ^(?:^(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}'
       interpolated: true
   name:
     name: name

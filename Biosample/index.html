@@ -4743,7 +4743,7 @@ slot_usage:
   collected_from:
     name: collected_from
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}'
       interpolated: true
   elev:
     name: elev
@@ -4761,7 +4761,7 @@ slot_usage:
     - value: nmdc:bsm-11-001pmq31
       description: a production Biosample
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}'
       interpolated: true
   gold_biosample_identifiers:
     name: gold_biosample_identifiers
@@ -5136,7 +5136,7 @@ slot_usage:
   collected_from:
     name: collected_from
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}'
       interpolated: true
   elev:
     name: elev
@@ -5154,7 +5154,7 @@ slot_usage:
     - value: nmdc:bsm-11-001pmq31
       description: a production Biosample
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}'
       interpolated: true
   gold_biosample_identifiers:
     name: gold_biosample_identifiers
@@ -5498,9 +5498,9 @@ attributes:
     range: Study
     required: true
     multivalued: true
-    pattern: ^(?:^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}'
       interpolated: true
   badges:
     name: badges
@@ -5545,9 +5545,9 @@ attributes:
     domain_of:
     - Biosample
     range: FieldResearchSite
-    pattern: ^(?:^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}'
       interpolated: true
   embargoed:
     name: embargoed
@@ -18792,9 +18792,9 @@ attributes:
     - NamedThing
     range: uriorcurie
     required: true
-    pattern: ^(?:^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}'
       interpolated: true
   name:
     name: name

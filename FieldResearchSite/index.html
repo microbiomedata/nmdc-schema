@@ -685,13 +685,13 @@ slot_usage:
     - value: nmdc:frsite-11-0mqbhb55
       description: a production FieldResearchSite
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}'
       interpolated: true
   part_of:
     name: part_of
     range: FieldResearchSite
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}'
       interpolated: true
 class_uri: nmdc:FieldResearchSite
 
@@ -721,13 +721,13 @@ slot_usage:
     - value: nmdc:frsite-11-0mqbhb55
       description: a production FieldResearchSite
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}'
       interpolated: true
   part_of:
     name: part_of
     range: FieldResearchSite
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}'
       interpolated: true
 attributes:
   cur_vegetation:
@@ -886,9 +886,9 @@ attributes:
     - FieldResearchSite
     range: FieldResearchSite
     multivalued: true
-    pattern: ^(?:^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}'
       interpolated: true
   soil_type:
     name: soil_type
@@ -957,9 +957,9 @@ attributes:
     - NamedThing
     range: uriorcurie
     required: true
-    pattern: ^(?:^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}'
       interpolated: true
   name:
     name: name

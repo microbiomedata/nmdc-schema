@@ -978,19 +978,19 @@ slot_usage:
     - value: nmdc:wfmgas-11-0080kf19.1
       description: a production MetagenomeAssembly
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$'
+      syntax: '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}'
       interpolated: true
   was_informed_by:
     name: was_informed_by
     range: NucleotideSequencing
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}'
       interpolated: true
   superseded_by:
     name: superseded_by
     range: MetagenomeAssembly
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$'
+      syntax: '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}'
       interpolated: true
 class_uri: nmdc:MetagenomeAssembly
 
@@ -1013,19 +1013,19 @@ slot_usage:
     - value: nmdc:wfmgas-11-0080kf19.1
       description: a production MetagenomeAssembly
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$'
+      syntax: '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}'
       interpolated: true
   was_informed_by:
     name: was_informed_by
     range: NucleotideSequencing
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}'
       interpolated: true
   superseded_by:
     name: superseded_by
     range: MetagenomeAssembly
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$'
+      syntax: '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}'
       interpolated: true
 attributes:
   asm_score:
@@ -1455,9 +1455,9 @@ attributes:
     range: NucleotideSequencing
     required: true
     multivalued: true
-    pattern: ^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}'
       interpolated: true
   processing_institution_workflow_metadata:
     name: processing_institution_workflow_metadata
@@ -1487,9 +1487,9 @@ attributes:
     - DataObject
     - WorkflowExecution
     range: MetagenomeAssembly
-    pattern: ^(?:^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
+    pattern: ^(?:(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$'
+      syntax: '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}'
       interpolated: true
   has_input:
     name: has_input
@@ -1504,9 +1504,9 @@ attributes:
     range: DataObject
     required: true
     multivalued: true
-    pattern: ^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}'
       interpolated: true
   has_output:
     name: has_output
@@ -1520,9 +1520,9 @@ attributes:
     - PlannedProcess
     range: DataObject
     multivalued: true
-    pattern: ^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}'
       interpolated: true
   processing_institution:
     name: processing_institution
@@ -1649,9 +1649,9 @@ attributes:
     - NamedThing
     range: uriorcurie
     required: true
-    pattern: ^(?:^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
+    pattern: ^(?:(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$'
+      syntax: '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}'
       interpolated: true
   name:
     name: name

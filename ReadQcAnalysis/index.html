@@ -766,19 +766,19 @@ slot_usage:
     - value: nmdc:wfrqc-11-00qx5818.1
       description: a production ReadQcAnalysis
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$'
+      syntax: '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}'
       interpolated: true
   was_informed_by:
     name: was_informed_by
     range: NucleotideSequencing
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}'
       interpolated: true
   superseded_by:
     name: superseded_by
     range: ReadQcAnalysis
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$'
+      syntax: '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}'
       interpolated: true
 class_uri: nmdc:ReadQcAnalysis
 
@@ -800,19 +800,19 @@ slot_usage:
     - value: nmdc:wfrqc-11-00qx5818.1
       description: a production ReadQcAnalysis
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$'
+      syntax: '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}'
       interpolated: true
   was_informed_by:
     name: was_informed_by
     range: NucleotideSequencing
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}'
       interpolated: true
   superseded_by:
     name: superseded_by
     range: ReadQcAnalysis
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$'
+      syntax: '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}'
       interpolated: true
 attributes:
   input_base_count:
@@ -971,9 +971,9 @@ attributes:
     range: NucleotideSequencing
     required: true
     multivalued: true
-    pattern: ^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}'
       interpolated: true
   processing_institution_workflow_metadata:
     name: processing_institution_workflow_metadata
@@ -1003,9 +1003,9 @@ attributes:
     - DataObject
     - WorkflowExecution
     range: ReadQcAnalysis
-    pattern: ^(?:^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
+    pattern: ^(?:(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$'
+      syntax: '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}'
       interpolated: true
   has_input:
     name: has_input
@@ -1020,9 +1020,9 @@ attributes:
     range: DataObject
     required: true
     multivalued: true
-    pattern: ^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}'
       interpolated: true
   has_output:
     name: has_output
@@ -1036,9 +1036,9 @@ attributes:
     - PlannedProcess
     range: DataObject
     multivalued: true
-    pattern: ^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}'
       interpolated: true
   processing_institution:
     name: processing_institution
@@ -1165,9 +1165,9 @@ attributes:
     - NamedThing
     range: uriorcurie
     required: true
-    pattern: ^(?:^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
+    pattern: ^(?:(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$'
+      syntax: '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}'
       interpolated: true
   name:
     name: name

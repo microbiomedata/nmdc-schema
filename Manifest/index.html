@@ -576,7 +576,7 @@ slot_usage:
     - value: nmdc:manif-11-06t11y76
       description: a production Manifest
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}'
       interpolated: true
 class_uri: nmdc:Manifest
 
@@ -600,7 +600,7 @@ slot_usage:
     - value: nmdc:manif-11-06t11y76
       description: a production Manifest
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}'
       interpolated: true
 attributes:
   manifest_category:
@@ -656,9 +656,9 @@ attributes:
     - NamedThing
     range: uriorcurie
     required: true
-    pattern: ^(?:^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}'
       interpolated: true
   name:
     name: name

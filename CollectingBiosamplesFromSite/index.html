@@ -644,14 +644,14 @@ slot_usage:
     range: Site
     required: true
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(frsite|site)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(frsite|site)-{id_shoulder}-{id_blade}'
       interpolated: true
   has_output:
     name: has_output
     range: Biosample
     required: true
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}'
       interpolated: true
   id:
     name: id
@@ -660,7 +660,7 @@ slot_usage:
       description: a CollectingBiosamplesFromSite from the schema's example data;
         production has none
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}'
       interpolated: true
 class_uri: nmdc:CollectingBiosamplesFromSite
 
@@ -682,14 +682,14 @@ slot_usage:
     range: Site
     required: true
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(frsite|site)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(frsite|site)-{id_shoulder}-{id_blade}'
       interpolated: true
   has_output:
     name: has_output
     range: Biosample
     required: true
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}'
       interpolated: true
   id:
     name: id
@@ -698,7 +698,7 @@ slot_usage:
       description: a CollectingBiosamplesFromSite from the schema's example data;
         production has none
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}'
       interpolated: true
 attributes:
   has_input:
@@ -714,9 +714,9 @@ attributes:
     range: Site
     required: true
     multivalued: true
-    pattern: ^(?:^(nmdc):(frsite|site)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):(frsite|site)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(frsite|site)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(frsite|site)-{id_shoulder}-{id_blade}'
       interpolated: true
   has_output:
     name: has_output
@@ -731,9 +731,9 @@ attributes:
     range: Biosample
     required: true
     multivalued: true
-    pattern: ^(?:^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}'
       interpolated: true
   processing_institution:
     name: processing_institution
@@ -860,9 +860,9 @@ attributes:
     - NamedThing
     range: uriorcurie
     required: true
-    pattern: ^(?:^(nmdc):clsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):clsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}'
       interpolated: true
   name:
     name: name

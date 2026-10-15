@@ -201,7 +201,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -209,7 +209,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -888,7 +888,7 @@
                 "associated_studies": {
                     "description": "The study associated with a resource.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -1718,7 +1718,7 @@
                 },
                 "collected_from": {
                     "description": "The Site from which a Biosample was collected",
-                    "pattern": "^(?:^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(?:(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                     "type": [
                         "string",
                         "null"
@@ -3900,7 +3900,7 @@
                     "examples": [
                         "nmdc:bsm-11-001pmq31"
                     ],
-                    "pattern": "^(?:^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(?:(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                     "type": "string"
                 },
                 "igsn_biosample_identifiers": {
@@ -8648,7 +8648,7 @@
                 },
                 "calibration_object": {
                     "description": "the file containing the calibration data object",
-                    "pattern": "^(?:^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(?:(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                     "type": [
                         "string",
                         "null"
@@ -8681,7 +8681,7 @@
                     "examples": [
                         "nmdc:calib-11-015nyk25"
                     ],
-                    "pattern": "^(?:^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(?:(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                     "type": "string"
                 },
                 "internal_calibration": {
@@ -8882,7 +8882,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -8893,7 +8893,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -8906,13 +8906,13 @@
                     "examples": [
                         "nmdc:chcpr-11-004nv334"
                     ],
-                    "pattern": "^(?:^(nmdc):chcpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(?:(nmdc):chcpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                     "type": "string"
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -9188,7 +9188,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -9199,7 +9199,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -9212,13 +9212,13 @@
                     "examples": [
                         "nmdc:cspro-11-00gba548"
                     ],
-                    "pattern": "^(?:^(nmdc):cspro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(?:(nmdc):cspro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                     "type": "string"
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -9359,7 +9359,7 @@
                     "examples": [
                         "nmdc:chrcon-11-0stw8m53"
                     ],
-                    "pattern": "^(?:^(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(?:(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                     "type": "string"
                 },
                 "name": {
@@ -9466,7 +9466,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(frsite|site)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(frsite|site)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -9474,7 +9474,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -9484,7 +9484,7 @@
                     "examples": [
                         "nmdc:clsite-99-Cq00d1"
                     ],
-                    "pattern": "^(?:^(nmdc):clsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(?:(nmdc):clsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                     "type": "string"
                 },
                 "name": {
@@ -9847,7 +9847,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -9855,7 +9855,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -9865,13 +9865,13 @@
                     "examples": [
                         "nmdc:cultp-11-inc00001"
                     ],
-                    "pattern": "^(?:^(nmdc):cultp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(?:(nmdc):cultp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                     "type": "string"
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -10188,7 +10188,7 @@
                 "associated_studies": {
                     "description": "The study associated with a resource.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(sty)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(sty)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -10243,7 +10243,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -10251,7 +10251,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -10274,7 +10274,7 @@
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -10432,13 +10432,13 @@
                     "examples": [
                         "nmdc:dobj-11-00017y47"
                     ],
-                    "pattern": "^(?:^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(?:(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                     "type": "string"
                 },
                 "in_manifest": {
                     "description": "one or more combinations of other DataObjects that can be analyzed together",
                     "items": {
-                        "pattern": "^(?:^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -10509,7 +10509,7 @@
                     ]
                 },
                 "was_generated_by": {
-                    "pattern": "^(?:^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$|^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(?:(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})|(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                     "type": [
                         "string",
                         "null"
@@ -10860,7 +10860,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -10868,7 +10868,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -10878,13 +10878,13 @@
                     "examples": [
                         "nmdc:fracp-99-labeled"
                     ],
-                    "pattern": "^(?:^(nmdc):fracp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(?:(nmdc):fracp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                     "type": "string"
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -11061,7 +11061,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -11072,7 +11072,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -11085,13 +11085,13 @@
                     "examples": [
                         "nmdc:dispro-11-00wpzz21"
                     ],
-                    "pattern": "^(?:^(nmdc):dispro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(?:(nmdc):dispro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                     "type": "string"
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -11551,7 +11551,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -11559,7 +11559,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -11569,7 +11569,7 @@
                     "examples": [
                         "nmdc:extrp-11-0051av38"
                     ],
-                    "pattern": "^(?:^(nmdc):extrp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(?:(nmdc):extrp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                     "type": "string"
                 },
                 "input_mass": {
@@ -11586,7 +11586,7 @@
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -11929,7 +11929,7 @@
                     "examples": [
                         "nmdc:frsite-11-0mqbhb55"
                     ],
-                    "pattern": "^(?:^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(?:(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                     "type": "string"
                 },
                 "lat_lon": {
@@ -11973,7 +11973,7 @@
                 "part_of": {
                     "description": "Links a resource to another resource that either logically or physically includes it.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -12231,7 +12231,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -12242,7 +12242,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -12255,13 +12255,13 @@
                     "examples": [
                         "nmdc:filtpr-11-00hdy977"
                     ],
-                    "pattern": "^(?:^(nmdc):filtpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(?:(nmdc):filtpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                     "type": "string"
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -12465,7 +12465,7 @@
                 },
                 "was_generated_by": {
                     "description": "provenance for the annotation.",
-                    "pattern": "^(?:^(nmdc):(wfmgan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(?:(nmdc):(wfmgan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,}))$",
                     "type": [
                         "string",
                         "null"
@@ -12507,7 +12507,7 @@
                     "type": "string"
                 },
                 "was_generated_by": {
-                    "pattern": "^(?:^(nmdc):(wfmgan|wfmp|wfmtan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(?:(nmdc):(wfmgan|wfmp|wfmtan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,}))$",
                     "type": "string"
                 }
             },
@@ -13096,7 +13096,7 @@
                     "examples": [
                         "nmdc:inst-11-075j3n79"
                     ],
-                    "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(?:(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                     "type": "string"
                 },
                 "model": {
@@ -13266,7 +13266,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -13274,7 +13274,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -13284,13 +13284,13 @@
                     "examples": [
                         "nmdc:isnp-99-mukr6y"
                     ],
-                    "pattern": "^(?:^(nmdc):isnp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(?:(nmdc):isnp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                     "type": "string"
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -13435,7 +13435,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -13443,7 +13443,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -13453,13 +13453,13 @@
                     "examples": [
                         "nmdc:isolp-99-inchip4"
                     ],
-                    "pattern": "^(?:^(nmdc):isolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(?:(nmdc):isolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                     "type": "string"
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -13889,7 +13889,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -13897,7 +13897,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -13907,13 +13907,13 @@
                     "examples": [
                         "nmdc:libprp-11-002djk98"
                     ],
-                    "pattern": "^(?:^(nmdc):libprp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(?:(nmdc):libprp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                     "type": "string"
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -14547,7 +14547,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -14555,7 +14555,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -14568,7 +14568,7 @@
                     "examples": [
                         "nmdc:wfmag-11-002wf438.1"
                     ],
-                    "pattern": "^(?:^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(?:(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,}))$",
                     "type": "string"
                 },
                 "img_identifiers": {
@@ -14672,7 +14672,7 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(?:^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(?:(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,}))$",
                     "type": [
                         "string",
                         "null"
@@ -14719,7 +14719,7 @@
                 "was_informed_by": {
                     "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -14764,7 +14764,7 @@
                     "examples": [
                         "nmdc:manif-11-06t11y76"
                     ],
-                    "pattern": "^(?:^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(?:(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                     "type": "string"
                 },
                 "manifest_category": {
@@ -14905,7 +14905,7 @@
                 "associated_studies": {
                     "description": "The study associated with a resource.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(sty)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(sty)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -14934,7 +14934,7 @@
                 },
                 "generates_calibration": {
                     "description": "calibration information is generated a process",
-                    "pattern": "^(?:^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(?:(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                     "type": [
                         "string",
                         "null"
@@ -14942,7 +14942,7 @@
                 },
                 "has_chromatography_configuration": {
                     "description": "The identifier of the associated ChromatographyConfiguration, providing information about how a sample was introduced into the mass spectrometer.",
-                    "pattern": "^(?:^(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(?:(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                     "type": [
                         "string",
                         "null"
@@ -14984,20 +14984,20 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "has_mass_spectrometry_configuration": {
                     "description": "The identifier of the associated MassSpectrometryConfiguration.",
-                    "pattern": "^(?:^(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(?:(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                     "type": "string"
                 },
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -15010,7 +15010,7 @@
                     "examples": [
                         "nmdc:dgms-11-0056ry09"
                     ],
-                    "pattern": "^(?:^(nmdc):(dgms|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(?:(nmdc):(dgms|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                     "type": "string"
                 },
                 "instrument_instance_specifier": {
@@ -15023,7 +15023,7 @@
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -15154,7 +15154,7 @@
                     "examples": [
                         "nmdc:mscon-11-0ary3w56"
                     ],
-                    "pattern": "^(?:^(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(?:(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                     "type": "string"
                 },
                 "ionization_source": {
@@ -15354,7 +15354,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -15365,7 +15365,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -15381,7 +15381,7 @@
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -15650,7 +15650,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -15667,7 +15667,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -15680,7 +15680,7 @@
                     "examples": [
                         "nmdc:wfmb-11-00cysq13.1"
                     ],
-                    "pattern": "^(?:^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(?:(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,}))$",
                     "type": "string"
                 },
                 "metabolomics_analysis_category": {
@@ -15764,7 +15764,7 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(?:^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(?:(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,}))$",
                     "type": [
                         "string",
                         "null"
@@ -15785,7 +15785,7 @@
                 "uses_calibration": {
                     "description": "calibration information is used by a process",
                     "items": {
-                        "pattern": "^(?:^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -15806,7 +15806,7 @@
                 "was_informed_by": {
                     "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -15959,7 +15959,7 @@
                         ]
                     ],
                     "items": {
-                        "pattern": "^(?:^gold:Ga[0-9]+$)$",
+                        "pattern": "^(?:gold:Ga[0-9]+)$",
                         "type": "string"
                     },
                     "type": [
@@ -15979,7 +15979,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -15987,7 +15987,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -16000,7 +16000,7 @@
                     "examples": [
                         "nmdc:wfmgan-11-001c1246.1"
                     ],
-                    "pattern": "^(?:^(nmdc):wfmgan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(?:(nmdc):wfmgan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,}))$",
                     "type": "string"
                 },
                 "img_identifiers": {
@@ -16108,7 +16108,7 @@
                 "was_informed_by": {
                     "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -16335,7 +16335,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -16343,7 +16343,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -16356,7 +16356,7 @@
                     "examples": [
                         "nmdc:wfmgas-11-0080kf19.1"
                     ],
-                    "pattern": "^(?:^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(?:(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,}))$",
                     "type": "string"
                 },
                 "insdc_assembly_identifiers": {
@@ -16530,7 +16530,7 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(?:^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(?:(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,}))$",
                     "type": [
                         "string",
                         "null"
@@ -16561,7 +16561,7 @@
                 "was_informed_by": {
                     "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -16697,7 +16697,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -16705,7 +16705,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -16718,7 +16718,7 @@
                     "examples": [
                         "nmdc:wfmp-11-08mtnm81.1"
                     ],
-                    "pattern": "^(?:^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(?:(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,}))$",
                     "type": "string"
                 },
                 "mean_peptide_count": {
@@ -16820,7 +16820,7 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(?:^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(?:(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,}))$",
                     "type": [
                         "string",
                         "null"
@@ -16865,7 +16865,7 @@
                 "was_informed_by": {
                     "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -17007,7 +17007,7 @@
                         ]
                     ],
                     "items": {
-                        "pattern": "^(?:^gold:Ga[0-9]+$)$",
+                        "pattern": "^(?:gold:Ga[0-9]+)$",
                         "type": "string"
                     },
                     "type": [
@@ -17027,7 +17027,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -17035,7 +17035,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -17048,7 +17048,7 @@
                     "examples": [
                         "nmdc:wfmtan-11-0k6a3d73.1"
                     ],
-                    "pattern": "^(?:^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(?:(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,}))$",
                     "type": "string"
                 },
                 "img_identifiers": {
@@ -17126,7 +17126,7 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(?:^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(?:(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,}))$",
                     "type": [
                         "string",
                         "null"
@@ -17157,7 +17157,7 @@
                 "was_informed_by": {
                     "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -17384,7 +17384,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -17392,7 +17392,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -17405,7 +17405,7 @@
                     "examples": [
                         "nmdc:wfmtas-11-0mkm0r71.1"
                     ],
-                    "pattern": "^(?:^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(?:(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,}))$",
                     "type": "string"
                 },
                 "insdc_assembly_identifiers": {
@@ -17579,7 +17579,7 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(?:^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(?:(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,}))$",
                     "type": [
                         "string",
                         "null"
@@ -17610,7 +17610,7 @@
                 "was_informed_by": {
                     "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -17746,7 +17746,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -17754,7 +17754,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -17767,7 +17767,7 @@
                     "examples": [
                         "nmdc:wfmtex-11-0g2kt843.1"
                     ],
-                    "pattern": "^(?:^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(?:(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,}))$",
                     "type": "string"
                 },
                 "img_identifiers": {
@@ -17845,7 +17845,7 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(?:^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(?:(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,}))$",
                     "type": [
                         "string",
                         "null"
@@ -17876,7 +17876,7 @@
                 "was_informed_by": {
                     "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -17954,7 +17954,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -17965,7 +17965,7 @@
                 "has_output": {
                     "description": "The mixed sample.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -17978,13 +17978,13 @@
                     "examples": [
                         "nmdc:mixpro-11-A74"
                     ],
-                    "pattern": "^(?:^(nmdc):mixpro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(?:(nmdc):mixpro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                     "type": "string"
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -18406,7 +18406,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -18414,7 +18414,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -18427,7 +18427,7 @@
                     "examples": [
                         "nmdc:wfnom-11-00db2d48.2"
                     ],
-                    "pattern": "^(?:^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(?:(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,}))$",
                     "type": "string"
                 },
                 "name": {
@@ -18507,7 +18507,7 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(?:^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(?:(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,}))$",
                     "type": [
                         "string",
                         "null"
@@ -18528,7 +18528,7 @@
                 "uses_calibration": {
                     "description": "calibration information is used by a process",
                     "items": {
-                        "pattern": "^(?:^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -18549,7 +18549,7 @@
                 "was_informed_by": {
                     "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -18589,7 +18589,7 @@
                 "associated_studies": {
                     "description": "The study associated with a resource.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(sty)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(sty)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -18660,7 +18660,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -18668,7 +18668,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -18681,7 +18681,7 @@
                     "examples": [
                         "nmdc:dgns-11-0002a657"
                     ],
-                    "pattern": "^(?:^(nmdc):(dgns|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(?:(nmdc):(dgns|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                     "type": "string"
                 },
                 "insdc_bioproject_identifiers": {
@@ -18721,7 +18721,7 @@
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -19039,7 +19039,7 @@
                     "examples": [
                         "nmdc:orgn-99-6dwrrh"
                     ],
-                    "pattern": "^(?:^(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(?:(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                     "type": "string"
                 },
                 "isolate_name": {
@@ -19176,7 +19176,7 @@
                 "associated_studies": {
                     "description": "The study associated with a resource.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -19217,7 +19217,7 @@
                     "examples": [
                         "nmdc:orgn-99-abc123"
                     ],
-                    "pattern": "^(?:^(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(?:(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                     "type": [
                         "string",
                         "null"
@@ -19266,7 +19266,7 @@
                     "examples": [
                         "nmdc:osm-11-cult0001"
                     ],
-                    "pattern": "^(?:^(nmdc):osm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(?:(nmdc):osm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                     "type": "string"
                 },
                 "name": {
@@ -19833,7 +19833,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "minItems": 2,
@@ -19842,7 +19842,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "maxItems": 1,
@@ -19854,13 +19854,13 @@
                     "examples": [
                         "nmdc:poolp-11-00azgg46"
                     ],
-                    "pattern": "^(?:^(nmdc):poolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(?:(nmdc):poolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                     "type": "string"
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -20169,7 +20169,7 @@
                     "examples": [
                         "nmdc:procsm-11-0013mk17"
                     ],
-                    "pattern": "^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(?:(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                     "type": "string"
                 },
                 "name": {
@@ -20790,7 +20790,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -20798,7 +20798,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -20811,7 +20811,7 @@
                     "examples": [
                         "nmdc:wfrbt-11-0083q358.1"
                     ],
-                    "pattern": "^(?:^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(?:(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,}))$",
                     "type": "string"
                 },
                 "name": {
@@ -20877,7 +20877,7 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(?:^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(?:(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,}))$",
                     "type": [
                         "string",
                         "null"
@@ -20908,7 +20908,7 @@
                 "was_informed_by": {
                     "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -21044,7 +21044,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -21052,7 +21052,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -21065,7 +21065,7 @@
                     "examples": [
                         "nmdc:wfrqc-11-00qx5818.1"
                     ],
-                    "pattern": "^(?:^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(?:(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,}))$",
                     "type": "string"
                 },
                 "input_base_count": {
@@ -21173,7 +21173,7 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(?:^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
+                    "pattern": "^(?:(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,}))$",
                     "type": [
                         "string",
                         "null"
@@ -21204,7 +21204,7 @@
                 "was_informed_by": {
                     "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -21771,7 +21771,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -21782,7 +21782,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -21795,7 +21795,7 @@
                     "examples": [
                         "nmdc:storpr-99-zUCd5N"
                     ],
-                    "pattern": "^(?:^(nmdc):storpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(?:(nmdc):storpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                     "type": "string"
                 },
                 "name": {
@@ -22122,7 +22122,7 @@
                     "examples": [
                         "nmdc:sty-11-076c9980"
                     ],
-                    "pattern": "^(?:^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(?:(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                     "type": "string"
                 },
                 "insdc_bioproject_identifiers": {
@@ -22206,7 +22206,7 @@
                 "part_of": {
                     "description": "Links a study or consortium to a parent (or umbrella) study or consortium.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -22378,7 +22378,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -22389,7 +22389,7 @@
                 "has_output": {
                     "description": "The subsample.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -22402,13 +22402,13 @@
                     "examples": [
                         "nmdc:subspr-11-004wpx78"
                     ],
-                    "pattern": "^(?:^(nmdc):subspr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                    "pattern": "^(?:(nmdc):subspr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                     "type": "string"
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -23142,7 +23142,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": "array"
@@ -23150,7 +23150,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
+                        "pattern": "^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$",
                         "type": "string"
                     },
                     "type": [
@@ -23568,5 +23568,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.25.0rc2.post27.dev0+e4c7ee387"
+    "version": "11.25.0rc2.post32.dev0+ec7686ce0"
 }

@@ -685,7 +685,7 @@ slot_usage:
     - value: nmdc:inst-11-075j3n79
       description: a production Instrument
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}'
       interpolated: true
 class_uri: nmdc:Instrument
 unique_keys:
@@ -717,7 +717,7 @@ slot_usage:
     - value: nmdc:inst-11-075j3n79
       description: a production Instrument
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}'
       interpolated: true
 attributes:
   vendor:
@@ -778,9 +778,9 @@ attributes:
     - NamedThing
     range: uriorcurie
     required: true
-    pattern: ^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
+    pattern: ^(?:(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}'
       interpolated: true
   name:
     name: name
