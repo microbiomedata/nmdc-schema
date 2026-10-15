@@ -1400,7 +1400,7 @@ open-ended string ranges) is nicely illustrated by these slots.</p>
 <li><code>polarity_mode</code></li>
 <li><code>resolution_categories</code></li>
 </ul>
-<p>These new slots are examplars of the increased emphasis on enumeration ranges (and the avoidance of the word 'type' in
+<p>These new slots are exemplars of the increased emphasis on enumeration ranges (and the avoidance of the word 'type' in
 slot names other than <code>type</code>):</p>
 <ul>
 <li><code>analyte_category</code></li>
@@ -1541,7 +1541,7 @@ or <code>inlined_as_list</code> to be true, and the <code>Study</code> class inh
 the <a href="https://microbiomedata.github.io/nmdc-schema/id/#linkml-source">id</a> slot as an identifier
 from <a href="https://microbiomedata.github.io/nmdc-schema/NamedThing/">NamedThing</a>. Therefore, the value of
 an <code>associated_studies</code> slot in a data file must be the <code>id</code> of a <code>Study</code>.</p>
-<p><strong>In the absense of any other data or constraints</strong>, the nmdc-schema will consider the following assertion valid for
+<p><strong>In the absence of any other data or constraints</strong>, the nmdc-schema will consider the following assertion valid for
 a <code>Biosample</code>, even if <code>xyz</code> isn't defined in the same data source:</p>
 <pre><code class="language-yaml">associated_studies:
   - xyz
@@ -1549,7 +1549,7 @@ a <code>Biosample</code>, even if <code>xyz</code> isn't defined in the same dat
 <p>If <code>xyz</code> is defined in the data source <strong>and</strong> it does not pass validation as a <code>Study</code>, then the <code>Biosample</code> will also
 be considered invalid. Unfortunately, the definitions and mentions of nmdc-schema instances are frequently split across
 different MongoDB collections, so validating that a referred instance is really of the right type is non-trivial.</p>
-<p>As a very lightweight guard against referring to instances of the wrong type, <code>stuctured_pattern</code>s were added
+<p>As a very lightweight guard against referring to instances of the wrong type, <code>structured_pattern</code>s were added
 to <code>slot_usage</code>s in berkeley-schema-fy24, and also independently in nmdc-schema v10 during the development of
 berkeley-schema-fy24/v11. In addition to being incomplete, this solution introduces some minor problems into the schema,
 and it relies on some other advanced LinkML features. Still, it has been useful in debugging some schema/data problems
@@ -1628,7 +1628,7 @@ for <a href="https://microbiomedata.github.io/nmdc-schema/MaterialProcessing/">M
 <p>That might be seen as asserting that <code>MaterialProcessing</code>'s <code>range</code> is <strong>either</strong> <code>Biosample</code> or <code>ProcessedSample</code>,
 but <code>has_input</code> has the global <code>range</code> of <code>NamedThing</code>, so the effective range for <code>has_input</code> in <code>MaterialProcessing</code>
 is the union of <code>NamedThing</code>, <code>Biosample</code> and  <code>ProcessedSample</code>.</p>
-<p>Note that the <code>slot_usage</code> <code>strucutred_pattern</code> essentially asserts two different <code>strucutured_pattern</code> <code>syntax</code>es, due
+<p>Note that the <code>slot_usage</code> <code>structured_pattern</code> essentially asserts two different <code>structured_pattern</code> <code>syntax</code>es, due
 to the use of the <code>|</code> character: "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$" for <code>Biosample</code>s and
 "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$" for <code>ProcessedSample</code>s.</p>
 <h3 id="summary-of-challenges">Summary of challenges</h3>

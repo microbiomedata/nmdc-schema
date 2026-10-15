@@ -237,7 +237,7 @@
                     "description": "The organization that processed the sample."
                 },
                 "processing_institution_workflow_metadata": {
-                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "description": "Information about how workflow results were generated when the processing is done by an external organization (e.g., JGI) such as software tool name and version or pipeline name and version.",
                     "examples": [
                         "metaspades v. 3.15.2",
                         "IMG Annotation Pipeline v.5.0.25"
@@ -668,7 +668,7 @@
                     ]
                 },
                 "alternative_names": {
-                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)",
+                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifiers which have their own slots (e.g., bioproject:PRJNA406974)",
                     "items": {
                         "type": "string"
                     },
@@ -11267,7 +11267,7 @@
                     ]
                 },
                 "doi_value": {
-                    "description": "A digital object identifier, which is intended to persistantly identify some resource on the web.",
+                    "description": "A digital object identifier, which is intended to persistently identify some resource on the web.",
                     "examples": [
                         "doi:10.46936/10.25585/60000880"
                     ],
@@ -11744,7 +11744,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Describes the nmdc schema class that corresonds to where the failure occurred. Most commonly this would be the same as Class that generated the results."
+                    "description": "Describes the nmdc schema class that corresponds to where the failure occurred. Most commonly this would be the same as Class that generated the results."
                 },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
@@ -12542,7 +12542,7 @@
                     ]
                 },
                 "alternative_names": {
-                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)",
+                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifiers which have their own slots (e.g., bioproject:PRJNA406974)",
                     "items": {
                         "type": "string"
                     },
@@ -12708,7 +12708,7 @@
             "description": "A feature localized to an interval along a genome",
             "properties": {
                 "encodes": {
-                    "description": "The gene product encoded by this feature. Typically this is used for a CDS feature or gene feature which will encode a protein. It can also be used by a nc transcript ot gene feature that encoded a ncRNA",
+                    "description": "The gene product encoded by this feature. Typically this is used for a CDS feature or gene feature which will encode a protein. It can also be used by a nc transcript or gene feature that encoded a ncRNA",
                     "type": [
                         "string",
                         "null"
@@ -14111,7 +14111,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Lists the strand orientiation for a stranded RNA library preparation."
+                    "description": "Lists the strand orientation for a stranded RNA library preparation."
                 },
                 "target_gene": {
                     "anyOf": [
@@ -14630,7 +14630,7 @@
                     "description": "The organization that processed the sample."
                 },
                 "processing_institution_workflow_metadata": {
-                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "description": "Information about how workflow results were generated when the processing is done by an external organization (e.g., JGI) such as software tool name and version or pipeline name and version.",
                     "examples": [
                         "metaspades v. 3.15.2",
                         "IMG Annotation Pipeline v.5.0.25"
@@ -15728,7 +15728,7 @@
                     "description": "The organization that processed the sample."
                 },
                 "processing_institution_workflow_metadata": {
-                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "description": "Information about how workflow results were generated when the processing is done by an external organization (e.g., JGI) such as software tool name and version or pipeline name and version.",
                     "examples": [
                         "metaspades v. 3.15.2",
                         "IMG Annotation Pipeline v.5.0.25"
@@ -16042,7 +16042,7 @@
                     "description": "The organization that processed the sample."
                 },
                 "processing_institution_workflow_metadata": {
-                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "description": "Information about how workflow results were generated when the processing is done by an external organization (e.g., JGI) such as software tool name and version or pipeline name and version.",
                     "examples": [
                         "metaspades v. 3.15.2",
                         "IMG Annotation Pipeline v.5.0.25"
@@ -16410,7 +16410,7 @@
                     "description": "The organization that processed the sample."
                 },
                 "processing_institution_workflow_metadata": {
-                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "description": "Information about how workflow results were generated when the processing is done by an external organization (e.g., JGI) such as software tool name and version or pipeline name and version.",
                     "examples": [
                         "metaspades v. 3.15.2",
                         "IMG Annotation Pipeline v.5.0.25"
@@ -16777,7 +16777,7 @@
                     "description": "The organization that processed the sample."
                 },
                 "processing_institution_workflow_metadata": {
-                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "description": "Information about how workflow results were generated when the processing is done by an external organization (e.g., JGI) such as software tool name and version or pipeline name and version.",
                     "examples": [
                         "metaspades v. 3.15.2",
                         "IMG Annotation Pipeline v.5.0.25"
@@ -17090,7 +17090,7 @@
                     "description": "The organization that processed the sample."
                 },
                 "processing_institution_workflow_metadata": {
-                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "description": "Information about how workflow results were generated when the processing is done by an external organization (e.g., JGI) such as software tool name and version or pipeline name and version.",
                     "examples": [
                         "metaspades v. 3.15.2",
                         "IMG Annotation Pipeline v.5.0.25"
@@ -17459,7 +17459,7 @@
                     "description": "The organization that processed the sample."
                 },
                 "processing_institution_workflow_metadata": {
-                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "description": "Information about how workflow results were generated when the processing is done by an external organization (e.g., JGI) such as software tool name and version or pipeline name and version.",
                     "examples": [
                         "metaspades v. 3.15.2",
                         "IMG Annotation Pipeline v.5.0.25"
@@ -17809,7 +17809,7 @@
                     "description": "The organization that processed the sample."
                 },
                 "processing_institution_workflow_metadata": {
-                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "description": "Information about how workflow results were generated when the processing is done by an external organization (e.g., JGI) such as software tool name and version or pipeline name and version.",
                     "examples": [
                         "metaspades v. 3.15.2",
                         "IMG Annotation Pipeline v.5.0.25"
@@ -18225,7 +18225,7 @@
                     ]
                 },
                 "alternative_names": {
-                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)",
+                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifiers which have their own slots (e.g., bioproject:PRJNA406974)",
                     "items": {
                         "type": "string"
                     },
@@ -18474,7 +18474,7 @@
                     "description": "The organization that processed the sample."
                 },
                 "processing_institution_workflow_metadata": {
-                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "description": "Information about how workflow results were generated when the processing is done by an external organization (e.g., JGI) such as software tool name and version or pipeline name and version.",
                     "examples": [
                         "metaspades v. 3.15.2",
                         "IMG Annotation Pipeline v.5.0.25"
@@ -18879,7 +18879,7 @@
                     ]
                 },
                 "alternative_names": {
-                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)",
+                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifiers which have their own slots (e.g., bioproject:PRJNA406974)",
                     "items": {
                         "type": "string"
                     },
@@ -19457,7 +19457,7 @@
                     ]
                 },
                 "alternative_names": {
-                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)",
+                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifiers which have their own slots (e.g., bioproject:PRJNA406974)",
                     "items": {
                         "type": "string"
                     },
@@ -20847,7 +20847,7 @@
                     "description": "The organization that processed the sample."
                 },
                 "processing_institution_workflow_metadata": {
-                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "description": "Information about how workflow results were generated when the processing is done by an external organization (e.g., JGI) such as software tool name and version or pipeline name and version.",
                     "examples": [
                         "metaspades v. 3.15.2",
                         "IMG Annotation Pipeline v.5.0.25"
@@ -21143,7 +21143,7 @@
                     "description": "The organization that processed the sample."
                 },
                 "processing_institution_workflow_metadata": {
-                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "description": "Information about how workflow results were generated when the processing is done by an external organization (e.g., JGI) such as software tool name and version or pipeline name and version.",
                     "examples": [
                         "metaspades v. 3.15.2",
                         "IMG Annotation Pipeline v.5.0.25"
@@ -21954,7 +21954,7 @@
                     ]
                 },
                 "alternative_names": {
-                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)",
+                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifiers which have their own slots (e.g., bioproject:PRJNA406974)",
                     "items": {
                         "type": "string"
                     },
@@ -23205,7 +23205,7 @@
                     "description": "The organization that processed the sample."
                 },
                 "processing_institution_workflow_metadata": {
-                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "description": "Information about how workflow results were generated when the processing is done by an external organization (e.g., JGI) such as software tool name and version or pipeline name and version.",
                     "examples": [
                         "metaspades v. 3.15.2",
                         "IMG Annotation Pipeline v.5.0.25"
@@ -23598,6 +23598,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.25.0rc1.post14.dev0+2b0213377"
+    "version": "11.25.0rc2.post2.dev0+41da3b4a7"
 }
 

@@ -1,6 +1,6 @@
 name: NMDC
 description: The NMDC Schema is a foundational framework designed to standardize metadata
-  for the National Microbiome Data  Collaborative (NMDC) and collaborating data providors.
+  for the National Microbiome Data  Collaborative (NMDC) and collaborating data providers.
   By establishing a structured approach to metadata, the NMDC Schema enables researchers
   to organize,  share, and interpret complex datasets with consistency and clarity.
   The NMDC Schema is critical substrate used to facilitate  interoperability and collaboration,
@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.25.0rc1.post14.dev0+2b0213377
+version: 11.25.0rc2.post2.dev0+41da3b4a7
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -6911,12 +6911,12 @@ slots:
     name: is_stranded
     description: Is the (RNA) library stranded or non-stranded (unstranded).
     comments:
-    - A value of true means the library is stranded, flase means non-stranded.
+    - A value of true means the library is stranded, false means non-stranded.
     from_schema: https://w3id.org/nmdc/nmdc
     range: boolean
   stranded_orientation:
     name: stranded_orientation
-    description: Lists the strand orientiation for a stranded RNA library preparation.
+    description: Lists the strand orientation for a stranded RNA library preparation.
     from_schema: https://w3id.org/nmdc/nmdc
     range: StrandedOrientationEnum
   input_mass:
@@ -7308,7 +7308,7 @@ slots:
     name: encodes
     description: The gene product encoded by this feature. Typically this is used
       for a CDS feature or gene feature which will encode a protein. It can also be
-      used by a nc transcript ot gene feature that encoded a ncRNA
+      used by a nc transcript or gene feature that encoded a ncRNA
     todos:
     - If we revert Reaction back into the schema, that would be a reasonable domain
       for this slot
@@ -7592,7 +7592,7 @@ slots:
   processing_institution_workflow_metadata:
     name: processing_institution_workflow_metadata
     description: Information about how workflow results were generated when the processing
-      is done by an external organziation (e.g., JGI) such as software tool name and
+      is done by an external organization (e.g., JGI) such as software tool name and
       version or pipeline name and version.
     examples:
     - value: metaspades v. 3.15.2
@@ -7806,7 +7806,7 @@ slots:
     range: string
   doi_value:
     name: doi_value
-    description: A digital object identifier, which is intended to persistantly identify
+    description: A digital object identifier, which is intended to persistently identify
       some resource on the web.
     examples:
     - value: doi:10.46936/10.25585/60000880
@@ -8107,7 +8107,7 @@ slots:
     name: alternative_names
     description: A list of alternative names used to refer to the entity. The distinction
       between name and alternative names is application-specific.  This should not
-      be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)
+      be used for identifiers which have their own slots (e.g., bioproject:PRJNA406974)
     title: Alternative Names
     from_schema: https://w3id.org/nmdc/nmdc
     exact_mappings:
@@ -9041,7 +9041,7 @@ slots:
     range: InstrumentVendorEnum
   qc_failure_where:
     name: qc_failure_where
-    description: Describes the nmdc schema class that corresonds to where the failure
+    description: Describes the nmdc schema class that corresponds to where the failure
       occurred. Most commonly this would be the same as Class that generated the results.
     comments:
     - If the assembly size was too small to proceed to annotation failure_where would
