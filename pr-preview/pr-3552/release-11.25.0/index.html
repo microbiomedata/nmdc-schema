@@ -716,8 +716,8 @@
 
 
 <h1 id="nmdc-schema-11250-what-consumers-need-to-know">nmdc-schema 11.25.0: what consumers need to know</h1>
-<p>This page covers what changes in 11.25.0 for repositories that use nmdc-schema, what each of them has to do, what is knowingly left unfixed, and how the linkml 1.12 build could be backed out. It describes 11.25.0 as planned for rc3 and later. 11.25.0rc1 (built with linkml 1.11.1) and 11.25.0rc2 (built with linkml 1.12.1) are on PyPI.</p>
-<p>Each claim says how it is known: "tested" with a date means it was run, "read" means it was read from source without running it. For the general process, see <a href="../downstream-compatibility/">Downstream schema compatibility</a>.</p>
+<p>This page covers what changes in 11.25.0 for repositories that use nmdc-schema, what each of them has to do, what is knowingly left unfixed, and how the linkml 1.12 build could be backed out.</p>
+<p>Each claim says how it is known: "tested" with a date means it was run, against a pre-release of 11.25.0 where it concerns the package; "read" means it was read from source without running it. For the general process, see <a href="../downstream-compatibility/">Downstream schema compatibility</a>.</p>
 <h2 id="version-number">Version number</h2>
 <p>11.25.0 is a minor release, but it removes one slot, <code>collection_time_inc</code> on <code>Biosample</code>. MAINTAINERS.md calls a removal a major-version change, and earlier v11 minor releases have not followed that rule either. That question is open in <a href="https://github.com/microbiomedata/nmdc-schema/issues/2876">https://github.com/microbiomedata/nmdc-schema/issues/2876</a>. Read the release notes before moving a pin.</p>
 <h2 id="what-changes">What changes</h2>
@@ -749,17 +749,17 @@
 <tr>
 <td>id patterns are wrapped by linkml as <code>^(?:...)$</code></td>
 <td><code>^(?:(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$</code></td>
-<td>tested 2026-10-15 with <a href="https://github.com/microbiomedata/nmdc-schema/pull/3549">https://github.com/microbiomedata/nmdc-schema/pull/3549</a>; rc2 had doubled anchors, <code>^(?:^(nmdc):sty-...$)$</code></td>
+<td>tested 2026-10-15 with <a href="https://github.com/microbiomedata/nmdc-schema/pull/3549">https://github.com/microbiomedata/nmdc-schema/pull/3549</a>, which removes the schema's own anchors so they are not doubled</td>
 </tr>
 <tr>
 <td><code>type</code> accepts the full class URI as well as the CURIE</td>
 <td><code>https://w3id.org/nmdc/Study</code> and <code>nmdc:Study</code> (83 <code>type</code> enums)</td>
-<td>tested on rc2; <a href="https://github.com/microbiomedata/nmdc-schema/issues/3537">https://github.com/microbiomedata/nmdc-schema/issues/3537</a></td>
+<td>tested 2026-10-15 against a pre-release of 11.25.0; <a href="https://github.com/microbiomedata/nmdc-schema/issues/3537">https://github.com/microbiomedata/nmdc-schema/issues/3537</a></td>
 </tr>
 <tr>
 <td>optional slots ranged on an enum or class accept <code>null</code></td>
 <td>191 class-slot pairs on 125 slots</td>
-<td>tested, rc2 compared with rc1; <a href="https://github.com/microbiomedata/nmdc-schema/issues/3424">https://github.com/microbiomedata/nmdc-schema/issues/3424</a></td>
+<td>tested 2026-10-15 against a pre-release of 11.25.0, compared with a linkml 1.11.1 build; <a href="https://github.com/microbiomedata/nmdc-schema/issues/3424">https://github.com/microbiomedata/nmdc-schema/issues/3424</a></td>
 </tr>
 <tr>
 <td>slot examples appear in the JSON Schema, including one <code>id</code> example per class</td>
@@ -791,56 +791,56 @@
 <td>nmdc-runtime</td>
 <td><code>nmdc-schema==11.24.0</code> (<code>pyproject.toml:60</code>)</td>
 <td>Move the pin and merge <a href="https://github.com/microbiomedata/nmdc-runtime/pull/1659">https://github.com/microbiomedata/nmdc-runtime/pull/1659</a> in the same change. Without it, the minter finds no typecodes and the test setup fails to import. Run the 11.24.0 to 11.24.1 and 11.24.1 to 11.25.0 migrators.</td>
-<td>tested with rc2: 0 typecodes on main, 40 with the PR; the PR's tests pass against the single-anchored patterns (tested 2026-10-15)</td>
+<td>tested 2026-10-15 against a pre-release of 11.25.0: 0 typecodes on main, 40 with the PR; the PR's tests pass against the single-anchored patterns</td>
 <td><a href="https://github.com/microbiomedata/nmdc-runtime/issues/1658">https://github.com/microbiomedata/nmdc-runtime/issues/1658</a></td>
 </tr>
 <tr>
 <td>nmdc-server</td>
 <td><code>nmdc-schema==11.24.0</code> and <code>nmdc-submission-schema==11.24.0</code> (<code>pyproject.toml:27-28</code>); web app at <code>v11.24.1</code> (<code>web/package.json:46</code>)</td>
 <td>Nothing required for nmdc-schema 11.25.0. Keep <code>nmdc-submission-schema==11.24.0</code> until <a href="https://github.com/microbiomedata/nmdc-server/issues/2401">https://github.com/microbiomedata/nmdc-server/issues/2401</a> is fixed; that break comes from submission-schema's new titles, not from nmdc-schema.</td>
-<td>imports tested with rc1 and rc2; tests need Postgres and were not run</td>
+<td>imports tested 2026-10-15 against a pre-release of 11.25.0; tests need Postgres and were not run</td>
 <td><a href="https://github.com/microbiomedata/nmdc-server/issues/2401">https://github.com/microbiomedata/nmdc-server/issues/2401</a></td>
 </tr>
 <tr>
 <td>submission-schema</td>
 <td><code>nmdc-schema==11.24.0</code>, dev group only</td>
 <td>Move the dev pin, rebuild, release nmdc-submission-schema 11.25.0. Its own move to linkml 1.12 is separate.</td>
-<td>tested with rc2: <code>make all</code> and 44 tests pass</td>
+<td>tested 2026-10-15 against a pre-release of 11.25.0: <code>make all</code> and 44 tests pass</td>
 <td><a href="https://github.com/microbiomedata/submission-schema/issues/493">https://github.com/microbiomedata/submission-schema/issues/493</a></td>
 </tr>
 <tr>
 <td>nmdc_mass_spectrometry_metadata_generation</td>
 <td><code>nmdc-schema==11.24.0</code> (<code>requirements.txt:2</code>)</td>
 <td>Move the pin to 11.25.0 and release. Its checks fail today because 11.24.0 cannot read linkml-runtime 1.12's id patterns.</td>
-<td>tested with rc1 and rc2: 68 pass, 4 need credentials</td>
+<td>tested 2026-10-15 against a pre-release of 11.25.0: 68 pass, 4 need credentials</td>
 <td><a href="https://github.com/microbiomedata/nmdc_mass_spectrometry_metadata_generation/issues/287">https://github.com/microbiomedata/nmdc_mass_spectrometry_metadata_generation/issues/287</a></td>
 </tr>
 <tr>
 <td>nmdc-mass-spec-automation</td>
 <td>nmdc_mass_spectrometry_metadata_generation <code>@2.12.0</code> (<code>requirements.txt:1</code>)</td>
 <td>Move to the release above.</td>
-<td>tested with rc1 and rc2: 121 unit tests pass</td>
+<td>tested 2026-10-15 against a pre-release of 11.25.0: 121 unit tests pass</td>
 <td><a href="https://github.com/microbiomedata/nmdc-mass-spec-automation/issues/126">https://github.com/microbiomedata/nmdc-mass-spec-automation/issues/126</a></td>
 </tr>
 <tr>
 <td>nmdc-lakehouse</td>
-<td>hard-coded 11.24.0</td>
-<td>Accept 11.25.0 as a source version.</td>
-<td>tested with rc1 and rc2</td>
+<td>source versions 11.23.0 and 11.24.0 hard-coded</td>
+<td>Accept 11.25.0 as a source version, and move to an nmdc-lakehouse-schema release that supports it.</td>
+<td>tested 2026-10-15 against a pre-release of 11.25.0: 1061 pass, 11 fail on the hard-coded versions</td>
 <td><a href="https://github.com/microbiomedata/nmdc-lakehouse/issues/395">https://github.com/microbiomedata/nmdc-lakehouse/issues/395</a></td>
 </tr>
 <tr>
 <td>nmdc-lakehouse-schema</td>
-<td></td>
-<td>Update the expected class count from 61 to 62.</td>
-<td>tested with rc1 and rc2</td>
+<td><code>source-latest = ["nmdc-schema==11.24.0"]</code> (<code>pyproject.toml:46</code>); <code>SUPPORTED_SOURCE_VERSIONS</code> is 11.23.0 and 11.24.0 (<code>artifacts.py:5-6</code>)</td>
+<td>Move the source pin and supported versions to 11.25.0, generate and publish the matching flat artifact, and update the expected class count from 61 to 62. Until then <code>flat_schema_resource("11.25.0")</code> raises <code>ValueError</code>.</td>
+<td>read 2026-10-15; class count tested against a pre-release of 11.25.0</td>
 <td><a href="https://github.com/microbiomedata/nmdc-lakehouse/issues/395">https://github.com/microbiomedata/nmdc-lakehouse/issues/395</a></td>
 </tr>
 <tr>
 <td>nmdc_automation</td>
 <td><code>nmdc-schema = "^11.24.0"</code></td>
 <td>Nothing.</td>
-<td>tested with rc1 and rc2: same results as 11.24.1</td>
+<td>tested 2026-10-15 against a pre-release of 11.25.0: same results as 11.24.1</td>
 <td></td>
 </tr>
 <tr>
@@ -861,7 +861,7 @@
 <td>ontology-loader</td>
 <td><code>nmdc-schema = "*"</code></td>
 <td>Nothing.</td>
-<td>tested with rc1 and rc2: 131 pass</td>
+<td>tested 2026-10-15 against a pre-release of 11.25.0: 131 pass</td>
 <td></td>
 </tr>
 </tbody>
@@ -874,11 +874,11 @@
 </ol>
 <p>Security: Dependabot alert 58 (setuptools, medium) was dismissed because oaklib caps setuptools below the fixed version. No code-scanning alerts were open on 2026-10-15.</p>
 <h2 id="backing-out-the-linkml-112-build">Backing out the linkml 1.12 build</h2>
-<p>If the 1.12 build is not acceptable, 11.25.0 (or, after release, 11.25.1) can be built with linkml 1.11.1, as rc1 was:</p>
+<p>If the 1.12 build is not acceptable, 11.25.0 (or, after release, 11.25.1) can be built with linkml 1.11.1:</p>
 <ul>
-<li>Add back the dev-group caps on <code>linkml</code> and <code>linkml-runtime</code> below 1.12 that <a href="https://github.com/microbiomedata/nmdc-schema/pull/3529">https://github.com/microbiomedata/nmdc-schema/pull/3529</a> removed, as <a href="https://github.com/microbiomedata/nmdc-schema/pull/3532">https://github.com/microbiomedata/nmdc-schema/pull/3532</a> did before rc1, then relock and rebuild.</li>
+<li>Add back the dev-group caps on <code>linkml</code> and <code>linkml-runtime</code> below 1.12 that <a href="https://github.com/microbiomedata/nmdc-schema/pull/3529">https://github.com/microbiomedata/nmdc-schema/pull/3529</a> removed, as <a href="https://github.com/microbiomedata/nmdc-schema/pull/3532">https://github.com/microbiomedata/nmdc-schema/pull/3532</a> had them, then relock and rebuild.</li>
 <li>Also revert <a href="https://github.com/microbiomedata/nmdc-schema/pull/3549">https://github.com/microbiomedata/nmdc-schema/pull/3549</a>. linkml 1.11.1 ignores <code>partial_match</code> and adds no anchors, so without our own anchors the id patterns would be unanchored (tested 2026-10-15).</li>
-<li>With rc1, every consumer above passed and nmdc-runtime's minter worked without <a href="https://github.com/microbiomedata/nmdc-runtime/pull/1659">https://github.com/microbiomedata/nmdc-runtime/pull/1659</a> (tested 2026-10-15).</li>
+<li>A linkml 1.11.1 build of a pre-release of 11.25.0 was tested against the consumers above on 2026-10-15. nmdc-runtime's minter found its typecodes without <a href="https://github.com/microbiomedata/nmdc-runtime/pull/1659">https://github.com/microbiomedata/nmdc-runtime/pull/1659</a>. The other results matched the table above: nmdc-server was checked for imports only, nmdc-ingest-agent and nmdc-lakehouse had the failures listed there, and the rest passed.</li>
 <li>The JSON Schema would then carry none of the changes in the generated-files table, and no examples (0 with 1.11.1 compared with 655 with 1.12.1, tested 2026-10-15).</li>
 <li>Consumers need nothing different, since the published dependency ranges do not change.</li>
 <li>Not tested: a 1.11.1 build of current main.</li>
