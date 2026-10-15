@@ -22,9 +22,9 @@ The import now reads GSC MIxS release `v7.0.1` for all 504 slots in `assets/impo
 - `env_medium`: MIxS v7.0.0 made it multivalued. NMDC data stores one value per biosample, so NMDC removes `multivalued`. Whether to make it multivalued is tracked in https://github.com/microbiomedata/nmdc-schema/issues/3527.
 - `plant_growth_med`: MIxS v7.0.0 added an example written as a plain value. NMDC's range is the `ControlledTermValue` wrapper class, so the example is rewritten in object form.
 
-The other changes are descriptions, examples, a `see_also` link, a comment on `season_temp`, and a corrected grouping in the `seq_meth` pattern. The new `store_cond` description ends with a doubled period in MIxS v7.0.0 and v7.0.1, which the yq file removes.
+The other changes are descriptions, examples, a `see_also` link, a comment on `season_temp`, and a corrected grouping in the `seq_meth` pattern. The new `store_cond` description combines its definition with submitter guidance and examples, and ends with a doubled period. The yq file keeps the definition in `description` and moves the guidance to `comments`.
 
-`estimated_size` is the only slot MIxS renamed between v6.3.0 and v7.0.1, and MIxS removed no slots in that range. `prod_label_claims` changed ID, from `MIXS:prod_label_claims` to `MIXS:0001337`, but nmdc-schema doesn't use it. `salinity_meth`, defined in `src/schema/nmdc.yaml`, used `slot_uri: MIXS:0000341`, an ID that is in neither MIxS v6.3.0 nor v7.0.1. It now uses the default `nmdc:` URI, with MIXS:0000341 kept as an exact mapping.
+`estimated_size` is the only slot MIxS renamed between v6.3.0 and v7.0.1, and MIxS removed no slots in that range. `prod_label_claims` changed ID, from `MIXS:prod_label_claims` to `MIXS:0001337`, but nmdc-schema doesn't use it. `salinity_meth`, defined in `src/schema/nmdc.yaml`, used `slot_uri: MIXS:0000341`, an ID that is in neither MIxS v6.3.0 nor v7.0.1. It now uses the default `nmdc:` URI, and no mapping to MIXS:0000341 is asserted because that identifier no longer resolves.
 
 The rest of this document describes the earlier move to v6.3.0.
 

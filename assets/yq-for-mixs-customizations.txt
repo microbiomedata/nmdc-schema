@@ -399,8 +399,11 @@
 '.slots.store_cond.range |= "TextValue"'
 # submission-schema has historically used an enum for store_cond, which doesn't align with the MIxS pattern
 'del(.slots.store_cond.structured_pattern)'
-# MIxS v7.0.1's description ends with a doubled period.
-'.slots.store_cond.description |= sub("\\.\\.$"; ".")'
+# MIxS v7.0.1's description mixes the definition with submitter guidance and examples, and ends with a doubled period.
+# Keep the definition in description and move the guidance to comments (CONTRIBUTING.md, "Put example values in the `examples` metaslot, not in prose").
+'.slots.store_cond.description = "How and for how long the sample was stored before DNA extraction."'
+'.slots.store_cond.comments = ["State whether the sample was fresh, frozen or stored another way, and record factors that may affect nucleic acid recovery or library construction: temperature, humidity and microbial overgrowth."]'
+'.slots.store_cond.notes = ["The MIxS v7.0.1 description (MIXS:0000327) combines the definition, submitter guidance and example values in one string. NMDC keeps only the definition in description and moves the guidance to comments, so that description holds a definition and example values stay in examples."]'
 
 '.slots.samp_collec_device.range |= "string"'
 '.slots.samp_collec_method.range |= "string"'

@@ -6804,7 +6804,7 @@ slots:
     multivalued: true
     inlined_as_list: true
   store_cond:
-    description: Explain how and for how long the sample was stored before DNA extraction (for example, fresh/frozen/other). Include factors that may influence nucleic acid recovery or library construction. For example, specify temperature, humidity, presence of microbial overgrowth etc.
+    description: How and for how long the sample was stored before DNA extraction.
     title: storage conditions
     examples:
       - object:
@@ -6815,6 +6815,10 @@ slots:
       - storage
     slot_uri: MIXS:0000327
     range: TextValue
+    comments:
+      - 'State whether the sample was fresh, frozen or stored another way, and record factors that may affect nucleic acid recovery or library construction: temperature, humidity and microbial overgrowth.'
+    notes:
+      - The MIxS v7.0.1 description (MIXS:0000327) combines the definition, submitter guidance and example values in one string. NMDC keeps only the definition in description and moves the guidance to comments, so that description holds a definition and example values stay in examples.
   substructure_type:
     description: The substructure or under building is that largely hidden section of the building which is built off the foundations to the ground floor level
     title: substructure type
