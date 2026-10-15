@@ -674,17 +674,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comments" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Comments
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -803,10 +792,6 @@
 <ul>
 <li><code>offspring;Mussel25</code></li>
 </ul>
-<h2 id="comments">Comments</h2>
-<ul>
-<li>Legacy MIxS slot removed from GSC MIxS v6.2.2. Retained for submission-schema compatibility.</li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -853,8 +838,9 @@ annotations:
 description: Familial relationships to other hosts in the same study; can include
   multiple relationships.
 title: host family relationship
-comments:
-- Legacy MIxS slot removed from GSC MIxS v6.2.2. Retained for submission-schema compatibility.
+notes:
+- MIxS defined this slot through v6.1.1 and dropped it in v6.2.0. Retained for submission-schema
+  compatibility.
 examples:
 - value: offspring;Mussel25
 in_subset:
