@@ -4,7 +4,7 @@ dynamic = ["version"]
 description = "Schema resources for the National Microbiome Data Collaborative (NMDC)"
 readme = "README.md"
 license = "CC0-1.0"
-requires-python = ">=3.10,<3.14"
+requires-python = ">=3.10,<3.15"
 authors = [
     { name = "Bill Duncan", email = "wdduncan@gmail.com" },
     { name = "Chris Mungall", email = "cjmungall@lbl.gov" },
@@ -87,6 +87,13 @@ dev = [
     "defusedxml>=0.7.1,<1.0.0",  # hardened XML parsing in src/scripts/ncbi_nmdc_exact_term_matching.py
     "exhaustion-check>=0.1.1,<0.2.0",  # for exhaustion-check, pretty-sort-yaml (also get-first-of-first)
     "fastjsonschema>=2.20.0,<3.0.0",
+    # Holds our own lock at linkml-runtime 1.11.x without changing what consumers
+    # can install (dependency groups are not in the published metadata). 1.12 wraps
+    # id patterns as ^(?:...)$, which nmdc-runtime's minter cannot read until
+    # https://github.com/microbiomedata/nmdc-runtime/pull/1659 is deployed. Remove
+    # this when linkml 1.12 comes in through
+    # https://github.com/microbiomedata/nmdc-schema/pull/3529.
+    "linkml-runtime>=1.9.0,<1.12.0",
     # linkml-store[llm] was a dependency but its llm → sqlite-utils chain
     # requires click>=8.3.1, which conflicts with linkml's click<8.2 cap.
     # Ontology alignment scripts (#2909, #2910) that need embeddings should

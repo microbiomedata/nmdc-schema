@@ -155,6 +155,12 @@ settings:
   # 2. The MIxS import pipeline explicitly deletes settings (see project.Makefile)
   # When updating MIxS import, these settings must be manually synced if the source changes.
   #
+  # Every module with an interpolated structured_pattern also carries a copy of the keys it
+  # uses, because linkml 1.12 interpolates a pattern only with its own module's settings.
+  # Edit values here, then run src/scripts/sync_module_settings.py on the modules
+  # (tests/test_module_settings.py fails if a copy is out of date).
+  # See https://github.com/microbiomedata/nmdc-schema/issues/3523
+  #
   # Source: GSC MIxS v6.3.0 (commit fb3271909f5ab3277d4c869e816bc9e334cb816f)
   add_recov_methods: 'Water Injection|Dump Flood|Gas Injection|Wag Immiscible Injection|Polymer Addition|Surfactant Addition|Not Applicable|other'
   agrochemical_name: ".*"

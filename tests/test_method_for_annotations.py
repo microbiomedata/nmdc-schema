@@ -27,15 +27,16 @@ PROCESS_METHOD_SLOTS = {
     "samp_collec_method",
     "samp_sort_meth",
     "separation_method",
+    # NMDC's own internal-standard protocol for SIP fractionation (exact mapping MIXS:0001351).
+    # No internal_standard slot remains to pair it with (nmdc-schema#3500).
+    "internal_standard_method",
     "seq_meth",
 }
 
 
 # Method slots that describe one other slot but can't be paired yet, each with the issue that
 # blocks it. Remove an entry and add its method_for annotation once the issue is fixed.
-PENDING_METHOD_SLOTS = {
-    "internal_standard_method": "https://github.com/microbiomedata/nmdc-schema/issues/3500",
-}
+PENDING_METHOD_SLOTS: dict[str, str] = {}
 
 
 def method_for_pairs(view: SchemaView) -> dict[str, str]:

@@ -2102,3 +2102,12 @@ slots:
   known_as:
     range: ChemicalEntityEnum
     description: The substance from which a portion was taken.
+
+# Settings below are copied from nmdc.yaml by src/scripts/sync_module_settings.py.
+# Do not edit them here; edit nmdc.yaml and rerun the script.
+# See https://github.com/microbiomedata/nmdc-schema/issues/3523
+settings:
+  id_blade: ([A-Za-z0-9]{1,})
+  id_nmdc_prefix: ^(nmdc)
+  id_shoulder: ([0-9][a-z]{0,6}[0-9])
+  id_version: (\.[1-9]{1}[0-9]{0,})
