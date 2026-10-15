@@ -567,9 +567,7 @@ slots:
       - 'a minimum length of 3 characters is suggested for typecodes, but 1 or 2 characters will be accepted'
       - 'typecodes must correspond 1:1 to a class in the NMDC schema. this will be checked via per-class id slot usage assertions'
       - 'minting authority shoulders should probably be enumerated and checked in the pattern'
-    examples:
-      - value: nmdc:mgmag-00-x012.1_7_c1
-        description: 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248'
+      - 'an id following the abstracted pattern: nmdc:mgmag-00-x012.1_7_c1 (https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248). It is kept here instead of in examples because linkml 1.12 copies slot examples into every class, and this id fails most class id patterns (https://github.com/microbiomedata/nmdc-schema/issues/3540)'
     pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
 
   title:
