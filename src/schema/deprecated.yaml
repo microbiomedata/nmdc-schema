@@ -65,7 +65,7 @@ classes:
   ProtocolExecution:
     class_uri: nmdc:ProtocolExecution
     is_a: PlannedProcess
-    description: A PlannedProces that has PlannedProcess parts. Can be used to represent the case of someone following a Protocol.
+    description: A PlannedProcess that has PlannedProcess parts. Can be used to represent the case of someone following a Protocol.
     slots:
       - has_process_parts
       - protocol_execution_category
@@ -843,3 +843,12 @@ types:
     deprecated_element_has_possible_replacement: UnitEnum
     last_updated_on: '2026-10-07T00:00:00Z'
     modified_by: orcid:0000-0001-9076-6066
+
+# Settings below are copied from nmdc.yaml by src/scripts/sync_module_settings.py.
+# Do not edit them here; edit nmdc.yaml and rerun the script.
+# See https://github.com/microbiomedata/nmdc-schema/issues/3523
+settings:
+  id_blade: ([A-Za-z0-9]{1,})
+  id_nmdc_prefix: ^(nmdc)
+  id_shoulder: ([0-9][a-z]{0,6}[0-9])
+  id_version: (\.[1-9]{1}[0-9]{0,})

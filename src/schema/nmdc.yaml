@@ -5,7 +5,7 @@ notes:
   - not importing any MIxS terms where the relationship between the name (SCN) and the id isn't 1:1
 description: >-
   The NMDC Schema is a foundational framework designed to standardize metadata for the National Microbiome Data 
-  Collaborative (NMDC) and collaborating data providors. By establishing a structured approach to metadata, the NMDC Schema enables researchers to organize, 
+  Collaborative (NMDC) and collaborating data providers. By establishing a structured approach to metadata, the NMDC Schema enables researchers to organize, 
   share, and interpret complex datasets with consistency and clarity. The NMDC Schema is critical substrate used to facilitate 
   interoperability and collaboration, as it provide a common language for data exchange across systems and disciplines. 
   In the context of the NMDC, this schema supports the integration of microbiome data from medicine, agriculture, 
@@ -152,6 +152,12 @@ settings:
   # 1. The sheets-and-friends do_shuttle tool does not import settings from source schemas
   # 2. The MIxS import pipeline explicitly deletes settings (see project.Makefile)
   # When updating MIxS import, these settings must be manually synced if the source changes.
+  #
+  # Every module with an interpolated structured_pattern also carries a copy of the keys it
+  # uses, because linkml 1.12 interpolates a pattern only with its own module's settings.
+  # Edit values here, then run src/scripts/sync_module_settings.py on the modules
+  # (tests/test_module_settings.py fails if a copy is out of date).
+  # See https://github.com/microbiomedata/nmdc-schema/issues/3523
   #
   # Source: GSC MIxS v6.3.0 (commit fb3271909f5ab3277d4c869e816bc9e334cb816f)
   add_recov_methods: 'Water Injection|Dump Flood|Gas Injection|Wag Immiscible Injection|Polymer Addition|Surfactant Addition|Not Applicable|other'
@@ -1548,10 +1554,10 @@ slots:
     description: Is the (RNA) library stranded or non-stranded (unstranded).
     range: boolean
     comments:
-      - A value of true means the library is stranded, flase means non-stranded.
+      - A value of true means the library is stranded, false means non-stranded.
   
   stranded_orientation:
-    description: Lists the strand orientiation for a stranded RNA library preparation.
+    description: Lists the strand orientation for a stranded RNA library preparation.
     range: StrandedOrientationEnum
 
 

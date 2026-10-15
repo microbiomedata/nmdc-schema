@@ -18,7 +18,7 @@ Pass ``--plain-words`` to include them. Permissible values are not scanned by de
 the same reason. Pass ``--permissible-values`` to include them.
 
 Usage:
-    poetry run python src/scripts/find_retired_element_mentions.py \\
+    uv run python src/scripts/find_retired_element_mentions.py \\
         --catalog assets/schema_element_history/retired_elements.tsv -o local/retired_mentions.tsv
 """
 

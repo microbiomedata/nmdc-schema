@@ -129,7 +129,7 @@ slots:
   processing_institution_workflow_metadata:
     range: string
     description: >- 
-      Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such
+      Information about how workflow results were generated when the processing is done by an external organization (e.g., JGI) such
       as software tool name and version or pipeline name and version.
     mappings:
       - NCIT:C165211
@@ -322,7 +322,7 @@ slots:
 
   doi_value:
     description: >-
-      A digital object identifier, which is intended to persistantly identify some resource on the web.
+      A digital object identifier, which is intended to persistently identify some resource on the web.
     required: true
     aliases:
       - DOI
@@ -595,7 +595,7 @@ slots:
     description: >-
       A list of alternative names used to refer to the entity.
       The distinction between name and alternative names is application-specific. 
-      This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)
+      This should not be used for identifiers which have their own slots (e.g., bioproject:PRJNA406974)
     exact_mappings:
       - dcterms:alternative
       - skos:altLabel
@@ -1661,3 +1661,12 @@ enums:
         description: Data used as input into a workflow providing workflow specification.
         related_mappings:
           - edam.data:0949
+
+# Settings below are copied from nmdc.yaml by src/scripts/sync_module_settings.py.
+# Do not edit them here; edit nmdc.yaml and rerun the script.
+# See https://github.com/microbiomedata/nmdc-schema/issues/3523
+settings:
+  id_blade: ([A-Za-z0-9]{1,})
+  id_nmdc_prefix: ^(nmdc)
+  id_shoulder: ([0-9][a-z]{0,6}[0-9])
+  id_version: (\.[1-9]{1}[0-9]{0,})

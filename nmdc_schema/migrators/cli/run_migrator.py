@@ -26,6 +26,22 @@ from dotenv import load_dotenv
 from pymongo import MongoClient
 from nmdc_schema.migrators.adapters.mongo_adapter import MongoAdapter
 
+
+def import_migrator_module(migrator: str):
+    """Import a migrator module by its bare name or its full dotted name.
+
+    A bare name such as `migrator_from_11_9_1_to_11_10_0` is looked up in
+    `nmdc_schema.migrators`. A dotted name is imported as given.
+
+    >>> import_migrator_module("migrator_from_11_9_1_to_11_10_0").__name__
+    'nmdc_schema.migrators.migrator_from_11_9_1_to_11_10_0'
+    >>> import_migrator_module("nmdc_schema.migrators.migrator_from_11_9_1_to_11_10_0").__name__
+    'nmdc_schema.migrators.migrator_from_11_9_1_to_11_10_0'
+    """
+    if "." in migrator:
+        return importlib.import_module(migrator)
+    return importlib.import_module(f"nmdc_schema.migrators.{migrator}")
+
 # TODO: Is this script somewhat redundant with nmdc_schema/migration_recursion.py? Can they be
 #       consolidated?
 
@@ -70,7 +86,7 @@ def run_migrator(migrator, action, host, port, database, auth_db, username, pass
     click.echo(f"MongoDB connection: {host}:{port}/{database}")
     
     # Get the migrator class
-    migrator_module = importlib.import_module(migrator)
+    migrator_module = import_migrator_module(migrator)
     migrator_class = getattr(migrator_module, "Migrator")
     
     # Connect to MongoDB using PyMongo

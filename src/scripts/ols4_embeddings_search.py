@@ -5,7 +5,7 @@ sends name + description to the OLS4 LLM search endpoint, and writes
 results as SSSOM-style TSV.
 
 Usage:
-    poetry run python src/scripts/ols4_embeddings_search.py [OPTIONS]
+    uv run python src/scripts/ols4_embeddings_search.py [OPTIONS]
 
 See --help for options.
 """

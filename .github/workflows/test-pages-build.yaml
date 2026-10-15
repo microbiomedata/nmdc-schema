@@ -31,24 +31,22 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install Poetry
-        run: pipx install poetry==2.5.1
+      - name: Install uv
+        uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
 
       - name: Set up Python 3
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: '3.12'
-          cache: 'poetry'
 
       - name: Install dependencies
-        run: poetry install
+        run: uv sync --locked
 
-      # Replace the `0.0.0` placeholder `version` number in various files (per the config in `pyproject.toml`).
-      # Reference: https://github.com/mtkennerly/poetry-dynamic-versioning/blob/master/README.md#command-line-mode
+      # Replace the `0.0.0` placeholder `version` in src/schema/nmdc.yaml with the
+      # version uv-dynamic-versioning derives from the git tags (see `set-version` in Makefile).
       - name: Replace placeholder version number
         run: |
-          poetry self add "poetry-dynamic-versioning[plugin]"
-          poetry dynamic-versioning
+          make set-version
 
       # Note: `make all` includes `gendoc` (via site target), so no separate gendoc step needed
       - name: Clean previous build artifacts
@@ -61,7 +59,7 @@ jobs:
         run: touch docs/.nojekyll
 
       - name: Build mkdocs site
-        run: poetry run mkdocs build -d site
+        run: uv run mkdocs build -d site
 
       - name: Deploy preview
         if: github.event.pull_request.user.login != 'dependabot[bot]'

@@ -68,7 +68,7 @@ Here's how you can create a new migrator:
     ```shell
     make migrator
     ```
-    > Alternatively, you can run `$ poetry run python nmdc_schema/migrators/cli/create_migrator.py`.
+    > Alternatively, you can run `$ uv run python nmdc_schema/migrators/cli/create_migrator.py`.
    
     When prompted, enter the [version numbers of the schemas](../../CHANGELOG.md) the migrator will migrate
     data _from_ and _to_. For example, if the original schema version is `1.1.3` and the new schema version is `1.2.7`:
