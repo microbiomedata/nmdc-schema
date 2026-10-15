@@ -278,6 +278,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}$"
           interpolated: true
+        examples:
+          - value: nmdc:dgns-11-pf500b03
       analyte_category:
         range: NucleotideSequencingEnum
 
@@ -297,6 +299,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(dgms|omprc)-{id_shoulder}-{id_blade}$"
           interpolated: true
+        examples:
+          - value: nmdc:dgms-11-0003fm52
       has_chromatography_configuration:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$"
@@ -377,6 +381,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$"
           interpolated: true
+        examples:
+          - value: nmdc:mscon-99-oW43DzG0
       mass_spectrometry_acquisition_strategy:
         required: true
       resolution_categories:
@@ -410,6 +416,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$"
           interpolated: true
+        examples:
+          - value: nmdc:chrcon-11-oW43DzG0
       chromatographic_category:
         required: true
       stationary_phase:
@@ -428,6 +436,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$"
           interpolated: true
+        examples:
+          - value: nmdc:manif-99-labeled
 
   CalibrationInformation:
       class_uri: nmdc:CalibrationInformation
@@ -470,6 +480,8 @@ classes:
           structured_pattern:
             syntax: "{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$"
             interpolated: true
+          examples:
+            - value: nmdc:calib-14-93cjjw92
 
 
   FunctionalAnnotationAggMember:
@@ -547,6 +559,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:poolp-{id_shoulder}-{id_blade}$"
           interpolated: true
+        examples:
+          - value: nmdc:poolp-99-abcdef
 
   Isolation:
     class_uri: nmdc:Isolation
@@ -560,6 +574,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:isnp-{id_shoulder}-{id_blade}$"
           interpolated: true
+        examples:
+          - value: nmdc:isnp-99-mukr6y
       has_input:
         required: true
         structured_pattern:
@@ -586,6 +602,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:cultp-{id_shoulder}-{id_blade}$"
           interpolated: true
+        examples:
+          - value: nmdc:cultp-11-inc00001
       has_input:
         required: true
         range: OrganismSample
@@ -625,6 +643,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:extrp-{id_shoulder}-{id_blade}$"
           interpolated: true
+        examples:
+          - value: nmdc:extrp-11-00r2pk65
       volume:
         description: The volume of the solvent/solute being used, not the input.
 
@@ -662,6 +682,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}$"
           interpolated: true
+        examples:
+          - value: nmdc:libprp-12-1qp98z14
       pcr_cond:
         description: Description of reaction conditions and components of polymerase chain reaction performed during library preparation
 
@@ -680,6 +702,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:isolp-{id_shoulder}-{id_blade}$"
           interpolated: true
+        examples:
+          - value: nmdc:isolp-99-inchip4
       has_input:
         required: true
         structured_pattern:
@@ -760,6 +784,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:fracp-{id_shoulder}-{id_blade}$"
           interpolated: true
+        examples:
+          - value: nmdc:fracp-99-labeled
       has_input:
         required: true
         structured_pattern:
@@ -793,6 +819,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}$"
           interpolated: true
+        examples:
+          - value: nmdc:clsite-99-Cq00d1
 
   SubSamplingProcess:
     class_uri: nmdc:SubSamplingProcess
@@ -824,6 +852,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:subspr-{id_shoulder}-{id_blade}$"
           interpolated: true
+        examples:
+          - value: nmdc:subspr-99-oW43DzG0
       volume:
         description: The output volume of the SubSampling Process.
       mass:
@@ -851,6 +881,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:mixpro-{id_shoulder}-{id_blade}$"
           interpolated: true
+        examples:
+          - value: nmdc:mixpro-11-A74
       has_output:
         description: The mixed sample.
         structured_pattern:
@@ -883,6 +915,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:filtpr-{id_shoulder}-{id_blade}$"
           interpolated: true
+        examples:
+          - value: nmdc:filtpr-99-abcdef
       volume:
         description: The volume of sample filtered.
       has_output:
@@ -909,6 +943,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:storpr-{id_shoulder}-{id_blade}$"
           interpolated: true
+        examples:
+          - value: nmdc:storpr-99-zUCd5N
       has_input:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
@@ -938,6 +974,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:cspro-{id_shoulder}-{id_blade}$"
           interpolated: true
+        examples:
+          - value: nmdc:cspro-99-oW43DzG0
       has_output:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
@@ -964,6 +1002,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:dispro-{id_shoulder}-{id_blade}$"
           interpolated: true
+        examples:
+          - value: nmdc:dispro-11-A74
 
 enums:
   CalibrationTargetEnum:

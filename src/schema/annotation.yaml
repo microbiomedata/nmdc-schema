@@ -94,6 +94,10 @@ classes:
       - KEGG.ORTHOLOGY prefix is used for KO numbers
     todos:
       - is OrthologyGroup instantiated in an MongoDB collection? Aren't Pathways searchable in the Data Portal?
+    slot_usage:
+      id:
+        examples:
+          - value: KEGG.ORTHOLOGY:K01755
 
   FunctionalAnnotation:
     class_uri: nmdc:FunctionalAnnotation

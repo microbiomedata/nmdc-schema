@@ -55,6 +55,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+        examples:
+          - value: nmdc:wfmgas-11-d11daf11.1
       was_informed_by:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
@@ -103,6 +105,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+        examples:
+          - value: nmdc:wfmtas-11-23986.1
       was_informed_by:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
@@ -125,6 +129,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+        examples:
+          - value: nmdc:wfmtan-11-23987.1
       img_identifiers:
         maximum_cardinality: 1
       was_informed_by:
@@ -153,6 +159,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+        examples:
+          - value: nmdc:wfmtex-11-23989.1
       img_identifiers:
         maximum_cardinality: 1
       was_informed_by:
@@ -187,6 +195,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+        examples:
+          - value: nmdc:wfmag-11-0abycm66.1
       img_identifiers:
         maximum_cardinality: 1
       was_informed_by:
@@ -217,6 +227,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+        examples:
+          - value: nmdc:wfrqc-11-hemh0a87.1
       was_informed_by:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
@@ -238,6 +250,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+        examples:
+          - value: nmdc:wfrbt-11-0083q358.1
       was_informed_by:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
@@ -264,6 +278,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+        examples:
+          - value: nmdc:wfmb-11-ndgg7v31.12
       was_informed_by:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$"
@@ -295,6 +311,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+        examples:
+          - value: nmdc:wfmp-11-fh8dk922.1
       was_informed_by:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$"
@@ -318,6 +336,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+        examples:
+          - value: nmdc:wfnom-11-547rwq94.1
       was_informed_by:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$"

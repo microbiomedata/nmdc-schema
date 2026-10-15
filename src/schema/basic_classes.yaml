@@ -69,6 +69,8 @@ classes:
       id:
         notes:
           - The identifiers for terms from external ontologies can't have their ids constrained to the nmdc namespace
+        examples:
+          - value: ENVO:00002030
     exact_mappings:
       - biolink:OntologyClass
       - owl:Class
@@ -185,6 +187,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$"
           interpolated: true
+        examples:
+          - value: nmdc:inst-14-xx07be40
   Organism:
     class_uri: nmdc:Organism
     is_a: MaterialEntity
@@ -203,6 +207,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$"
           interpolated: true
+        examples:
+          - value: nmdc:orgn-99-6dwrrh
       classified_as:
         range: NcbiTaxon
         description: Taxonomic classification of this organism.
@@ -404,6 +410,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$"
           interpolated: true
+        examples:
+          - value: nmdc:sty-11-34xj1150
       name:
         annotations:
           tooltip: Provide a name for the study your samples will belong with.
@@ -512,6 +520,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$"
           interpolated: true
+        examples:
+          - value: nmdc:dobj-11-0abycm53
       was_generated_by:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$"
