@@ -71,6 +71,7 @@ classes:
           - The identifiers for terms from external ontologies can't have their ids constrained to the nmdc namespace
         examples:
           - value: ENVO:00002030
+            description: the ENVO term aquatic biome
     exact_mappings:
       - biolink:OntologyClass
       - owl:Class
@@ -188,7 +189,8 @@ classes:
           syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$"
           interpolated: true
         examples:
-          - value: nmdc:inst-14-xx07be40
+          - value: nmdc:inst-11-075j3n79
+            description: a production Instrument
   Organism:
     class_uri: nmdc:Organism
     is_a: MaterialEntity
@@ -209,6 +211,7 @@ classes:
           interpolated: true
         examples:
           - value: nmdc:orgn-99-6dwrrh
+            description: an Organism from the schema's example data; production has none
       classified_as:
         range: NcbiTaxon
         description: Taxonomic classification of this organism.
@@ -411,7 +414,8 @@ classes:
           syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$"
           interpolated: true
         examples:
-          - value: nmdc:sty-11-34xj1150
+          - value: nmdc:sty-11-076c9980
+            description: a production Study
       name:
         annotations:
           tooltip: Provide a name for the study your samples will belong with.
@@ -521,7 +525,8 @@ classes:
           syntax: "{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$"
           interpolated: true
         examples:
-          - value: nmdc:dobj-11-0abycm53
+          - value: nmdc:dobj-11-00017y47
+            description: a production DataObject
       was_generated_by:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$"

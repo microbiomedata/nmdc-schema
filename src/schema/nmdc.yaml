@@ -279,7 +279,8 @@ classes:
           syntax: "{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}$"
           interpolated: true
         examples:
-          - value: nmdc:dgns-11-pf500b03
+          - value: nmdc:dgns-11-0002a657
+            description: a production NucleotideSequencing
       analyte_category:
         range: NucleotideSequencingEnum
 
@@ -300,7 +301,8 @@ classes:
           syntax: "{id_nmdc_prefix}:(dgms|omprc)-{id_shoulder}-{id_blade}$"
           interpolated: true
         examples:
-          - value: nmdc:dgms-11-0003fm52
+          - value: nmdc:dgms-11-0056ry09
+            description: a production MassSpectrometry
       has_chromatography_configuration:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$"
@@ -382,7 +384,8 @@ classes:
           syntax: "{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$"
           interpolated: true
         examples:
-          - value: nmdc:mscon-99-oW43DzG0
+          - value: nmdc:mscon-11-0ary3w56
+            description: a production MassSpectrometryConfiguration
       mass_spectrometry_acquisition_strategy:
         required: true
       resolution_categories:
@@ -417,7 +420,8 @@ classes:
           syntax: "{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$"
           interpolated: true
         examples:
-          - value: nmdc:chrcon-11-oW43DzG0
+          - value: nmdc:chrcon-11-0stw8m53
+            description: a production ChromatographyConfiguration
       chromatographic_category:
         required: true
       stationary_phase:
@@ -437,7 +441,8 @@ classes:
           syntax: "{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$"
           interpolated: true
         examples:
-          - value: nmdc:manif-99-labeled
+          - value: nmdc:manif-11-06t11y76
+            description: a production Manifest
 
   CalibrationInformation:
       class_uri: nmdc:CalibrationInformation
@@ -481,7 +486,8 @@ classes:
             syntax: "{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$"
             interpolated: true
           examples:
-            - value: nmdc:calib-14-93cjjw92
+            - value: nmdc:calib-11-015nyk25
+              description: a production CalibrationInformation
 
 
   FunctionalAnnotationAggMember:
@@ -560,7 +566,8 @@ classes:
           syntax: "{id_nmdc_prefix}:poolp-{id_shoulder}-{id_blade}$"
           interpolated: true
         examples:
-          - value: nmdc:poolp-99-abcdef
+          - value: nmdc:poolp-11-00azgg46
+            description: a production Pooling
 
   Isolation:
     class_uri: nmdc:Isolation
@@ -576,6 +583,7 @@ classes:
           interpolated: true
         examples:
           - value: nmdc:isnp-99-mukr6y
+            description: an Isolation from the schema's example data; production has none
       has_input:
         required: true
         structured_pattern:
@@ -604,6 +612,7 @@ classes:
           interpolated: true
         examples:
           - value: nmdc:cultp-11-inc00001
+            description: a Culturing from the schema's example data; production has none
       has_input:
         required: true
         range: OrganismSample
@@ -644,7 +653,8 @@ classes:
           syntax: "{id_nmdc_prefix}:extrp-{id_shoulder}-{id_blade}$"
           interpolated: true
         examples:
-          - value: nmdc:extrp-11-00r2pk65
+          - value: nmdc:extrp-11-0051av38
+            description: a production Extraction
       volume:
         description: The volume of the solvent/solute being used, not the input.
 
@@ -683,7 +693,8 @@ classes:
           syntax: "{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}$"
           interpolated: true
         examples:
-          - value: nmdc:libprp-12-1qp98z14
+          - value: nmdc:libprp-11-002djk98
+            description: a production LibraryPreparation
       pcr_cond:
         description: Description of reaction conditions and components of polymerase chain reaction performed during library preparation
 
@@ -704,6 +715,7 @@ classes:
           interpolated: true
         examples:
           - value: nmdc:isolp-99-inchip4
+            description: an IsotopeLabelingProcess from the schema's example data; production has none
       has_input:
         required: true
         structured_pattern:
@@ -786,6 +798,7 @@ classes:
           interpolated: true
         examples:
           - value: nmdc:fracp-99-labeled
+            description: a DensityGradientFractionationProcess from the schema's example data; production has none
       has_input:
         required: true
         structured_pattern:
@@ -821,6 +834,7 @@ classes:
           interpolated: true
         examples:
           - value: nmdc:clsite-99-Cq00d1
+            description: a CollectingBiosamplesFromSite from the schema's example data; production has none
 
   SubSamplingProcess:
     class_uri: nmdc:SubSamplingProcess
@@ -853,7 +867,8 @@ classes:
           syntax: "{id_nmdc_prefix}:subspr-{id_shoulder}-{id_blade}$"
           interpolated: true
         examples:
-          - value: nmdc:subspr-99-oW43DzG0
+          - value: nmdc:subspr-11-004wpx78
+            description: a production SubSamplingProcess
       volume:
         description: The output volume of the SubSampling Process.
       mass:
@@ -883,6 +898,7 @@ classes:
           interpolated: true
         examples:
           - value: nmdc:mixpro-11-A74
+            description: a MixingProcess from the schema's example data; production has none
       has_output:
         description: The mixed sample.
         structured_pattern:
@@ -916,7 +932,8 @@ classes:
           syntax: "{id_nmdc_prefix}:filtpr-{id_shoulder}-{id_blade}$"
           interpolated: true
         examples:
-          - value: nmdc:filtpr-99-abcdef
+          - value: nmdc:filtpr-11-00hdy977
+            description: a production FiltrationProcess
       volume:
         description: The volume of sample filtered.
       has_output:
@@ -945,6 +962,7 @@ classes:
           interpolated: true
         examples:
           - value: nmdc:storpr-99-zUCd5N
+            description: a StorageProcess from the schema's example data; production has none
       has_input:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
@@ -975,7 +993,8 @@ classes:
           syntax: "{id_nmdc_prefix}:cspro-{id_shoulder}-{id_blade}$"
           interpolated: true
         examples:
-          - value: nmdc:cspro-99-oW43DzG0
+          - value: nmdc:cspro-11-00gba548
+            description: a production ChromatographicSeparationProcess
       has_output:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
@@ -1003,7 +1022,8 @@ classes:
           syntax: "{id_nmdc_prefix}:dispro-{id_shoulder}-{id_blade}$"
           interpolated: true
         examples:
-          - value: nmdc:dispro-11-A74
+          - value: nmdc:dispro-11-00wpzz21
+            description: a production DissolvingProcess
 
 enums:
   CalibrationTargetEnum:

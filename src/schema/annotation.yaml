@@ -73,6 +73,11 @@ classes:
     description: >-
       Abstract grouping class for any term/descriptor that can be applied to a functional unit of a genome (protein, ncRNA, complex).
     abstract: true
+    slot_usage:
+      id:
+        examples:
+          - value: PFAM:PF00206
+            description: the Pfam Lyase_1 family, a gene_function_id in production functional_annotation_agg
 
 
   OrthologyGroup:
@@ -98,6 +103,7 @@ classes:
       id:
         examples:
           - value: KEGG.ORTHOLOGY:K01755
+            description: KEGG ortholog for argininosuccinate lyase, a gene_function_id in production functional_annotation_agg
 
   FunctionalAnnotation:
     class_uri: nmdc:FunctionalAnnotation
