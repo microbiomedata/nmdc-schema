@@ -2,7 +2,7 @@
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
-# description: The NMDC Schema is a foundational framework designed to standardize metadata for the National Microbiome Data  Collaborative (NMDC) and collaborating data providors. By establishing a structured approach to metadata, the NMDC Schema enables researchers to organize,  share, and interpret complex datasets with consistency and clarity. The NMDC Schema is critical substrate used to facilitate  interoperability and collaboration, as it provide a common language for data exchange across systems and disciplines.  In the context of the NMDC, this schema supports the integration of microbiome data from medicine, agriculture,  bioenergy, and environmental science into a cohesive platform.
+# description: The NMDC Schema is a foundational framework designed to standardize metadata for the National Microbiome Data  Collaborative (NMDC) and collaborating data providers. By establishing a structured approach to metadata, the NMDC Schema enables researchers to organize,  share, and interpret complex datasets with consistency and clarity. The NMDC Schema is critical substrate used to facilitate  interoperability and collaboration, as it provide a common language for data exchange across systems and disciplines.  In the context of the NMDC, this schema supports the integration of microbiome data from medicine, agriculture,  bioenergy, and environmental science into a cohesive platform.
 # license: https://creativecommons.org/publicdomain/zero/1.0/
 
 import dataclasses
@@ -1600,6 +1600,10 @@ class FunctionalAnnotationTerm(OntologyClass):
     type: Union[str, URIorCURIE] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, FunctionalAnnotationTermId):
+            self.id = FunctionalAnnotationTermId(self.id)
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -11483,7 +11487,7 @@ slots.ror = Slot(uri=NMDC.ror, name="ror", curie=NMDC.curie('ror'),
 slots.host_family_relation = Slot(uri=MIXS['0000872'], name="host_family_relation", curie=MIXS.curie('0000872'),
                    model_uri=NMDC.host_family_relation, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.salinity_meth = Slot(uri=MIXS['0000341'], name="salinity_meth", curie=MIXS.curie('0000341'),
+slots.salinity_meth = Slot(uri=NMDC.salinity_meth, name="salinity_meth", curie=NMDC.curie('salinity_meth'),
                    model_uri=NMDC.salinity_meth, domain=None, range=Optional[str],
                    pattern=re.compile(r'^(?:^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$)$'))
 
@@ -11495,15 +11499,15 @@ slots.biomaterial_purity = Slot(uri=NMDC.biomaterial_purity, name="biomaterial_p
 
 slots.generates_calibration = Slot(uri=NMDC.generates_calibration, name="generates_calibration", curie=NMDC.curie('generates_calibration'),
                    model_uri=NMDC.generates_calibration, domain=None, range=Optional[Union[str, CalibrationInformationId]],
-                   pattern=re.compile(r'^(?:^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.uses_calibration = Slot(uri=NMDC.uses_calibration, name="uses_calibration", curie=NMDC.curie('uses_calibration'),
                    model_uri=NMDC.uses_calibration, domain=None, range=Optional[Union[Union[str, CalibrationInformationId], list[Union[str, CalibrationInformationId]]]],
-                   pattern=re.compile(r'^(?:^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.calibration_object = Slot(uri=NMDC.calibration_object, name="calibration_object", curie=NMDC.curie('calibration_object'),
                    model_uri=NMDC.calibration_object, domain=None, range=Optional[Union[str, DataObjectId]],
-                   pattern=re.compile(r'^(?:^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.internal_calibration = Slot(uri=NMDC.internal_calibration, name="internal_calibration", curie=NMDC.curie('internal_calibration'),
                    model_uri=NMDC.internal_calibration, domain=None, range=Optional[Union[bool, Bool]])
@@ -12351,7 +12355,7 @@ slots.submission_portal_identifier = Slot(uri=NMDC['basic_classes/submission_por
 
 slots.associated_studies = Slot(uri=NMDC['basic_classes/associated_studies'], name="associated_studies", curie=NMDC.curie('basic_classes/associated_studies'),
                    model_uri=NMDC.associated_studies, domain=None, range=Union[Union[str, StudyId], list[Union[str, StudyId]]],
-                   pattern=re.compile(r'^(?:^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.part_of = Slot(uri=DCTERMS.isPartOf, name="part_of", curie=DCTERMS.curie('isPartOf'),
                    model_uri=NMDC.part_of, domain=None, range=Optional[Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]]])
@@ -12406,14 +12410,14 @@ slots.has_output = Slot(uri=NMDC['basic_classes/has_output'], name="has_output",
 
 slots.instrument_used = Slot(uri=NMDC['basic_classes/instrument_used'], name="instrument_used", curie=NMDC.curie('basic_classes/instrument_used'),
                    model_uri=NMDC.instrument_used, domain=None, range=Optional[Union[Union[str, InstrumentId], list[Union[str, InstrumentId]]]],
-                   pattern=re.compile(r'^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.instrument_instance_specifier = Slot(uri=NMDC['basic_classes/instrument_instance_specifier'], name="instrument_instance_specifier", curie=NMDC.curie('basic_classes/instrument_instance_specifier'),
                    model_uri=NMDC.instrument_instance_specifier, domain=None, range=Optional[str])
 
 slots.in_manifest = Slot(uri=NMDC['basic_classes/in_manifest'], name="in_manifest", curie=NMDC.curie('basic_classes/in_manifest'),
                    model_uri=NMDC.in_manifest, domain=None, range=Optional[Union[Union[str, ManifestId], list[Union[str, ManifestId]]]],
-                   pattern=re.compile(r'^(?:^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.manifest_category = Slot(uri=NMDC['basic_classes/manifest_category'], name="manifest_category", curie=NMDC.curie('basic_classes/manifest_category'),
                    model_uri=NMDC.manifest_category, domain=None, range=Union[str, "ManifestCategoryEnum"])
@@ -13914,7 +13918,7 @@ slots.sediment_type = Slot(uri=MIXS['0001078'], name="sediment_type", curie=MIXS
 
 slots.seq_meth = Slot(uri=MIXS['0000050'], name="seq_meth", curie=MIXS.curie('0000050'),
                    model_uri=NMDC.seq_meth, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^.*|(([^\s-]{1,2}|[^\s-]+.+[^\s-]+) \[[a-zA-Z]{2,}:[a-zA-Z0-9]\d+\])$'))
+                   pattern=re.compile(r'^(.*|(([^\s-]{1,2}|[^\s-]+.+[^\s-]+) \[[a-zA-Z]{2,}:[a-zA-Z0-9]\d+\]))$'))
 
 slots.seq_quality_check = Slot(uri=MIXS['0000051'], name="seq_quality_check", curie=MIXS.curie('0000051'),
                    model_uri=NMDC.seq_quality_check, domain=None, range=Optional[Union[str, "SeqQualityCheckEnum"]])
@@ -14325,9 +14329,6 @@ slots.xylene = Slot(uri=MIXS['0000156'], name="xylene", curie=MIXS.curie('000015
                    model_uri=NMDC.xylene, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$'))
 
-slots.estimated_size = Slot(uri=MIXS['0000024'], name="estimated_size", curie=MIXS.curie('0000024'),
-                   model_uri=NMDC.estimated_size, domain=None, range=Optional[int])
-
 slots.ploidy = Slot(uri=MIXS['0000021'], name="ploidy", curie=MIXS.curie('0000021'),
                    model_uri=NMDC.ploidy, domain=None, range=Optional[Union[str, "PloidyEnum"]])
 
@@ -14390,6 +14391,9 @@ slots.samp_collec_device = Slot(uri=MIXS['0000002'], name="samp_collec_device", 
 slots.samp_collec_method = Slot(uri=MIXS['0001225'], name="samp_collec_method", curie=MIXS.curie('0001225'),
                    model_uri=NMDC.samp_collec_method, domain=None, range=Optional[str])
 
+slots.estimated_size = Slot(uri=MIXS['0000024'], name="estimated_size", curie=MIXS.curie('0000024'),
+                   model_uri=NMDC.estimated_size, domain=None, range=Optional[int])
+
 slots.mixs_env_triad_field = Slot(uri=MIXS.mixs_env_triad_field, name="mixs_env_triad_field", curie=MIXS.curie('mixs_env_triad_field'),
                    model_uri=NMDC.mixs_env_triad_field, domain=None, range=Optional[Union[dict, ControlledIdentifiedTermValue]])
 
@@ -14420,22 +14424,22 @@ slots.Organization_name = Slot(uri=NMDC['attribute_values/name'], name="Organiza
 
 slots.NucleotideSequencing_id = Slot(uri=NMDC.id, name="NucleotideSequencing_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.NucleotideSequencing_id, domain=NucleotideSequencing, range=Union[str, NucleotideSequencingId],
-                   pattern=re.compile(r'^(?:^(nmdc):(dgns|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):(dgns|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.NucleotideSequencing_analyte_category = Slot(uri=NMDC.analyte_category, name="NucleotideSequencing_analyte_category", curie=NMDC.curie('analyte_category'),
                    model_uri=NMDC.NucleotideSequencing_analyte_category, domain=NucleotideSequencing, range=Union[str, "NucleotideSequencingEnum"])
 
 slots.MassSpectrometry_id = Slot(uri=NMDC.id, name="MassSpectrometry_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.MassSpectrometry_id, domain=MassSpectrometry, range=Union[str, MassSpectrometryId],
-                   pattern=re.compile(r'^(?:^(nmdc):(dgms|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):(dgms|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.MassSpectrometry_has_chromatography_configuration = Slot(uri=NMDC.has_chromatography_configuration, name="MassSpectrometry_has_chromatography_configuration", curie=NMDC.curie('has_chromatography_configuration'),
                    model_uri=NMDC.MassSpectrometry_has_chromatography_configuration, domain=MassSpectrometry, range=Optional[Union[str, ChromatographyConfigurationId]],
-                   pattern=re.compile(r'^(?:^(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.MassSpectrometry_has_mass_spectrometry_configuration = Slot(uri=NMDC.has_mass_spectrometry_configuration, name="MassSpectrometry_has_mass_spectrometry_configuration", curie=NMDC.curie('has_mass_spectrometry_configuration'),
                    model_uri=NMDC.MassSpectrometry_has_mass_spectrometry_configuration, domain=MassSpectrometry, range=Union[str, MassSpectrometryConfigurationId],
-                   pattern=re.compile(r'^(?:^(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.MassSpectrometry_analyte_category = Slot(uri=NMDC.analyte_category, name="MassSpectrometry_analyte_category", curie=NMDC.curie('analyte_category'),
                    model_uri=NMDC.MassSpectrometry_analyte_category, domain=MassSpectrometry, range=Union[str, "MassSpectrometryEnum"])
@@ -14451,7 +14455,7 @@ slots.MassSpectrometryConfiguration_description = Slot(uri=DCTERMS.description, 
 
 slots.MassSpectrometryConfiguration_id = Slot(uri=NMDC.id, name="MassSpectrometryConfiguration_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.MassSpectrometryConfiguration_id, domain=MassSpectrometryConfiguration, range=Union[str, MassSpectrometryConfigurationId],
-                   pattern=re.compile(r'^(?:^(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.MassSpectrometryConfiguration_mass_spectrometry_acquisition_strategy = Slot(uri=NMDC.mass_spectrometry_acquisition_strategy, name="MassSpectrometryConfiguration_mass_spectrometry_acquisition_strategy", curie=NMDC.curie('mass_spectrometry_acquisition_strategy'),
                    model_uri=NMDC.MassSpectrometryConfiguration_mass_spectrometry_acquisition_strategy, domain=MassSpectrometryConfiguration, range=Union[str, "MassSpectrometryAcquisitionStrategyEnum"])
@@ -14479,7 +14483,7 @@ slots.ChromatographyConfiguration_description = Slot(uri=DCTERMS.description, na
 
 slots.ChromatographyConfiguration_id = Slot(uri=NMDC.id, name="ChromatographyConfiguration_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.ChromatographyConfiguration_id, domain=ChromatographyConfiguration, range=Union[str, ChromatographyConfigurationId],
-                   pattern=re.compile(r'^(?:^(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.ChromatographyConfiguration_chromatographic_category = Slot(uri=NMDC.chromatographic_category, name="ChromatographyConfiguration_chromatographic_category", curie=NMDC.curie('chromatographic_category'),
                    model_uri=NMDC.ChromatographyConfiguration_chromatographic_category, domain=ChromatographyConfiguration, range=Union[str, "ChromatographicCategoryEnum"])
@@ -14489,7 +14493,7 @@ slots.ChromatographyConfiguration_stationary_phase = Slot(uri=NMDC.stationary_ph
 
 slots.Manifest_id = Slot(uri=NMDC.id, name="Manifest_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.Manifest_id, domain=Manifest, range=Union[str, ManifestId],
-                   pattern=re.compile(r'^(?:^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.CalibrationInformation_internal_calibration = Slot(uri=NMDC.internal_calibration, name="CalibrationInformation_internal_calibration", curie=NMDC.curie('internal_calibration'),
                    model_uri=NMDC.CalibrationInformation_internal_calibration, domain=CalibrationInformation, range=Union[bool, Bool])
@@ -14499,11 +14503,11 @@ slots.CalibrationInformation_calibration_target = Slot(uri=NMDC.calibration_targ
 
 slots.CalibrationInformation_id = Slot(uri=NMDC.id, name="CalibrationInformation_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.CalibrationInformation_id, domain=CalibrationInformation, range=Union[str, CalibrationInformationId],
-                   pattern=re.compile(r'^(?:^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.FunctionalAnnotationAggMember_was_generated_by = Slot(uri=NMDC['basic_classes/was_generated_by'], name="FunctionalAnnotationAggMember_was_generated_by", curie=NMDC.curie('basic_classes/was_generated_by'),
                    model_uri=NMDC.FunctionalAnnotationAggMember_was_generated_by, domain=FunctionalAnnotationAggMember, range=Union[str, AnnotatingWorkflowId], mappings = [PROV["wasGeneratedBy"]],
-                   pattern=re.compile(r'^(?:^(nmdc):(wfmgan|wfmp|wfmtan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):(wfmgan|wfmp|wfmtan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$'))
 
 slots.FunctionalAnnotationAggMember_count = Slot(uri=NMDC.count, name="FunctionalAnnotationAggMember_count", curie=NMDC.curie('count'),
                    model_uri=NMDC.FunctionalAnnotationAggMember_count, domain=FunctionalAnnotationAggMember, range=int)
@@ -14517,46 +14521,46 @@ slots.Pooling_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="Poolin
 
 slots.Pooling_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="Pooling_has_output", curie=NMDC.curie('basic_classes/has_output'),
                    model_uri=NMDC.Pooling_has_output, domain=Pooling, range=Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]],
-                   pattern=re.compile(r'^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.Pooling_id = Slot(uri=NMDC.id, name="Pooling_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.Pooling_id, domain=Pooling, range=Union[str, PoolingId],
-                   pattern=re.compile(r'^(?:^(nmdc):poolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):poolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.Isolation_id = Slot(uri=NMDC.id, name="Isolation_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.Isolation_id, domain=Isolation, range=Union[str, IsolationId],
-                   pattern=re.compile(r'^(?:^(nmdc):isnp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):isnp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.Isolation_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="Isolation_has_input", curie=NMDC.curie('basic_classes/has_input'),
                    model_uri=NMDC.Isolation_has_input, domain=Isolation, range=Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]],
-                   pattern=re.compile(r'^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.Isolation_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="Isolation_has_output", curie=NMDC.curie('basic_classes/has_output'),
                    model_uri=NMDC.Isolation_has_output, domain=Isolation, range=Union[Union[str, OrganismSampleId], list[Union[str, OrganismSampleId]]],
-                   pattern=re.compile(r'^(?:^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.Culturing_id = Slot(uri=NMDC.id, name="Culturing_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.Culturing_id, domain=Culturing, range=Union[str, CulturingId],
-                   pattern=re.compile(r'^(?:^(nmdc):cultp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):cultp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.Culturing_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="Culturing_has_input", curie=NMDC.curie('basic_classes/has_input'),
                    model_uri=NMDC.Culturing_has_input, domain=Culturing, range=Union[Union[str, OrganismSampleId], list[Union[str, OrganismSampleId]]],
-                   pattern=re.compile(r'^(?:^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.Culturing_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="Culturing_has_output", curie=NMDC.curie('basic_classes/has_output'),
                    model_uri=NMDC.Culturing_has_output, domain=Culturing, range=Union[Union[str, OrganismSampleId], list[Union[str, OrganismSampleId]]],
-                   pattern=re.compile(r'^(?:^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.Extraction_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="Extraction_has_input", curie=NMDC.curie('basic_classes/has_input'),
                    model_uri=NMDC.Extraction_has_input, domain=Extraction, range=Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]],
-                   pattern=re.compile(r'^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.Extraction_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="Extraction_has_output", curie=NMDC.curie('basic_classes/has_output'),
                    model_uri=NMDC.Extraction_has_output, domain=Extraction, range=Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]])
 
 slots.Extraction_id = Slot(uri=NMDC.id, name="Extraction_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.Extraction_id, domain=Extraction, range=Union[str, ExtractionId],
-                   pattern=re.compile(r'^(?:^(nmdc):extrp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):extrp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.Extraction_volume = Slot(uri=NMDC.volume, name="Extraction_volume", curie=NMDC.curie('volume'),
                    model_uri=NMDC.Extraction_volume, domain=Extraction, range=Optional[Union[dict, QuantityValue]])
@@ -14569,48 +14573,48 @@ slots.LibraryPreparation_has_output = Slot(uri=NMDC['basic_classes/has_output'],
 
 slots.LibraryPreparation_id = Slot(uri=NMDC.id, name="LibraryPreparation_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.LibraryPreparation_id, domain=LibraryPreparation, range=Union[str, LibraryPreparationId],
-                   pattern=re.compile(r'^(?:^(nmdc):libprp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):libprp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.LibraryPreparation_pcr_cond = Slot(uri=MIXS['0000049'], name="LibraryPreparation_pcr_cond", curie=MIXS.curie('0000049'),
                    model_uri=NMDC.LibraryPreparation_pcr_cond, domain=LibraryPreparation, range=Optional[str])
 
 slots.IsotopeLabelingProcess_id = Slot(uri=NMDC.id, name="IsotopeLabelingProcess_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.IsotopeLabelingProcess_id, domain=IsotopeLabelingProcess, range=Union[str, IsotopeLabelingProcessId],
-                   pattern=re.compile(r'^(?:^(nmdc):isolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):isolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.IsotopeLabelingProcess_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="IsotopeLabelingProcess_has_input", curie=NMDC.curie('basic_classes/has_input'),
                    model_uri=NMDC.IsotopeLabelingProcess_has_input, domain=IsotopeLabelingProcess, range=Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]],
-                   pattern=re.compile(r'^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.IsotopeLabelingProcess_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="IsotopeLabelingProcess_has_output", curie=NMDC.curie('basic_classes/has_output'),
                    model_uri=NMDC.IsotopeLabelingProcess_has_output, domain=IsotopeLabelingProcess, range=Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]])
 
 slots.DensityGradientFractionationProcess_id = Slot(uri=NMDC.id, name="DensityGradientFractionationProcess_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.DensityGradientFractionationProcess_id, domain=DensityGradientFractionationProcess, range=Union[str, DensityGradientFractionationProcessId],
-                   pattern=re.compile(r'^(?:^(nmdc):fracp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):fracp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.DensityGradientFractionationProcess_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="DensityGradientFractionationProcess_has_input", curie=NMDC.curie('basic_classes/has_input'),
                    model_uri=NMDC.DensityGradientFractionationProcess_has_input, domain=DensityGradientFractionationProcess, range=Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]],
-                   pattern=re.compile(r'^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.DensityGradientFractionationProcess_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="DensityGradientFractionationProcess_has_output", curie=NMDC.curie('basic_classes/has_output'),
                    model_uri=NMDC.DensityGradientFractionationProcess_has_output, domain=DensityGradientFractionationProcess, range=Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]])
 
 slots.CollectingBiosamplesFromSite_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="CollectingBiosamplesFromSite_has_input", curie=NMDC.curie('basic_classes/has_input'),
                    model_uri=NMDC.CollectingBiosamplesFromSite_has_input, domain=CollectingBiosamplesFromSite, range=Union[Union[str, SiteId], list[Union[str, SiteId]]],
-                   pattern=re.compile(r'^(?:^(nmdc):(frsite|site)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):(frsite|site)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.CollectingBiosamplesFromSite_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="CollectingBiosamplesFromSite_has_output", curie=NMDC.curie('basic_classes/has_output'),
                    model_uri=NMDC.CollectingBiosamplesFromSite_has_output, domain=CollectingBiosamplesFromSite, range=Union[Union[str, BiosampleId], list[Union[str, BiosampleId]]],
-                   pattern=re.compile(r'^(?:^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.CollectingBiosamplesFromSite_id = Slot(uri=NMDC.id, name="CollectingBiosamplesFromSite_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.CollectingBiosamplesFromSite_id, domain=CollectingBiosamplesFromSite, range=Union[str, CollectingBiosamplesFromSiteId],
-                   pattern=re.compile(r'^(?:^(nmdc):clsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):clsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.SubSamplingProcess_id = Slot(uri=NMDC.id, name="SubSamplingProcess_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.SubSamplingProcess_id, domain=SubSamplingProcess, range=Union[str, SubSamplingProcessId],
-                   pattern=re.compile(r'^(?:^(nmdc):subspr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):subspr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.SubSamplingProcess_volume = Slot(uri=NMDC.volume, name="SubSamplingProcess_volume", curie=NMDC.curie('volume'),
                    model_uri=NMDC.SubSamplingProcess_volume, domain=SubSamplingProcess, range=Optional[Union[dict, QuantityValue]])
@@ -14623,49 +14627,49 @@ slots.SubSamplingProcess_has_output = Slot(uri=NMDC['basic_classes/has_output'],
 
 slots.MixingProcess_id = Slot(uri=NMDC.id, name="MixingProcess_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.MixingProcess_id, domain=MixingProcess, range=Union[str, MixingProcessId],
-                   pattern=re.compile(r'^(?:^(nmdc):mixpro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):mixpro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.MixingProcess_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="MixingProcess_has_output", curie=NMDC.curie('basic_classes/has_output'),
                    model_uri=NMDC.MixingProcess_has_output, domain=MixingProcess, range=Optional[Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]]],
-                   pattern=re.compile(r'^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.FiltrationProcess_id = Slot(uri=NMDC.id, name="FiltrationProcess_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.FiltrationProcess_id, domain=FiltrationProcess, range=Union[str, FiltrationProcessId],
-                   pattern=re.compile(r'^(?:^(nmdc):filtpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):filtpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.FiltrationProcess_volume = Slot(uri=NMDC.volume, name="FiltrationProcess_volume", curie=NMDC.curie('volume'),
                    model_uri=NMDC.FiltrationProcess_volume, domain=FiltrationProcess, range=Optional[Union[dict, QuantityValue]])
 
 slots.FiltrationProcess_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="FiltrationProcess_has_output", curie=NMDC.curie('basic_classes/has_output'),
                    model_uri=NMDC.FiltrationProcess_has_output, domain=FiltrationProcess, range=Optional[Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]]],
-                   pattern=re.compile(r'^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.StorageProcess_substances_used = Slot(uri=NMDC.substances_used, name="StorageProcess_substances_used", curie=NMDC.curie('substances_used'),
                    model_uri=NMDC.StorageProcess_substances_used, domain=StorageProcess, range=Optional[Union[Union[dict, PortionOfSubstance], list[Union[dict, PortionOfSubstance]]]])
 
 slots.StorageProcess_id = Slot(uri=NMDC.id, name="StorageProcess_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.StorageProcess_id, domain=StorageProcess, range=Union[str, StorageProcessId],
-                   pattern=re.compile(r'^(?:^(nmdc):storpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):storpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.StorageProcess_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="StorageProcess_has_input", curie=NMDC.curie('basic_classes/has_input'),
                    model_uri=NMDC.StorageProcess_has_input, domain=StorageProcess, range=Optional[Union[Union[str, SampleId], list[Union[str, SampleId]]]],
-                   pattern=re.compile(r'^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.StorageProcess_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="StorageProcess_has_output", curie=NMDC.curie('basic_classes/has_output'),
                    model_uri=NMDC.StorageProcess_has_output, domain=StorageProcess, range=Optional[Union[Union[str, ProcessedSampleId], list[Union[str, ProcessedSampleId]]]],
-                   pattern=re.compile(r'^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.ChromatographicSeparationProcess_id = Slot(uri=NMDC.id, name="ChromatographicSeparationProcess_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.ChromatographicSeparationProcess_id, domain=ChromatographicSeparationProcess, range=Union[str, ChromatographicSeparationProcessId],
-                   pattern=re.compile(r'^(?:^(nmdc):cspro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):cspro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.ChromatographicSeparationProcess_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="ChromatographicSeparationProcess_has_output", curie=NMDC.curie('basic_classes/has_output'),
                    model_uri=NMDC.ChromatographicSeparationProcess_has_output, domain=ChromatographicSeparationProcess, range=Optional[Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]]],
-                   pattern=re.compile(r'^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.DissolvingProcess_id = Slot(uri=NMDC.id, name="DissolvingProcess_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.DissolvingProcess_id, domain=DissolvingProcess, range=Union[str, DissolvingProcessId],
-                   pattern=re.compile(r'^(?:^(nmdc):dispro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):dispro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.GenomeFeature_seqid = Slot(uri=NMDC.seqid, name="GenomeFeature_seqid", curie=NMDC.curie('seqid'),
                    model_uri=NMDC.GenomeFeature_seqid, domain=GenomeFeature, range=str)
@@ -14676,41 +14680,49 @@ slots.GenomeFeature_start = Slot(uri=NMDC.start, name="GenomeFeature_start", cur
 slots.GenomeFeature_end = Slot(uri=NMDC.end, name="GenomeFeature_end", curie=NMDC.curie('end'),
                    model_uri=NMDC.GenomeFeature_end, domain=GenomeFeature, range=int)
 
+slots.FunctionalAnnotationTerm_id = Slot(uri=NMDC.id, name="FunctionalAnnotationTerm_id", curie=NMDC.curie('id'),
+                   model_uri=NMDC.FunctionalAnnotationTerm_id, domain=FunctionalAnnotationTerm, range=Union[str, FunctionalAnnotationTermId],
+                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
+
+slots.OrthologyGroup_id = Slot(uri=NMDC.id, name="OrthologyGroup_id", curie=NMDC.curie('id'),
+                   model_uri=NMDC.OrthologyGroup_id, domain=OrthologyGroup, range=Union[str, OrthologyGroupId],
+                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
+
 slots.FunctionalAnnotation_has_function = Slot(uri=NMDC.has_function, name="FunctionalAnnotation_has_function", curie=NMDC.curie('has_function'),
                    model_uri=NMDC.FunctionalAnnotation_has_function, domain=FunctionalAnnotation, range=Optional[str],
                    pattern=re.compile(r'^(KEGG_PATHWAY:\w{2,4}\d{5}|KEGG\.REACTION:R\d+|RHEA:\d{5}|MetaCyc:[A-Za-z0-9+_.%:\-]+|EC:\d{1,2}(\.\d{0,3}){0,3}|GO:\d{7}|MetaNetX:(MNXR\d+|EMPTY)|SEED:\w+|KEGG\.ORTHOLOGY:K\d+|EGGNOG:\w+|PFAM:PF\d{5}|TIGRFAM:TIGR\d+|SUPFAM:\w+|CATH:[1-6]\.[0-9]+\.[0-9]+\.[0-9]+|PANTHER\.FAMILY:PTHR\d{5}(\:SF\d{1,3})?)$'))
 
 slots.FunctionalAnnotation_was_generated_by = Slot(uri=NMDC['basic_classes/was_generated_by'], name="FunctionalAnnotation_was_generated_by", curie=NMDC.curie('basic_classes/was_generated_by'),
                    model_uri=NMDC.FunctionalAnnotation_was_generated_by, domain=FunctionalAnnotation, range=Optional[Union[str, MetagenomeAnnotationId]], mappings = [PROV["wasGeneratedBy"]],
-                   pattern=re.compile(r'^(?:^(nmdc):(wfmgan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):(wfmgan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$'))
 
 slots.MetagenomeAssembly_id = Slot(uri=NMDC.id, name="MetagenomeAssembly_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.MetagenomeAssembly_id, domain=MetagenomeAssembly, range=Union[str, MetagenomeAssemblyId],
-                   pattern=re.compile(r'^(?:^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$'))
 
 slots.MetagenomeAssembly_was_informed_by = Slot(uri=NMDC['basic_classes/was_informed_by'], name="MetagenomeAssembly_was_informed_by", curie=NMDC.curie('basic_classes/was_informed_by'),
                    model_uri=NMDC.MetagenomeAssembly_was_informed_by, domain=MetagenomeAssembly, range=Optional[Union[Union[str, NucleotideSequencingId], list[Union[str, NucleotideSequencingId]]]], mappings = [PROV["wasInformedBy"]],
-                   pattern=re.compile(r'^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.MetagenomeAssembly_superseded_by = Slot(uri=NMDC['basic_classes/superseded_by'], name="MetagenomeAssembly_superseded_by", curie=NMDC.curie('basic_classes/superseded_by'),
                    model_uri=NMDC.MetagenomeAssembly_superseded_by, domain=MetagenomeAssembly, range=Optional[Union[str, MetagenomeAssemblyId]],
-                   pattern=re.compile(r'^(?:^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$'))
 
 slots.MetatranscriptomeAssembly_id = Slot(uri=NMDC.id, name="MetatranscriptomeAssembly_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.MetatranscriptomeAssembly_id, domain=MetatranscriptomeAssembly, range=Union[str, MetatranscriptomeAssemblyId],
-                   pattern=re.compile(r'^(?:^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$'))
 
 slots.MetatranscriptomeAssembly_was_informed_by = Slot(uri=NMDC['basic_classes/was_informed_by'], name="MetatranscriptomeAssembly_was_informed_by", curie=NMDC.curie('basic_classes/was_informed_by'),
                    model_uri=NMDC.MetatranscriptomeAssembly_was_informed_by, domain=MetatranscriptomeAssembly, range=Optional[Union[Union[str, NucleotideSequencingId], list[Union[str, NucleotideSequencingId]]]], mappings = [PROV["wasInformedBy"]],
-                   pattern=re.compile(r'^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.MetatranscriptomeAssembly_superseded_by = Slot(uri=NMDC['basic_classes/superseded_by'], name="MetatranscriptomeAssembly_superseded_by", curie=NMDC.curie('basic_classes/superseded_by'),
                    model_uri=NMDC.MetatranscriptomeAssembly_superseded_by, domain=MetatranscriptomeAssembly, range=Optional[Union[str, MetatranscriptomeAssemblyId]],
-                   pattern=re.compile(r'^(?:^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$'))
 
 slots.MetatranscriptomeAnnotation_id = Slot(uri=NMDC.id, name="MetatranscriptomeAnnotation_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.MetatranscriptomeAnnotation_id, domain=MetatranscriptomeAnnotation, range=Union[str, MetatranscriptomeAnnotationId],
-                   pattern=re.compile(r'^(?:^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$'))
 
 slots.MetatranscriptomeAnnotation_img_identifiers = Slot(uri=NMDC.img_identifiers, name="MetatranscriptomeAnnotation_img_identifiers", curie=NMDC.curie('img_identifiers'),
                    model_uri=NMDC.MetatranscriptomeAnnotation_img_identifiers, domain=MetatranscriptomeAnnotation, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
@@ -14718,19 +14730,19 @@ slots.MetatranscriptomeAnnotation_img_identifiers = Slot(uri=NMDC.img_identifier
 
 slots.MetatranscriptomeAnnotation_was_informed_by = Slot(uri=NMDC['basic_classes/was_informed_by'], name="MetatranscriptomeAnnotation_was_informed_by", curie=NMDC.curie('basic_classes/was_informed_by'),
                    model_uri=NMDC.MetatranscriptomeAnnotation_was_informed_by, domain=MetatranscriptomeAnnotation, range=Optional[Union[Union[str, NucleotideSequencingId], list[Union[str, NucleotideSequencingId]]]], mappings = [PROV["wasInformedBy"]],
-                   pattern=re.compile(r'^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.MetatranscriptomeAnnotation_gold_analysis_project_identifiers = Slot(uri=NMDC.gold_analysis_project_identifiers, name="MetatranscriptomeAnnotation_gold_analysis_project_identifiers", curie=NMDC.curie('gold_analysis_project_identifiers'),
                    model_uri=NMDC.MetatranscriptomeAnnotation_gold_analysis_project_identifiers, domain=MetatranscriptomeAnnotation, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
-                   pattern=re.compile(r'^(?:^gold:Ga[0-9]+$)$'))
+                   pattern=re.compile(r'^(?:gold:Ga[0-9]+)$'))
 
 slots.MetatranscriptomeAnnotation_superseded_by = Slot(uri=NMDC['basic_classes/superseded_by'], name="MetatranscriptomeAnnotation_superseded_by", curie=NMDC.curie('basic_classes/superseded_by'),
                    model_uri=NMDC.MetatranscriptomeAnnotation_superseded_by, domain=MetatranscriptomeAnnotation, range=Optional[Union[str, MetatranscriptomeAnnotationId]],
-                   pattern=re.compile(r'^(?:^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$'))
 
 slots.MetatranscriptomeExpressionAnalysis_id = Slot(uri=NMDC.id, name="MetatranscriptomeExpressionAnalysis_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.MetatranscriptomeExpressionAnalysis_id, domain=MetatranscriptomeExpressionAnalysis, range=Union[str, MetatranscriptomeExpressionAnalysisId],
-                   pattern=re.compile(r'^(?:^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$'))
 
 slots.MetatranscriptomeExpressionAnalysis_img_identifiers = Slot(uri=NMDC.img_identifiers, name="MetatranscriptomeExpressionAnalysis_img_identifiers", curie=NMDC.curie('img_identifiers'),
                    model_uri=NMDC.MetatranscriptomeExpressionAnalysis_img_identifiers, domain=MetatranscriptomeExpressionAnalysis, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
@@ -14738,15 +14750,15 @@ slots.MetatranscriptomeExpressionAnalysis_img_identifiers = Slot(uri=NMDC.img_id
 
 slots.MetatranscriptomeExpressionAnalysis_was_informed_by = Slot(uri=NMDC['basic_classes/was_informed_by'], name="MetatranscriptomeExpressionAnalysis_was_informed_by", curie=NMDC.curie('basic_classes/was_informed_by'),
                    model_uri=NMDC.MetatranscriptomeExpressionAnalysis_was_informed_by, domain=MetatranscriptomeExpressionAnalysis, range=Optional[Union[Union[str, NucleotideSequencingId], list[Union[str, NucleotideSequencingId]]]], mappings = [PROV["wasInformedBy"]],
-                   pattern=re.compile(r'^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.MetatranscriptomeExpressionAnalysis_superseded_by = Slot(uri=NMDC['basic_classes/superseded_by'], name="MetatranscriptomeExpressionAnalysis_superseded_by", curie=NMDC.curie('basic_classes/superseded_by'),
                    model_uri=NMDC.MetatranscriptomeExpressionAnalysis_superseded_by, domain=MetatranscriptomeExpressionAnalysis, range=Optional[Union[str, MetatranscriptomeExpressionAnalysisId]],
-                   pattern=re.compile(r'^(?:^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$'))
 
 slots.MagsAnalysis_id = Slot(uri=NMDC.id, name="MagsAnalysis_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.MagsAnalysis_id, domain=MagsAnalysis, range=Union[str, MagsAnalysisId],
-                   pattern=re.compile(r'^(?:^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$'))
 
 slots.MagsAnalysis_img_identifiers = Slot(uri=NMDC.img_identifiers, name="MagsAnalysis_img_identifiers", curie=NMDC.curie('img_identifiers'),
                    model_uri=NMDC.MagsAnalysis_img_identifiers, domain=MagsAnalysis, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
@@ -14754,47 +14766,47 @@ slots.MagsAnalysis_img_identifiers = Slot(uri=NMDC.img_identifiers, name="MagsAn
 
 slots.MagsAnalysis_was_informed_by = Slot(uri=NMDC['basic_classes/was_informed_by'], name="MagsAnalysis_was_informed_by", curie=NMDC.curie('basic_classes/was_informed_by'),
                    model_uri=NMDC.MagsAnalysis_was_informed_by, domain=MagsAnalysis, range=Optional[Union[Union[str, NucleotideSequencingId], list[Union[str, NucleotideSequencingId]]]], mappings = [PROV["wasInformedBy"]],
-                   pattern=re.compile(r'^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.MagsAnalysis_superseded_by = Slot(uri=NMDC['basic_classes/superseded_by'], name="MagsAnalysis_superseded_by", curie=NMDC.curie('basic_classes/superseded_by'),
                    model_uri=NMDC.MagsAnalysis_superseded_by, domain=MagsAnalysis, range=Optional[Union[str, MagsAnalysisId]],
-                   pattern=re.compile(r'^(?:^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$'))
 
 slots.ReadQcAnalysis_id = Slot(uri=NMDC.id, name="ReadQcAnalysis_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.ReadQcAnalysis_id, domain=ReadQcAnalysis, range=Union[str, ReadQcAnalysisId],
-                   pattern=re.compile(r'^(?:^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$'))
 
 slots.ReadQcAnalysis_was_informed_by = Slot(uri=NMDC['basic_classes/was_informed_by'], name="ReadQcAnalysis_was_informed_by", curie=NMDC.curie('basic_classes/was_informed_by'),
                    model_uri=NMDC.ReadQcAnalysis_was_informed_by, domain=ReadQcAnalysis, range=Optional[Union[Union[str, NucleotideSequencingId], list[Union[str, NucleotideSequencingId]]]], mappings = [PROV["wasInformedBy"]],
-                   pattern=re.compile(r'^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.ReadQcAnalysis_superseded_by = Slot(uri=NMDC['basic_classes/superseded_by'], name="ReadQcAnalysis_superseded_by", curie=NMDC.curie('basic_classes/superseded_by'),
                    model_uri=NMDC.ReadQcAnalysis_superseded_by, domain=ReadQcAnalysis, range=Optional[Union[str, ReadQcAnalysisId]],
-                   pattern=re.compile(r'^(?:^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$'))
 
 slots.ReadBasedTaxonomyAnalysis_id = Slot(uri=NMDC.id, name="ReadBasedTaxonomyAnalysis_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.ReadBasedTaxonomyAnalysis_id, domain=ReadBasedTaxonomyAnalysis, range=Union[str, ReadBasedTaxonomyAnalysisId],
-                   pattern=re.compile(r'^(?:^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$'))
 
 slots.ReadBasedTaxonomyAnalysis_was_informed_by = Slot(uri=NMDC['basic_classes/was_informed_by'], name="ReadBasedTaxonomyAnalysis_was_informed_by", curie=NMDC.curie('basic_classes/was_informed_by'),
                    model_uri=NMDC.ReadBasedTaxonomyAnalysis_was_informed_by, domain=ReadBasedTaxonomyAnalysis, range=Optional[Union[Union[str, NucleotideSequencingId], list[Union[str, NucleotideSequencingId]]]], mappings = [PROV["wasInformedBy"]],
-                   pattern=re.compile(r'^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.ReadBasedTaxonomyAnalysis_superseded_by = Slot(uri=NMDC['basic_classes/superseded_by'], name="ReadBasedTaxonomyAnalysis_superseded_by", curie=NMDC.curie('basic_classes/superseded_by'),
                    model_uri=NMDC.ReadBasedTaxonomyAnalysis_superseded_by, domain=ReadBasedTaxonomyAnalysis, range=Optional[Union[str, ReadBasedTaxonomyAnalysisId]],
-                   pattern=re.compile(r'^(?:^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$'))
 
 slots.MetabolomicsAnalysis_id = Slot(uri=NMDC.id, name="MetabolomicsAnalysis_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.MetabolomicsAnalysis_id, domain=MetabolomicsAnalysis, range=Union[str, MetabolomicsAnalysisId],
-                   pattern=re.compile(r'^(?:^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$'))
 
 slots.MetabolomicsAnalysis_was_informed_by = Slot(uri=NMDC['basic_classes/was_informed_by'], name="MetabolomicsAnalysis_was_informed_by", curie=NMDC.curie('basic_classes/was_informed_by'),
                    model_uri=NMDC.MetabolomicsAnalysis_was_informed_by, domain=MetabolomicsAnalysis, range=Optional[Union[Union[str, MassSpectrometryId], list[Union[str, MassSpectrometryId]]]], mappings = [PROV["wasInformedBy"]],
-                   pattern=re.compile(r'^(?:^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.MetabolomicsAnalysis_superseded_by = Slot(uri=NMDC['basic_classes/superseded_by'], name="MetabolomicsAnalysis_superseded_by", curie=NMDC.curie('basic_classes/superseded_by'),
                    model_uri=NMDC.MetabolomicsAnalysis_superseded_by, domain=MetabolomicsAnalysis, range=Optional[Union[str, MetabolomicsAnalysisId]],
-                   pattern=re.compile(r'^(?:^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$'))
 
 slots.MetabolomicsAnalysis_peak_count = Slot(uri=NMDC.peak_count, name="MetabolomicsAnalysis_peak_count", curie=NMDC.curie('peak_count'),
                    model_uri=NMDC.MetabolomicsAnalysis_peak_count, domain=MetabolomicsAnalysis, range=Optional[int])
@@ -14804,38 +14816,38 @@ slots.MetabolomicsAnalysis_peak_assignment_count = Slot(uri=NMDC.peak_assignment
 
 slots.MetaproteomicsAnalysis_id = Slot(uri=NMDC.id, name="MetaproteomicsAnalysis_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.MetaproteomicsAnalysis_id, domain=MetaproteomicsAnalysis, range=Union[str, MetaproteomicsAnalysisId],
-                   pattern=re.compile(r'^(?:^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$'))
 
 slots.MetaproteomicsAnalysis_was_informed_by = Slot(uri=NMDC['basic_classes/was_informed_by'], name="MetaproteomicsAnalysis_was_informed_by", curie=NMDC.curie('basic_classes/was_informed_by'),
                    model_uri=NMDC.MetaproteomicsAnalysis_was_informed_by, domain=MetaproteomicsAnalysis, range=Optional[Union[Union[str, MassSpectrometryId], list[Union[str, MassSpectrometryId]]]], mappings = [PROV["wasInformedBy"]],
-                   pattern=re.compile(r'^(?:^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.MetaproteomicsAnalysis_superseded_by = Slot(uri=NMDC['basic_classes/superseded_by'], name="MetaproteomicsAnalysis_superseded_by", curie=NMDC.curie('basic_classes/superseded_by'),
                    model_uri=NMDC.MetaproteomicsAnalysis_superseded_by, domain=MetaproteomicsAnalysis, range=Optional[Union[str, MetaproteomicsAnalysisId]],
-                   pattern=re.compile(r'^(?:^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$'))
 
 slots.NomAnalysis_id = Slot(uri=NMDC.id, name="NomAnalysis_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.NomAnalysis_id, domain=NomAnalysis, range=Union[str, NomAnalysisId],
-                   pattern=re.compile(r'^(?:^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$'))
 
 slots.NomAnalysis_was_informed_by = Slot(uri=NMDC['basic_classes/was_informed_by'], name="NomAnalysis_was_informed_by", curie=NMDC.curie('basic_classes/was_informed_by'),
                    model_uri=NMDC.NomAnalysis_was_informed_by, domain=NomAnalysis, range=Optional[Union[Union[str, MassSpectrometryId], list[Union[str, MassSpectrometryId]]]], mappings = [PROV["wasInformedBy"]],
-                   pattern=re.compile(r'^(?:^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.NomAnalysis_superseded_by = Slot(uri=NMDC['basic_classes/superseded_by'], name="NomAnalysis_superseded_by", curie=NMDC.curie('basic_classes/superseded_by'),
                    model_uri=NMDC.NomAnalysis_superseded_by, domain=NomAnalysis, range=Optional[Union[str, NomAnalysisId]],
-                   pattern=re.compile(r'^(?:^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$'))
 
 slots.NomAnalysis_peak_assignment_count = Slot(uri=NMDC.peak_assignment_count, name="NomAnalysis_peak_assignment_count", curie=NMDC.curie('peak_assignment_count'),
                    model_uri=NMDC.NomAnalysis_peak_assignment_count, domain=NomAnalysis, range=Optional[int])
 
 slots.ChemicalConversionProcess_id = Slot(uri=NMDC.id, name="ChemicalConversionProcess_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.ChemicalConversionProcess_id, domain=ChemicalConversionProcess, range=Union[str, ChemicalConversionProcessId],
-                   pattern=re.compile(r'^(?:^(nmdc):chcpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):chcpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.MetagenomeAnnotation_id = Slot(uri=NMDC.id, name="MetagenomeAnnotation_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.MetagenomeAnnotation_id, domain=MetagenomeAnnotation, range=Union[str, MetagenomeAnnotationId],
-                   pattern=re.compile(r'^(?:^(nmdc):wfmgan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):wfmgan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,}))$'))
 
 slots.MetagenomeAnnotation_img_identifiers = Slot(uri=NMDC.img_identifiers, name="MetagenomeAnnotation_img_identifiers", curie=NMDC.curie('img_identifiers'),
                    model_uri=NMDC.MetagenomeAnnotation_img_identifiers, domain=MetagenomeAnnotation, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
@@ -14843,19 +14855,19 @@ slots.MetagenomeAnnotation_img_identifiers = Slot(uri=NMDC.img_identifiers, name
 
 slots.MetagenomeAnnotation_was_informed_by = Slot(uri=NMDC['basic_classes/was_informed_by'], name="MetagenomeAnnotation_was_informed_by", curie=NMDC.curie('basic_classes/was_informed_by'),
                    model_uri=NMDC.MetagenomeAnnotation_was_informed_by, domain=MetagenomeAnnotation, range=Optional[Union[Union[str, NucleotideSequencingId], list[Union[str, NucleotideSequencingId]]]], mappings = [PROV["wasInformedBy"]],
-                   pattern=re.compile(r'^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.MetagenomeAnnotation_gold_analysis_project_identifiers = Slot(uri=NMDC.gold_analysis_project_identifiers, name="MetagenomeAnnotation_gold_analysis_project_identifiers", curie=NMDC.curie('gold_analysis_project_identifiers'),
                    model_uri=NMDC.MetagenomeAnnotation_gold_analysis_project_identifiers, domain=MetagenomeAnnotation, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
-                   pattern=re.compile(r'^(?:^gold:Ga[0-9]+$)$'))
+                   pattern=re.compile(r'^(?:gold:Ga[0-9]+)$'))
 
 slots.FieldResearchSite_id = Slot(uri=NMDC.id, name="FieldResearchSite_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.FieldResearchSite_id, domain=FieldResearchSite, range=Union[str, FieldResearchSiteId],
-                   pattern=re.compile(r'^(?:^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.FieldResearchSite_part_of = Slot(uri=DCTERMS.isPartOf, name="FieldResearchSite_part_of", curie=DCTERMS.curie('isPartOf'),
                    model_uri=NMDC.FieldResearchSite_part_of, domain=FieldResearchSite, range=Optional[Union[Union[str, FieldResearchSiteId], list[Union[str, FieldResearchSiteId]]]],
-                   pattern=re.compile(r'^(?:^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.Biosample_name = Slot(uri=NMDC['attribute_values/name'], name="Biosample_name", curie=NMDC.curie('attribute_values/name'),
                    model_uri=NMDC.Biosample_name, domain=Biosample, range=str)
@@ -14865,7 +14877,7 @@ slots.Biosample_provenance_metadata = Slot(uri=NMDC['basic_classes/provenance_me
 
 slots.Biosample_collected_from = Slot(uri=NMDC.collected_from, name="Biosample_collected_from", curie=NMDC.curie('collected_from'),
                    model_uri=NMDC.Biosample_collected_from, domain=Biosample, range=Optional[Union[str, FieldResearchSiteId]],
-                   pattern=re.compile(r'^(?:^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.Biosample_elev = Slot(uri=MIXS['0000093'], name="Biosample_elev", curie=MIXS.curie('0000093'),
                    model_uri=NMDC.Biosample_elev, domain=Biosample, range=Optional[float],
@@ -14873,7 +14885,7 @@ slots.Biosample_elev = Slot(uri=MIXS['0000093'], name="Biosample_elev", curie=MI
 
 slots.Biosample_id = Slot(uri=NMDC.id, name="Biosample_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.Biosample_id, domain=Biosample, range=Union[str, BiosampleId],
-                   pattern=re.compile(r'^(?:^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.Biosample_gold_biosample_identifiers = Slot(uri=NMDC.gold_biosample_identifiers, name="Biosample_gold_biosample_identifiers", curie=NMDC.curie('gold_biosample_identifiers'),
                    model_uri=NMDC.Biosample_gold_biosample_identifiers, domain=Biosample, range=Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]],
@@ -15001,26 +15013,30 @@ slots.Biosample_source_mat_id = Slot(uri=MIXS['0000026'], name="Biosample_source
 
 slots.MaterialProcessing_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="MaterialProcessing_has_input", curie=NMDC.curie('basic_classes/has_input'),
                    model_uri=NMDC.MaterialProcessing_has_input, domain=MaterialProcessing, range=Optional[Union[Union[str, SampleId], list[Union[str, SampleId]]]],
-                   pattern=re.compile(r'^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.MaterialProcessing_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="MaterialProcessing_has_output", curie=NMDC.curie('basic_classes/has_output'),
                    model_uri=NMDC.MaterialProcessing_has_output, domain=MaterialProcessing, range=Optional[Union[Union[str, ProcessedSampleId], list[Union[str, ProcessedSampleId]]]],
-                   pattern=re.compile(r'^(?:^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.ProcessedSample_id = Slot(uri=NMDC.id, name="ProcessedSample_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.ProcessedSample_id, domain=ProcessedSample, range=Union[str, ProcessedSampleId],
-                   pattern=re.compile(r'^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.OrganismSample_id = Slot(uri=NMDC.id, name="OrganismSample_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.OrganismSample_id, domain=OrganismSample, range=Union[str, OrganismSampleId],
-                   pattern=re.compile(r'^(?:^(nmdc):osm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):osm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.OrganismSample_expected_organism = Slot(uri=NMDC.expected_organism, name="OrganismSample_expected_organism", curie=NMDC.curie('expected_organism'),
                    model_uri=NMDC.OrganismSample_expected_organism, domain=OrganismSample, range=Optional[Union[str, OrganismId]],
-                   pattern=re.compile(r'^(?:^(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.OrganismSample_source_mat_id = Slot(uri=MIXS['0000026'], name="OrganismSample_source_mat_id", curie=MIXS.curie('0000026'),
                    model_uri=NMDC.OrganismSample_source_mat_id, domain=OrganismSample, range=Optional[Union[dict, TextValue]])
+
+slots.GeneProduct_id = Slot(uri=NMDC.id, name="GeneProduct_id", curie=NMDC.curie('id'),
+                   model_uri=NMDC.GeneProduct_id, domain=GeneProduct, range=Union[str, GeneProductId],
+                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.QuantityValue_has_raw_value = Slot(uri=NMDC['attribute_values/has_raw_value'], name="QuantityValue_has_raw_value", curie=NMDC.curie('attribute_values/has_raw_value'),
                    model_uri=NMDC.QuantityValue_has_raw_value, domain=QuantityValue, range=Optional[str])
@@ -15059,11 +15075,11 @@ slots.NcbiTaxon_id = Slot(uri=NMDC.id, name="NcbiTaxon_id", curie=NMDC.curie('id
 
 slots.Instrument_id = Slot(uri=NMDC.id, name="Instrument_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.Instrument_id, domain=Instrument, range=Union[str, InstrumentId],
-                   pattern=re.compile(r'^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.Organism_id = Slot(uri=NMDC.id, name="Organism_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.Organism_id, domain=Organism, range=Union[str, OrganismId],
-                   pattern=re.compile(r'^(?:^(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.Organism_classified_as = Slot(uri=NMDC['basic_classes/classified_as'], name="Organism_classified_as", curie=NMDC.curie('basic_classes/classified_as'),
                    model_uri=NMDC.Organism_classified_as, domain=Organism, range=Optional[Union[dict[Union[str, NcbiTaxonId], Union[dict, NcbiTaxon]], list[Union[dict, NcbiTaxon]]]])
@@ -15077,7 +15093,7 @@ slots.Organism_ref_biomaterial = Slot(uri=MIXS['0000025'], name="Organism_ref_bi
 
 slots.Study_id = Slot(uri=NMDC.id, name="Study_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.Study_id, domain=Study, range=Union[str, StudyId],
-                   pattern=re.compile(r'^(?:^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.Study_name = Slot(uri=NMDC['attribute_values/name'], name="Study_name", curie=NMDC.curie('attribute_values/name'),
                    model_uri=NMDC.Study_name, domain=Study, range=Optional[str])
@@ -15112,7 +15128,7 @@ slots.Study_insdc_bioproject_identifiers = Slot(uri=NMDC.insdc_bioproject_identi
 
 slots.Study_part_of = Slot(uri=DCTERMS.isPartOf, name="Study_part_of", curie=DCTERMS.curie('isPartOf'),
                    model_uri=NMDC.Study_part_of, domain=Study, range=Optional[Union[Union[str, StudyId], list[Union[str, StudyId]]]],
-                   pattern=re.compile(r'^(?:^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.Study_protocol_link = Slot(uri=NMDC['basic_classes/protocol_link'], name="Study_protocol_link", curie=NMDC.curie('basic_classes/protocol_link'),
                    model_uri=NMDC.Study_protocol_link, domain=Study, range=Optional[Union[Union[dict, Protocol], list[Union[dict, Protocol]]]])
@@ -15128,11 +15144,11 @@ slots.DataObject_description = Slot(uri=DCTERMS.description, name="DataObject_de
 
 slots.DataObject_id = Slot(uri=NMDC.id, name="DataObject_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.DataObject_id, domain=DataObject, range=Union[str, DataObjectId],
-                   pattern=re.compile(r'^(?:^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.DataObject_was_generated_by = Slot(uri=NMDC['basic_classes/was_generated_by'], name="DataObject_was_generated_by", curie=NMDC.curie('basic_classes/was_generated_by'),
                    model_uri=NMDC.DataObject_was_generated_by, domain=DataObject, range=Optional[Union[str, DataEmitterProcessId]], mappings = [PROV["wasGeneratedBy"]],
-                   pattern=re.compile(r'^(?:^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$|^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})|(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.DataObject_data_object_type = Slot(uri=NMDC.data_object_type, name="DataObject_data_object_type", curie=NMDC.curie('data_object_type'),
                    model_uri=NMDC.DataObject_data_object_type, domain=DataObject, range=Union[str, "FileTypeEnum"])
@@ -15142,15 +15158,15 @@ slots.DataObject_data_category = Slot(uri=NMDC.data_category, name="DataObject_d
 
 slots.DataGeneration_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="DataGeneration_has_input", curie=NMDC.curie('basic_classes/has_input'),
                    model_uri=NMDC.DataGeneration_has_input, domain=DataGeneration, range=Union[Union[str, SampleId], list[Union[str, SampleId]]],
-                   pattern=re.compile(r'^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.DataGeneration_associated_studies = Slot(uri=NMDC['basic_classes/associated_studies'], name="DataGeneration_associated_studies", curie=NMDC.curie('basic_classes/associated_studies'),
                    model_uri=NMDC.DataGeneration_associated_studies, domain=DataGeneration, range=Union[Union[str, StudyId], list[Union[str, StudyId]]],
-                   pattern=re.compile(r'^(?:^(nmdc):(sty)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):(sty)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.DataGeneration_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="DataGeneration_has_output", curie=NMDC.curie('basic_classes/has_output'),
                    model_uri=NMDC.DataGeneration_has_output, domain=DataGeneration, range=Optional[Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]]],
-                   pattern=re.compile(r'^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.DataGeneration_provenance_metadata = Slot(uri=NMDC['basic_classes/provenance_metadata'], name="DataGeneration_provenance_metadata", curie=NMDC.curie('basic_classes/provenance_metadata'),
                    model_uri=NMDC.DataGeneration_provenance_metadata, domain=DataGeneration, range=Optional[Union[dict, "ProvenanceMetadata"]])
@@ -15164,11 +15180,11 @@ slots.WorkflowExecution_git_url = Slot(uri=NMDC.git_url, name="WorkflowExecution
 
 slots.WorkflowExecution_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="WorkflowExecution_has_input", curie=NMDC.curie('basic_classes/has_input'),
                    model_uri=NMDC.WorkflowExecution_has_input, domain=WorkflowExecution, range=Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]],
-                   pattern=re.compile(r'^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.WorkflowExecution_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="WorkflowExecution_has_output", curie=NMDC.curie('basic_classes/has_output'),
                    model_uri=NMDC.WorkflowExecution_has_output, domain=WorkflowExecution, range=Optional[Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]]],
-                   pattern=re.compile(r'^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$'))
+                   pattern=re.compile(r'^(?:(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$'))
 
 slots.WorkflowExecution_processing_institution = Slot(uri=NMDC.processing_institution, name="WorkflowExecution_processing_institution", curie=NMDC.curie('processing_institution'),
                    model_uri=NMDC.WorkflowExecution_processing_institution, domain=WorkflowExecution, range=Union[str, "ProcessingInstitutionEnum"])
