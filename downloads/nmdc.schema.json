@@ -3897,6 +3897,9 @@
                 },
                 "id": {
                     "description": "An NMDC assigned unique identifier for a biosample submitted to NMDC.",
+                    "examples": [
+                        "nmdc:bsm-11-001pmq31"
+                    ],
                     "pattern": "^(?:^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                     "type": "string"
                 },
@@ -8669,6 +8672,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:calib-11-015nyk25"
+                    ],
                     "pattern": "^(?:^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                     "type": "string"
                 },
@@ -8891,6 +8897,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:chcpr-11-004nv334"
+                    ],
                     "pattern": "^(?:^(nmdc):chcpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                     "type": "string"
                 },
@@ -9194,6 +9203,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:cspro-11-00gba548"
+                    ],
                     "pattern": "^(?:^(nmdc):cspro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                     "type": "string"
                 },
@@ -9338,6 +9350,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:chrcon-11-0stw8m53"
+                    ],
                     "pattern": "^(?:^(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                     "type": "string"
                 },
@@ -9460,6 +9475,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:clsite-99-Cq00d1"
+                    ],
                     "pattern": "^(?:^(nmdc):clsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                     "type": "string"
                 },
@@ -9838,6 +9856,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:cultp-11-inc00001"
+                    ],
                     "pattern": "^(?:^(nmdc):cultp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                     "type": "string"
                 },
@@ -10402,6 +10423,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:dobj-11-00017y47"
+                    ],
                     "pattern": "^(?:^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                     "type": "string"
                 },
@@ -10845,6 +10869,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:fracp-99-labeled"
+                    ],
                     "pattern": "^(?:^(nmdc):fracp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                     "type": "string"
                 },
@@ -11049,6 +11076,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:dispro-11-00wpzz21"
+                    ],
                     "pattern": "^(?:^(nmdc):dispro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                     "type": "string"
                 },
@@ -11530,6 +11560,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:extrp-11-0051av38"
+                    ],
                     "pattern": "^(?:^(nmdc):extrp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                     "type": "string"
                 },
@@ -11887,6 +11920,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:frsite-11-0mqbhb55"
+                    ],
                     "pattern": "^(?:^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                     "type": "string"
                 },
@@ -12210,6 +12246,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:filtpr-11-00hdy977"
+                    ],
                     "pattern": "^(?:^(nmdc):filtpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                     "type": "string"
                 },
@@ -12516,6 +12555,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "PFAM:PF00206"
+                    ],
                     "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
@@ -12616,6 +12658,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "UniProtKB:P0A7V8"
+                    ],
                     "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
@@ -13042,6 +13087,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:inst-11-075j3n79"
+                    ],
                     "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                     "type": "string"
                 },
@@ -13227,6 +13275,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:isnp-99-mukr6y"
+                    ],
                     "pattern": "^(?:^(nmdc):isnp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                     "type": "string"
                 },
@@ -13393,6 +13444,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:isolp-99-inchip4"
+                    ],
                     "pattern": "^(?:^(nmdc):isolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                     "type": "string"
                 },
@@ -13844,6 +13898,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:libprp-11-002djk98"
+                    ],
                     "pattern": "^(?:^(nmdc):libprp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                     "type": "string"
                 },
@@ -14502,6 +14559,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:wfmag-11-002wf438.1"
+                    ],
                     "pattern": "^(?:^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
                     "type": "string"
                 },
@@ -14695,6 +14755,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:manif-11-06t11y76"
+                    ],
                     "pattern": "^(?:^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                     "type": "string"
                 },
@@ -14938,6 +15001,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:dgms-11-0056ry09"
+                    ],
                     "pattern": "^(?:^(nmdc):(dgms|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                     "type": "string"
                 },
@@ -15079,6 +15145,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:mscon-11-0ary3w56"
+                    ],
                     "pattern": "^(?:^(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                     "type": "string"
                 },
@@ -15602,6 +15671,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:wfmb-11-00cysq13.1"
+                    ],
                     "pattern": "^(?:^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
                     "type": "string"
                 },
@@ -15919,6 +15991,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:wfmgan-11-001c1246.1"
+                    ],
                     "pattern": "^(?:^(nmdc):wfmgan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
                     "type": "string"
                 },
@@ -16272,6 +16347,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:wfmgas-11-0080kf19.1"
+                    ],
                     "pattern": "^(?:^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
                     "type": "string"
                 },
@@ -16631,6 +16709,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:wfmp-11-08mtnm81.1"
+                    ],
                     "pattern": "^(?:^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
                     "type": "string"
                 },
@@ -16958,6 +17039,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:wfmtan-11-0k6a3d73.1"
+                    ],
                     "pattern": "^(?:^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
                     "type": "string"
                 },
@@ -17312,6 +17396,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:wfmtas-11-0mkm0r71.1"
+                    ],
                     "pattern": "^(?:^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
                     "type": "string"
                 },
@@ -17671,6 +17758,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:wfmtex-11-0g2kt843.1"
+                    ],
                     "pattern": "^(?:^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
                     "type": "string"
                 },
@@ -17879,6 +17969,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:mixpro-11-A74"
+                    ],
                     "pattern": "^(?:^(nmdc):mixpro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                     "type": "string"
                 },
@@ -18325,6 +18418,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:wfnom-11-00db2d48.2"
+                    ],
                     "pattern": "^(?:^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
                     "type": "string"
                 },
@@ -18576,6 +18672,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:dgns-11-0002a657"
+                    ],
                     "pattern": "^(?:^(nmdc):(dgns|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                     "type": "string"
                 },
@@ -18781,6 +18880,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "ENVO:00002030"
+                    ],
                     "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
@@ -18928,6 +19030,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:orgn-99-6dwrrh"
+                    ],
                     "pattern": "^(?:^(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                     "type": "string"
                 },
@@ -19152,6 +19257,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:osm-11-cult0001"
+                    ],
                     "pattern": "^(?:^(nmdc):osm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                     "type": "string"
                 },
@@ -19350,6 +19458,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "KEGG.ORTHOLOGY:K01755"
+                    ],
                     "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
@@ -19734,6 +19845,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:poolp-11-00azgg46"
+                    ],
                     "pattern": "^(?:^(nmdc):poolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                     "type": "string"
                 },
@@ -20046,6 +20160,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:procsm-11-0013mk17"
+                    ],
                     "pattern": "^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                     "type": "string"
                 },
@@ -20685,6 +20802,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:wfrbt-11-0083q358.1"
+                    ],
                     "pattern": "^(?:^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
                     "type": "string"
                 },
@@ -20936,6 +21056,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:wfrqc-11-00qx5818.1"
+                    ],
                     "pattern": "^(?:^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
                     "type": "string"
                 },
@@ -21663,6 +21786,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:storpr-99-zUCd5N"
+                    ],
                     "pattern": "^(?:^(nmdc):storpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                     "type": "string"
                 },
@@ -21987,6 +22113,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:sty-11-076c9980"
+                    ],
                     "pattern": "^(?:^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                     "type": "string"
                 },
@@ -22264,6 +22393,9 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "examples": [
+                        "nmdc:subspr-11-004wpx78"
+                    ],
                     "pattern": "^(?:^(nmdc):subspr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
                     "type": "string"
                 },
@@ -23430,5 +23562,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.25.0rc2.post6.dev0+207b36075"
+    "version": "11.25.0rc2.post10.dev0+0a562e8f8"
 }

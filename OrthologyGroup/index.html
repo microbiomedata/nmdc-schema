@@ -599,6 +599,13 @@ from_schema: https://w3id.org/nmdc/nmdc
 exact_mappings:
 - biolink:GeneFamily
 is_a: FunctionalAnnotationTerm
+slot_usage:
+  id:
+    name: id
+    examples:
+    - value: KEGG.ORTHOLOGY:K01755
+      description: KEGG ortholog for argininosuccinate lyase, a gene_function_id in
+        production functional_annotation_agg
 class_uri: nmdc:OrthologyGroup
 
 </code></pre>
@@ -624,6 +631,13 @@ from_schema: https://w3id.org/nmdc/nmdc
 exact_mappings:
 - biolink:GeneFamily
 is_a: FunctionalAnnotationTerm
+slot_usage:
+  id:
+    name: id
+    examples:
+    - value: KEGG.ORTHOLOGY:K01755
+      description: KEGG ortholog for argininosuccinate lyase, a gene_function_id in
+        production functional_annotation_agg
 attributes:
   alternative_names:
     name: alternative_names
@@ -694,6 +708,10 @@ attributes:
     notes:
     - The identifiers for terms from external ontologies can't have their ids constrained
       to the nmdc namespace
+    examples:
+    - value: KEGG.ORTHOLOGY:K01755
+      description: KEGG ortholog for argininosuccinate lyase, a gene_function_id in
+        production functional_annotation_agg
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: workflow_execution_id

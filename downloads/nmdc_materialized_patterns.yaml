@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.25.0rc2.post6.dev0+207b36075
+version: 11.25.0rc2.post10.dev0+0a562e8f8
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -20727,6 +20727,9 @@ classes:
     slot_usage:
       id:
         name: id
+        examples:
+        - value: nmdc:dgns-11-0002a657
+          description: a production NucleotideSequencing
         pattern: ^(?:^(nmdc):(dgns|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}$'
@@ -20751,6 +20754,9 @@ classes:
     slot_usage:
       id:
         name: id
+        examples:
+        - value: nmdc:dgms-11-0056ry09
+          description: a production MassSpectrometry
         pattern: ^(?:^(nmdc):(dgms|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(dgms|omprc)-{id_shoulder}-{id_blade}$'
@@ -20853,6 +20859,9 @@ classes:
         required: true
       id:
         name: id
+        examples:
+        - value: nmdc:mscon-11-0ary3w56
+          description: a production MassSpectrometryConfiguration
         pattern: ^(?:^(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$'
@@ -20899,6 +20908,9 @@ classes:
         required: true
       id:
         name: id
+        examples:
+        - value: nmdc:chrcon-11-0stw8m53
+          description: a production ChromatographyConfiguration
         pattern: ^(?:^(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$'
@@ -20925,6 +20937,9 @@ classes:
     slot_usage:
       id:
         name: id
+        examples:
+        - value: nmdc:manif-11-06t11y76
+          description: a production Manifest
         pattern: ^(?:^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$'
@@ -20949,6 +20964,9 @@ classes:
         required: true
       id:
         name: id
+        examples:
+        - value: nmdc:calib-11-015nyk25
+          description: a production CalibrationInformation
         pattern: ^(?:^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$'
@@ -21062,6 +21080,9 @@ classes:
         maximum_cardinality: 1
       id:
         name: id
+        examples:
+        - value: nmdc:poolp-11-00azgg46
+          description: a production Pooling
         pattern: ^(?:^(nmdc):poolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:poolp-{id_shoulder}-{id_blade}$'
@@ -21079,6 +21100,10 @@ classes:
     slot_usage:
       id:
         name: id
+        examples:
+        - value: nmdc:isnp-99-mukr6y
+          description: an Isolation from the schema's example data; production has
+            none
         pattern: ^(?:^(nmdc):isnp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:isnp-{id_shoulder}-{id_blade}$'
@@ -21111,6 +21136,10 @@ classes:
     slot_usage:
       id:
         name: id
+        examples:
+        - value: nmdc:cultp-11-inc00001
+          description: a Culturing from the schema's example data; production has
+            none
         pattern: ^(?:^(nmdc):cultp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:cultp-{id_shoulder}-{id_blade}$'
@@ -21159,6 +21188,9 @@ classes:
         required: true
       id:
         name: id
+        examples:
+        - value: nmdc:extrp-11-0051av38
+          description: a production Extraction
         pattern: ^(?:^(nmdc):extrp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:extrp-{id_shoulder}-{id_blade}$'
@@ -21202,6 +21234,9 @@ classes:
         required: true
       id:
         name: id
+        examples:
+        - value: nmdc:libprp-11-002djk98
+          description: a production LibraryPreparation
         pattern: ^(?:^(nmdc):libprp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}$'
@@ -21226,6 +21261,10 @@ classes:
     slot_usage:
       id:
         name: id
+        examples:
+        - value: nmdc:isolp-99-inchip4
+          description: an IsotopeLabelingProcess from the schema's example data; production
+            has none
         pattern: ^(?:^(nmdc):isolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:isolp-{id_shoulder}-{id_blade}$'
@@ -21322,6 +21361,10 @@ classes:
     slot_usage:
       id:
         name: id
+        examples:
+        - value: nmdc:fracp-99-labeled
+          description: a DensityGradientFractionationProcess from the schema's example
+            data; production has none
         pattern: ^(?:^(nmdc):fracp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:fracp-{id_shoulder}-{id_blade}$'
@@ -21365,6 +21408,10 @@ classes:
           interpolated: true
       id:
         name: id
+        examples:
+        - value: nmdc:clsite-99-Cq00d1
+          description: a CollectingBiosamplesFromSite from the schema's example data;
+            production has none
         pattern: ^(?:^(nmdc):clsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}$'
@@ -21402,6 +21449,9 @@ classes:
     slot_usage:
       id:
         name: id
+        examples:
+        - value: nmdc:subspr-11-004wpx78
+          description: a production SubSamplingProcess
         pattern: ^(?:^(nmdc):subspr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:subspr-{id_shoulder}-{id_blade}$'
@@ -21439,6 +21489,10 @@ classes:
     slot_usage:
       id:
         name: id
+        examples:
+        - value: nmdc:mixpro-11-A74
+          description: a MixingProcess from the schema's example data; production
+            has none
         pattern: ^(?:^(nmdc):mixpro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:mixpro-{id_shoulder}-{id_blade}$'
@@ -21477,6 +21531,9 @@ classes:
     slot_usage:
       id:
         name: id
+        examples:
+        - value: nmdc:filtpr-11-00hdy977
+          description: a production FiltrationProcess
         pattern: ^(?:^(nmdc):filtpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:filtpr-{id_shoulder}-{id_blade}$'
@@ -21510,6 +21567,10 @@ classes:
         description: The substance(s) that a processed sample is stored in.
       id:
         name: id
+        examples:
+        - value: nmdc:storpr-99-zUCd5N
+          description: a StorageProcess from the schema's example data; production
+            has none
         pattern: ^(?:^(nmdc):storpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:storpr-{id_shoulder}-{id_blade}$'
@@ -21546,6 +21607,9 @@ classes:
     slot_usage:
       id:
         name: id
+        examples:
+        - value: nmdc:cspro-11-00gba548
+          description: a production ChromatographicSeparationProcess
         pattern: ^(?:^(nmdc):cspro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:cspro-{id_shoulder}-{id_blade}$'
@@ -21578,6 +21642,9 @@ classes:
     slot_usage:
       id:
         name: id
+        examples:
+        - value: nmdc:dispro-11-00wpzz21
+          description: a production DissolvingProcess
         pattern: ^(?:^(nmdc):dispro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:dispro-{id_shoulder}-{id_blade}$'
@@ -21622,6 +21689,12 @@ classes:
     - FunctionalAnnotation
     is_a: OntologyClass
     abstract: true
+    slot_usage:
+      id:
+        name: id
+        examples:
+        - value: PFAM:PF00206
+          description: the Pfam Lyase_1 family, a gene_function_id in production functional_annotation_agg
     class_uri: nmdc:FunctionalAnnotationTerm
   OrthologyGroup:
     name: OrthologyGroup
@@ -21643,6 +21716,13 @@ classes:
     exact_mappings:
     - biolink:GeneFamily
     is_a: FunctionalAnnotationTerm
+    slot_usage:
+      id:
+        name: id
+        examples:
+        - value: KEGG.ORTHOLOGY:K01755
+          description: KEGG ortholog for argininosuccinate lyase, a gene_function_id
+            in production functional_annotation_agg
     class_uri: nmdc:OrthologyGroup
   FunctionalAnnotation:
     name: FunctionalAnnotation
@@ -21883,6 +21963,9 @@ classes:
         notes:
         - The identifiers for terms from external ontologies can't have their ids
           constrained to the nmdc namespace
+        examples:
+        - value: ENVO:00002030
+          description: the ENVO term aquatic biome
     class_uri: nmdc:OntologyClass
   NcbiTaxon:
     name: NcbiTaxon
@@ -22003,6 +22086,9 @@ classes:
     slot_usage:
       id:
         name: id
+        examples:
+        - value: nmdc:inst-11-075j3n79
+          description: a production Instrument
         pattern: ^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'
@@ -22040,6 +22126,10 @@ classes:
     slot_usage:
       id:
         name: id
+        examples:
+        - value: nmdc:orgn-99-6dwrrh
+          description: an Organism from the schema's example data; production has
+            none
         pattern: ^(?:^(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$'
@@ -22255,6 +22345,9 @@ classes:
     slot_usage:
       id:
         name: id
+        examples:
+        - value: nmdc:sty-11-076c9980
+          description: a production Study
         pattern: ^(?:^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
@@ -22390,6 +22483,9 @@ classes:
         required: true
       id:
         name: id
+        examples:
+        - value: nmdc:dobj-11-00017y47
+          description: a production DataObject
         pattern: ^(?:^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$'
@@ -22635,6 +22731,9 @@ classes:
     slot_usage:
       id:
         name: id
+        examples:
+        - value: nmdc:chcpr-11-004nv334
+          description: a production ChemicalConversionProcess
         pattern: ^(?:^(nmdc):chcpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:chcpr-{id_shoulder}-{id_blade}$'
@@ -22660,6 +22759,9 @@ classes:
     slot_usage:
       id:
         name: id
+        examples:
+        - value: nmdc:wfmgan-11-001c1246.1
+          description: a production MetagenomeAnnotation
         pattern: ^(?:^(nmdc):wfmgan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}$'
@@ -22709,6 +22811,9 @@ classes:
     slot_usage:
       id:
         name: id
+        examples:
+        - value: nmdc:frsite-11-0mqbhb55
+          description: a production FieldResearchSite
         pattern: ^(?:^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'
@@ -23329,6 +23434,9 @@ classes:
         name: id
         description: An NMDC assigned unique identifier for a biosample submitted
           to NMDC.
+        examples:
+        - value: nmdc:bsm-11-001pmq31
+          description: a production Biosample
         pattern: ^(?:^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$'
@@ -23747,6 +23855,9 @@ classes:
     slot_usage:
       id:
         name: id
+        examples:
+        - value: nmdc:procsm-11-0013mk17
+          description: a production ProcessedSample
         pattern: ^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'
@@ -23795,6 +23906,10 @@ classes:
     slot_usage:
       id:
         name: id
+        examples:
+        - value: nmdc:osm-11-cult0001
+          description: an OrganismSample from the schema's example data; production
+            has none
         pattern: ^(?:^(nmdc):osm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:osm-{id_shoulder}-{id_blade}$'
@@ -23920,6 +24035,12 @@ classes:
     exact_mappings:
     - biolink:GeneProduct
     is_a: NamedThing
+    slot_usage:
+      id:
+        name: id
+        examples:
+        - value: UniProtKB:P0A7V8
+          description: E. coli K-12 small ribosomal subunit protein uS4
     class_uri: nmdc:GeneProduct
   MetagenomeAssembly:
     name: MetagenomeAssembly
@@ -23962,6 +24083,9 @@ classes:
     slot_usage:
       id:
         name: id
+        examples:
+        - value: nmdc:wfmgas-11-0080kf19.1
+          description: a production MetagenomeAssembly
         pattern: ^(?:^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$'
@@ -24017,6 +24141,9 @@ classes:
     slot_usage:
       id:
         name: id
+        examples:
+        - value: nmdc:wfmtas-11-0mkm0r71.1
+          description: a production MetatranscriptomeAssembly
         pattern: ^(?:^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$'
@@ -24046,6 +24173,9 @@ classes:
     slot_usage:
       id:
         name: id
+        examples:
+        - value: nmdc:wfmtan-11-0k6a3d73.1
+          description: a production MetatranscriptomeAnnotation
         pattern: ^(?:^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$'
@@ -24085,6 +24215,9 @@ classes:
     slot_usage:
       id:
         name: id
+        examples:
+        - value: nmdc:wfmtex-11-0g2kt843.1
+          description: a production MetatranscriptomeExpressionAnalysis
         pattern: ^(?:^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}$'
@@ -24125,6 +24258,9 @@ classes:
     slot_usage:
       id:
         name: id
+        examples:
+        - value: nmdc:wfmag-11-002wf438.1
+          description: a production MagsAnalysis
         pattern: ^(?:^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}$'
@@ -24166,6 +24302,9 @@ classes:
     slot_usage:
       id:
         name: id
+        examples:
+        - value: nmdc:wfrqc-11-00qx5818.1
+          description: a production ReadQcAnalysis
         pattern: ^(?:^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$'
@@ -24195,6 +24334,9 @@ classes:
     slot_usage:
       id:
         name: id
+        examples:
+        - value: nmdc:wfrbt-11-0083q358.1
+          description: a production ReadBasedTaxonomyAnalysis
         pattern: ^(?:^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}$'
@@ -24228,6 +24370,9 @@ classes:
     slot_usage:
       id:
         name: id
+        examples:
+        - value: nmdc:wfmb-11-00cysq13.1
+          description: a production MetabolomicsAnalysis
         pattern: ^(?:^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$'
@@ -24271,6 +24416,9 @@ classes:
     slot_usage:
       id:
         name: id
+        examples:
+        - value: nmdc:wfmp-11-08mtnm81.1
+          description: a production MetaproteomicsAnalysis
         pattern: ^(?:^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}$'
@@ -24301,6 +24449,9 @@ classes:
     slot_usage:
       id:
         name: id
+        examples:
+        - value: nmdc:wfnom-11-00db2d48.2
+          description: a production NomAnalysis
         pattern: ^(?:^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$'

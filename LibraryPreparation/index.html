@@ -810,6 +810,9 @@ slot_usage:
     required: true
   id:
     name: id
+    examples:
+    - value: nmdc:libprp-11-002djk98
+      description: a production LibraryPreparation
     structured_pattern:
       syntax: '{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -841,6 +844,9 @@ slot_usage:
     required: true
   id:
     name: id
+    examples:
+    - value: nmdc:libprp-11-002djk98
+      description: a production LibraryPreparation
     structured_pattern:
       syntax: '{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -1220,6 +1226,9 @@ attributes:
     - This slot has no examples on purpose. linkml 1.12 copies a slot's examples into
       every class that uses it, and no single id matches every class id pattern (https://github.com/microbiomedata/nmdc-schema/issues/3540).
       Id examples belong in each class's slot_usage.
+    examples:
+    - value: nmdc:libprp-11-002djk98
+      description: a production LibraryPreparation
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: workflow_execution_id

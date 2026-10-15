@@ -758,6 +758,9 @@ slots:
 slot_usage:
   id:
     name: id
+    examples:
+    - value: nmdc:dgms-11-0056ry09
+      description: a production MassSpectrometry
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(dgms|omprc)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -834,6 +837,9 @@ is_a: DataGeneration
 slot_usage:
   id:
     name: id
+    examples:
+    - value: nmdc:dgms-11-0056ry09
+      description: a production MassSpectrometry
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(dgms|omprc)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -1148,6 +1154,9 @@ attributes:
     - This slot has no examples on purpose. linkml 1.12 copies a slot's examples into
       every class that uses it, and no single id matches every class id pattern (https://github.com/microbiomedata/nmdc-schema/issues/3540).
       Id examples belong in each class's slot_usage.
+    examples:
+    - value: nmdc:dgms-11-0056ry09
+      description: a production MassSpectrometry
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: workflow_execution_id
