@@ -761,8 +761,9 @@ slots:
       - prov:wasInformedBy
     structured_aliases:
       - literal_form: was_informed_by
-        contexts:
-          - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+        source: https://github.com/microbiomedata/nmdc_automation/blob/main/data_management/README.md
+        notes:
+          - JGI Analysis Tracker (JAT) macro nmdc_metadata.yaml, in an access-restricted Bitbucket repository (https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml); source is the public NMDC page describing how JAT is used.
         predicate: EXACT_SYNONYM
   principal_investigator:
     aliases:
@@ -1182,16 +1183,13 @@ enums:
          - https://www.illumina.com/systems/sequencing-platforms/novaseq/specifications.html
         structured_aliases:
           - literal_form: Illumina NovaSeq S2
-            contexts:
-              - https://gold.jgi.doe.gov/
+            source: https://gold.jgi.doe.gov/
             predicate: NARROW_SYNONYM
           - literal_form: Illumina NovaSeq S4
-            contexts:
-              - https://gold.jgi.doe.gov/
+            source: https://gold.jgi.doe.gov/
             predicate: NARROW_SYNONYM
           - literal_form: Illumina NovaSeq SP
-            contexts:
-              - https://gold.jgi.doe.gov/
+            source: https://gold.jgi.doe.gov/
             predicate: NARROW_SYNONYM                
 
       novaseq_x:
@@ -1201,8 +1199,7 @@ enums:
           - Illumina NovaSeq X Plus
         structured_aliases:
           - literal_form: Illumina NovaSeq X 25B
-            contexts:
-              - https://gold.jgi.doe.gov/
+            source: https://gold.jgi.doe.gov/
             predicate: NARROW_SYNONYM
         comments:
           - Possible flowcell versions are 1.5B, 10B, 25B. Only difference between X and X Plus is 2 flowcells for X Plus versus 1 flowcell for X.
@@ -1243,12 +1240,10 @@ enums:
         meaning: OBI:0002002
         structured_aliases:
           - literal_form: Illumina HiSeq 2500-1TB
-            contexts:
-              - https://gold.jgi.doe.gov/
+            source: https://gold.jgi.doe.gov/
             predicate: NARROW_SYNONYM
           - literal_form: Illumina HiSeq 2500-Rapid
-            contexts:
-              - https://gold.jgi.doe.gov/
+            source: https://gold.jgi.doe.gov/
             predicate: NARROW_SYNONYM    
       
       hiseq_3000:
@@ -1281,8 +1276,7 @@ enums:
         meaning: OBI:0002003
         structured_aliases:
           - literal_form: Illumina MiSeq
-            contexts:
-              - https://gold.jgi.doe.gov/
+            source: https://gold.jgi.doe.gov/
             predicate: EXACT_SYNONYM
         
       nextseq_1000:
@@ -1298,12 +1292,10 @@ enums:
         meaning: OBI:0003684
         structured_aliases:
           - literal_form: Illumina NextSeq-HO
-            contexts:
-              - https://gold.jgi.doe.gov/
+            source: https://gold.jgi.doe.gov/
             predicate: NARROW_SYNONYM
           - literal_form: Illumina NextSeq-MO
-            contexts:
-              - https://gold.jgi.doe.gov/
+            source: https://gold.jgi.doe.gov/
             predicate: NARROW_SYNONYM              
       
       nextseq_500:
