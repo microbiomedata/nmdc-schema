@@ -1372,8 +1372,13 @@ slots:
     title: salinity method
     description: >-
       Reference or method used in determining salinity.
-    comments:
-      - "Legacy MIxS slot removed from GSC MIxS v6.2.2. Retained for submission-schema compatibility."
+    notes:
+      - "MIxS defined this slot as MIXS:0000341 through v6.1.1. It was dropped in MIxS v6.2.0 by GenomicsStandardsConsortium/mixs commit e0df7c79f (2023-10-04), with no deprecation, rename or successor."
+      - "MIXS:0000341 is kept as an exact mapping because MIxS retired the identifier without changing its meaning. The slot uses the default nmdc: URI because MIxS no longer declares the identifier."
+      - "Retained for submission-schema compatibility."
+    see_also:
+      - https://github.com/GenomicsStandardsConsortium/mixs/commit/e0df7c79f7e742903ccea8007b6ad9c8dcd33308
+      - https://github.com/GenomicsStandardsConsortium/mixs/issues/1361
     range: string
     multivalued: false
     examples:
