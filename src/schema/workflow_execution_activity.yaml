@@ -53,17 +53,17 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$"
+          syntax: "{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}"
           interpolated: true
       was_informed_by:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}"
           interpolated: true
         range: NucleotideSequencing
       superseded_by:
         range: MetagenomeAssembly
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$"
+          syntax: "{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}"
           interpolated: true
 
   MetatranscriptomeAssembly:
@@ -101,17 +101,17 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$"
+          syntax: "{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}"
           interpolated: true
       was_informed_by:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}"
           interpolated: true
         range: NucleotideSequencing
       superseded_by:
         range: MetatranscriptomeAssembly
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$"
+          syntax: "{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}"
           interpolated: true
 
   MetatranscriptomeAnnotation:
@@ -123,23 +123,23 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$"
+          syntax: "{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}"
           interpolated: true
       img_identifiers:
         maximum_cardinality: 1
       was_informed_by:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}"
           interpolated: true
         range: NucleotideSequencing
       gold_analysis_project_identifiers:
         structured_pattern:
-          syntax: "^gold:Ga[0-9]+$"
+          syntax: "gold:Ga[0-9]+"
           interpolated: true
       superseded_by:
         range: MetatranscriptomeAnnotation
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$"
+          syntax: "{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}"
           interpolated: true
 
   MetatranscriptomeExpressionAnalysis:
@@ -151,19 +151,19 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}$"
+          syntax: "{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}"
           interpolated: true
       img_identifiers:
         maximum_cardinality: 1
       was_informed_by:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}"
           interpolated: true
         range: NucleotideSequencing
       superseded_by:
         range: MetatranscriptomeExpressionAnalysis
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}$"
+          syntax: "{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}"
           interpolated: true
         
     class_uri: nmdc:MetatranscriptomeExpressionAnalysis
@@ -185,19 +185,19 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}$"
+          syntax: "{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}"
           interpolated: true
       img_identifiers:
         maximum_cardinality: 1
       was_informed_by:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}"
           interpolated: true
         range: NucleotideSequencing
       superseded_by:
         range: MagsAnalysis
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}$"
+          syntax: "{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}"
           interpolated: true
 
   ReadQcAnalysis:
@@ -215,17 +215,17 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$"
+          syntax: "{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}"
           interpolated: true
       was_informed_by:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}"
           interpolated: true
         range: NucleotideSequencing
       superseded_by:
         range: ReadQcAnalysis
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$"
+          syntax: "{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}"
           interpolated: true
 
   ReadBasedTaxonomyAnalysis:
@@ -236,17 +236,17 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}$"
+          syntax: "{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}"
           interpolated: true
       was_informed_by:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}"
           interpolated: true
         range: NucleotideSequencing
       superseded_by:
         range: ReadBasedTaxonomyAnalysis
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}$"
+          syntax: "{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}"
           interpolated: true
 
   MetabolomicsAnalysis:
@@ -262,17 +262,17 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$"
+          syntax: "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}"
           interpolated: true
       was_informed_by:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}"
           interpolated: true
         range: MassSpectrometry
       superseded_by:
         range: MetabolomicsAnalysis
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$"
+          syntax: "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}"
           interpolated: true
       peak_count:
         description: "The total number of two dimensional mass to charge (m/z) : retention time features detected in the metabolomics analysis."
@@ -293,17 +293,17 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}$"
+          syntax: "{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}"
           interpolated: true
       was_informed_by:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}"
           interpolated: true
         range: MassSpectrometry
       superseded_by:
         range: MetaproteomicsAnalysis
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}$"
+          syntax: "{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}"
           interpolated: true
 
   NomAnalysis:
@@ -316,17 +316,17 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$"
+          syntax: "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}"
           interpolated: true
       was_informed_by:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}"
           interpolated: true
         range: MassSpectrometry
       superseded_by:
         range: NomAnalysis
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$"
+          syntax: "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}"
           interpolated: true
       peak_assignment_count:
         description: "The number of m/z peaks with assigned molecular formulas in the analysis."
@@ -665,6 +665,6 @@ enums:
 # See https://github.com/microbiomedata/nmdc-schema/issues/3523
 settings:
   id_blade: ([A-Za-z0-9]{1,})
-  id_nmdc_prefix: ^(nmdc)
+  id_nmdc_prefix: (nmdc)
   id_shoulder: ([0-9][a-z]{0,6}[0-9])
   id_version: (\.[1-9]{1}[0-9]{0,})

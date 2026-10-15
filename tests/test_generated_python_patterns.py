@@ -20,7 +20,7 @@ def test_unfilled_pattern_regex_finds_a_placeholder() -> None:
         "pattern=re.compile(r'^(?:{id_nmdc_prefix}:bsm-{id_shoulder}$)$')"
     )
     assert not UNFILLED.search(
-        "pattern=re.compile(r'^(?:^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])$)$')"
+        "pattern=re.compile(r'^(?:(nmdc):bsm-([0-9][a-z]{0,6}[0-9]))$')"
     )
 
 

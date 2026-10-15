@@ -139,11 +139,11 @@ emit_prefixes:
 
 settings:
   # NMDC ID pattern components
-  id_nmdc_prefix: "^(nmdc)"
+  id_nmdc_prefix: "(nmdc)"
   id_shoulder: "([0-9][a-z]{0,6}[0-9])"
   id_blade: "([A-Za-z0-9]{1,})"
   id_version: "(\\.[1-9]{1}[0-9]{0,})"  # first digit must be > 0;  e.g. ".1", ".2", ".10"
-  id_locus: "(_[A-Za-z0-9_\\.-]+)?$"
+  id_locus: "(_[A-Za-z0-9_\\.-]+)?"
   # MIxS structured_pattern settings for pattern interpolation.
   # These settings define regex patterns for placeholders like {scientific_float}, {text}, {URL}
   # used in MIxS slot structured_pattern definitions.
@@ -276,7 +276,7 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}"
           interpolated: true
       analyte_category:
         range: NucleotideSequencingEnum
@@ -295,15 +295,15 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(dgms|omprc)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:(dgms|omprc)-{id_shoulder}-{id_blade}"
           interpolated: true
       has_chromatography_configuration:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}"
           interpolated: true
       has_mass_spectrometry_configuration:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}"
           interpolated: true
         required: true
       analyte_category: 
@@ -375,7 +375,7 @@ classes:
         required: true
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}"
           interpolated: true
       mass_spectrometry_acquisition_strategy:
         required: true
@@ -408,7 +408,7 @@ classes:
         required: true
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}"
           interpolated: true
       chromatographic_category:
         required: true
@@ -426,7 +426,7 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}"
           interpolated: true
 
   CalibrationInformation:
@@ -468,7 +468,7 @@ classes:
           required: true
         id:
           structured_pattern:
-            syntax: "{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$"
+            syntax: "{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}"
             interpolated: true
 
 
@@ -484,7 +484,7 @@ classes:
     slot_usage:
       was_generated_by:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(wfmgan|wfmp|wfmtan)-{id_shoulder}-{id_blade}{id_version}$"
+          syntax: "{id_nmdc_prefix}:(wfmgan|wfmp|wfmtan)-{id_shoulder}-{id_blade}{id_version}"
           interpolated: true
         required: true
         range: AnnotatingWorkflow
@@ -541,11 +541,11 @@ classes:
         minimum_cardinality: 1
         maximum_cardinality: 1
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}"
           interpolated: true
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:poolp-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:poolp-{id_shoulder}-{id_blade}"
           interpolated: true
 
   Isolation:
@@ -558,18 +558,18 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:isnp-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:isnp-{id_shoulder}-{id_blade}"
           interpolated: true
       has_input:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}"
           interpolated: true
       has_output:
         required: true
         range: OrganismSample
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}"
           interpolated: true
     close_mappings:
       - OBI:0000512
@@ -584,19 +584,19 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:cultp-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:cultp-{id_shoulder}-{id_blade}"
           interpolated: true
       has_input:
         required: true
         range: OrganismSample
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}"
           interpolated: true
       has_output:
         required: true
         range: OrganismSample
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}"
           interpolated: true
     close_mappings:
       - OBI:0001147
@@ -617,13 +617,13 @@ classes:
       has_input:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}"
           interpolated: true
       has_output:
         required: true
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:extrp-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:extrp-{id_shoulder}-{id_blade}"
           interpolated: true
       volume:
         description: The volume of the solvent/solute being used, not the input.
@@ -660,7 +660,7 @@ classes:
         required: true
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}"
           interpolated: true
       pcr_cond:
         description: Description of reaction conditions and components of polymerase chain reaction performed during library preparation
@@ -678,12 +678,12 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:isolp-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:isolp-{id_shoulder}-{id_blade}"
           interpolated: true
       has_input:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}"
           interpolated: true
       has_output:
         required: true
@@ -758,12 +758,12 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:fracp-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:fracp-{id_shoulder}-{id_blade}"
           interpolated: true
       has_input:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}"
           interpolated: true
       has_output:
         required: true
@@ -781,17 +781,17 @@ classes:
         range: Site
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(frsite|site)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:(frsite|site)-{id_shoulder}-{id_blade}"
           interpolated: true
       has_output:
         range: Biosample
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}"
           interpolated: true
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}"
           interpolated: true
 
   SubSamplingProcess:
@@ -822,7 +822,7 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:subspr-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:subspr-{id_shoulder}-{id_blade}"
           interpolated: true
       volume:
         description: The output volume of the SubSampling Process.
@@ -849,12 +849,12 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:mixpro-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:mixpro-{id_shoulder}-{id_blade}"
           interpolated: true
       has_output:
         description: The mixed sample.
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}"
           interpolated: true
 
   FiltrationProcess:
@@ -881,13 +881,13 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:filtpr-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:filtpr-{id_shoulder}-{id_blade}"
           interpolated: true
       volume:
         description: The volume of sample filtered.
       has_output:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}"
           interpolated: true
 
   StorageProcess:
@@ -907,16 +907,16 @@ classes:
         description: The substance(s) that a processed sample is stored in.
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:storpr-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:storpr-{id_shoulder}-{id_blade}"
           interpolated: true
       has_input:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}"
           interpolated: true
         range: Sample
       has_output:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}"
           interpolated: true
         range: ProcessedSample
 
@@ -936,11 +936,11 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:cspro-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:cspro-{id_shoulder}-{id_blade}"
           interpolated: true
       has_output:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}"
           interpolated: true
 
   DissolvingProcess:
@@ -962,7 +962,7 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:dispro-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:dispro-{id_shoulder}-{id_blade}"
           interpolated: true
 
 enums:
@@ -1415,7 +1415,7 @@ slots:
     comments:
       - A gas chromatography mass spectromery run generates data to calibrate the retention index
     structured_pattern:
-      syntax: "{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$"
+      syntax: "{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}"
       interpolated: true
 
   uses_calibration:
@@ -1425,14 +1425,14 @@ slots:
     comments:
       - Retenion index calibration data generated by a gas chromatography mass spectromery run is used when analyzing metabolomics data 
     structured_pattern:
-      syntax: "{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$"
+      syntax: "{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}"
       interpolated: true 
 
   calibration_object:
     range: DataObject
     description: the file containing the calibration data object
     structured_pattern:
-      syntax: "{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$"
+      syntax: "{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}"
       interpolated: true
 
   internal_calibration:
