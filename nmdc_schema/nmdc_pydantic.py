@@ -29,7 +29,7 @@ from pydantic import (
 )
 
 
-metamodel_version = "1.11.0"
+metamodel_version = "1.12.0"
 version = "0.0.0"
 
 
@@ -4028,10 +4028,10 @@ class Agent(ConfiguredBaseModel):
         pattern=re.compile(r"^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid websites format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid websites format: {v}"
             raise ValueError(err_msg)
         return v
@@ -4136,10 +4136,10 @@ class Person(Agent):
         pattern=re.compile(r"^orcid:\d{4}-\d{4}-\d{4}-\d{3}(\d|X)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid orcid format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid orcid format: {v}"
             raise ValueError(err_msg)
         return v
@@ -4149,10 +4149,10 @@ class Person(Agent):
         pattern=re.compile(r"^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid websites format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid websites format: {v}"
             raise ValueError(err_msg)
         return v
@@ -4230,10 +4230,10 @@ class Organization(Agent):
         pattern=re.compile(r"^ror:0[a-hj-km-np-tv-z0-9]{6}[0-9]{2}$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid ror format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid ror format: {v}"
             raise ValueError(err_msg)
         return v
@@ -4243,10 +4243,10 @@ class Organization(Agent):
         pattern=re.compile(r"^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid websites format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid websites format: {v}"
             raise ValueError(err_msg)
         return v
@@ -4306,10 +4306,10 @@ class EukEval(ConfiguredBaseModel):
         pattern=re.compile(r"^\d+(-\d+)*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid ncbi_lineage_tax_ids format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid ncbi_lineage_tax_ids format: {v}"
             raise ValueError(err_msg)
         return v
@@ -4330,7 +4330,7 @@ class FunctionalAnnotationAggMember(ConfiguredBaseModel):
                         'gene_function_id': {'name': 'gene_function_id',
                                              'pattern': '^(COG:COG\\d+|PFAM:PF\\d{5}|KEGG\\.ORTHOLOGY:K\\d+)$'},
                         'was_generated_by': {'name': 'was_generated_by',
-                                             'pattern': '^(nmdc):(wfmgan|wfmp|wfmtan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
+                                             'pattern': '^(?:^(nmdc):(wfmgan|wfmp|wfmtan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$',
                                              'range': 'AnnotatingWorkflow',
                                              'required': True,
                                              'structured_pattern': {'interpolated': True,
@@ -4380,13 +4380,13 @@ class FunctionalAnnotationAggMember(ConfiguredBaseModel):
 
     @field_validator('was_generated_by')
     def pattern_was_generated_by(cls, v):
-        pattern=re.compile(r"^(nmdc):(wfmgan|wfmp|wfmtan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(wfmgan|wfmp|wfmtan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid was_generated_by format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid was_generated_by format: {v}"
             raise ValueError(err_msg)
         return v
@@ -4396,10 +4396,10 @@ class FunctionalAnnotationAggMember(ConfiguredBaseModel):
         pattern=re.compile(r"^(COG:COG\d+|PFAM:PF\d{5}|KEGG\.ORTHOLOGY:K\d+)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid gene_function_id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid gene_function_id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -4417,8 +4417,8 @@ class Database(ConfiguredBaseModel):
     biosample_set: Optional[list[Biosample]] = Field(default=None, description="""This property links a database object to the set of samples within it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
     calibration_set: Optional[list[CalibrationInformation]] = Field(default=None, description="""This property links a database object to the set of calibrations within it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
     collecting_biosamples_from_site_set: Optional[list[CollectingBiosamplesFromSite]] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
-    configuration_set: Optional[list[Union[Configuration,MassSpectrometryConfiguration,ChromatographyConfiguration]]] = Field(default=None, description="""This property links a database object to the set of configurations within it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
-    data_generation_set: Optional[list[Union[DataGeneration,NucleotideSequencing,MassSpectrometry]]] = Field(default=None, description="""This property links a database object to the set of data generations within it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
+    configuration_set: Optional[list[Union[MassSpectrometryConfiguration,ChromatographyConfiguration]]] = Field(default=None, description="""This property links a database object to the set of configurations within it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
+    data_generation_set: Optional[list[Union[NucleotideSequencing,MassSpectrometry]]] = Field(default=None, description="""This property links a database object to the set of data generations within it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
     data_object_set: Optional[list[DataObject]] = Field(default=None, description="""This property links a database object to the set of data objects within it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
     field_research_site_set: Optional[list[FieldResearchSite]] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
     functional_annotation_agg: Optional[list[FunctionalAnnotationAggMember]] = Field(default=None, description="""This property links a database object to a set of functional annotation aggregation (agg) results.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database']} })
@@ -4426,13 +4426,13 @@ class Database(ConfiguredBaseModel):
     genome_feature_set: Optional[list[GenomeFeature]] = Field(default=None, description="""This property links a database object to the set of all features""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
     instrument_set: Optional[list[Instrument]] = Field(default=None, description="""This property links a database object to the set of instruments within it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
     manifest_set: Optional[list[Manifest]] = Field(default=None, description="""This property links a database object to the set of manifests within it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
-    material_processing_set: Optional[list[Union[MaterialProcessing,Pooling,Isolation,Culturing,Extraction,LibraryPreparation,IsotopeLabelingProcess,DensityGradientFractionationProcess,SubSamplingProcess,MixingProcess,FiltrationProcess,ChromatographicSeparationProcess,DissolvingProcess,ChemicalConversionProcess]]] = Field(default=None, description="""This property links a database object to the set of material processing within it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
+    material_processing_set: Optional[list[Union[Pooling,Isolation,Culturing,Extraction,LibraryPreparation,IsotopeLabelingProcess,DensityGradientFractionationProcess,SubSamplingProcess,MixingProcess,FiltrationProcess,ChromatographicSeparationProcess,DissolvingProcess,ChemicalConversionProcess]]] = Field(default=None, description="""This property links a database object to the set of material processing within it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
     organism_sample_set: Optional[list[OrganismSample]] = Field(default=None, description="""This property links a database object to the set of organism samples within it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
     organism_set: Optional[list[Organism]] = Field(default=None, description="""This property links a database object to the set of organisms within it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
     processed_sample_set: Optional[list[ProcessedSample]] = Field(default=None, description="""This property links a database object to the set of processed samples within it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
     storage_process_set: Optional[list[StorageProcess]] = Field(default=None, description="""This property links a database object to the set of storage processes within it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
     study_set: Optional[list[Study]] = Field(default=None, description="""This property links a database object to the set of studies within it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
-    workflow_execution_set: Optional[list[Union[WorkflowExecution,AnnotatingWorkflow,MetagenomeAssembly,MetatranscriptomeAssembly,MetatranscriptomeExpressionAnalysis,MagsAnalysis,ReadQcAnalysis,ReadBasedTaxonomyAnalysis,MetabolomicsAnalysis,NomAnalysis,MetagenomeAnnotation,MetatranscriptomeAnnotation,MetaproteomicsAnalysis]]] = Field(default=None, description="""This property links a database object to the set of workflow executions.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
+    workflow_execution_set: Optional[list[Union[MetagenomeAssembly,MetatranscriptomeAssembly,MetatranscriptomeExpressionAnalysis,MagsAnalysis,ReadQcAnalysis,ReadBasedTaxonomyAnalysis,MetabolomicsAnalysis,NomAnalysis,MetagenomeAnnotation,MetatranscriptomeAnnotation,MetaproteomicsAnalysis]]] = Field(default=None, description="""This property links a database object to the set of workflow executions.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
 
 
 class IsotopologAddition(ConfiguredBaseModel):
@@ -4542,10 +4542,10 @@ class IsotopologAddition(ConfiguredBaseModel):
         pattern=re.compile(r"^InChI=1S?/[^\s/]+(?:/[^\s/i][^\s/]*)*/i(?=[^\s/]*(?:[0-9][+-][0-9]|[0-9][DT])|/h[^\s/]*[DT])[^\s/]*(?:/[^\s/]+)*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid isotopolog_atom_pos format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid isotopolog_atom_pos format: {v}"
             raise ValueError(err_msg)
         return v
@@ -4695,7 +4695,7 @@ class FunctionalAnnotation(ConfiguredBaseModel):
                                                        'of the NMDC schema we use the '
                                                        'PROV annotation model, rather '
                                                        'than GPAD'],
-                                             'pattern': '^(nmdc):(wfmgan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
+                                             'pattern': '^(?:^(nmdc):(wfmgan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$',
                                              'range': 'MetagenomeAnnotation',
                                              'structured_pattern': {'interpolated': True,
                                                                     'syntax': '{id_nmdc_prefix}:(wfmgan)-{id_shoulder}-{id_blade}{id_version}$'}}}})
@@ -4752,23 +4752,23 @@ class FunctionalAnnotation(ConfiguredBaseModel):
         pattern=re.compile(r"^(KEGG_PATHWAY:\w{2,4}\d{5}|KEGG\.REACTION:R\d+|RHEA:\d{5}|MetaCyc:[A-Za-z0-9+_.%:\-]+|EC:\d{1,2}(\.\d{0,3}){0,3}|GO:\d{7}|MetaNetX:(MNXR\d+|EMPTY)|SEED:\w+|KEGG\.ORTHOLOGY:K\d+|EGGNOG:\w+|PFAM:PF\d{5}|TIGRFAM:TIGR\d+|SUPFAM:\w+|CATH:[1-6]\.[0-9]+\.[0-9]+\.[0-9]+|PANTHER\.FAMILY:PTHR\d{5}(\:SF\d{1,3})?)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_function format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_function format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('was_generated_by')
     def pattern_was_generated_by(cls, v):
-        pattern=re.compile(r"^(nmdc):(wfmgan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(wfmgan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid was_generated_by format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid was_generated_by format: {v}"
             raise ValueError(err_msg)
         return v
@@ -5018,7 +5018,7 @@ class ControlledTermValue(AttributeValue):
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'todos': ['add fields for ontology, branch']})
 
-    term: Optional[Union[OntologyClass,FunctionalAnnotationTerm,NcbiTaxon,OrthologyGroup]] = Field(default=None, description="""pointer to an ontology class""", json_schema_extra = { "linkml_meta": {'domain_of': ['ControlledTermValue']} })
+    term: Optional[Union[OntologyClass,NcbiTaxon,OrthologyGroup]] = Field(default=None, description="""pointer to an ontology class""", json_schema_extra = { "linkml_meta": {'domain_of': ['ControlledTermValue']} })
     has_raw_value: Optional[str] = Field(default=None, description="""The value that was specified for an annotation in raw form, i.e. a string. E.g. \"2 cm\" or \"2-4 cm\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['AttributeValue']} })
     type: Literal["https://w3id.org/nmdc/ControlledTermValue","nmdc:ControlledTermValue"] = Field(default="nmdc:ControlledTermValue", title="Type", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'comments': ['Deprecating this slot was proposed and rejected: without it, a '
                       'document read back from a polymorphic MongoDB collection cannot '
@@ -5062,7 +5062,7 @@ class ControlledIdentifiedTermValue(ControlledTermValue):
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'term': {'name': 'term', 'required': True}}})
 
-    term: Union[OntologyClass,FunctionalAnnotationTerm,NcbiTaxon,OrthologyGroup] = Field(default=..., description="""pointer to an ontology class""", json_schema_extra = { "linkml_meta": {'domain_of': ['ControlledTermValue']} })
+    term: Union[OntologyClass,NcbiTaxon,OrthologyGroup] = Field(default=..., description="""pointer to an ontology class""", json_schema_extra = { "linkml_meta": {'domain_of': ['ControlledTermValue']} })
     has_raw_value: Optional[str] = Field(default=None, description="""The value that was specified for an annotation in raw form, i.e. a string. E.g. \"2 cm\" or \"2-4 cm\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['AttributeValue']} })
     type: Literal["https://w3id.org/nmdc/ControlledIdentifiedTermValue","nmdc:ControlledIdentifiedTermValue"] = Field(default="nmdc:ControlledIdentifiedTermValue", title="Type", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'comments': ['Deprecating this slot was proposed and rejected: without it, a '
                       'document read back from a polymorphic MongoDB collection cannot '
@@ -5365,10 +5365,10 @@ class NamedThing(ConfiguredBaseModel):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -5378,10 +5378,10 @@ class NamedThing(ConfiguredBaseModel):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -5462,10 +5462,10 @@ class OntologyClass(NamedThing):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -5475,10 +5475,10 @@ class OntologyClass(NamedThing):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -5556,10 +5556,10 @@ class FunctionalAnnotationTerm(OntologyClass):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -5569,10 +5569,10 @@ class FunctionalAnnotationTerm(OntologyClass):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -5659,10 +5659,10 @@ class OrthologyGroup(FunctionalAnnotationTerm):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -5672,10 +5672,10 @@ class OrthologyGroup(FunctionalAnnotationTerm):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -5779,10 +5779,10 @@ class NcbiTaxon(OntologyClass):
         pattern=re.compile(r"^NCBITaxon:\d+$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -5792,10 +5792,10 @@ class NcbiTaxon(OntologyClass):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -5979,10 +5979,10 @@ class MaterialEntity(NamedThing):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -5992,10 +5992,10 @@ class MaterialEntity(NamedThing):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -6010,7 +6010,7 @@ class Instrument(MaterialEntity):
          'exact_mappings': ['OBI:0000968'],
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'id': {'name': 'id',
-                               'pattern': '^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                               'pattern': '^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}}},
          'unique_keys': {'main': {'description': 'A unique instrument is defined by '
@@ -6078,13 +6078,13 @@ class Instrument(MaterialEntity):
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -6094,10 +6094,10 @@ class Instrument(MaterialEntity):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -6163,7 +6163,7 @@ class Organism(MaterialEntity):
                                                                    'predicate': 'BROAD_SYNONYM',
                                                                    'source': 'https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/'}]},
                         'id': {'name': 'id',
-                               'pattern': '^(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                               'pattern': '^(?:^(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$'}},
                         'ref_biomaterial': {'comments': ['The MIxS pattern accepts '
@@ -6414,23 +6414,23 @@ class Organism(MaterialEntity):
         pattern=re.compile(r"^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid ref_biomaterial format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid ref_biomaterial format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -6440,10 +6440,10 @@ class Organism(MaterialEntity):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -6534,10 +6534,10 @@ class PlannedProcess(NamedThing):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -6547,10 +6547,10 @@ class PlannedProcess(NamedThing):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -6563,19 +6563,19 @@ class CollectingBiosamplesFromSite(PlannedProcess):
                       'process class'],
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'has_input': {'name': 'has_input',
-                                      'pattern': '^(nmdc):(frsite|site)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                      'pattern': '^(?:^(nmdc):(frsite|site)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                       'range': 'Site',
                                       'required': True,
                                       'structured_pattern': {'interpolated': True,
                                                              'syntax': '{id_nmdc_prefix}:(frsite|site)-{id_shoulder}-{id_blade}$'}},
                         'has_output': {'name': 'has_output',
-                                       'pattern': '^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                       'pattern': '^(?:^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                        'range': 'Biosample',
                                        'required': True,
                                        'structured_pattern': {'interpolated': True,
                                                               'syntax': '{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$'}},
                         'id': {'name': 'id',
-                               'pattern': '^(nmdc):clsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                               'pattern': '^(?:^(nmdc):clsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}$'}}},
          'title': 'Collecting Biosamples From Site'})
@@ -6661,39 +6661,39 @@ class CollectingBiosamplesFromSite(PlannedProcess):
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
-        pattern=re.compile(r"^(nmdc):(frsite|site)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(frsite|site)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_input format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_input format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
-        pattern=re.compile(r"^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_output format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_output format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):clsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):clsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -6703,10 +6703,10 @@ class CollectingBiosamplesFromSite(PlannedProcess):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -6720,17 +6720,17 @@ class StorageProcess(PlannedProcess):
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'related_mappings': ['OBI:0302893'],
          'slot_usage': {'has_input': {'name': 'has_input',
-                                      'pattern': '^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                      'pattern': '^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                       'range': 'Sample',
                                       'structured_pattern': {'interpolated': True,
                                                              'syntax': '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'}},
                         'has_output': {'name': 'has_output',
-                                       'pattern': '^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                       'pattern': '^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                        'range': 'ProcessedSample',
                                        'structured_pattern': {'interpolated': True,
                                                               'syntax': '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'}},
                         'id': {'name': 'id',
-                               'pattern': '^(nmdc):storpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                               'pattern': '^(?:^(nmdc):storpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:storpr-{id_shoulder}-{id_blade}$'}},
                         'substances_used': {'description': 'The substance(s) that a '
@@ -6839,39 +6839,39 @@ class StorageProcess(PlannedProcess):
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
-        pattern=re.compile(r"^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_input format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_input format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
-        pattern=re.compile(r"^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_output format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_output format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):storpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):storpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -6881,10 +6881,10 @@ class StorageProcess(PlannedProcess):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -6951,7 +6951,7 @@ class CreditAssociation(ConfiguredBaseModel):
          'see_also': ['https://casrai.org/credit/',
                       'https://kbase.github.io/credit_engine/']})
 
-    applies_to_agent: Union[Agent,Person,Organization] = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['CreditAssociation']} })
+    applies_to_agent: Union[Person,Organization] = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['CreditAssociation']} })
     applied_roles: list[CreditEnum] = Field(default=..., json_schema_extra = { "linkml_meta": {'annotations': {'tooltip': {'tag': 'tooltip',
                                      'value': 'Identify all CRediT roles associated '
                                               'with this contributor. CRediT '
@@ -7072,10 +7072,10 @@ class Doi(ConfiguredBaseModel):
         pattern=re.compile(r"^doi:10\.\d{2,9}/.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid doi_value format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid doi_value format: {v}"
             raise ValueError(err_msg)
         return v
@@ -7173,7 +7173,7 @@ class Study(NamedThing):
                                                                                   'consortium.'}},
                                              'name': 'homepage_website'},
                         'id': {'name': 'id',
-                               'pattern': '^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                               'pattern': '^(?:^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'}},
                         'insdc_bioproject_identifiers': {'annotations': {'tooltip': {'tag': 'tooltip',
@@ -7221,7 +7221,7 @@ class Study(NamedThing):
                                                    'parent (or umbrella) study or '
                                                    'consortium.',
                                     'name': 'part_of',
-                                    'pattern': '^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                    'pattern': '^(?:^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                     'range': 'Study',
                                     'structured_pattern': {'interpolated': True,
                                                            'syntax': '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'}},
@@ -7517,10 +7517,10 @@ class Study(NamedThing):
         pattern=re.compile(r"^emsl\.project:[0-9]{5}$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid emsl_project_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid emsl_project_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -7530,10 +7530,10 @@ class Study(NamedThing):
         pattern=re.compile(r"^gnps\.task:[a-f0-9]+$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid gnps_task_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid gnps_task_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -7543,10 +7543,10 @@ class Study(NamedThing):
         pattern=re.compile(r"^gold:Gs[0-9]+$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid gold_study_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid gold_study_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -7556,10 +7556,10 @@ class Study(NamedThing):
         pattern=re.compile(r"^bioproject:PRJ[DEN][A-Z][0-9]+$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid insdc_bioproject_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid insdc_bioproject_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -7569,10 +7569,10 @@ class Study(NamedThing):
         pattern=re.compile(r"^jgi\.proposal:\d+$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid jgi_portal_study_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid jgi_portal_study_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -7582,10 +7582,10 @@ class Study(NamedThing):
         pattern=re.compile(r"^mgnify\.proj:[A-Z]+[0-9]+$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid mgnify_project_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid mgnify_project_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -7595,10 +7595,10 @@ class Study(NamedThing):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid neon_study_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid neon_study_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -7608,23 +7608,23 @@ class Study(NamedThing):
         pattern=re.compile(r"^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid homepage_website format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid homepage_website format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('part_of')
     def pattern_part_of(cls, v):
-        pattern=re.compile(r"^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid part_of format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid part_of format: {v}"
             raise ValueError(err_msg)
         return v
@@ -7634,23 +7634,23 @@ class Study(NamedThing):
         pattern=re.compile(r"^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid websites format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid websites format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -7660,10 +7660,10 @@ class Study(NamedThing):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -7752,10 +7752,10 @@ class InformationObject(NamedThing):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -7765,10 +7765,10 @@ class InformationObject(NamedThing):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -7844,10 +7844,10 @@ class Configuration(InformationObject):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -7857,10 +7857,10 @@ class Configuration(InformationObject):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -7876,7 +7876,7 @@ class MassSpectrometryConfiguration(Configuration):
                    'file that controls a mass spectrometry process.'],
          'slot_usage': {'description': {'name': 'description', 'required': True},
                         'id': {'name': 'id',
-                               'pattern': '^(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                               'pattern': '^(?:^(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$'}},
                         'ionization_source': {'name': 'ionization_source',
@@ -7960,13 +7960,13 @@ class MassSpectrometryConfiguration(Configuration):
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -7976,10 +7976,10 @@ class MassSpectrometryConfiguration(Configuration):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -7997,7 +7997,7 @@ class ChromatographyConfiguration(Configuration):
                                                      'required': True},
                         'description': {'name': 'description', 'required': True},
                         'id': {'name': 'id',
-                               'pattern': '^(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                               'pattern': '^(?:^(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$'}},
                         'name': {'name': 'name', 'required': True},
@@ -8080,13 +8080,13 @@ class ChromatographyConfiguration(Configuration):
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -8096,10 +8096,10 @@ class ChromatographyConfiguration(Configuration):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -8116,7 +8116,7 @@ class Manifest(InformationObject):
                       'ProcessedSample.'],
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'id': {'name': 'id',
-                               'pattern': '^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                               'pattern': '^(?:^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$'}}}})
 
@@ -8179,13 +8179,13 @@ class Manifest(InformationObject):
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -8195,10 +8195,10 @@ class Manifest(InformationObject):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -8227,7 +8227,7 @@ class CalibrationInformation(InformationObject):
          'slot_usage': {'calibration_target': {'name': 'calibration_target',
                                                'required': True},
                         'id': {'name': 'id',
-                               'pattern': '^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                               'pattern': '^(?:^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$'}},
                         'internal_calibration': {'name': 'internal_calibration',
@@ -8297,26 +8297,26 @@ class CalibrationInformation(InformationObject):
 
     @field_validator('calibration_object')
     def pattern_calibration_object(cls, v):
-        pattern=re.compile(r"^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid calibration_object format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid calibration_object format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -8326,10 +8326,10 @@ class CalibrationInformation(InformationObject):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -8359,12 +8359,12 @@ class DataObject(InformationObject):
                                              'required': True},
                         'description': {'name': 'description', 'required': True},
                         'id': {'name': 'id',
-                               'pattern': '^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                               'pattern': '^(?:^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$'}},
                         'name': {'name': 'name', 'required': True},
                         'was_generated_by': {'name': 'was_generated_by',
-                                             'pattern': '^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$|^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                             'pattern': '^(?:^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$|^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                              'structured_pattern': {'interpolated': True,
                                                                     'syntax': '{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$'}}}})
 
@@ -8474,10 +8474,10 @@ class DataObject(InformationObject):
         pattern=re.compile(r"^insdc\.sra:(E|D|S)RX[0-9]{6,}$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid insdc_experiment_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid insdc_experiment_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -8487,10 +8487,10 @@ class DataObject(InformationObject):
         pattern=re.compile(r"^insdc\.run:(E|D|S)RR[0-9]{6,}$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid insdc_run_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid insdc_run_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -8500,49 +8500,49 @@ class DataObject(InformationObject):
         pattern=re.compile(r"^[a-fA-F0-9]{32}$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid md5_checksum format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid md5_checksum format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('was_generated_by')
     def pattern_was_generated_by(cls, v):
-        pattern=re.compile(r"^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$|^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$|^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid was_generated_by format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid was_generated_by format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('in_manifest')
     def pattern_in_manifest(cls, v):
-        pattern=re.compile(r"^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid in_manifest format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid in_manifest format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -8552,10 +8552,10 @@ class DataObject(InformationObject):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -8645,10 +8645,10 @@ class DataEmitterProcess(PlannedProcess):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -8658,10 +8658,10 @@ class DataEmitterProcess(PlannedProcess):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -8687,17 +8687,17 @@ class DataGeneration(DataEmitterProcess):
          'class_uri': 'nmdc:DataGeneration',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'associated_studies': {'name': 'associated_studies',
-                                               'pattern': '^(nmdc):(sty)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                               'pattern': '^(?:^(nmdc):(sty)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                                'structured_pattern': {'interpolated': True,
                                                                       'syntax': '{id_nmdc_prefix}:(sty)-{id_shoulder}-{id_blade}$'}},
                         'has_input': {'name': 'has_input',
-                                      'pattern': '^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                      'pattern': '^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                       'range': 'Sample',
                                       'required': True,
                                       'structured_pattern': {'interpolated': True,
                                                              'syntax': '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$'}},
                         'has_output': {'name': 'has_output',
-                                       'pattern': '^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                       'pattern': '^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                        'range': 'DataObject',
                                        'structured_pattern': {'interpolated': True,
                                                               'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}},
@@ -8812,52 +8812,52 @@ class DataGeneration(DataEmitterProcess):
 
     @field_validator('associated_studies')
     def pattern_associated_studies(cls, v):
-        pattern=re.compile(r"^(nmdc):(sty)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(sty)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid associated_studies format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid associated_studies format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
-        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid instrument_used format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid instrument_used format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
-        pattern=re.compile(r"^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_input format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_input format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
-        pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_output format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_output format: {v}"
             raise ValueError(err_msg)
         return v
@@ -8867,10 +8867,10 @@ class DataGeneration(DataEmitterProcess):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -8880,10 +8880,10 @@ class DataGeneration(DataEmitterProcess):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -8900,7 +8900,7 @@ class NucleotideSequencing(DataGeneration):
          'slot_usage': {'analyte_category': {'name': 'analyte_category',
                                              'range': 'NucleotideSequencingEnum'},
                         'id': {'name': 'id',
-                               'pattern': '^(nmdc):(dgns|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                               'pattern': '^(?:^(nmdc):(dgns|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}$'}}}})
 
@@ -9031,10 +9031,10 @@ class NucleotideSequencing(DataGeneration):
         pattern=re.compile(r"^gold:Gp[0-9]+$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid gold_sequencing_project_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid gold_sequencing_project_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -9044,10 +9044,10 @@ class NucleotideSequencing(DataGeneration):
         pattern=re.compile(r"^bioproject:PRJ[DEN][A-Z][0-9]+$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid insdc_bioproject_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid insdc_bioproject_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -9057,75 +9057,75 @@ class NucleotideSequencing(DataGeneration):
         pattern=re.compile(r"^insdc\.sra:(E|D|S)RX[0-9]{6,}$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid insdc_experiment_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid insdc_experiment_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('associated_studies')
     def pattern_associated_studies(cls, v):
-        pattern=re.compile(r"^(nmdc):(sty)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(sty)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid associated_studies format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid associated_studies format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
-        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid instrument_used format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid instrument_used format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
-        pattern=re.compile(r"^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_input format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_input format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
-        pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_output format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_output format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):(dgns|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(dgns|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -9135,10 +9135,10 @@ class NucleotideSequencing(DataGeneration):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -9180,16 +9180,16 @@ class MassSpectrometry(DataGeneration):
                         'eluent_introduction_category': {'name': 'eluent_introduction_category',
                                                          'required': True},
                         'has_chromatography_configuration': {'name': 'has_chromatography_configuration',
-                                                             'pattern': '^(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                                             'pattern': '^(?:^(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                                              'structured_pattern': {'interpolated': True,
                                                                                     'syntax': '{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$'}},
                         'has_mass_spectrometry_configuration': {'name': 'has_mass_spectrometry_configuration',
-                                                                'pattern': '^(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                                                'pattern': '^(?:^(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                                                 'required': True,
                                                                 'structured_pattern': {'interpolated': True,
                                                                                        'syntax': '{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$'}},
                         'id': {'name': 'id',
-                               'pattern': '^(nmdc):(dgms|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                               'pattern': '^(?:^(nmdc):(dgms|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:(dgms|omprc)-{id_shoulder}-{id_blade}$'}}}})
 
@@ -9311,104 +9311,104 @@ class MassSpectrometry(DataGeneration):
 
     @field_validator('generates_calibration')
     def pattern_generates_calibration(cls, v):
-        pattern=re.compile(r"^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid generates_calibration format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid generates_calibration format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_chromatography_configuration')
     def pattern_has_chromatography_configuration(cls, v):
-        pattern=re.compile(r"^(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_chromatography_configuration format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_chromatography_configuration format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_mass_spectrometry_configuration')
     def pattern_has_mass_spectrometry_configuration(cls, v):
-        pattern=re.compile(r"^(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_mass_spectrometry_configuration format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_mass_spectrometry_configuration format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('associated_studies')
     def pattern_associated_studies(cls, v):
-        pattern=re.compile(r"^(nmdc):(sty)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(sty)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid associated_studies format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid associated_studies format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
-        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid instrument_used format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid instrument_used format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
-        pattern=re.compile(r"^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_input format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_input format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
-        pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_output format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_output format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):(dgms|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(dgms|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -9418,10 +9418,10 @@ class MassSpectrometry(DataGeneration):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -9463,13 +9463,13 @@ class WorkflowExecution(DataEmitterProcess):
                                     'name': 'git_url',
                                     'required': True},
                         'has_input': {'name': 'has_input',
-                                      'pattern': '^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                      'pattern': '^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                       'range': 'DataObject',
                                       'required': True,
                                       'structured_pattern': {'interpolated': True,
                                                              'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}},
                         'has_output': {'name': 'has_output',
-                                       'pattern': '^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                       'pattern': '^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                        'range': 'DataObject',
                                        'structured_pattern': {'interpolated': True,
                                                               'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}},
@@ -9603,10 +9603,10 @@ class WorkflowExecution(DataEmitterProcess):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid ended_at_time format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid ended_at_time format: {v}"
             raise ValueError(err_msg)
         return v
@@ -9616,36 +9616,36 @@ class WorkflowExecution(DataEmitterProcess):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid started_at_time format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid started_at_time format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
-        pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_input format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_input format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
-        pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_output format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_output format: {v}"
             raise ValueError(err_msg)
         return v
@@ -9655,10 +9655,10 @@ class WorkflowExecution(DataEmitterProcess):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -9668,10 +9668,10 @@ class WorkflowExecution(DataEmitterProcess):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -9768,10 +9768,10 @@ class ProvenanceMetadata(ConfiguredBaseModel):
         pattern=re.compile(r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid submission_portal_identifier format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid submission_portal_identifier format: {v}"
             raise ValueError(err_msg)
         return v
@@ -9898,10 +9898,10 @@ class AnnotatingWorkflow(WorkflowExecution):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid ended_at_time format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid ended_at_time format: {v}"
             raise ValueError(err_msg)
         return v
@@ -9911,36 +9911,36 @@ class AnnotatingWorkflow(WorkflowExecution):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid started_at_time format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid started_at_time format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
-        pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_input format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_input format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
-        pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_output format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_output format: {v}"
             raise ValueError(err_msg)
         return v
@@ -9950,10 +9950,10 @@ class AnnotatingWorkflow(WorkflowExecution):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -9963,10 +9963,10 @@ class AnnotatingWorkflow(WorkflowExecution):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -9979,17 +9979,17 @@ class MetagenomeAnnotation(AnnotatingWorkflow):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:MetagenomeAnnotation',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'gold_analysis_project_identifiers': {'name': 'gold_analysis_project_identifiers',
-                                                              'pattern': '^gold:Ga[0-9]+$',
+                                                              'pattern': '^(?:^gold:Ga[0-9]+$)$',
                                                               'structured_pattern': {'interpolated': True,
                                                                                      'syntax': '^gold:Ga[0-9]+$'}},
                         'id': {'name': 'id',
-                               'pattern': '^(nmdc):wfmgan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
+                               'pattern': '^(?:^(nmdc):wfmgan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}$'}},
                         'img_identifiers': {'maximum_cardinality': 1,
                                             'name': 'img_identifiers'},
                         'was_informed_by': {'name': 'was_informed_by',
-                                            'pattern': '^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                            'pattern': '^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                             'range': 'NucleotideSequencing',
                                             'structured_pattern': {'interpolated': True,
                                                                    'syntax': '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'}}}})
@@ -10126,23 +10126,23 @@ class MetagenomeAnnotation(AnnotatingWorkflow):
         pattern=re.compile(r"^img\.taxon:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid img_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid img_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('gold_analysis_project_identifiers')
     def pattern_gold_analysis_project_identifiers(cls, v):
-        pattern=re.compile(r"^gold:Ga[0-9]+$")
+        pattern=re.compile(r"^(?:^gold:Ga[0-9]+$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid gold_analysis_project_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid gold_analysis_project_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -10152,10 +10152,10 @@ class MetagenomeAnnotation(AnnotatingWorkflow):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid ended_at_time format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid ended_at_time format: {v}"
             raise ValueError(err_msg)
         return v
@@ -10165,62 +10165,62 @@ class MetagenomeAnnotation(AnnotatingWorkflow):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid started_at_time format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid started_at_time format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('was_informed_by')
     def pattern_was_informed_by(cls, v):
-        pattern=re.compile(r"^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid was_informed_by format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid was_informed_by format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
-        pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_input format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_input format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
-        pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_output format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_output format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):wfmgan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
+        pattern=re.compile(r"^(?:^(nmdc):wfmgan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -10230,10 +10230,10 @@ class MetagenomeAnnotation(AnnotatingWorkflow):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -10306,10 +10306,10 @@ class Sample(MaterialEntity):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -10319,10 +10319,10 @@ class Sample(MaterialEntity):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -10403,7 +10403,7 @@ class Biosample(Sample):
                                                           'correctly formatted '
                                                           'example.']},
                         'collected_from': {'name': 'collected_from',
-                                           'pattern': '^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                           'pattern': '^(?:^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                            'structured_pattern': {'interpolated': True,
                                                                   'syntax': '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'}},
                         'cur_vegetation': {'comments': ['Values provided here can be '
@@ -10563,7 +10563,7 @@ class Biosample(Sample):
                         'id': {'description': 'An NMDC assigned unique identifier for '
                                               'a biosample submitted to NMDC.',
                                'name': 'id',
-                               'pattern': '^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                               'pattern': '^(?:^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$'}},
                         'lat_lon': {'name': 'lat_lon',
@@ -15771,26 +15771,26 @@ class Biosample(Sample):
 
     @field_validator('associated_studies')
     def pattern_associated_studies(cls, v):
-        pattern=re.compile(r"^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid associated_studies format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid associated_studies format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('collected_from')
     def pattern_collected_from(cls, v):
-        pattern=re.compile(r"^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid collected_from format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid collected_from format: {v}"
             raise ValueError(err_msg)
         return v
@@ -15800,10 +15800,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^img\.taxon:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid img_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid img_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -15813,10 +15813,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid neon_biosample_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid neon_biosample_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -15826,10 +15826,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^gold:Gb[0-9]+$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid gold_biosample_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid gold_biosample_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -15839,10 +15839,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^biosample:SAM[NED]([A-Z])?[0-9]+$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid insdc_biosample_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid insdc_biosample_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -15852,10 +15852,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid emsl_biosample_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid emsl_biosample_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -15865,10 +15865,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^igsn:[A-Za-z]{2,4}[A-Za-z0-9.-]{1,71}$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid igsn_biosample_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid igsn_biosample_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -15878,10 +15878,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid abs_air_humidity format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid abs_air_humidity format: {v}"
             raise ValueError(err_msg)
         return v
@@ -15891,10 +15891,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^(Water Injection|Dump Flood|Gas Injection|Wag Immiscible Injection|Polymer Addition|Surfactant Addition|Not Applicable|other);(\d{4})(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01])(T([01]\d|2[0-3]):([0-5]\d)(:([0-5]\d))?(\.\d+)?(Z|([+-][01]\d:[0-5]\d))?)?)?)?$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid add_recov_method format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid add_recov_method format: {v}"
             raise ValueError(err_msg)
         return v
@@ -15904,10 +15904,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[1-9][0-9]* .*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid address format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid address format: {v}"
             raise ValueError(err_msg)
         return v
@@ -15917,10 +15917,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^([^\s-]{1,2}|[^\s-]+.+[^\s-]+);[1-9][0-9]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid adj_room format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid adj_room format: {v}"
             raise ValueError(err_msg)
         return v
@@ -15930,10 +15930,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^.*;[-+]?[0-9]*\.?[0-9]+ ([^\s-]{1,2}|[^\s-]+.+[^\s-]+);(\d{4})(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01])(T([01]\d|2[0-3]):([0-5]\d)(:([0-5]\d))?(\.\d+)?(Z|([+-][01]\d:[0-5]\d))?)?)?)?$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid agrochem_addition format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid agrochem_addition format: {v}"
             raise ValueError(err_msg)
         return v
@@ -15943,10 +15943,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^.*;[-+]?[0-9]*\.?[0-9]+ ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid air_PM_concen format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid air_PM_concen format: {v}"
             raise ValueError(err_msg)
         return v
@@ -15956,10 +15956,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid air_temp format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid air_temp format: {v}"
             raise ValueError(err_msg)
         return v
@@ -15969,10 +15969,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid al_sat format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid al_sat format: {v}"
             raise ValueError(err_msg)
         return v
@@ -15982,10 +15982,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid al_sat_meth format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid al_sat_meth format: {v}"
             raise ValueError(err_msg)
         return v
@@ -15995,10 +15995,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alkalinity format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alkalinity format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16008,10 +16008,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alkyl_diethers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alkyl_diethers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16021,10 +16021,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alt format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alt format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16034,10 +16034,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid aminopept_act format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid aminopept_act format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16047,10 +16047,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid ammonium format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid ammonium format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16060,10 +16060,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid amount_light format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid amount_light format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16073,10 +16073,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid annual_precpt format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid annual_precpt format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16086,10 +16086,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid annual_temp format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid annual_temp format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16099,10 +16099,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid api format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid api format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16112,10 +16112,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^.*;[-+]?[0-9]*\.?[0-9]+ ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid aromatics_pc format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid aromatics_pc format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16125,10 +16125,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^.*;[-+]?[0-9]*\.?[0-9]+ ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid asphaltenes_pc format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid asphaltenes_pc format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16138,10 +16138,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid avg_dew_point format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid avg_dew_point format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16151,10 +16151,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid avg_temp format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid avg_temp format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16164,10 +16164,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid bac_prod format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid bac_prod format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16177,10 +16177,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid bac_resp format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid bac_resp format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16190,10 +16190,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid bacteria_carb_prod format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid bacteria_carb_prod format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16203,10 +16203,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid barometric_press format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid barometric_press format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16216,10 +16216,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid benzene format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid benzene format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16229,10 +16229,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid biochem_oxygen_dem format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid biochem_oxygen_dem format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16242,10 +16242,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid bishomohopanol format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid bishomohopanol format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16255,10 +16255,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid blood_press_diast format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid blood_press_diast format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16268,10 +16268,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid blood_press_syst format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid blood_press_syst format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16281,10 +16281,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid bromide format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid bromide format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16294,10 +16294,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid built_struc_age format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid built_struc_age format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16307,10 +16307,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid calcium format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid calcium format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16320,10 +16320,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid carb_dioxide format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid carb_dioxide format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16333,10 +16333,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid carb_monoxide format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid carb_monoxide format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16346,10 +16346,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid ceil_area format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid ceil_area format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16359,10 +16359,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid ceil_thermal_mass format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid ceil_thermal_mass format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16372,10 +16372,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid chem_oxygen_dem format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid chem_oxygen_dem format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16385,10 +16385,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid chloride format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid chloride format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16398,10 +16398,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid chlorophyll format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid chlorophyll format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16411,23 +16411,23 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid conduc format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid conduc format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('cult_root_med')
     def pattern_cult_root_med(cls, v):
-        pattern=re.compile(r"^(.*|PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
+        pattern=re.compile(r"^(?:^(.*|PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid cult_root_med format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid cult_root_med format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16437,10 +16437,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid cur_vegetation_meth format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid cur_vegetation_meth format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16450,10 +16450,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid density format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid density format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16463,10 +16463,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid depth format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid depth format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16476,10 +16476,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid dew_point format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid dew_point format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16489,10 +16489,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid diss_carb_dioxide format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid diss_carb_dioxide format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16502,10 +16502,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid diss_hydrogen format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid diss_hydrogen format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16515,10 +16515,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid diss_inorg_carb format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid diss_inorg_carb format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16528,10 +16528,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid diss_inorg_nitro format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid diss_inorg_nitro format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16541,10 +16541,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid diss_inorg_phosp format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid diss_inorg_phosp format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16554,10 +16554,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid diss_iron format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid diss_iron format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16567,10 +16567,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid diss_org_carb format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid diss_org_carb format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16580,10 +16580,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid diss_org_nitro format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid diss_org_nitro format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16593,10 +16593,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid diss_oxygen format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid diss_oxygen format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16606,10 +16606,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid diss_oxygen_fluid format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid diss_oxygen_fluid format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16619,10 +16619,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid door_size format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid door_size format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16632,10 +16632,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid down_par format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid down_par format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16645,10 +16645,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid efficiency_percent format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid efficiency_percent format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16658,10 +16658,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid elev format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid elev format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16671,10 +16671,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^([^\s-]{1,2}|[^\s-]+.+[^\s-]+) \[[a-zA-Z]{2,}:[a-zA-Z0-9]\d+\]$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid env_broad_scale format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid env_broad_scale format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16684,10 +16684,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^([^\s-]{1,2}|[^\s-]+.+[^\s-]+) \[[a-zA-Z]{2,}:[a-zA-Z0-9]\d+\]$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid env_local_scale format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid env_local_scale format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16697,10 +16697,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^([^\s-]{1,2}|[^\s-]+.+[^\s-]+) \[[a-zA-Z]{2,}:[a-zA-Z0-9]\d+\]$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid env_medium format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid env_medium format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16710,10 +16710,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid ethylbenzene format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid ethylbenzene format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16723,10 +16723,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid exp_duct format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid exp_duct format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16736,10 +16736,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[1-9][0-9]* .*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid exp_pipe format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid exp_pipe format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16749,10 +16749,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^\S+.*\S+ \[[a-zA-Z]{2,}:\d+\]$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid experimental_factor format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid experimental_factor format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16762,10 +16762,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?(\s+to\s+[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?)?$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid fire format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid fire format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16775,10 +16775,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid floor_age format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid floor_age format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16788,10 +16788,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid floor_area format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid floor_area format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16801,10 +16801,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid floor_thermal_mass format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid floor_thermal_mass format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16814,10 +16814,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid fluor format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid fluor format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16827,23 +16827,23 @@ class Biosample(Sample):
         pattern=re.compile(r"^[1-9][0-9]* .*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid freq_cook format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid freq_cook format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('genetic_mod')
     def pattern_genetic_mod(cls, v):
-        pattern=re.compile(r"^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
+        pattern=re.compile(r"^(?:^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid genetic_mod format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid genetic_mod format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16853,10 +16853,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^([^\s-]{1,2}|[^\s-]+.+[^\s-]+): ([^\s-]{1,2}|[^\s-]+.+[^\s-]+), ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid geo_loc_name format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid geo_loc_name format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16866,10 +16866,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid glucosidase_act format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid glucosidase_act format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16879,10 +16879,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid hcr_fw_salinity format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid hcr_fw_salinity format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16892,10 +16892,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+ *- *[-+]?[0-9]*\.?[0-9]+ ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid hcr_pressure format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid hcr_pressure format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16905,10 +16905,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+ *- *[-+]?[0-9]*\.?[0-9]+ ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid hcr_temp format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid hcr_temp format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16918,10 +16918,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid heavy_metals_meth format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid heavy_metals_meth format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16931,10 +16931,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid height_carper_fiber format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid height_carper_fiber format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16944,10 +16944,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid horizon_meth format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid horizon_meth format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16957,10 +16957,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid host_age format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid host_age format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16970,10 +16970,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid host_body_temp format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid host_body_temp format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16983,10 +16983,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid host_dry_mass format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid host_dry_mass format: {v}"
             raise ValueError(err_msg)
         return v
@@ -16996,10 +16996,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)|.*)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid host_growth_cond format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid host_growth_cond format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17009,10 +17009,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid host_height format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid host_height format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17022,10 +17022,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid host_length format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid host_length format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17035,10 +17035,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid host_tot_mass format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid host_tot_mass format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17048,10 +17048,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid host_wet_mass format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid host_wet_mass format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17061,10 +17061,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid humidity format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid humidity format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17074,10 +17074,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid indust_eff_percent format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid indust_eff_percent format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17087,10 +17087,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid inside_lux format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid inside_lux format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17100,10 +17100,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid iwf format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid iwf format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17113,10 +17113,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^(-?((?:[0-8]?[0-9](?:\.\d{0,8})?)|90)) -?[0-9]+(?:\.[0-9]{0,8})?$|^-?(1[0-7]{1,2})$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid lat_lon format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid lat_lon format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17126,10 +17126,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid light_intensity format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid light_intensity format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17139,10 +17139,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid link_addit_analys format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid link_addit_analys format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17152,10 +17152,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid link_climate_info format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid link_climate_info format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17165,10 +17165,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid local_class_meth format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid local_class_meth format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17178,10 +17178,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid magnesium format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid magnesium format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17191,10 +17191,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[1-9][0-9]* .*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid max_occup format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid max_occup format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17204,10 +17204,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid mean_frict_vel format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid mean_frict_vel format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17217,10 +17217,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid mean_peak_frict_vel format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid mean_peak_frict_vel format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17230,10 +17230,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid methane format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid methane format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17243,10 +17243,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid microbial_biomass format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid microbial_biomass format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17256,10 +17256,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid nitrate format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid nitrate format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17269,10 +17269,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid nitrite format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid nitrite format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17282,10 +17282,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid nitro format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid nitro format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17295,10 +17295,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[1-9][0-9]* .*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid number_pets format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid number_pets format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17308,10 +17308,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[1-9][0-9]* .*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid number_plants format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid number_plants format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17321,10 +17321,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[1-9][0-9]* .*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid number_resident format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid number_resident format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17334,10 +17334,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[1-9][0-9]* .*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid occup_samp format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid occup_samp format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17347,10 +17347,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid org_carb format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid org_carb format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17360,10 +17360,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid org_matter format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid org_matter format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17373,10 +17373,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid org_nitro format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid org_nitro format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17386,10 +17386,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid owc_tvdss format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid owc_tvdss format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17399,10 +17399,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid oxygen format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid oxygen format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17412,10 +17412,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid part_org_carb format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid part_org_carb format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17425,10 +17425,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid part_org_nitro format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid part_org_nitro format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17438,10 +17438,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid petroleum_hydrocarb format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid petroleum_hydrocarb format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17451,10 +17451,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid phosphate format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid phosphate format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17464,10 +17464,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid photon_flux format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid photon_flux format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17477,10 +17477,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^([^\s-]{1,2}|[^\s-]+.+[^\s-]+) \[[a-zA-Z]{2,}:[a-zA-Z0-9]\d+\]$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid plant_struc format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid plant_struc format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17490,10 +17490,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid potassium format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid potassium format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17503,10 +17503,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid pour_point format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid pour_point format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17516,10 +17516,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid pressure format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid pressure format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17529,10 +17529,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid prev_land_use_meth format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid prev_land_use_meth format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17542,10 +17542,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid primary_prod format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid primary_prod format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17555,10 +17555,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid prod_rate format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid prod_rate format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17568,10 +17568,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid redox_potential format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid redox_potential format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17581,10 +17581,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid rel_air_humidity format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid rel_air_humidity format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17594,10 +17594,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid rel_humidity_out format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid rel_humidity_out format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17607,10 +17607,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^.*;[-+]?[0-9]*\.?[0-9]+ ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid resins_pc format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid resins_pc format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17620,10 +17620,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid room_air_exch_rate format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid room_air_exch_rate format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17633,10 +17633,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[1-9][0-9]* .*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid room_door_dist format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid room_door_dist format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17646,10 +17646,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^([^\s-]{1,2}|[^\s-]+.+[^\s-]+);[1-9][0-9]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid room_door_share format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid room_door_share format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17659,10 +17659,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^([^\s-]{1,2}|[^\s-]+.+[^\s-]+);[1-9][0-9]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid room_hallway format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid room_hallway format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17672,10 +17672,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[1-9][0-9]* .*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid room_net_area format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid room_net_area format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17685,10 +17685,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[1-9][0-9]* .*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid room_occup format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid room_occup format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17698,10 +17698,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[1-9][0-9]* .*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid room_vol format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid room_vol format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17711,10 +17711,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^([^\s-]{1,2}|[^\s-]+.+[^\s-]+);[1-9][0-9]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid room_wall_share format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid room_wall_share format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17724,10 +17724,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)|.*)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid root_cond format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid root_cond format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17737,23 +17737,23 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid salinity format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid salinity format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('salinity_meth')
     def pattern_salinity_meth(cls, v):
-        pattern=re.compile(r"^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
+        pattern=re.compile(r"^(?:^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid salinity_meth format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid salinity_meth format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17763,10 +17763,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^([^\[\]]+|.+ \[[A-Za-z][A-Za-z0-9_]*:[A-Za-z0-9_]+\])$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid samp_collec_device format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid samp_collec_device format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17776,10 +17776,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^(?:(?:\d*1[1-3]th|\d*1st|\d*2nd|\d*3rd|\d*[04-9]th) floor|basement|lobby)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid samp_floor format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid samp_floor format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17789,10 +17789,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+ *- *[-+]?[0-9]*\.?[0-9]+ ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid samp_loc_corr_rate format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid samp_loc_corr_rate format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17802,10 +17802,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^.*;[-+]?[0-9]*\.?[0-9]+ ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid samp_preserv format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid samp_preserv format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17815,10 +17815,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid samp_size format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid samp_size format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17828,10 +17828,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^P(?:(?:\d+D|\d+M(?:\d+D)?|\d+Y(?:\d+M(?:\d+D)?)?)(?:T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S))?|T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S)|\d+W)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid samp_store_dur format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid samp_store_dur format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17841,10 +17841,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid samp_store_temp format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid samp_store_temp format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17854,10 +17854,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^.* \[NCBITaxon:\d+\]$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid samp_taxon_id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid samp_taxon_id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17867,10 +17867,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^([^\s-]{1,2}|[^\s-]+.+[^\s-]+) \[[a-zA-Z]{2,}:[a-zA-Z0-9]\d+\]$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid samp_type format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid samp_type format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17880,10 +17880,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^.*;[-+]?[0-9]*\.?[0-9]+ ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid saturates_pc format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid saturates_pc format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17893,10 +17893,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid season_precpt format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid season_precpt format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17906,10 +17906,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid season_temp format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid season_temp format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17919,10 +17919,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid silicate format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid silicate format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17932,10 +17932,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid size_frac_low format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid size_frac_low format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17945,10 +17945,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid size_frac_up format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid size_frac_up format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17958,10 +17958,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid slope_aspect format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid slope_aspect format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17971,10 +17971,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid slope_gradient format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid slope_gradient format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17984,10 +17984,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid sludge_retent_time format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid sludge_retent_time format: {v}"
             raise ValueError(err_msg)
         return v
@@ -17997,10 +17997,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid sodium format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid sodium format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18010,10 +18010,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid solar_irradiance format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid solar_irradiance format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18023,10 +18023,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid soluble_react_phosp format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid soluble_react_phosp format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18036,10 +18036,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid specific_humidity format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid specific_humidity format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18049,10 +18049,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid sulfate format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid sulfate format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18062,10 +18062,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid sulfate_fw format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid sulfate_fw format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18075,10 +18075,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid sulfide format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid sulfide format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18088,10 +18088,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid surf_humidity format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid surf_humidity format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18101,10 +18101,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid surf_moisture format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid surf_moisture format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18114,10 +18114,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid surf_temp format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid surf_temp format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18127,10 +18127,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid suspend_part_matter format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid suspend_part_matter format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18140,10 +18140,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid tan format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid tan format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18153,10 +18153,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid temp format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid temp format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18166,10 +18166,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid temp_out format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid temp_out format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18179,10 +18179,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)|.*)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid tiss_cult_growth_med format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid tiss_cult_growth_med format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18192,10 +18192,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid toluene format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid toluene format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18205,10 +18205,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid tot_carb format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid tot_carb format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18218,10 +18218,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid tot_depth_water_col format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid tot_depth_water_col format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18231,10 +18231,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid tot_diss_nitro format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid tot_diss_nitro format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18244,10 +18244,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid tot_inorg_nitro format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid tot_inorg_nitro format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18257,10 +18257,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid tot_iron format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid tot_iron format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18270,10 +18270,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid tot_nitro format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid tot_nitro format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18283,10 +18283,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid tot_nitro_cont_meth format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid tot_nitro_cont_meth format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18296,10 +18296,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid tot_nitro_content format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid tot_nitro_content format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18309,10 +18309,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid tot_org_c_meth format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid tot_org_c_meth format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18322,10 +18322,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid tot_org_carb format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid tot_org_carb format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18335,10 +18335,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid tot_part_carb format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid tot_part_carb format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18348,10 +18348,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid tot_phosp format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid tot_phosp format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18361,10 +18361,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid tot_phosphate format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid tot_phosphate format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18374,10 +18374,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid tot_sulfur format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid tot_sulfur format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18387,10 +18387,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid turbidity format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid turbidity format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18400,10 +18400,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid tvdss_of_hcr_press format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid tvdss_of_hcr_press format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18413,10 +18413,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid tvdss_of_hcr_temp format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid tvdss_of_hcr_temp format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18426,10 +18426,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid ventilation_rate format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid ventilation_rate format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18439,10 +18439,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid vfa format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid vfa format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18452,10 +18452,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid vfa_fw format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid vfa_fw format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18465,10 +18465,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid wall_area format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid wall_area format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18478,10 +18478,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid wall_height format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid wall_height format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18491,10 +18491,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid wall_thermal_mass format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid wall_thermal_mass format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18504,10 +18504,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid water_content format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid water_content format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18517,10 +18517,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid water_current format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid water_current format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18530,10 +18530,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid water_cut format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid water_cut format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18543,10 +18543,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid water_feat_size format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid water_feat_size format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18556,10 +18556,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid water_prod_rate format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid water_prod_rate format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18569,10 +18569,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid wind_speed format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid wind_speed format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18582,10 +18582,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid xylene format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid xylene format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18595,23 +18595,23 @@ class Biosample(Sample):
         pattern=re.compile(r"^(?:[0-9]|[1-9][0-9]|9[0-9]|0[0-9]|0[0-5][0-9]):[0-5][0-9]:[0-5][0-9]$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid infiltrations format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid infiltrations format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18621,10 +18621,10 @@ class Biosample(Sample):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18711,12 +18711,12 @@ class MaterialProcessing(PlannedProcess):
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'notes': ['This class is a replacement for BiosampleProcessing.'],
          'slot_usage': {'has_input': {'name': 'has_input',
-                                      'pattern': '^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                      'pattern': '^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                       'range': 'Sample',
                                       'structured_pattern': {'interpolated': True,
                                                              'syntax': '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'}},
                         'has_output': {'name': 'has_output',
-                                       'pattern': '^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                       'pattern': '^(?:^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                        'range': 'ProcessedSample',
                                        'structured_pattern': {'interpolated': True,
                                                               'syntax': '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$'}}}})
@@ -18803,39 +18803,39 @@ class MaterialProcessing(PlannedProcess):
 
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
-        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid instrument_used format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid instrument_used format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
-        pattern=re.compile(r"^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_input format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_input format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
-        pattern=re.compile(r"^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_output format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_output format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18845,10 +18845,10 @@ class MaterialProcessing(PlannedProcess):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18858,10 +18858,10 @@ class MaterialProcessing(PlannedProcess):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -18880,12 +18880,12 @@ class Pooling(MaterialProcessing):
                         'has_output': {'maximum_cardinality': 1,
                                        'minimum_cardinality': 1,
                                        'name': 'has_output',
-                                       'pattern': '^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                       'pattern': '^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                        'required': True,
                                        'structured_pattern': {'interpolated': True,
                                                               'syntax': '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'}},
                         'id': {'name': 'id',
-                               'pattern': '^(nmdc):poolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                               'pattern': '^(?:^(nmdc):poolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:poolp-{id_shoulder}-{id_blade}$'}}}})
 
@@ -18973,52 +18973,52 @@ class Pooling(MaterialProcessing):
 
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
-        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid instrument_used format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid instrument_used format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
-        pattern=re.compile(r"^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_input format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_input format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
-        pattern=re.compile(r"^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_output format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_output format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):poolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):poolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -19028,10 +19028,10 @@ class Pooling(MaterialProcessing):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -19045,18 +19045,18 @@ class Isolation(MaterialProcessing):
          'close_mappings': ['OBI:0000512'],
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'has_input': {'name': 'has_input',
-                                      'pattern': '^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                      'pattern': '^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                       'required': True,
                                       'structured_pattern': {'interpolated': True,
                                                              'syntax': '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$'}},
                         'has_output': {'name': 'has_output',
-                                       'pattern': '^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                       'pattern': '^(?:^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                        'range': 'OrganismSample',
                                        'required': True,
                                        'structured_pattern': {'interpolated': True,
                                                               'syntax': '{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$'}},
                         'id': {'name': 'id',
-                               'pattern': '^(nmdc):isnp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                               'pattern': '^(?:^(nmdc):isnp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:isnp-{id_shoulder}-{id_blade}$'}}}})
 
@@ -19144,52 +19144,52 @@ class Isolation(MaterialProcessing):
 
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
-        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid instrument_used format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid instrument_used format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
-        pattern=re.compile(r"^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_input format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_input format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
-        pattern=re.compile(r"^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_output format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_output format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):isnp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):isnp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -19199,10 +19199,10 @@ class Isolation(MaterialProcessing):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -19216,19 +19216,19 @@ class Culturing(MaterialProcessing):
          'close_mappings': ['OBI:0001147'],
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'has_input': {'name': 'has_input',
-                                      'pattern': '^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                      'pattern': '^(?:^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                       'range': 'OrganismSample',
                                       'required': True,
                                       'structured_pattern': {'interpolated': True,
                                                              'syntax': '{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$'}},
                         'has_output': {'name': 'has_output',
-                                       'pattern': '^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                       'pattern': '^(?:^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                        'range': 'OrganismSample',
                                        'required': True,
                                        'structured_pattern': {'interpolated': True,
                                                               'syntax': '{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$'}},
                         'id': {'name': 'id',
-                               'pattern': '^(nmdc):cultp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                               'pattern': '^(?:^(nmdc):cultp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:cultp-{id_shoulder}-{id_blade}$'}}}})
 
@@ -19316,52 +19316,52 @@ class Culturing(MaterialProcessing):
 
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
-        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid instrument_used format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid instrument_used format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
-        pattern=re.compile(r"^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_input format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_input format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
-        pattern=re.compile(r"^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_output format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_output format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):cultp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):cultp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -19371,10 +19371,10 @@ class Culturing(MaterialProcessing):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -19388,13 +19388,13 @@ class Extraction(MaterialProcessing):
          'exact_mappings': ['OBI:0302884'],
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'has_input': {'name': 'has_input',
-                                      'pattern': '^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                      'pattern': '^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                       'required': True,
                                       'structured_pattern': {'interpolated': True,
                                                              'syntax': '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$'}},
                         'has_output': {'name': 'has_output', 'required': True},
                         'id': {'name': 'id',
-                               'pattern': '^(nmdc):extrp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                               'pattern': '^(?:^(nmdc):extrp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:extrp-{id_shoulder}-{id_blade}$'}},
                         'volume': {'description': 'The volume of the solvent/solute '
@@ -19517,52 +19517,52 @@ class Extraction(MaterialProcessing):
 
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
-        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid instrument_used format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid instrument_used format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
-        pattern=re.compile(r"^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_input format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_input format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
-        pattern=re.compile(r"^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_output format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_output format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):extrp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):extrp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -19572,10 +19572,10 @@ class Extraction(MaterialProcessing):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -19590,7 +19590,7 @@ class LibraryPreparation(MaterialProcessing):
          'slot_usage': {'has_input': {'name': 'has_input', 'required': True},
                         'has_output': {'name': 'has_output', 'required': True},
                         'id': {'name': 'id',
-                               'pattern': '^(nmdc):libprp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                               'pattern': '^(?:^(nmdc):libprp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}$'}},
                         'pcr_cond': {'description': 'Description of reaction '
@@ -19749,23 +19749,23 @@ class LibraryPreparation(MaterialProcessing):
         pattern=re.compile(r"^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid nucl_acid_amp format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid nucl_acid_amp format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('pcr_primers')
     def pattern_pcr_primers(cls, v):
-        pattern=re.compile(r"FWD:[ACGTRYSWKMBDHVNI]+;REV:[ACGTRYSWKMBDHVNI]+")
+        pattern=re.compile(r"^(?:FWD:[ACGTRYSWKMBDHVNI]+;REV:[ACGTRYSWKMBDHVNI]+)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid pcr_primers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid pcr_primers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -19775,62 +19775,62 @@ class LibraryPreparation(MaterialProcessing):
         pattern=re.compile(r"^[ACGTRYSWKMBDHVNI]+;[ACGTRYSWKMBDHVNI]+$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid adapters format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid adapters format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
-        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid instrument_used format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid instrument_used format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
-        pattern=re.compile(r"^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_input format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_input format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
-        pattern=re.compile(r"^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_output format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_output format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):libprp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):libprp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -19840,10 +19840,10 @@ class LibraryPreparation(MaterialProcessing):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -19856,13 +19856,13 @@ class IsotopeLabelingProcess(MaterialProcessing):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:IsotopeLabelingProcess',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'has_input': {'name': 'has_input',
-                                      'pattern': '^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                      'pattern': '^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                       'required': True,
                                       'structured_pattern': {'interpolated': True,
                                                              'syntax': '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$'}},
                         'has_output': {'name': 'has_output', 'required': True},
                         'id': {'name': 'id',
-                               'pattern': '^(nmdc):isolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                               'pattern': '^(?:^(nmdc):isolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:isolp-{id_shoulder}-{id_blade}$'}}}})
 
@@ -19970,52 +19970,52 @@ class IsotopeLabelingProcess(MaterialProcessing):
 
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
-        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid instrument_used format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid instrument_used format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
-        pattern=re.compile(r"^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_input format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_input format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
-        pattern=re.compile(r"^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_output format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_output format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):isolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):isolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -20025,10 +20025,10 @@ class IsotopeLabelingProcess(MaterialProcessing):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -20042,13 +20042,13 @@ class DensityGradientFractionationProcess(MaterialProcessing):
          'class_uri': 'nmdc:DensityGradientFractionationProcess',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'has_input': {'name': 'has_input',
-                                      'pattern': '^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                      'pattern': '^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                       'required': True,
                                       'structured_pattern': {'interpolated': True,
                                                              'syntax': '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$'}},
                         'has_output': {'name': 'has_output', 'required': True},
                         'id': {'name': 'id',
-                               'pattern': '^(nmdc):fracp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                               'pattern': '^(?:^(nmdc):fracp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:fracp-{id_shoulder}-{id_blade}$'}}}})
 
@@ -20138,52 +20138,52 @@ class DensityGradientFractionationProcess(MaterialProcessing):
 
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
-        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid instrument_used format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid instrument_used format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
-        pattern=re.compile(r"^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_input format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_input format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
-        pattern=re.compile(r"^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_output format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_output format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):fracp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):fracp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -20193,10 +20193,10 @@ class DensityGradientFractionationProcess(MaterialProcessing):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -20224,7 +20224,7 @@ class SubSamplingProcess(MaterialProcessing):
          'slot_usage': {'has_output': {'description': 'The subsample.',
                                        'name': 'has_output'},
                         'id': {'name': 'id',
-                               'pattern': '^(nmdc):subspr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                               'pattern': '^(?:^(nmdc):subspr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:subspr-{id_shoulder}-{id_blade}$'}},
                         'mass': {'description': 'The output mass of the SubSampling '
@@ -20346,52 +20346,52 @@ class SubSamplingProcess(MaterialProcessing):
 
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
-        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid instrument_used format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid instrument_used format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
-        pattern=re.compile(r"^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_input format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_input format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
-        pattern=re.compile(r"^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_output format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_output format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):subspr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):subspr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -20401,10 +20401,10 @@ class SubSamplingProcess(MaterialProcessing):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -20429,11 +20429,11 @@ class MixingProcess(MaterialProcessing):
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'has_output': {'description': 'The mixed sample.',
                                        'name': 'has_output',
-                                       'pattern': '^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                       'pattern': '^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                        'structured_pattern': {'interpolated': True,
                                                               'syntax': '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'}},
                         'id': {'name': 'id',
-                               'pattern': '^(nmdc):mixpro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                               'pattern': '^(?:^(nmdc):mixpro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:mixpro-{id_shoulder}-{id_blade}$'}}}})
 
@@ -20530,52 +20530,52 @@ class MixingProcess(MaterialProcessing):
 
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
-        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid instrument_used format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid instrument_used format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
-        pattern=re.compile(r"^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_input format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_input format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
-        pattern=re.compile(r"^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_output format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_output format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):mixpro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):mixpro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -20585,10 +20585,10 @@ class MixingProcess(MaterialProcessing):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -20606,11 +20606,11 @@ class FiltrationProcess(MaterialProcessing):
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'related_mappings': ['CHMO:0001640'],
          'slot_usage': {'has_output': {'name': 'has_output',
-                                       'pattern': '^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                       'pattern': '^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                        'structured_pattern': {'interpolated': True,
                                                               'syntax': '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'}},
                         'id': {'name': 'id',
-                               'pattern': '^(nmdc):filtpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                               'pattern': '^(?:^(nmdc):filtpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:filtpr-{id_shoulder}-{id_blade}$'}},
                         'volume': {'description': 'The volume of sample filtered.',
@@ -20727,52 +20727,52 @@ class FiltrationProcess(MaterialProcessing):
 
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
-        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid instrument_used format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid instrument_used format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
-        pattern=re.compile(r"^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_input format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_input format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
-        pattern=re.compile(r"^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_output format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_output format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):filtpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):filtpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -20782,10 +20782,10 @@ class FiltrationProcess(MaterialProcessing):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -20799,11 +20799,11 @@ class ChromatographicSeparationProcess(MaterialProcessing):
          'contributors': ['orcid:0009-0001-1555-1601', 'orcid:0000-0002-1368-8217'],
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'has_output': {'name': 'has_output',
-                                       'pattern': '^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                       'pattern': '^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                        'structured_pattern': {'interpolated': True,
                                                               'syntax': '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'}},
                         'id': {'name': 'id',
-                               'pattern': '^(nmdc):cspro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                               'pattern': '^(?:^(nmdc):cspro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:cspro-{id_shoulder}-{id_blade}$'}}}})
 
@@ -20908,52 +20908,52 @@ class ChromatographicSeparationProcess(MaterialProcessing):
 
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
-        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid instrument_used format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid instrument_used format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
-        pattern=re.compile(r"^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_input format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_input format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
-        pattern=re.compile(r"^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_output format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_output format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):cspro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):cspro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -20963,10 +20963,10 @@ class ChromatographicSeparationProcess(MaterialProcessing):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -20983,7 +20983,7 @@ class DissolvingProcess(MaterialProcessing):
          'exact_mappings': ['CHMO:0002773'],
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'id': {'name': 'id',
-                               'pattern': '^(nmdc):dispro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                               'pattern': '^(?:^(nmdc):dispro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:dispro-{id_shoulder}-{id_blade}$'}}}})
 
@@ -21096,52 +21096,52 @@ class DissolvingProcess(MaterialProcessing):
 
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
-        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid instrument_used format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid instrument_used format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
-        pattern=re.compile(r"^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_input format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_input format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
-        pattern=re.compile(r"^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_output format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_output format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):dispro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):dispro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -21151,10 +21151,10 @@ class DissolvingProcess(MaterialProcessing):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -21173,7 +21173,7 @@ class ChemicalConversionProcess(MaterialProcessing):
          'exact_mappings': ['MISO:0000001'],
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'id': {'name': 'id',
-                               'pattern': '^(nmdc):chcpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                               'pattern': '^(?:^(nmdc):chcpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:chcpr-{id_shoulder}-{id_blade}$'}}}})
 
@@ -21289,52 +21289,52 @@ class ChemicalConversionProcess(MaterialProcessing):
 
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
-        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid instrument_used format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid instrument_used format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
-        pattern=re.compile(r"^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_input format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_input format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
-        pattern=re.compile(r"^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_output format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_output format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):chcpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):chcpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -21344,10 +21344,10 @@ class ChemicalConversionProcess(MaterialProcessing):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -21420,7 +21420,7 @@ class ProcessedSample(Sample):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:ProcessedSample',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'id': {'name': 'id',
-                               'pattern': '^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                               'pattern': '^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'}}},
          'title': 'Processed Sample'})
@@ -21541,23 +21541,23 @@ class ProcessedSample(Sample):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid external_database_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid external_database_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -21567,10 +21567,10 @@ class ProcessedSample(Sample):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -21599,11 +21599,11 @@ class OrganismSample(Sample):
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/2803'],
          'slot_usage': {'expected_organism': {'name': 'expected_organism',
-                                              'pattern': '^(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                              'pattern': '^(?:^(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                               'structured_pattern': {'interpolated': True,
                                                                      'syntax': '{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$'}},
                         'id': {'name': 'id',
-                               'pattern': '^(nmdc):osm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                               'pattern': '^(?:^(nmdc):osm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:osm-{id_shoulder}-{id_blade}$'}},
                         'source_mat_id': {'comments': ['On OrganismSample the slot '
@@ -21896,26 +21896,26 @@ class OrganismSample(Sample):
 
     @field_validator('associated_studies')
     def pattern_associated_studies(cls, v):
-        pattern=re.compile(r"^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid associated_studies format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid associated_studies format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('expected_organism')
     def pattern_expected_organism(cls, v):
-        pattern=re.compile(r"^(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid expected_organism format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid expected_organism format: {v}"
             raise ValueError(err_msg)
         return v
@@ -21925,10 +21925,10 @@ class OrganismSample(Sample):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid external_database_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid external_database_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -21938,23 +21938,23 @@ class OrganismSample(Sample):
         pattern=re.compile(r"^gold:Go[0-9]+$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid gold_organism_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid gold_organism_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):osm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):osm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -21964,10 +21964,10 @@ class OrganismSample(Sample):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -22039,10 +22039,10 @@ class Site(MaterialEntity):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -22052,10 +22052,10 @@ class Site(MaterialEntity):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -22077,11 +22077,11 @@ class FieldResearchSite(Site):
                       'https://gold.jgi.doe.gov/biosample?id=Gb0305833'],
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'id': {'name': 'id',
-                               'pattern': '^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                               'pattern': '^(?:^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'}},
                         'part_of': {'name': 'part_of',
-                                    'pattern': '^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                    'pattern': '^(?:^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                     'range': 'FieldResearchSite',
                                     'structured_pattern': {'interpolated': True,
                                                            'syntax': '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'}}},
@@ -22203,10 +22203,10 @@ class FieldResearchSite(Site):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid elev format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid elev format: {v}"
             raise ValueError(err_msg)
         return v
@@ -22216,10 +22216,10 @@ class FieldResearchSite(Site):
         pattern=re.compile(r"^([^\s-]{1,2}|[^\s-]+.+[^\s-]+): ([^\s-]{1,2}|[^\s-]+.+[^\s-]+), ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid geo_loc_name format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid geo_loc_name format: {v}"
             raise ValueError(err_msg)
         return v
@@ -22229,36 +22229,36 @@ class FieldResearchSite(Site):
         pattern=re.compile(r"^(-?((?:[0-8]?[0-9](?:\.\d{0,8})?)|90)) -?[0-9]+(?:\.[0-9]{0,8})?$|^-?(1[0-7]{1,2})$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid lat_lon format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid lat_lon format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('part_of')
     def pattern_part_of(cls, v):
-        pattern=re.compile(r"^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid part_of format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid part_of format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -22268,10 +22268,10 @@ class FieldResearchSite(Site):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -22397,10 +22397,10 @@ class MetaboliteIdentification(ConfiguredBaseModel):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -22476,10 +22476,10 @@ class GeneProduct(NamedThing):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -22489,10 +22489,10 @@ class GeneProduct(NamedThing):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -22507,16 +22507,16 @@ class MetagenomeAssembly(WorkflowExecution):
                       'most or all cases relevant to NMDC'],
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'id': {'name': 'id',
-                               'pattern': '^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
+                               'pattern': '^(?:^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$'}},
                         'superseded_by': {'name': 'superseded_by',
-                                          'pattern': '^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
+                                          'pattern': '^(?:^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$',
                                           'range': 'MetagenomeAssembly',
                                           'structured_pattern': {'interpolated': True,
                                                                  'syntax': '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$'}},
                         'was_informed_by': {'name': 'was_informed_by',
-                                            'pattern': '^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                            'pattern': '^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                             'range': 'NucleotideSequencing',
                                             'structured_pattern': {'interpolated': True,
                                                                    'syntax': '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'}}}})
@@ -22697,10 +22697,10 @@ class MetagenomeAssembly(WorkflowExecution):
         pattern=re.compile(r"^insdc\.sra:[A-Z]+[0-9]+(\.[0-9]+)?$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid insdc_assembly_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid insdc_assembly_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -22710,10 +22710,10 @@ class MetagenomeAssembly(WorkflowExecution):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid ended_at_time format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid ended_at_time format: {v}"
             raise ValueError(err_msg)
         return v
@@ -22723,75 +22723,75 @@ class MetagenomeAssembly(WorkflowExecution):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid started_at_time format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid started_at_time format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('was_informed_by')
     def pattern_was_informed_by(cls, v):
-        pattern=re.compile(r"^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid was_informed_by format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid was_informed_by format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('superseded_by')
     def pattern_superseded_by(cls, v):
-        pattern=re.compile(r"^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
+        pattern=re.compile(r"^(?:^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid superseded_by format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid superseded_by format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
-        pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_input format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_input format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
-        pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_output format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_output format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
+        pattern=re.compile(r"^(?:^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -22801,10 +22801,10 @@ class MetagenomeAssembly(WorkflowExecution):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -22814,16 +22814,16 @@ class MetatranscriptomeAssembly(WorkflowExecution):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:MetatranscriptomeAssembly',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'id': {'name': 'id',
-                               'pattern': '^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
+                               'pattern': '^(?:^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$'}},
                         'superseded_by': {'name': 'superseded_by',
-                                          'pattern': '^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
+                                          'pattern': '^(?:^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$',
                                           'range': 'MetatranscriptomeAssembly',
                                           'structured_pattern': {'interpolated': True,
                                                                  'syntax': '{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$'}},
                         'was_informed_by': {'name': 'was_informed_by',
-                                            'pattern': '^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                            'pattern': '^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                             'range': 'NucleotideSequencing',
                                             'structured_pattern': {'interpolated': True,
                                                                    'syntax': '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'}}}})
@@ -23004,10 +23004,10 @@ class MetatranscriptomeAssembly(WorkflowExecution):
         pattern=re.compile(r"^insdc\.sra:[A-Z]+[0-9]+(\.[0-9]+)?$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid insdc_assembly_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid insdc_assembly_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -23017,10 +23017,10 @@ class MetatranscriptomeAssembly(WorkflowExecution):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid ended_at_time format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid ended_at_time format: {v}"
             raise ValueError(err_msg)
         return v
@@ -23030,75 +23030,75 @@ class MetatranscriptomeAssembly(WorkflowExecution):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid started_at_time format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid started_at_time format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('was_informed_by')
     def pattern_was_informed_by(cls, v):
-        pattern=re.compile(r"^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid was_informed_by format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid was_informed_by format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('superseded_by')
     def pattern_superseded_by(cls, v):
-        pattern=re.compile(r"^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
+        pattern=re.compile(r"^(?:^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid superseded_by format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid superseded_by format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
-        pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_input format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_input format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
-        pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_output format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_output format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
+        pattern=re.compile(r"^(?:^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -23108,10 +23108,10 @@ class MetatranscriptomeAssembly(WorkflowExecution):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -23121,22 +23121,22 @@ class MetatranscriptomeAnnotation(AnnotatingWorkflow):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:MetatranscriptomeAnnotation',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'gold_analysis_project_identifiers': {'name': 'gold_analysis_project_identifiers',
-                                                              'pattern': '^gold:Ga[0-9]+$',
+                                                              'pattern': '^(?:^gold:Ga[0-9]+$)$',
                                                               'structured_pattern': {'interpolated': True,
                                                                                      'syntax': '^gold:Ga[0-9]+$'}},
                         'id': {'name': 'id',
-                               'pattern': '^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
+                               'pattern': '^(?:^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$'}},
                         'img_identifiers': {'maximum_cardinality': 1,
                                             'name': 'img_identifiers'},
                         'superseded_by': {'name': 'superseded_by',
-                                          'pattern': '^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
+                                          'pattern': '^(?:^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$',
                                           'range': 'MetatranscriptomeAnnotation',
                                           'structured_pattern': {'interpolated': True,
                                                                  'syntax': '{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$'}},
                         'was_informed_by': {'name': 'was_informed_by',
-                                            'pattern': '^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                            'pattern': '^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                             'range': 'NucleotideSequencing',
                                             'structured_pattern': {'interpolated': True,
                                                                    'syntax': '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'}}}})
@@ -23275,23 +23275,23 @@ class MetatranscriptomeAnnotation(AnnotatingWorkflow):
         pattern=re.compile(r"^img\.taxon:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid img_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid img_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('gold_analysis_project_identifiers')
     def pattern_gold_analysis_project_identifiers(cls, v):
-        pattern=re.compile(r"^gold:Ga[0-9]+$")
+        pattern=re.compile(r"^(?:^gold:Ga[0-9]+$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid gold_analysis_project_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid gold_analysis_project_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -23301,10 +23301,10 @@ class MetatranscriptomeAnnotation(AnnotatingWorkflow):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid ended_at_time format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid ended_at_time format: {v}"
             raise ValueError(err_msg)
         return v
@@ -23314,75 +23314,75 @@ class MetatranscriptomeAnnotation(AnnotatingWorkflow):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid started_at_time format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid started_at_time format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('was_informed_by')
     def pattern_was_informed_by(cls, v):
-        pattern=re.compile(r"^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid was_informed_by format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid was_informed_by format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('superseded_by')
     def pattern_superseded_by(cls, v):
-        pattern=re.compile(r"^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
+        pattern=re.compile(r"^(?:^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid superseded_by format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid superseded_by format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
-        pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_input format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_input format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
-        pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_output format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_output format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
+        pattern=re.compile(r"^(?:^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -23392,10 +23392,10 @@ class MetatranscriptomeAnnotation(AnnotatingWorkflow):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -23408,18 +23408,18 @@ class MetatranscriptomeExpressionAnalysis(WorkflowExecution):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:MetatranscriptomeExpressionAnalysis',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'id': {'name': 'id',
-                               'pattern': '^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
+                               'pattern': '^(?:^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}$'}},
                         'img_identifiers': {'maximum_cardinality': 1,
                                             'name': 'img_identifiers'},
                         'superseded_by': {'name': 'superseded_by',
-                                          'pattern': '^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
+                                          'pattern': '^(?:^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$',
                                           'range': 'MetatranscriptomeExpressionAnalysis',
                                           'structured_pattern': {'interpolated': True,
                                                                  'syntax': '{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}$'}},
                         'was_informed_by': {'name': 'was_informed_by',
-                                            'pattern': '^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                            'pattern': '^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                             'range': 'NucleotideSequencing',
                                             'structured_pattern': {'interpolated': True,
                                                                    'syntax': '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'}}}})
@@ -23553,10 +23553,10 @@ class MetatranscriptomeExpressionAnalysis(WorkflowExecution):
         pattern=re.compile(r"^img\.taxon:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid img_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid img_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -23566,10 +23566,10 @@ class MetatranscriptomeExpressionAnalysis(WorkflowExecution):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid ended_at_time format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid ended_at_time format: {v}"
             raise ValueError(err_msg)
         return v
@@ -23579,75 +23579,75 @@ class MetatranscriptomeExpressionAnalysis(WorkflowExecution):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid started_at_time format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid started_at_time format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('was_informed_by')
     def pattern_was_informed_by(cls, v):
-        pattern=re.compile(r"^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid was_informed_by format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid was_informed_by format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('superseded_by')
     def pattern_superseded_by(cls, v):
-        pattern=re.compile(r"^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
+        pattern=re.compile(r"^(?:^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid superseded_by format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid superseded_by format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
-        pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_input format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_input format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
-        pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_output format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_output format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
+        pattern=re.compile(r"^(?:^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -23657,10 +23657,10 @@ class MetatranscriptomeExpressionAnalysis(WorkflowExecution):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -23673,18 +23673,18 @@ class MagsAnalysis(WorkflowExecution):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:MagsAnalysis',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'id': {'name': 'id',
-                               'pattern': '^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
+                               'pattern': '^(?:^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}$'}},
                         'img_identifiers': {'maximum_cardinality': 1,
                                             'name': 'img_identifiers'},
                         'superseded_by': {'name': 'superseded_by',
-                                          'pattern': '^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
+                                          'pattern': '^(?:^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$',
                                           'range': 'MagsAnalysis',
                                           'structured_pattern': {'interpolated': True,
                                                                  'syntax': '{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}$'}},
                         'was_informed_by': {'name': 'was_informed_by',
-                                            'pattern': '^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                            'pattern': '^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                             'range': 'NucleotideSequencing',
                                             'structured_pattern': {'interpolated': True,
                                                                    'syntax': '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'}}},
@@ -23825,10 +23825,10 @@ class MagsAnalysis(WorkflowExecution):
         pattern=re.compile(r"^img\.taxon:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid img_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid img_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -23838,10 +23838,10 @@ class MagsAnalysis(WorkflowExecution):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid ended_at_time format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid ended_at_time format: {v}"
             raise ValueError(err_msg)
         return v
@@ -23851,75 +23851,75 @@ class MagsAnalysis(WorkflowExecution):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid started_at_time format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid started_at_time format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('was_informed_by')
     def pattern_was_informed_by(cls, v):
-        pattern=re.compile(r"^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid was_informed_by format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid was_informed_by format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('superseded_by')
     def pattern_superseded_by(cls, v):
-        pattern=re.compile(r"^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
+        pattern=re.compile(r"^(?:^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid superseded_by format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid superseded_by format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
-        pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_input format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_input format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
-        pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_output format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_output format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
+        pattern=re.compile(r"^(?:^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -23929,10 +23929,10 @@ class MagsAnalysis(WorkflowExecution):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -23945,16 +23945,16 @@ class ReadQcAnalysis(WorkflowExecution):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:ReadQcAnalysis',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'id': {'name': 'id',
-                               'pattern': '^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
+                               'pattern': '^(?:^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$'}},
                         'superseded_by': {'name': 'superseded_by',
-                                          'pattern': '^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
+                                          'pattern': '^(?:^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$',
                                           'range': 'ReadQcAnalysis',
                                           'structured_pattern': {'interpolated': True,
                                                                  'syntax': '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$'}},
                         'was_informed_by': {'name': 'was_informed_by',
-                                            'pattern': '^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                            'pattern': '^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                             'range': 'NucleotideSequencing',
                                             'structured_pattern': {'interpolated': True,
                                                                    'syntax': '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'}}},
@@ -24085,10 +24085,10 @@ class ReadQcAnalysis(WorkflowExecution):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid ended_at_time format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid ended_at_time format: {v}"
             raise ValueError(err_msg)
         return v
@@ -24098,75 +24098,75 @@ class ReadQcAnalysis(WorkflowExecution):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid started_at_time format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid started_at_time format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('was_informed_by')
     def pattern_was_informed_by(cls, v):
-        pattern=re.compile(r"^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid was_informed_by format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid was_informed_by format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('superseded_by')
     def pattern_superseded_by(cls, v):
-        pattern=re.compile(r"^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
+        pattern=re.compile(r"^(?:^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid superseded_by format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid superseded_by format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
-        pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_input format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_input format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
-        pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_output format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_output format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
+        pattern=re.compile(r"^(?:^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -24176,10 +24176,10 @@ class ReadQcAnalysis(WorkflowExecution):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -24192,16 +24192,16 @@ class ReadBasedTaxonomyAnalysis(WorkflowExecution):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:ReadBasedTaxonomyAnalysis',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'id': {'name': 'id',
-                               'pattern': '^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
+                               'pattern': '^(?:^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}$'}},
                         'superseded_by': {'name': 'superseded_by',
-                                          'pattern': '^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
+                                          'pattern': '^(?:^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$',
                                           'range': 'ReadBasedTaxonomyAnalysis',
                                           'structured_pattern': {'interpolated': True,
                                                                  'syntax': '{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}$'}},
                         'was_informed_by': {'name': 'was_informed_by',
-                                            'pattern': '^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                            'pattern': '^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                             'range': 'NucleotideSequencing',
                                             'structured_pattern': {'interpolated': True,
                                                                    'syntax': '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'}}},
@@ -24326,10 +24326,10 @@ class ReadBasedTaxonomyAnalysis(WorkflowExecution):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid ended_at_time format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid ended_at_time format: {v}"
             raise ValueError(err_msg)
         return v
@@ -24339,75 +24339,75 @@ class ReadBasedTaxonomyAnalysis(WorkflowExecution):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid started_at_time format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid started_at_time format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('was_informed_by')
     def pattern_was_informed_by(cls, v):
-        pattern=re.compile(r"^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid was_informed_by format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid was_informed_by format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('superseded_by')
     def pattern_superseded_by(cls, v):
-        pattern=re.compile(r"^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
+        pattern=re.compile(r"^(?:^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid superseded_by format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid superseded_by format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
-        pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_input format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_input format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
-        pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_output format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_output format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
+        pattern=re.compile(r"^(?:^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -24417,10 +24417,10 @@ class ReadBasedTaxonomyAnalysis(WorkflowExecution):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -24430,7 +24430,7 @@ class MetabolomicsAnalysis(WorkflowExecution):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:MetabolomicsAnalysis',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'id': {'name': 'id',
-                               'pattern': '^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
+                               'pattern': '^(?:^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$'}},
                         'peak_assignment_count': {'description': 'The total number of '
@@ -24451,12 +24451,12 @@ class MetabolomicsAnalysis(WorkflowExecution):
                                                       'analysis.',
                                        'name': 'peak_count'},
                         'superseded_by': {'name': 'superseded_by',
-                                          'pattern': '^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
+                                          'pattern': '^(?:^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$',
                                           'range': 'MetabolomicsAnalysis',
                                           'structured_pattern': {'interpolated': True,
                                                                  'syntax': '{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$'}},
                         'was_informed_by': {'name': 'was_informed_by',
-                                            'pattern': '^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                            'pattern': '^(?:^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                             'range': 'MassSpectrometry',
                                             'structured_pattern': {'interpolated': True,
                                                                    'syntax': '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'}}}})
@@ -24590,13 +24590,13 @@ class MetabolomicsAnalysis(WorkflowExecution):
 
     @field_validator('uses_calibration')
     def pattern_uses_calibration(cls, v):
-        pattern=re.compile(r"^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid uses_calibration format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid uses_calibration format: {v}"
             raise ValueError(err_msg)
         return v
@@ -24606,10 +24606,10 @@ class MetabolomicsAnalysis(WorkflowExecution):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid ended_at_time format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid ended_at_time format: {v}"
             raise ValueError(err_msg)
         return v
@@ -24619,75 +24619,75 @@ class MetabolomicsAnalysis(WorkflowExecution):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid started_at_time format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid started_at_time format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('was_informed_by')
     def pattern_was_informed_by(cls, v):
-        pattern=re.compile(r"^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid was_informed_by format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid was_informed_by format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('superseded_by')
     def pattern_superseded_by(cls, v):
-        pattern=re.compile(r"^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
+        pattern=re.compile(r"^(?:^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid superseded_by format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid superseded_by format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
-        pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_input format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_input format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
-        pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_output format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_output format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
+        pattern=re.compile(r"^(?:^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -24697,10 +24697,10 @@ class MetabolomicsAnalysis(WorkflowExecution):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -24710,16 +24710,16 @@ class MetaproteomicsAnalysis(AnnotatingWorkflow):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:MetaproteomicsAnalysis',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'id': {'name': 'id',
-                               'pattern': '^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
+                               'pattern': '^(?:^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}$'}},
                         'superseded_by': {'name': 'superseded_by',
-                                          'pattern': '^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
+                                          'pattern': '^(?:^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$',
                                           'range': 'MetaproteomicsAnalysis',
                                           'structured_pattern': {'interpolated': True,
                                                                  'syntax': '{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}$'}},
                         'was_informed_by': {'name': 'was_informed_by',
-                                            'pattern': '^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                            'pattern': '^(?:^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                             'range': 'MassSpectrometry',
                                             'structured_pattern': {'interpolated': True,
                                                                    'syntax': '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'}}}})
@@ -24852,10 +24852,10 @@ class MetaproteomicsAnalysis(AnnotatingWorkflow):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid ended_at_time format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid ended_at_time format: {v}"
             raise ValueError(err_msg)
         return v
@@ -24865,75 +24865,75 @@ class MetaproteomicsAnalysis(AnnotatingWorkflow):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid started_at_time format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid started_at_time format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('was_informed_by')
     def pattern_was_informed_by(cls, v):
-        pattern=re.compile(r"^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid was_informed_by format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid was_informed_by format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('superseded_by')
     def pattern_superseded_by(cls, v):
-        pattern=re.compile(r"^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
+        pattern=re.compile(r"^(?:^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid superseded_by format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid superseded_by format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
-        pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_input format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_input format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
-        pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_output format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_output format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
+        pattern=re.compile(r"^(?:^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -24943,10 +24943,10 @@ class MetaproteomicsAnalysis(AnnotatingWorkflow):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
@@ -24956,7 +24956,7 @@ class NomAnalysis(WorkflowExecution):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:NomAnalysis',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'id': {'name': 'id',
-                               'pattern': '^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
+                               'pattern': '^(?:^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$'}},
                         'peak_assignment_count': {'description': 'The number of m/z '
@@ -24965,12 +24965,12 @@ class NomAnalysis(WorkflowExecution):
                                                                  'in the analysis.',
                                                   'name': 'peak_assignment_count'},
                         'superseded_by': {'name': 'superseded_by',
-                                          'pattern': '^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
+                                          'pattern': '^(?:^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$',
                                           'range': 'NomAnalysis',
                                           'structured_pattern': {'interpolated': True,
                                                                  'syntax': '{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$'}},
                         'was_informed_by': {'name': 'was_informed_by',
-                                            'pattern': '^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                            'pattern': '^(?:^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$',
                                             'range': 'MassSpectrometry',
                                             'structured_pattern': {'interpolated': True,
                                                                    'syntax': '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'}}}})
@@ -25101,13 +25101,13 @@ class NomAnalysis(WorkflowExecution):
 
     @field_validator('uses_calibration')
     def pattern_uses_calibration(cls, v):
-        pattern=re.compile(r"^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid uses_calibration format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid uses_calibration format: {v}"
             raise ValueError(err_msg)
         return v
@@ -25117,10 +25117,10 @@ class NomAnalysis(WorkflowExecution):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid ended_at_time format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid ended_at_time format: {v}"
             raise ValueError(err_msg)
         return v
@@ -25130,75 +25130,75 @@ class NomAnalysis(WorkflowExecution):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid started_at_time format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid started_at_time format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('was_informed_by')
     def pattern_was_informed_by(cls, v):
-        pattern=re.compile(r"^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid was_informed_by format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid was_informed_by format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('superseded_by')
     def pattern_superseded_by(cls, v):
-        pattern=re.compile(r"^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
+        pattern=re.compile(r"^(?:^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid superseded_by format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid superseded_by format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
-        pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_input format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_input format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
-        pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid has_output format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid has_output format: {v}"
             raise ValueError(err_msg)
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
+        pattern=re.compile(r"^(?:^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$)$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid id format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid id format: {v}"
             raise ValueError(err_msg)
         return v
@@ -25208,10 +25208,10 @@ class NomAnalysis(WorkflowExecution):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
+                if isinstance(element, str) and not pattern.search(element):
                     err_msg = f"Invalid alternative_identifiers format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
+        elif isinstance(v, str) and not pattern.search(v):
             err_msg = f"Invalid alternative_identifiers format: {v}"
             raise ValueError(err_msg)
         return v

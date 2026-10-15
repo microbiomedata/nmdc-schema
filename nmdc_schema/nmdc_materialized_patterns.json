@@ -8893,7 +8893,7 @@
       "slot_uri": "MIXS:0000341",
       "range": "string",
       "multivalued": false,
-      "pattern": "^(PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$",
+      "pattern": "^(?:^(PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$)$",
       "structured_pattern": {
         "syntax": "^({PMID}|{DOI}|{URL})$",
         "interpolated": true
@@ -8938,7 +8938,7 @@
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "range": "CalibrationInformation",
-      "pattern": "^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+      "pattern": "^(?:^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
       "structured_pattern": {
         "syntax": "{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$",
         "interpolated": true
@@ -8953,7 +8953,7 @@
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "range": "CalibrationInformation",
       "multivalued": true,
-      "pattern": "^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+      "pattern": "^(?:^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
       "structured_pattern": {
         "syntax": "{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$",
         "interpolated": true
@@ -8964,7 +8964,7 @@
       "description": "the file containing the calibration data object",
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "range": "DataObject",
-      "pattern": "^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+      "pattern": "^(?:^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
       "structured_pattern": {
         "syntax": "{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$",
         "interpolated": true
@@ -11517,7 +11517,7 @@
       "range": "Study",
       "required": true,
       "multivalued": true,
-      "pattern": "^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+      "pattern": "^(?:^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
       "structured_pattern": {
         "syntax": "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$",
         "interpolated": true
@@ -11747,7 +11747,7 @@
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "range": "Instrument",
       "multivalued": true,
-      "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+      "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
       "structured_pattern": {
         "syntax": "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$",
         "interpolated": true
@@ -11767,7 +11767,7 @@
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "range": "Manifest",
       "multivalued": true,
-      "pattern": "^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+      "pattern": "^(?:^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
       "structured_pattern": {
         "syntax": "{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$",
         "interpolated": true
@@ -14004,7 +14004,7 @@
       ],
       "slot_uri": "MIXS:0001041",
       "range": "TextValue",
-      "pattern": "^(.*|PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$",
+      "pattern": "^(?:^(.*|PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$)$",
       "structured_pattern": {
         "syntax": "^({text}|{PMID}|{DOI}|{URL})$",
         "interpolated": true
@@ -15789,7 +15789,7 @@
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "slot_uri": "MIXS:0000859",
-      "pattern": "^(PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$",
+      "pattern": "^(?:^(PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$)$",
       "structured_pattern": {
         "syntax": "^({PMID}|{DOI}|{URL})$",
         "interpolated": true
@@ -18723,7 +18723,7 @@
         "pcr"
       ],
       "slot_uri": "MIXS:0000046",
-      "pattern": "FWD:[ACGTRYSWKMBDHVNI]+;REV:[ACGTRYSWKMBDHVNI]+",
+      "pattern": "^(?:FWD:[ACGTRYSWKMBDHVNI]+;REV:[ACGTRYSWKMBDHVNI]+)$",
       "structured_pattern": {
         "syntax": "FWD:{primer_adapter_codes}+;REV:{primer_adapter_codes}+",
         "interpolated": true
@@ -26527,7 +26527,7 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):(dgns|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):(dgns|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -26557,7 +26557,7 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):(dgms|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):(dgms|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(dgms|omprc)-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -26565,7 +26565,7 @@
         },
         "has_chromatography_configuration": {
           "name": "has_chromatography_configuration",
-          "pattern": "^(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -26574,7 +26574,7 @@
         "has_mass_spectrometry_configuration": {
           "name": "has_mass_spectrometry_configuration",
           "required": true,
-          "pattern": "^(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -26694,7 +26694,7 @@
         },
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -26752,7 +26752,7 @@
         },
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -26783,7 +26783,7 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -26814,7 +26814,7 @@
         },
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -26880,7 +26880,7 @@
           "name": "was_generated_by",
           "range": "AnnotatingWorkflow",
           "required": true,
-          "pattern": "^(nmdc):(wfmgan|wfmp|wfmtan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
+          "pattern": "^(?:^(nmdc):(wfmgan|wfmp|wfmtan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(wfmgan|wfmp|wfmtan)-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -26945,7 +26945,7 @@
         "has_output": {
           "name": "has_output",
           "required": true,
-          "pattern": "^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -26955,7 +26955,7 @@
         },
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):poolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):poolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:poolp-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -26975,7 +26975,7 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):isnp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):isnp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:isnp-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -26984,7 +26984,7 @@
         "has_input": {
           "name": "has_input",
           "required": true,
-          "pattern": "^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -26994,7 +26994,7 @@
           "name": "has_output",
           "range": "OrganismSample",
           "required": true,
-          "pattern": "^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -27014,7 +27014,7 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):cultp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):cultp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:cultp-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -27024,7 +27024,7 @@
           "name": "has_input",
           "range": "OrganismSample",
           "required": true,
-          "pattern": "^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -27034,7 +27034,7 @@
           "name": "has_output",
           "range": "OrganismSample",
           "required": true,
-          "pattern": "^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -27062,7 +27062,7 @@
         "has_input": {
           "name": "has_input",
           "required": true,
-          "pattern": "^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -27074,7 +27074,7 @@
         },
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):extrp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):extrp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:extrp-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -27128,7 +27128,7 @@
         },
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):libprp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):libprp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -27155,7 +27155,7 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):isolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):isolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:isolp-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -27164,7 +27164,7 @@
         "has_input": {
           "name": "has_input",
           "required": true,
-          "pattern": "^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -27280,7 +27280,7 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):fracp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):fracp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:fracp-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -27289,7 +27289,7 @@
         "has_input": {
           "name": "has_input",
           "required": true,
-          "pattern": "^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -27318,7 +27318,7 @@
           "name": "has_input",
           "range": "Site",
           "required": true,
-          "pattern": "^(nmdc):(frsite|site)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):(frsite|site)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(frsite|site)-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -27328,7 +27328,7 @@
           "name": "has_output",
           "range": "Biosample",
           "required": true,
-          "pattern": "^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -27336,7 +27336,7 @@
         },
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):clsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):clsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -27374,7 +27374,7 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):subspr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):subspr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:subspr-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -27415,7 +27415,7 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):mixpro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):mixpro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:mixpro-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -27424,7 +27424,7 @@
         "has_output": {
           "name": "has_output",
           "description": "The mixed sample.",
-          "pattern": "^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -27460,7 +27460,7 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):filtpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):filtpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:filtpr-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -27472,7 +27472,7 @@
         },
         "has_output": {
           "name": "has_output",
-          "pattern": "^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -27501,7 +27501,7 @@
         },
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):storpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):storpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:storpr-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -27510,7 +27510,7 @@
         "has_input": {
           "name": "has_input",
           "range": "Sample",
-          "pattern": "^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -27519,7 +27519,7 @@
         "has_output": {
           "name": "has_output",
           "range": "ProcessedSample",
-          "pattern": "^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -27546,7 +27546,7 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):cspro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):cspro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:cspro-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -27554,7 +27554,7 @@
         },
         "has_output": {
           "name": "has_output",
-          "pattern": "^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -27586,7 +27586,7 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):dispro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):dispro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:dispro-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -27703,7 +27703,7 @@
             "To be consistent with the rest of the NMDC schema we use the PROV annotation model, rather than GPAD"
           ],
           "range": "MetagenomeAnnotation",
-          "pattern": "^(nmdc):(wfmgan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
+          "pattern": "^(?:^(nmdc):(wfmgan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(wfmgan)-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -28062,7 +28062,7 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -28108,7 +28108,7 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -28369,7 +28369,7 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -28458,7 +28458,7 @@
             "Value is the id of the umbrella study or consortium."
           ],
           "range": "Study",
-          "pattern": "^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -28526,7 +28526,7 @@
         },
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -28534,7 +28534,7 @@
         },
         "was_generated_by": {
           "name": "was_generated_by",
-          "pattern": "^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$|^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$|^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -28617,7 +28617,7 @@
           "name": "has_input",
           "range": "Sample",
           "required": true,
-          "pattern": "^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -28625,7 +28625,7 @@
         },
         "associated_studies": {
           "name": "associated_studies",
-          "pattern": "^(nmdc):(sty)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):(sty)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(sty)-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -28634,7 +28634,7 @@
         "has_output": {
           "name": "has_output",
           "range": "DataObject",
-          "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -28689,7 +28689,7 @@
           "name": "has_input",
           "range": "DataObject",
           "required": true,
-          "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -28698,7 +28698,7 @@
         "has_output": {
           "name": "has_output",
           "range": "DataObject",
-          "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -28830,7 +28830,7 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):chcpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):chcpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:chcpr-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -28859,7 +28859,7 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):wfmgan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
+          "pattern": "^(?:^(nmdc):wfmgan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -28872,7 +28872,7 @@
         "was_informed_by": {
           "name": "was_informed_by",
           "range": "NucleotideSequencing",
-          "pattern": "^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -28880,7 +28880,7 @@
         },
         "gold_analysis_project_identifiers": {
           "name": "gold_analysis_project_identifiers",
-          "pattern": "^gold:Ga[0-9]+$",
+          "pattern": "^(?:^gold:Ga[0-9]+$)$",
           "structured_pattern": {
             "syntax": "^gold:Ga[0-9]+$",
             "interpolated": true
@@ -28917,7 +28917,7 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -28926,7 +28926,7 @@
         "part_of": {
           "name": "part_of",
           "range": "FieldResearchSite",
-          "pattern": "^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -29527,7 +29527,7 @@
         },
         "collected_from": {
           "name": "collected_from",
-          "pattern": "^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -29549,7 +29549,7 @@
         "id": {
           "name": "id",
           "description": "An NMDC assigned unique identifier for a biosample submitted to NMDC.",
-          "pattern": "^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -30094,7 +30094,7 @@
         "has_input": {
           "name": "has_input",
           "range": "Sample",
-          "pattern": "^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -30103,7 +30103,7 @@
         "has_output": {
           "name": "has_output",
           "range": "ProcessedSample",
-          "pattern": "^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -30150,7 +30150,7 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -30193,7 +30193,7 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):osm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):osm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:osm-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -30201,7 +30201,7 @@
         },
         "expected_organism": {
           "name": "expected_organism",
-          "pattern": "^(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -30388,7 +30388,7 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
+          "pattern": "^(?:^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -30397,7 +30397,7 @@
         "was_informed_by": {
           "name": "was_informed_by",
           "range": "NucleotideSequencing",
-          "pattern": "^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -30406,7 +30406,7 @@
         "superseded_by": {
           "name": "superseded_by",
           "range": "MetagenomeAssembly",
-          "pattern": "^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
+          "pattern": "^(?:^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -30452,7 +30452,7 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
+          "pattern": "^(?:^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -30461,7 +30461,7 @@
         "was_informed_by": {
           "name": "was_informed_by",
           "range": "NucleotideSequencing",
-          "pattern": "^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -30470,7 +30470,7 @@
         "superseded_by": {
           "name": "superseded_by",
           "range": "MetatranscriptomeAssembly",
-          "pattern": "^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
+          "pattern": "^(?:^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -30490,7 +30490,7 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
+          "pattern": "^(?:^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -30503,7 +30503,7 @@
         "was_informed_by": {
           "name": "was_informed_by",
           "range": "NucleotideSequencing",
-          "pattern": "^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -30511,7 +30511,7 @@
         },
         "gold_analysis_project_identifiers": {
           "name": "gold_analysis_project_identifiers",
-          "pattern": "^gold:Ga[0-9]+$",
+          "pattern": "^(?:^gold:Ga[0-9]+$)$",
           "structured_pattern": {
             "syntax": "^gold:Ga[0-9]+$",
             "interpolated": true
@@ -30520,7 +30520,7 @@
         "superseded_by": {
           "name": "superseded_by",
           "range": "MetatranscriptomeAnnotation",
-          "pattern": "^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
+          "pattern": "^(?:^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -30540,7 +30540,7 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
+          "pattern": "^(?:^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -30553,7 +30553,7 @@
         "was_informed_by": {
           "name": "was_informed_by",
           "range": "NucleotideSequencing",
-          "pattern": "^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -30562,7 +30562,7 @@
         "superseded_by": {
           "name": "superseded_by",
           "range": "MetatranscriptomeExpressionAnalysis",
-          "pattern": "^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
+          "pattern": "^(?:^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -30589,7 +30589,7 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
+          "pattern": "^(?:^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -30602,7 +30602,7 @@
         "was_informed_by": {
           "name": "was_informed_by",
           "range": "NucleotideSequencing",
-          "pattern": "^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -30611,7 +30611,7 @@
         "superseded_by": {
           "name": "superseded_by",
           "range": "MagsAnalysis",
-          "pattern": "^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
+          "pattern": "^(?:^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -30637,7 +30637,7 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
+          "pattern": "^(?:^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -30646,7 +30646,7 @@
         "was_informed_by": {
           "name": "was_informed_by",
           "range": "NucleotideSequencing",
-          "pattern": "^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -30655,7 +30655,7 @@
         "superseded_by": {
           "name": "superseded_by",
           "range": "ReadQcAnalysis",
-          "pattern": "^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
+          "pattern": "^(?:^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -30673,7 +30673,7 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
+          "pattern": "^(?:^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -30682,7 +30682,7 @@
         "was_informed_by": {
           "name": "was_informed_by",
           "range": "NucleotideSequencing",
-          "pattern": "^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -30691,7 +30691,7 @@
         "superseded_by": {
           "name": "superseded_by",
           "range": "ReadBasedTaxonomyAnalysis",
-          "pattern": "^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
+          "pattern": "^(?:^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -30715,7 +30715,7 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
+          "pattern": "^(?:^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -30724,7 +30724,7 @@
         "was_informed_by": {
           "name": "was_informed_by",
           "range": "MassSpectrometry",
-          "pattern": "^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -30733,7 +30733,7 @@
         "superseded_by": {
           "name": "superseded_by",
           "range": "MetabolomicsAnalysis",
-          "pattern": "^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
+          "pattern": "^(?:^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -30766,7 +30766,7 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
+          "pattern": "^(?:^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -30775,7 +30775,7 @@
         "was_informed_by": {
           "name": "was_informed_by",
           "range": "MassSpectrometry",
-          "pattern": "^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -30784,7 +30784,7 @@
         "superseded_by": {
           "name": "superseded_by",
           "range": "MetaproteomicsAnalysis",
-          "pattern": "^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
+          "pattern": "^(?:^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -30805,7 +30805,7 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "pattern": "^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
+          "pattern": "^(?:^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -30814,7 +30814,7 @@
         "was_informed_by": {
           "name": "was_informed_by",
           "range": "MassSpectrometry",
-          "pattern": "^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(?:^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -30823,7 +30823,7 @@
         "superseded_by": {
           "name": "superseded_by",
           "range": "NomAnalysis",
-          "pattern": "^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
+          "pattern": "^(?:^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$)$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -30837,7 +30837,7 @@
       "class_uri": "nmdc:NomAnalysis"
     }
   },
-  "metamodel_version": "1.11.0",
+  "metamodel_version": "1.12.0",
   "source_file": "src/schema/nmdc.yaml",
   "settings": {
     "id_nmdc_prefix": {
