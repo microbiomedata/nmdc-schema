@@ -34,13 +34,18 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
 
+      # Installed in its own step so an install failure fails the job here,
+      # instead of reaching the exit-status check below as an ambiguous code.
+      - name: Install typos
+        run: uv tool install typos==1.51.1
+
       # typos exits 0 when clean, 2 when it finds misspellings, and anything
       # else when it fails to run. Only the last case fails the step.
       - name: Run typos (report to annotations and job summary)
         shell: bash
         run: |
           set +e
-          uvx typos==1.51.1 --format brief src/schema src/docs > typos.txt
+          typos --format brief src/schema src/docs > typos.txt
           rc=$?
           set -e
           if [ "$rc" -ne 0 ] && [ "$rc" -ne 2 ]; then
