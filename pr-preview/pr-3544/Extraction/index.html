@@ -956,6 +956,10 @@ attributes:
     description: A unique identifier for a thing. Must be either a CURIE shorthand
       for a URI or a complete URI
     title: ID
+    todos:
+    - This slot has no examples on purpose. linkml 1.12 copies a slot's examples into
+      every class that uses it, and no single id matches every class id pattern (https://github.com/microbiomedata/nmdc-schema/issues/3540).
+      Put id examples in each class's slot_usage instead.
     notes:
     - 'abstracted pattern: prefix:typecode-authshoulder-blade(.version)?(_seqsuffix)?'
     - a minimum length of 3 characters is suggested for typecodes, but 1 or 2 characters
@@ -964,9 +968,6 @@ attributes:
       via per-class id slot usage assertions
     - minting authority shoulders should probably be enumerated and checked in the
       pattern
-    - 'an id following the abstracted pattern: nmdc:mgmag-00-x012.1_7_c1 (https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248).
-      It is kept here instead of in examples because linkml 1.12 copies slot examples
-      into every class, and this id fails most class id patterns (https://github.com/microbiomedata/nmdc-schema/issues/3540)'
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: workflow_execution_id

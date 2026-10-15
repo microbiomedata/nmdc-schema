@@ -623,6 +623,10 @@ attributes:
     description: A unique identifier for a thing. Must be either a CURIE shorthand
       for a URI or a complete URI
     title: ID
+    todos:
+    - This slot has no examples on purpose. linkml 1.12 copies a slot's examples into
+      every class that uses it, and no single id matches every class id pattern (https://github.com/microbiomedata/nmdc-schema/issues/3540).
+      Put id examples in each class's slot_usage instead.
     notes:
     - The identifiers for terms from external ontologies can't have their ids constrained
       to the nmdc namespace
