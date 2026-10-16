@@ -74,8 +74,9 @@ def test_structured_pattern_syntax_has_no_anchors_of_its_own() -> None:
 def test_settings_used_in_patterns_have_no_anchors() -> None:
     with (SCHEMA_DIR / "nmdc.yaml").open(encoding="utf-8") as f:
         settings = yaml.safe_load(f)["settings"]
-    for key in ("id_nmdc_prefix", "id_locus"):
-        value = settings[key]
+    for key, value in settings.items():
+        if not key.startswith("id_"):
+            continue
         assert not value.startswith("^") and not value.endswith("$"), f"{key}: {value}"
 
 
