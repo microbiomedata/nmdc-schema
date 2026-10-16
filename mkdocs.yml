@@ -35,6 +35,7 @@ nav:
   - Metadata Standards Documentation: Metadata_Documentation_Overview.md
   - Maintaining the NMDC Schema: maintaining-the-schema.md
   - Schema element deprecation guide: schema_element_deprecation_guide.md
+  - Retiring a file from assets/: asset-lifecycle.md
   - NMDC Schema Validation: schema-validation.md
   - Identifiers: identifiers.md
   - Typecode to class map: typecode-to-class-map.md
