@@ -27,7 +27,7 @@ prefixes:
   Contaminant: "http://example.org/contaminant/" # only because it is present in MongoDB
   DRUGBANK: "https://bioregistry.io/drugbank:" # https://bioregistry.io/drugbank:DB14938
   EC: "https://bioregistry.io/eccode:" # https://bioregistry.io/eccode:1.1.1.1
-  EFO: "http://www.ebi.ac.uk/efo/"
+  EFO: "http://www.ebi.ac.uk/efo/EFO_"
   EGGNOG: "https://bioregistry.io/eggnog:" # https://bioregistry.io/eggnog:veNOG12876
   ENVO: "http://purl.obolibrary.org/obo/ENVO_"
   FBcv: "http://purl.obolibrary.org/obo/FBcv_" # for Biosample only
