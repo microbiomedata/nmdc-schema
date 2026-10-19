@@ -14,9 +14,6 @@ resolution-markers = [
     "python_full_version < '3.11'",
 ]
 
-[manifest]
-overrides = [{ name = "chardet", specifier = ">=7.4.1,<8.0.0" }]
-
 [[package]]
 name = "airium"
 version = "0.2.7"
@@ -3817,7 +3814,7 @@ wheels = [
 
 [[package]]
 name = "pronto"
-version = "2.7.3"
+version = "2.7.4"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "chardet" },
@@ -3827,9 +3824,9 @@ dependencies = [
     { name = "networkx", version = "3.7", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
     { name = "python-dateutil" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/c2/fd/b23ce2421f966fce762817ec2a7636b5b47c8020d1f97a210d9aadf9fcd6/pronto-2.7.3.tar.gz", hash = "sha256:101effc2cc5de4269d0754e10c3c574181b8e5ba8cc615dea530b61a8cbd5046", size = 63137, upload-time = "2026-01-12T13:15:31.022Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/f1/69/96a214a9c0f39e96ae9181ecd219cbd4bf632e8579a6846e87aad561e332/pronto-2.7.4.tar.gz", hash = "sha256:b58278f3a4e15e51082cd932e0671ec8c36f5be40905c627b0b815979c25e267", size = 63214, upload-time = "2026-10-19T11:45:12.803Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/0d/a0/3d7ca89585aba18945168c58dc2705caa2516488e274c3327a6b0932c0a0/pronto-2.7.3-py3-none-any.whl", hash = "sha256:c7e225a39ddaca2771e46d6b3511ae851d1440b6a96e455aa7eb2bbbb459b8be", size = 62053, upload-time = "2026-01-12T13:15:29.201Z" },
+    { url = "https://files.pythonhosted.org/packages/6d/1b/2ba3f095ebda8acde016210ba065b27b3b3949baccedff048966f954c5b6/pronto-2.7.4-py3-none-any.whl", hash = "sha256:2798bfdb62d3793680f3e787169e5c46446f998f98da2760beb5caa47ca46445", size = 62059, upload-time = "2026-10-19T11:45:11.321Z" },
 ]
 
 [[package]]
