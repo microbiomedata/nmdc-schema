@@ -145,12 +145,6 @@ style = "pep440"
 fallback-version = "0.0.0"
 
 [tool.uv]
-# linkml 1.12 needs pyshexc>=0.10.3, which needs chardet>=7.4.1, but every pronto
-# release (via oaklib, dev group) caps chardet at ~=5.0. pronto works with chardet 7
-# for our use (tested 2026-10-08, see issue 3484). This override applies only to
-# uv.lock and is not part of the published package metadata. Remove it once
-# https://github.com/althonos/pronto/issues/247 is released.
-override-dependencies = ["chardet>=7.4.1,<8.0.0"]
 # Install both groups by default, as `make install` did with `poetry install --with dev,deps`.
 default-groups = ["dev", "deps"]
 # Rebuild the project when the git tag changes, so the installed version stays current.
