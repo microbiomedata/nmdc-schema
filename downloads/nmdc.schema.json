@@ -20232,7 +20232,9 @@
                 "ANL",
                 "UCD_Genome_Center",
                 "Azenta",
-                "SeqCenter"
+                "SeqCenter",
+                "Aalborg_University",
+                "Georgia_Institute_of_Technology"
             ],
             "title": "ProcessingInstitutionEnum",
             "type": "string"
@@ -23568,5 +23570,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.25.post5.dev0+884b28002"
+    "version": "11.25.post7.dev0+64360acb2"
 }
