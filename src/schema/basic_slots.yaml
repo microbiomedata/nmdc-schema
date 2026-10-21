@@ -1652,6 +1652,14 @@ enums:
         title: SeqCenter
         meaning: https://www.seqcenter.com/
 
+      Aalborg_University:
+        title: Aalborg University
+        meaning: ror:04m5j1k67
+
+      Georgia_Institute_of_Technology:
+        title: Georgia Institute of Technology
+        meaning: ror:01zkghx44
+
   DataCategoryEnum:
     permissible_values:
       instrument_data:
