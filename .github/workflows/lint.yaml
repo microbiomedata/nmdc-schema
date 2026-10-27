@@ -2,8 +2,8 @@ name: Python lint (ruff)
 
 # Lints hand-written Python with ruff, the single linter + formatter that
 # replaced black, flake8, isort, bandit, and pydocstyle (see [tool.ruff] in
-# pyproject.toml). ruff runs from the Poetry environment so the version is
-# pinned by poetry.lock.
+# pyproject.toml). ruff runs from the uv environment so the version is
+# pinned by uv.lock.
 
 on:
   pull_request:
@@ -18,12 +18,11 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # Guards against uv.lock being committed. This is a Poetry project; poetry.lock
-  # is the tracked lock file. A uv.lock is produced whenever someone runs uv here,
-  # and it has been committed and reverted twice (5c415c17a, 16b10a8e2). .gitignore
-  # covers the accidental case but not `git add -f` or an already-tracked file, so
-  # this check is the backstop. Delete this job if the project adopts uv, since
-  # uv.lock becomes the file to track then. See issue 2761.
+  # Guards against poetry.lock being committed. This is a uv project; uv.lock is
+  # the tracked lock file. The project moved from Poetry to uv in issue 2761, and
+  # a poetry.lock can come back if someone runs Poetry here out of habit.
+  # .gitignore covers the accidental case but not `git add -f`, so this check is
+  # the backstop.
   lockfile-guard:
     name: lockfile-guard
     runs-on: ubuntu-latest
@@ -37,13 +36,13 @@ jobs:
 
       # `git ls-files` asks whether the file is TRACKED, which is the actual rule.
       # A `test -f` would also fire on a contributor's git-ignored local copy.
-      - name: Fail if uv.lock is tracked
+      - name: Fail if poetry.lock is tracked
         run: |
-          if git ls-files --error-unmatch uv.lock > /dev/null 2>&1; then
-            echo "::error file=uv.lock::uv.lock is tracked, but this is a Poetry project and poetry.lock is the tracked lock file. Remove it (git rm --cached uv.lock); it is already covered by .gitignore. See https://github.com/microbiomedata/nmdc-schema/issues/2761 if the project is moving to uv."
+          if git ls-files --error-unmatch poetry.lock > /dev/null 2>&1; then
+            echo "::error file=poetry.lock::poetry.lock is tracked, but this is a uv project and uv.lock is the tracked lock file. Remove it (git rm --cached poetry.lock); it is already covered by .gitignore. See https://github.com/microbiomedata/nmdc-schema/issues/2761."
             exit 1
           fi
-          echo "OK: uv.lock is not tracked."
+          echo "OK: poetry.lock is not tracked."
 
   ruff:
     name: ruff
@@ -56,20 +55,19 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Install Poetry
-        run: pipx install poetry==2.5.1
+      - name: Install uv
+        uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
 
       - name: Set up Python
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: '3.12'
-          cache: 'poetry'
 
       - name: Install dependencies
-        run: poetry install
+        run: uv sync --locked
 
       - name: Ruff lint
-        run: poetry run ruff check .
+        run: uv run ruff check .
 
       # Formatting is not yet gated: the existing code is not uniformly
       # ruff-format-clean. A one-time `make format` sweep (~75 files) and the
@@ -83,4 +81,4 @@ jobs:
         continue-on-error: true
         # S101 (assert) is ignored only for tests/** via [tool.ruff.lint]
         # per-file-ignores, so asserts elsewhere still surface here.
-        run: poetry run ruff check --select S .
+        run: uv run ruff check --select S .

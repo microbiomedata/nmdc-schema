@@ -10,7 +10,7 @@ the single place to edit a value.
 The block is written at the end of the module, after a marker comment, and is replaced on each
 run. Run it after changing a setting in nmdc.yaml or a pattern in a module:
 
-    poetry run python src/scripts/sync_module_settings.py src/schema/core.yaml ...
+    uv run python src/scripts/sync_module_settings.py src/schema/core.yaml ...
 
 With --check, nothing is written and the exit status is 1 if any module is out of date.
 See https://github.com/microbiomedata/nmdc-schema/issues/3523.
@@ -60,6 +60,47 @@ def used_setting_keys(node: object) -> set[str]:
     return keys
 
 
+def slot_usage_index(schema_dir: Path = SCHEMA_DIR) -> dict[str, set[str]]:
+    """Map each slot name to the placeholders that slot_usage patterns, in any module, use on it.
+
+    Build it once per run and pass it to required_setting_keys, so the schema files are
+    read once rather than once per module.
+    """
+    index: dict[str, set[str]] = {}
+    for path in sorted(schema_dir.glob("*.yaml")):
+        parsed = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+        for class_def in (parsed.get("classes") or {}).values():
+            for slot_name, usage in ((class_def or {}).get("slot_usage") or {}).items():
+                keys = used_setting_keys(usage)
+                if keys:
+                    index.setdefault(slot_name, set()).update(keys)
+    return index
+
+
+def required_setting_keys(
+    parsed: dict,
+    schema_dir: Path = SCHEMA_DIR,
+    index: dict[str, set[str]] | None = None,
+) -> set[str]:
+    """Return the settings a module must declare.
+
+    That is the keys its own interpolated patterns use, plus the keys that slot_usage patterns
+    in any module use on the slots it defines. linkml 1.12 gen-python builds a class-specific
+    slot such as Biosample_id from slot_usage but fills its pattern with the settings of the
+    module that defines the base slot (id, in basic_slots.yaml).
+    See https://github.com/microbiomedata/nmdc-schema/pull/3529.
+    """
+    keys = used_setting_keys(parsed)
+    slot_names = set(parsed.get("slots") or {})
+    if not slot_names:
+        return keys
+    if index is None:
+        index = slot_usage_index(schema_dir)
+    for slot_name in slot_names:
+        keys |= index.get(slot_name, set())
+    return keys
+
+
 def source_settings(source_schema: Path = SOURCE_SCHEMA) -> dict[str, str]:
     """Return the settings declared in the source schema as plain strings."""
     with source_schema.open(encoding="utf-8") as f:
@@ -98,7 +139,11 @@ def settings_block(keys: set[str], settings: dict[str, str]) -> str:
     return MARKER + body
 
 
-def synced_text(module: Path, settings: dict[str, str]) -> str:
+def synced_text(
+    module: Path,
+    settings: dict[str, str],
+    index: dict[str, set[str]] | None = None,
+) -> str:
     """Return the module's text with its settings block brought up to date."""
     text = module.read_text(encoding="utf-8")
     base = strip_settings_block(text)
@@ -107,7 +152,7 @@ def synced_text(module: Path, settings: dict[str, str]) -> str:
         raise ValueError(
             f"{module} declares its own settings outside the generated block"
         )
-    keys = used_setting_keys(parsed)
+    keys = required_setting_keys(parsed, module.parent, index)
     if not keys:
         return base
     return base + "\n" + settings_block(keys, settings)
@@ -134,8 +179,12 @@ def main(modules: tuple[Path, ...], check: bool, source: Path) -> None:
     """Copy the settings each MODULE's interpolated structured_patterns use from the source schema."""
     settings = source_settings(source)
     stale = []
+    indexes: dict[Path, dict[str, set[str]]] = {}
     for module in modules:
-        new_text = synced_text(module, settings)
+        directory = module.resolve().parent
+        if directory not in indexes:
+            indexes[directory] = slot_usage_index(directory)
+        new_text = synced_text(module, settings, indexes[directory])
         if new_text == module.read_text(encoding="utf-8"):
             continue
         stale.append(module)

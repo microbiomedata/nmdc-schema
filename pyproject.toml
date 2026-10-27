@@ -60,7 +60,7 @@ Issues = "https://github.com/microbiomedata/nmdc-schema/issues"
 # click parameters/options should be written out with hyphens
 # click parameters/options should use consistent names
 # only package-backed, stable CLIs should be listed in project.scripts
-# prefer invoking repo-local scripts from Makefiles via `poetry run python src/scripts/<name>.py`
+# prefer invoking repo-local scripts from Makefiles via `uv run python src/scripts/<name>.py`
 # use underscores to delimit file name
 # use hyphens to delimit CLI alias
 # scripts/aliases should be illustrated in a Makefile
@@ -87,17 +87,10 @@ dev = [
     "defusedxml>=0.7.1,<1.0.0",  # hardened XML parsing in src/scripts/ncbi_nmdc_exact_term_matching.py
     "exhaustion-check>=0.1.1,<0.2.0",  # for exhaustion-check, pretty-sort-yaml (also get-first-of-first)
     "fastjsonschema>=2.20.0,<3.0.0",
-    # Holds our own lock at linkml-runtime 1.11.x without changing what consumers
-    # can install (dependency groups are not in the published metadata). 1.12 wraps
-    # id patterns as ^(?:...)$, which nmdc-runtime's minter cannot read until
-    # https://github.com/microbiomedata/nmdc-runtime/pull/1659 is deployed. Remove
-    # this when linkml 1.12 comes in through
-    # https://github.com/microbiomedata/nmdc-schema/pull/3529.
-    "linkml-runtime>=1.9.0,<1.12.0",
     # linkml-store[llm] was a dependency but its llm → sqlite-utils chain
     # requires click>=8.3.1, which conflicts with linkml's click<8.2 cap.
     # Ontology alignment scripts (#2909, #2910) that need embeddings should
-    # install it separately: poetry run pip install 'linkml-store[llm]>=0.3.0,<0.4.0'
+    # install it separately: uv pip install 'linkml-store[llm]>=0.3.0,<0.4.0'
     # The [llm] extra can return once linkml drops the click cap. See #2985.
     "linkml-store>=0.3.0,<0.4.0",
     "mkdocs>=1.4.2,<2.0.0",
@@ -130,35 +123,39 @@ deps = [
     "deptry>=0.23.0,<1.0.0",
 ]
 
-[tool.poetry]
-version = "0.0.0"
-packages = [
-    { include = "nmdc_schema" },  # this is the package Poetry would have included by default
-    { include = "migrators", from = "nmdc_schema" },
-    { include = "adapters", from = "nmdc_schema/migrators" },
-]
+[tool.hatch.version]
+source = "uv-dynamic-versioning"
 
-[tool.poetry-dynamic-versioning]
-# We need poetry-dynamic-versioning to update the version in the src schema file,
-# then generate project artifacts from that schema with the real version populated,
-# and then perform any build or publish actions. Since this requires running
-# `poetry dynamic-versioning` manually before `poetry build`, we set enable = false.
-enable = false
+[tool.hatch.build.targets.wheel]
+packages = ["nmdc_schema"]
+
+[tool.hatch.build.targets.sdist]
+# Match what the Poetry sdist contained: the package, not the whole repository.
+only-include = ["nmdc_schema"]
+
+[tool.uv-dynamic-versioning]
+# The package version comes from the git tag. The schema's own `version:` field
+# in src/schema/nmdc.yaml is a 0.0.0 placeholder that `make set-version` replaces
+# before the release artifacts are generated, so both carry the same version.
 vcs = "git"
 style = "pep440"
+# Dependabot runs `uv lock` without git history, which otherwise fails with "This does
+# not appear to be a Git project" (https://github.com/ninoseki/uv-dynamic-versioning/blob/main/docs/tips.md#dependabot).
+# `make set-version` refuses any 0.0.0-based version, so a release cannot ship without a tag.
+fallback-version = "0.0.0"
 
-[tool.poetry-dynamic-versioning.substitution]
-files = [
-    "src/schema/nmdc.yaml"
-]
-patterns = [
-    "(^\\s*__version__\\s*(?::.*?)?=\\s*['\\\"])[^'\\\"]*(['\\\"])",
-    "(^version:\\s*['\\\"]?)[^'\\\"]*?(['\\\"]?)$"
+[tool.uv]
+# Install both groups by default, as `make install` did with `poetry install --with dev,deps`.
+default-groups = ["dev", "deps"]
+# Rebuild the project when the git tag changes, so the installed version stays current.
+cache-keys = [
+    { file = "pyproject.toml" },
+    { git = { commit = true, tags = true } },
 ]
 
 [build-system]
-requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
-build-backend = "poetry_dynamic_versioning.backend"
+requires = ["hatchling>=1.26.0,<2.0.0", "uv-dynamic-versioning>=0.5.0,<1.0.0"]
+build-backend = "hatchling.build"
 
 [tool.pytest.ini_options]
 # Only run tests in tests/ directory to match original unittest discover behavior

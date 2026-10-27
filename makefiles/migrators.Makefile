@@ -22,7 +22,7 @@ migration-doctests: nmdc_schema/nmdc_materialized_patterns.yaml
 	$(RUN) python -m doctest $(DOCTEST_OPT) nmdc_schema/migrators/cli/*.py
 
 # Generates a migrator skeleton for the specified schema versions.
-# Note: `create-migrator` is a Poetry script registered in `pyproject.toml`.
+# Note: `create-migrator` is a script registered in `[project.scripts]` in `pyproject.toml`.
 migrator:
 	$(RUN) create-migrator
 

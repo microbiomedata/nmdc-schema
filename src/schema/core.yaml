@@ -549,8 +549,11 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:chcpr-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:chcpr-{id_shoulder}-{id_blade}"
           interpolated: true
+        examples:
+          - value: nmdc:chcpr-11-004nv334
+            description: a production ChemicalConversionProcess
 
   AnnotatingWorkflow:
     class_uri: nmdc:AnnotatingWorkflow
@@ -568,18 +571,21 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}$"
+          syntax: "{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}"
           interpolated: true
+        examples:
+          - value: nmdc:wfmgan-11-001c1246.1
+            description: a production MetagenomeAnnotation
       img_identifiers:
         maximum_cardinality: 1
       was_informed_by:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}"
           interpolated: true
         range: NucleotideSequencing
       gold_analysis_project_identifiers:
         structured_pattern:
-          syntax: "^gold:Ga[0-9]+$"
+          syntax: "gold:Ga[0-9]+"
           interpolated: true
 
   FieldResearchSite:
@@ -609,12 +615,15 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}"
           interpolated: true
+        examples:
+          - value: nmdc:frsite-11-0mqbhb55
+            description: a production FieldResearchSite
       part_of:
         range: FieldResearchSite
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}"
           interpolated: true
 
   Sample:
@@ -1236,7 +1245,7 @@ classes:
 
       collected_from:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}"
           interpolated: true
 
       elev:
@@ -1251,8 +1260,11 @@ classes:
       id:
         description: An NMDC assigned unique identifier for a biosample submitted to NMDC.
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}"
           interpolated: true
+        examples:
+          - value: nmdc:bsm-11-001pmq31
+            description: a production Biosample
 
       gold_biosample_identifiers:
         description: Unique identifier for a biosample submitted to GOLD that matches the NMDC submitted biosample
@@ -1551,12 +1563,12 @@ classes:
       has_input:
         range: Sample
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}"
           interpolated: true
       has_output:
         range: ProcessedSample
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}"
           interpolated: true
     exact_mappings:
       - OBI:0000094
@@ -1595,8 +1607,11 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}"
           interpolated: true
+        examples:
+          - value: nmdc:procsm-11-0013mk17
+            description: a production ProcessedSample
 
   OrganismSample:
     class_uri: nmdc:OrganismSample
@@ -1624,11 +1639,14 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:osm-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:osm-{id_shoulder}-{id_blade}"
           interpolated: true
+        examples:
+          - value: nmdc:osm-11-cult0001
+            description: an OrganismSample from the schema's example data; production has none
       expected_organism:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}"
           interpolated: true
       source_mat_id:
         in_subset:
@@ -1764,6 +1782,11 @@ classes:
       - gtpo
     exact_mappings:
       - biolink:GeneProduct
+    slot_usage:
+      id:
+        examples:
+          - value: UniProtKB:P0A7V8
+            description: E. coli K-12 small ribosomal subunit protein uS4
 
 slots:
 
@@ -2620,6 +2643,6 @@ slots:
 # See https://github.com/microbiomedata/nmdc-schema/issues/3523
 settings:
   id_blade: ([A-Za-z0-9]{1,})
-  id_nmdc_prefix: ^(nmdc)
+  id_nmdc_prefix: (nmdc)
   id_shoulder: ([0-9][a-z]{0,6}[0-9])
   id_version: (\.[1-9]{1}[0-9]{0,})

@@ -12,20 +12,20 @@ The repository's committed contributor docs are the canonical source for schema-
 This guide adds the operational details and gotchas that are not (yet) captured in those files.
 
 ## Build/Lint/Test Commands
-- Install: `poetry install --with dev,deps`
+- Install: `uv sync` (installs the `dev` and `deps` groups by default)
 - Build: `make all` or `make site`
 - Clean: `make squeaky-clean`
 - All tests: `make test`
 - Python tests: `make test-python`
 - Schema tests: `make test-schema`
-- Run single test: `poetry run pytest tests/test_file.py -v`
-- Run doctest: `poetry run python -m doctest -v path/to/file.py`
+- Run single test: `uv run pytest tests/test_file.py -v`
+- Run doctest: `uv run python -m doctest -v path/to/file.py`
 - Lint: `make linkml-lint` or `make linkml-lint-all` (outputs to local/linkml-lint-all.log)
-- Check schema patterns: `poetry run python src/scripts/schema_pattern_linting.py --schema-file src/schema/nmdc.yaml`
-- View docs locally: `make serve` (in Docker: `poetry run mkdocs serve --dev-addr 0.0.0.0:8000`)
+- Check schema patterns: `uv run python src/scripts/schema_pattern_linting.py --schema-file src/schema/nmdc.yaml`
+- View docs locally: `make serve` (in Docker: `uv run mkdocs serve --dev-addr 0.0.0.0:8000`)
 
 Build prerequisites and gotchas:
-- **`linkml-validate` is not sufficient for example data.** It checks the instance against the schema and nothing else. `tests/test_nmdc_schema_validation_plugin.py` additionally enforces QuantityValue unit alignment, comparing each `has_unit` against that slot's `storage_units` annotation, and it is what CI runs. A `QuantityValue` with a plausible but unlisted unit (`%` on `tot_org_carb`, whose `storage_units` allows only `mg/L`) passes `linkml-validate` and fails CI. Validate new or edited files in `src/data/` with `poetry run pytest tests/test_nmdc_schema_validation_plugin.py`, not with `linkml-validate` alone.
+- **`linkml-validate` is not sufficient for example data.** It checks the instance against the schema and nothing else. `tests/test_nmdc_schema_validation_plugin.py` additionally enforces QuantityValue unit alignment, comparing each `has_unit` against that slot's `storage_units` annotation, and it is what CI runs. A `QuantityValue` with a plausible but unlisted unit (`%` on `tot_org_carb`, whose `storage_units` allows only `mg/L`) passes `linkml-validate` and fails CI. Validate new or edited files in `src/data/` with `uv run pytest tests/test_nmdc_schema_validation_plugin.py`, not with `linkml-validate` alone.
 - **`src/data/valid/` is the authoritative record of which shapes the schema supports.** Read it before describing what a class or a process chain means; the examples encode design decisions that are not visible from class definitions alone. `Database-isolate-from-culture-collection.yaml` exists specifically to show that an `OrganismSample` can come from a culture collection and reach `Culturing` and `Extraction` with no `Biosample` and no `Isolation`, which contradicts the natural reading of those classes as a fixed workflow.
 - **Do not silence stderr on build and generate commands.** `linkml generate ... >/dev/null 2>&1` hides parser errors, and the generated artifact is committed, so a failed regeneration leaves a stale file in place that looks like fresh output. `linkml generate` does exit non-zero and print a clear `yaml.parser.ParserError` on unparseable input; the failure mode is losing that signal, then reading the previous artifact as a result. Check the exit code, or let the output through.
 - `make all` needs `yq` (mikefarah/yq) on PATH (`brew install yq`); it is used to strip readonly metaslots and apply MIxS customizations. Java/ROBOT is NOT needed: the OWL artifact is produced by `linkml generate owl`.
@@ -36,16 +36,16 @@ Build prerequisites and gotchas:
 ## Script Entry Point Policy
 - Keep `[project.scripts]` limited to package-backed, stable CLIs intended for default installs.
 - Do not add ad-hoc aliases for `src/scripts/*` into `[project.scripts]`.
-- For repo-local automation scripts, call them explicitly from Makefiles, e.g. `poetry run python src/scripts/<name>.py`.
+- For repo-local automation scripts, call them explicitly from Makefiles, e.g. `uv run python src/scripts/<name>.py`.
 - Do not add new modules under `nmdc_schema/` (the published package) without a client-facing purpose; experimental and developer-only scripts go under `src/scripts/`.
 
 ## Dependency Management
 
-This is a Poetry repo. Sibling `submission-schema` migrated to `uv`; do not confuse the two.
+This is a uv repo, like its sibling `submission-schema`. It moved from Poetry in https://github.com/microbiomedata/nmdc-schema/issues/2761.
 
-- **Use poetry 2.5.1.** CI pins it in every workflow (`pipx install poetry==2.5.1`), and `tests/test_poetry_version_pins.py` fails if the workflows, `Dockerfile`, `DEVELOPMENT.md` and this file disagree, so change them together. The `poetry.lock` content-hash is poetry-version-sensitive: a different poetry version can report the lock as "out of sync with pyproject.toml" even when the dependencies are unchanged. With 2.5.1 against `main` on 2026-10-01, `poetry check --lock` reports "All set!" and `poetry lock` leaves the committed lock byte-identical (2.4.3 did the same on 2026-09-15). For any other version, run `poetry check --lock` before trusting it, and align dev/container poetry to 2.5.1. CI runs `poetry check` (in `main.yaml`) to catch real pyproject/lock drift in PRs rather than on a teammate's fresh install. To sync after editing pyproject: `poetry lock` (no `--regenerate` unless you intend to bump versions).
-
-- Never create a `uv.lock` here, and never run `uv add`, `uv sync`, or `uv lock`. If a stray `uv.lock` appears, delete it before committing.
+- `uv.lock` is the tracked lock file. Never commit a `poetry.lock`; `.gitignore` covers it and the `lockfile-guard` job in `lint.yaml` fails if one is tracked.
+- After editing `pyproject.toml`, run `uv lock` and commit `uv.lock`. Plain `uv lock` keeps the versions already locked; use `uv lock --upgrade-package <name>` to move one package deliberately. CI runs `uv lock --check` in `main.yaml` to catch drift.
+- `uv sync` installs the `dev` and `deps` groups (`[tool.uv] default-groups`). Use `uv add` / `uv add --group dev` rather than editing the lists by hand when adding a package, then check the result against the conventions below.
 - Before tightening any pin in `pyproject.toml` (especially `linkml`), check that `submission-schema` still resolves. nmdc-schema is a library, so a tighter pin propagates to consumers even when nmdc-schema itself does not exercise the feature. `linkml` and `linkml-runtime` versions must be paired (a runtime release can drop something the matching `linkml` references).
 - `pyproject.toml` conventions: upper-bound policy (packages at 1.0 or above cap at the next major, pre-1.0 cap at the next minor); PEP 508 form (`"pkg>=min,<max"`, not the Poetry caret); alphabetical ordering within each dependency group; runtime deps in `[project.dependencies]`, dev tools in `[dependency-groups] dev`, `deptry` in its own `deps` group; transitive packages pinned for security are also added to `[tool.deptry] per_rule_ignores.DEP002`; comments cite the issue number that motivated a pin.
 
@@ -416,23 +416,17 @@ The existing `pypi-publish.yaml` workflow triggers on any release
 
 ### Dynamic versioning
 
-The build uses `poetry-dynamic-versioning` to derive the package version
-from the git tag. This requires specific `pyproject.toml` structure:
+The package version comes from the git tag through `uv-dynamic-versioning`, a hatchling version source:
 
-- `[project]` must have `dynamic = ["version"]` and **no** hardcoded
-  `version` field.
-- `[tool.poetry]` must have `version = "0.0.0"` as a placeholder.
-- `[build-system]` uses `poetry_dynamic_versioning.backend`.
-
-If `version = "0.0.0"` is in `[project]` instead of `[tool.poetry]`,
-the plugin cannot substitute the version and the package builds as
-`nmdc_schema-0.0.0`, which PyPI will reject. See PR #2869 for context.
+- `[project]` must have `dynamic = ["version"]` and **no** hardcoded `version` field.
+- `[tool.hatch.version]` sets `source = "uv-dynamic-versioning"`, and `[build-system]` uses `hatchling.build` with `uv-dynamic-versioning` in `requires`.
+- The schema's own `version:` in `src/schema/nmdc.yaml` stays `0.0.0` in git. `make set-version` replaces it with the derived version before `make all`, so the generated artifacts carry the release version. The publish, docs and test-newest-deps workflows run it; never commit its result.
 
 ### PyPI behavior
 
 The git tag `v11.17.0-rc.1` is normalized to PEP 440 version `11.17.0rc1`
 on PyPI (the `v` prefix and `-rc.` punctuation are stripped/collapsed by
-`poetry-dynamic-versioning`).
+`uv-dynamic-versioning`).
 
 Pre-release versions are **not installed by default**. Users must opt in:
 ```bash
@@ -455,12 +449,10 @@ pip install --pre nmdc-schema          # latest including pre-releases
 
 ## Troubleshooting
 
-### Poetry Entry Points
-If `poetry run <command>` fails with "Command not found":
-1. Force reinstall: `poetry run pip uninstall <package> -y && poetry install`
-2. Rebuild environment: `poetry env remove && poetry install`
+### Entry Points
+If `uv run <command>` fails with "Command not found", rebuild the environment: `rm -rf .venv && uv sync`.
 
 Essential commands that should work:
-- `poetry run do_shuttle --help` (from sheets-and-friends)
-- `poetry run gen-linkml --help` (from linkml)
-- `poetry run gen-pydantic --help` (from linkml)
+- `uv run do_shuttle --help` (from sheets-and-friends)
+- `uv run gen-linkml --help` (from linkml)
+- `uv run gen-pydantic --help` (from linkml)

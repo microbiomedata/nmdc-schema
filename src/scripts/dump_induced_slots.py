@@ -12,9 +12,9 @@ redundant `slot_usage` assertions (see `report_redundant_slot_usage.py`).
 
 Usage:
 
-    poetry run python src/scripts/dump_induced_slots.py > before.tsv
+    uv run python src/scripts/dump_induced_slots.py > before.tsv
     # make the change
-    poetry run python src/scripts/dump_induced_slots.py > after.tsv
+    uv run python src/scripts/dump_induced_slots.py > after.tsv
     diff before.tsv after.tsv
 
 Output is one row per class, slot, and populated metaslot, sorted so the diff is

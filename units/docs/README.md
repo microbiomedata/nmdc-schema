@@ -201,9 +201,9 @@ The pipeline generates yq commands that are applied to update schema files with 
 Run any script with `--help` for detailed usage information:
 
 ```bash
-poetry run units-schema-extract --help
-poetry run units-schema-convert --help  
-poetry run units-schema-generate --help
+uv run units-schema-extract --help
+uv run units-schema-convert --help  
+uv run units-schema-generate --help
 ```
 
 ## Unit Sanitization & Validation
@@ -479,7 +479,7 @@ Error: No such option: --psize Did you mean --page-size?
 **Workaround:** Call `pure-export` directly instead of using the Makefile target:
 
 ```bash
-poetry run pure-export \
+uv run pure-export \
     --max-docs-per-coll 200000 \
     --output-yaml local/mongo_via_api_as_unvalidated_nmdc_database.yaml \
     --schema-source nmdc_schema/nmdc_materialized_patterns.yaml \
@@ -626,7 +626,7 @@ Check that schema contains `preferred_unit` annotations. Run with verbose output
 - **`units/scripts/schema_convert_to_ucum.py`** - Convert units to UCUM notation with problem detection
 - **`units/scripts/schema_generate_yq_commands.py`** - Generate yq commands for storage_units annotations
 
-Use `poetry run <script-name> --help` for detailed CLI options.
+Use `uv run <script-name> --help` for detailed CLI options.
 
 #### File Evolution Notes
 

@@ -1,7 +1,7 @@
 ###############################################################################
 # Introduction:
 # -------------
-# The main CI workflow installs dependencies from poetry.lock. People who
+# The main CI workflow installs dependencies from uv.lock. People who
 # `pip install nmdc-schema` never see that lock; they get the newest versions
 # that pyproject.toml allows. This workflow builds the wheel the same way the
 # release does, installs it into a fresh environment with pip and no lock, and
@@ -42,12 +42,10 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-          fetch-depth: 0  # poetry-dynamic-versioning derives the version from git tags
+          fetch-depth: 0  # uv-dynamic-versioning derives the version from git tags
 
-      - name: Install Poetry
-        run: |
-          pipx install poetry==2.5.1
-          pipx inject poetry "poetry-dynamic-versioning[plugin]"
+      - name: Install uv
+        uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
@@ -58,11 +56,11 @@ jobs:
       # same steps as pypi-publish.yaml.
       - name: Build schema artifacts and wheel
         run: |
-          poetry install --no-interaction
-          poetry dynamic-versioning
+          uv sync --locked
+          make set-version
           make squeaky-clean all
           make -C units fast
-          poetry build
+          uv build
 
       # A fresh environment with no lock: pip picks the newest allowed versions.
       # fastjsonschema and ucumvert are dev-only packages that two tests import.

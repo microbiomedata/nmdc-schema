@@ -29,10 +29,12 @@ jobs:
         # no step here needs the token (zizmor artipacked, #3148).
         persist-credentials: false
 
-    - name: Install Poetry
-      run: |
-        pipx install poetry==2.5.1
-        pipx inject poetry "poetry-dynamic-versioning[plugin]"
+    - name: Install uv
+      uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
+      with:
+        # No uv cache on the release trigger, for the same reason as below
+        # (zizmor cache-poisoning, #3148).
+        enable-cache: false
 
     - name: Set up Python
       uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
@@ -44,16 +46,16 @@ jobs:
         # (zizmor cache-poisoning, #3148).
 
     - name: Install project dependencies
-      run: poetry install --no-interaction
+      run: uv sync --locked
 
     - name: Generate project files
       run: |
-        poetry dynamic-versioning
+        make set-version
         make squeaky-clean all
         make -C units fast
 
     - name: Build source and wheel archives
-      run: poetry build
+      run: uv build
 
     - name: Publish distribution 📦 to PyPI
       # No username or password because we're using trusted publishing

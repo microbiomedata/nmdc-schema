@@ -12,14 +12,14 @@ RUN ARCH="$(dpkg --print-architecture)" && \
     wget "https://github.com/mikefarah/yq/releases/download/v4.53.3/yq_linux_${ARCH}" -O /usr/bin/yq && \
     chmod +x /usr/bin/yq
 
-# Install Poetry, a package manager for Python (an alternative to pip).
-RUN pip install "poetry==2.5.1"
+# Install uv, a package and project manager for Python.
+RUN pip install uv
 
 # Install the project's Python dependencies.
-ADD ./poetry.lock    /nmdc-schema/poetry.lock
+ADD ./uv.lock        /nmdc-schema/uv.lock
 ADD ./pyproject.toml /nmdc-schema/pyproject.toml
 # TODO: Re-enable this as part of https://github.com/microbiomedata/nmdc-schema/issues/1744
-# RUN poetry install
+# RUN uv sync
 
 # Configure the container to display a welcome message and the OS name whenever
 # someone starts an interactive shell session (i.e. "connects to the shell").

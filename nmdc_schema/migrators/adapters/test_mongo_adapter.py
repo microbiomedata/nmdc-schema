@@ -29,7 +29,7 @@ class TestMongoAdapter(unittest.TestCase):
     - host.docker.internal:27017
 
     You can run these tests like this:
-    $ poetry run python -m unittest -v nmdc_schema/migrators/adapters/test_mongo_adapter.py
+    $ uv run python -m unittest -v nmdc_schema/migrators/adapters/test_mongo_adapter.py
 
     References:
     - https://docs.python.org/3/library/unittest.html#basic-example

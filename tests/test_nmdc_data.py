@@ -1,7 +1,7 @@
 import json
 import unittest
 
-from nmdc_data import (
+from nmdc_schema.nmdc_data import (
     get_gold_sssom,
     get_materialized_nmdc_yaml_string,
     get_nmdc_file_type_enums,

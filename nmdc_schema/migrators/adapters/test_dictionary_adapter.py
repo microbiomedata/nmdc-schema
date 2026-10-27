@@ -9,7 +9,7 @@ class TestDictionaryAdapter(unittest.TestCase):
     Tests targeting the `DictionaryAdapter` class.
 
     You can run these tests like this:
-    $ poetry run python -m unittest -v nmdc_schema/migrators/adapters/test_dictionary_adapter.py
+    $ uv run python -m unittest -v nmdc_schema/migrators/adapters/test_dictionary_adapter.py
 
     References:
     - https://docs.python.org/3/library/unittest.html#basic-example

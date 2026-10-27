@@ -27,6 +27,8 @@ from src.scripts.sync_module_settings import (
     source_settings,
     strip_settings_block,
     synced_text,
+    required_setting_keys,
+    slot_usage_index,
     used_setting_keys,
 )
 
@@ -56,10 +58,14 @@ def _interpolated_syntaxes(node: object) -> list[str]:
     return found
 
 
+# Built once for the session instead of once per module.
+SLOT_USAGE_INDEX = slot_usage_index(SCHEMA_DIR)
+
 MODULES_WITH_PATTERNS = sorted(
     path.name
     for path in SCHEMA_DIR.glob("*.yaml")
-    if path.name != SOURCE_SCHEMA.name and used_setting_keys(_load(path))
+    if path.name != SOURCE_SCHEMA.name
+    and required_setting_keys(_load(path), SCHEMA_DIR, SLOT_USAGE_INDEX)
 )
 
 # Every module but nmdc.yaml, so a block left behind after a module's last placeholder is
@@ -83,7 +89,9 @@ def test_modules_with_interpolated_patterns_are_found() -> None:
 def test_module_declares_every_setting_its_patterns_use(module_name: str) -> None:
     module = _load(SCHEMA_DIR / module_name)
     declared = set((module.get("settings") or {}).keys())
-    missing = sorted(used_setting_keys(module) - declared)
+    missing = sorted(
+        required_setting_keys(module, SCHEMA_DIR, SLOT_USAGE_INDEX) - declared
+    )
     assert not missing, f"{module_name} uses settings it does not declare: {missing}"
 
 
@@ -91,7 +99,9 @@ def test_module_declares_every_setting_its_patterns_use(module_name: str) -> Non
 def test_module_declares_no_unused_settings(module_name: str) -> None:
     module = _load(SCHEMA_DIR / module_name)
     declared = set((module.get("settings") or {}).keys())
-    extra = sorted(declared - used_setting_keys(module))
+    extra = sorted(
+        declared - required_setting_keys(module, SCHEMA_DIR, SLOT_USAGE_INDEX)
+    )
     assert not extra, (
         f"{module_name} declares settings none of its patterns use: {extra}"
     )
@@ -287,3 +297,27 @@ def test_cli_check_reports_and_writes_nothing(
         main, ["--check", "--source", str(source), str(module_file)]
     )
     assert result.exit_code == 0, result.output
+
+
+def test_module_gets_the_settings_slot_usage_patterns_use_on_its_slots(
+    tmp_path: Path,
+) -> None:
+    """gen-python fills a slot_usage pattern with the settings of the module defining the slot."""
+    (tmp_path / "slots.yaml").write_text(
+        "slots:\n  id: {}\n  other: {}\n", encoding="utf-8"
+    )
+    (tmp_path / "classes.yaml").write_text(
+        "classes:\n"
+        "  Thing:\n"
+        "    slot_usage:\n"
+        "      id:\n"
+        "        structured_pattern:\n"
+        "          syntax: '{prefix}:thing-[0-9]+'\n"
+        "          interpolated: true\n",
+        encoding="utf-8",
+    )
+    slots_module = yaml.safe_load((tmp_path / "slots.yaml").read_text(encoding="utf-8"))
+    assert used_setting_keys(slots_module) == set()
+    assert required_setting_keys(slots_module, tmp_path) == {"prefix"}
+    # A module whose slots have no such slot_usage needs nothing.
+    assert required_setting_keys({"slots": {"other": {}}}, tmp_path) == set()
