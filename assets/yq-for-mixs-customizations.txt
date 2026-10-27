@@ -1343,3 +1343,74 @@
 '.enums.SampWeatherEnum.permissible_values.hail.meaning = "ENVO:01000874"'
 '.enums.SampWeatherEnum.permissible_values.sleet.meaning = "ENVO:03400014"'
 '.enums.SampWeatherEnum.permissible_values.foggy.meaning = "ENVO:01000844"'
+
+# ---------------------------------------------------------------------------
+# Close the gaps between NMDC schema Biosample and the NCBI BioSample package and
+# PHA4GE.wwsurv.1.0 / PHA4GE schema (Wastewater Contextual Data Specification 4.4.4) 
+# 1. Existing MIxS terms are imported before anything is minted
+# 2. NMDC-native slots for the remaining gaps live in src/schema/core.yaml
+# Same predicate (close/related mapping) rules as in core.yaml:
+# - close when the slot and the field hold the same single fact
+# - related when one NMDC value is split across PHA4GE value and unit fields or the concepts
+#   only overlap
+#  NCBI harmonized attribute names ride along with the NCBI_BIOSAMPLE_ATTRIBUTE prefix.
+
+# adjacent_environment: MIxS says "terms under ecosystem (ENVO:01001110) and human construction
+# (ENVO:00000070)", but the NCBI submissions seen so far hold free text, so the range is
+# ControlledTermValue (term optional) rather than ControlledIdentifiedTermValue.
+'.slots.adjacent_environment.range |= "ControlledTermValue"'
+'.slots.adjacent_environment.inlined_as_list |= true'
+'.slots.adjacent_environment.examples = [{"object": {"type": "nmdc:ControlledTermValue", "has_raw_value": "estuarine biome [ENVO:01000020]", "term": {"type": "nmdc:OntologyClass", "id": "ENVO:01000020", "name": "estuarine biome"}}}]'
+'.slots.adjacent_environment.close_mappings += ["GENEPIO:0101205", "NCBI_BIOSAMPLE_ATTRIBUTE:adjacent_environment"]'
+'.slots.adjacent_environment.notes += ["Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification 4.4.4 standard (follow `see_also` for reference documentation) we can see that the slot capturing details about the proximal environmental site (restricted to the PHA4GE environmental site picklist) is closely related to `adjacent_environment` in the NMDC schema, which accepts any ENVO ecosystem or human construction term.", "Close match to the adjacent_environment attribute of the PHA4GE.wwsurv.1.0 package, which is the NCBI harmonized name for this MIxS term, for the same reason."]'
+'.slots.adjacent_environment.see_also += ["https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4", "https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml"]'
+
+# neg_cont_type / pos_cont_type: MIxS 6 marks both as recommended in every checklist; they say
+# what the control material was, which is the nearest MIxS home for the PHA4GE free-text
+# experimental control details. The role of the sample itself is experimental_specimen_role_type.
+'.slots.neg_cont_type.related_mappings += ["GENEPIO:0100922"]'
+'.slots.neg_cont_type.close_mappings += ["NCBI_BIOSAMPLE_ATTRIBUTE:neg_cont_type"]'
+'.slots.neg_cont_type.notes += ["Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification 4.4.4 standard (follow `see_also` for reference documentation) we can see that the slot capturing experimental control details (free text about any control included in the sample) is related to `neg_cont_type` in the NMDC schema, which names the negative control material from a fixed list. We have marked it as related rather than close because the PHA4GE slot covers positive and negative controls alike and is not limited to the material.", "Close match to the neg_cont_type attribute, which is the NCBI harmonized name for this MIxS term and is used by the MIxS wastewater packages."]'
+'.slots.neg_cont_type.see_also += ["https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4", "https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml"]'
+'.slots.pos_cont_type.related_mappings += ["GENEPIO:0100922"]'
+'.slots.pos_cont_type.close_mappings += ["NCBI_BIOSAMPLE_ATTRIBUTE:pos_cont_type"]'
+'.slots.pos_cont_type.notes += ["Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification 4.4.4 standard (follow `see_also` for reference documentation) we can see that the slot capturing experimental control details (free text about any control included in the sample) is related to `pos_cont_type` in the NMDC schema, which names the positive control material. We have marked it as related rather than close because the PHA4GE slot covers positive and negative controls alike and is not limited to the material.", "Close match to the pos_cont_type attribute, which is the NCBI harmonized name for this MIxS term and is used by the MIxS wastewater packages."]'
+'.slots.pos_cont_type.see_also += ["https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4", "https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml"]'
+
+# Package attributes whose NMDC slot already existed but carried no PHA4GE or NCBI mapping.
+'.slots.diss_oxygen.related_mappings += ["GENEPIO:0000035", "GENEPIO:0100784"]'
+'.slots.diss_oxygen.close_mappings += ["NCBI_BIOSAMPLE_ATTRIBUTE:diss_oxygen"]'
+'.slots.diss_oxygen.notes += ["PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to dissolved oxygen concentration (GENEPIO:0000035) and dissolved oxygen measurement unit (GENEPIO:0100784); one QuantityValue here is split across PHA4GE value and unit fields. NCBI BioSample: close match to the diss_oxygen attribute, the NCBI harmonized name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package."]'
+'.slots.diss_oxygen.see_also += ["https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4", "https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml"]'
+'.slots.turbidity.related_mappings += ["GENEPIO:0100783", "GENEPIO:0100914"]'
+'.slots.turbidity.close_mappings += ["NCBI_BIOSAMPLE_ATTRIBUTE:turbidity"]'
+'.slots.turbidity.notes += ["PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to turbidity measurement value (GENEPIO:0100783) and turbidity measurement unit (GENEPIO:0100914); one QuantityValue here is split across PHA4GE value and unit fields. NCBI BioSample: close match to the turbidity attribute, the NCBI harmonized name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package."]'
+'.slots.turbidity.see_also += ["https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4", "https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml"]'
+'.slots.salinity.close_mappings += ["NCBI_BIOSAMPLE_ATTRIBUTE:samp_salinity"]'
+'.slots.salinity.notes += ["NCBI BioSample: close match to the samp_salinity attribute, the MIxS 5 name that NCBI kept for the term MIxS 6 merged into salinity (MIXS:0000183), optional in the PHA4GE.wwsurv.1.0 package."]'
+
+# NCBI harmonized attribute names of the PHA4GE.wwsurv.1.0 package for the MIxS slots that the
+# first pass mapped to GENEPIO only, so the NCBI attribute to NMDC slot crosswalk can be read off
+# the schema for every package attribute. The see_also links are already on these slots.
+'.slots.collection_date.close_mappings += ["NCBI_BIOSAMPLE_ATTRIBUTE:collection_date"]'
+'.slots.collection_date.notes += ["NCBI BioSample: close match to the collection_date attribute, mandatory in the PHA4GE.wwsurv.1.0 package; both accept a date, a date-time or a date range."]'
+'.slots.geo_loc_name.close_mappings += ["NCBI_BIOSAMPLE_ATTRIBUTE:geo_loc_name"]'
+'.slots.geo_loc_name.notes += ["NCBI BioSample: close match to the geo_loc_name attribute, mandatory in the PHA4GE.wwsurv.1.0 package, with the same INSDC country: region, locality form."]'
+'.slots.lat_lon.close_mappings += ["NCBI_BIOSAMPLE_ATTRIBUTE:lat_lon"]'
+'.slots.lat_lon.notes += ["NCBI BioSample: close match to the lat_lon attribute of the PHA4GE.wwsurv.1.0 package; NCBI writes the pair as decimal degrees with N/S and E/W letters."]'
+'.slots.env_local_scale.close_mappings += ["NCBI_BIOSAMPLE_ATTRIBUTE:env_local_scale"]'
+'.slots.env_local_scale.notes += ["NCBI BioSample: close match to the env_local_scale attribute, the NCBI harmonized name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package."]'
+'.slots.env_medium.close_mappings += ["NCBI_BIOSAMPLE_ATTRIBUTE:env_medium"]'
+'.slots.env_medium.notes += ["NCBI BioSample: close match to the env_medium attribute, the NCBI harmonized name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package."]'
+'.slots.samp_collec_device.close_mappings += ["NCBI_BIOSAMPLE_ATTRIBUTE:collection_device"]'
+'.slots.samp_collec_device.notes += ["NCBI BioSample: close match to the collection_device attribute of the PHA4GE.wwsurv.1.0 package (free text, for example autosampler)."]'
+'.slots.samp_collec_method.close_mappings += ["NCBI_BIOSAMPLE_ATTRIBUTE:collection_method"]'
+'.slots.samp_collec_method.notes += ["NCBI BioSample: close match to the collection_method attribute, the NCBI harmonized name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package."]'
+'.slots.samp_mat_process.close_mappings += ["NCBI_BIOSAMPLE_ATTRIBUTE:samp_mat_process"]'
+'.slots.samp_mat_process.notes += ["NCBI BioSample: close match to the samp_mat_process attribute, the NCBI harmonized name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package."]'
+'.slots.samp_weather.close_mappings += ["NCBI_BIOSAMPLE_ATTRIBUTE:samp_weather"]'
+'.slots.samp_weather.notes += ["NCBI BioSample: close match to the samp_weather attribute, the NCBI harmonized name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package; NCBI accepts free text there, this slot is restricted to the MIxS list."]'
+'.slots.ph.close_mappings += ["NCBI_BIOSAMPLE_ATTRIBUTE:ph"]'
+'.slots.ph.notes += ["NCBI BioSample: close match to the ph attribute, the NCBI harmonized name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package."]'
+'.slots.suspend_solids.close_mappings += ["NCBI_BIOSAMPLE_ATTRIBUTE:suspend_solids"]'
+'.slots.suspend_solids.notes += ["NCBI BioSample: close match to the suspend_solids attribute, the NCBI harmonized name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package."]'

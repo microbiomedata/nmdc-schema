@@ -4,6 +4,7 @@ MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.3
 MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.3.0/src/mixs/schema/mixs.yaml	additional_info			placeholder_class
 MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.3.0/src/mixs/schema/mixs.yaml	address			placeholder_class
 MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.3.0/src/mixs/schema/mixs.yaml	adj_room			placeholder_class
+MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.3.0/src/mixs/schema/mixs.yaml	adjacent_environment			placeholder_class
 MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.3.0/src/mixs/schema/mixs.yaml	aero_struc			placeholder_class
 MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.3.0/src/mixs/schema/mixs.yaml	agrochem_addition			placeholder_class
 MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.3.0/src/mixs/schema/mixs.yaml	air_PM_concen			placeholder_class
@@ -237,6 +238,7 @@ MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.3
 MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.3.0/src/mixs/schema/mixs.yaml	mineral_nutr_regm			placeholder_class
 MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.3.0/src/mixs/schema/mixs.yaml	misc_param			placeholder_class
 MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.3.0/src/mixs/schema/mixs.yaml	n_alkanes			placeholder_class
+MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.3.0/src/mixs/schema/mixs.yaml	neg_cont_type			placeholder_class
 MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.3.0/src/mixs/schema/mixs.yaml	nitrate			placeholder_class
 MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.3.0/src/mixs/schema/mixs.yaml	nitrite			placeholder_class
 MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.3.0/src/mixs/schema/mixs.yaml	nitro			placeholder_class
@@ -281,6 +283,7 @@ MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.3
 MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.3.0/src/mixs/schema/mixs.yaml	pollutants			placeholder_class
 MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.3.0/src/mixs/schema/mixs.yaml	pool_dna_extracts			placeholder_class
 MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.3.0/src/mixs/schema/mixs.yaml	porosity			placeholder_class
+MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.3.0/src/mixs/schema/mixs.yaml	pos_cont_type			placeholder_class
 MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.3.0/src/mixs/schema/mixs.yaml	potassium			placeholder_class
 MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.3.0/src/mixs/schema/mixs.yaml	pour_point			placeholder_class
 MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.3.0/src/mixs/schema/mixs.yaml	pre_treatment			placeholder_class
