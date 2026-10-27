@@ -452,6 +452,15 @@ enums:
     permissible_values:
       no presence of mold visible: {}
       presence of mold visible: {}
+  NegContTypeEnum:
+    permissible_values:
+      DNA-free PCR mix: {}
+      distilled water: {}
+      empty collection device: {}
+      empty collection tube: {}
+      phosphate buffer: {}
+      sterile swab: {}
+      sterile syringe: {}
   OccupDocumentEnum:
     permissible_values:
       automated count: {}
@@ -1107,6 +1116,37 @@ slots:
       syntax: ^{room_name};{room_number}$
       interpolated: true
       partial_match: true
+  adjacent_environment:
+    annotations:
+      Expected_value: ENVO_01001110 or ENVO_00000070
+    description: Description of the environmental system or features that are adjacent to the sampling site. This field accepts terms under ecosystem (http://purl.obolibrary.org/obo/ENVO_01001110) and human construction (http://purl.obolibrary.org/obo/ENVO_00000070). Multiple terms can be separated by pipes
+    title: environment adjacent to site
+    examples:
+      - object:
+          type: nmdc:ControlledTermValue
+          has_raw_value: estuarine biome [ENVO:01000020]
+          term:
+            type: nmdc:OntologyClass
+            id: ENVO:01000020
+            name: estuarine biome
+    keywords:
+      - adjacent
+      - environment
+      - site
+    string_serialization: '{termLabel} [{termID}]'
+    slot_uri: MIXS:0001121
+    multivalued: true
+    range: ControlledTermValue
+    inlined_as_list: true
+    close_mappings:
+      - GENEPIO:0101205
+      - NCBI_BIOSAMPLE_ATTRIBUTE:adjacent_environment
+    notes:
+      - Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification 4.4.4 standard (follow `see_also` for reference documentation) we can see that the slot capturing details about the proximal environmental site (restricted to the PHA4GE environmental site picklist) is closely related to `adjacent_environment` in the NMDC schema, which accepts any ENVO ecosystem or human construction term.
+      - Close match to the adjacent_environment attribute of the PHA4GE.wwsurv.1.0 package, which is the NCBI harmonized name for this MIxS term, for the same reason.
+    see_also:
+      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
   aero_struc:
     description: Aerospace structures typically consist of thin plates with stiffeners for the external surfaces, bulkheads and frames to support the shape and fasteners such as welds, rivets, screws and bolts to hold the components together
     title: aerospace structure
@@ -2233,9 +2273,12 @@ slots:
       - GENEPIO:0001174
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to sample collection start date (GENEPIO:0001174); this slot can hold an interval, the PHA4GE field holds only the start.'
+      - 'NCBI BioSample: close match to the collection_date attribute, mandatory in the PHA4GE.wwsurv.1.0 package; both accept a date, a date-time or a date range.'
     see_also:
       - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
       - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    close_mappings:
+      - NCBI_BIOSAMPLE_ATTRIBUTE:collection_date
   conduc:
     annotations:
       Preferred_unit: milliSiemens per centimeter
@@ -2632,6 +2675,16 @@ slots:
       partial_match: true
     in_subset:
       - biogeochemistry
+    related_mappings:
+      - GENEPIO:0000035
+      - GENEPIO:0100784
+    close_mappings:
+      - NCBI_BIOSAMPLE_ATTRIBUTE:diss_oxygen
+    notes:
+      - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to dissolved oxygen concentration (GENEPIO:0000035) and dissolved oxygen measurement unit (GENEPIO:0100784); one QuantityValue here is split across PHA4GE value and unit fields. NCBI BioSample: close match to the diss_oxygen attribute, the NCBI harmonized name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package.'
+    see_also:
+      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
   diss_oxygen_fluid:
     annotations:
       Preferred_unit: micromole per kilogram, milligram per liter
@@ -2903,8 +2956,10 @@ slots:
     range: ControlledIdentifiedTermValue
     close_mappings:
       - GENEPIO:0001232
+      - NCBI_BIOSAMPLE_ATTRIBUTE:env_local_scale
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to environmental site (GENEPIO:0001232); the PHA4GE field is multivalued and restricted to its own picklist.'
+      - 'NCBI BioSample: close match to the env_local_scale attribute, the NCBI harmonized name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package.'
     see_also:
       - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
       - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
@@ -2929,8 +2984,10 @@ slots:
     is_a: mixs_env_triad_field
     close_mappings:
       - GENEPIO:0001223
+      - NCBI_BIOSAMPLE_ATTRIBUTE:env_medium
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to environmental material (GENEPIO:0001223); the PHA4GE field is multivalued and restricted to its own picklist.'
+      - 'NCBI BioSample: close match to the env_medium attribute, the NCBI harmonized name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package.'
     see_also:
       - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
       - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
@@ -3335,9 +3392,12 @@ slots:
       - GENEPIO:0100436
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to geo loc name (country) (GENEPIO:0001181), geo loc name (state/province/territory/region) (GENEPIO:0001185), geo loc name (city) (GENEPIO:0001189) and geo loc name (site) (GENEPIO:0100436); the single text value here holds the levels that are split across those four PHA4GE fields.'
+      - 'NCBI BioSample: close match to the geo_loc_name attribute, mandatory in the PHA4GE.wwsurv.1.0 package, with the same INSDC country: region, locality form.'
     see_also:
       - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
       - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    close_mappings:
+      - NCBI_BIOSAMPLE_ATTRIBUTE:geo_loc_name
   glucosidase_act:
     annotations:
       Preferred_unit: mol per liter per hour
@@ -4270,9 +4330,12 @@ slots:
       - GENEPIO:0100310
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to geo loc latitude (GENEPIO:0100309) and geo loc longitude (GENEPIO:0100310); one value here is split across two PHA4GE fields.'
+      - 'NCBI BioSample: close match to the lat_lon attribute of the PHA4GE.wwsurv.1.0 package; NCBI writes the pair as decimal degrees with N/S and E/W letters.'
     see_also:
       - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
       - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    close_mappings:
+      - NCBI_BIOSAMPLE_ATTRIBUTE:lat_lon
   light_intensity:
     annotations:
       Preferred_unit: lux
@@ -4601,6 +4664,26 @@ slots:
     multivalued: true
     range: TextValue
     inlined_as_list: true
+  neg_cont_type:
+    annotations:
+      Expected_value: enumeration or text
+    description: The substance or equipment used as a negative control in an investigation
+    title: negative control type
+    keywords:
+      - type
+    slot_uri: MIXS:0001321
+    range: NegContTypeEnum
+    recommended: true
+    related_mappings:
+      - GENEPIO:0100922
+    close_mappings:
+      - NCBI_BIOSAMPLE_ATTRIBUTE:neg_cont_type
+    notes:
+      - Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification 4.4.4 standard (follow `see_also` for reference documentation) we can see that the slot capturing experimental control details (free text about any control included in the sample) is related to `neg_cont_type` in the NMDC schema, which names the negative control material from a fixed list. We have marked it as related rather than close because the PHA4GE slot covers positive and negative controls alike and is not limited to the material.
+      - Close match to the neg_cont_type attribute, which is the NCBI harmonized name for this MIxS term and is used by the MIxS wastewater packages.
+    see_also:
+      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
   nitrate:
     annotations:
       Preferred_unit: micromole per liter, milligram per liter, parts per million
@@ -5097,8 +5180,10 @@ slots:
       - biogeochemistry
     close_mappings:
       - GENEPIO:0001736
+      - NCBI_BIOSAMPLE_ATTRIBUTE:ph
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to pH measurement value (GENEPIO:0001736); PHA4GE records the method in a separate field (GENEPIO:0100781).'
+      - 'NCBI BioSample: close match to the ph attribute, the NCBI harmonized name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package.'
     see_also:
       - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
       - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
@@ -5293,6 +5378,24 @@ slots:
     string_serialization: '{float} - {float} {unit}'
     slot_uri: MIXS:0000211
     range: TextValue
+  pos_cont_type:
+    description: The substance, mixture, product, or apparatus used to verify that a process which is part of an investigation delivers a true positive
+    title: positive control type
+    keywords:
+      - type
+    string_serialization: '{term} or {text}'
+    slot_uri: MIXS:0001322
+    recommended: true
+    related_mappings:
+      - GENEPIO:0100922
+    close_mappings:
+      - NCBI_BIOSAMPLE_ATTRIBUTE:pos_cont_type
+    notes:
+      - Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification 4.4.4 standard (follow `see_also` for reference documentation) we can see that the slot capturing experimental control details (free text about any control included in the sample) is related to `pos_cont_type` in the NMDC schema, which names the positive control material. We have marked it as related rather than close because the PHA4GE slot covers positive and negative controls alike and is not limited to the material.
+      - Close match to the pos_cont_type attribute, which is the NCBI harmonized name for this MIxS term and is used by the MIxS wastewater packages.
+    see_also:
+      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
   potassium:
     annotations:
       Preferred_unit: milligram per liter, parts per million
@@ -5953,9 +6056,12 @@ slots:
       - GENEPIO:0100806
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to salinity measurement value (GENEPIO:0100805) and unit (GENEPIO:0100806); one QuantityValue here is split across PHA4GE value and unit fields.'
+      - 'NCBI BioSample: close match to the samp_salinity attribute, the MIxS 5 name that NCBI kept for the term MIxS 6 merged into salinity (MIXS:0000183), optional in the PHA4GE.wwsurv.1.0 package.'
     see_also:
       - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
       - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    close_mappings:
+      - NCBI_BIOSAMPLE_ATTRIBUTE:samp_salinity
   salt_regm:
     annotations:
       Preferred_unit: gram, microgram, mole per liter, gram per liter
@@ -6043,8 +6149,10 @@ slots:
     range: ControlledTermValue
     close_mappings:
       - GENEPIO:0001253
+      - NCBI_BIOSAMPLE_ATTRIBUTE:samp_mat_process
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to specimen processing (GENEPIO:0001253); the PHA4GE field is restricted to its own picklist.'
+      - 'NCBI BioSample: close match to the samp_mat_process attribute, the NCBI harmonized name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package.'
     see_also:
       - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
       - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
@@ -6360,8 +6468,10 @@ slots:
     range: SampWeatherEnum
     close_mappings:
       - GENEPIO:0100779
+      - NCBI_BIOSAMPLE_ATTRIBUTE:samp_weather
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to sampling weather conditions (GENEPIO:0100779); the PHA4GE field is multivalued and restricted to its own picklist.'
+      - 'NCBI BioSample: close match to the samp_weather attribute, the NCBI harmonized name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package; NCBI accepts free text there, this slot is restricted to the MIxS list.'
     see_also:
       - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
       - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
@@ -7181,9 +7291,12 @@ slots:
       - GENEPIO:0100795
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to total suspended solids (TSS) measurement value (GENEPIO:0100794) and unit (GENEPIO:0100795); this slot is multivalued text, PHA4GE holds one value and its unit.'
+      - 'NCBI BioSample: close match to the suspend_solids attribute, the NCBI harmonized name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package.'
     see_also:
       - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
       - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    close_mappings:
+      - NCBI_BIOSAMPLE_ATTRIBUTE:suspend_solids
   tan:
     annotations:
       Preferred_unit: milligram per liter
@@ -7682,6 +7795,16 @@ slots:
       partial_match: true
     annotations:
       storage_units: '[NTU]|[FNU]'
+    related_mappings:
+      - GENEPIO:0100783
+      - GENEPIO:0100914
+    close_mappings:
+      - NCBI_BIOSAMPLE_ATTRIBUTE:turbidity
+    notes:
+      - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to turbidity measurement value (GENEPIO:0100783) and turbidity measurement unit (GENEPIO:0100914); one QuantityValue here is split across PHA4GE value and unit fields. NCBI BioSample: close match to the turbidity attribute, the NCBI harmonized name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package.'
+    see_also:
+      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
   tvdss_of_hcr_press:
     annotations:
       Preferred_unit: meter
@@ -8490,8 +8613,10 @@ slots:
     range: string
     close_mappings:
       - GENEPIO:0001234
+      - NCBI_BIOSAMPLE_ATTRIBUTE:collection_device
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to collection device (GENEPIO:0001234); the PHA4GE field is restricted to its own picklist.'
+      - 'NCBI BioSample: close match to the collection_device attribute of the PHA4GE.wwsurv.1.0 package (free text, for example autosampler).'
     see_also:
       - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
       - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
@@ -8509,8 +8634,10 @@ slots:
           - https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.3.0
     close_mappings:
       - GENEPIO:0001241
+      - NCBI_BIOSAMPLE_ATTRIBUTE:collection_method
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to collection method (GENEPIO:0001241); the PHA4GE field is restricted to its own picklist.'
+      - 'NCBI BioSample: close match to the collection_method attribute, the NCBI harmonized name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package.'
     see_also:
       - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
       - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
