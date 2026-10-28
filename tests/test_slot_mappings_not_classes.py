@@ -14,7 +14,9 @@ is added, look it up and add it, for example:
     curl -s "https://www.ebi.ac.uk/ols4/api/terms?iri=<IRI>" | jq .page.totalElements
 
 A term found under properties is "property"; one found under terms is
-"class". See https://github.com/microbiomedata/nmdc-schema/issues/3522
+"class". Terms from vocabularies that OLS4 doesn't carry (Biolink, Dublin
+Core, PROV, QUDT, schema.org, SKOS, KBase credit metadata) are recorded
+from that vocabulary's own definition. See https://github.com/microbiomedata/nmdc-schema/issues/3522
 """
 
 from collections.abc import Iterator
@@ -31,24 +33,47 @@ MAPPING_KEYS = (
     "related_mappings",
 )
 
-# Prefixes that aren't ontologies in OLS4, so this test doesn't check them.
-# A prefix missing from here is treated as an ontology and checked.
+# Prefixes this test doesn't check: MIxS and NMDC terms are slots in those
+# schemas, and NCBI BioSample attribute names aren't ontology terms. Every
+# other prefix is checked.
 NOT_CHECKED_PREFIXES = {
-    "biolink",
-    "dcm",
-    "dcterms",
     "MIXS",
     "NCBI_BIOSAMPLE_ATTRIBUTE",
     "nmdc",
-    "prov",
-    "qudt",
-    "schema",
-    "skos",
 }
 
 # What OLS4 returned for each term, checked 2026-10-16 with the
 # /api/terms and /api/properties endpoints.
 ONTOLOGY_TERM_KINDS = {
+    # Properties in vocabularies that OLS4 doesn't carry, checked 2026-10-28
+    # against each vocabulary's definition (Biolink Model slots, attributes in
+    # https://github.com/kbase/credit_engine/blob/develop/schema/dcm/linkml/,
+    # and the published Dublin Core, PROV, QUDT, schema.org and SKOS terms).
+    "biolink:end_interbase_coordinate": "property",
+    "biolink:in_taxon": "property",
+    "biolink:phase": "property",
+    "biolink:start_interbase_coordinate": "property",
+    "biolink:strand": "property",
+    "dcm:contributor_id": "property",
+    "dcm:contributor_roles": "property",
+    "dcm:contributors": "property",
+    "dcm:organization_id": "property",
+    "dcm:organization_name": "property",
+    "dcterms:alternative": "property",
+    "dcterms:title": "property",
+    "prov:endedAtTime": "property",
+    "prov:startedAtTime": "property",
+    "prov:wasGeneratedBy": "property",
+    "prov:wasInformedBy": "property",
+    "qudt:quantityValue": "property",
+    "qudt:unit": "property",
+    "schema:latitude": "property",
+    "schema:longitude": "property",
+    "schema:unitCode": "property",
+    "schema:value": "property",
+    "schema:version": "property",
+    "skos:altLabel": "property",
+    "skos:closeMatch": "property",
     "edam.data:1188": "class",
     "GENEPIO:0000093": "class",
     "GENEPIO:0001450": "class",
@@ -185,7 +210,7 @@ def test_slot_class_mappings_use_close_or_related() -> None:
             kind = ONTOLOGY_TERM_KINDS.get(term)
             if kind is None:
                 problems.append(
-                    f"{where} isn't in ONTOLOGY_TERM_KINDS; look it up in OLS4 and add it"
+                    f"{where} isn't in ONTOLOGY_TERM_KINDS; look it up and add it"
                 )
             mapping_key = location.rsplit("/", 1)[1]
             if kind == "class" and mapping_key not in CLASS_MAPPING_KEYS:
