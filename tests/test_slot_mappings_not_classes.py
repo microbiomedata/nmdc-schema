@@ -1,8 +1,10 @@
-"""Require slot mappings to point at properties, not ontology classes.
+"""Require slot mappings to ontology classes to use close or related mappings.
 
-CLAUDE.md ("Type compatibility") says a slot maps to a property, not a
-class. This reads the src/schema/*.yaml source files and checks every
-``*_mappings`` value on a slot, a class attribute, or a slot_usage entry.
+CLAUDE.md ("Type compatibility") says a slot maps to a property. When the
+only matching term is a class, the slot may name it in close_mappings or
+related_mappings, never in exact, broad, narrow or generic mappings. This
+reads the src/schema/*.yaml source files and checks every ``*_mappings``
+value on a slot, a class attribute, or a slot_usage entry.
 
 The test doesn't use the network. ONTOLOGY_TERM_KINDS records what OLS4
 returned for each ontology term used in a slot mapping. When a new term
@@ -36,6 +38,7 @@ NOT_CHECKED_PREFIXES = {
     "dcm",
     "dcterms",
     "MIXS",
+    "NCBI_BIOSAMPLE_ATTRIBUTE",
     "nmdc",
     "prov",
     "qudt",
@@ -50,6 +53,77 @@ ONTOLOGY_TERM_KINDS = {
     "GENEPIO:0000093": "class",
     "GENEPIO:0001450": "class",
     "GENEPIO:0100596": "class",
+    # GENEPIO terms used on slots in https://github.com/microbiomedata/nmdc-schema/pull/3533,
+    # checked 2026-10-28.
+    "GENEPIO:0000035": "class",
+    "GENEPIO:0001123": "class",
+    "GENEPIO:0001136": "class",
+    "GENEPIO:0001139": "class",
+    "GENEPIO:0001153": "class",
+    "GENEPIO:0001174": "class",
+    "GENEPIO:0001181": "class",
+    "GENEPIO:0001185": "class",
+    "GENEPIO:0001189": "class",
+    "GENEPIO:0001191": "class",
+    "GENEPIO:0001198": "class",
+    "GENEPIO:0001223": "class",
+    "GENEPIO:0001232": "class",
+    "GENEPIO:0001234": "class",
+    "GENEPIO:0001241": "class",
+    "GENEPIO:0001253": "class",
+    "GENEPIO:0001452": "class",
+    "GENEPIO:0001736": "class",
+    "GENEPIO:0100309": "class",
+    "GENEPIO:0100310": "class",
+    "GENEPIO:0100428": "class",
+    "GENEPIO:0100436": "class",
+    "GENEPIO:0100448": "class",
+    "GENEPIO:0100760": "class",
+    "GENEPIO:0100766": "class",
+    "GENEPIO:0100767": "class",
+    "GENEPIO:0100768": "class",
+    "GENEPIO:0100769": "class",
+    "GENEPIO:0100771": "class",
+    "GENEPIO:0100773": "class",
+    "GENEPIO:0100774": "class",
+    "GENEPIO:0100775": "class",
+    "GENEPIO:0100779": "class",
+    "GENEPIO:0100780": "class",
+    "GENEPIO:0100783": "class",
+    "GENEPIO:0100784": "class",
+    "GENEPIO:0100788": "class",
+    "GENEPIO:0100789": "class",
+    "GENEPIO:0100791": "class",
+    "GENEPIO:0100792": "class",
+    "GENEPIO:0100794": "class",
+    "GENEPIO:0100795": "class",
+    "GENEPIO:0100805": "class",
+    "GENEPIO:0100806": "class",
+    "GENEPIO:0100808": "class",
+    "GENEPIO:0100809": "class",
+    "GENEPIO:0100811": "class",
+    "GENEPIO:0100812": "class",
+    "GENEPIO:0100814": "class",
+    "GENEPIO:0100815": "class",
+    "GENEPIO:0100816": "class",
+    "GENEPIO:0100817": "class",
+    "GENEPIO:0100821": "class",
+    "GENEPIO:0100822": "class",
+    "GENEPIO:0100878": "class",
+    "GENEPIO:0100879": "class",
+    "GENEPIO:0100905": "class",
+    "GENEPIO:0100906": "class",
+    "GENEPIO:0100908": "class",
+    "GENEPIO:0100909": "class",
+    "GENEPIO:0100914": "class",
+    "GENEPIO:0100921": "class",
+    "GENEPIO:0100922": "class",
+    "GENEPIO:0100935": "class",
+    "GENEPIO:0100936": "class",
+    "GENEPIO:0101014": "class",
+    "GENEPIO:0101015": "class",
+    "GENEPIO:0101203": "class",
+    "GENEPIO:0101205": "class",
     "MS:1000004": "class",
     "MS:1000008": "class",
     "MS:1000443": "class",
@@ -75,37 +149,9 @@ ONTOLOGY_TERM_KINDS = {
     "TAXRANK:0000022": "class",
 }
 
-# (slot, term) pairs that map a slot to a class today. Don't add to this set.
-# https://github.com/microbiomedata/nmdc-schema/issues/3250 fixes them.
-GRANDFATHERED = {
-    ("doi_provider", "NCIT:C74932"),
-    ("doi_value", "edam.data:1188"),
-    ("doi_value", "OBI:0002110"),
-    ("extraction_targets", "NCIT:C177560"),
-    ("funding_sources", "NCIT:C39409"),
-    ("gtdbtk_class", "TAXRANK:0000002"),
-    ("gtdbtk_domain", "TAXRANK:0000022"),
-    ("gtdbtk_family", "TAXRANK:0000004"),
-    ("gtdbtk_genus", "TAXRANK:0000005"),
-    ("gtdbtk_order", "TAXRANK:0000003"),
-    ("gtdbtk_phylum", "TAXRANK:0000001"),
-    ("gtdbtk_species", "TAXRANK:0000006"),
-    ("input_mass", "MS:1000004"),
-    ("ionization_source", "MS:1000008"),
-    ("library_preparation_kit", "GENEPIO:0001450"),
-    ("mass", "PATO:0000125"),
-    ("mass_analyzers", "MS:1000443"),
-    ("mass_spectrometry_acquisition_strategy", "MS:1003213"),
-    ("members_id", "GENEPIO:0100596"),
-    ("num_16s", "OMIT:0013243"),
-    ("num_23s", "OMIT:0013245"),
-    ("num_5s", "OMIT:0013248"),
-    ("num_t_rna", "OMIT:0013250"),
-    ("number_of_contig", "GENEPIO:0000093"),
-    ("objective", "SIO:000337"),
-    ("pcr_cycles", "OBI:0002475"),
-    ("processing_institution_workflow_metadata", "NCIT:C165211"),
-}
+# A slot may name an ontology class only under these keys (CLAUDE.md,
+# "LinkML Mapping Metaslots").
+CLASS_MAPPING_KEYS = {"close_mappings", "related_mappings"}
 
 
 def slot_mappings(schema: dict) -> Iterator[tuple[str, str, str]]:
@@ -126,10 +172,9 @@ def slot_mappings(schema: dict) -> Iterator[tuple[str, str, str]]:
                         )
 
 
-def test_slot_mappings_point_at_properties() -> None:
+def test_slot_class_mappings_use_close_or_related() -> None:
     repository_root = Path(__file__).resolve().parents[1]
     problems = []
-    still_grandfathered = set()
     for schema_path in sorted((repository_root / "src" / "schema").glob("*.yaml")):
         with schema_path.open(encoding="utf-8") as source_file:
             schema = yaml.safe_load(source_file)
@@ -142,20 +187,13 @@ def test_slot_mappings_point_at_properties() -> None:
                 problems.append(
                     f"{where} isn't in ONTOLOGY_TERM_KINDS; look it up in OLS4 and add it"
                 )
-            elif kind == "class":
-                if (slot_name, term) in GRANDFATHERED:
-                    still_grandfathered.add((slot_name, term))
-                else:
-                    problems.append(
-                        f"{where} is an ontology class; map the slot to a property"
-                    )
+            mapping_key = location.rsplit("/", 1)[1]
+            if kind == "class" and mapping_key not in CLASS_MAPPING_KEYS:
+                problems.append(
+                    f"{where} is an ontology class; use close_mappings or related_mappings"
+                )
 
     assert not problems, (
-        "A slot maps to a property, not a class (CLAUDE.md, 'Type compatibility').\n"
-        + "\n".join(problems)
-    )
-    fixed = GRANDFATHERED - still_grandfathered
-    assert not fixed, (
-        "These slot-to-class mappings are fixed; remove them from GRANDFATHERED:\n"
-        + "\n".join(f"{slot} {term}" for slot, term in sorted(fixed))
+        "A slot maps to a class only with close_mappings or related_mappings"
+        " (CLAUDE.md, 'LinkML Mapping Metaslots').\n" + "\n".join(problems)
     )

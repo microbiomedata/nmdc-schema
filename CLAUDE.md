@@ -137,7 +137,17 @@ for unattributed synonym strings.
 **Type compatibility.** A mapping relates elements of the same kind: a class
 maps to a class, a slot maps to a property, and a permissible value maps to a
 class (a PV names a kind, so it aligns with an ontology class, not a property).
-Do not map a slot to a class or a PV to a property.
+Do not map a PV to a property.
+
+**Slots and data-field classes.** Many ontologies model a data field as a class
+rather than a property (GENEPIO fields, OBI data items, PATO qualities, MS and
+TAXRANK terms). When the only matching term for a slot is such a class, put it
+in `close_mappings` if the slot and the class hold the same single fact, and in
+`related_mappings` otherwise. Never put a class in a slot's `exact_mappings`,
+`broad_mappings`, `narrow_mappings` or generic `mappings`: exact and the
+directional predicates assert identity or subsumption between a property and a
+class, which can't hold. `tests/test_slot_mappings_not_classes.py` enforces this
+with a recorded OLS4 lookup of each term; add new terms there.
 
 **Predicate strength.** Use `exact_mappings` only for genuine identity; prefer
 `close_mappings` or `related_mappings` when the aligned term is an assay, method,
@@ -166,6 +176,11 @@ are symmetric; `broad`/`narrow` are directional inverses of each other:
 | `narrow_mappings` | `skos:narrowMatch` | no | **Y is narrower than X** (X is the more general) |
 | `mappings` (generic) | `skos:mappingRelation` | n/a | untyped; reserve for property-to-property alignments |
 
+Two other metaslots carry ontology terms but are not mappings. `meaning` on a
+permissible value names the class that value stands for. `slot_uri` and
+`class_uri` give the element's own identity in RDF and OWL, so they are stronger
+than any mapping.
+
 Directionality is the common trap. The SKOS Reference states "`A skos:broader B`
 asserts that B, the object, is a broader concept than A," and `skos:broadMatch` is a
 sub-property of `skos:broader` (S41), so `X broad_mappings Y` means **Y subsumes X**.
@@ -173,12 +188,13 @@ SKOS Primer example: `platypus skos:broadMatch eggLayingAnimals` (the specific c
 points up to the broader one). In this schema `bacterial_rRNA_operon broad_mappings
 SO:0000178` (operon) reads correctly: operon is broader than that specific rRNA operon.
 
-**Current state (do not extend).** The schema still holds ~27 slot→class mappings
-(e.g. GTDB-Tk ranks → TAXRANK, mass-spec slots → MS/OBI, `mass` → PATO, DOI slots →
-OBI/NCIT) plus several `broad`/`narrow` mappings that are actually associative and
-should be `related_mappings` (e.g. `num_16s broad_mappings` an rRNA molecule — a
-count is not subsumed by the molecule). These are legacy: do not add new slot→class
-mappings, and use `broad`/`narrow` only for genuine subsumption.
+**Current state.** Every slot-to-class mapping in `src/schema/` uses
+`close_mappings` or `related_mappings`. For example, the GTDB-Tk rank slots name
+TAXRANK classes and `num_16s` names an OMIT rRNA class, both in
+`related_mappings`, because a count or a name is not the class itself. Use
+`broad`/`narrow` only for subsumption between elements of the same kind. Whether
+existing broad and narrow mappings point the right way is tracked in
+https://github.com/microbiomedata/nmdc-schema/issues/3250.
 
 ## Documenting modeling decisions, not debates
 

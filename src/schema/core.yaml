@@ -1922,7 +1922,7 @@ slots:
   mass:
     title: mass
     description: A physical quality that inheres in a bearer by virtue of the proportion of the bearer's amount of matter.
-    exact_mappings:
+    related_mappings:
       - PATO:0000125
     range: QuantityValue
     annotations:
@@ -1991,7 +1991,7 @@ slots:
     description: Name of the metagenome-assembled genome.
   number_of_contig:
     description: Number of contigs
-    exact_mappings:
+    related_mappings:
       - GENEPIO:0000093
     range: integer
     minimum_value: 0
@@ -2039,49 +2039,49 @@ slots:
     see_also: 
       - doi:10.1093/bioinformatics/btz848
     range: string
-    exact_mappings:
+    related_mappings:
       - TAXRANK:0000022
   gtdbtk_phylum:
     description: Taxonomic phylum assigned by GTDB-Tk.
     see_also: 
       - doi:10.1093/bioinformatics/btz848
     range: string
-    exact_mappings:
+    related_mappings:
       - TAXRANK:0000001
   gtdbtk_class:
     description: Taxonomic class assigned by GTDB-Tk.
     see_also: 
       - doi:10.1093/bioinformatics/btz848
     range: string
-    exact_mappings:
+    related_mappings:
       - TAXRANK:0000002
   gtdbtk_order:
     description: Taxonomic order assigned by GTDB-Tk.
     see_also: 
       - doi:10.1093/bioinformatics/btz848
     range: string
-    exact_mappings:
+    related_mappings:
       - TAXRANK:0000003
   gtdbtk_family:
     description: Taxonomic family assigned by GTDB-Tk.
     see_also: 
       - doi:10.1093/bioinformatics/btz848
     range: string
-    exact_mappings:
+    related_mappings:
       - TAXRANK:0000004
   gtdbtk_genus:
     range: string
     description: Taxonomic genus assigned by GTDB-Tk.
     see_also: 
       - doi:10.1093/bioinformatics/btz848
-    exact_mappings:
+    related_mappings:
       - TAXRANK:0000005
   gtdbtk_species:
     description: Taxonomic genus assigned by GTDB-Tk.
     see_also: 
       - doi:10.1093/bioinformatics/btz848
     range: string
-    exact_mappings:
+    related_mappings:
       - TAXRANK:0000006
 
   highest_similarity_score:

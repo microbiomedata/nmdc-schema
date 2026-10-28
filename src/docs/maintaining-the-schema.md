@@ -41,9 +41,8 @@ For example:
     examples:
       - value: doi:10.46936/10.25585/60000880
         description: The DOI links to an electronic document.
-    exact_mappings:
+    related_mappings:
       - OBI:0002110
-    narrow_mappings:
       - edam.data:1188
 ```
 

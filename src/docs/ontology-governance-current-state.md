@@ -192,8 +192,8 @@ Different placement contexts have different implications:
 |---|---|---|---|
 | `meaning:` on permissible value | Canonical semantic identity of a PV | Yes — must resolve to an IRI | `meaning: OBI:0000366` |
 | `class_uri:` / `slot_uri:` | Schema element identity in RDF/OWL | Yes | `class_uri: OBI:0000011` |
-| `exact_mappings:` | This element IS that term | Yes (for OWL generation) | `exact_mappings: - TAXRANK:0000006` |
-| `close_mappings:` / `related_mappings:` / `broad_mappings:` / `narrow_mappings:` | Looser alignment, informative | Yes (for OWL) | `close_mappings: - NCIT:C16551` |
+| `exact_mappings:` | This element IS that term. Not used for a slot that names an ontology class | Yes (for OWL generation) | `exact_mappings: - OBI:0000747` (on `Biosample`) |
+| `close_mappings:` / `related_mappings:` / `broad_mappings:` / `narrow_mappings:` | Looser alignment, informative. A slot names an ontology class only in `close_mappings` or `related_mappings` | Yes (for OWL) | `related_mappings: - TAXRANK:0000006` (on `gtdbtk_species`) |
 | `id_prefixes:` on a class | What CURIE prefixes valid instances may use | Advisory/conditional | `id_prefixes: - PR` |
 | Value in a CURIE-typed slot (data) | Instance identifier | String pattern only | `type: ENVO:00002030` |
 | Free-text description or annotation | Documentation only | No — just a string | `Expected_value: FMA or UBERON` |
