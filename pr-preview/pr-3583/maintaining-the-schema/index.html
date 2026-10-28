@@ -421,13 +421,74 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#asserting-mappings-in-the-nmdc-schema" class="md-nav__link">
+  <a href="#mapping-schema-elements-to-external-terms" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Asserting mappings in the NMDC Schema
+        Mapping schema elements to external terms
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Mapping schema elements to external terms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mappings-and-the-other-metaslots-that-hold-external-terms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mappings and the other metaslots that hold external terms
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-mapping-metaslots" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The mapping metaslots
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#which-kinds-of-element-can-map-to-which" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Which kinds of element can map to which
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permissible-values-meaning-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Permissible values: meaning first
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#choosing-and-checking-a-term" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choosing and checking a term
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -846,13 +907,74 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#asserting-mappings-in-the-nmdc-schema" class="md-nav__link">
+  <a href="#mapping-schema-elements-to-external-terms" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Asserting mappings in the NMDC Schema
+        Mapping schema elements to external terms
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Mapping schema elements to external terms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mappings-and-the-other-metaslots-that-hold-external-terms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mappings and the other metaslots that hold external terms
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-mapping-metaslots" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The mapping metaslots
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#which-kinds-of-element-can-map-to-which" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Which kinds of element can map to which
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permissible-values-meaning-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Permissible values: meaning first
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#choosing-and-checking-a-term" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choosing and checking a term
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -975,8 +1097,8 @@ and especially those from the <a href="https://obofoundry.org/">OBO Foundry</a>.
 <p>Reuse of existing terminologies and knowledge can be found in several places in the NMDC schema, including the use of
 the <a href="https://gensc.org/mixs/">MIxS</a> schema, the <a href="https://environmentontology.org/">EnvO</a> ontology, and the 
 <a href="https://www.ebi.ac.uk/chebi/">CHEBI</a> ontology.  In addition, the NMDC schema elements like slots and classes are
-annotated with mappings (<a href="https://linkml.io/linkml/schemas/uris-and-mappings.html">exact, narrow, related scopes</a>) 
-to these external resources.</p>
+annotated with mappings to these external resources, as described in
+<a href="#mapping-schema-elements-to-external-terms">Mapping schema elements to external terms</a>.</p>
 <p>For example: </p>
 <pre><code class="language-yaml">  doi_value:
     description: &gt;-
@@ -986,11 +1108,11 @@ to these external resources.</p>
       - DOI
       - digital object identifier
     range: uriorcurie
-    pattern: '^doi:10.\d{2,9}/.*$'
+    pattern: '^doi:10\.\d{2,9}/.*$'
     examples:
       - value: doi:10.46936/10.25585/60000880
         description: The DOI links to an electronic document.
-    related_mappings:
+    close_mappings:
       - OBI:0002110
       - edam.data:1188
 </code></pre>
@@ -1005,22 +1127,106 @@ LinkML schemas should have default prefix assertions, but any element can use a 
 Ideally, the expanded URI should be web resolvable, but that is not required.
 The prefixes can be expanded to base URIs owned by a particular resource, or they can be
 expanded to base URIs owned by some resolving service, like the bioregistry.</p>
-<h2 id="asserting-mappings-in-the-nmdc-schema">Asserting mappings in the NMDC Schema</h2>
-<p>As mentioned above, URIs are assigned to most elements of a LinkML schema, either explicitly by the schema authors,
-or implicitly through the default prefix and the element's key. If an external prefix is used, that means the semantics 
-of the element are identical to the external term, unless otherwise refined. Sometimes it is desirable to associate a 
-LinkML schema element with a term from an external resource, without asserting that the semantics are identical. 
-In this case, a variety of <a href="https://linkml.io/linkml-model/latest/docs/mappings/">mapping terms</a> can be used.</p>
-<p>Adding mappings to a schema element is one of the best and most compact ways to clarify the meaning of that element. </p>
-<p>Schema contributors are strongly encouraged to use mappings whose prefixes are already defined in the schema.
-Schema contributors are always responsible for having a holistic understanding of an external term to be mapped
-into the schema. This means gaining familiarity with the parent and child terms, as well as any other axioms 
-applied to the term. The EBI Ontology Lookup Service is a good place to look for these details.</p>
-<p>When it appears necessary to use a mapping whose prefix isn't already defined in the schema, the contributor
-is responsible for having a holistic understanding of the external namespace (not just the term to be mapped).
-There are several ways to start assessing an ontology that is being considered as a source of mappings.
-If the ontology is in the OBO Foundry, one can look at the 
-<a href="http://dashboard.obofoundry.org/dashboard/index.html">OBO Foundry Dashboard</a>.</p>
+<h2 id="mapping-schema-elements-to-external-terms">Mapping schema elements to external terms</h2>
+<p>A mapping relates a schema element to a term in another vocabulary without making that term the element's
+identity. Mappings are one of the most compact ways to say what an element means, so contributors are encouraged
+to add them. This section is the NMDC Schema's single statement of how to use them.</p>
+<h3 id="mappings-and-the-other-metaslots-that-hold-external-terms">Mappings and the other metaslots that hold external terms</h3>
+<p>Four other metaslots also hold external terms, and each does a different job:</p>
+<ul>
+<li><code>class_uri</code> and <code>slot_uri</code> give the element its own identity in RDF and OWL. Use them only when the element and
+  the external term are the same thing.</li>
+<li><code>meaning</code> names the term that a permissible value stands for.</li>
+<li><code>see_also</code> links to pages for human readers, such as specifications and GitHub issues. An ontology CURIE
+  belongs in a mapping, not in <code>see_also</code>. Moving the MIxS CURIEs still in <code>see_also</code> in
+  <code>portal_mixs_inspired.yaml</code> is tracked in <a href="https://github.com/microbiomedata/nmdc-schema/issues/3031">https://github.com/microbiomedata/nmdc-schema/issues/3031</a>.</li>
+</ul>
+<h3 id="the-mapping-metaslots">The mapping metaslots</h3>
+<p>Each LinkML mapping metaslot becomes one SKOS predicate in the generated OWL
+(<a href="https://github.com/linkml/linkml-model/blob/main/linkml_model/model/schema/mappings.yaml">linkml-model mappings.yaml</a>,
+<a href="https://www.w3.org/TR/skos-reference/">W3C SKOS Reference</a>). In the table, X is the schema element and Y is the
+external term.</p>
+<table>
+<thead>
+<tr>
+<th>Metaslot</th>
+<th>SKOS predicate</th>
+<th><code>X &lt;metaslot&gt; Y</code> means</th>
+<th>How the NMDC Schema uses it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>exact_mappings</code></td>
+<td><code>skos:exactMatch</code></td>
+<td>X and Y are the same concept.</td>
+<td>For identity between elements of the same kind, such as <code>Biosample</code> and <code>OBI:0000747</code>, or <code>title</code> and <code>dcterms:title</code>.</td>
+</tr>
+<tr>
+<td><code>close_mappings</code></td>
+<td><code>skos:closeMatch</code></td>
+<td>X and Y are close enough to treat as the same in some applications.</td>
+<td>For near-identity, such as <code>Organization</code> and <code>dcm:Organization</code>.</td>
+</tr>
+<tr>
+<td><code>related_mappings</code></td>
+<td><code>skos:relatedMatch</code></td>
+<td>X and Y are associated, and neither subsumes the other.</td>
+<td>For adjacent terms, such as the assay that produces a value or the rank of a taxon name.</td>
+</tr>
+<tr>
+<td><code>broad_mappings</code></td>
+<td><code>skos:broadMatch</code></td>
+<td>Y is broader than X.</td>
+<td>For subsumption between elements of the same kind, such as <code>Study</code> and <code>prov:Activity</code>.</td>
+</tr>
+<tr>
+<td><code>narrow_mappings</code></td>
+<td><code>skos:narrowMatch</code></td>
+<td>Y is narrower than X.</td>
+<td>For subsumption between elements of the same kind, such as <code>FunctionalAnnotation</code> and <code>biolink:GeneToGoTermAssociation</code>.</td>
+</tr>
+<tr>
+<td><code>mappings</code></td>
+<td><code>skos:mappingRelation</code></td>
+<td>X and Y are related in an unstated way.</td>
+<td>Only for the existing schema.org, QUDT and PROV alignments, such as <code>latitude</code> and <code>schema:latitude</code>. Use a typed metaslot for anything new.</td>
+</tr>
+</tbody>
+</table>
+<p>The direction of <code>broad_mappings</code> and <code>narrow_mappings</code> is easy to get backwards. <code>skos:broadMatch</code> is a
+sub-property of <code>skos:broader</code>, and the SKOS Reference says "<code>A skos:broader B</code> asserts that B, the object, is a
+broader concept than A". So <code>X broad_mappings Y</code> says that Y subsumes X, the way "egg-laying animal" subsumes
+"platypus". Whether every existing broad and narrow mapping points the right way is tracked in
+<a href="https://github.com/microbiomedata/nmdc-schema/issues/3250">https://github.com/microbiomedata/nmdc-schema/issues/3250</a>.</p>
+<h3 id="which-kinds-of-element-can-map-to-which">Which kinds of element can map to which</h3>
+<p>A class maps to a class, and a permissible value maps to a class or to a value in another vocabulary. A slot maps
+to a property where the other vocabulary has one.</p>
+<p>Many ontologies model a data field only as a class, for example GENEPIO fields, OBI data items, PATO qualities,
+and MS and TAXRANK terms. When such a class is the best match for a slot, put it in <code>close_mappings</code> or
+<code>related_mappings</code>. <code>exact_mappings</code>, <code>broad_mappings</code> and <code>narrow_mappings</code> would assert identity or subsumption
+between a property and a class, which can't hold, and generic <code>mappings</code> is kept for the schema.org, QUDT and PROV
+alignments.</p>
+<p>To choose between the two, ask whether each value of the slot is an instance of what the class describes. If it
+is, use <code>close_mappings</code>. <code>number_of_contig</code> holds a count of contigs, and <code>GENEPIO:0000093</code> (contig count) describes
+exactly that. If it isn't, use <code>related_mappings</code>. <code>gtdbtk_species</code> holds a species name,
+while <code>TAXRANK:0000006</code> is the rank "species" itself.</p>
+<h3 id="permissible-values-meaning-first">Permissible values: <code>meaning</code> first</h3>
+<p>Put the term a permissible value stands for in <code>meaning</code>, and use mapping metaslots only for further terms. For
+example, <code>acetic_acid</code> in <code>ChemicalEntityEnum</code> has <code>meaning: CHEBI:15366</code> (acetic acid) and
+<code>related_mappings: CHEBI:30089</code> (acetate). Some older values put their only term in <code>exact_mappings</code> and have no
+<code>meaning</code>, such as the values of <code>MassAnalyzerEnum</code>. New values should not follow that pattern, and moving the
+older ones is tracked in <a href="https://github.com/microbiomedata/nmdc-schema/issues/3108">https://github.com/microbiomedata/nmdc-schema/issues/3108</a>.</p>
+<h3 id="choosing-and-checking-a-term">Choosing and checking a term</h3>
+<p>Use <code>exact_mappings</code> only when you are sure the two are the same. When the external term is an assay, method or
+measurement next to the element rather than the element itself, use <code>related_mappings</code>. For example, map a gene
+or a process to the sequencing assay that reads it or runs it with <code>related_mappings</code>.</p>
+<p>An embeddings search, such as the OLS4 <code>llm_search</code>, is a good way to find candidates, but a high score is only a
+lead. Confirm that the CURIE resolves to the intended term, and read the term's parents, children and axioms in
+the <a href="https://www.ebi.ac.uk/ols4/">EBI Ontology Lookup Service</a> before using it.</p>
+<p>Prefer prefixes the schema already defines. Before adding a new prefix, assess the whole ontology, not only the
+term you want. For an OBO Foundry ontology, the
+<a href="http://dashboard.obofoundry.org/dashboard/index.html">OBO Foundry Dashboard</a> is a good place to start.</p>
 <h2 id="asserting-identifiers-in-linkml-data">Asserting identifiers in LinkML data</h2>
 <p>Generally speaking, the smallest atom of LinkML data is an instance of one class. LinkML slots take values, 
 but always in the context of some class (on the right hand side). LinkML data files are frequently collections 

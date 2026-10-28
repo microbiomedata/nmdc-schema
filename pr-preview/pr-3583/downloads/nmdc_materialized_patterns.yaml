@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.25.post17.dev0+8b6c61c67
+version: 11.25.post18.dev0+cbcfe7b33
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -6826,14 +6826,14 @@ slots:
     description: The ionization source used to introduce processed samples into a
       mass spectrometer
     from_schema: https://w3id.org/nmdc/nmdc
-    related_mappings:
+    close_mappings:
     - MS:1000008
     range: IonizationSourceEnum
   mass_analyzers:
     name: mass_analyzers
     description: The kind of mass analyzer(s) used during the spectra collection.
     from_schema: https://w3id.org/nmdc/nmdc
-    related_mappings:
+    close_mappings:
     - MS:1000443
     range: MassAnalyzerEnum
     multivalued: true
@@ -6851,7 +6851,7 @@ slots:
     description: Mode of running a mass spectrometer method by which m/z ranges are
       selected and ions possibly fragment.
     from_schema: https://w3id.org/nmdc/nmdc
-    related_mappings:
+    close_mappings:
     - MS:1003213
     range: MassSpectrometryAcquisitionStrategyEnum
   eluent_introduction_category:
@@ -6906,13 +6906,13 @@ slots:
   library_preparation_kit:
     name: library_preparation_kit
     from_schema: https://w3id.org/nmdc/nmdc
-    related_mappings:
+    close_mappings:
     - GENEPIO:0001450
     range: string
   pcr_cycles:
     name: pcr_cycles
     from_schema: https://w3id.org/nmdc/nmdc
-    related_mappings:
+    close_mappings:
     - OBI:0002475
     range: integer
   is_stranded:
@@ -6939,8 +6939,9 @@ slots:
     aliases:
     - sample mass
     - sample weight
-    related_mappings:
+    close_mappings:
     - MS:1000004
+    related_mappings:
     - MIXS:0000111
     range: QuantityValue
   library_type:
@@ -7608,7 +7609,7 @@ slots:
     - value: metaspades v. 3.15.2
     - value: IMG Annotation Pipeline v.5.0.25
     from_schema: https://w3id.org/nmdc/nmdc
-    related_mappings:
+    close_mappings:
     - NCIT:C165211
     range: string
   qc_comment:
@@ -7623,7 +7624,7 @@ slots:
     description: The scientific objectives associated with the entity. It SHOULD correspond
       to scientific norms for objectives field in a structured abstract.
     from_schema: https://w3id.org/nmdc/nmdc
-    related_mappings:
+    close_mappings:
     - SIO:000337
     range: string
   md5_checksum:
@@ -7828,7 +7829,7 @@ slots:
     aliases:
     - DOI
     - digital object identifier
-    related_mappings:
+    close_mappings:
     - OBI:0002110
     - edam.data:1188
     range: uriorcurie
@@ -8063,9 +8064,8 @@ slots:
     - todos, remove nucl_acid_ext from OmicsProcessing (DataGeneration)
     from_schema: https://w3id.org/nmdc/nmdc
     related_mappings:
-    - NCIT:C177560
-    narrow_mappings:
     - MIXS:0000037
+    - NCIT:C177560
     rank: 1000
     range: ExtractionTargetEnum
     multivalued: true
@@ -19755,7 +19755,7 @@ slots:
     name: number_of_contig
     description: Number of contigs
     from_schema: https://w3id.org/nmdc/nmdc
-    related_mappings:
+    close_mappings:
     - GENEPIO:0000093
     range: integer
     minimum_value: 0
