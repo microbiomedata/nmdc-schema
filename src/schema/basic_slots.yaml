@@ -131,7 +131,7 @@ slots:
     description: >- 
       Information about how workflow results were generated when the processing is done by an external organization (e.g., JGI) such
       as software tool name and version or pipeline name and version.
-    related_mappings:
+    close_mappings:
       - NCIT:C165211
     examples:
       - value: metaspades v. 3.15.2
@@ -149,7 +149,7 @@ slots:
     description: >-
       The scientific objectives associated with the entity.
       It SHOULD correspond to scientific norms for objectives field in a structured abstract.
-    related_mappings:
+    close_mappings:
       - SIO:000337
 
   md5_checksum:
@@ -333,7 +333,7 @@ slots:
     examples:
       - value: doi:10.46936/10.25585/60000880
         description: The DOI links to an electronic document.
-    related_mappings:
+    close_mappings:
       - OBI:0002110
       - edam.data:1188
 
@@ -541,9 +541,8 @@ slots:
     range: ExtractionTargetEnum
     notes:
       - todos, remove nucl_acid_ext from OmicsProcessing (DataGeneration)
-    narrow_mappings:
-      - MIXS:0000037
     related_mappings:
+      - MIXS:0000037
       - NCIT:C177560
 
   id:

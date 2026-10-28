@@ -106,21 +106,12 @@ Dependabot security updates and alerts are on; `.github/dependabot.yml` adds gro
 - Write verbose, descriptive variable and function names
 - Use None return values to indicate absence of a result
 
-## LinkML Mapping Metaslots — Conventions
+## Mappings and structured aliases
 
-Use typed subtypes (`exact_mappings`, `close_mappings`, `broad_mappings`,
-`narrow_mappings`, `related_mappings`) in preference to generic `mappings`.
-
-**Exception — keep `mappings` (generic) for:** schema.org properties
-(`schema:QuantityValue`, `schema:latitude`, etc.), QUDT (`qudt:unit`,
-`qudt:quantityValue`), and `prov:wasGeneratedBy`. These are
-*property-to-property* alignments where SKOS directional semantics
-(broader/narrower) don't apply. Do not "fix" these to `exact_mappings`.
-
-**`see_also`** is for human-readable documentation pointers only: URLs,
-GitHub issue links, specification documents. Ontology CURIEs belong in a
-`*_mappings` slot. See #3031 for an open cleanup of MIXS CURIEs currently
-in `see_also` in `portal_mixs_inspired.yaml`.
+The rules for `exact_mappings`, `close_mappings`, `related_mappings`, `broad_mappings`, `narrow_mappings`, generic
+`mappings`, `meaning`, `class_uri`, `slot_uri` and `see_also` are in one place, the "Mapping schema elements to
+external terms" section of `src/docs/maintaining-the-schema.md`. Read it before adding or changing a mapping, and
+change that section rather than restating the rules here.
 
 **`structured_aliases`** requires `literal_form`, a SKOS predicate
 (`EXACT_SYNONYM`, `NARROW_SYNONYM`, `BROAD_SYNONYM`, `RELATED_SYNONYM`),
@@ -133,68 +124,6 @@ template), put the best public URL in `source` and a one-line caveat in
 `notes`. Per-alias rationale (e.g. why a predicate is NARROW rather than
 EXACT) also goes in `notes`, not in a YAML `#` comment. Plain `aliases` is
 for unattributed synonym strings.
-
-**Type compatibility.** A mapping relates elements of the same kind: a class
-maps to a class, a slot maps to a property, and a permissible value maps to a
-class (a PV names a kind, so it aligns with an ontology class, not a property).
-Do not map a PV to a property.
-
-**Slots and data-field classes.** Many ontologies model a data field as a class
-rather than a property (GENEPIO fields, OBI data items, PATO qualities, MS and
-TAXRANK terms). When the only matching term for a slot is such a class, put it
-in `close_mappings` if the slot and the class hold the same single fact, and in
-`related_mappings` otherwise. Never put a class in a slot's `exact_mappings`,
-`broad_mappings`, `narrow_mappings` or generic `mappings`: exact and the
-directional predicates assert identity or subsumption between a property and a
-class, which can't hold. `tests/test_slot_mappings_not_classes.py` enforces this
-with a recorded OLS4 lookup of each term; add new terms there.
-
-**Predicate strength.** Use `exact_mappings` only for genuine identity; prefer
-`close_mappings` or `related_mappings` when the aligned term is an assay, method,
-or measurement adjacent to (not the same as) the schema element. A common trap:
-mapping a gene or region value to a *sequencing-assay* term (e.g. an OBI assay
-class) belongs in `related_mappings`, not `exact_mappings`, because the assay is
-not the gene. Keep abstraction layers distinct (a process is not the assay that
-runs it).
-
-**Finding candidates.** Prefer embeddings search (OLS4 `llm_search`) over lexical
-matching, and treat a high similarity score as a candidate to verify, not a
-confirmed mapping. Confirm the CURIE resolves to the intended term before
-asserting it.
-
-**Predicate choice and directionality.** LinkML's mapping slots map one-to-one to
-SKOS predicates ([`linkml-model` mappings.yaml](https://github.com/linkml/linkml-model/blob/main/linkml_model/model/schema/mappings.yaml),
-[W3C SKOS Reference](https://www.w3.org/TR/skos-reference/)). `exact`/`close`/`related`
-are symmetric; `broad`/`narrow` are directional inverses of each other:
-
-| Slot | SKOS predicate | Symmetric? | `X <slot> Y` means |
-|---|---|---|---|
-| `exact_mappings` | `skos:exactMatch` | yes (transitive) | X and Y denote the same concept |
-| `close_mappings` | `skos:closeMatch` | yes (not transitive, by design) | close enough to treat as the same in some applications |
-| `related_mappings` | `skos:relatedMatch` | yes | X is associatively related to Y (no subsumption) |
-| `broad_mappings` | `skos:broadMatch` | no | **Y is broader than X** (X is the more specific) |
-| `narrow_mappings` | `skos:narrowMatch` | no | **Y is narrower than X** (X is the more general) |
-| `mappings` (generic) | `skos:mappingRelation` | n/a | untyped; reserve for property-to-property alignments |
-
-Two other metaslots carry ontology terms but are not mappings. `meaning` on a
-permissible value names the class that value stands for. `slot_uri` and
-`class_uri` give the element's own identity in RDF and OWL, so they are stronger
-than any mapping.
-
-Directionality is the common trap. The SKOS Reference states "`A skos:broader B`
-asserts that B, the object, is a broader concept than A," and `skos:broadMatch` is a
-sub-property of `skos:broader` (S41), so `X broad_mappings Y` means **Y subsumes X**.
-SKOS Primer example: `platypus skos:broadMatch eggLayingAnimals` (the specific concept
-points up to the broader one). In this schema `bacterial_rRNA_operon broad_mappings
-SO:0000178` (operon) reads correctly: operon is broader than that specific rRNA operon.
-
-**Current state.** Every slot-to-class mapping in `src/schema/` uses
-`close_mappings` or `related_mappings`. For example, the GTDB-Tk rank slots name
-TAXRANK classes and `num_16s` names an OMIT rRNA class, both in
-`related_mappings`, because a count or a name is not the class itself. Use
-`broad`/`narrow` only for subsumption between elements of the same kind. Whether
-existing broad and narrow mappings point the right way is tracked in
-https://github.com/microbiomedata/nmdc-schema/issues/3250.
 
 ## Documenting modeling decisions, not debates
 

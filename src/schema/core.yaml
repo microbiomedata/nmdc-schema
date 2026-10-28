@@ -1991,7 +1991,7 @@ slots:
     description: Name of the metagenome-assembled genome.
   number_of_contig:
     description: Number of contigs
-    related_mappings:
+    close_mappings:
       - GENEPIO:0000093
     range: integer
     minimum_value: 0
