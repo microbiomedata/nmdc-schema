@@ -75,8 +75,7 @@ Four other metaslots also hold external terms, and each does a different job:
   the external term are the same thing.
 - `meaning` names the term that a permissible value stands for.
 - `see_also` links to pages for human readers, such as specifications and GitHub issues. An ontology CURIE
-  belongs in a mapping, not in `see_also`. Moving the MIxS CURIEs still in `see_also` in
-  `portal_mixs_inspired.yaml` is tracked in https://github.com/microbiomedata/nmdc-schema/issues/3031.
+  belongs in a mapping, not in `see_also`.
 
 ### The mapping metaslots
 
@@ -97,8 +96,7 @@ external term.
 The direction of `broad_mappings` and `narrow_mappings` is easy to get backwards. `skos:broadMatch` is a
 sub-property of `skos:broader`, and the SKOS Reference says "`A skos:broader B` asserts that B, the object, is a
 broader concept than A". So `X broad_mappings Y` says that Y subsumes X, the way "egg-laying animal" subsumes
-"platypus". Whether every existing broad and narrow mapping points the right way is tracked in
-https://github.com/microbiomedata/nmdc-schema/issues/3250.
+"platypus".
 
 ### Which kinds of element can map to which
 
@@ -121,8 +119,7 @@ while `TAXRANK:0000006` is the rank "species" itself.
 Put the term a permissible value stands for in `meaning`, and use mapping metaslots only for further terms. For
 example, `acetic_acid` in `ChemicalEntityEnum` has `meaning: CHEBI:15366` (acetic acid) and
 `related_mappings: CHEBI:30089` (acetate). Some older values put their only term in `exact_mappings` and have no
-`meaning`, such as the values of `MassAnalyzerEnum`. New values should not follow that pattern, and moving the
-older ones is tracked in https://github.com/microbiomedata/nmdc-schema/issues/3108.
+`meaning`, such as the values of `MassAnalyzerEnum`. New values should not follow that pattern.
 
 ### Choosing and checking a term
 
