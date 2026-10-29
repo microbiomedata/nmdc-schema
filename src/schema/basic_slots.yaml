@@ -1181,7 +1181,7 @@ enums:
         description: GTDBTK archaeal summary
 
       GTDBTK Summary JSON:
-        description: GTDBTK bacterial and archaeal summary in JSON format
+        description: Log file for running GTDBTK, in JSON format
         see_also:
           - https://ecogenomics.github.io/GTDBTk/
         annotations:
