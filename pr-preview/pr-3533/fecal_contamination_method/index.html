@@ -851,13 +851,10 @@ description: The assay or protocol used to measure the fecal contamination indic
   as a name, reference or URL.
 title: fecal contamination method
 notes:
-- Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification
-  4.4.4 standard (follow `see_also` for reference documentation) we can see that the
-  slot capturing details about the method used to measure the fecal contamination
-  indicator is closely related to `fecal_contamination_method` in the NMDC schema.
-- The PHA4GE.wwsurv.1.0 package does not have a method attribute for this. The ww_endog_control_1_protocol
-  attribute of the SARS-CoV-2.wwsurv.1.0 package is related, since it describes the
-  protocol for the endogenous control rather than for a fecal indicator as such.
+- 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to fecal contamination
+  method (GENEPIO:0100817).'
+- 'NCBI BioSample: related match to the ww_endog_control_1_protocol attribute of the
+  SARS-CoV-2.wwsurv.1.0 package; the PHA4GE.wwsurv.1.0 package has no method attribute.'
 examples:
 - value: RT-ddPCR on a QIAcuity One
 from_schema: https://w3id.org/nmdc/nmdc

@@ -869,16 +869,13 @@ description: The volume of wastewater that flowed through the sampling site over
   day of collection.
 title: total daily flow rate
 notes:
-- Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification
-  4.4.4 standard (follow `see_also` for reference documentation) we can see that the
-  slots capturing details about the total daily flow rate at the sampling site (one
-  slot for the value and one for the unit) are related to `total_daily_flow_rate`
-  in the NMDC schema. We have marked them as related rather than close because what
-  is a single QuantityValue here is split across two PHA4GE slots. The PHA4GE schema
-  also records the measurement method, which we do not have a slot for yet.
-- Close match to the total_daily_flow_rate attribute of the PHA4GE.wwsurv.1.0 package
-  and to the ww_flow attribute of the SARS-CoV-2.wwsurv.1.0 package (liters per day),
-  since each of those holds the flow as a single value.
+- 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to total daily
+  flow rate measurement value (GENEPIO:0100905) and unit (GENEPIO:0100906); one QuantityValue
+  here is split across PHA4GE value and unit fields, and the PHA4GE measurement method
+  (GENEPIO:0100907) has no slot.'
+- 'NCBI BioSample: close match to the total_daily_flow_rate attribute of the PHA4GE.wwsurv.1.0
+  package and to the ww_flow attribute of the SARS-CoV-2.wwsurv.1.0 package (liters
+  per day).'
 comments:
 - Report the daily volumetric flow; the flow at the moment of collection goes in instantaneous_flow_rate.
   A value reported in million gallons per day can be stored with the UCUM unit 10*6.[gal_us]/d

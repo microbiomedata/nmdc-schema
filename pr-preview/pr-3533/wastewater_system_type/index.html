@@ -832,15 +832,10 @@ description: The kind of wastewater system the sample was taken from, such as a 
   sewer, a combined sewer, a septic tank or a latrine.
 title: wastewater system type
 notes:
-- Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification
-  4.4.4 standard (follow `see_also` for reference documentation) we can see that the
-  slot capturing details about the type of wastewater system the sample came from
-  (sanitary sewer, combined sewer, septic tank and so on, recommended in every PHA4GE
-  wastewater template) is closely related to `wastewater_system_type` in the NMDC
-  schema. `WastewaterSystemTypeEnum` carries over the PHA4GE picklist.
-- Close match to the ww_system_type attribute of the PHA4GE.wwsurv.1.0 package, for
-  the same reason. Submitters have written values like Separated, Combined and sanitary
-  sewer there.
+- 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to wastewater
+  system type (GENEPIO:0100771); WastewaterSystemTypeEnum carries the PHA4GE picklist.'
+- 'NCBI BioSample: close match to the ww_system_type attribute of the PHA4GE.wwsurv.1.0
+  package, where submitters have written Separated, Combined and sanitary sewer.'
 comments:
 - This classifies the collection system itself. sewage_type records whether the treatment
   plant is municipal or industrial and wastewater_type records where the wastewater

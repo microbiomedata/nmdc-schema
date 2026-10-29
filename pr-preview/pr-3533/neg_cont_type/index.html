@@ -844,15 +844,11 @@ annotations:
 description: The substance or equipment used as a negative control in an investigation
 title: negative control type
 notes:
-- Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification
-  4.4.4 standard (follow `see_also` for reference documentation) we can see that the
-  slot capturing experimental control details (free text about any control included
-  in the sample) is related to `neg_cont_type` in the NMDC schema, which names the
-  negative control material from a fixed list. We have marked it as related rather
-  than close because the PHA4GE slot covers positive and negative controls alike and
-  is not limited to the material.
-- Close match to the neg_cont_type attribute, which is the NCBI harmonized name for
-  this MIxS term and is used by the MIxS wastewater packages.
+- 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to experimental
+  control details (GENEPIO:0100922); the PHA4GE field is free text about any control
+  in the sample, this slot names the negative control material from a fixed list.'
+- 'NCBI BioSample: close match to the neg_cont_type attribute, the NCBI harmonized
+  name for this MIxS term, used by the MIxS wastewater packages.'
 from_schema: https://w3id.org/nmdc/nmdc
 see_also:
 - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4

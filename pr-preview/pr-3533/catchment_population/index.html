@@ -841,16 +841,13 @@ description: 'The number of people whose wastewater contributes to the sample: t
   human population of the sewershed or catchment area served by the sampling site.'
 title: catchment population
 notes:
-- Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification
-  4.4.4 standard (follow `see_also` for reference documentation) we can see that the
-  slot capturing details about the human population of the water catchment area (a
-  count of the people served by the sewershed - recommended in every PHA4GE wastewater
-  template) is closely related to `catchment_population` in the NMDC schema. The PHA4GE
-  schema also has a coarse picklist of population ranges, which is only loosely related
-  here because a range can be derived from the count but not the other way round.
-- Close match to the water_catchment_area_population attribute in the PHA4GE.wwsurv.1.0
-  package, for the same reason, and to the ww_population attribute that the SARS-CoV-2.wwsurv.1.0
-  package makes mandatory.
+- 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to water catchment
+  area human population measurement value (GENEPIO:0100773); related match to water
+  catchment area human population range (GENEPIO:0100774), a coarse picklist that
+  can be derived from this count.'
+- 'NCBI BioSample: close match to the water_catchment_area_population attribute of
+  the PHA4GE.wwsurv.1.0 package and to the ww_population attribute of the SARS-CoV-2.wwsurv.1.0
+  package.'
 comments:
 - Give a count of people, not a density or a range, and record how the number was
   measured or estimated in catchment_population_method.

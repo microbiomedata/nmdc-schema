@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.25.post29.dev0+412b22a69
+version: 11.25.post30.dev0+0e1e7dfd2
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -9443,13 +9443,12 @@ slots:
       terms can be separated by pipes
     title: environment adjacent to site
     notes:
-    - Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification
-      4.4.4 standard (follow `see_also` for reference documentation) we can see that
-      the slot capturing details about the proximal environmental site (restricted
-      to the PHA4GE environmental site picklist) is closely related to `adjacent_environment`
-      in the NMDC schema, which accepts any ENVO ecosystem or human construction term.
-    - Close match to the adjacent_environment attribute of the PHA4GE.wwsurv.1.0 package,
-      which is the NCBI harmonized name for this MIxS term, for the same reason.
+    - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to proximal
+      environmental site (GENEPIO:0101205); the PHA4GE field is restricted to its
+      environmental site picklist, this slot accepts any ENVO ecosystem or human construction
+      term.'
+    - 'NCBI BioSample: close match to the adjacent_environment attribute of the PHA4GE.wwsurv.1.0
+      package, the NCBI harmonized name for this MIxS term.'
     examples:
     - object:
         type: nmdc:ControlledTermValue
@@ -14402,15 +14401,11 @@ slots:
     description: The substance or equipment used as a negative control in an investigation
     title: negative control type
     notes:
-    - Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification
-      4.4.4 standard (follow `see_also` for reference documentation) we can see that
-      the slot capturing experimental control details (free text about any control
-      included in the sample) is related to `neg_cont_type` in the NMDC schema, which
-      names the negative control material from a fixed list. We have marked it as
-      related rather than close because the PHA4GE slot covers positive and negative
-      controls alike and is not limited to the material.
-    - Close match to the neg_cont_type attribute, which is the NCBI harmonized name
-      for this MIxS term and is used by the MIxS wastewater packages.
+    - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to experimental
+      control details (GENEPIO:0100922); the PHA4GE field is free text about any control
+      in the sample, this slot names the negative control material from a fixed list.'
+    - 'NCBI BioSample: close match to the neg_cont_type attribute, the NCBI harmonized
+      name for this MIxS term, used by the MIxS wastewater packages.'
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
@@ -15416,15 +15411,11 @@ slots:
       a process which is part of an investigation delivers a true positive
     title: positive control type
     notes:
-    - Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification
-      4.4.4 standard (follow `see_also` for reference documentation) we can see that
-      the slot capturing experimental control details (free text about any control
-      included in the sample) is related to `pos_cont_type` in the NMDC schema, which
-      names the positive control material. We have marked it as related rather than
-      close because the PHA4GE slot covers positive and negative controls alike and
-      is not limited to the material.
-    - Close match to the pos_cont_type attribute, which is the NCBI harmonized name
-      for this MIxS term and is used by the MIxS wastewater packages.
+    - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to experimental
+      control details (GENEPIO:0100922); the PHA4GE field is free text about any control
+      in the sample, this slot names the positive control material.'
+    - 'NCBI BioSample: close match to the pos_cont_type attribute, the NCBI harmonized
+      name for this MIxS term, used by the MIxS wastewater packages.'
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
@@ -20059,20 +20050,15 @@ slots:
       collected the sample.
     title: collected by
     notes:
-    - Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification
-      4.4.4 standard (follow `see_also` for reference documentation) we can see that
-      the slot capturing details about who collected the sample (the organization
-      the sample collector is affiliated with - required in every PHA4GE wastewater
-      template) is closely related to `collected_by` in the NMDC schema. The PHA4GE
-      schema also has a slot for the name of the specific laboratory that collected
-      the sample, which is only loosely related here because `collected_by` is not
-      restricted to laboratories.
-    - Close match to the collected_by attribute of the PHA4GE.wwsurv.1.0 package (name
-      of persons or institute who collected the sample), for the same reason. The
-      SARS-CoV-2.wwsurv.1.0 package uses the same attribute under the same name.
-    - We have kept this as free text rather than a reference to an Organization so
-      that submissions and NCBI imports need no entity resolution. A normalized link
-      can be added later without losing the recorded name.
+    - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to sample
+      collected by (GENEPIO:0001153), the organization the sample collector is affiliated
+      with; related match to sample collected by laboratory name (GENEPIO:0100428),
+      since this slot is not limited to laboratories.'
+    - 'NCBI BioSample: close match to the collected_by attribute of the PHA4GE.wwsurv.1.0
+      package, also used under that name by the SARS-CoV-2.wwsurv.1.0 package.'
+    - Kept as free text rather than a reference to an Organization so that submissions
+      and NCBI imports need no entity resolution; a normalized link can be added later
+      without losing the recorded name.
     comments:
     - Write the organization name in full and spell it the same way across samples.
       It names the utility, agency or laboratory that did the collecting, not a contact
@@ -20097,17 +20083,13 @@ slots:
       site.'
     title: catchment population
     notes:
-    - Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification
-      4.4.4 standard (follow `see_also` for reference documentation) we can see that
-      the slot capturing details about the human population of the water catchment
-      area (a count of the people served by the sewershed - recommended in every PHA4GE
-      wastewater template) is closely related to `catchment_population` in the NMDC
-      schema. The PHA4GE schema also has a coarse picklist of population ranges, which
-      is only loosely related here because a range can be derived from the count but
-      not the other way round.
-    - Close match to the water_catchment_area_population attribute in the PHA4GE.wwsurv.1.0
-      package, for the same reason, and to the ww_population attribute that the SARS-CoV-2.wwsurv.1.0
-      package makes mandatory.
+    - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to water
+      catchment area human population measurement value (GENEPIO:0100773); related
+      match to water catchment area human population range (GENEPIO:0100774), a coarse
+      picklist that can be derived from this count.'
+    - 'NCBI BioSample: close match to the water_catchment_area_population attribute
+      of the PHA4GE.wwsurv.1.0 package and to the ww_population attribute of the SARS-CoV-2.wwsurv.1.0
+      package.'
     comments:
     - Give a count of people, not a density or a range, and record how the number
       was measured or estimated in catchment_population_method.
@@ -20134,13 +20116,10 @@ slots:
     description: How the catchment population was measured or estimated.
     title: catchment population method
     notes:
-    - Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification
-      4.4.4 standard (follow `see_also` for reference documentation) we can see that
-      the slot capturing details about how the catchment population was measured or
-      estimated is closely related to `catchment_population_method` in the NMDC schema.
-    - The PHA4GE.wwsurv.1.0 package does not have a separate attribute for this, but
-      the ww_population_source attribute of the SARS-CoV-2.wwsurv.1.0 package is a
-      close match, for the same reason.
+    - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to water
+      catchment area human population measurement method (GENEPIO:0100775).'
+    - 'NCBI BioSample: close match to the ww_population_source attribute of the SARS-CoV-2.wwsurv.1.0
+      package; the PHA4GE.wwsurv.1.0 package has no separate method attribute.'
     examples:
     - value: population of jurisdiction encompassing the wastewater service area
     - value: census blocks clipped to wastewater service area
@@ -20163,17 +20142,13 @@ slots:
       (commonly 24 hours).
     title: sample collection duration
     notes:
-    - Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification
-      4.4.4 standard (follow `see_also` for reference documentation) we can see that
-      the slots capturing details about how long the sample was collected for (one
-      slot for the value and one for the unit - recommended in every PHA4GE wastewater
-      template) are related to `sample_collection_duration` in the NMDC schema. We
-      have marked them as related rather than close because what is a single QuantityValue
-      here is split across two PHA4GE slots.
-    - Close match to the sample_collection_time_duration attribute of the PHA4GE.wwsurv.1.0
-      package (documented as an ISO 8601 duration) and to the mandatory ww_sample_duration
-      attribute of the SARS-CoV-2.wwsurv.1.0 package (whole hours, 0 for a grab sample),
-      since each of those holds the duration as a single value.
+    - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to sample
+      collection time duration value (GENEPIO:0100766) and sample collection duration
+      unit (GENEPIO:0100767); one QuantityValue here is split across PHA4GE value
+      and unit fields.'
+    - 'NCBI BioSample: close match to the sample_collection_time_duration attribute
+      of the PHA4GE.wwsurv.1.0 package (an ISO 8601 duration) and to the ww_sample_duration
+      attribute of the SARS-CoV-2.wwsurv.1.0 package (whole hours, 0 for a grab sample).'
     comments:
     - Record the duration in hours, minutes or days and keep the submitter wording
       in has_raw_value. Whether a composite was flow-weighted or time-weighted belongs
@@ -20203,15 +20178,10 @@ slots:
       a sanitary sewer, a combined sewer, a septic tank or a latrine.
     title: wastewater system type
     notes:
-    - Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification
-      4.4.4 standard (follow `see_also` for reference documentation) we can see that
-      the slot capturing details about the type of wastewater system the sample came
-      from (sanitary sewer, combined sewer, septic tank and so on, recommended in
-      every PHA4GE wastewater template) is closely related to `wastewater_system_type`
-      in the NMDC schema. `WastewaterSystemTypeEnum` carries over the PHA4GE picklist.
-    - Close match to the ww_system_type attribute of the PHA4GE.wwsurv.1.0 package,
-      for the same reason. Submitters have written values like Separated, Combined
-      and sanitary sewer there.
+    - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to wastewater
+      system type (GENEPIO:0100771); WastewaterSystemTypeEnum carries the PHA4GE picklist.'
+    - 'NCBI BioSample: close match to the ww_system_type attribute of the PHA4GE.wwsurv.1.0
+      package, where submitters have written Separated, Combined and sanitary sewer.'
     comments:
     - This classifies the collection system itself. sewage_type records whether the
       treatment plant is municipal or industrial and wastewater_type records where
@@ -20237,17 +20207,13 @@ slots:
       the day of collection.
     title: total daily flow rate
     notes:
-    - Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification
-      4.4.4 standard (follow `see_also` for reference documentation) we can see that
-      the slots capturing details about the total daily flow rate at the sampling
-      site (one slot for the value and one for the unit) are related to `total_daily_flow_rate`
-      in the NMDC schema. We have marked them as related rather than close because
-      what is a single QuantityValue here is split across two PHA4GE slots. The PHA4GE
-      schema also records the measurement method, which we do not have a slot for
-      yet.
-    - Close match to the total_daily_flow_rate attribute of the PHA4GE.wwsurv.1.0
+    - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to total
+      daily flow rate measurement value (GENEPIO:0100905) and unit (GENEPIO:0100906);
+      one QuantityValue here is split across PHA4GE value and unit fields, and the
+      PHA4GE measurement method (GENEPIO:0100907) has no slot.'
+    - 'NCBI BioSample: close match to the total_daily_flow_rate attribute of the PHA4GE.wwsurv.1.0
       package and to the ww_flow attribute of the SARS-CoV-2.wwsurv.1.0 package (liters
-      per day), since each of those holds the flow as a single value.
+      per day).'
     comments:
     - Report the daily volumetric flow; the flow at the moment of collection goes
       in instantaneous_flow_rate. A value reported in million gallons per day can
@@ -20281,16 +20247,12 @@ slots:
       the moment the sample was collected.
     title: instantaneous flow rate
     notes:
-    - Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification
-      4.4.4 standard (follow `see_also` for reference documentation) we can see that
-      the slots capturing details about the flow rate at the moment the sample was
-      taken (one slot for the value and one for the unit) are related to `instantaneous_flow_rate`
-      in the NMDC schema. We have marked them as related rather than close because
-      what is a single QuantityValue here is split across two PHA4GE slots. The PHA4GE
-      schema also records the measurement method, which we do not have a slot for
-      yet.
-    - Close match to the instantaneous_flow_rate attribute of the PHA4GE.wwsurv.1.0
-      package, since it holds the flow as a single value.
+    - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to instantaneous
+      flow rate measurement value (GENEPIO:0100908) and unit (GENEPIO:0100909); one
+      QuantityValue here is split across PHA4GE value and unit fields, and the PHA4GE
+      measurement method (GENEPIO:0100910) has no slot.'
+    - 'NCBI BioSample: close match to the instantaneous_flow_rate attribute of the
+      PHA4GE.wwsurv.1.0 package.'
     examples:
     - object:
         type: nmdc:QuantityValue
@@ -20313,15 +20275,12 @@ slots:
       affected the sample, for example rain that diluted the wastewater.
     title: presampling weather
     notes:
-    - Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification
-      4.4.4 standard (follow `see_also` for reference documentation) we can see that
-      the slot capturing details about the weather in the period before sampling (multivalued
-      and restricted to its own picklist of cloudy/overcast, partially cloudy, drizzle,
-      fog, rain, snow, storm and sunny/clear) is closely related to `presampling_weather`
-      in the NMDC schema, which holds a single value from the MIxS sampling day weather
-      list instead.
-    - Close match to the presamp_weather attribute of the PHA4GE.wwsurv.1.0 package,
-      for the same reason.
+    - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to presampling
+      weather conditions (GENEPIO:0100780); the PHA4GE field is multivalued and restricted
+      to its own picklist, this slot holds one value from the MIxS sampling day weather
+      list.'
+    - 'NCBI BioSample: close match to the presamp_weather attribute of the PHA4GE.wwsurv.1.0
+      package.'
     comments:
     - samp_weather records the weather on the sampling day itself. Both use SampWeatherEnum
       so the two stay comparable.
@@ -20342,14 +20301,11 @@ slots:
       replicate of another sample.'
     title: experimental specimen role type
     notes:
-    - Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification
-      4.4.4 standard (follow `see_also` for reference documentation) we can see that
-      the slot capturing details about the role a specimen plays in the experiment
-      (positive or negative control, technical or biological replicate, and also multivalued
-      in PHA4GE) is closely related to `experimental_specimen_role_type` in  the NMDC
-      schema, which holds a single role.
-    - Close match to the experimental_specimen_role_type attribute of the PHA4GE.wwsurv.1.0
-      package, for the same reason.
+    - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to experimental
+      specimen role type (GENEPIO:0100921); the PHA4GE field is multivalued, this
+      slot holds one role.'
+    - 'NCBI BioSample: close match to the experimental_specimen_role_type attribute
+      of the PHA4GE.wwsurv.1.0 package.'
     comments:
     - Leave the slot empty for an ordinary sample under study. Describe the control
       material in neg_cont_type or pos_cont_type and the replicate numbering in replicate_number
@@ -20371,16 +20327,13 @@ slots:
       mottle virus.
     title: fecal contamination indicator
     notes:
-    - Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification
-      4.4.4 standard (follow `see_also` for reference documentation) we can see that
-      the slot capturing details about which fecal contamination indicator was measured
-      (crAssphage, pepper mild mottle virus and so on - recommended in every PHA4GE
-      wastewater template) is closely related to `fecal_contamination_indicator` in
-      the NMDC schema. `FecalContaminationIndicatorEnum` carries over the PHA4GE picklist.
-    - Close match to the fecal_contamination_indicator attribute of the PHA4GE.wwsurv.1.0
-      package, for the same reason. The ww_endog_control_1 attribute of the SARS-CoV-2.wwsurv.1.0
-      package records the same organisms but treats them as endogenous process controls,
-      so we have only marked it as related.
+    - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to fecal
+      contamination indicator (GENEPIO:0100814); FecalContaminationIndicatorEnum carries
+      the PHA4GE picklist.'
+    - 'NCBI BioSample: close match to the fecal_contamination_indicator attribute
+      of the PHA4GE.wwsurv.1.0 package; related match to the ww_endog_control_1 attribute
+      of the SARS-CoV-2.wwsurv.1.0 package, which records the same organisms as endogenous
+      process controls.'
     comments:
     - Record the measured amount in fecal_contamination_value and the assay in fecal_contamination_method.
       One indicator per sample; put further indicators in misc_param.
@@ -20406,17 +20359,13 @@ slots:
       as a concentration in the wastewater.
     title: fecal contamination value
     notes:
-    - Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification
-      4.4.4 standard (follow `see_also` for reference documentation) we can see that
-      the slots capturing details about the measured amount of the fecal contamination
-      indicator (one slot for the value and one for the unit - both recommended in
-      every PHA4GE wastewater template) are related to `fecal_contamination_value`
-      in the NMDC schema. We have marked them as related rather than close because
-      what is a single QuantityValue here is split across two PHA4GE slots.
-    - Close match to the fecal_contamination_value attribute of the PHA4GE.wwsurv.1.0
-      package, which holds the value and unit in one string. The ww_endog_control_1_conc
-      attribute of the SARS-CoV-2.wwsurv.1.0 package is only related, since its unit
-      sits in a separate ww_endog_control_1_units attribute.
+    - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to fecal
+      contamination value (GENEPIO:0100815) and fecal contamination unit (GENEPIO:0100816);
+      one QuantityValue here is split across PHA4GE value and unit fields.'
+    - 'NCBI BioSample: close match to the fecal_contamination_value attribute of the
+      PHA4GE.wwsurv.1.0 package (value and unit in one string); related match to the
+      ww_endog_control_1_conc attribute of the SARS-CoV-2.wwsurv.1.0 package, whose
+      unit sits in ww_endog_control_1_units.'
     comments:
     - Store copies per liter, milliliter or gram. A cycle threshold reported instead
       of a concentration does not fit these units; keep it in misc_param.
@@ -20449,14 +20398,11 @@ slots:
       as a name, reference or URL.
     title: fecal contamination method
     notes:
-    - Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification
-      4.4.4 standard (follow `see_also` for reference documentation) we can see that
-      the slot capturing details about the method used to measure the fecal contamination
-      indicator is closely related to `fecal_contamination_method` in the NMDC schema.
-    - The PHA4GE.wwsurv.1.0 package does not have a method attribute for this. The
-      ww_endog_control_1_protocol attribute of the SARS-CoV-2.wwsurv.1.0 package is
-      related, since it describes the protocol for the endogenous control rather than
-      for a fecal indicator as such.
+    - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to fecal
+      contamination method (GENEPIO:0100817).'
+    - 'NCBI BioSample: related match to the ww_endog_control_1_protocol attribute
+      of the SARS-CoV-2.wwsurv.1.0 package; the PHA4GE.wwsurv.1.0 package has no method
+      attribute.'
     examples:
     - value: RT-ddPCR on a QIAcuity One
     from_schema: https://w3id.org/nmdc/nmdc

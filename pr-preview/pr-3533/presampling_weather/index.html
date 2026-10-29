@@ -832,15 +832,12 @@ description: The weather in the period before sample collection, when it may hav
   affected the sample, for example rain that diluted the wastewater.
 title: presampling weather
 notes:
-- Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification
-  4.4.4 standard (follow `see_also` for reference documentation) we can see that the
-  slot capturing details about the weather in the period before sampling (multivalued
-  and restricted to its own picklist of cloudy/overcast, partially cloudy, drizzle,
-  fog, rain, snow, storm and sunny/clear) is closely related to `presampling_weather`
-  in the NMDC schema, which holds a single value from the MIxS sampling day weather
-  list instead.
-- Close match to the presamp_weather attribute of the PHA4GE.wwsurv.1.0 package, for
-  the same reason.
+- 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to presampling
+  weather conditions (GENEPIO:0100780); the PHA4GE field is multivalued and restricted
+  to its own picklist, this slot holds one value from the MIxS sampling day weather
+  list.'
+- 'NCBI BioSample: close match to the presamp_weather attribute of the PHA4GE.wwsurv.1.0
+  package.'
 comments:
 - samp_weather records the weather on the sampling day itself. Both use SampWeatherEnum
   so the two stay comparable.

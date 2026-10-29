@@ -837,16 +837,13 @@ description: The gene, virus, bacterium or substance that was measured as an ind
   virus.
 title: fecal contamination indicator
 notes:
-- Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification
-  4.4.4 standard (follow `see_also` for reference documentation) we can see that the
-  slot capturing details about which fecal contamination indicator was measured (crAssphage,
-  pepper mild mottle virus and so on - recommended in every PHA4GE wastewater template)
-  is closely related to `fecal_contamination_indicator` in the NMDC schema. `FecalContaminationIndicatorEnum`
-  carries over the PHA4GE picklist.
-- Close match to the fecal_contamination_indicator attribute of the PHA4GE.wwsurv.1.0
-  package, for the same reason. The ww_endog_control_1 attribute of the SARS-CoV-2.wwsurv.1.0
-  package records the same organisms but treats them as endogenous process controls,
-  so we have only marked it as related.
+- 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to fecal contamination
+  indicator (GENEPIO:0100814); FecalContaminationIndicatorEnum carries the PHA4GE
+  picklist.'
+- 'NCBI BioSample: close match to the fecal_contamination_indicator attribute of the
+  PHA4GE.wwsurv.1.0 package; related match to the ww_endog_control_1 attribute of
+  the SARS-CoV-2.wwsurv.1.0 package, which records the same organisms as endogenous
+  process controls.'
 comments:
 - Record the measured amount in fecal_contamination_value and the assay in fecal_contamination_method.
   One indicator per sample; put further indicators in misc_param.

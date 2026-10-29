@@ -853,15 +853,12 @@ description: The volumetric flow rate of the wastewater at the sampling site at 
   moment the sample was collected.
 title: instantaneous flow rate
 notes:
-- Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification
-  4.4.4 standard (follow `see_also` for reference documentation) we can see that the
-  slots capturing details about the flow rate at the moment the sample was taken (one
-  slot for the value and one for the unit) are related to `instantaneous_flow_rate`
-  in the NMDC schema. We have marked them as related rather than close because what
-  is a single QuantityValue here is split across two PHA4GE slots. The PHA4GE schema
-  also records the measurement method, which we do not have a slot for yet.
-- Close match to the instantaneous_flow_rate attribute of the PHA4GE.wwsurv.1.0 package,
-  since it holds the flow as a single value.
+- 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to instantaneous
+  flow rate measurement value (GENEPIO:0100908) and unit (GENEPIO:0100909); one QuantityValue
+  here is split across PHA4GE value and unit fields, and the PHA4GE measurement method
+  (GENEPIO:0100910) has no slot.'
+- 'NCBI BioSample: close match to the instantaneous_flow_rate attribute of the PHA4GE.wwsurv.1.0
+  package.'
 examples:
 - object:
     type: nmdc:QuantityValue

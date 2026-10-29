@@ -833,14 +833,11 @@ description: 'The role the sample plays in the experiment when it is not simply 
   replicate of another sample.'
 title: experimental specimen role type
 notes:
-- Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification
-  4.4.4 standard (follow `see_also` for reference documentation) we can see that the
-  slot capturing details about the role a specimen plays in the experiment (positive
-  or negative control, technical or biological replicate, and also multivalued in
-  PHA4GE) is closely related to `experimental_specimen_role_type` in  the NMDC schema,
-  which holds a single role.
-- Close match to the experimental_specimen_role_type attribute of the PHA4GE.wwsurv.1.0
-  package, for the same reason.
+- 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to experimental
+  specimen role type (GENEPIO:0100921); the PHA4GE field is multivalued, this slot
+  holds one role.'
+- 'NCBI BioSample: close match to the experimental_specimen_role_type attribute of
+  the PHA4GE.wwsurv.1.0 package.'
 comments:
 - Leave the slot empty for an ordinary sample under study. Describe the control material
   in neg_cont_type or pos_cont_type and the replicate numbering in replicate_number

@@ -851,13 +851,10 @@ annotations:
 description: How the catchment population was measured or estimated.
 title: catchment population method
 notes:
-- Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification
-  4.4.4 standard (follow `see_also` for reference documentation) we can see that the
-  slot capturing details about how the catchment population was measured or estimated
-  is closely related to `catchment_population_method` in the NMDC schema.
-- The PHA4GE.wwsurv.1.0 package does not have a separate attribute for this, but the
-  ww_population_source attribute of the SARS-CoV-2.wwsurv.1.0 package is a close match,
-  for the same reason.
+- 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to water catchment
+  area human population measurement method (GENEPIO:0100775).'
+- 'NCBI BioSample: close match to the ww_population_source attribute of the SARS-CoV-2.wwsurv.1.0
+  package; the PHA4GE.wwsurv.1.0 package has no separate method attribute.'
 examples:
 - value: population of jurisdiction encompassing the wastewater service area
 - value: census blocks clipped to wastewater service area

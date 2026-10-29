@@ -841,19 +841,15 @@ description: The organization, or the person acting for an organization, that co
   the sample.
 title: collected by
 notes:
-- Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification
-  4.4.4 standard (follow `see_also` for reference documentation) we can see that the
-  slot capturing details about who collected the sample (the organization the sample
-  collector is affiliated with - required in every PHA4GE wastewater template) is
-  closely related to `collected_by` in the NMDC schema. The PHA4GE schema also has
-  a slot for the name of the specific laboratory that collected the sample, which
-  is only loosely related here because `collected_by` is not restricted to laboratories.
-- Close match to the collected_by attribute of the PHA4GE.wwsurv.1.0 package (name
-  of persons or institute who collected the sample), for the same reason. The SARS-CoV-2.wwsurv.1.0
-  package uses the same attribute under the same name.
-- We have kept this as free text rather than a reference to an Organization so that
-  submissions and NCBI imports need no entity resolution. A normalized link can be
-  added later without losing the recorded name.
+- 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to sample collected
+  by (GENEPIO:0001153), the organization the sample collector is affiliated with;
+  related match to sample collected by laboratory name (GENEPIO:0100428), since this
+  slot is not limited to laboratories.'
+- 'NCBI BioSample: close match to the collected_by attribute of the PHA4GE.wwsurv.1.0
+  package, also used under that name by the SARS-CoV-2.wwsurv.1.0 package.'
+- Kept as free text rather than a reference to an Organization so that submissions
+  and NCBI imports need no entity resolution; a normalized link can be added later
+  without losing the recorded name.
 comments:
 - Write the organization name in full and spell it the same way across samples. It
   names the utility, agency or laboratory that did the collecting, not a contact person.

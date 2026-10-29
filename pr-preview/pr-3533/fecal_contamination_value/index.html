@@ -869,17 +869,12 @@ description: The measured amount of the indicator named in fecal_contamination_i
   as a concentration in the wastewater.
 title: fecal contamination value
 notes:
-- Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification
-  4.4.4 standard (follow `see_also` for reference documentation) we can see that the
-  slots capturing details about the measured amount of the fecal contamination indicator
-  (one slot for the value and one for the unit - both recommended in every PHA4GE
-  wastewater template) are related to `fecal_contamination_value` in the NMDC schema.
-  We have marked them as related rather than close because what is a single QuantityValue
-  here is split across two PHA4GE slots.
-- Close match to the fecal_contamination_value attribute of the PHA4GE.wwsurv.1.0
-  package, which holds the value and unit in one string. The ww_endog_control_1_conc
-  attribute of the SARS-CoV-2.wwsurv.1.0 package is only related, since its unit sits
-  in a separate ww_endog_control_1_units attribute.
+- 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to fecal contamination
+  value (GENEPIO:0100815) and fecal contamination unit (GENEPIO:0100816); one QuantityValue
+  here is split across PHA4GE value and unit fields.'
+- 'NCBI BioSample: close match to the fecal_contamination_value attribute of the PHA4GE.wwsurv.1.0
+  package (value and unit in one string); related match to the ww_endog_control_1_conc
+  attribute of the SARS-CoV-2.wwsurv.1.0 package, whose unit sits in ww_endog_control_1_units.'
 comments:
 - Store copies per liter, milliliter or gram. A cycle threshold reported instead of
   a concentration does not fit these units; keep it in misc_param.

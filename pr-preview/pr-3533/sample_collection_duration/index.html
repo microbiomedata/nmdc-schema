@@ -870,17 +870,13 @@ description: The length of time over which the sample was collected. A grab samp
   24 hours).
 title: sample collection duration
 notes:
-- Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification
-  4.4.4 standard (follow `see_also` for reference documentation) we can see that the
-  slots capturing details about how long the sample was collected for (one slot for
-  the value and one for the unit - recommended in every PHA4GE wastewater template)
-  are related to `sample_collection_duration` in the NMDC schema. We have marked them
-  as related rather than close because what is a single QuantityValue here is split
-  across two PHA4GE slots.
-- Close match to the sample_collection_time_duration attribute of the PHA4GE.wwsurv.1.0
-  package (documented as an ISO 8601 duration) and to the mandatory ww_sample_duration
-  attribute of the SARS-CoV-2.wwsurv.1.0 package (whole hours, 0 for a grab sample),
-  since each of those holds the duration as a single value.
+- 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to sample
+  collection time duration value (GENEPIO:0100766) and sample collection duration
+  unit (GENEPIO:0100767); one QuantityValue here is split across PHA4GE value and
+  unit fields.'
+- 'NCBI BioSample: close match to the sample_collection_time_duration attribute of
+  the PHA4GE.wwsurv.1.0 package (an ISO 8601 duration) and to the ww_sample_duration
+  attribute of the SARS-CoV-2.wwsurv.1.0 package (whole hours, 0 for a grab sample).'
 comments:
 - Record the duration in hours, minutes or days and keep the submitter wording in
   has_raw_value. Whether a composite was flow-weighted or time-weighted belongs in
