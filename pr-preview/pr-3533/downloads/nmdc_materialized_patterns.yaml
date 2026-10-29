@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.25.post26.dev0+8507aae68
+version: 11.25.post27.dev0+cc2c8c8ca
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -20036,13 +20036,11 @@ slots:
     todos:
     - add an OBO slot_uri ?
     notes:
-    - Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification
-      4.4.4 standard (follow `see_also` for reference documentation) we can see that
-      slot capturing details about the sampling site ID (submitter-assigned identifier
-      reused for every sample taken from the same site) is closely related to `collected_from`
-      in the NMDC schema.
-    - Close match to the sampling_site_id attribute of the PHA4GE.wwsurv.1.0 package,
-      for the same reason.
+    - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to sampling
+      site ID (GENEPIO:0100760), a submitter-assigned identifier reused for every
+      sample from the same site.'
+    - 'NCBI BioSample: close match to the sampling_site_id attribute of the PHA4GE.wwsurv.1.0
+      package.'
     comments:
     - this illustrates implementing a Biosample relation with a (binary) slot
     from_schema: https://w3id.org/nmdc/nmdc
