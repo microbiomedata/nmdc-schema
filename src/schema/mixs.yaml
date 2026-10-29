@@ -1142,8 +1142,8 @@ slots:
       - GENEPIO:0101205
       - NCBI_BIOSAMPLE_ATTRIBUTE:adjacent_environment
     notes:
-      - Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification 4.4.4 standard (follow `see_also` for reference documentation) we can see that the slot capturing details about the proximal environmental site (restricted to the PHA4GE environmental site picklist) is closely related to `adjacent_environment` in the NMDC schema, which accepts any ENVO ecosystem or human construction term.
-      - Close match to the adjacent_environment attribute of the PHA4GE.wwsurv.1.0 package, which is the NCBI harmonized name for this MIxS term, for the same reason.
+      - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to proximal environmental site (GENEPIO:0101205); the PHA4GE field is restricted to its environmental site picklist, this slot accepts any ENVO ecosystem or human construction term.'
+      - 'NCBI BioSample: close match to the adjacent_environment attribute of the PHA4GE.wwsurv.1.0 package, the NCBI harmonized name for this MIxS term.'
     see_also:
       - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
       - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
@@ -4679,8 +4679,8 @@ slots:
     close_mappings:
       - NCBI_BIOSAMPLE_ATTRIBUTE:neg_cont_type
     notes:
-      - Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification 4.4.4 standard (follow `see_also` for reference documentation) we can see that the slot capturing experimental control details (free text about any control included in the sample) is related to `neg_cont_type` in the NMDC schema, which names the negative control material from a fixed list. We have marked it as related rather than close because the PHA4GE slot covers positive and negative controls alike and is not limited to the material.
-      - Close match to the neg_cont_type attribute, which is the NCBI harmonized name for this MIxS term and is used by the MIxS wastewater packages.
+      - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to experimental control details (GENEPIO:0100922); the PHA4GE field is free text about any control in the sample, this slot names the negative control material from a fixed list.'
+      - 'NCBI BioSample: close match to the neg_cont_type attribute, the NCBI harmonized name for this MIxS term, used by the MIxS wastewater packages.'
     see_also:
       - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
       - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
@@ -5395,8 +5395,8 @@ slots:
     close_mappings:
       - NCBI_BIOSAMPLE_ATTRIBUTE:pos_cont_type
     notes:
-      - Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification 4.4.4 standard (follow `see_also` for reference documentation) we can see that the slot capturing experimental control details (free text about any control included in the sample) is related to `pos_cont_type` in the NMDC schema, which names the positive control material. We have marked it as related rather than close because the PHA4GE slot covers positive and negative controls alike and is not limited to the material.
-      - Close match to the pos_cont_type attribute, which is the NCBI harmonized name for this MIxS term and is used by the MIxS wastewater packages.
+      - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to experimental control details (GENEPIO:0100922); the PHA4GE field is free text about any control in the sample, this slot names the positive control material.'
+      - 'NCBI BioSample: close match to the pos_cont_type attribute, the NCBI harmonized name for this MIxS term, used by the MIxS wastewater packages.'
     see_also:
       - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
       - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
