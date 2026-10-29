@@ -6062,11 +6062,12 @@ slots:
       - GENEPIO:0100806
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to salinity measurement value (GENEPIO:0100805) and unit (GENEPIO:0100806); one QuantityValue here is split across PHA4GE value and unit fields.'
-      - 'NCBI BioSample: close match to the samp_salinity attribute, the MIxS 5 name that NCBI kept for the term MIxS 6 merged into salinity (MIXS:0000183), optional in the PHA4GE.wwsurv.1.0 package.'
+      - 'NCBI BioSample: close match to the salinity attribute, the NCBI harmonized name for MIXS:0000183. The PHA4GE.wwsurv.1.0 package lists the same measurement under the older samp_salinity attribute, the MIxS 5 term that MIxS 6 merged into salinity and MIxS 7 removed, so that name is kept as a close match as well.'
     see_also:
       - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
       - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     close_mappings:
+      - NCBI_BIOSAMPLE_ATTRIBUTE:salinity
       - NCBI_BIOSAMPLE_ATTRIBUTE:samp_salinity
   salt_regm:
     annotations:
