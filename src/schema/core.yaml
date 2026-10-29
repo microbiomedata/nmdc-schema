@@ -1827,11 +1827,11 @@ slots:
     todos:
       - add an OBO slot_uri ?
 
-  ## Slots added to close the gap between NMDC schema and NCBI BioSample package PHA4GE.wwsurv.1.0 
+  ## Slots added to close the gap between NMDC schema and NCBI BioSample package PHA4GE.wwsurv.1.0
   ## as well as PHA4GE schema (follows PHA4GE Wastewater Contextual Data Specification 4.4.4 standard)
-  ## The rule followed to decide whether the mapping is close or related is - 
+  ## The rule followed to decide whether the mapping is close or related is -
   ##   - when the slot and the field hold the same single fact, it's a close mapping and
-  ##   - when when one QuantityValue is split across PHA4GE value and unit fields or the 
+  ##   - when one QuantityValue is split across PHA4GE value and unit fields or the
   ##     concepts only overlap, it's a related mapping.
   collected_by:
     title: collected by
