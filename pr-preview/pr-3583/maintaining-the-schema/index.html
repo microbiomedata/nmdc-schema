@@ -1138,8 +1138,7 @@ to add them. This section is the NMDC Schema's single statement of how to use th
   the external term are the same thing.</li>
 <li><code>meaning</code> names the term that a permissible value stands for.</li>
 <li><code>see_also</code> links to pages for human readers, such as specifications and GitHub issues. An ontology CURIE
-  belongs in a mapping, not in <code>see_also</code>. Moving the MIxS CURIEs still in <code>see_also</code> in
-  <code>portal_mixs_inspired.yaml</code> is tracked in <a href="https://github.com/microbiomedata/nmdc-schema/issues/3031">https://github.com/microbiomedata/nmdc-schema/issues/3031</a>.</li>
+  belongs in a mapping, not in <code>see_also</code>.</li>
 </ul>
 <h3 id="the-mapping-metaslots">The mapping metaslots</h3>
 <p>Each LinkML mapping metaslot becomes one SKOS predicate in the generated OWL
@@ -1197,8 +1196,7 @@ external term.</p>
 <p>The direction of <code>broad_mappings</code> and <code>narrow_mappings</code> is easy to get backwards. <code>skos:broadMatch</code> is a
 sub-property of <code>skos:broader</code>, and the SKOS Reference says "<code>A skos:broader B</code> asserts that B, the object, is a
 broader concept than A". So <code>X broad_mappings Y</code> says that Y subsumes X, the way "egg-laying animal" subsumes
-"platypus". Whether every existing broad and narrow mapping points the right way is tracked in
-<a href="https://github.com/microbiomedata/nmdc-schema/issues/3250">https://github.com/microbiomedata/nmdc-schema/issues/3250</a>.</p>
+"platypus".</p>
 <h3 id="which-kinds-of-element-can-map-to-which">Which kinds of element can map to which</h3>
 <p>A class maps to a class, and a permissible value maps to a class or to a value in another vocabulary. A slot maps
 to a property where the other vocabulary has one.</p>
@@ -1215,8 +1213,7 @@ while <code>TAXRANK:0000006</code> is the rank "species" itself.</p>
 <p>Put the term a permissible value stands for in <code>meaning</code>, and use mapping metaslots only for further terms. For
 example, <code>acetic_acid</code> in <code>ChemicalEntityEnum</code> has <code>meaning: CHEBI:15366</code> (acetic acid) and
 <code>related_mappings: CHEBI:30089</code> (acetate). Some older values put their only term in <code>exact_mappings</code> and have no
-<code>meaning</code>, such as the values of <code>MassAnalyzerEnum</code>. New values should not follow that pattern, and moving the
-older ones is tracked in <a href="https://github.com/microbiomedata/nmdc-schema/issues/3108">https://github.com/microbiomedata/nmdc-schema/issues/3108</a>.</p>
+<code>meaning</code>, such as the values of <code>MassAnalyzerEnum</code>. New values should not follow that pattern.</p>
 <h3 id="choosing-and-checking-a-term">Choosing and checking a term</h3>
 <p>Use <code>exact_mappings</code> only when you are sure the two are the same. When the external term is an assay, method or
 measurement next to the element rather than the element itself, use <code>related_mappings</code>. For example, map a gene
