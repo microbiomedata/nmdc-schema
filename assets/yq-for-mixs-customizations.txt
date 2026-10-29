@@ -1242,11 +1242,13 @@
 '.slots.water_cont_soil_meth.annotations.method_for = {"tag": "method_for", "value": "water_content"}'
 
 # ---------------------------------------------------------------------------
-# PHA4GE Wastewater Contextual Data Specification 4.4.4 
-# (cidgoh/pathogen-genomics-package tag PGPv5.6.5, templates/wastewater/schema.yaml) 
-# alignment to enable NMDC <-> PHA4GE crosswalk.
-# From the PHA4GE schema/package fields that correspond to MIXS slots, we can add 
-# close_mappings / related_mappings to GENEPIO clases.
+# PHA4GE Wastewater Contextual Data Specification 4.4.4
+# (cidgoh/pathogen-genomics-package tag PGPv5.6.5, templates/wastewater/schema.yaml)
+# alignment to enable NMDC <-> PHA4GE crosswalk. Sources:
+# - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+# - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+# From the PHA4GE schema/package fields that correspond to MIXS slots, we can add
+# close_mappings / related_mappings to GENEPIO classes.
 # Note: No exact_mappings even where the shapes agree.
 # Rules followed for mapping are:
 # - close when the slot and the field hold the same single fact
