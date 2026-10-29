@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.25.post13.dev0+76fa03024
+version: 11.25.post22.dev0+947f3e030
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -2466,7 +2466,7 @@ enums:
         description: GTDBTK archaeal summary
       GTDBTK Summary JSON:
         text: GTDBTK Summary JSON
-        description: GTDBTK bacterial and archaeal summary in JSON format
+        description: Log file for running GTDBTK, in JSON format
         annotations:
           file_name_pattern:
             tag: file_name_pattern
@@ -6826,14 +6826,14 @@ slots:
     description: The ionization source used to introduce processed samples into a
       mass spectrometer
     from_schema: https://w3id.org/nmdc/nmdc
-    exact_mappings:
+    close_mappings:
     - MS:1000008
     range: IonizationSourceEnum
   mass_analyzers:
     name: mass_analyzers
     description: The kind of mass analyzer(s) used during the spectra collection.
     from_schema: https://w3id.org/nmdc/nmdc
-    exact_mappings:
+    close_mappings:
     - MS:1000443
     range: MassAnalyzerEnum
     multivalued: true
@@ -6851,7 +6851,7 @@ slots:
     description: Mode of running a mass spectrometer method by which m/z ranges are
       selected and ions possibly fragment.
     from_schema: https://w3id.org/nmdc/nmdc
-    exact_mappings:
+    close_mappings:
     - MS:1003213
     range: MassSpectrometryAcquisitionStrategyEnum
   eluent_introduction_category:
@@ -6906,13 +6906,13 @@ slots:
   library_preparation_kit:
     name: library_preparation_kit
     from_schema: https://w3id.org/nmdc/nmdc
-    exact_mappings:
+    close_mappings:
     - GENEPIO:0001450
     range: string
   pcr_cycles:
     name: pcr_cycles
     from_schema: https://w3id.org/nmdc/nmdc
-    exact_mappings:
+    close_mappings:
     - OBI:0002475
     range: integer
   is_stranded:
@@ -6939,7 +6939,7 @@ slots:
     aliases:
     - sample mass
     - sample weight
-    exact_mappings:
+    close_mappings:
     - MS:1000004
     related_mappings:
     - MIXS:0000111
@@ -7609,7 +7609,7 @@ slots:
     - value: metaspades v. 3.15.2
     - value: IMG Annotation Pipeline v.5.0.25
     from_schema: https://w3id.org/nmdc/nmdc
-    mappings:
+    close_mappings:
     - NCIT:C165211
     range: string
   qc_comment:
@@ -7624,7 +7624,7 @@ slots:
     description: The scientific objectives associated with the entity. It SHOULD correspond
       to scientific norms for objectives field in a structured abstract.
     from_schema: https://w3id.org/nmdc/nmdc
-    mappings:
+    close_mappings:
     - SIO:000337
     range: string
   md5_checksum:
@@ -7829,9 +7829,8 @@ slots:
     aliases:
     - DOI
     - digital object identifier
-    exact_mappings:
+    close_mappings:
     - OBI:0002110
-    related_mappings:
     - edam.data:1188
     range: uriorcurie
     required: true
@@ -8064,9 +8063,9 @@ slots:
     notes:
     - todos, remove nucl_acid_ext from OmicsProcessing (DataGeneration)
     from_schema: https://w3id.org/nmdc/nmdc
-    narrow_mappings:
-    - NCIT:C177560
+    related_mappings:
     - MIXS:0000037
+    - NCIT:C177560
     rank: 1000
     range: ExtractionTargetEnum
     multivalued: true
@@ -19660,7 +19659,7 @@ slots:
       of the bearer's amount of matter.
     title: mass
     from_schema: https://w3id.org/nmdc/nmdc
-    exact_mappings:
+    related_mappings:
     - PATO:0000125
     range: QuantityValue
   substances_used:
@@ -19756,7 +19755,7 @@ slots:
     name: number_of_contig
     description: Number of contigs
     from_schema: https://w3id.org/nmdc/nmdc
-    exact_mappings:
+    close_mappings:
     - GENEPIO:0000093
     range: integer
     minimum_value: 0
@@ -19824,7 +19823,7 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - doi:10.1093/bioinformatics/btz848
-    exact_mappings:
+    related_mappings:
     - TAXRANK:0000022
     range: string
   gtdbtk_phylum:
@@ -19833,7 +19832,7 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - doi:10.1093/bioinformatics/btz848
-    exact_mappings:
+    related_mappings:
     - TAXRANK:0000001
     range: string
   gtdbtk_class:
@@ -19842,7 +19841,7 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - doi:10.1093/bioinformatics/btz848
-    exact_mappings:
+    related_mappings:
     - TAXRANK:0000002
     range: string
   gtdbtk_order:
@@ -19851,7 +19850,7 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - doi:10.1093/bioinformatics/btz848
-    exact_mappings:
+    related_mappings:
     - TAXRANK:0000003
     range: string
   gtdbtk_family:
@@ -19860,7 +19859,7 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - doi:10.1093/bioinformatics/btz848
-    exact_mappings:
+    related_mappings:
     - TAXRANK:0000004
     range: string
   gtdbtk_genus:
@@ -19869,7 +19868,7 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - doi:10.1093/bioinformatics/btz848
-    exact_mappings:
+    related_mappings:
     - TAXRANK:0000005
     range: string
   gtdbtk_species:
@@ -19878,7 +19877,7 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - doi:10.1093/bioinformatics/btz848
-    exact_mappings:
+    related_mappings:
     - TAXRANK:0000006
     range: string
   highest_similarity_score:

@@ -1319,16 +1319,10 @@ during RDF serialization. See <a href="https://github.com/microbiomedata/nmdc-sc
 <td><code>class_uri: OBI:0000011</code></td>
 </tr>
 <tr>
-<td><code>exact_mappings:</code></td>
-<td>This element IS that term</td>
+<td><code>exact_mappings:</code>, <code>close_mappings:</code>, <code>related_mappings:</code>, <code>broad_mappings:</code>, <code>narrow_mappings:</code>, <code>mappings:</code></td>
+<td>Alignment to an external term without taking its identity. Usage rules: <a href="../maintaining-the-schema/#mapping-schema-elements-to-external-terms">Mapping schema elements to external terms</a></td>
 <td>Yes (for OWL generation)</td>
-<td><code>exact_mappings: - TAXRANK:0000006</code></td>
-</tr>
-<tr>
-<td><code>close_mappings:</code> / <code>related_mappings:</code> / <code>broad_mappings:</code> / <code>narrow_mappings:</code></td>
-<td>Looser alignment, informative</td>
-<td>Yes (for OWL)</td>
-<td><code>close_mappings: - NCIT:C16551</code></td>
+<td><code>exact_mappings: - OBI:0000747</code> (on <code>Biosample</code>)</td>
 </tr>
 <tr>
 <td><code>id_prefixes:</code> on a class</td>
@@ -1499,8 +1493,10 @@ in a principled way.</p>
    acceptable for <code>meaning:</code> values? For <code>close_mappings:</code>? For data values?</p>
 </li>
 <li>
-<p><strong>Mapping predicate standards.</strong> When is a match <code>exact_mappings</code> vs
-   <code>close_mappings</code> vs just <code>meaning:</code>? What level of review is required?</p>
+<p><strong>Mapping predicate standards.</strong> Which predicate to use, and when to use
+   <code>meaning:</code> instead, is settled in
+   <a href="../maintaining-the-schema/#mapping-schema-elements-to-external-terms">Mapping schema elements to external terms</a>.
+   Still open: what level of review does a new mapping need?</p>
 </li>
 <li>
 <p><strong>Property-like slot alignment.</strong> 302 of 851 NMDC slots have scalar ranges
