@@ -1144,9 +1144,8 @@ slots:
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to proximal environmental site (GENEPIO:0101205); the PHA4GE field is restricted to its environmental site picklist, this slot accepts any ENVO ecosystem or human construction term.'
       - 'NCBI BioSample: close match to the adjacent_environment attribute of the PHA4GE.wwsurv.1.0 package, the NCBI harmonized name for this MIxS term.'
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
   aero_struc:
     description: Aerospace structures typically consist of thin plates with stiffeners for the external surfaces, bulkheads and frames to support the shape and fasteners such as welds, rivets, screws and bolts to hold the components together
     title: aerospace structure
@@ -1216,9 +1215,8 @@ slots:
       - GENEPIO:0100936
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to ambient temperature measurement value (GENEPIO:0100935) and ambient temperature measurement unit (GENEPIO:0100936); one QuantityValue here is split across PHA4GE value and unit fields.'
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
   air_temp_regm:
     annotations:
       Expected_value: temperature value;treatment interval and duration
@@ -1300,14 +1298,12 @@ slots:
       partial_match: true
     in_subset:
       - biogeochemistry
+      - pha4ge_wastewater
     related_mappings:
       - GENEPIO:0100878
       - GENEPIO:0100879
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to alkalinity measurement value (GENEPIO:0100878) and alkalinity measurement unit (GENEPIO:0100879); one QuantityValue here is split across PHA4GE value and unit fields.'
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
   alkalinity_method:
     description: Method used for alkalinity measurement
     title: alkalinity method
@@ -1722,9 +1718,8 @@ slots:
       - GENEPIO:0100792
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to carbonaceous biochemical oxygen demand (CBOD) measurement value (GENEPIO:0100791) and unit (GENEPIO:0100792); PHA4GE measures the carbonaceous component of the BOD this slot holds, and splits value and unit.'
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
   biocide:
     annotations:
       Expected_value: name;name;timestamp
@@ -2161,9 +2156,8 @@ slots:
       - GENEPIO:0100789
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to chemical oxygen demand (COD) measurement value (GENEPIO:0100788) and unit (GENEPIO:0100789); one QuantityValue here is split across PHA4GE value and unit fields.'
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
   chem_treat_method:
     annotations:
       Expected_value: measurement value;frequency;duration;duration
@@ -2274,9 +2268,8 @@ slots:
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to sample collection start date (GENEPIO:0001174); this slot can hold an interval, the PHA4GE field holds only the start.'
       - 'NCBI BioSample: close match to the collection_date attribute, mandatory in the PHA4GE.wwsurv.1.0 package; both accept a date, a date-time or a date range.'
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
     close_mappings:
       - NCBI_BIOSAMPLE_ATTRIBUTE:collection_date
   conduc:
@@ -2675,6 +2668,7 @@ slots:
       partial_match: true
     in_subset:
       - biogeochemistry
+      - pha4ge_wastewater
     related_mappings:
       - GENEPIO:0000035
       - GENEPIO:0100784
@@ -2682,9 +2676,6 @@ slots:
       - NCBI_BIOSAMPLE_ATTRIBUTE:diss_oxygen
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to dissolved oxygen concentration (GENEPIO:0000035) and dissolved oxygen measurement unit (GENEPIO:0100784); one QuantityValue here is split across PHA4GE value and unit fields. NCBI BioSample: close match to the diss_oxygen attribute, the NCBI harmonized name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package.'
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
   diss_oxygen_fluid:
     annotations:
       Preferred_unit: micromole per kilogram, milligram per liter
@@ -2960,9 +2951,8 @@ slots:
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to environmental site (GENEPIO:0001232); the PHA4GE field is multivalued and restricted to its own picklist.'
       - 'NCBI BioSample: close match to the env_local_scale attribute, the NCBI harmonized name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package.'
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
   env_medium:
     description: 'Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top)'
     title: environmental medium
@@ -2988,9 +2978,8 @@ slots:
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to environmental material (GENEPIO:0001223); the PHA4GE field is multivalued and restricted to its own picklist.'
       - 'NCBI BioSample: close match to the env_medium attribute, the NCBI harmonized name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package.'
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
     annotations:
       tooltip: The predominant environmental material or substrate that directly surrounds or hosts the sample or specimen at the time of sampling. Choose values from subclasses of the 'environmental material' class [ENVO:00010483] in the Environment Ontology (ENVO). Values for this field should be measurable or mass material nouns, representing continuous environmental materials. For host-associated or plant-associated samples, use terms from the UBERON or Plant Ontology to indicate a tissue, organ, or plant structure
   escalator:
@@ -3393,9 +3382,8 @@ slots:
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to geo loc name (country) (GENEPIO:0001181), geo loc name (state/province/territory/region) (GENEPIO:0001185), geo loc name (city) (GENEPIO:0001189) and geo loc name (site) (GENEPIO:0100436); the single text value here holds the levels that are split across those four PHA4GE fields.'
       - 'NCBI BioSample: close match to the geo_loc_name attribute, mandatory in the PHA4GE.wwsurv.1.0 package, with the same INSDC country: region, locality form.'
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
     close_mappings:
       - NCBI_BIOSAMPLE_ATTRIBUTE:geo_loc_name
   glucosidase_act:
@@ -4331,9 +4319,8 @@ slots:
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to geo loc latitude (GENEPIO:0100309) and geo loc longitude (GENEPIO:0100310); one value here is split across two PHA4GE fields.'
       - 'NCBI BioSample: close match to the lat_lon attribute of the PHA4GE.wwsurv.1.0 package; NCBI writes the pair as decimal degrees with N/S and E/W letters.'
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
     close_mappings:
       - NCBI_BIOSAMPLE_ATTRIBUTE:lat_lon
   light_intensity:
@@ -4681,9 +4668,8 @@ slots:
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to experimental control details (GENEPIO:0100922); the PHA4GE field is free text about any control in the sample, this slot names the negative control material from a fixed list.'
       - 'NCBI BioSample: close match to the neg_cont_type attribute, the NCBI harmonized name for this MIxS term, used by the MIxS wastewater packages.'
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
   nitrate:
     annotations:
       Preferred_unit: micromole per liter, milligram per liter, parts per million
@@ -5178,15 +5164,13 @@ slots:
     range: float
     in_subset:
       - biogeochemistry
+      - pha4ge_wastewater
     close_mappings:
       - GENEPIO:0001736
       - NCBI_BIOSAMPLE_ATTRIBUTE:ph
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to pH measurement value (GENEPIO:0001736); PHA4GE records the method in a separate field (GENEPIO:0100781).'
       - 'NCBI BioSample: close match to the ph attribute, the NCBI harmonized name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package.'
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
   ph_meth:
     description: Reference or method used in determining pH
     title: pH method
@@ -5397,9 +5381,8 @@ slots:
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to experimental control details (GENEPIO:0100922); the PHA4GE field is free text about any control in the sample, this slot names the positive control material.'
       - 'NCBI BioSample: close match to the pos_cont_type attribute, the NCBI harmonized name for this MIxS term, used by the MIxS wastewater packages.'
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
   potassium:
     annotations:
       Preferred_unit: milligram per liter, parts per million
@@ -6057,15 +6040,13 @@ slots:
       partial_match: true
     in_subset:
       - biogeochemistry
+      - pha4ge_wastewater
     related_mappings:
       - GENEPIO:0100805
       - GENEPIO:0100806
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to salinity measurement value (GENEPIO:0100805) and unit (GENEPIO:0100806); one QuantityValue here is split across PHA4GE value and unit fields.'
       - 'NCBI BioSample: close match to the salinity attribute, the NCBI harmonized name for MIXS:0000183. The PHA4GE.wwsurv.1.0 package lists the same measurement under the older samp_salinity attribute, the MIxS 5 term that MIxS 6 merged into salinity and MIxS 7 removed, so that name is kept as a close match as well.'
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     close_mappings:
       - NCBI_BIOSAMPLE_ATTRIBUTE:salinity
       - NCBI_BIOSAMPLE_ATTRIBUTE:samp_salinity
@@ -6160,9 +6141,8 @@ slots:
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to specimen processing (GENEPIO:0001253); the PHA4GE field is restricted to its own picklist.'
       - 'NCBI BioSample: close match to the samp_mat_process attribute, the NCBI harmonized name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package.'
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
   samp_md:
     annotations:
       Expected_value: measurement value;enumeration
@@ -6198,9 +6178,8 @@ slots:
       - GENEPIO:0001123
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to specimen collector sample ID (GENEPIO:0001123); the PHA4GE field is scoped to the name assigned by the specimen collector.'
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
   samp_preserv:
     annotations:
       Preferred_unit: milliliter
@@ -6230,9 +6209,8 @@ slots:
       - NCBI_BIOSAMPLE_ATTRIBUTE:purpose_of_sampling
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to purpose of sampling (GENEPIO:0001198); the PHA4GE field is multivalued and restricted to its own picklist, this slot holds one free-text value. NCBI BioSample: close match to the purpose_of_sampling attribute, the NCBI harmonized name for this MIxS term (samp purpose is listed there as a synonym), mandatory in the PHA4GE.wwsurv.1.0 package.'
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
   samp_room_id:
     description: Sampling room number. This ID should be consistent with the designations on the building floor plans
     title: sampling room ID or name
@@ -6266,9 +6244,8 @@ slots:
       - GENEPIO:0100769
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to sample volume measurement value (GENEPIO:0100768) and unit (GENEPIO:0100769); this slot holds any size measure (volume, mass or area), PHA4GE holds volume with value and unit split.'
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
   samp_sort_meth:
     description: Method by which samples are sorted; open face filter collecting total suspended particles, prefilter to remove particles larger than X micrometers in diameter, where common values of X would be 10 and 2.5 full size sorting in a cascade impactor
     title: sample size sorting method
@@ -6303,9 +6280,8 @@ slots:
       - GENEPIO:0101015
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to sample storage duration value (GENEPIO:0101014) and unit (GENEPIO:0101015); this slot holds an ISO 8601 duration, PHA4GE splits value and unit.'
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
   samp_store_loc:
     annotations:
       Expected_value: location name
@@ -6347,9 +6323,8 @@ slots:
       - GENEPIO:0100448
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to sample storage method (GENEPIO:0100448); PHA4GE has no storage temperature field, and its free-text storage method is the nearest.'
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
   samp_subtype:
     description: Name of sample sub-type. For example if "sample type" is "Produced Water" then subtype could be "Oil Phase" or "Water Phase". If "other" is specified, please propose entry in "additional info" field
     title: sample subtype
@@ -6380,9 +6355,8 @@ slots:
       - GENEPIO:0001191
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to organism (GENEPIO:0001191); the PHA4GE field names the surveillance target, this slot names the taxon of the sample itself.'
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
   samp_time_out:
     annotations:
       Expected_value: time
@@ -6479,9 +6453,8 @@ slots:
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to sampling weather conditions (GENEPIO:0100779); the PHA4GE field is multivalued and restricted to its own picklist.'
       - 'NCBI BioSample: close match to the samp_weather attribute, the NCBI harmonized name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package; NCBI accepts free text there, this slot is restricted to the MIxS list.'
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
   samp_well_name:
     description: Name of the well (e.g. BXA1123) where sample was taken
     title: sample well name
@@ -7305,9 +7278,8 @@ slots:
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to total suspended solids (TSS) measurement value (GENEPIO:0100794) and unit (GENEPIO:0100795); this slot is multivalued text, PHA4GE holds one value and its unit.'
       - 'NCBI BioSample: close match to the suspend_solids attribute, the NCBI harmonized name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package.'
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
     close_mappings:
       - NCBI_BIOSAMPLE_ATTRIBUTE:suspend_solids
   tan:
@@ -7373,9 +7345,8 @@ slots:
       - GENEPIO:0100822
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to sample temperature value (at collection) (GENEPIO:0100821) and sample temperature unit (at collection) (GENEPIO:0100822); one QuantityValue here is split across PHA4GE value and unit fields.'
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
   temp_out:
     annotations:
       Preferred_unit: degree Celsius
@@ -7583,14 +7554,12 @@ slots:
       partial_match: true
     in_subset:
       - biogeochemistry
+      - pha4ge_wastewater
     related_mappings:
       - GENEPIO:0100808
       - GENEPIO:0100809
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to total nitrogen (TN) measurement value (GENEPIO:0100808) and unit (GENEPIO:0100809); one QuantityValue here is split across PHA4GE value and unit fields.'
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
   tot_nitro_cont_meth:
     description: Reference or method used in determining the total nitrogen
     title: total nitrogen content method
@@ -7740,9 +7709,8 @@ slots:
       - GENEPIO:0100812
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to total phosphorus (TP) measurement value (GENEPIO:0100811) and unit (GENEPIO:0100812); PHA4GE measures total phosphorus, this slot total phosphate, and value and unit are split.'
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
   tot_sulfur:
     annotations:
       Preferred_unit: milligram per liter, parts per million
@@ -7815,9 +7783,8 @@ slots:
       - NCBI_BIOSAMPLE_ATTRIBUTE:turbidity
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to turbidity measurement value (GENEPIO:0100783) and turbidity measurement unit (GENEPIO:0100914); one QuantityValue here is split across PHA4GE value and unit fields. NCBI BioSample: close match to the turbidity attribute, the NCBI harmonized name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package.'
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
   tvdss_of_hcr_press:
     annotations:
       Preferred_unit: meter
@@ -8615,9 +8582,8 @@ slots:
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to collection device (GENEPIO:0001234); the PHA4GE field is restricted to its own picklist.'
       - 'NCBI BioSample: close match to the collection_device attribute of the PHA4GE.wwsurv.1.0 package (free text, for example autosampler).'
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
   samp_collec_method:
     description: The method employed for collecting the sample
     title: sample collection method
@@ -8636,9 +8602,8 @@ slots:
     notes:
       - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to collection method (GENEPIO:0001241); the PHA4GE field is restricted to its own picklist.'
       - 'NCBI BioSample: close match to the collection_method attribute, the NCBI harmonized name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package.'
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
   estimated_size:
     description: The estimated size of the genome prior to sequencing. Of particular importance in the sequencing of (eukaryotic) genome which could remain in draft form for a long or unspecified period
     title: estimated genome size
