@@ -8,7 +8,7 @@ license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO: "http://purl.obolibrary.org/obo/BFO_"
   COB: "http://purl.obolibrary.org/obo/COB_"
-  EFO: "http://www.ebi.ac.uk/efo/"
+  EFO: "http://www.ebi.ac.uk/efo/EFO_"
   ISA: "http://example.org/isa/"
   NCIT: "http://purl.obolibrary.org/obo/NCIT_" # for Biosample, Study, StudyCategoryEnum PVs, doi_provider, funding_sources, extraction_targets, 'BAI File' only
   IAO: "http://purl.obolibrary.org/obo/IAO_"
