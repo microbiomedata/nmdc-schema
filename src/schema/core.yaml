@@ -446,9 +446,8 @@ enums:
         ENVO version. The sewer system, septic tank and cesspit classes that PHA4GE pins (ENVO:03501451 to
         ENVO:03501454) and the wastewater waste tank class (GENEPIO:0102057) are not released, so
         those values stay unmapped until they are.
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
     permissible_values:
       combined sewer system:
         description: A sewer system that carries sewage and stormwater runoff in the same pipes.
@@ -475,9 +474,8 @@ enums:
   ExperimentalSpecimenRoleTypeEnum:
     description: >-
       The roles a sample can play in an experiment other than being a sample under study.
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
     permissible_values:
       positive experimental control:
         description: The sample was included to confirm that the process detects what it should.
@@ -499,9 +497,8 @@ enums:
       - >-
         The HF183, Lachno3 and F+ coliphage values stay unmapped because the GENEPIO classes PHA4GE
         pins for them (GENEPIO:0101000 to GENEPIO:0101002) are not in a released GENEPIO version.
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
     permissible_values:
       crAssphage:
         description: A bacteriophage of human gut Bacteroides that is abundant in human feces.
@@ -1811,9 +1808,8 @@ slots:
     close_mappings:
       - GENEPIO:0100760
       - NCBI_BIOSAMPLE_ATTRIBUTE:sampling_site_id
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
     notes:
       - >-
         PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to sampling site ID
@@ -1847,9 +1843,8 @@ slots:
       - NCBI_BIOSAMPLE_ATTRIBUTE:collected_by
     related_mappings:
       - GENEPIO:0100428
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
     notes:
       - >-
         PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to sample collected by
@@ -1880,9 +1875,8 @@ slots:
       - NCBI_BIOSAMPLE_ATTRIBUTE:ww_population
     related_mappings:
       - GENEPIO:0100774
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
     notes:
       - >-
         PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to water catchment area human
@@ -1903,9 +1897,8 @@ slots:
     close_mappings:
       - GENEPIO:0100775
       - NCBI_BIOSAMPLE_ATTRIBUTE:ww_population_source
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
     notes:
       - >-
         PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to water catchment area human
@@ -1939,9 +1932,8 @@ slots:
     close_mappings:
       - NCBI_BIOSAMPLE_ATTRIBUTE:sample_collection_time_duration
       - NCBI_BIOSAMPLE_ATTRIBUTE:ww_sample_duration
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
     notes:
       - >-
         PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to sample collection time
@@ -1967,9 +1959,8 @@ slots:
     close_mappings:
       - GENEPIO:0100771
       - NCBI_BIOSAMPLE_ATTRIBUTE:ww_system_type
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
     notes:
       - >-
         PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to wastewater system type
@@ -2001,9 +1992,8 @@ slots:
     close_mappings:
       - NCBI_BIOSAMPLE_ATTRIBUTE:total_daily_flow_rate
       - NCBI_BIOSAMPLE_ATTRIBUTE:ww_flow
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
     notes:
       - >-
         PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to total daily flow rate
@@ -2030,9 +2020,8 @@ slots:
       - GENEPIO:0100909
     close_mappings:
       - NCBI_BIOSAMPLE_ATTRIBUTE:instantaneous_flow_rate
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
     notes:
       - >-
         PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to instantaneous flow rate
@@ -2055,9 +2044,8 @@ slots:
     close_mappings:
       - GENEPIO:0100780
       - NCBI_BIOSAMPLE_ATTRIBUTE:presamp_weather
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
     notes:
       - >-
         PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to presampling weather conditions
@@ -2080,9 +2068,8 @@ slots:
     close_mappings:
       - GENEPIO:0100921
       - NCBI_BIOSAMPLE_ATTRIBUTE:experimental_specimen_role_type
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
     notes:
       - >-
         PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to experimental specimen role
@@ -2107,9 +2094,8 @@ slots:
       - NCBI_BIOSAMPLE_ATTRIBUTE:fecal_contamination_indicator
     related_mappings:
       - NCBI_BIOSAMPLE_ATTRIBUTE:ww_endog_control_1
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
     notes:
       - >-
         PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to fecal contamination indicator
@@ -2143,9 +2129,8 @@ slots:
       - NCBI_BIOSAMPLE_ATTRIBUTE:ww_endog_control_1_conc
     close_mappings:
       - NCBI_BIOSAMPLE_ATTRIBUTE:fecal_contamination_value
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
     notes:
       - >-
         PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to fecal contamination value
@@ -2167,9 +2152,8 @@ slots:
       - GENEPIO:0100817
     related_mappings:
       - NCBI_BIOSAMPLE_ATTRIBUTE:ww_endog_control_1_protocol
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
     notes:
       - >-
         PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to fecal contamination method
