@@ -14,6 +14,7 @@ default_range: string
 prefixes:
   schema: "http://schema.org/"
   nmdc: "https://w3id.org/nmdc/"
+  OM: "http://www.ontology-of-units-of-measure.org/resource/om-2/" # for the degree Celsius unit mapping (OM:degreeCelsius)
 
 classes:
   AttributeValue:
@@ -986,3 +987,41 @@ enums:
           - inch
           - inches
         description: The Unified Code for Units of Measure (UCUM) representation of inch.
+
+      "L/d":
+        title: liters per day
+        aliases:
+          - liters per day
+        description: The Unified Code for Units of Measure (UCUM) representation of liters per day.
+      "L/min":
+        title: liters per minute
+        aliases:
+          - liters per minute
+        description: The Unified Code for Units of Measure (UCUM) representation of liters per minute.
+      "m3/h":
+        title: cubic meters per hour
+        aliases:
+          - cubic meters per hour
+        description: The Unified Code for Units of Measure (UCUM) representation of cubic meters per hour.
+      "10*6.[gal_us]/d":
+        title: million US gallons per day
+        aliases:
+          - MGD
+          - million gallons per day
+        description: The Unified Code for Units of Measure (UCUM) representation of million US gallons per day, the flow unit United States wastewater utilities report.
+      "{copies}/L":
+        title: copies per liter
+        aliases:
+          - copies per liter
+          - gene copies per liter
+        description: The Unified Code for Units of Measure (UCUM) representation of gene or genome copies per liter, written with a UCUM annotation because a copy count is dimensionless.
+      "{copies}/mL":
+        title: copies per milliliter
+        aliases:
+          - copies per milliliter
+        description: The Unified Code for Units of Measure (UCUM) representation of gene or genome copies per milliliter.
+      "{copies}/g":
+        title: copies per gram
+        aliases:
+          - copies per gram
+        description: The Unified Code for Units of Measure (UCUM) representation of gene or genome copies per gram, used for wastewater solids.

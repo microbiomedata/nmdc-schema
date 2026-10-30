@@ -9,6 +9,7 @@ prefixes:
   BFO: "http://purl.obolibrary.org/obo/BFO_"
   COB: "http://purl.obolibrary.org/obo/COB_"
   EFO: "http://www.ebi.ac.uk/efo/"
+  GENEPIO: "http://purl.obolibrary.org/obo/GENEPIO_"
   ISA: "http://example.org/isa/"
   NCIT: "http://purl.obolibrary.org/obo/NCIT_" # for Biosample, Study, StudyCategoryEnum PVs, doi_provider, funding_sources, extraction_targets, 'BAI File' only
   IAO: "http://purl.obolibrary.org/obo/IAO_"
@@ -896,6 +897,17 @@ slots:
     range: Instrument
     multivalued: true
     description: What instrument was used during DataGeneration or MaterialProcessing.
+    related_mappings:
+      - GENEPIO:0001452
+    see_also:
+      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    notes:
+      - >-
+        Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification 4.4.4 standard
+        (follow `see_also` for reference documentation) we can see that slots representing sequencing instruments
+        are mapped directly to GENEPIO:0001452. From the ontology term's documentation we can see that it is 
+        composed in roughly the same way as a sequencing instrument instance is composed in NMDC.
     structured_pattern:
       syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}"
       interpolated: true

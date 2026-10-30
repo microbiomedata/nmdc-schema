@@ -15,9 +15,13 @@ imports:
 
 prefixes:
   CHEBI: "http://purl.obolibrary.org/obo/CHEBI_"
+  EFO: "http://www.ebi.ac.uk/efo/" # for ExperimentalSpecimenRoleTypeEnum PVs only
+  ENVO: "http://purl.obolibrary.org/obo/ENVO_" # for WastewaterSystemTypeEnum PVs only
+  NCBITaxon: "http://purl.obolibrary.org/obo/NCBITaxon_" # for FecalContaminationIndicatorEnum PVs only
   EC: 'https://bioregistry.io/eccode:'
   FBcv: "http://purl.obolibrary.org/obo/FBcv_" # for Biosample only
-  GENEPIO: "http://purl.obolibrary.org/obo/GENEPIO_" # for library_preparation_kit, contig identifier and count only
+  GENEPIO: "http://purl.obolibrary.org/obo/GENEPIO_"
+  NCBI_BIOSAMPLE_ATTRIBUTE: "https://www.ncbi.nlm.nih.gov/biosample/docs/attributes/#"
   KEGG.COMPOUND: "https://bioregistry.io/kegg.compound:"
   MISO: "http://purl.obolibrary.org/obo/MISO_"
   MS: "http://purl.obolibrary.org/obo/MS_"
@@ -432,6 +436,94 @@ enums:
       xylose:
         meaning: CHEBI:18222
 
+  ## Enums for PHA4GE wastewater surveillance slots
+  WastewaterSystemTypeEnum:
+    description: >-
+      The kinds of wastewater collection system a sample can come from.
+    comments:
+      - >-
+        We add `meaning` mappings to permissible values only when the corresponding ENVO class is in a released
+        ENVO version. The sewer system, septic tank and cesspit classes that PHA4GE pins (ENVO:03501451 to
+        ENVO:03501454) and the wastewater waste tank class (GENEPIO:0102057) are not released, so
+        those values stay unmapped until they are.
+    see_also:
+      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    permissible_values:
+      combined sewer system:
+        description: A sewer system that carries sewage and stormwater runoff in the same pipes.
+      sanitary sewer system:
+        description: A sewer system that carries sewage only, with stormwater carried separately. NCBI submissions have also called this a separated system.
+      waste stabilization pond:
+        description: A pond or lagoon in which wastewater is held and treated by natural processes.
+        meaning: ENVO:03600076
+      latrine:
+        meaning: ENVO:01000519
+      septic tank:
+        description: An underground tank in which sewage from a building settles and partly decomposes.
+      cesspit:
+        description: A pit or underground container that receives sewage without treatment.
+      chemical toilet:
+        meaning: ENVO:01000529
+      composting toilet:
+        meaning: ENVO:01000550
+      plumbing drain:
+        meaning: ENVO:01000924
+      wastewater waste tank:
+        description: A tank that holds wastewater for later collection, for example on a ship or an aircraft.
+
+  ExperimentalSpecimenRoleTypeEnum:
+    description: >-
+      The roles a sample can play in an experiment other than being a sample under study.
+    see_also:
+      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    permissible_values:
+      positive experimental control:
+        description: The sample was included to confirm that the process detects what it should.
+        meaning: GENEPIO:0101018
+      negative experimental control:
+        description: The sample was included to show that the process does not detect anything when nothing is there.
+        meaning: GENEPIO:0101019
+      technical replicate:
+        description: The sample is a repeat measurement of the same material as another sample.
+        meaning: EFO:0002090
+      biological replicate:
+        description: The sample is an independent sample of the same kind of material as another sample.
+        meaning: EFO:0002091
+
+  FecalContaminationIndicatorEnum:
+    description: >-
+      Genes, viruses, bacteria and substances measured as indicators of fecal contamination of water.
+    comments:
+      - >-
+        The HF183, Lachno3 and F+ coliphage values stay unmapped because the GENEPIO classes PHA4GE
+        pins for them (GENEPIO:0101000 to GENEPIO:0101002) are not in a released GENEPIO version.
+    see_also:
+      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    permissible_values:
+      crAssphage:
+        description: A bacteriophage of human gut Bacteroides that is abundant in human feces.
+        meaning: NCBITaxon:1211417
+      pepper mild mottle virus:
+        aliases:
+          - PMMoV
+        description: A plant virus that enters sewage through diet and is used as a human fecal indicator and process control.
+        meaning: NCBITaxon:12239
+      Bacteroides HF183:
+        description: The HF183 16S rRNA gene marker of human-associated Bacteroides.
+      Lachnospiraceae Lachno3:
+        description: The Lachno3 16S rRNA gene marker of human-associated Lachnospiraceae.
+      F+ coliphages:
+        aliases:
+          - male-specific coliphages
+        description: Bacteriophages that infect Escherichia coli through the F pilus, used as fecal indicators.
+      stercobilin:
+        description: A bile pigment that gives feces their color, measured chemically as a fecal marker.
+        meaning: CHEBI:26756
+
+
 classes:
 
   ChemicalConversionProcess:
@@ -580,6 +672,7 @@ classes:
       - additional_info
       - address
       - adj_room
+      - adjacent_environment
       - aero_struc
       - agrochem_addition
       - air_PM_concen
@@ -816,6 +909,7 @@ classes:
       - mineral_nutr_regm
       - misc_param
       - n_alkanes
+      - neg_cont_type
       - nitrate
       - nitrite
       - nitro
@@ -855,6 +949,7 @@ classes:
       - plant_struc
       - pollutants
       - porosity
+      - pos_cont_type
       - potassium
       - pour_point
       - pre_treatment
@@ -917,6 +1012,7 @@ classes:
       - samp_md
       - samp_name
       - samp_preserv
+      - samp_purpose
       - samp_room_id
       - samp_size
       - samp_sort_meth
@@ -1117,6 +1213,20 @@ classes:
       - nitrite_nitrogen
       - lbc_thirty
       - lbceq
+
+      ## Wastewater surveillance slots added from PHA4GE schema
+      - catchment_population
+      - catchment_population_method
+      - collected_by
+      - experimental_specimen_role_type
+      - fecal_contamination_indicator
+      - fecal_contamination_method
+      - fecal_contamination_value
+      - instantaneous_flow_rate
+      - presampling_weather
+      - sample_collection_duration
+      - total_daily_flow_rate
+      - wastewater_system_type
     slot_usage:
     
       name:
@@ -1698,11 +1808,375 @@ slots:
     title: Collected From
     description: The Site from which a Biosample was collected
     range: FieldResearchSite
+    close_mappings:
+      - GENEPIO:0100760
+      - NCBI_BIOSAMPLE_ATTRIBUTE:sampling_site_id
+    see_also:
+      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    notes:
+      - >-
+        PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to sampling site ID
+        (GENEPIO:0100760), a submitter-assigned identifier reused for every sample from the same site.
+      - >-
+        NCBI BioSample: close match to the sampling_site_id attribute of the PHA4GE.wwsurv.1.0 package.
     comments:
       - this illustrates implementing a Biosample relation with a (binary) slot
     todos:
       - add an OBO slot_uri ?
 
+  ## Slots added to close the gap between NMDC schema and NCBI BioSample package PHA4GE.wwsurv.1.0
+  ## as well as PHA4GE schema (follows PHA4GE Wastewater Contextual Data Specification 4.4.4 standard)
+  ## The rule followed to decide whether the mapping is close or related is -
+  ##   - when the slot and the field hold the same single fact, it's a close mapping and
+  ##   - when one QuantityValue is split across PHA4GE value and unit fields or the
+  ##     concepts only overlap, it's a related mapping.
+  collected_by:
+    title: collected by
+    description: The organization, or the person acting for an organization, that collected the sample.
+    comments:
+      - >-
+        Write the organization name in full and spell it the same way across samples. It names the
+        utility, agency or laboratory that did the collecting, not a contact person.
+    examples:
+      - value: Southeast San Francisco Wastewater Treatment Plant
+      - value: Public Health Agency of Canada
+    range: string
+    close_mappings:
+      - GENEPIO:0001153
+      - NCBI_BIOSAMPLE_ATTRIBUTE:collected_by
+    related_mappings:
+      - GENEPIO:0100428
+    see_also:
+      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    notes:
+      - >-
+        PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to sample collected by
+        (GENEPIO:0001153), the organization the sample collector is affiliated with; related match to sample
+        collected by laboratory name (GENEPIO:0100428), since this slot is not limited to laboratories.
+      - >-
+        NCBI BioSample: close match to the collected_by attribute of the PHA4GE.wwsurv.1.0 package, also
+        used under that name by the SARS-CoV-2.wwsurv.1.0 package.
+      - >-
+        Kept as free text rather than a reference to an Organization so that submissions and NCBI imports
+        need no entity resolution; a normalized link can be added later without losing the recorded name.
+  catchment_population:
+    title: catchment population
+    description: >-
+      The number of people whose wastewater contributes to the sample: the human population of the
+      sewershed or catchment area served by the sampling site.
+    comments:
+      - >-
+        Give a count of people, not a density or a range, and record how the number was measured or
+        estimated in catchment_population_method.
+    examples:
+      - value: "750000"
+    range: integer
+    minimum_value: 0
+    close_mappings:
+      - GENEPIO:0100773
+      - NCBI_BIOSAMPLE_ATTRIBUTE:water_catchment_area_population
+      - NCBI_BIOSAMPLE_ATTRIBUTE:ww_population
+    related_mappings:
+      - GENEPIO:0100774
+    see_also:
+      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    notes:
+      - >-
+        PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to water catchment area human
+        population measurement value (GENEPIO:0100773); related match to water catchment area human
+        population range (GENEPIO:0100774), a coarse picklist that can be derived from this count.
+      - >-
+        NCBI BioSample: close match to the water_catchment_area_population attribute of the
+        PHA4GE.wwsurv.1.0 package and to the ww_population attribute of the SARS-CoV-2.wwsurv.1.0 package.
+  catchment_population_method:
+    annotations:
+      method_for: catchment_population
+    title: catchment population method
+    description: How the catchment population was measured or estimated.
+    examples:
+      - value: population of jurisdiction encompassing the wastewater service area
+      - value: census blocks clipped to wastewater service area
+    range: string
+    close_mappings:
+      - GENEPIO:0100775
+      - NCBI_BIOSAMPLE_ATTRIBUTE:ww_population_source
+    see_also:
+      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    notes:
+      - >-
+        PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to water catchment area human
+        population measurement method (GENEPIO:0100775).
+      - >-
+        NCBI BioSample: close match to the ww_population_source attribute of the SARS-CoV-2.wwsurv.1.0
+        package; the PHA4GE.wwsurv.1.0 package has no separate method attribute.
+  sample_collection_duration:
+    title: sample collection duration
+    description: >-
+      The length of time over which the sample was collected. A grab sample is collected at one
+      moment and a composite sample accumulates over a period (commonly 24 hours).
+    comments:
+      - >-
+        Record the duration in hours, minutes or days and keep the submitter wording in
+        has_raw_value. Whether a composite was flow-weighted or time-weighted belongs in
+        samp_collec_device and samp_collec_method, not here.
+    examples:
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: "24-hr flow-weighted composite"
+          has_numeric_value: 24
+          has_unit: h
+        description: A 24-hour composite sample; the raw value keeps the weighting detail the submitter reported.
+    range: QuantityValue
+    annotations:
+      storage_units: "h|min|d"
+    related_mappings:
+      - GENEPIO:0100766
+      - GENEPIO:0100767
+    close_mappings:
+      - NCBI_BIOSAMPLE_ATTRIBUTE:sample_collection_time_duration
+      - NCBI_BIOSAMPLE_ATTRIBUTE:ww_sample_duration
+    see_also:
+      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    notes:
+      - >-
+        PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to sample collection time
+        duration value (GENEPIO:0100766) and sample collection duration unit (GENEPIO:0100767); one
+        QuantityValue here is split across PHA4GE value and unit fields.
+      - >-
+        NCBI BioSample: close match to the sample_collection_time_duration attribute of the
+        PHA4GE.wwsurv.1.0 package (an ISO 8601 duration) and to the ww_sample_duration attribute of the
+        SARS-CoV-2.wwsurv.1.0 package (whole hours, 0 for a grab sample).
+  wastewater_system_type:
+    title: wastewater system type
+    description: >-
+      The kind of wastewater system the sample was taken from, such as a sanitary sewer, a combined
+      sewer, a septic tank or a latrine.
+    comments:
+      - >-
+        This classifies the collection system itself. sewage_type records whether the treatment plant
+        is municipal or industrial and wastewater_type records where the wastewater originates (human
+        waste, rainfall, storm drains); all three can be given.
+    examples:
+      - value: sanitary sewer system
+    range: WastewaterSystemTypeEnum
+    close_mappings:
+      - GENEPIO:0100771
+      - NCBI_BIOSAMPLE_ATTRIBUTE:ww_system_type
+    see_also:
+      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    notes:
+      - >-
+        PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to wastewater system type
+        (GENEPIO:0100771); WastewaterSystemTypeEnum carries the PHA4GE picklist.
+      - >-
+        NCBI BioSample: close match to the ww_system_type attribute of the PHA4GE.wwsurv.1.0 package, where
+        submitters have written Separated, Combined and sanitary sewer.
+  total_daily_flow_rate:
+    title: total daily flow rate
+    description: The volume of wastewater that flowed through the sampling site over the day of collection.
+    comments:
+      - >-
+        Report the daily volumetric flow; the flow at the moment of collection goes in
+        instantaneous_flow_rate. A value reported in million gallons per day can be stored with the
+        UCUM unit 10*6.[gal_us]/d or converted to L/d.
+    examples:
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: "2 MGD"
+          has_numeric_value: 2
+          has_unit: "10*6.[gal_us]/d"
+        description: Two million US gallons per day, written with the UCUM code for that unit.
+    range: QuantityValue
+    annotations:
+      storage_units: "L/d|m3/d|10*6.[gal_us]/d"
+    related_mappings:
+      - GENEPIO:0100905
+      - GENEPIO:0100906
+    close_mappings:
+      - NCBI_BIOSAMPLE_ATTRIBUTE:total_daily_flow_rate
+      - NCBI_BIOSAMPLE_ATTRIBUTE:ww_flow
+    see_also:
+      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    notes:
+      - >-
+        PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to total daily flow rate
+        measurement value (GENEPIO:0100905) and unit (GENEPIO:0100906); one QuantityValue here is split
+        across PHA4GE value and unit fields, and the PHA4GE measurement method (GENEPIO:0100907) has no
+        slot.
+      - >-
+        NCBI BioSample: close match to the total_daily_flow_rate attribute of the PHA4GE.wwsurv.1.0 package
+        and to the ww_flow attribute of the SARS-CoV-2.wwsurv.1.0 package (liters per day).
+  instantaneous_flow_rate:
+    title: instantaneous flow rate
+    description: The volumetric flow rate of the wastewater at the sampling site at the moment the sample was collected.
+    examples:
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: "25 m3/h"
+          has_numeric_value: 25
+          has_unit: m3/h
+    range: QuantityValue
+    annotations:
+      storage_units: "L/s|L/min|m3/s|m3/h"
+    related_mappings:
+      - GENEPIO:0100908
+      - GENEPIO:0100909
+    close_mappings:
+      - NCBI_BIOSAMPLE_ATTRIBUTE:instantaneous_flow_rate
+    see_also:
+      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    notes:
+      - >-
+        PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to instantaneous flow rate
+        measurement value (GENEPIO:0100908) and unit (GENEPIO:0100909); one QuantityValue here is split
+        across PHA4GE value and unit fields, and the PHA4GE measurement method (GENEPIO:0100910) has no
+        slot.
+      - >-
+        NCBI BioSample: close match to the instantaneous_flow_rate attribute of the PHA4GE.wwsurv.1.0
+        package.
+  presampling_weather:
+    title: presampling weather
+    description: >-
+      The weather in the period before sample collection, when it may have affected the sample, for
+      example rain that diluted the wastewater.
+    comments:
+      - samp_weather records the weather on the sampling day itself. Both use SampWeatherEnum so the two stay comparable.
+    examples:
+      - value: rain
+    range: SampWeatherEnum
+    close_mappings:
+      - GENEPIO:0100780
+      - NCBI_BIOSAMPLE_ATTRIBUTE:presamp_weather
+    see_also:
+      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    notes:
+      - >-
+        PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to presampling weather conditions
+        (GENEPIO:0100780); the PHA4GE field is multivalued and restricted to its own picklist, this slot
+        holds one value from the MIxS sampling day weather list.
+      - >-
+        NCBI BioSample: close match to the presamp_weather attribute of the PHA4GE.wwsurv.1.0 package.
+  experimental_specimen_role_type:
+    title: experimental specimen role type
+    description: >-
+      The role the sample plays in the experiment when it is not simply a sample under study: a
+      positive or negative control, or a technical or biological replicate of another sample.
+    comments:
+      - >-
+        Leave the slot empty for an ordinary sample under study. Describe the control material in
+        neg_cont_type or pos_cont_type and the replicate numbering in replicate_number or technical_reps.
+    examples:
+      - value: negative experimental control
+    range: ExperimentalSpecimenRoleTypeEnum
+    close_mappings:
+      - GENEPIO:0100921
+      - NCBI_BIOSAMPLE_ATTRIBUTE:experimental_specimen_role_type
+    see_also:
+      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    notes:
+      - >-
+        PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to experimental specimen role
+        type (GENEPIO:0100921); the PHA4GE field is multivalued, this slot holds one role.
+      - >-
+        NCBI BioSample: close match to the experimental_specimen_role_type attribute of the
+        PHA4GE.wwsurv.1.0 package.
+  fecal_contamination_indicator:
+    title: fecal contamination indicator
+    description: >-
+      The gene, virus, bacterium or substance that was measured as an indicator of fecal contamination
+      of the sample, for example crAssphage or pepper mild mottle virus.
+    comments:
+      - >-
+        Record the measured amount in fecal_contamination_value and the assay in
+        fecal_contamination_method. One indicator per sample; put further indicators in misc_param.
+    examples:
+      - value: crAssphage
+    range: FecalContaminationIndicatorEnum
+    close_mappings:
+      - GENEPIO:0100814
+      - NCBI_BIOSAMPLE_ATTRIBUTE:fecal_contamination_indicator
+    related_mappings:
+      - NCBI_BIOSAMPLE_ATTRIBUTE:ww_endog_control_1
+    see_also:
+      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    notes:
+      - >-
+        PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to fecal contamination indicator
+        (GENEPIO:0100814); FecalContaminationIndicatorEnum carries the PHA4GE picklist.
+      - >-
+        NCBI BioSample: close match to the fecal_contamination_indicator attribute of the PHA4GE.wwsurv.1.0
+        package; related match to the ww_endog_control_1 attribute of the SARS-CoV-2.wwsurv.1.0 package,
+        which records the same organisms as endogenous process controls.
+  fecal_contamination_value:
+    title: fecal contamination value
+    description: >-
+      The measured amount of the indicator named in fecal_contamination_indicator, as a concentration
+      in the wastewater.
+    comments:
+      - >-
+        Store copies per liter, milliliter or gram. A cycle threshold reported instead of a
+        concentration does not fit these units; keep it in misc_param.
+    examples:
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: "1.92E+08 copies/L wastewater"
+          has_numeric_value: 192000000
+          has_unit: "{copies}/L"
+        description: A crAssphage concentration reported as gene copies per liter of wastewater.
+    range: QuantityValue
+    annotations:
+      storage_units: "{copies}/L|{copies}/mL|{copies}/g"
+    related_mappings:
+      - GENEPIO:0100815
+      - GENEPIO:0100816
+      - NCBI_BIOSAMPLE_ATTRIBUTE:ww_endog_control_1_conc
+    close_mappings:
+      - NCBI_BIOSAMPLE_ATTRIBUTE:fecal_contamination_value
+    see_also:
+      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    notes:
+      - >-
+        PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to fecal contamination value
+        (GENEPIO:0100815) and fecal contamination unit (GENEPIO:0100816); one QuantityValue here is split
+        across PHA4GE value and unit fields.
+      - >-
+        NCBI BioSample: close match to the fecal_contamination_value attribute of the PHA4GE.wwsurv.1.0
+        package (value and unit in one string); related match to the ww_endog_control_1_conc attribute of
+        the SARS-CoV-2.wwsurv.1.0 package, whose unit sits in ww_endog_control_1_units.
+  fecal_contamination_method:
+    annotations:
+      method_for: fecal_contamination_value
+    title: fecal contamination method
+    description: The assay or protocol used to measure the fecal contamination indicator, as a name, reference or URL.
+    examples:
+      - value: RT-ddPCR on a QIAcuity One
+    range: string
+    close_mappings:
+      - GENEPIO:0100817
+    related_mappings:
+      - NCBI_BIOSAMPLE_ATTRIBUTE:ww_endog_control_1_protocol
+    see_also:
+      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    notes:
+      - >-
+        PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to fecal contamination method
+        (GENEPIO:0100817).
+      - >-
+        NCBI BioSample: related match to the ww_endog_control_1_protocol attribute of the
+        SARS-CoV-2.wwsurv.1.0 package; the PHA4GE.wwsurv.1.0 package has no method attribute.
   bulk_elect_conductivity:
     comments:
       - Provide the value output of the field instrument.

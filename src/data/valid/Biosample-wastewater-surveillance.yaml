@@ -1,0 +1,88 @@
+# A wastewater surveillance sample as the NCBI BioSample package PHA4GE.wwsurv.1.0 and the
+# PHA4GE Wastewater Contextual Data Specification 4.4.4 describe one. It carries the MIxS slots
+# imported for that alignment (samp_purpose, adjacent_environment, neg_cont_type, pos_cont_type),
+# the MIxS weather value anchored to ENVO, and the NMDC-native slots that close the remaining
+# gaps (collected_by, catchment_population, sample_collection_duration, wastewater_system_type,
+# the two flow rates, the fecal contamination triple, presampling_weather and
+# experimental_specimen_role_type).
+id: nmdc:bsm-99-wwsurv1
+name: CAN.22c
+type: nmdc:Biosample
+associated_studies:
+  - nmdc:sty-00-abc123
+env_broad_scale:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: urban biome [ENVO:01000249]
+  term:
+    type: nmdc:OntologyClass
+    id: ENVO:01000249
+    name: urban biome
+env_local_scale:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: wastewater treatment plant [ENVO:00002043]
+  term:
+    type: nmdc:OntologyClass
+    id: ENVO:00002043
+    name: wastewater treatment plant
+env_medium:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: wastewater [ENVO:00002001]
+  term:
+    type: nmdc:OntologyClass
+    id: ENVO:00002001
+    name: wastewater
+collection_date:
+  type: nmdc:TimestampValue
+  has_raw_value: "2016-01-26"
+geo_loc_name:
+  type: nmdc:TextValue
+  has_raw_value: "Canada: Ontario, Ottawa"
+collected_by: City of Ottawa Robert O. Pickard Environmental Centre
+# one of the values MIxS suggests for samp_purpose; PHA4GE would record this as
+# "Wastewater pathogen surveillance"
+samp_purpose: active surveillance not initiated by an outbreak
+samp_weather: cloudy
+presampling_weather: rain
+# the composite sampler and its weighting go in the MIxS device and method slots; the
+# duration slot keeps the submitter wording in has_raw_value
+samp_collec_device: automatic flow-proportional sampler
+samp_collec_method: automatic composite sampling
+sample_collection_duration:
+  type: nmdc:QuantityValue
+  has_raw_value: "24-hr flow-weighted composite"
+  has_numeric_value: 24
+  has_unit: h
+wastewater_system_type: combined sewer system
+catchment_population: 750000
+catchment_population_method: population of jurisdiction encompassing the wastewater service area
+total_daily_flow_rate:
+  type: nmdc:QuantityValue
+  has_raw_value: "120 MGD"
+  has_numeric_value: 120
+  has_unit: "10*6.[gal_us]/d"
+instantaneous_flow_rate:
+  type: nmdc:QuantityValue
+  has_raw_value: "19000 m3/h"
+  has_numeric_value: 19000
+  has_unit: m3/h
+# adjacent_environment is multivalued and takes ENVO ecosystem or human construction terms; the
+# second value shows the free text NCBI submissions carry, kept without a term
+adjacent_environment:
+  - type: nmdc:ControlledTermValue
+    has_raw_value: hospital [ENVO:00002173]
+    term:
+      type: nmdc:OntologyClass
+      id: ENVO:00002173
+      name: hospital
+  - type: nmdc:ControlledTermValue
+    has_raw_value: residential campus housing
+fecal_contamination_indicator: pepper mild mottle virus
+fecal_contamination_value:
+  type: nmdc:QuantityValue
+  has_raw_value: "1.05E+08 copies/L wastewater"
+  has_numeric_value: 105000000
+  has_unit: "{copies}/L"
+fecal_contamination_method: RT-ddPCR on a QIAcuity One
+experimental_specimen_role_type: biological replicate
+neg_cont_type: distilled water
+pos_cont_type: Human coronavirus 229E spiked into the sample as a process control
