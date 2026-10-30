@@ -800,6 +800,8 @@
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="https://www.ncbi.nlm.nih.gov/sra/docs/submitmeta/#linking-metadata-and-data-run">https://www.ncbi.nlm.nih.gov/sra/docs/submitmeta/#linking-metadata-and-data-run</a></li>
+<li><a href="https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4">https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4</a></li>
+<li><a href="https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml">https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -816,8 +818,8 @@
 </thead>
 <tbody>
 <tr>
-<td></td>
-<td></td>
+<td>close</td>
+<td>GENEPIO:0101203</td>
 </tr>
 </tbody>
 </table>
@@ -827,9 +829,17 @@
 <pre><code class="language-yaml">name: insdc_run_identifiers
 description: Identifiers for the manifest of data file(s) that are derived from sequencing
   a library described by the associated INSDC experiment.
+notes:
+- 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to INSDC sequence
+  read accession (GENEPIO:0101203); this slot is multivalued, the PHA4GE field holds
+  one accession.'
 from_schema: https://w3id.org/nmdc/nmdc
 see_also:
 - https://www.ncbi.nlm.nih.gov/sra/docs/submitmeta/#linking-metadata-and-data-run
+- https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+- https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+close_mappings:
+- GENEPIO:0101203
 rank: 1000
 is_a: external_database_identifiers
 mixins:

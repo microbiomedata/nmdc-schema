@@ -843,6 +843,8 @@
 <li><a href="https://www.ebi.ac.uk/biosamples/">https://www.ebi.ac.uk/biosamples/</a></li>
 <li><a href="https://www.ncbi.nlm.nih.gov/biosample">https://www.ncbi.nlm.nih.gov/biosample</a></li>
 <li><a href="https://www.ddbj.nig.ac.jp/biosample/index-e.html">https://www.ddbj.nig.ac.jp/biosample/index-e.html</a></li>
+<li><a href="https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4">https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4</a></li>
+<li><a href="https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml">https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -859,8 +861,8 @@
 </thead>
 <tbody>
 <tr>
-<td></td>
-<td></td>
+<td>close</td>
+<td>GENEPIO:0001139</td>
 </tr>
 </tbody>
 </table>
@@ -870,6 +872,10 @@
 <pre><code class="language-yaml">name: insdc_biosample_identifiers
 description: identifiers for corresponding sample in INSDC
 title: INSDC Biosample Identifiers
+notes:
+- 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to BioSample
+  accession (GENEPIO:0001139); this slot is multivalued, the PHA4GE field holds one
+  accession.'
 examples:
 - value: biosample:SAMEA5989477
 - value: biosample:SAMD00212331
@@ -880,10 +886,14 @@ see_also:
 - https://www.ebi.ac.uk/biosamples/
 - https://www.ncbi.nlm.nih.gov/biosample
 - https://www.ddbj.nig.ac.jp/biosample/index-e.html
+- https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+- https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
 aliases:
 - EBI biosample identifiers
 - NCBI biosample identifiers
 - DDBJ biosample identifiers
+close_mappings:
+- GENEPIO:0001139
 rank: 1000
 is_a: biosample_identifiers
 mixins:

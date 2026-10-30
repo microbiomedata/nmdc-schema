@@ -674,6 +674,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See Also
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -773,6 +784,11 @@
 <ul>
 <li>this illustrates implementing a Biosample relation with a (binary) slot</li>
 </ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4">https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4</a></li>
+<li><a href="https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml">https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml</a></li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -788,8 +804,8 @@
 </thead>
 <tbody>
 <tr>
-<td></td>
-<td></td>
+<td>close</td>
+<td>GENEPIO:0100760, NCBI_BIOSAMPLE_ATTRIBUTE:sampling_site_id</td>
 </tr>
 </tbody>
 </table>
@@ -801,9 +817,21 @@ description: The Site from which a Biosample was collected
 title: Collected From
 todos:
 - add an OBO slot_uri ?
+notes:
+- 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to sampling
+  site ID (GENEPIO:0100760), a submitter-assigned identifier reused for every sample
+  from the same site.'
+- 'NCBI BioSample: close match to the sampling_site_id attribute of the PHA4GE.wwsurv.1.0
+  package.'
 comments:
 - this illustrates implementing a Biosample relation with a (binary) slot
 from_schema: https://w3id.org/nmdc/nmdc
+see_also:
+- https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+- https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+close_mappings:
+- GENEPIO:0100760
+- NCBI_BIOSAMPLE_ATTRIBUTE:sampling_site_id
 rank: 1000
 domain_of:
 - Biosample

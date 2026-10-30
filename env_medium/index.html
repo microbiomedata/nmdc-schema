@@ -685,6 +685,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See Also
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -809,6 +820,11 @@ term:
   id: &quot;ENVO:00001998&quot;
   type: &quot;nmdc:OntologyClass&quot;
 </code></pre>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4">https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4</a></li>
+<li><a href="https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml">https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml</a></li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -842,6 +858,10 @@ term:
 <td>self</td>
 <td>MIXS:0000014</td>
 </tr>
+<tr>
+<td>close</td>
+<td>GENEPIO:0001223, NCBI_BIOSAMPLE_ATTRIBUTE:env_medium</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -866,6 +886,12 @@ description: 'Report the environmental material(s) immediately surrounding the s
   nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree,
   a leaf, a table top)'
 title: environmental medium
+notes:
+- 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to environmental
+  material (GENEPIO:0001223); the PHA4GE field is multivalued and restricted to its
+  own picklist.'
+- 'NCBI BioSample: close match to the env_medium attribute, the NCBI harmonized name
+  for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package.'
 examples:
 - object:
     type: nmdc:ControlledIdentifiedTermValue
@@ -874,6 +900,12 @@ examples:
       id: ENVO:00001998
       type: nmdc:OntologyClass
 from_schema: https://w3id.org/nmdc/nmdc
+see_also:
+- https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+- https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+close_mappings:
+- GENEPIO:0001223
+- NCBI_BIOSAMPLE_ATTRIBUTE:env_medium
 rank: 1000
 keywords:
 - environmental

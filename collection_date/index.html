@@ -674,6 +674,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See Also
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -778,6 +789,11 @@
 <pre><code class="language-yaml">type: &quot;nmdc:TimestampValue&quot;
 has_raw_value: &quot;2013-03-25T12:42:31+01:00&quot;
 </code></pre>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4">https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4</a></li>
+<li><a href="https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml">https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml</a></li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -796,6 +812,14 @@ has_raw_value: &quot;2013-03-25T12:42:31+01:00&quot;
 <td>self</td>
 <td>MIXS:0000011</td>
 </tr>
+<tr>
+<td>related</td>
+<td>GENEPIO:0001174</td>
+</tr>
+<tr>
+<td>close</td>
+<td>NCBI_BIOSAMPLE_ATTRIBUTE:collection_date</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -807,11 +831,24 @@ description: 'The time of sampling, either as an instance (single point in time)
   i.e. all of these are valid times: 2008-01-23T19:23:10+00:00; 2008-01-23T19:23:10;
   2008-01-23; 2008-01; 2008; Except: 2008-01; 2008 all are ISO8601 compliant'
 title: collection date
+notes:
+- 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to sample
+  collection start date (GENEPIO:0001174); this slot can hold an interval, the PHA4GE
+  field holds only the start.'
+- 'NCBI BioSample: close match to the collection_date attribute, mandatory in the
+  PHA4GE.wwsurv.1.0 package; both accept a date, a date-time or a date range.'
 examples:
 - object:
     type: nmdc:TimestampValue
     has_raw_value: '2013-03-25T12:42:31+01:00'
 from_schema: https://w3id.org/nmdc/nmdc
+see_also:
+- https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+- https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+close_mappings:
+- NCBI_BIOSAMPLE_ATTRIBUTE:collection_date
+related_mappings:
+- GENEPIO:0001174
 rank: 1000
 keywords:
 - date

@@ -674,6 +674,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See Also
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -778,6 +789,11 @@
 <ul>
 <li>coal metagenome [NCBITaxon:1260732] would be a reasonable has_raw_value</li>
 </ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4">https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4</a></li>
+<li><a href="https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml">https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml</a></li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -796,6 +812,10 @@
 <td>self</td>
 <td>MIXS:0001320</td>
 </tr>
+<tr>
+<td>related</td>
+<td>GENEPIO:0001191</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -806,9 +826,18 @@ description: NCBI taxon id of the sample.  Maybe be a single taxon or mixed taxa
   Use 'synthetic metagenome  for mock community/positive controls, or 'blank sample'
   for negative controls
 title: taxonomy ID of DNA sample
+notes:
+- 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to organism
+  (GENEPIO:0001191); the PHA4GE field names the surveillance target, this slot names
+  the taxon of the sample itself.'
 comments:
 - coal metagenome [NCBITaxon:1260732] would be a reasonable has_raw_value
 from_schema: https://w3id.org/nmdc/nmdc
+see_also:
+- https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+- https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+related_mappings:
+- GENEPIO:0001191
 rank: 1000
 keywords:
 - dna

@@ -1004,11 +1004,24 @@ attributes:
       truncated i.e. all of these are valid times: 2008-01-23T19:23:10+00:00; 2008-01-23T19:23:10;
       2008-01-23; 2008-01; 2008; Except: 2008-01; 2008 all are ISO8601 compliant'
     title: collection date
+    notes:
+    - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to sample
+      collection start date (GENEPIO:0001174); this slot can hold an interval, the
+      PHA4GE field holds only the start.'
+    - 'NCBI BioSample: close match to the collection_date attribute, mandatory in
+      the PHA4GE.wwsurv.1.0 package; both accept a date, a date-time or a date range.'
     examples:
     - object:
         type: nmdc:TimestampValue
         has_raw_value: '2013-03-25T12:42:31+01:00'
     from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    close_mappings:
+    - NCBI_BIOSAMPLE_ATTRIBUTE:collection_date
+    related_mappings:
+    - GENEPIO:0001174
     rank: 1000
     keywords:
     - date
@@ -1032,9 +1045,18 @@ attributes:
       a single Submitter to be unique. Use of a globally unique identifier for the
       field source_mat_id is recommended in addition to sample_name
     title: sample name
+    notes:
+    - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to specimen
+      collector sample ID (GENEPIO:0001123); the PHA4GE field is scoped to the name
+      assigned by the specimen collector.'
     examples:
     - value: ISDsoil1
     from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    close_mappings:
+    - GENEPIO:0001123
     rank: 1000
     keywords:
     - sample

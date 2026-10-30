@@ -674,6 +674,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See Also
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -794,6 +805,11 @@ has_raw_value: &quot;70 mg/L&quot;
 has_numeric_value: 70
 has_unit: &quot;mg/L&quot;
 </code></pre>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4">https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4</a></li>
+<li><a href="https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml">https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml</a></li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -827,6 +843,14 @@ has_unit: &quot;mg/L&quot;
 <td>self</td>
 <td>MIXS:0000183</td>
 </tr>
+<tr>
+<td>related</td>
+<td>GENEPIO:0100805, GENEPIO:0100806</td>
+</tr>
+<tr>
+<td>close</td>
+<td>NCBI_BIOSAMPLE_ATTRIBUTE:salinity, NCBI_BIOSAMPLE_ATTRIBUTE:samp_salinity</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -846,6 +870,14 @@ description: The total concentration of all dissolved salts in a liquid or solid
   This is known as practical salinity. These derivations compare the specific conductance
   of the sample to a salinity standard such as seawater
 title: salinity
+notes:
+- 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to salinity
+  measurement value (GENEPIO:0100805) and unit (GENEPIO:0100806); one QuantityValue
+  here is split across PHA4GE value and unit fields.'
+- 'NCBI BioSample: close match to the salinity attribute, the NCBI harmonized name
+  for MIXS:0000183. The PHA4GE.wwsurv.1.0 package lists the same measurement under
+  the older samp_salinity attribute, the MIxS 5 term that MIxS 6 merged into salinity
+  and MIxS 7 removed, so that name is kept as a close match as well.'
 examples:
 - object:
     type: nmdc:QuantityValue
@@ -855,6 +887,15 @@ examples:
 in_subset:
 - biogeochemistry
 from_schema: https://w3id.org/nmdc/nmdc
+see_also:
+- https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+- https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+close_mappings:
+- NCBI_BIOSAMPLE_ATTRIBUTE:salinity
+- NCBI_BIOSAMPLE_ATTRIBUTE:samp_salinity
+related_mappings:
+- GENEPIO:0100805
+- GENEPIO:0100806
 rank: 1000
 keywords:
 - salinity

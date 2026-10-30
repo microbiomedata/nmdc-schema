@@ -663,6 +663,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See Also
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -758,6 +769,11 @@
 <ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4">https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4</a></li>
+<li><a href="https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml">https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml</a></li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -776,6 +792,10 @@
 <td>self</td>
 <td>MIXS:0001225</td>
 </tr>
+<tr>
+<td>close</td>
+<td>GENEPIO:0001241, NCBI_BIOSAMPLE_ATTRIBUTE:collection_method</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -784,11 +804,22 @@
 <pre><code class="language-yaml">name: samp_collec_method
 description: The method employed for collecting the sample
 title: sample collection method
+notes:
+- 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to collection
+  method (GENEPIO:0001241); the PHA4GE field is restricted to its own picklist.'
+- 'NCBI BioSample: close match to the collection_method attribute, the NCBI harmonized
+  name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package.'
 from_schema: https://w3id.org/nmdc/nmdc
+see_also:
+- https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+- https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
 structured_aliases:
 - literal_form: samp_collect_method
   predicate: EXACT_SYNONYM
   source: https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v7.0.1
+close_mappings:
+- GENEPIO:0001241
+- NCBI_BIOSAMPLE_ATTRIBUTE:collection_method
 rank: 1000
 keywords:
 - method

@@ -674,6 +674,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See Also
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -795,6 +806,11 @@ has_raw_value: &quot;0.598 %&quot;
 has_numeric_value: 0.598
 has_unit: &quot;%&quot;
 </code></pre>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4">https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4</a></li>
+<li><a href="https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml">https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml</a></li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -828,6 +844,10 @@ has_unit: &quot;%&quot;
 <td>self</td>
 <td>MIXS:0000102</td>
 </tr>
+<tr>
+<td>related</td>
+<td>GENEPIO:0100808, GENEPIO:0100809</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -845,6 +865,10 @@ description: 'Total nitrogen concentration of water samples, calculated by: tota
   nitrogen = total dissolved nitrogen + particulate nitrogen. Can also be measured
   without filtering, reported as nitrogen'
 title: total nitrogen concentration
+notes:
+- 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to total nitrogen
+  (TN) measurement value (GENEPIO:0100808) and unit (GENEPIO:0100809); one QuantityValue
+  here is split across PHA4GE value and unit fields.'
 examples:
 - description: A solid-phase mass fraction of total soil nitrogen, in percent. Dissolved
     inorganic nitrogen in solution is a different and much smaller pool.
@@ -856,6 +880,12 @@ examples:
 in_subset:
 - biogeochemistry
 from_schema: https://w3id.org/nmdc/nmdc
+see_also:
+- https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+- https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+related_mappings:
+- GENEPIO:0100808
+- GENEPIO:0100809
 rank: 1000
 keywords:
 - concentration

@@ -1208,6 +1208,12 @@ attributes:
           NCBI BioProject Title.
     description: Unique identifier for a bioproject submitted to INSDC that relates
       to the NMDC submitted study.
+    notes:
+    - Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification
+      4.4.4 standard (follow `see_also` for reference documentation) we can see that
+      slots capturing INSDC BioProject accessions directly map to GENEPIO:0001136.
+    - In the PHA4GE schema the slot `bioproject_accession` is single-valued whereas
+      the NMDC slot (`insdc_bioproject_identifiers`)  is multivalued.
     comments:
     - these are distinct IDs from INSDC SRA/ENA project identifiers, but are usually(?)
       one to one
@@ -1219,9 +1225,13 @@ attributes:
     see_also:
     - https://www.ncbi.nlm.nih.gov/bioproject/
     - https://www.ddbj.nig.ac.jp/bioproject/index-e.html
+    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     aliases:
     - NCBI bioproject identifiers
     - DDBJ bioproject identifiers
+    close_mappings:
+    - GENEPIO:0001136
     rank: 1000
     is_a: study_identifiers
     mixins:

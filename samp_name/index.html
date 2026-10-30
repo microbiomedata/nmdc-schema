@@ -674,6 +674,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See Also
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -789,6 +800,11 @@
 <ul>
 <li><code>ISDsoil1</code></li>
 </ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4">https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4</a></li>
+<li><a href="https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml">https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml</a></li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -822,6 +838,10 @@
 <td>self</td>
 <td>MIXS:0001107</td>
 </tr>
+<tr>
+<td>close</td>
+<td>GENEPIO:0001123</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -840,9 +860,18 @@ description: A local identifier or name that for the material sample used for ex
   Use of a globally unique identifier for the field source_mat_id is recommended in
   addition to sample_name
 title: sample name
+notes:
+- 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to specimen
+  collector sample ID (GENEPIO:0001123); the PHA4GE field is scoped to the name assigned
+  by the specimen collector.'
 examples:
 - value: ISDsoil1
 from_schema: https://w3id.org/nmdc/nmdc
+see_also:
+- https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+- https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+close_mappings:
+- GENEPIO:0001123
 rank: 1000
 keywords:
 - sample

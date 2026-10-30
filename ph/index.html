@@ -674,6 +674,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See Also
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -778,6 +789,11 @@
 <ul>
 <li><code>7.2</code></li>
 </ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4">https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4</a></li>
+<li><a href="https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml">https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml</a></li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -796,6 +812,10 @@
 <td>self</td>
 <td>MIXS:0001001</td>
 </tr>
+<tr>
+<td>close</td>
+<td>GENEPIO:0001736, NCBI_BIOSAMPLE_ATTRIBUTE:ph</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -805,11 +825,22 @@
 description: pH measurement of the sample, or liquid portion of sample, or aqueous
   phase of the fluid
 title: pH
+notes:
+- 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to pH measurement
+  value (GENEPIO:0001736); PHA4GE records the method in a separate field (GENEPIO:0100781).'
+- 'NCBI BioSample: close match to the ph attribute, the NCBI harmonized name for this
+  MIxS term, optional in the PHA4GE.wwsurv.1.0 package.'
 examples:
 - value: '7.2'
 in_subset:
 - biogeochemistry
 from_schema: https://w3id.org/nmdc/nmdc
+see_also:
+- https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+- https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+close_mappings:
+- GENEPIO:0001736
+- NCBI_BIOSAMPLE_ATTRIBUTE:ph
 rank: 1000
 keywords:
 - ph

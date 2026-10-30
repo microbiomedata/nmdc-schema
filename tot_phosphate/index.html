@@ -663,6 +663,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See Also
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -774,6 +785,11 @@
 <p>Regex pattern: <code>^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$</code></p>
 </li>
 </ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4">https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4</a></li>
+<li><a href="https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml">https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml</a></li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -807,6 +823,10 @@
 <td>self</td>
 <td>MIXS:0000689</td>
 </tr>
+<tr>
+<td>related</td>
+<td>GENEPIO:0100811, GENEPIO:0100812</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -822,7 +842,17 @@ annotations:
     value: ug/L|umol/L
 description: Total amount or concentration of phosphate
 title: total phosphate
+notes:
+- 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to total phosphorus
+  (TP) measurement value (GENEPIO:0100811) and unit (GENEPIO:0100812); PHA4GE measures
+  total phosphorus, this slot total phosphate, and value and unit are split.'
 from_schema: https://w3id.org/nmdc/nmdc
+see_also:
+- https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+- https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+related_mappings:
+- GENEPIO:0100811
+- GENEPIO:0100812
 rank: 1000
 keywords:
 - phosphate

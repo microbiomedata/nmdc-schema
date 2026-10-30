@@ -674,6 +674,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See Also
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -773,6 +784,11 @@
 <ul>
 <li><code>foggy</code></li>
 </ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4">https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4</a></li>
+<li><a href="https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml">https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml</a></li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -791,6 +807,10 @@
 <td>self</td>
 <td>MIXS:0000827</td>
 </tr>
+<tr>
+<td>close</td>
+<td>GENEPIO:0100779, NCBI_BIOSAMPLE_ATTRIBUTE:samp_weather</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -799,9 +819,22 @@
 <pre><code class="language-yaml">name: samp_weather
 description: The weather on the sampling day
 title: sampling day weather
+notes:
+- 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to sampling
+  weather conditions (GENEPIO:0100779); the PHA4GE field is multivalued and restricted
+  to its own picklist.'
+- 'NCBI BioSample: close match to the samp_weather attribute, the NCBI harmonized
+  name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package; NCBI accepts
+  free text there, this slot is restricted to the MIxS list.'
 examples:
 - value: foggy
 from_schema: https://w3id.org/nmdc/nmdc
+see_also:
+- https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+- https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+close_mappings:
+- GENEPIO:0100779
+- NCBI_BIOSAMPLE_ATTRIBUTE:samp_weather
 rank: 1000
 keywords:
 - day

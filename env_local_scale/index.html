@@ -685,6 +685,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See Also
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -809,6 +820,11 @@ term:
   id: &quot;ENVO:01000338&quot;
   type: &quot;nmdc:OntologyClass&quot;
 </code></pre>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4">https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4</a></li>
+<li><a href="https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml">https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml</a></li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -842,6 +858,10 @@ term:
 <td>self</td>
 <td>MIXS:0000013</td>
 </tr>
+<tr>
+<td>close</td>
+<td>GENEPIO:0001232, NCBI_BIOSAMPLE_ATTRIBUTE:env_local_scale</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -869,6 +889,12 @@ description: 'Report the entity or entities which are in the sample or specimen 
   OBO Library ontologies which interoperate with EnvO (e.g. UBERON) are accepted in
   this field. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'
 title: local environmental context
+notes:
+- 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to environmental
+  site (GENEPIO:0001232); the PHA4GE field is multivalued and restricted to its own
+  picklist.'
+- 'NCBI BioSample: close match to the env_local_scale attribute, the NCBI harmonized
+  name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package.'
 examples:
 - object:
     type: nmdc:ControlledIdentifiedTermValue
@@ -877,6 +903,12 @@ examples:
       id: ENVO:01000338
       type: nmdc:OntologyClass
 from_schema: https://w3id.org/nmdc/nmdc
+see_also:
+- https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+- https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+close_mappings:
+- GENEPIO:0001232
+- NCBI_BIOSAMPLE_ATTRIBUTE:env_local_scale
 rank: 1000
 keywords:
 - context

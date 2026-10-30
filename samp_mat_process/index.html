@@ -674,6 +674,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See Also
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -773,6 +784,11 @@
 <pre><code class="language-yaml">type: &quot;nmdc:ControlledTermValue&quot;
 has_raw_value: &quot;filtering of seawater, storing samples in ethanol&quot;
 </code></pre>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4">https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4</a></li>
+<li><a href="https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml">https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml</a></li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -791,6 +807,10 @@ has_raw_value: &quot;filtering of seawater, storing samples in ethanol&quot;
 <td>self</td>
 <td>MIXS:0000016</td>
 </tr>
+<tr>
+<td>close</td>
+<td>GENEPIO:0001253, NCBI_BIOSAMPLE_ATTRIBUTE:samp_mat_process</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -801,11 +821,22 @@ description: A brief description of any processing applied to the sample during 
   after retrieving the sample from environment, or a link to the relevant protocol(s)
   performed
 title: sample material processing
+notes:
+- 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to specimen
+  processing (GENEPIO:0001253); the PHA4GE field is restricted to its own picklist.'
+- 'NCBI BioSample: close match to the samp_mat_process attribute, the NCBI harmonized
+  name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package.'
 examples:
 - object:
     type: nmdc:ControlledTermValue
     has_raw_value: filtering of seawater, storing samples in ethanol
 from_schema: https://w3id.org/nmdc/nmdc
+see_also:
+- https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+- https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+close_mappings:
+- GENEPIO:0001253
+- NCBI_BIOSAMPLE_ATTRIBUTE:samp_mat_process
 rank: 1000
 keywords:
 - material

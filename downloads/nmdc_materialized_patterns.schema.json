@@ -463,6 +463,36 @@
                     "description": "List of rooms (room number, room name) immediately adjacent to the sampling room",
                     "pattern": "^([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+);[1-9][0-9]*$"
                 },
+                "adjacent_environment": {
+                    "description": "Description of the environmental system or features that are adjacent to the sampling site. This field accepts terms under ecosystem (http://purl.obolibrary.org/obo/ENVO_01001110) and human construction (http://purl.obolibrary.org/obo/ENVO_00000070). Multiple terms can be separated by pipes",
+                    "examples": [
+                        [
+                            {
+                                "has_raw_value": "estuarine biome [ENVO:01000020]",
+                                "term": {
+                                    "id": "ENVO:01000020",
+                                    "name": "estuarine biome",
+                                    "type": "nmdc:OntologyClass"
+                                },
+                                "type": "nmdc:ControlledTermValue"
+                            }
+                        ]
+                    ],
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/ControlledTermValue"
+                            },
+                            {
+                                "$ref": "#/$defs/ControlledIdentifiedTermValue"
+                            }
+                        ]
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "aero_struc": {
                     "anyOf": [
                         {
@@ -1466,6 +1496,28 @@
                         }
                     ]
                 },
+                "catchment_population": {
+                    "description": "The number of people whose wastewater contributes to the sample: the human population of the sewershed or catchment area served by the sampling site.",
+                    "examples": [
+                        750000
+                    ],
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "catchment_population_method": {
+                    "description": "How the catchment population was measured or estimated.",
+                    "examples": [
+                        "population of jurisdiction encompassing the wastewater service area",
+                        "census blocks clipped to wastewater service area"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "ceil_area": {
                     "anyOf": [
                         {
@@ -1713,6 +1765,17 @@
                     },
                     "type": [
                         "array",
+                        "null"
+                    ]
+                },
+                "collected_by": {
+                    "description": "The organization, or the person acting for an organization, that collected the sample.",
+                    "examples": [
+                        "Southeast San Francisco Wastewater Treatment Plant",
+                        "Public Health Agency of Canada"
+                    ],
+                    "type": [
+                        "string",
                         "null"
                     ]
                 },
@@ -2638,6 +2701,20 @@
                         "null"
                     ]
                 },
+                "experimental_specimen_role_type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ExperimentalSpecimenRoleTypeEnum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The role the sample plays in the experiment when it is not simply a sample under study: a positive or negative control, or a technical or biological replicate of another sample.",
+                    "examples": [
+                        "negative experimental control"
+                    ]
+                },
                 "ext_door": {
                     "anyOf": [
                         {
@@ -2699,6 +2776,49 @@
                     "description": "Soil classification from the FAO World soil distribution from International Soil Reference and Information Centre (ISRIC). The list of available soil classifications can be found at https://www.isric.org/explore/world-soil-distribution",
                     "examples": [
                         "Luvisols"
+                    ]
+                },
+                "fecal_contamination_indicator": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/FecalContaminationIndicatorEnum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The gene, virus, bacterium or substance that was measured as an indicator of fecal contamination of the sample, for example crAssphage or pepper mild mottle virus.",
+                    "examples": [
+                        "crAssphage"
+                    ]
+                },
+                "fecal_contamination_method": {
+                    "description": "The assay or protocol used to measure the fecal contamination indicator, as a name, reference or URL.",
+                    "examples": [
+                        "RT-ddPCR on a QIAcuity One"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "fecal_contamination_value": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The measured amount of the indicator named in fecal_contamination_indicator, as a concentration in the wastewater.",
+                    "examples": [
+                        {
+                            "has_numeric_value": 192000000,
+                            "has_raw_value": "1.92E+08 copies/L wastewater",
+                            "has_unit": "{copies}/L",
+                            "type": "nmdc:QuantityValue"
+                        }
                     ]
                 },
                 "fertilizer_regm": {
@@ -4021,6 +4141,25 @@
                     "description": "The recorded value at sampling time (power density)",
                     "pattern": "^[-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$"
                 },
+                "instantaneous_flow_rate": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The volumetric flow rate of the wastewater at the sampling site at the moment the sample was collected.",
+                    "examples": [
+                        {
+                            "has_numeric_value": 25,
+                            "has_raw_value": "25 m3/h",
+                            "has_unit": "m3/h",
+                            "type": "nmdc:QuantityValue"
+                        }
+                    ]
+                },
                 "int_wall_cond": {
                     "anyOf": [
                         {
@@ -4577,6 +4716,17 @@
                         "string",
                         "null"
                     ]
+                },
+                "neg_cont_type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/NegContTypeEnum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The substance or equipment used as a negative control in an investigation"
                 },
                 "neon_biosample_identifiers": {
                     "items": {
@@ -5313,6 +5463,13 @@
                     ],
                     "description": "Porosity of deposited sediment is volume of voids divided by the total volume of sample"
                 },
+                "pos_cont_type": {
+                    "description": "The substance, mixture, product, or apparatus used to verify that a process which is part of an investigation delivers a true positive",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "potassium": {
                     "anyOf": [
                         {
@@ -5364,6 +5521,20 @@
                     "type": [
                         "string",
                         "null"
+                    ]
+                },
+                "presampling_weather": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/SampWeatherEnum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The weather in the period before sample collection, when it may have affected the sample, for example rain that diluted the wastewater.",
+                    "examples": [
+                        "rain"
                     ]
                 },
                 "pressure": {
@@ -6234,6 +6405,16 @@
                     "description": "Preservative added to the sample (e.g. Rnalater, alcohol, formaldehyde, etc.). Where appropriate include volume added (e.g. Rnalater; 2 ml)",
                     "pattern": "^.*;[-+]?[0-9]*\\.?[0-9]+ ([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)$"
                 },
+                "samp_purpose": {
+                    "description": "The reason that the sample was collected",
+                    "examples": [
+                        "field trial"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "samp_room_id": {
                     "anyOf": [
                         {
@@ -6437,6 +6618,25 @@
                         }
                     ],
                     "description": "Name of the well (e.g. BXA1123) where sample was taken"
+                },
+                "sample_collection_duration": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The length of time over which the sample was collected. A grab sample is collected at one moment and a composite sample accumulates over a period (commonly 24 hours).",
+                    "examples": [
+                        {
+                            "has_numeric_value": 24,
+                            "has_raw_value": "24-hr flow-weighted composite",
+                            "has_unit": "h",
+                            "type": "nmdc:QuantityValue"
+                        }
+                    ]
                 },
                 "sample_collection_site": {
                     "description": "Free-text description of the place where the sample was collected: the geographic or environmental site or named location.",
@@ -7771,6 +7971,25 @@
                     "description": "Concentration of total sulfur in the sample",
                     "pattern": "^[-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$"
                 },
+                "total_daily_flow_rate": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The volume of wastewater that flowed through the sampling site over the day of collection.",
+                    "examples": [
+                        {
+                            "has_numeric_value": 2,
+                            "has_raw_value": "2 MGD",
+                            "has_unit": "10*6.[gal_us]/d",
+                            "type": "nmdc:QuantityValue"
+                        }
+                    ]
+                },
                 "train_line": {
                     "anyOf": [
                         {
@@ -8097,6 +8316,20 @@
                     "description": "Signs of the presence of mold or mildew on a wall",
                     "examples": [
                         "no presence of mold visible"
+                    ]
+                },
+                "wastewater_system_type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/WastewaterSystemTypeEnum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The kind of wastewater system the sample was taken from, such as a sanitary sewer, a combined sewer, a septic tank or a latrine.",
+                    "examples": [
+                        "sanitary sewer system"
                     ]
                 },
                 "wastewater_type": {
@@ -11500,6 +11733,17 @@
             "title": "ExecutionResourceEnum",
             "type": "string"
         },
+        "ExperimentalSpecimenRoleTypeEnum": {
+            "description": "The roles a sample can play in an experiment other than being a sample under study.",
+            "enum": [
+                "positive experimental control",
+                "negative experimental control",
+                "technical replicate",
+                "biological replicate"
+            ],
+            "title": "ExperimentalSpecimenRoleTypeEnum",
+            "type": "string"
+        },
         "Extraction": {
             "additionalProperties": false,
             "description": "A material separation in which a desired component of an input material is separated from the remainder.",
@@ -11840,6 +12084,19 @@
                 "Yermosols"
             ],
             "title": "FaoClassEnum",
+            "type": "string"
+        },
+        "FecalContaminationIndicatorEnum": {
+            "description": "Genes, viruses, bacteria and substances measured as indicators of fecal contamination of water.",
+            "enum": [
+                "crAssphage",
+                "pepper mild mottle virus",
+                "Bacteroides HF183",
+                "Lachnospiraceae Lachno3",
+                "F+ coliphages",
+                "stercobilin"
+            ],
+            "title": "FecalContaminationIndicatorEnum",
             "type": "string"
         },
         "FieldResearchSite": {
@@ -18288,6 +18545,20 @@
             "title": "NcbiTaxon",
             "type": "object"
         },
+        "NegContTypeEnum": {
+            "description": "",
+            "enum": [
+                "DNA-free PCR mix",
+                "distilled water",
+                "empty collection device",
+                "empty collection tube",
+                "phosphate buffer",
+                "sterile swab",
+                "sterile syringe"
+            ],
+            "title": "NegContTypeEnum",
+            "type": "string"
+        },
         "NomAnalysis": {
             "additionalProperties": false,
             "allOf": [
@@ -22888,7 +23159,14 @@
                 "cm3/cm3",
                 "[kn_i]",
                 "m3/s",
-                "[in_i]"
+                "[in_i]",
+                "L/d",
+                "L/min",
+                "m3/h",
+                "10*6.[gal_us]/d",
+                "{copies}/L",
+                "{copies}/mL",
+                "{copies}/g"
             ],
             "title": "UnitEnum",
             "type": "string"
@@ -22935,6 +23213,23 @@
                 "wall paper"
             ],
             "title": "WallSurfTreatmentEnum",
+            "type": "string"
+        },
+        "WastewaterSystemTypeEnum": {
+            "description": "The kinds of wastewater collection system a sample can come from.",
+            "enum": [
+                "combined sewer system",
+                "sanitary sewer system",
+                "waste stabilization pond",
+                "latrine",
+                "septic tank",
+                "cesspit",
+                "chemical toilet",
+                "composting toilet",
+                "plumbing drain",
+                "wastewater waste tank"
+            ],
+            "title": "WastewaterSystemTypeEnum",
             "type": "string"
         },
         "WaterFeatTypeEnum": {
@@ -23570,6 +23865,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.25.post22.dev0+947f3e030"
+    "version": "11.25.post39.dev0+a7f2dfaec"
 }
 

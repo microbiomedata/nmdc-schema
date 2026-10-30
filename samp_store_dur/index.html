@@ -674,6 +674,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See Also
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -778,6 +789,11 @@
 <pre><code class="language-yaml">type: &quot;nmdc:TextValue&quot;
 has_raw_value: &quot;P1Y6M&quot;
 </code></pre>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4">https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4</a></li>
+<li><a href="https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml">https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml</a></li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -796,6 +812,10 @@ has_raw_value: &quot;P1Y6M&quot;
 <td>self</td>
 <td>MIXS:0000116</td>
 </tr>
+<tr>
+<td>related</td>
+<td>GENEPIO:0101014, GENEPIO:0101015</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -805,11 +825,21 @@ has_raw_value: &quot;P1Y6M&quot;
 description: Duration for which the sample was stored. Indicate the duration for which
   the sample was stored written in ISO 8601 format
 title: sample storage duration
+notes:
+- 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to sample
+  storage duration value (GENEPIO:0101014) and unit (GENEPIO:0101015); this slot holds
+  an ISO 8601 duration, PHA4GE splits value and unit.'
 examples:
 - object:
     type: nmdc:TextValue
     has_raw_value: P1Y6M
 from_schema: https://w3id.org/nmdc/nmdc
+see_also:
+- https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+- https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+related_mappings:
+- GENEPIO:0101014
+- GENEPIO:0101015
 rank: 1000
 keywords:
 - duration

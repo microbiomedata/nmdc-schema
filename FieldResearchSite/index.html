@@ -795,11 +795,29 @@ attributes:
       from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology
       (http://purl.bioontology.org/ontology/GAZ)
     title: geographic location (country and/or sea,region)
+    notes:
+    - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to geo
+      loc name (country) (GENEPIO:0001181), geo loc name (state/province/territory/region)
+      (GENEPIO:0001185), geo loc name (city) (GENEPIO:0001189) and geo loc name (site)
+      (GENEPIO:0100436); the single text value here holds the levels that are split
+      across those four PHA4GE fields.'
+    - 'NCBI BioSample: close match to the geo_loc_name attribute, mandatory in the
+      PHA4GE.wwsurv.1.0 package, with the same INSDC country: region, locality form.'
     examples:
     - object:
         type: nmdc:TextValue
         has_raw_value: 'USA: Maryland, Bethesda'
     from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    close_mappings:
+    - NCBI_BIOSAMPLE_ATTRIBUTE:geo_loc_name
+    related_mappings:
+    - GENEPIO:0001181
+    - GENEPIO:0001185
+    - GENEPIO:0001189
+    - GENEPIO:0100436
     rank: 1000
     keywords:
     - geographic
@@ -831,6 +849,12 @@ attributes:
       longitude. The values should be reported in decimal degrees, limited to 8 decimal
       points, and in WGS84 system
     title: geographic location (latitude and longitude)
+    notes:
+    - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to geo
+      loc latitude (GENEPIO:0100309) and geo loc longitude (GENEPIO:0100310); one
+      value here is split across two PHA4GE fields.'
+    - 'NCBI BioSample: close match to the lat_lon attribute of the PHA4GE.wwsurv.1.0
+      package; NCBI writes the pair as decimal degrees with N/S and E/W letters.'
     examples:
     - object:
         type: nmdc:GeolocationValue
@@ -838,6 +862,14 @@ attributes:
         longitude: 6.408977
         has_raw_value: 50.586825 6.408977
     from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    close_mappings:
+    - NCBI_BIOSAMPLE_ATTRIBUTE:lat_lon
+    related_mappings:
+    - GENEPIO:0100309
+    - GENEPIO:0100310
     rank: 1000
     keywords:
     - geographic

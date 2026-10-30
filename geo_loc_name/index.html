@@ -674,6 +674,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See Also
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -783,6 +794,11 @@
 <pre><code class="language-yaml">type: &quot;nmdc:TextValue&quot;
 has_raw_value: &quot;USA: Maryland, Bethesda&quot;
 </code></pre>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4">https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4</a></li>
+<li><a href="https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml">https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml</a></li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -801,6 +817,14 @@ has_raw_value: &quot;USA: Maryland, Bethesda&quot;
 <td>self</td>
 <td>MIXS:0000010</td>
 </tr>
+<tr>
+<td>related</td>
+<td>GENEPIO:0001181, GENEPIO:0001185, GENEPIO:0001189, GENEPIO:0100436</td>
+</tr>
+<tr>
+<td>close</td>
+<td>NCBI_BIOSAMPLE_ATTRIBUTE:geo_loc_name</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -811,11 +835,29 @@ description: The geographical origin of the sample as defined by the country or 
   name followed by specific region name. Country or sea names should be chosen from
   the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (http://purl.bioontology.org/ontology/GAZ)
 title: geographic location (country and/or sea,region)
+notes:
+- 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to geo loc
+  name (country) (GENEPIO:0001181), geo loc name (state/province/territory/region)
+  (GENEPIO:0001185), geo loc name (city) (GENEPIO:0001189) and geo loc name (site)
+  (GENEPIO:0100436); the single text value here holds the levels that are split across
+  those four PHA4GE fields.'
+- 'NCBI BioSample: close match to the geo_loc_name attribute, mandatory in the PHA4GE.wwsurv.1.0
+  package, with the same INSDC country: region, locality form.'
 examples:
 - object:
     type: nmdc:TextValue
     has_raw_value: 'USA: Maryland, Bethesda'
 from_schema: https://w3id.org/nmdc/nmdc
+see_also:
+- https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+- https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+close_mappings:
+- NCBI_BIOSAMPLE_ATTRIBUTE:geo_loc_name
+related_mappings:
+- GENEPIO:0001181
+- GENEPIO:0001185
+- GENEPIO:0001189
+- GENEPIO:0100436
 rank: 1000
 keywords:
 - geographic
