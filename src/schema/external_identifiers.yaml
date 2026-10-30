@@ -156,7 +156,7 @@ slots:
     notes:
       - >-
         Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification 4.4.4 standard
-        (follow `see_also` for reference documentation) we can see that slots capturing INSDC BioProject
+        (see the pha4ge_wastewater subset for reference documentation) we can see that slots capturing INSDC BioProject
         accessions directly map to GENEPIO:0001136.
       - >-
         In the PHA4GE schema the slot `bioproject_accession` is single-valued whereas the NMDC slot (`insdc_bioproject_identifiers`) 
@@ -169,8 +169,8 @@ slots:
     see_also:
       - https://www.ncbi.nlm.nih.gov/bioproject/
       - https://www.ddbj.nig.ac.jp/bioproject/index-e.html
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
 
   gold_study_identifiers:
     is_a: study_identifiers
@@ -290,8 +290,8 @@ slots:
       - https://www.ebi.ac.uk/biosamples/
       - https://www.ncbi.nlm.nih.gov/biosample
       - https://www.ddbj.nig.ac.jp/biosample/index-e.html
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
 
   insdc_secondary_sample_identifiers:
     is_a: biosample_identifiers
@@ -355,8 +355,8 @@ slots:
     description: Identifiers for the manifest of data file(s) that are derived from sequencing a library described by the associated INSDC experiment.
     see_also:
       - https://www.ncbi.nlm.nih.gov/sra/docs/submitmeta/#linking-metadata-and-data-run
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
     is_a: external_database_identifiers
     pattern: "^insdc\\.run:(E|D|S)RR[0-9]{6,}$"
     mixins:
