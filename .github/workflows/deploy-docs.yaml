@@ -27,24 +27,22 @@ jobs:
         with:
           fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
 
-      - name: Install Poetry.
-        run: pipx install poetry==2.5.1
+      - name: Install uv
+        uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
 
       - name: Set up Python 3.
-        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: '3.12'
-          cache: 'poetry'
 
       - name: Install dependencies.
-        run: poetry install
+        run: uv sync --locked
 
-      # Replace the `0.0.0` placeholder `version` number in various files (per the config in `pyproject.toml`).
-      # Reference: https://github.com/mtkennerly/poetry-dynamic-versioning/blob/master/README.md#command-line-mode
+      # Replace the `0.0.0` placeholder `version` in src/schema/nmdc.yaml with the
+      # version uv-dynamic-versioning derives from the git tags (see `set-version` in Makefile).
       - name: Replace placeholder version number
         run: |
-          poetry self add "poetry-dynamic-versioning[plugin]"
-          poetry dynamic-versioning
+          make set-version
 
       # Note: `make all` includes `gendoc` (via site target), so no separate gendoc step needed
       - name: Clean previous build artifacts
@@ -61,8 +59,8 @@ jobs:
         # Note: The `make mkd-gh-deploy` command below uses the `mkd-%` target
         #       defined in `Makefile`. That target's action (i.e. recipe)
         #       strips off the `mkd-` prefix and passes the rest of the command
-        #       to `$ poetry run mkdocs`, effectively translating the command
-        #       below into `$ poetry run mkdocs gh-deploy`.
+        #       to `$ uv run mkdocs`, effectively translating the command
+        #       below into `$ uv run mkdocs gh-deploy`.
         #
         # Reference: https://www.mkdocs.org/user-guide/deploying-your-docs/
         #
@@ -70,4 +68,4 @@ jobs:
         # outside of make in order to use the --force option
       - name: Deploy web-based documentation to GitHub Pages
         run: |
-          poetry run mkdocs gh-deploy --force
+          uv run mkdocs gh-deploy --force

@@ -19,11 +19,11 @@ single expected exception.
 
 Usage:
 
-    poetry run python src/scripts/report_redundant_slot_usage.py \
+    uv run python src/scripts/report_redundant_slot_usage.py \
         --schema-file src/schema/nmdc.yaml
 
     # machine-readable, for diffing between releases
-    poetry run python src/scripts/report_redundant_slot_usage.py \
+    uv run python src/scripts/report_redundant_slot_usage.py \
         --schema-file src/schema/nmdc.yaml --output-format tsv
 
 Or via make:

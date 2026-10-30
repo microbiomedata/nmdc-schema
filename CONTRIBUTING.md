@@ -133,7 +133,7 @@ Core developers should read the material on the [LinkML site](https://linkml.io/
 ### Testing Changes Locally
 
 While all PRs will be automatically checked using GitHub actions, core developers should understand how to run tests locally, as well as
-how to deploy a test version of the schema documentation. This requires some basic Python installation (e.g poetry)
+how to deploy a test version of the schema documentation. This requires some basic Python installation (e.g. uv)
 
  - Contributors should be comfortable running makefile targets, like `squeaky-clean`, `all`, `test`
 
@@ -173,8 +173,8 @@ current policy below when adding or modifying developer tooling.
 |---|---|---|
 | `src/schema/mixs.yaml` edits | Treat as generated. Change generator inputs/transformations (`makefiles/mixs.Makefile`, `assets/*`, related config) and regenerate. See [Maintaining mixs.yaml](src/docs/mixs-v6.3.0-customizations.md#maintaining-mixsyaml-how-to-change-a-mixs-slot) for which file to edit (yq asset vs `nmdc.yaml` settings) and how to verify without a full rebuild. | Hand-edit `mixs.yaml` directly. |
 | Script registration | Keep `[project.scripts]` limited to package-backed, stable CLIs intended for default installs. | Add most repo scripts as CLI aliases. |
-| Repo-local scripts | Invoke explicitly from Makefiles using `poetry run python src/scripts/<name>.py ...`. | Expose `src/scripts/*` commands through Poetry script aliases. |
-| Scripts table location | Use `[project.scripts]` (PEP 621). | Use `[tool.poetry.scripts]` (Poetry-specific). |
+| Repo-local scripts | Invoke explicitly from Makefiles using `uv run python src/scripts/<name>.py ...`. | Expose `src/scripts/*` commands through `[project.scripts]` aliases. |
+| Scripts table location | Use `[project.scripts]` (PEP 621). | Use a tool-specific scripts table such as `[tool.poetry.scripts]`. |
 | Output destinations | Choose destination by purpose (`docs/`, `local/`, `project/`, package artifacts). | Default most generated output to `assets/`. |
 | Makefile ergonomics | Prefer `$<`/`$@` where it improves clarity and correctness; not every target can use them. | Apply `$<`/`$@` universally. |
 | CLI naming | Keep hyphenated CLI aliases and consistent option naming when defining public CLIs. | Same intent, now applied only to stable/public entry points. |

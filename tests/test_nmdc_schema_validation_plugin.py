@@ -4,7 +4,7 @@ from linkml.validator import Validator
 from linkml.validator.plugins import JsonschemaValidationPlugin
 from linkml_runtime import SchemaView
 
-from nmdc_schema_validation_plugin import NmdcSchemaValidationPlugin
+from nmdc_schema.nmdc_schema_validation_plugin import NmdcSchemaValidationPlugin
 from tests import ROOT
 
 SOURCE_SCHEMA = ROOT / "src" / "schema" / "nmdc.yaml"

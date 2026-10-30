@@ -2,22 +2,19 @@
 
 ## Prerequisites
 
-This project uses **Poetry 2.5.1**, which CI installs in every workflow. The `pyproject.toml` uses
-[PEP 735 dependency groups](https://peps.python.org/pep-0735/) (`[dependency-groups]`). The
-`poetry.lock` content-hash only tracks dependency-group changes from **Poetry 2.3.0 onward**
-([poetry#10632](https://github.com/python-poetry/poetry/issues/10632)), so a poetry older than
-that (or simply different from the version that wrote the lock) computes a different hash and
-reports the lock as "out of sync with pyproject.toml" even when nothing changed. CI now runs
-`poetry check`, so a local poetry other than 2.5.1 can disagree with CI. Run
-`poetry check --lock` before trusting any other version. After editing `pyproject.toml`, run `poetry lock` (not `--regenerate` unless you intend
-to bump versions) and commit the lock.
+This project uses [uv](https://docs.astral.sh/uv/) to manage its Python environment and lock file
+(`uv.lock`). The `pyproject.toml` uses [PEP 735 dependency groups](https://peps.python.org/pep-0735/)
+(`[dependency-groups]`), and `uv sync` installs both the `dev` and `deps` groups by default.
+After editing `pyproject.toml`, run `uv lock` (it keeps the versions already locked unless you
+pass `--upgrade` or `--upgrade-package`) and commit `uv.lock`. CI runs `uv lock --check`, which
+fails when `uv.lock` is out of date with `pyproject.toml`.
 
 ```shell
 # Check your version
-poetry --version
+uv --version
 
-# Install the pinned version
-pipx install --force poetry==2.5.1
+# Create or update the environment from uv.lock
+uv sync
 ```
 
 > **Note:** This requirement only applies to developers working on the schema.
@@ -99,7 +96,7 @@ Here's how you can instantiate the development environment on your computer.
    $ yq --version
    $ make --version
    $ python --version
-   $ poetry --version
+   $ uv --version
    $ ls /nmdc-schema
    ```
    > The root directory of the repository is mounted at `/nmdc-schema` within that container.
@@ -111,7 +108,7 @@ Here's how you can instantiate the development environment on your computer.
    ```
 5. (Optional) Start the MkDocs dev-server.
    ```shell
-   $ poetry run mkdocs serve --dev-addr 0.0.0.0:8000
+   $ uv run mkdocs serve --dev-addr 0.0.0.0:8000
    ```
    > The `0.0.0.0` part is necessary in order to be able to access the MkDocs dev-server
    > [from your Docker host](https://github.com/mkdocs/mkdocs/issues/1239#issuecomment-354491734)
@@ -123,9 +120,9 @@ Here's how you can instantiate the development environment on your computer.
      > Note: If you customized `DOCS_PORT` earlier, use that port number instead of `8000` here.
 7. Use the container running the `app` service, as your `nmdc-schema` development environment.
    ```shell
-   $ poetry install
+   $ uv sync
    $ make squeaky-clean
-   $ poetry shell
+   $ source .venv/bin/activate
    # etc.
    ```
 8. (Optional) Done working on this project (e.g. for the day)? Stop the containers.
@@ -141,10 +138,10 @@ Here's how you can instantiate the development environment on your computer.
 
 Here's a one-liner you can use to derive release artifacts (which are [stored in the repository](https://github.com/microbiomedata/nmdc-schema/issues/1960)). Maintainers of this repository typically run this command—from the root directory of the repository—immediately before creating a GitHub Release.
 
-> This command runs a Docker container based upon the Docker image specified by the `app` service defined in `docker-compose.yml`, and overrides the container's startup command to be `poetry install && make squeaky-clean all test`.
+> This command runs a Docker container based upon the Docker image specified by the `app` service defined in `docker-compose.yml`, and overrides the container's startup command to be `uv sync && make squeaky-clean all test`.
 
 ```shell
-docker compose run --rm -it --name nmdc-schema-builder app sh -c 'poetry install && make squeaky-clean all test'
+docker compose run --rm -it --name nmdc-schema-builder app sh -c 'uv sync && make squeaky-clean all test'
 ```
 
 > Advanced testing instructions for migrators can be found [here](nmdc_schema/migrators/README.md).

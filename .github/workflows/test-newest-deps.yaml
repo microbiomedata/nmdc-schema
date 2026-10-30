@@ -1,0 +1,93 @@
+###############################################################################
+# Introduction:
+# -------------
+# The main CI workflow installs dependencies from uv.lock. People who
+# `pip install nmdc-schema` never see that lock; they get the newest versions
+# that pyproject.toml allows. This workflow builds the wheel the same way the
+# release does, installs it into a fresh environment with pip and no lock, and
+# runs the tests against those newest versions.
+#
+# It runs weekly and on demand, and never blocks a pull request.
+# Reference: https://github.com/microbiomedata/nmdc-schema/issues/3513
+###############################################################################
+
+name: Test with newest dependencies
+
+on:
+  schedule:
+    - cron: "0 14 * * 1"  # Mondays 14:00 UTC
+  # Allow people to trigger the workflow manually.
+  # Reference: https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow
+  workflow_dispatch: {}
+
+permissions: {}  # default deny; the job below grants only what it needs
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test-newest-deps:
+    name: Test installed wheel with newest dependencies
+    permissions:
+      contents: read  # check out the repository to build the wheel
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: [ '3.10', '3.13' ]
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0  # uv-dynamic-versioning derives the version from git tags
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      # Build the artifacts and the wheel with the locked versions, using the
+      # same steps as pypi-publish.yaml.
+      - name: Build schema artifacts and wheel
+        run: |
+          uv sync --locked
+          make set-version
+          make squeaky-clean all
+          make -C units fast
+          uv build
+
+      # A fresh environment with no lock: pip picks the newest allowed versions.
+      # fastjsonschema and ucumvert are dev-only packages that two tests import.
+      - name: Install the wheel with newest dependencies
+        run: |
+          python -m venv "$RUNNER_TEMP/newest"
+          "$RUNNER_TEMP/newest/bin/pip" install dist/*.whl pytest fastjsonschema ucumvert
+          "$RUNNER_TEMP/newest/bin/pip" list
+
+      # --import-mode=importlib keeps the checkout off sys.path, so the tests
+      # import nmdc_schema from the installed wheel. The ignored files import
+      # repo-only modules (src.scripts, or nmdc_schema/*.py as top-level
+      # modules), which are not part of the installed package.
+      - name: Run tests against the installed wheel
+        run: |
+          "$RUNNER_TEMP/newest/bin/pytest" -p no:cacheprovider --import-mode=importlib tests/ \
+            --ignore=tests/test_find_retired_element_mentions.py \
+            --ignore=tests/test_nmdc_data.py \
+            --ignore=tests/test_nmdc_schema_validation_plugin.py \
+            --ignore=tests/test_no_redundant_slot_usage.py \
+            --ignore=tests/test_ols4_embeddings_search.py \
+            --ignore=tests/test_ontology_alignment_prototype.py \
+            --ignore=tests/test_ontology_registry_counts.py \
+            --ignore=tests/test_report_redundant_slot_usage.py \
+            --ignore=tests/test_schema_element_history.py
+
+      - name: Run doctests against the installed wheel
+        run: |
+          "$RUNNER_TEMP/newest/bin/pytest" -p no:cacheprovider --doctest-modules \
+            --pyargs nmdc_schema.id_helpers nmdc_schema.nmdc_data

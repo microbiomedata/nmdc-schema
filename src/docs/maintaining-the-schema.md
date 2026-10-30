@@ -24,26 +24,25 @@ and especially those from the [OBO Foundry](https://obofoundry.org/).
 Reuse of existing terminologies and knowledge can be found in several places in the NMDC schema, including the use of
 the [MIxS](https://gensc.org/mixs/) schema, the [EnvO](https://environmentontology.org/) ontology, and the 
 [CHEBI](https://www.ebi.ac.uk/chebi/) ontology.  In addition, the NMDC schema elements like slots and classes are
-annotated with mappings ([exact, narrow, related scopes](https://linkml.io/linkml/schemas/uris-and-mappings.html)) 
-to these external resources.
+annotated with mappings to these external resources, as described in
+[Mapping schema elements to external terms](#mapping-schema-elements-to-external-terms).
 
 For example: 
 ```yaml
   doi_value:
     description: >-
-      A digital object identifier, which is intended to persistantly identify some resource on the web.
+      A digital object identifier, which is intended to persistently identify some resource on the web.
     required: true
     aliases:
       - DOI
       - digital object identifier
     range: uriorcurie
-    pattern: '^doi:10.\d{2,9}/.*$'
+    pattern: '^doi:10\.\d{2,9}/.*$'
     examples:
       - value: doi:10.46936/10.25585/60000880
         description: The DOI links to an electronic document.
-    exact_mappings:
+    close_mappings:
       - OBI:0002110
-    narrow_mappings:
       - edam.data:1188
 ```
 
@@ -62,26 +61,79 @@ Ideally, the expanded URI should be web resolvable, but that is not required.
 The prefixes can be expanded to base URIs owned by a particular resource, or they can be
 expanded to base URIs owned by some resolving service, like the bioregistry.
 
-## Asserting mappings in the NMDC Schema
+## Mapping schema elements to external terms
 
-As mentioned above, URIs are assigned to most elements of a LinkML schema, either explicitly by the schema authors,
-or implicitly through the default prefix and the element's key. If an external prefix is used, that means the semantics 
-of the element are identical to the external term, unless otherwise refined. Sometimes it is desirable to associate a 
-LinkML schema element with a term from an external resource, without asserting that the semantics are identical. 
-In this case, a variety of [mapping terms](https://linkml.io/linkml-model/latest/docs/mappings/) can be used.
+A mapping relates a schema element to a term in another vocabulary without making that term the element's
+identity. Mappings are one of the most compact ways to say what an element means, so contributors are encouraged
+to add them. This section is the NMDC Schema's single statement of how to use them.
 
-Adding mappings to a schema element is one of the best and most compact ways to clarify the meaning of that element. 
+### Mappings and the other metaslots that hold external terms
 
-Schema contributors are strongly encouraged to use mappings whose prefixes are already defined in the schema.
-Schema contributors are always responsible for having a holistic understanding of an external term to be mapped
-into the schema. This means gaining familiarity with the parent and child terms, as well as any other axioms 
-applied to the term. The EBI Ontology Lookup Service is a good place to look for these details.
+Four other metaslots also hold external terms, and each does a different job:
 
-When it appears necessary to use a mapping whose prefix isn't already defined in the schema, the contributor
-is responsible for having a holistic understanding of the external namespace (not just the term to be mapped).
-There are several ways to start assessing an ontology that is being considered as a source of mappings.
-If the ontology is in the OBO Foundry, one can look at the 
-[OBO Foundry Dashboard](http://dashboard.obofoundry.org/dashboard/index.html).
+- `class_uri` and `slot_uri` give the element its own identity in RDF and OWL. Use them only when the element and
+  the external term are the same thing.
+- `meaning` names the term that a permissible value stands for.
+- `see_also` links to pages for human readers, such as specifications and GitHub issues. An ontology CURIE
+  belongs in a mapping, not in `see_also`.
+
+### The mapping metaslots
+
+Each LinkML mapping metaslot becomes one SKOS predicate in the generated OWL
+([linkml-model mappings.yaml](https://github.com/linkml/linkml-model/blob/main/linkml_model/model/schema/mappings.yaml),
+[W3C SKOS Reference](https://www.w3.org/TR/skos-reference/)). In the table, X is the schema element and Y is the
+external term.
+
+| Metaslot | SKOS predicate | `X <metaslot> Y` means | How the NMDC Schema uses it |
+|---|---|---|---|
+| `exact_mappings` | `skos:exactMatch` | X and Y are the same concept. | For identity between elements of the same kind, such as `Biosample` and `OBI:0000747`, or `title` and `dcterms:title`. |
+| `close_mappings` | `skos:closeMatch` | X and Y are close enough to treat as the same in some applications. | For near-identity, such as `Organization` and `dcm:Organization`. |
+| `related_mappings` | `skos:relatedMatch` | X and Y are associated, and neither subsumes the other. | For adjacent terms, such as the assay that produces a value or the rank of a taxon name. |
+| `broad_mappings` | `skos:broadMatch` | Y is broader than X. | For subsumption between elements of the same kind, such as `Study` and `prov:Activity`. |
+| `narrow_mappings` | `skos:narrowMatch` | Y is narrower than X. | For subsumption between elements of the same kind, such as `FunctionalAnnotation` and `biolink:GeneToGoTermAssociation`. |
+| `mappings` | `skos:mappingRelation` | X and Y are related in an unstated way. | Only for the existing schema.org, QUDT and PROV alignments, such as `latitude` and `schema:latitude`. Use a typed metaslot for anything new. |
+
+The direction of `broad_mappings` and `narrow_mappings` is easy to get backwards. `skos:broadMatch` is a
+sub-property of `skos:broader`, and the SKOS Reference says "`A skos:broader B` asserts that B, the object, is a
+broader concept than A". So `X broad_mappings Y` says that Y subsumes X, the way "egg-laying animal" subsumes
+"platypus".
+
+### Which kinds of element can map to which
+
+A class maps to a class, and a permissible value maps to a class or to a value in another vocabulary. A slot maps
+to a property where the other vocabulary has one.
+
+Many ontologies model a data field only as a class, for example GENEPIO fields, OBI data items, PATO qualities,
+and MS and TAXRANK terms. When such a class is the best match for a slot, put it in `close_mappings` or
+`related_mappings`. `exact_mappings`, `broad_mappings` and `narrow_mappings` would assert identity or subsumption
+between a property and a class, which can't hold, and generic `mappings` is kept for the schema.org, QUDT and PROV
+alignments.
+
+To choose between the two, ask whether each value of the slot is an instance of what the class describes. If it
+is, use `close_mappings`. `number_of_contig` holds a count of contigs, and `GENEPIO:0000093` (contig count) describes
+exactly that. If it isn't, use `related_mappings`. `gtdbtk_species` holds a species name,
+while `TAXRANK:0000006` is the rank "species" itself.
+
+### Permissible values: `meaning` first
+
+Put the term a permissible value stands for in `meaning`, and use mapping metaslots only for further terms. For
+example, `acetic_acid` in `ChemicalEntityEnum` has `meaning: CHEBI:15366` (acetic acid) and
+`related_mappings: CHEBI:30089` (acetate). Some older values put their only term in `exact_mappings` and have no
+`meaning`, such as the values of `MassAnalyzerEnum`. New values should not follow that pattern.
+
+### Choosing and checking a term
+
+Use `exact_mappings` only when you are sure the two are the same. When the external term is an assay, method or
+measurement next to the element rather than the element itself, use `related_mappings`. For example, map a gene
+or a process to the sequencing assay that reads it or runs it with `related_mappings`.
+
+An embeddings search, such as the OLS4 `llm_search`, is a good way to find candidates, but a high score is only a
+lead. Confirm that the CURIE resolves to the intended term, and read the term's parents, children and axioms in
+the [EBI Ontology Lookup Service](https://www.ebi.ac.uk/ols4/) before using it.
+
+Prefer prefixes the schema already defines. Before adding a new prefix, assess the whole ontology, not only the
+term you want. For an OBO Foundry ontology, the
+[OBO Foundry Dashboard](http://dashboard.obofoundry.org/dashboard/index.html) is a good place to start.
 
 ## Asserting identifiers in LinkML data
 
@@ -166,23 +218,30 @@ the values of slots to use a prefix that isn't declared, but no checks are autom
 When a slot's range is a class that is not inlined, the value in the data is the `id` of an instance of that class.
 Two different things could be checked about that value, and only one of them is enforced by the schema.
 
-**The shape of the id is enforced by the schema.** A `structured_pattern` in the class's `slot_usage` constrains the
-value to the id pattern of the intended class. For example, `Biosample.slot_usage.associated_studies`:
+**The shape of the id is enforced by the schema.** A `structured_pattern` on the slot, or in a class's `slot_usage`,
+constrains the value to the id pattern of the intended class. For example, the `associated_studies` slot in
+`src/schema/basic_classes.yaml`:
 
 ```yaml
 associated_studies:
-  required: true
   range: Study
+  multivalued: true
   structured_pattern:
-    syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$"
+    syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}"
     interpolated: true
 ```
 
-The pattern only takes effect after materialization, so validate against `nmdc_schema/nmdc_materialized_patterns.yaml`
-rather than the source schema. In the materialized artifact the syntax above becomes
-`^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$`, so `associated_studies: [xyz]` fails. This is why so many
-`slot_usage` blocks carry a `structured_pattern`: it is the only in-schema guard against pointing a slot at an id of
-the wrong class.
+With linkml-runtime 1.12 or later, `SchemaView.induced_slot()` fills in the settings and turns this into
+`^(?:(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,}))$`, so `associated_studies: [xyz]` fails whether you
+validate against the source schema or against `nmdc_schema/nmdc_materialized_patterns.yaml`. linkml adds the `^(?:` and
+`)$` itself because `partial_match` is not set, so the `syntax` leaves out `^` and `$`
+(https://github.com/microbiomedata/nmdc-schema/issues/3539). With an older linkml-runtime, only the materialized
+artifact carries the pattern. This is why so many `slot_usage` blocks carry a `structured_pattern`: it is the only
+in-schema guard against pointing a slot at an id of the wrong class.
+
+linkml 1.12 deprecates the `--materialize-patterns` option. The Makefile still passes it when it builds
+`nmdc_schema/nmdc_materialized_patterns.yaml`. Without it that file holds 42 `pattern` values instead of 356, and tools
+that read the file with linkml-runtime older than 1.12, such as submission-schema's build, would not see the rest.
 
 **The existence of the referent is not checked by the schema.** Schema validation is per-document: a value that
 matches the pattern but names a record that does not exist will pass. Nothing in LinkML or the generated JSON Schema
@@ -270,7 +329,7 @@ The text that comes immediately after the `nmdc` prefix and colon, and before th
 Typecodes must correspond 1:1 to a class in the NMDC schema. The typecodes currently in use are available from the
 nmdc-runtime API: https://api.microbiomedata.org/nmdcschema/typecodes
 
-Please see [identifers](identifiers.md) for more information on the minting of identifiers in NMDC directly, and
+Please see [identifiers](identifiers.md) for more information on the minting of identifiers in NMDC directly, and
 for more discussion on identifier resolution and harmonization in NMDC.
 
 

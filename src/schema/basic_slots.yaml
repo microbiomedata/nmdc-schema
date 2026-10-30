@@ -35,17 +35,15 @@ default_range: string
 subsets:
   jgi_isolate:
     description: >-
-      Slots that map to a field on the JGI Isolate (NA) v19 submission form,
-      identified by a structured_alias whose literal_form is the exact form
-      field name. Membership is the alias: a slot is in this subset if and only
-      if it carries a JGI Isolate v19 structured_alias. Most members are new
-      NMDC slots for organism identity, strain verification, purity assessment,
-      and biosafety classification; a few are reused MIxS slots (for example
-      host_taxid, source_mat_id, estimated_size) whose JGI mapping is recorded
-      via the alias rather than by a new slot.
+      The slots that have a structured_alias whose literal_form is a field
+      name on the JGI Isolate (NA) v19 submission form.
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/issues/2803
     comments:
+      - >-
+        Most members are NMDC slots for organism identity, strain verification,
+        purity and biosafety. A few are MIxS slots, such as host_taxid,
+        source_mat_id and estimated_size.
       - >-
         The form template itself is access-restricted; each alias source points
         to the public JGI submission overview. To keep this subset exhaustive,
@@ -98,13 +96,14 @@ subsets:
 slots:
   badges:
     title: Metadata Quality Badges
-    description: >-
-      Metadata-quality badges awarded to this record. Each value names one
-      badge, which is present or absent; there are no levels or tiers. Most
-      badges name a completeness subset, but not all do: expert_curation is
-      awarded from provenance instead. Awarded by a downstream service, not
-      asserted by submitters. Awarding is additive: a badge, once awarded, is
-      not removed from the record.
+    description: Metadata quality badges awarded to this record.
+    comments:
+      - A record either has a badge or doesn't. Badges have no levels.
+      - >-
+        Most badges are awarded for populating enough slots in a badge subset.
+        expert_curation is awarded from the record's provenance instead.
+      - Badges are awarded by a downstream service, not entered by submitters.
+      - A badge is not removed once it has been awarded.
     range: MetadataBadgeEnum
     multivalued: true
     see_also:
@@ -130,9 +129,9 @@ slots:
   processing_institution_workflow_metadata:
     range: string
     description: >- 
-      Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such
+      Information about how workflow results were generated when the processing is done by an external organization (e.g., JGI) such
       as software tool name and version or pipeline name and version.
-    mappings:
+    close_mappings:
       - NCIT:C165211
     examples:
       - value: metaspades v. 3.15.2
@@ -150,7 +149,7 @@ slots:
     description: >-
       The scientific objectives associated with the entity.
       It SHOULD correspond to scientific norms for objectives field in a structured abstract.
-    mappings:
+    close_mappings:
       - SIO:000337
 
   md5_checksum:
@@ -176,8 +175,9 @@ slots:
       - value: GC-MS Metabolomics Results
     structured_aliases:
       - literal_form: data_object_type
-        contexts:
-          - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+        source: https://github.com/microbiomedata/nmdc_automation/blob/main/data_management/README.md
+        notes:
+          - JGI Analysis Tracker (JAT) macro nmdc_metadata.yaml, in an access-restricted Bitbucket repository (https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml); source is the public NMDC page describing how JAT is used.
         predicate: EXACT_SYNONYM
   data_category:
     range: DataCategoryEnum
@@ -323,7 +323,7 @@ slots:
 
   doi_value:
     description: >-
-      A digital object identifier, which is intended to persistantly identify some resource on the web.
+      A digital object identifier, which is intended to persistently identify some resource on the web.
     required: true
     aliases:
       - DOI
@@ -333,9 +333,8 @@ slots:
     examples:
       - value: doi:10.46936/10.25585/60000880
         description: The DOI links to an electronic document.
-    exact_mappings:
+    close_mappings:
       - OBI:0002110
-    related_mappings:
       - edam.data:1188
 
   doi_provider:
@@ -542,9 +541,9 @@ slots:
     range: ExtractionTargetEnum
     notes:
       - todos, remove nucl_acid_ext from OmicsProcessing (DataGeneration)
-    narrow_mappings:
-      - NCIT:C177560
+    related_mappings:
       - MIXS:0000037
+      - NCIT:C177560
 
   id:
     title: ID
@@ -556,21 +555,21 @@ slots:
       Must be either a CURIE shorthand for a URI or a complete URI
     structured_aliases:
       - literal_form: workflow_execution_id
-        contexts:
-          - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+        source: https://github.com/microbiomedata/nmdc_automation/blob/main/data_management/README.md
+        notes:
+          - JGI Analysis Tracker (JAT) macro nmdc_metadata.yaml, in an access-restricted Bitbucket repository (https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml); source is the public NMDC page describing how JAT is used.
         predicate: NARROW_SYNONYM
       - literal_form: data_object_id
-        contexts:
-          - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+        source: https://github.com/microbiomedata/nmdc_automation/blob/main/data_management/README.md
+        notes:
+          - JGI Analysis Tracker (JAT) macro nmdc_metadata.yaml, in an access-restricted Bitbucket repository (https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml); source is the public NMDC page describing how JAT is used.
         predicate: NARROW_SYNONYM
     notes:
       - "abstracted pattern: prefix:typecode-authshoulder-blade(.version)?(_seqsuffix)?"
       - 'a minimum length of 3 characters is suggested for typecodes, but 1 or 2 characters will be accepted'
       - 'typecodes must correspond 1:1 to a class in the NMDC schema. this will be checked via per-class id slot usage assertions'
       - 'minting authority shoulders should probably be enumerated and checked in the pattern'
-    examples:
-      - value: nmdc:mgmag-00-x012.1_7_c1
-        description: 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248'
+      - 'This slot has no examples on purpose. linkml 1.12 copies a slot''s examples into every class that uses it, and no single id matches every class id pattern (https://github.com/microbiomedata/nmdc-schema/issues/3540). Id examples belong in each class''s slot_usage.'
     pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
 
   title:
@@ -596,7 +595,7 @@ slots:
     description: >-
       A list of alternative names used to refer to the entity.
       The distinction between name and alternative names is application-specific. 
-      This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)
+      This should not be used for identifiers which have their own slots (e.g., bioproject:PRJNA406974)
     exact_mappings:
       - dcterms:alternative
       - skos:altLabel
@@ -838,39 +837,52 @@ slots:
 enums:
 
   MetadataBadgeEnum:
-    description: >-
-      Metadata-quality badges a Biosample can be awarded. Each permissible value
-      names one badge topic and is present or absent; there are no levels or
-      tiers. Badges are awarded in two ways. A completeness badge names a badge
-      subset (a subset whose in_subset includes badge_topic) and is awarded when
-      the record populates at least that subset's badge_minimum_slots slots; a
-      test keeps those permissible values and subsets in sync. A provenance badge
-      is awarded from a recorded fact about where the metadata came from, has no
-      subset, and names its source in its own description.
+    description: Metadata quality badges that a Biosample can be awarded.
+    comments:
+      - >-
+        A completeness badge has the same name as a badge subset, meaning a
+        subset whose in_subset includes badge_topic. It is awarded when the
+        Biosample populates at least badge_minimum_slots of that subset's slots.
+        tests/test_badge_subset_sync.py checks that these values and subsets match.
+      - >-
+        A provenance badge is awarded from where the metadata came from. It has
+        no subset, and its comments name the slot it is awarded from.
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/issues/3227
     permissible_values:
       biogeochemistry:
         title: Biogeochemistry
         description: >-
-          Completeness badge. Awarded when the Biosample populates at least
-          badge_minimum_slots of the biogeochemistry subset.
+          A badge for a Biosample that has values for at least the minimum
+          number of slots set by the Biogeochemistry subset.
+        comments:
+          - >-
+            Completeness badge. Awarded when the Biosample populates at least
+            badge_minimum_slots of the biogeochemistry subset.
         see_also:
           - https://microbiomedata.github.io/nmdc-schema/Biogeochemistry/
       host_information:
         title: Host Information
         description: >-
-          Completeness badge. Awarded when the Biosample populates at least
-          badge_minimum_slots of the host_information subset.
+          A badge for a Biosample that has values for at least the minimum
+          number of slots set by the Host Information subset.
+        comments:
+          - >-
+            Completeness badge. Awarded when the Biosample populates at least
+            badge_minimum_slots of the host_information subset.
         see_also:
           - https://microbiomedata.github.io/nmdc-schema/HostInformation/
       expert_curation:
         title: Expert Curation
         description: >-
-          Provenance badge. Awarded when the Biosample's
-          ProvenanceMetadata.source_system_of_record identifies the NMDC
-          submission portal, rather than an ETL process over an external
-          database.
+          A badge for a Biosample whose metadata was submitted through the NMDC
+          Submission Portal.
+        comments:
+          - >-
+            Provenance badge. Awarded when the Biosample's
+            ProvenanceMetadata.source_system_of_record identifies the NMDC
+            submission portal, rather than an ETL process over an external
+            database.
         see_also:
           - https://microbiomedata.github.io/nmdc-schema/source_system_of_record/
 
@@ -1169,7 +1181,7 @@ enums:
         description: GTDBTK archaeal summary
 
       GTDBTK Summary JSON:
-        description: GTDBTK bacterial and archaeal summary in JSON format
+        description: Log file for running GTDBTK, in JSON format
         see_also:
           - https://ecogenomics.github.io/GTDBTk/
         annotations:
@@ -1639,6 +1651,14 @@ enums:
         title: SeqCenter
         meaning: https://www.seqcenter.com/
 
+      Aalborg_University:
+        title: Aalborg University
+        meaning: ror:04m5j1k67
+
+      Georgia_Institute_of_Technology:
+        title: Georgia Institute of Technology
+        meaning: ror:01zkghx44
+
   DataCategoryEnum:
     permissible_values:
       instrument_data:
@@ -1649,3 +1669,12 @@ enums:
         description: Data used as input into a workflow providing workflow specification.
         related_mappings:
           - edam.data:0949
+
+# Settings below are copied from nmdc.yaml by src/scripts/sync_module_settings.py.
+# Do not edit them here; edit nmdc.yaml and rerun the script.
+# See https://github.com/microbiomedata/nmdc-schema/issues/3523
+settings:
+  id_blade: ([A-Za-z0-9]{1,})
+  id_nmdc_prefix: (nmdc)
+  id_shoulder: ([0-9][a-z]{0,6}[0-9])
+  id_version: (\.[1-9]{1}[0-9]{0,})

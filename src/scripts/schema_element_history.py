@@ -17,7 +17,7 @@ Elements are identified by kind and name, and permissible values by enum and val
 removing a value from one enum does not retire that spelling elsewhere.
 
 Usage:
-    poetry run python src/scripts/schema_element_history.py -o local/retired_elements.tsv
+    uv run python src/scripts/schema_element_history.py -o local/retired_elements.tsv
 """
 
 from __future__ import annotations

@@ -45,7 +45,12 @@ src/schema/mixs.yaml: shuttle-clean local/mixs_regen/mixs_minus_1.yaml
 	# that require settings for pattern interpolation. These settings are defined in
 	# src/schema/nmdc.yaml instead, so they're available during schema materialization.
 	# See: https://github.com/microbiomedata/nmdc-schema/issues/1368
+	# From linkml 1.12 a structured_pattern only sees the settings of its own module, so after
+	# the yq step sync_module_settings.py copies the keys mixs.yaml uses from nmdc.yaml into it.
+	# nmdc.yaml stays the one place to edit a value.
+	# See: https://github.com/microbiomedata/nmdc-schema/issues/3523
 	yq eval --from-file assets/yq-for-mixs-dematerialize.yq $(word 2,$^) > $@
+	$(RUN) python src/scripts/sync_module_settings.py $@
 	rm -rf local/mixs_regen/mixs_subset_modified.yaml.bak
 
 local/mixs_regen/mixs_subset.yaml: assets/import_mixs_slots_regardless.tsv

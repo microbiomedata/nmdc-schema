@@ -128,7 +128,7 @@ class TestBadgeSubsetSync(unittest.TestCase):
                 f"badge permissible value '{permissible_value}' is not a "
                 f"badge_topic subset {sorted(subsets)}. If it is awarded from "
                 f"provenance rather than slot completeness, add it to "
-                f"PROVENANCE_BADGES and say so in its description.",
+                f"PROVENANCE_BADGES and say so in its comments.",
             )
 
     def test_every_badge_subset_has_a_permissible_value(self):

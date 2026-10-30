@@ -32,6 +32,22 @@ def get_compatible_typecodes(slot_pattern: str) -> List[str]:
     ['foo', 'bar']
     >>> get_compatible_typecodes("^(nmdc):(foo|bar|baz)-...")
     ['foo', 'bar', 'baz']
+
+    LinkML 1.12 wraps a pattern as `^(?:...)$`. From nmdc-schema 11.25.0 our own patterns carry no
+    anchors, so the wrapped form has one `^` (see
+    https://github.com/microbiomedata/nmdc-schema/issues/3539):
+
+    >>> get_compatible_typecodes("^(?:(nmdc):foo-...)$")
+    ['foo']
+    >>> get_compatible_typecodes("^(?:(nmdc):(foo|bar)-...)$")
+    ['foo', 'bar']
+
+    The doubled form from 11.25.0rc2, where our own `^` sat inside the wrapper, is still read:
+
+    >>> get_compatible_typecodes("^(?:^(nmdc):foo-...)$")
+    ['foo']
+    >>> get_compatible_typecodes("^(?:^(nmdc):(foo|bar)-...)$")
+    ['foo', 'bar']
     """
     typecodes: List[str] = []
 
@@ -45,7 +61,8 @@ def get_compatible_typecodes(slot_pattern: str) -> List[str]:
     #       consume all but the final hyphen in the slot pattern. By doing a lazy match, we prevent the capture
     #       group from consuming any hyphens at all.
     #
-    # LinkML 1.12 wraps an already-anchored pattern as `^(?:...)$`.
+    # LinkML 1.12 wraps a pattern as `^(?:...)$`; the `^` inside the wrapper is optional so that the doubled
+    # form from 11.25.0rc2 still matches.
     id_pattern = re.compile(r"^\^(?:\(\?:)?\^?\(nmdc\):(.+?)-")
 
     # Use the regular expression to extract the typecode portion of the specified slot pattern.
@@ -78,6 +95,10 @@ def get_typecode_for_future_ids(slot_pattern: str) -> Optional[str]:
     >>> get_typecode_for_future_ids("^(nmdc):(foo|bar)-...")
     'foo'
     >>> get_typecode_for_future_ids("^(nmdc):(foo|bar|baz)-...")
+    'foo'
+    >>> get_typecode_for_future_ids("^(?:(nmdc):(foo|bar)-...)$")
+    'foo'
+    >>> get_typecode_for_future_ids("^(?:^(nmdc):(foo|bar)-...)$")
     'foo'
     """
     compatible_typecodes = get_compatible_typecodes(slot_pattern)

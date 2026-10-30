@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [ '3.10', '3.13' ]
+        python-version: [ '3.10', '3.13', '3.14' ]
 
     steps:
 
@@ -31,23 +31,22 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Install Poetry
-        run: pipx install poetry==2.5.1
+      - name: Install uv
+        uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
 
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: ${{ matrix.python-version }}
-          cache: 'poetry'
 
       #----------------------------------------------
       # install dependencies if cache does not exist 
       #----------------------------------------------
       - name: Verify lockfile is in sync with pyproject.toml
-        run: poetry check
+        run: uv lock --check
 
       - name: Install dependencies
-        run: poetry install
+        run: uv sync --locked
 
 
       #----------------------------------------------

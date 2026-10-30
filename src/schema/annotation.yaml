@@ -73,6 +73,11 @@ classes:
     description: >-
       Abstract grouping class for any term/descriptor that can be applied to a functional unit of a genome (protein, ncRNA, complex).
     abstract: true
+    slot_usage:
+      id:
+        examples:
+          - value: PFAM:PF00206
+            description: the Pfam Lyase_1 family, a gene_function_id in production functional_annotation_agg
 
 
   OrthologyGroup:
@@ -94,6 +99,11 @@ classes:
       - KEGG.ORTHOLOGY prefix is used for KO numbers
     todos:
       - is OrthologyGroup instantiated in an MongoDB collection? Aren't Pathways searchable in the Data Portal?
+    slot_usage:
+      id:
+        examples:
+          - value: KEGG.ORTHOLOGY:K01755
+            description: KEGG ortholog for argininosuccinate lyase, a gene_function_id in production functional_annotation_agg
 
   FunctionalAnnotation:
     class_uri: nmdc:FunctionalAnnotation
@@ -124,7 +134,7 @@ classes:
           - To be consistent with the rest of the NMDC schema we use the PROV annotation model, rather than GPAD
         range: MetagenomeAnnotation
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(wfmgan)-{id_shoulder}-{id_blade}{id_version}$"
+          syntax: "{id_nmdc_prefix}:(wfmgan)-{id_shoulder}-{id_blade}{id_version}"
           interpolated: true
     narrow_mappings:
       - biolink:GeneToGoTermAssociation
@@ -173,7 +183,7 @@ slots:
     description: >-
       The gene product encoded by this feature.
       Typically this is used for a CDS feature or gene feature which will encode a protein.
-      It can also be used by a nc transcript ot gene feature that encoded a ncRNA
+      It can also be used by a nc transcript or gene feature that encoded a ncRNA
     todos:
       - If we revert Reaction back into the schema, that would be a reasonable domain for this slot
   end:
@@ -202,3 +212,12 @@ slots:
     description: The start of the feature in positive 1-based integer coordinates
     close_mappings:
       - biolink:start_interbase_coordinate
+
+# Settings below are copied from nmdc.yaml by src/scripts/sync_module_settings.py.
+# Do not edit them here; edit nmdc.yaml and rerun the script.
+# See https://github.com/microbiomedata/nmdc-schema/issues/3523
+settings:
+  id_blade: ([A-Za-z0-9]{1,})
+  id_nmdc_prefix: (nmdc)
+  id_shoulder: ([0-9][a-z]{0,6}[0-9])
+  id_version: (\.[1-9]{1}[0-9]{0,})

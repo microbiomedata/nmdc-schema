@@ -1,7 +1,7 @@
 # Maintaining the NMDC Schema
 ## Dependencies
 To make new release of the schema, you must have the following installed on your system:
-- [poetry](https://python-poetry.org/docs/#installation/)
+- [uv](https://docs.astral.sh/uv/getting-started/installation/)
 - [pandoc](https://pandoc.org/installing.html)
 - [yq](https://github.com/mikefarah/yq)
   - Specifically, [Mike Farah's Go-based yq](https://github.com/mikefarah/yq)
@@ -30,7 +30,7 @@ The changes can be checked locally with `make all test`
 
 > The authoritative, step-by-step release procedure is the
 > [infra-admin release runbook](https://github.com/microbiomedata/infra-admin/blob/main/releases/nmdc-schema.md).
-> Pre-release (release candidate) mechanics and the `poetry-dynamic-versioning` setup
+> Pre-release (release candidate) mechanics and the `uv-dynamic-versioning` setup
 > are documented in the *Pre-release Process* section of
 > [`CLAUDE.md`](CLAUDE.md). This section keeps only the version-numbering guidelines
 > and the release notes convention; follow the runbook for the current steps.
@@ -38,8 +38,9 @@ The changes can be checked locally with `make all test`
 The package is published to [PyPI](https://pypi.org/project/nmdc-schema/) by the
 [pypi-publish](https://github.com/microbiomedata/nmdc-schema/blob/main/.github/workflows/pypi-publish.yaml)
 GitHub Action, which fires on the GitHub release `created` event. The package version is
-derived from the git tag by `poetry-dynamic-versioning`; there is no `version` field to
-hand-edit before a release.
+derived from the git tag by `uv-dynamic-versioning`, and `make set-version` writes the same
+version into `src/schema/nmdc.yaml` before the artifacts are generated; there is no `version`
+field to hand-edit before a release.
 
 ### Guidelines for updating semantic version
 
