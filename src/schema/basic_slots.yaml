@@ -49,6 +49,34 @@ subsets:
         to the public JGI submission overview. To keep this subset exhaustive,
         add in_subset jgi_isolate wherever a JGI Isolate v19 structured_alias is
         added, at the same scope the alias lives (global slot or class slot_usage).
+  pha4ge_wastewater:
+    description: >-
+      The slots and enums aligned to the PHA4GE Wastewater Contextual Data
+      Specification 4.4.4, so that NMDC records and PHA4GE wastewater
+      surveillance records can be crosswalked.
+    see_also:
+      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    comments:
+      - >-
+        The first see_also link is the specification release the alignment was
+        made against. The second is the DataHarmonizer template
+        (cidgoh/pathogen-genomics-package tag PGPv5.6.5,
+        templates/wastewater/schema.yaml) whose slot_uris supplied the GENEPIO
+        ids in the members' close_mappings and related_mappings. When PHA4GE
+        releases a new version, update the version and the two links here; the
+        members carry no copy of them.
+      - >-
+        Members are NMDC-native slots and enums in src/schema/core.yaml,
+        basic_classes.yaml and external_identifiers.yaml, which carry in_subset
+        in their own definitions, and MIxS slots in the generated
+        src/schema/mixs.yaml, whose membership is asserted in
+        assets/yq-for-mixs-customizations.txt after the build strips the
+        upstream MIxS subsets.
+      - >-
+        Each member's notes say which PHA4GE field it maps to and why the
+        predicate is close or related. No member uses exact_mappings, even
+        where the shapes agree.
   badge_topic:
     description: >-
       Group of subsets that each define a completeness-based metadata-quality
