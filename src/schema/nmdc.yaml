@@ -1545,14 +1545,14 @@ slots:
   ionization_source:
     range: IonizationSourceEnum
     description: The ionization source used to introduce processed samples into a mass spectrometer
-    exact_mappings:
+    close_mappings:
       - MS:1000008
 
   mass_analyzers:
     range: MassAnalyzerEnum
     description: The kind of mass analyzer(s) used during the spectra collection.
     multivalued: true
-    exact_mappings:
+    close_mappings:
       - MS:1000443
 
   resolution_categories:
@@ -1565,7 +1565,7 @@ slots:
   mass_spectrometry_acquisition_strategy:
     range: MassSpectrometryAcquisitionStrategyEnum
     description: Mode of running a mass spectrometer method by which m/z ranges are selected and ions possibly fragment.
-    exact_mappings:
+    close_mappings:
       - MS:1003213
 
   eluent_introduction_category:
@@ -1607,12 +1607,12 @@ slots:
 
   library_preparation_kit:
     range: string
-    exact_mappings:
+    close_mappings:
       - GENEPIO:0001450
 
   pcr_cycles:
     range: integer
-    exact_mappings:
+    close_mappings:
       - OBI:0002475
 
   is_stranded:
@@ -1632,7 +1632,7 @@ slots:
     aliases:
       - sample mass
       - sample weight
-    exact_mappings:
+    close_mappings:
       - MS:1000004
     related_mappings:
       - MIXS:0000111

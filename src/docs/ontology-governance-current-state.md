@@ -192,8 +192,7 @@ Different placement contexts have different implications:
 |---|---|---|---|
 | `meaning:` on permissible value | Canonical semantic identity of a PV | Yes — must resolve to an IRI | `meaning: OBI:0000366` |
 | `class_uri:` / `slot_uri:` | Schema element identity in RDF/OWL | Yes | `class_uri: OBI:0000011` |
-| `exact_mappings:` | This element IS that term | Yes (for OWL generation) | `exact_mappings: - TAXRANK:0000006` |
-| `close_mappings:` / `related_mappings:` / `broad_mappings:` / `narrow_mappings:` | Looser alignment, informative | Yes (for OWL) | `close_mappings: - NCIT:C16551` |
+| `exact_mappings:`, `close_mappings:`, `related_mappings:`, `broad_mappings:`, `narrow_mappings:`, `mappings:` | Alignment to an external term without taking its identity. Usage rules: [Mapping schema elements to external terms](maintaining-the-schema.md#mapping-schema-elements-to-external-terms) | Yes (for OWL generation) | `exact_mappings: - OBI:0000747` (on `Biosample`) |
 | `id_prefixes:` on a class | What CURIE prefixes valid instances may use | Advisory/conditional | `id_prefixes: - PR` |
 | Value in a CURIE-typed slot (data) | Instance identifier | String pattern only | `type: ENVO:00002030` |
 | Free-text description or annotation | Documentation only | No — just a string | `Expected_value: FMA or UBERON` |
@@ -324,8 +323,10 @@ in a principled way.
    respectively) but have different licensing and governance than OBO. Are they
    acceptable for `meaning:` values? For `close_mappings:`? For data values?
 
-4. **Mapping predicate standards.** When is a match `exact_mappings` vs
-   `close_mappings` vs just `meaning:`? What level of review is required?
+4. **Mapping predicate standards.** Which predicate to use, and when to use
+   `meaning:` instead, is settled in
+   [Mapping schema elements to external terms](maintaining-the-schema.md#mapping-schema-elements-to-external-terms).
+   Still open: what level of review does a new mapping need?
 
 5. **Property-like slot alignment.** 302 of 851 NMDC slots have scalar ranges
    and should arguably align to ontology *properties*, not classes. Is that
