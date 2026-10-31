@@ -49,9 +49,13 @@ files, assets naming an element defined in `src/schema/deprecated.yaml`, and the
 Files in the third list are priorities for retirement review. Check consumers before
 deciding to delete, regenerate, or retain them.
 
-The report only sees this repository. Before deleting, check the rest of the organization,
-because another repo can read a raw GitHub URL without any local reference. This preliminary
-search filters out this repository's own matches:
+!!! warning "Check other repositories before deleting an asset"
+    The report only sees this repository. Another repository can read an asset through a
+    raw GitHub URL, which leaves no reference here. A clean report is not enough to delete
+    a file.
+
+This preliminary search of the rest of the microbiomedata organization filters out this
+repository's own matches:
 
 ```bash
 gh search code --owner microbiomedata "<filename without extension>" \
