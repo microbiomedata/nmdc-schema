@@ -1,0 +1,25 @@
+# Settings for the typos spell checker (https://github.com/crate-ci/typos).
+# CI runs it on src/schema and src/docs only, see .github/workflows/spelling.yml
+# and https://github.com/microbiomedata/nmdc-schema/issues/3541. To run it
+# locally the same way: uvx typos==1.51.1 src/schema src/docs
+#
+# Each entry below is a word typos reports that is spelled as intended. Fix a
+# real misspelling instead of adding it here.
+
+[default]
+extend-ignore-re = [
+  "SAM\\[NED\\]",            # NCBI BioSample accession pattern
+  "\\bCFo\\d*\\b",           # ChemFOnt prefix
+  "\\b\\d+CNA\\d+\\b",       # LANL contract number
+  "Migs(Ba|Eu)",             # MIxS combination class names
+  "classs-id",               # heading anchor generated from "class's"
+]
+
+[default.extend-words]
+formate = "formate"          # chemical (ammonium formate)
+struc = "struc"              # MIxS slot names: aero_struc, ...
+architec = "architec"        # MIxS: room_architec_elem
+preserv = "preserv"          # MIxS: samp_preserv
+otu = "otu"                  # operational taxonomic unit
+celcius = "celcius"          # intentional alias of degrees Celsius
+cateogry = "cateogry"        # historical slot name analyte_cateogry
