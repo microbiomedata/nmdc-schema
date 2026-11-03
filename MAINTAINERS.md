@@ -2,15 +2,11 @@
 ## Dependencies
 To make new release of the schema, you must have the following installed on your system:
 - [uv](https://docs.astral.sh/uv/getting-started/installation/)
-- [pandoc](https://pandoc.org/installing.html)
+  - Use a current version. An older uv than the one that last wrote `uv.lock` rewrites it in an older format, and `make release` stops.
 - [yq](https://github.com/mikefarah/yq)
   - Specifically, [Mike Farah's Go-based yq](https://github.com/mikefarah/yq)
-- (Optional) [ROBOT](http://robot.obolibrary.org/)
-  - Editor's note: We may eventually switch to using [Apache Jena<sup>1</sup>  ARQ](https://jena.apache.org/documentation/query/) instead
-- (Optional) [Apache Jena<sup>1</sup> RIOT](https://jena.apache.org/documentation/io/)
-  - This is only necessary for dumping, repairing, and validating MongoDB data; which occurs when generating and validating RDF/TTL
-
-<sup>1</sup> The lead maintainer of this repository uses Apache Jena version `4.8.0`, which you can [download here](https://archive.apache.org/dist/jena/binaries/).
+- [GitHub CLI (`gh`)](https://cli.github.com/), logged in with `gh auth login`
+  - `make release` uses it to create the GitHub release, which triggers the publish workflow. It is not needed for a `RELEASE_OPTS=--no-push` rehearsal.
 
 ## Making changes to the NMDC Schema
 To track changes made to the NMDC Schema, it is best maintained by following these steps:
