@@ -2985,6 +2985,7 @@ wheels = [
 
 [[package]]
 name = "nmdc-schema"
+version = "11.25.0"
 source = { editable = "." }
 default-groups = ["deps", "dev"]
 dependencies = [

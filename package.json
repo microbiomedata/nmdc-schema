@@ -1,0 +1,22 @@
+{
+  "name": "nmdc-schema",
+  "version": "11.25.0",
+  "private": true,
+  "description": "JSON artifacts of the NMDC schema. Install from a release tag, e.g. github:microbiomedata/nmdc-schema#v11.26.0.",
+  "license": "CC0-1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/microbiomedata/nmdc-schema.git"
+  },
+  "files": [
+    "nmdc_schema/nmdc.schema.json",
+    "nmdc_schema/nmdc_materialized_patterns.json",
+    "nmdc_schema/nmdc_materialized_patterns.schema.json"
+  ],
+  "exports": {
+    "./nmdc.schema.json": "./nmdc_schema/nmdc.schema.json",
+    "./nmdc_materialized_patterns.json": "./nmdc_schema/nmdc_materialized_patterns.json",
+    "./nmdc_materialized_patterns.schema.json": "./nmdc_schema/nmdc_materialized_patterns.schema.json",
+    "./package.json": "./package.json"
+  }
+}

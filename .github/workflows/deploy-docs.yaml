@@ -39,7 +39,7 @@ jobs:
         run: uv sync --locked
 
       # Replace the `0.0.0` placeholder `version` in src/schema/nmdc.yaml with the
-      # version uv-dynamic-versioning derives from the git tags (see `set-version` in Makefile).
+      # version in pyproject.toml (see `set-version` in Makefile).
       - name: Replace placeholder version number
         run: |
           make set-version
