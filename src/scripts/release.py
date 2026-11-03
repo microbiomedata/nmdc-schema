@@ -109,19 +109,19 @@ def validate_bump_components(components: list[str]) -> None:
         raise ReleaseError(f"Unsupported bump component(s): {', '.join(unsupported)}. Use one or more of: {allowed}.")
 
 
-def migrator_glob(version: str) -> str:
+def migrator_glob(destination_version: str) -> str:
     """Return the file-name pattern of migrators that reach this version's X.Y.Z.
 
     >>> migrator_glob("11.26.0rc2")
     'migrator_from_*_to_11_26_0.py'
     """
-    release = parse_release_version(version)["release"]
+    release = parse_release_version(destination_version)["release"]
     return f"migrator_from_*_to_{release.replace('.', '_')}.py"
 
 
-def find_migrators(version: str, migrators_dir: Path) -> list[Path]:
+def find_migrators(destination_version: str, migrators_dir: Path) -> list[Path]:
     """Return the migrators in migrators_dir that reach this version (any rc suffix ignored)."""
-    return sorted(migrators_dir.glob(migrator_glob(version)))
+    return sorted(migrators_dir.glob(migrator_glob(destination_version)))
 
 
 def read_artifact_version(path: Path) -> str:

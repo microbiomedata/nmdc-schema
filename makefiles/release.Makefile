@@ -1,7 +1,7 @@
 # makefiles/release.Makefile: the release command
 #
 # Makes a release from main in one step: bumps the version in pyproject.toml
-# with `uv version`, rebuilds and tests the artifacts, commits, tags, pushes
+# with `uv version`, rebuilds and tests the artifacts, commits, tags, pushes,
 # and creates the GitHub release, which triggers the publish workflow.
 # It shows the old and new versions and asks before changing anything.
 # The logic is in src/scripts/release.py.
