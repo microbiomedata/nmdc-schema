@@ -1240,3 +1240,192 @@
 '.slots.tot_nitro_cont_meth.annotations.method_for = {"tag": "method_for", "value": "tot_nitro_content"}'
 '.slots.tot_org_c_meth.annotations.method_for = {"tag": "method_for", "value": "tot_org_carb"}'
 '.slots.water_cont_soil_meth.annotations.method_for = {"tag": "method_for", "value": "water_content"}'
+
+# ---------------------------------------------------------------------------
+# PHA4GE Wastewater Contextual Data Specification 4.4.4
+# (cidgoh/pathogen-genomics-package tag PGPv5.6.5, templates/wastewater/schema.yaml)
+# alignment to enable NMDC <-> PHA4GE crosswalk. Sources:
+# - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+# - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+# From the PHA4GE schema/package fields that correspond to MIXS slots, we can add
+# close_mappings / related_mappings to GENEPIO classes.
+# Note: No exact_mappings even where the shapes agree.
+# Rules followed for mapping are:
+# - close when the slot and the field hold the same single fact
+# - related when
+#    - one NMDC value is split across PHA4GE fields (e.g., lat_lon, geo_loc_name)
+#    - the NMDC value can hold more (collection_date intervals)
+#    - the concepts only overlap (samp_taxon_id vs organism)
+# Mappings for NMDC-native slots (collected_from, the insdc_*identifier slots, instrument_used) 
+# live on those slots in src/schema/
+# samp_purpose (MIXS:0001151, otherwise used only by the MIxS Food extensions)
+# is imported through assets/import_mixs_slots_regardless.tsv for this alignment rather
+# than minting an NMDC purpose slot.
+# Where the NCBI BioSample package PHA4GE.wwsurv.1.0
+# carries the same field under its own harmonized attribute name, that attribute is mapped
+# as well (NCBI_BIOSAMPLE_ATTRIBUTE prefix: NCBI publishes no per-attribute IRI, so the
+# local part is the harmonized attribute name).
+
+'.slots.samp_name.close_mappings += ["GENEPIO:0001123"]'
+'.slots.samp_name.notes += ["PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to specimen collector sample ID (GENEPIO:0001123); the PHA4GE field is scoped to the name assigned by the specimen collector."]'
+'.slots.collection_date.related_mappings += ["GENEPIO:0001174"]'
+'.slots.collection_date.notes += ["PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to sample collection start date (GENEPIO:0001174); this slot can hold an interval, the PHA4GE field holds only the start."]'
+'.slots.lat_lon.related_mappings += ["GENEPIO:0100309", "GENEPIO:0100310"]'
+'.slots.lat_lon.notes += ["PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to geo loc latitude (GENEPIO:0100309) and geo loc longitude (GENEPIO:0100310); one value here is split across two PHA4GE fields."]'
+'.slots.geo_loc_name.related_mappings += ["GENEPIO:0001181", "GENEPIO:0001185", "GENEPIO:0001189", "GENEPIO:0100436"]'
+'.slots.geo_loc_name.notes += ["PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to geo loc name (country) (GENEPIO:0001181), geo loc name (state/province/territory/region) (GENEPIO:0001185), geo loc name (city) (GENEPIO:0001189) and geo loc name (site) (GENEPIO:0100436); the single text value here holds the levels that are split across those four PHA4GE fields."]'
+'.slots.env_local_scale.close_mappings += ["GENEPIO:0001232"]'
+'.slots.env_local_scale.notes += ["PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to environmental site (GENEPIO:0001232); the PHA4GE field is multivalued and restricted to its own picklist."]'
+'.slots.env_medium.close_mappings += ["GENEPIO:0001223"]'
+'.slots.env_medium.notes += ["PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to environmental material (GENEPIO:0001223); the PHA4GE field is multivalued and restricted to its own picklist."]'
+'.slots.samp_taxon_id.related_mappings += ["GENEPIO:0001191"]'
+'.slots.samp_taxon_id.notes += ["PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to organism (GENEPIO:0001191); the PHA4GE field names the surveillance target, this slot names the taxon of the sample itself."]'
+'.slots.samp_weather.close_mappings += ["GENEPIO:0100779"]'
+'.slots.samp_weather.notes += ["PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to sampling weather conditions (GENEPIO:0100779); the PHA4GE field is multivalued and restricted to its own picklist."]'
+'.slots.air_temp.related_mappings += ["GENEPIO:0100935", "GENEPIO:0100936"]'
+'.slots.air_temp.notes += ["PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to ambient temperature measurement value (GENEPIO:0100935) and ambient temperature measurement unit (GENEPIO:0100936); one QuantityValue here is split across PHA4GE value and unit fields."]'
+'.slots.temp.related_mappings += ["GENEPIO:0100821", "GENEPIO:0100822"]'
+'.slots.temp.notes += ["PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to sample temperature value (at collection) (GENEPIO:0100821) and sample temperature unit (at collection) (GENEPIO:0100822); one QuantityValue here is split across PHA4GE value and unit fields."]'
+'.slots.samp_store_temp.related_mappings += ["GENEPIO:0100448"]'
+'.slots.samp_store_temp.notes += ["PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to sample storage method (GENEPIO:0100448); PHA4GE has no storage temperature field, and its free-text storage method is the nearest."]'
+'.slots.samp_collec_device.close_mappings += ["GENEPIO:0001234"]'
+'.slots.samp_collec_device.notes += ["PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to collection device (GENEPIO:0001234); the PHA4GE field is restricted to its own picklist."]'
+'.slots.samp_collec_method.close_mappings += ["GENEPIO:0001241"]'
+'.slots.samp_collec_method.notes += ["PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to collection method (GENEPIO:0001241); the PHA4GE field is restricted to its own picklist."]'
+'.slots.samp_mat_process.close_mappings += ["GENEPIO:0001253"]'
+'.slots.samp_mat_process.notes += ["PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to specimen processing (GENEPIO:0001253); the PHA4GE field is restricted to its own picklist."]'
+'.slots.ph.close_mappings += ["GENEPIO:0001736"]'
+'.slots.ph.notes += ["PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to pH measurement value (GENEPIO:0001736); PHA4GE records the method in a separate field (GENEPIO:0100781)."]'
+'.slots.alkalinity.related_mappings += ["GENEPIO:0100878", "GENEPIO:0100879"]'
+'.slots.alkalinity.notes += ["PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to alkalinity measurement value (GENEPIO:0100878) and alkalinity measurement unit (GENEPIO:0100879); one QuantityValue here is split across PHA4GE value and unit fields."]'
+'.slots.chem_oxygen_dem.related_mappings += ["GENEPIO:0100788", "GENEPIO:0100789"]'
+'.slots.chem_oxygen_dem.notes += ["PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to chemical oxygen demand (COD) measurement value (GENEPIO:0100788) and unit (GENEPIO:0100789); one QuantityValue here is split across PHA4GE value and unit fields."]'
+'.slots.biochem_oxygen_dem.related_mappings += ["GENEPIO:0100791", "GENEPIO:0100792"]'
+'.slots.biochem_oxygen_dem.notes += ["PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to carbonaceous biochemical oxygen demand (CBOD) measurement value (GENEPIO:0100791) and unit (GENEPIO:0100792); PHA4GE measures the carbonaceous component of the BOD this slot holds, and splits value and unit."]'
+'.slots.suspend_solids.related_mappings += ["GENEPIO:0100794", "GENEPIO:0100795"]'
+'.slots.suspend_solids.notes += ["PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to total suspended solids (TSS) measurement value (GENEPIO:0100794) and unit (GENEPIO:0100795); this slot is multivalued text, PHA4GE holds one value and its unit."]'
+'.slots.tot_nitro.related_mappings += ["GENEPIO:0100808", "GENEPIO:0100809"]'
+'.slots.tot_nitro.notes += ["PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to total nitrogen (TN) measurement value (GENEPIO:0100808) and unit (GENEPIO:0100809); one QuantityValue here is split across PHA4GE value and unit fields."]'
+'.slots.tot_phosphate.related_mappings += ["GENEPIO:0100811", "GENEPIO:0100812"]'
+'.slots.tot_phosphate.notes += ["PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to total phosphorus (TP) measurement value (GENEPIO:0100811) and unit (GENEPIO:0100812); PHA4GE measures total phosphorus, this slot total phosphate, and value and unit are split."]'
+'.slots.salinity.related_mappings += ["GENEPIO:0100805", "GENEPIO:0100806"]'
+'.slots.salinity.notes += ["PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to salinity measurement value (GENEPIO:0100805) and unit (GENEPIO:0100806); one QuantityValue here is split across PHA4GE value and unit fields."]'
+'.slots.samp_size.related_mappings += ["GENEPIO:0100768", "GENEPIO:0100769"]'
+'.slots.samp_size.notes += ["PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to sample volume measurement value (GENEPIO:0100768) and unit (GENEPIO:0100769); this slot holds any size measure (volume, mass or area), PHA4GE holds volume with value and unit split."]'
+'.slots.samp_store_dur.related_mappings += ["GENEPIO:0101014", "GENEPIO:0101015"]'
+'.slots.samp_store_dur.notes += ["PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to sample storage duration value (GENEPIO:0101014) and unit (GENEPIO:0101015); this slot holds an ISO 8601 duration, PHA4GE splits value and unit."]'
+'.slots.samp_purpose.close_mappings += ["GENEPIO:0001198", "NCBI_BIOSAMPLE_ATTRIBUTE:purpose_of_sampling"]'
+'.slots.samp_purpose.notes += ["PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to purpose of sampling (GENEPIO:0001198); the PHA4GE field is multivalued and restricted to its own picklist, this slot holds one free-text value. NCBI BioSample: close match to the purpose_of_sampling attribute, the NCBI harmonized name for this MIxS term (samp purpose is listed there as a synonym), mandatory in the PHA4GE.wwsurv.1.0 package."]'
+
+# Reference documentation for the PHA4GE mappings above, on every mapped slot: the 4.4.4
+# release of the specification and the DataHarmonizer template whose slot_uris supplied the
+# GENEPIO ids. The docs site renders see_also as links and does not render notes.
+'.slots.samp_name.see_also += ["https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4", "https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml"]'
+'.slots.collection_date.see_also += ["https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4", "https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml"]'
+'.slots.lat_lon.see_also += ["https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4", "https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml"]'
+'.slots.geo_loc_name.see_also += ["https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4", "https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml"]'
+'.slots.env_local_scale.see_also += ["https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4", "https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml"]'
+'.slots.env_medium.see_also += ["https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4", "https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml"]'
+'.slots.samp_taxon_id.see_also += ["https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4", "https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml"]'
+'.slots.samp_weather.see_also += ["https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4", "https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml"]'
+'.slots.air_temp.see_also += ["https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4", "https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml"]'
+'.slots.temp.see_also += ["https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4", "https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml"]'
+'.slots.samp_store_temp.see_also += ["https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4", "https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml"]'
+'.slots.samp_collec_device.see_also += ["https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4", "https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml"]'
+'.slots.samp_collec_method.see_also += ["https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4", "https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml"]'
+'.slots.samp_mat_process.see_also += ["https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4", "https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml"]'
+'.slots.ph.see_also += ["https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4", "https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml"]'
+'.slots.alkalinity.see_also += ["https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4", "https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml"]'
+'.slots.chem_oxygen_dem.see_also += ["https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4", "https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml"]'
+'.slots.biochem_oxygen_dem.see_also += ["https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4", "https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml"]'
+'.slots.suspend_solids.see_also += ["https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4", "https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml"]'
+'.slots.tot_nitro.see_also += ["https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4", "https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml"]'
+'.slots.tot_phosphate.see_also += ["https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4", "https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml"]'
+'.slots.salinity.see_also += ["https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4", "https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml"]'
+'.slots.samp_size.see_also += ["https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4", "https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml"]'
+'.slots.samp_store_dur.see_also += ["https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4", "https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml"]'
+'.slots.samp_purpose.see_also += ["https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4", "https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml"]'
+
+# SampWeatherEnum: permissible values anchored to the released ENVO class for that
+# weather, as `meaning`. clear sky, cloudy, sunny and windy have no released ENVO weather
+# class and stay unmapped (PHA4GE pins cloudy and sunny to ENVO:03501418 and ENVO:03501421,
+# which are not in an ENVO release). snow is anchored to the snowfall process
+# ENVO:01000895 rather than the environmental material snow ENVO:01000406 that PHA4GE
+# uses, because the value describes the weather during sampling. 
+# TODO: Candidate for upstream MIxS once settled.
+'.enums.SampWeatherEnum.permissible_values.rain.meaning = "ENVO:01001564"'
+'.enums.SampWeatherEnum.permissible_values.snow.meaning = "ENVO:01000895"'
+'.enums.SampWeatherEnum.permissible_values.hail.meaning = "ENVO:01000874"'
+'.enums.SampWeatherEnum.permissible_values.sleet.meaning = "ENVO:03400014"'
+'.enums.SampWeatherEnum.permissible_values.foggy.meaning = "ENVO:01000844"'
+
+# ---------------------------------------------------------------------------
+# Close the gaps between NMDC schema Biosample and the NCBI BioSample package and
+# PHA4GE.wwsurv.1.0 / PHA4GE schema (Wastewater Contextual Data Specification 4.4.4) 
+# 1. Existing MIxS terms are imported before anything is minted
+# 2. NMDC-native slots for the remaining gaps live in src/schema/core.yaml
+# Same predicate (close/related mapping) rules as in core.yaml:
+# - close when the slot and the field hold the same single fact
+# - related when one NMDC value is split across PHA4GE value and unit fields or the concepts
+#   only overlap
+#  NCBI harmonized attribute names ride along with the NCBI_BIOSAMPLE_ATTRIBUTE prefix.
+
+# adjacent_environment: MIxS says "terms under ecosystem (ENVO:01001110) and human construction
+# (ENVO:00000070)", but the NCBI submissions seen so far hold free text, so the range is
+# ControlledTermValue (term optional) rather than ControlledIdentifiedTermValue.
+'.slots.adjacent_environment.range |= "ControlledTermValue"'
+'.slots.adjacent_environment.inlined_as_list |= true'
+'.slots.adjacent_environment.examples = [{"object": {"type": "nmdc:ControlledTermValue", "has_raw_value": "estuarine biome [ENVO:01000020]", "term": {"type": "nmdc:OntologyClass", "id": "ENVO:01000020", "name": "estuarine biome"}}}]'
+'.slots.adjacent_environment.close_mappings += ["GENEPIO:0101205", "NCBI_BIOSAMPLE_ATTRIBUTE:adjacent_environment"]'
+'.slots.adjacent_environment.notes += ["PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to proximal environmental site (GENEPIO:0101205); the PHA4GE field is restricted to its environmental site picklist, this slot accepts any ENVO ecosystem or human construction term.", "NCBI BioSample: close match to the adjacent_environment attribute of the PHA4GE.wwsurv.1.0 package, the NCBI harmonized name for this MIxS term."]'
+'.slots.adjacent_environment.see_also += ["https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4", "https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml"]'
+
+# neg_cont_type / pos_cont_type: MIxS 6 marks both as recommended in every checklist; they say
+# what the control material was, which is the nearest MIxS home for the PHA4GE free-text
+# experimental control details. The role of the sample itself is experimental_specimen_role_type.
+'.slots.neg_cont_type.related_mappings += ["GENEPIO:0100922"]'
+'.slots.neg_cont_type.close_mappings += ["NCBI_BIOSAMPLE_ATTRIBUTE:neg_cont_type"]'
+'.slots.neg_cont_type.notes += ["PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to experimental control details (GENEPIO:0100922); the PHA4GE field is free text about any control in the sample, this slot names the negative control material from a fixed list.", "NCBI BioSample: close match to the neg_cont_type attribute, the NCBI harmonized name for this MIxS term, used by the MIxS wastewater packages."]'
+'.slots.neg_cont_type.see_also += ["https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4", "https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml"]'
+'.slots.pos_cont_type.related_mappings += ["GENEPIO:0100922"]'
+'.slots.pos_cont_type.close_mappings += ["NCBI_BIOSAMPLE_ATTRIBUTE:pos_cont_type"]'
+'.slots.pos_cont_type.notes += ["PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to experimental control details (GENEPIO:0100922); the PHA4GE field is free text about any control in the sample, this slot names the positive control material.", "NCBI BioSample: close match to the pos_cont_type attribute, the NCBI harmonized name for this MIxS term, used by the MIxS wastewater packages."]'
+'.slots.pos_cont_type.see_also += ["https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4", "https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml"]'
+
+# Package attributes whose NMDC slot already existed but carried no PHA4GE or NCBI mapping.
+'.slots.diss_oxygen.related_mappings += ["GENEPIO:0000035", "GENEPIO:0100784"]'
+'.slots.diss_oxygen.close_mappings += ["NCBI_BIOSAMPLE_ATTRIBUTE:diss_oxygen"]'
+'.slots.diss_oxygen.notes += ["PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to dissolved oxygen concentration (GENEPIO:0000035) and dissolved oxygen measurement unit (GENEPIO:0100784); one QuantityValue here is split across PHA4GE value and unit fields. NCBI BioSample: close match to the diss_oxygen attribute, the NCBI harmonized name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package."]'
+'.slots.diss_oxygen.see_also += ["https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4", "https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml"]'
+'.slots.turbidity.related_mappings += ["GENEPIO:0100783", "GENEPIO:0100914"]'
+'.slots.turbidity.close_mappings += ["NCBI_BIOSAMPLE_ATTRIBUTE:turbidity"]'
+'.slots.turbidity.notes += ["PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to turbidity measurement value (GENEPIO:0100783) and turbidity measurement unit (GENEPIO:0100914); one QuantityValue here is split across PHA4GE value and unit fields. NCBI BioSample: close match to the turbidity attribute, the NCBI harmonized name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package."]'
+'.slots.turbidity.see_also += ["https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4", "https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml"]'
+'.slots.salinity.close_mappings += ["NCBI_BIOSAMPLE_ATTRIBUTE:salinity", "NCBI_BIOSAMPLE_ATTRIBUTE:samp_salinity"]'
+'.slots.salinity.notes += ["NCBI BioSample: close match to the salinity attribute, the NCBI harmonized name for MIXS:0000183. The PHA4GE.wwsurv.1.0 package lists the same measurement under the older samp_salinity attribute, the MIxS 5 term that MIxS 6 merged into salinity and MIxS 7 removed, so that name is kept as a close match as well."]'
+
+# NCBI harmonized attribute names of the PHA4GE.wwsurv.1.0 package for the MIxS slots that the
+# first pass mapped to GENEPIO only, so the NCBI attribute to NMDC slot crosswalk can be read off
+# the schema for every package attribute. The see_also links are already on these slots.
+'.slots.collection_date.close_mappings += ["NCBI_BIOSAMPLE_ATTRIBUTE:collection_date"]'
+'.slots.collection_date.notes += ["NCBI BioSample: close match to the collection_date attribute, mandatory in the PHA4GE.wwsurv.1.0 package; both accept a date, a date-time or a date range."]'
+'.slots.geo_loc_name.close_mappings += ["NCBI_BIOSAMPLE_ATTRIBUTE:geo_loc_name"]'
+'.slots.geo_loc_name.notes += ["NCBI BioSample: close match to the geo_loc_name attribute, mandatory in the PHA4GE.wwsurv.1.0 package, with the same INSDC country: region, locality form."]'
+'.slots.lat_lon.close_mappings += ["NCBI_BIOSAMPLE_ATTRIBUTE:lat_lon"]'
+'.slots.lat_lon.notes += ["NCBI BioSample: close match to the lat_lon attribute of the PHA4GE.wwsurv.1.0 package; NCBI writes the pair as decimal degrees with N/S and E/W letters."]'
+'.slots.env_local_scale.close_mappings += ["NCBI_BIOSAMPLE_ATTRIBUTE:env_local_scale"]'
+'.slots.env_local_scale.notes += ["NCBI BioSample: close match to the env_local_scale attribute, the NCBI harmonized name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package."]'
+'.slots.env_medium.close_mappings += ["NCBI_BIOSAMPLE_ATTRIBUTE:env_medium"]'
+'.slots.env_medium.notes += ["NCBI BioSample: close match to the env_medium attribute, the NCBI harmonized name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package."]'
+'.slots.samp_collec_device.close_mappings += ["NCBI_BIOSAMPLE_ATTRIBUTE:collection_device"]'
+'.slots.samp_collec_device.notes += ["NCBI BioSample: close match to the collection_device attribute of the PHA4GE.wwsurv.1.0 package (free text, for example autosampler)."]'
+'.slots.samp_collec_method.close_mappings += ["NCBI_BIOSAMPLE_ATTRIBUTE:collection_method"]'
+'.slots.samp_collec_method.notes += ["NCBI BioSample: close match to the collection_method attribute, the NCBI harmonized name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package."]'
+'.slots.samp_mat_process.close_mappings += ["NCBI_BIOSAMPLE_ATTRIBUTE:samp_mat_process"]'
+'.slots.samp_mat_process.notes += ["NCBI BioSample: close match to the samp_mat_process attribute, the NCBI harmonized name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package."]'
+'.slots.samp_weather.close_mappings += ["NCBI_BIOSAMPLE_ATTRIBUTE:samp_weather"]'
+'.slots.samp_weather.notes += ["NCBI BioSample: close match to the samp_weather attribute, the NCBI harmonized name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package; NCBI accepts free text there, this slot is restricted to the MIxS list."]'
+'.slots.ph.close_mappings += ["NCBI_BIOSAMPLE_ATTRIBUTE:ph"]'
+'.slots.ph.notes += ["NCBI BioSample: close match to the ph attribute, the NCBI harmonized name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package."]'
+'.slots.suspend_solids.close_mappings += ["NCBI_BIOSAMPLE_ATTRIBUTE:suspend_solids"]'
+'.slots.suspend_solids.notes += ["NCBI BioSample: close match to the suspend_solids attribute, the NCBI harmonized name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package."]'

@@ -31,7 +31,7 @@ prefixes:
   EGGNOG: "https://bioregistry.io/eggnog:" # https://bioregistry.io/eggnog:veNOG12876
   ENVO: "http://purl.obolibrary.org/obo/ENVO_"
   FBcv: "http://purl.obolibrary.org/obo/FBcv_" # for Biosample only
-  GENEPIO: "http://purl.obolibrary.org/obo/GENEPIO_" # for library_preparation_kit, contig identifier and count only
+  GENEPIO: "http://purl.obolibrary.org/obo/GENEPIO_" # for library_preparation_kit, contig identifier and count, and the PHA4GE wastewater field mappings
   GO: "http://purl.obolibrary.org/obo/GO_"
   HMDB: "https://bioregistry.io/hmdb:" # https://bioregistry.io/hmdb:HMDB00001
   ISA: "http://example.org/isa/"
@@ -50,8 +50,10 @@ prefixes:
   MetaNetX: "http://example.org/metanetx/"
   NCBI: "http://example.org/ncbitaxon/" # temporary. see https://github.com/microbiomedata/issues/issues/893
   NCBITaxon: "http://purl.obolibrary.org/obo/NCBITaxon_"
+  NCBI_BIOSAMPLE_ATTRIBUTE: "https://www.ncbi.nlm.nih.gov/biosample/docs/attributes/#"
   NCIT: "http://purl.obolibrary.org/obo/NCIT_" # for Biosample, Study, StudyCategoryEnum PVs, doi_provider, funding_sources, extraction_targets, 'BAI File' only
   OBI: "http://purl.obolibrary.org/obo/OBI_"
+  OM: "http://www.ontology-of-units-of-measure.org/resource/om-2/" # for the degree Celsius unit mapping in attribute_values only
   OMIT: "http://purl.obolibrary.org/obo/OMIT_" # for RNA subtypes only
   PANTHER.FAMILY: "https://bioregistry.io/panther.family:" # https://bioregistry.io/panther.family:PTHR12345
   PATO: "http://purl.obolibrary.org/obo/PATO_"

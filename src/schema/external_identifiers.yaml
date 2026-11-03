@@ -10,6 +10,7 @@ imports:
   - attribute_values
 
 prefixes:
+  GENEPIO: "http://purl.obolibrary.org/obo/GENEPIO_"
   bioproject: 'https://bioregistry.io/bioproject:'
   biosample: 'https://bioregistry.io/biosample:'
   emsl.project: 'https://bioregistry.io/emsl.project:'
@@ -150,6 +151,16 @@ slots:
       - DDBJ bioproject identifiers
     pattern: "^bioproject:PRJ[DEN][A-Z][0-9]+$"
     description: identifiers for corresponding project in INSDC Bioproject
+    close_mappings:
+      - GENEPIO:0001136
+    notes:
+      - >-
+        Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification 4.4.4 standard
+        (follow `see_also` for reference documentation) we can see that slots capturing INSDC BioProject
+        accessions directly map to GENEPIO:0001136.
+      - >-
+        In the PHA4GE schema the slot `bioproject_accession` is single-valued whereas the NMDC slot (`insdc_bioproject_identifiers`) 
+        is multivalued.
     comments:
       - these are distinct IDs from INSDC SRA/ENA project identifiers, but are usually(?) one to one
     examples:
@@ -158,6 +169,8 @@ slots:
     see_also:
       - https://www.ncbi.nlm.nih.gov/bioproject/
       - https://www.ddbj.nig.ac.jp/bioproject/index-e.html
+      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
 
   gold_study_identifiers:
     is_a: study_identifiers
@@ -262,6 +275,12 @@ slots:
       - DDBJ biosample identifiers
     pattern: "^biosample:SAM[NED]([A-Z])?[0-9]+$"
     description: identifiers for corresponding sample in INSDC
+    close_mappings:
+      - GENEPIO:0001139
+    notes:
+      - >-
+        PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to BioSample accession
+        (GENEPIO:0001139); this slot is multivalued, the PHA4GE field holds one accession.
     examples:
       - value: biosample:SAMEA5989477
       - value: biosample:SAMD00212331
@@ -271,6 +290,8 @@ slots:
       - https://www.ebi.ac.uk/biosamples/
       - https://www.ncbi.nlm.nih.gov/biosample
       - https://www.ddbj.nig.ac.jp/biosample/index-e.html
+      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
 
   insdc_secondary_sample_identifiers:
     is_a: biosample_identifiers
@@ -334,10 +355,18 @@ slots:
     description: Identifiers for the manifest of data file(s) that are derived from sequencing a library described by the associated INSDC experiment.
     see_also:
       - https://www.ncbi.nlm.nih.gov/sra/docs/submitmeta/#linking-metadata-and-data-run
+      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     is_a: external_database_identifiers
     pattern: "^insdc\\.run:(E|D|S)RR[0-9]{6,}$"
     mixins:
       - insdc_identifiers
+    close_mappings:
+      - GENEPIO:0101203
+    notes:
+      - >-
+        PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to INSDC sequence read accession
+        (GENEPIO:0101203); this slot is multivalued, the PHA4GE field holds one accession.
 
   ## analysis run
 
