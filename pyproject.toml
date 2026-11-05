@@ -1,6 +1,6 @@
 [project]
 name = "nmdc_schema"
-version = "11.25.0"
+version = "11.26.0rc1"
 description = "Schema resources for the National Microbiome Data Collaborative (NMDC)"
 readme = "README.md"
 license = "CC0-1.0"
