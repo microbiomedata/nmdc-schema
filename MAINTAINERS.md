@@ -2,15 +2,11 @@
 ## Dependencies
 To make new release of the schema, you must have the following installed on your system:
 - [uv](https://docs.astral.sh/uv/getting-started/installation/)
-- [pandoc](https://pandoc.org/installing.html)
+  - Use a current version. An older uv than the one that last wrote `uv.lock` rewrites it in an older format, and `make release` stops.
 - [yq](https://github.com/mikefarah/yq)
   - Specifically, [Mike Farah's Go-based yq](https://github.com/mikefarah/yq)
-- (Optional) [ROBOT](http://robot.obolibrary.org/)
-  - Editor's note: We may eventually switch to using [Apache Jena<sup>1</sup>  ARQ](https://jena.apache.org/documentation/query/) instead
-- (Optional) [Apache Jena<sup>1</sup> RIOT](https://jena.apache.org/documentation/io/)
-  - This is only necessary for dumping, repairing, and validating MongoDB data; which occurs when generating and validating RDF/TTL
-
-<sup>1</sup> The lead maintainer of this repository uses Apache Jena version `4.8.0`, which you can [download here](https://archive.apache.org/dist/jena/binaries/).
+- [GitHub CLI (`gh`)](https://cli.github.com/), logged in with `gh auth login`
+  - `make release` uses it to create the GitHub release, which triggers the publish workflow. It is not needed for a `RELEASE_OPTS=--no-push` rehearsal.
 
 ## Making changes to the NMDC Schema
 To track changes made to the NMDC Schema, it is best maintained by following these steps:
@@ -30,17 +26,15 @@ The changes can be checked locally with `make all test`
 
 > The authoritative, step-by-step release procedure is the
 > [infra-admin release runbook](https://github.com/microbiomedata/infra-admin/blob/main/releases/nmdc-schema.md).
-> Pre-release (release candidate) mechanics and the `uv-dynamic-versioning` setup
-> are documented in the *Pre-release Process* section of
-> [`CLAUDE.md`](CLAUDE.md). This section keeps only the version-numbering guidelines
-> and the release notes convention; follow the runbook for the current steps.
+> The mechanics of `make release` are in the *Release Process* section of [`CLAUDE.md`](CLAUDE.md).
+> This section keeps the version-numbering guidelines and the release notes convention.
 
-The package is published to [PyPI](https://pypi.org/project/nmdc-schema/) by the
+A member of the `schema-admins` team runs `make release BUMP='...'` on an up-to-date `main`. It bumps the
+version in `pyproject.toml` with `uv version --bump`, regenerates and tests the artifacts, commits and tags
+them, pushes, and creates the GitHub release with generated notes. That triggers the
 [pypi-publish](https://github.com/microbiomedata/nmdc-schema/blob/main/.github/workflows/pypi-publish.yaml)
-GitHub Action, which fires on the GitHub release `created` event. The package version is
-derived from the git tag by `uv-dynamic-versioning`, and `make set-version` writes the same
-version into `src/schema/nmdc.yaml` before the artifacts are generated; there is no `version`
-field to hand-edit before a release.
+workflow, which checks the committed artifacts against the tag and publishes them to
+[PyPI](https://pypi.org/project/nmdc-schema/). Nobody edits a version number or types a tag by hand.
 
 ### Guidelines for updating semantic version
 
@@ -60,13 +54,17 @@ with `v` (e.g. `v11.20.0`). Pre-release tags add a `-rc.N` suffix (e.g. `v11.20.
   - Adding comments or annotations
 
 **Note:** Changes can be made to the Python package (e.g. CLI functionality) that do not
-affect the schema. The version still advances because it tracks the git tag; such a change
-is a patch-level release.
+affect the schema. Releasing them still needs a new version; such a change is a patch-level
+release (`make release BUMP=patch`).
+
+**Release candidates:** from a candidate such as `11.26.0rc1`, release it with `make release BUMP=stable`
+(giving `11.26.0`). `BUMP=minor` or `BUMP=patch` doesn't release the candidate; it moves on to
+`11.27.0` or `11.26.1`.
 
 ### Release notes
 
-Release notes are GitHub's **auto-generated** notes (the *Generate release notes* button
-on the release form), built from merged pull-request titles plus a compare link. Write PR
+Release notes are GitHub's **auto-generated** notes (`make release` passes `--generate-notes`
+to `gh release create`), built from merged pull-request titles plus a compare link. Write PR
 titles so they read as change-log entries. Larger releases may add a short hand-written
 **Highlights** section above the generated list; see the
 [v11.20.0 notes](https://github.com/microbiomedata/nmdc-schema/releases/tag/v11.20.0) for
@@ -78,6 +76,14 @@ This repository previously kept a manually curated `CHANGELOG.md`. It was retire
 in favor of the auto-generated notes. Do not reintroduce a `CHANGELOG.md` without first
 documenting the decision in
 [Audit versioning guidelines and compliance](https://github.com/microbiomedata/nmdc-schema/issues/2876).
+
+### Installing the JSON artifacts with npm
+
+Release tags include a `package.json`, so JavaScript projects can depend on a tag directly:
+`"nmdc-schema": "github:microbiomedata/nmdc-schema#v11.26.0"`, then
+`import schema from "nmdc-schema/nmdc_materialized_patterns.json"`. The package exports
+`nmdc.schema.json`, `nmdc_materialized_patterns.json` and `nmdc_materialized_patterns.schema.json`.
+Tags made before `make release` existed (v11.25 and earlier) have no `package.json`.
 
 ### Notify NMDC Schema users
 After the new version is on PyPI, notify [nmdc-runtime](https://github.com/microbiomedata/nmdc-runtime) and the `metadata` channel on the NMDC Slack workspace that `nmdc-schema` has been updated.

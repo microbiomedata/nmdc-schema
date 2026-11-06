@@ -244,8 +244,8 @@ or `nmdc_schema/nmdc_materialized_patterns.yaml`. These are regenerated
 by `make all` and are part of the packaged artifacts.
 
 - **Do not commit generated `nmdc_schema/` files during feature
-  development.** These artifacts are updated immediately before merge
-  or release, not in development PRs. If they show up in your diff,
+  development.** `make release` regenerates and commits these
+  artifacts; development PRs don't. If they show up in your diff,
   restore them from `main`:
   `git checkout origin/main -- nmdc_schema/nmdc.py nmdc_schema/nmdc_materialized_patterns.yaml nmdc_schema/nmdc_pydantic.py nmdc_schema/nmdc.schema.json nmdc_schema/nmdc_materialized_patterns.json nmdc_schema/nmdc_materialized_patterns.schema.json`
 - You should still run `make all` locally to verify your schema changes
@@ -320,64 +320,75 @@ has_raw_value: 2023-06-15
 has_raw_value: "2023-06-15"
 ```
 
-## Pre-release Process
+## Release Process
 
-Use pre-releases to test schema changes on PyPI before a full release.
-The authoritative publish workflow is `.github/workflows/pypi-publish.yaml`.
-See also `MAINTAINERS.md` for general release guidance (note: some details
-there may be outdated).
-
-### Tag format
-
-Use **`v{major}.{minor}.{patch}-rc.{N}`**, e.g. `v11.17.0-rc.1`.
-
-Historical tags used inconsistent formats (`rc1`, `-rc2`, `-rc.1`).
-The hyphen-dot format (`-rc.N`) is the current standard — use it for
-all new pre-releases.
-
-### Steps
-
-Follow the authoritative checklist at
+Releases are made with one command, `make release`, run on an up-to-date `main` by a member of the
+`schema-admins` team. The step-by-step checklist is
 [`infra-admin/releases/nmdc-schema.md`](https://github.com/microbiomedata/infra-admin/blob/main/releases/nmdc-schema.md).
-The key steps are:
+The publish workflow is `.github/workflows/pypi-publish.yaml`.
 
-1. Create a release-prep branch (e.g. `release/v11.17.0-rc.3`).
-2. Run `make squeaky-clean all test` locally.
-3. **Commit the regenerated artifacts** on the branch. The build produces
-   files like JSON Schema, OWL, and `nmdc_schema/nmdc_pydantic.py` that
-   must be checked in before tagging — otherwise the published package
-   will be missing them.
-4. Open a PR into `main` and get it merged. **Never push release-prep
-   commits directly to `main`**, even if you have admin access to bypass
-   branch protection.
-5. Go to **Releases → Draft a new release** on GitHub.
-6. Create a new tag matching the format above (e.g. `v11.17.0-rc.3`),
-   targeting `main`.
-7. Check the **"Set as a pre-release"** box (for pre-releases only).
-8. Click **Publish release**.
+### Version and tag format
 
-The existing `pypi-publish.yaml` workflow triggers on any release
-(including pre-releases) and publishes to PyPI via trusted publishing.
+- The version lives in `pyproject.toml` (`version = "..."`, PEP 440). It changes only in release commits.
+- Releases are `X.Y.Z` or `X.Y.ZrcN` in `pyproject.toml`. The tag is `vX.Y.Z` or `vX.Y.Z-rc.N`, and
+  `package.json` holds `X.Y.Z` or `X.Y.Z-rc.N`. `src/scripts/release.py` derives both from `pyproject.toml`.
+- Historical tags used other formats (`v11.25`, `rc1`, `-rc2`). Don't create tags by hand.
+- `src/schema/nmdc.yaml` stays `version: 0.0.0` in git. `make set-version` writes the `pyproject.toml`
+  version into it before a build. Never commit that change.
+- Between releases, `pyproject.toml`, `uv.lock`, `package.json` and the committed generated files on
+  `main` all carry the last release's version.
 
-### Dynamic versioning
+### Making a release
 
-The package version comes from the git tag through `uv-dynamic-versioning`, a hatchling version source:
+```bash
+make release BUMP='minor rc'   # 11.25.0 -> 11.26.0rc1, tag v11.26.0-rc.1
+make release BUMP=rc           # 11.26.0rc1 -> 11.26.0rc2
+make release BUMP=stable       # 11.26.0rc2 -> 11.26.0
+make release BUMP=patch        # 11.26.0 -> 11.26.1
+```
 
-- `[project]` must have `dynamic = ["version"]` and **no** hardcoded `version` field.
-- `[tool.hatch.version]` sets `source = "uv-dynamic-versioning"`, and `[build-system]` uses `hatchling.build` with `uv-dynamic-versioning` in `requires`.
-- The schema's own `version:` in `src/schema/nmdc.yaml` stays `0.0.0` in git. `make set-version` replaces it with the derived version before `make all`, so the generated artifacts carry the release version. The publish, docs and test-newest-deps workflows run it; never commit its result.
+`BUMP` takes one or more `uv version --bump` components: `major`, `minor`, `patch`, `rc`, `stable`.
+From a release candidate, `BUMP=minor` skips to the next minor (`11.26.0rc1` -> `11.27.0`); use
+`stable` to release the candidate.
+
+`make release` checks that you're on a clean `main` level with `origin/main`, that the tag is new, that
+`gh` is logged in, and that a migrator exists for the new version (see "Released migrators"). It shows the
+old and new versions and asks before changing anything. It then writes the version, runs
+`make squeaky-clean all test`, commits the regenerated artifacts with `pyproject.toml`, `uv.lock` and
+`package.json` as `Release vX.Y.Z`, tags, pushes the commit and tag with `git push --atomic`, and creates
+the GitHub release with generated notes. Creating the release triggers `pypi-publish.yaml`. Release
+commits go straight to `main`; there is no release-prep PR. If a step fails before the commit, the
+working tree is left as it is.
+
+Use a current uv. `uv version --bump` rewrites `uv.lock`, and an older uv than the one that last wrote
+the lock rewrites it in an older format; `make release` stops if `uv.lock` changes beyond the version line.
+
+`make release BUMP=... RELEASE_OPTS=--no-push` stops after the local commit and tag, for rehearsals.
+`RELEASE_OPTS=--yes` skips the confirmation prompt.
+
+### What the publish workflow checks
+
+`pypi-publish.yaml` runs `src/scripts/release.py check-artifacts --tag "$GITHUB_REF_NAME"`, then rebuilds
+the artifacts and fails if they differ from the committed ones (`git diff --exit-code -- nmdc_schema/`).
+The wheel ships the committed files. Changes to this workflow only fully run at publish time, so test
+them with a release candidate.
 
 ### PyPI behavior
 
-The git tag `v11.17.0-rc.1` is normalized to PEP 440 version `11.17.0rc1`
-on PyPI (the `v` prefix and `-rc.` punctuation are stripped/collapsed by
-`uv-dynamic-versioning`).
+The `pyproject.toml` version is the PyPI version: tag `v11.17.0-rc.1` is PyPI `11.17.0rc1`.
 
 Pre-release versions are **not installed by default**. Users must opt in:
 ```bash
 pip install nmdc-schema==11.17.0rc1   # specific version
 pip install --pre nmdc-schema          # latest including pre-releases
 ```
+
+### npm consumers
+
+`package.json` lets npm install the JSON artifacts from a release tag, e.g.
+`"nmdc-schema": "github:microbiomedata/nmdc-schema#v11.26.0"`, then
+`import schema from "nmdc-schema/nmdc_materialized_patterns.json"`. It is `private` and has no
+`scripts` on purpose (npm runs `prepare` on git dependencies). Never commit a `package-lock.json`.
 
 ### When to pre-release
 
@@ -386,6 +397,7 @@ pip install --pre nmdc-schema          # latest including pre-releases
   full release.
 - Large structural changes (new classes, slot migrations) where you
   want reviewers to `pip install` and test before merging follow-up PRs.
+- Changes to `pypi-publish.yaml` or `src/scripts/release.py`.
 
 ## Docker Development
 - Start env: `docker compose up --detach`
