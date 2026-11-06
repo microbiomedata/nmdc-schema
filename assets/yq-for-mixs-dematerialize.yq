@@ -60,6 +60,13 @@ del(.slots[] | select(.aliases and .title and (.aliases | length == 1) and .alia
 # classes are not needed in src/schema/mixs.yaml; only slots/enums/subsets are
 del(.classes) |
 
+# MIxS anchors its own structured patterns (^...$). From linkml-runtime 1.12 a pattern whose
+# partial_match is not true is also wrapped as ^(?:...)$, so those anchors come out doubled.
+# Strip them from those patterns only. A partial_match: true pattern gets no wrapper and keeps
+# its anchors. [^\x5c] leaves an escaped \$ alone.
+# See https://github.com/microbiomedata/nmdc-schema/issues/3579.
+(.slots[] | select(.structured_pattern and .structured_pattern.partial_match != true) | .structured_pattern.syntax) |= sub("^\\^(.*[^\\x5c])\\$$"; "${1}") |
+
 # Settings are deleted here on purpose. The sheets-and-friends do_shuttle tool
 # does not import settings from the source schema, and MIxS structured_pattern
 # syntax uses placeholders like {scientific_float}, {text}, {URL} that need
