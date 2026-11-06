@@ -47,7 +47,7 @@ classes:
         description: The number part of the quantity
     # range: double # MAM 2024-0405 I don't believe we have any data that requires this level of precision
     mappings:
-      - schema:QuantityValue
+      - schema:QuantitativeValue
 
   ImageValue:
     class_uri: nmdc:ImageValue
