@@ -899,13 +899,12 @@ slots:
     description: What instrument was used during DataGeneration or MaterialProcessing.
     related_mappings:
       - GENEPIO:0001452
-    see_also:
-      - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-      - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
+    in_subset:
+      - pha4ge_wastewater
     notes:
       - >-
         Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification 4.4.4 standard
-        (follow `see_also` for reference documentation) we can see that slots representing sequencing instruments
+        (see the pha4ge_wastewater subset for reference documentation) we can see that slots representing sequencing instruments
         are mapped directly to GENEPIO:0001452. From the ontology term's documentation we can see that it is 
         composed in roughly the same way as a sequencing instrument instance is composed in NMDC.
     structured_pattern:
