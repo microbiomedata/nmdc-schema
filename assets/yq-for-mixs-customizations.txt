@@ -1320,8 +1320,8 @@
 # Every slot mapped above is a member of the `pha4ge_wastewater` subset, declared in
 # src/schema/basic_slots.yaml. The subset carries the specification version and the
 # reference links (the 4.4.4 release and the DataHarmonizer template) once, and the
-# the documentation page for the `pha4ge_wastewater` subset will render those links
-# listing the members of that subset
+# documentation page for the `pha4ge_wastewater` subset renders those links and lists
+# the members of that subset.
 '.slots.samp_name.in_subset += ["pha4ge_wastewater"]'
 '.slots.collection_date.in_subset += ["pha4ge_wastewater"]'
 '.slots.lat_lon.in_subset += ["pha4ge_wastewater"]'
