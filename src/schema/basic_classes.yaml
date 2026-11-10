@@ -1220,13 +1220,13 @@ enums:
           - https://www.illumina.com/systems/sequencing-platforms/novaseq-x-plus/specifications.html
 
       novaseq_x_plus:
-        is_a: novaseq_x
+        is_a: novaseq
         aliases:
           - NovaSeq X Plus
           - Illumina NovaSeq X Plus
         meaning: OBI:0003664
         comments:
-          - Possible flowcell versions are 1.5B, 10B, 25B. The NovaSeq X Plus runs two flowcells, versus one for the NovaSeq X.
+          - Possible flowcell versions are 1.5B, 10B, 25B. The NovaSeq X Plus runs two flowcells, versus one for the NovaSeq X. Illumina markets the NovaSeq X and NovaSeq X Plus together as the NovaSeq X Series.
         see_also:
           - https://www.illumina.com/systems/sequencing-platforms/novaseq-x-plus/specifications.html
 
