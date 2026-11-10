@@ -674,17 +674,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#see-also" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        See Also
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -747,6 +736,9 @@
 <p><em>The kinds of wastewater collection system a sample can come from.</em></p>
 <div>
 <p>URI: <a href="./">WastewaterSystemTypeEnum</a></p>
+<ul>
+<li>In Subsets: <a href="../pha4ge_wastewater/">pha4ge_wastewater</a></li>
+</ul>
 <h2 id="permissible-values">Permissible Values</h2>
 <table>
 <thead>
@@ -828,11 +820,6 @@
 <ul>
 <li>We add <code>meaning</code> mappings to permissible values only when the corresponding ENVO class is in a released ENVO version. The sewer system, septic tank and cesspit classes that PHA4GE pins (ENVO:03501451 to ENVO:03501454) and the wastewater waste tank class (GENEPIO:0102057) are not released, so those values stay unmapped until they are.</li>
 </ul>
-<h2 id="see-also">See Also</h2>
-<ul>
-<li><a href="https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4">https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4</a></li>
-<li><a href="https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml">https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml</a></li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -849,10 +836,9 @@ comments:
   that PHA4GE pins (ENVO:03501451 to ENVO:03501454) and the wastewater waste tank
   class (GENEPIO:0102057) are not released, so those values stay unmapped until they
   are.
+in_subset:
+- pha4ge_wastewater
 from_schema: https://w3id.org/nmdc/nmdc
-see_also:
-- https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-- https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
 rank: 1000
 permissible_values:
   combined sewer system:

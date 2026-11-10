@@ -837,6 +837,9 @@
 <li>
 <p>Regex pattern: <code>^bioproject:PRJ[DEN][A-Z][0-9]+$</code></p>
 </li>
+<li>
+<p>In Subsets: <a href="../pha4ge_wastewater/">pha4ge_wastewater</a></p>
+</li>
 </ul>
 <h2 id="aliases">Aliases</h2>
 <ul>
@@ -855,8 +858,6 @@
 <ul>
 <li><a href="https://www.ncbi.nlm.nih.gov/bioproject/">https://www.ncbi.nlm.nih.gov/bioproject/</a></li>
 <li><a href="https://www.ddbj.nig.ac.jp/bioproject/index-e.html">https://www.ddbj.nig.ac.jp/bioproject/index-e.html</a></li>
-<li><a href="https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4">https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4</a></li>
-<li><a href="https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml">https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -885,8 +886,8 @@
 description: identifiers for corresponding project in INSDC Bioproject
 notes:
 - Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification
-  4.4.4 standard (follow `see_also` for reference documentation) we can see that slots
-  capturing INSDC BioProject accessions directly map to GENEPIO:0001136.
+  4.4.4 standard (see the pha4ge_wastewater subset for reference documentation) we
+  can see that slots capturing INSDC BioProject accessions directly map to GENEPIO:0001136.
 - In the PHA4GE schema the slot `bioproject_accession` is single-valued whereas the
   NMDC slot (`insdc_bioproject_identifiers`)  is multivalued.
 comments:
@@ -895,12 +896,12 @@ comments:
 examples:
 - value: bioproject:PRJNA366857
   description: Avena fatua rhizosphere microbial communities - H1_Rhizo_Litter_2 metatranscriptome
+in_subset:
+- pha4ge_wastewater
 from_schema: https://w3id.org/nmdc/nmdc
 see_also:
 - https://www.ncbi.nlm.nih.gov/bioproject/
 - https://www.ddbj.nig.ac.jp/bioproject/index-e.html
-- https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-- https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
 aliases:
 - NCBI bioproject identifiers
 - DDBJ bioproject identifiers

@@ -674,17 +674,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#see-also" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        See Also
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -747,6 +736,9 @@
 <p><em>Genes, viruses, bacteria and substances measured as indicators of fecal contamination of water.</em></p>
 <div>
 <p>URI: <a href="./">FecalContaminationIndicatorEnum</a></p>
+<ul>
+<li>In Subsets: <a href="../pha4ge_wastewater/">pha4ge_wastewater</a></li>
+</ul>
 <h2 id="permissible-values">Permissible Values</h2>
 <table>
 <thead>
@@ -808,11 +800,6 @@
 <ul>
 <li>The HF183, Lachno3 and F+ coliphage values stay unmapped because the GENEPIO classes PHA4GE pins for them (GENEPIO:0101000 to GENEPIO:0101002) are not in a released GENEPIO version.</li>
 </ul>
-<h2 id="see-also">See Also</h2>
-<ul>
-<li><a href="https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4">https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4</a></li>
-<li><a href="https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml">https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml</a></li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -828,10 +815,9 @@ comments:
 - The HF183, Lachno3 and F+ coliphage values stay unmapped because the GENEPIO classes
   PHA4GE pins for them (GENEPIO:0101000 to GENEPIO:0101002) are not in a released
   GENEPIO version.
+in_subset:
+- pha4ge_wastewater
 from_schema: https://w3id.org/nmdc/nmdc
-see_also:
-- https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-- https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
 rank: 1000
 permissible_values:
   crAssphage:

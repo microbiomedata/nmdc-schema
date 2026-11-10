@@ -663,17 +663,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#see-also" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        See Also
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -736,6 +725,9 @@
 <p><em>The roles a sample can play in an experiment other than being a sample under study.</em></p>
 <div>
 <p>URI: <a href="./">ExperimentalSpecimenRoleTypeEnum</a></p>
+<ul>
+<li>In Subsets: <a href="../pha4ge_wastewater/">pha4ge_wastewater</a></li>
+</ul>
 <h2 id="permissible-values">Permissible Values</h2>
 <table>
 <thead>
@@ -783,11 +775,6 @@
 </tr>
 </tbody>
 </table>
-<h2 id="see-also">See Also</h2>
-<ul>
-<li><a href="https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4">https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4</a></li>
-<li><a href="https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml">https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml</a></li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -799,10 +786,9 @@
 <pre><code class="language-yaml">name: ExperimentalSpecimenRoleTypeEnum
 description: The roles a sample can play in an experiment other than being a sample
   under study.
+in_subset:
+- pha4ge_wastewater
 from_schema: https://w3id.org/nmdc/nmdc
-see_also:
-- https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-- https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
 rank: 1000
 permissible_values:
   positive experimental control:
