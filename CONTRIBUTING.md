@@ -88,6 +88,8 @@ Core developers should read the material on the [LinkML site](https://linkml.io/
     - Spell out abbreviations and short forms, except where this goes against convention (e.g. do not spell out DNA)
     - Elements that are imported from outside (e.g. MIxS) need not follow the same naming conventions
     - Multivalued slots should be named as plurals
+    - No two elements may have names that are spelled or pronounced alike, meaning they're the same once case, underscores, hyphens, spaces and a regular plural ending (-s, -es, -ies, -yses) are ignored. Where an ending can be read two ways, as in `houses` and `buses`, either reading counts (for example a `provenance_metadata` slot and a `ProvenanceMetadata` class). `tests/test_element_name_collisions.py` checks this, and the one existing pair is grandfathered. Pairs made up only of imported names are exempt, but a new name that collides with an imported one is not.
+    - Name a slot for the role its value plays, not by restating its range class. A `hair_color` slot whose range is a `HairColor` class tells a reader nothing beyond the range.
     - Older elements may be "grandfathered in" - modifying them to match naming conventions may be too expensive
 - Document model elements
     - All model elements should have documentation (descriptions) and other textual annotations (e.g. comments, notes)
