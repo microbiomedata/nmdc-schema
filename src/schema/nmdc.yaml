@@ -48,7 +48,6 @@ prefixes:
   MS: "http://purl.obolibrary.org/obo/MS_"
   MetaCyc: "https://bioregistry.io/metacyc.compound:"
   MetaNetX: "http://example.org/metanetx/"
-  NCBI: "http://example.org/ncbitaxon/" # temporary. see https://github.com/microbiomedata/issues/issues/893
   NCBITaxon: "http://purl.obolibrary.org/obo/NCBITaxon_"
   NCBI_BIOSAMPLE_ATTRIBUTE: "https://www.ncbi.nlm.nih.gov/biosample/docs/attributes/#"
   NCIT: "http://purl.obolibrary.org/obo/NCIT_" # for Biosample, Study, StudyCategoryEnum PVs, doi_provider, funding_sources, extraction_targets, 'BAI File' only
