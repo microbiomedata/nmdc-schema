@@ -11,7 +11,7 @@ def get_migrator_classes() -> List[Type[MigratorBase]]:
     Returns a list of migrator classes in the order in which they (i.e. their `upgrade` methods)
     were designed to be run.
 
-    Part 1 rewrites malformed EFO and NCBI taxon CURIEs in Biosample `term.id` values
+    Part 1 rewrites malformed EFO CURIEs in Biosample `term.id` values
     (nmdc-schema#3573).
 
     >>> migrator_classes = get_migrator_classes()

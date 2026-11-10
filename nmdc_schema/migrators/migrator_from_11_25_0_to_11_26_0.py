@@ -8,7 +8,7 @@ class Migrator(MigratorBase):
     r"""
     Migrates a database between two schemas.
 
-    Partial 1 rewrites malformed EFO and NCBI taxon CURIEs in Biosample `term.id` values, so they
+    Partial 1 rewrites malformed EFO CURIEs in Biosample `term.id` values, so they
     expand correctly under the EFO prefix fixed in nmdc-schema#3573.
     """
 

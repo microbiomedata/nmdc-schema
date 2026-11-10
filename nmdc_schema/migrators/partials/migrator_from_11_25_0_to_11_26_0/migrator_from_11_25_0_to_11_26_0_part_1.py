@@ -1,18 +1,16 @@
-"""Normalize malformed EFO and NCBI taxon CURIEs in Biosample ``term.id`` values.
+"""Normalize malformed EFO CURIEs in Biosample ``term.id`` values.
 
 https://github.com/microbiomedata/nmdc-schema/pull/3573 changes the ``EFO`` expansion to
 ``http://www.ebi.ac.uk/efo/EFO_``, so the local part of an ``EFO:`` CURIE must be the bare
 number. Production biosamples also hold a lowercase ``efo:`` prefix, which the schema does not
-declare, and ``NCBI:txid`` taxon ids, whose ``NCBI`` prefix expands to a placeholder IRI
-(https://github.com/microbiomedata/issues/issues/893). This partial rewrites those ids:
+declare. This partial rewrites both forms:
 
 - ``EFO:EFO_0001779`` and ``efo:EFO_0001779`` become ``EFO:0001779``
-- ``NCBI:txid15368`` becomes ``NCBITaxon:15368``
 
 Only ``term.id`` values are changed. ``has_raw_value`` is the submitter's text and is kept.
-A scan of all 27,448 production biosamples on 2026-11-10 found 450 such ids in 345 biosamples: 205
-``EFO:EFO_0001779``, 105 ``efo:EFO_0001759``, 35 ``efo:EFO_0004725`` and 105
-``NCBI:txid15368``. Other collections were not scanned.
+A scan of all 27,448 production biosamples on 2026-11-10 found 345 such ids in 345
+biosamples: 205 ``EFO:EFO_0001779``, 105 ``efo:EFO_0001759`` and 35 ``efo:EFO_0004725``.
+Other collections were not scanned.
 """
 
 from __future__ import annotations
@@ -23,7 +21,6 @@ from nmdc_schema.migrators.adapters.mongo_adapter import MongoAdapter
 from nmdc_schema.migrators.migrator_base import MigratorBase
 
 EFO_WITH_REPEATED_PREFIX = re.compile(r"^(?:EFO|efo):EFO_(\d+)$")
-NCBI_TXID = re.compile(r"^NCBI:txid(\d+)$")
 
 
 def normalize_term_id(term_id: str) -> str:
@@ -33,31 +30,24 @@ def normalize_term_id(term_id: str) -> str:
     'EFO:0001779'
     >>> normalize_term_id("efo:EFO_0004725")
     'EFO:0004725'
-    >>> normalize_term_id("NCBI:txid15368")
-    'NCBITaxon:15368'
 
     Values that are already well formed, or that match no rule, are returned unchanged:
 
     >>> normalize_term_id("EFO:0001779")
     'EFO:0001779'
-    >>> normalize_term_id("NCBITaxon:15368")
-    'NCBITaxon:15368'
     >>> normalize_term_id("ENVO:00002034")
     'ENVO:00002034'
-    >>> normalize_term_id("NCBI:txidABC")
-    'NCBI:txidABC'
+    >>> normalize_term_id("NCBI:txid15368")
+    'NCBI:txid15368'
     """
     efo_match = EFO_WITH_REPEATED_PREFIX.fullmatch(term_id)
     if efo_match:
         return f"EFO:{efo_match.group(1)}"
-    ncbi_match = NCBI_TXID.fullmatch(term_id)
-    if ncbi_match:
-        return f"NCBITaxon:{ncbi_match.group(1)}"
     return term_id
 
 
 class Migrator(MigratorBase):
-    r"""Rewrite malformed EFO and NCBI taxon CURIEs in ``term.id`` values on ``biosample_set``."""
+    r"""Rewrite malformed EFO CURIEs in ``term.id`` values on ``biosample_set``."""
 
     _from_version = "11.25.0"
     _to_version = "11.26.0.part_1"
@@ -77,11 +67,6 @@ class Migrator(MigratorBase):
         ...                 "has_raw_value": "metabolite measurement [efo:EFO_0004725]",
         ...                 "term": {"type": "nmdc:OntologyClass", "id": "efo:EFO_0004725"},
         ...             },
-        ...             "host_taxid": {
-        ...                 "type": "nmdc:ControlledIdentifiedTermValue",
-        ...                 "has_raw_value": "Brachypodium distachyon [NCBI:txid15368]",
-        ...                 "term": {"type": "nmdc:OntologyClass", "id": "NCBI:txid15368"},
-        ...             },
         ...         },
         ...         {
         ...             "id": "nmdc:bsm-2",
@@ -98,8 +83,6 @@ class Migrator(MigratorBase):
         'EFO:0004725'
         >>> db["biosample_set"][0]["experimental_factor"]["has_raw_value"]
         'metabolite measurement [efo:EFO_0004725]'
-        >>> db["biosample_set"][0]["host_taxid"]["term"]["id"]
-        'NCBITaxon:15368'
         >>> db["biosample_set"][1]["env_medium"]["term"]["id"]
         'ENVO:00001998'
         """
