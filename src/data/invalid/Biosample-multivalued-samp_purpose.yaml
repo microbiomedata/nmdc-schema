@@ -1,0 +1,28 @@
+# invalid b/c samp_purpose holds one free-text value; a list (the shape of the
+# multivalued PHA4GE purpose of sampling field) is not accepted
+id: nmdc:bsm-99-wwsurv3
+name: CAN.22c
+type: nmdc:Biosample
+associated_studies:
+  - nmdc:sty-00-abc123
+env_broad_scale:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:01000249
+  term:
+    type: nmdc:OntologyClass
+    id: ENVO:01000249
+env_local_scale:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:00002043
+  term:
+    type: nmdc:OntologyClass
+    id: ENVO:00002043
+env_medium:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:00002018
+  term:
+    type: nmdc:OntologyClass
+    id: ENVO:00002018
+samp_purpose:
+  - research
+  - wastewater pathogen surveillance

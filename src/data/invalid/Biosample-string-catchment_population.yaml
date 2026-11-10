@@ -1,0 +1,25 @@
+# invalid b/c catchment_population is an integer slot; a formatted string is not accepted
+id: nmdc:bsm-99-wwsurvbad
+name: CAN.22c
+type: nmdc:Biosample
+associated_studies:
+  - nmdc:sty-00-abc123
+env_broad_scale:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:01000249
+  term:
+    type: nmdc:OntologyClass
+    id: ENVO:01000249
+env_local_scale:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:00002043
+  term:
+    type: nmdc:OntologyClass
+    id: ENVO:00002043
+env_medium:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:00002001
+  term:
+    type: nmdc:OntologyClass
+    id: ENVO:00002001
+catchment_population: "600,000"

@@ -31,7 +31,7 @@ prefixes:
   EGGNOG: "https://bioregistry.io/eggnog:" # https://bioregistry.io/eggnog:veNOG12876
   ENVO: "http://purl.obolibrary.org/obo/ENVO_"
   FBcv: "http://purl.obolibrary.org/obo/FBcv_" # for Biosample only
-  GENEPIO: "http://purl.obolibrary.org/obo/GENEPIO_" # for library_preparation_kit, contig identifier and count only
+  GENEPIO: "http://purl.obolibrary.org/obo/GENEPIO_" # for library_preparation_kit, contig identifier and count, and the PHA4GE wastewater field mappings
   GO: "http://purl.obolibrary.org/obo/GO_"
   HMDB: "https://bioregistry.io/hmdb:" # https://bioregistry.io/hmdb:HMDB00001
   ISA: "http://example.org/isa/"
@@ -50,8 +50,10 @@ prefixes:
   MetaNetX: "http://example.org/metanetx/"
   NCBI: "http://example.org/ncbitaxon/" # temporary. see https://github.com/microbiomedata/issues/issues/893
   NCBITaxon: "http://purl.obolibrary.org/obo/NCBITaxon_"
+  NCBI_BIOSAMPLE_ATTRIBUTE: "https://www.ncbi.nlm.nih.gov/biosample/docs/attributes/#"
   NCIT: "http://purl.obolibrary.org/obo/NCIT_" # for Biosample, Study, StudyCategoryEnum PVs, doi_provider, funding_sources, extraction_targets, 'BAI File' only
   OBI: "http://purl.obolibrary.org/obo/OBI_"
+  OM: "http://www.ontology-of-units-of-measure.org/resource/om-2/" # for the degree Celsius unit mapping in attribute_values only
   OMIT: "http://purl.obolibrary.org/obo/OMIT_" # for RNA subtypes only
   PANTHER.FAMILY: "https://bioregistry.io/panther.family:" # https://bioregistry.io/panther.family:PTHR12345
   PATO: "http://purl.obolibrary.org/obo/PATO_"
@@ -1545,14 +1547,14 @@ slots:
   ionization_source:
     range: IonizationSourceEnum
     description: The ionization source used to introduce processed samples into a mass spectrometer
-    exact_mappings:
+    close_mappings:
       - MS:1000008
 
   mass_analyzers:
     range: MassAnalyzerEnum
     description: The kind of mass analyzer(s) used during the spectra collection.
     multivalued: true
-    exact_mappings:
+    close_mappings:
       - MS:1000443
 
   resolution_categories:
@@ -1565,7 +1567,7 @@ slots:
   mass_spectrometry_acquisition_strategy:
     range: MassSpectrometryAcquisitionStrategyEnum
     description: Mode of running a mass spectrometer method by which m/z ranges are selected and ions possibly fragment.
-    exact_mappings:
+    close_mappings:
       - MS:1003213
 
   eluent_introduction_category:
@@ -1607,12 +1609,12 @@ slots:
 
   library_preparation_kit:
     range: string
-    exact_mappings:
+    close_mappings:
       - GENEPIO:0001450
 
   pcr_cycles:
     range: integer
-    exact_mappings:
+    close_mappings:
       - OBI:0002475
 
   is_stranded:
@@ -1632,7 +1634,7 @@ slots:
     aliases:
       - sample mass
       - sample weight
-    exact_mappings:
+    close_mappings:
       - MS:1000004
     related_mappings:
       - MIXS:0000111

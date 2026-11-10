@@ -106,21 +106,12 @@ Dependabot security updates and alerts are on; `.github/dependabot.yml` adds gro
 - Write verbose, descriptive variable and function names
 - Use None return values to indicate absence of a result
 
-## LinkML Mapping Metaslots — Conventions
+## Mappings and structured aliases
 
-Use typed subtypes (`exact_mappings`, `close_mappings`, `broad_mappings`,
-`narrow_mappings`, `related_mappings`) in preference to generic `mappings`.
-
-**Exception — keep `mappings` (generic) for:** schema.org properties
-(`schema:QuantityValue`, `schema:latitude`, etc.), QUDT (`qudt:unit`,
-`qudt:quantityValue`), and `prov:wasGeneratedBy`. These are
-*property-to-property* alignments where SKOS directional semantics
-(broader/narrower) don't apply. Do not "fix" these to `exact_mappings`.
-
-**`see_also`** is for human-readable documentation pointers only: URLs,
-GitHub issue links, specification documents. Ontology CURIEs belong in a
-`*_mappings` slot. See #3031 for an open cleanup of MIXS CURIEs currently
-in `see_also` in `portal_mixs_inspired.yaml`.
+The rules for `exact_mappings`, `close_mappings`, `related_mappings`, `broad_mappings`, `narrow_mappings`, generic
+`mappings`, `meaning`, `class_uri`, `slot_uri` and `see_also` are in one place, the "Mapping schema elements to
+external terms" section of `src/docs/maintaining-the-schema.md`. Read it before adding or changing a mapping, and
+change that section rather than restating the rules here.
 
 **`structured_aliases`** requires `literal_form`, a SKOS predicate
 (`EXACT_SYNONYM`, `NARROW_SYNONYM`, `BROAD_SYNONYM`, `RELATED_SYNONYM`),
@@ -133,52 +124,6 @@ template), put the best public URL in `source` and a one-line caveat in
 `notes`. Per-alias rationale (e.g. why a predicate is NARROW rather than
 EXACT) also goes in `notes`, not in a YAML `#` comment. Plain `aliases` is
 for unattributed synonym strings.
-
-**Type compatibility.** A mapping relates elements of the same kind: a class
-maps to a class, a slot maps to a property, and a permissible value maps to a
-class (a PV names a kind, so it aligns with an ontology class, not a property).
-Do not map a slot to a class or a PV to a property.
-
-**Predicate strength.** Use `exact_mappings` only for genuine identity; prefer
-`close_mappings` or `related_mappings` when the aligned term is an assay, method,
-or measurement adjacent to (not the same as) the schema element. A common trap:
-mapping a gene or region value to a *sequencing-assay* term (e.g. an OBI assay
-class) belongs in `related_mappings`, not `exact_mappings`, because the assay is
-not the gene. Keep abstraction layers distinct (a process is not the assay that
-runs it).
-
-**Finding candidates.** Prefer embeddings search (OLS4 `llm_search`) over lexical
-matching, and treat a high similarity score as a candidate to verify, not a
-confirmed mapping. Confirm the CURIE resolves to the intended term before
-asserting it.
-
-**Predicate choice and directionality.** LinkML's mapping slots map one-to-one to
-SKOS predicates ([`linkml-model` mappings.yaml](https://github.com/linkml/linkml-model/blob/main/linkml_model/model/schema/mappings.yaml),
-[W3C SKOS Reference](https://www.w3.org/TR/skos-reference/)). `exact`/`close`/`related`
-are symmetric; `broad`/`narrow` are directional inverses of each other:
-
-| Slot | SKOS predicate | Symmetric? | `X <slot> Y` means |
-|---|---|---|---|
-| `exact_mappings` | `skos:exactMatch` | yes (transitive) | X and Y denote the same concept |
-| `close_mappings` | `skos:closeMatch` | yes (not transitive, by design) | close enough to treat as the same in some applications |
-| `related_mappings` | `skos:relatedMatch` | yes | X is associatively related to Y (no subsumption) |
-| `broad_mappings` | `skos:broadMatch` | no | **Y is broader than X** (X is the more specific) |
-| `narrow_mappings` | `skos:narrowMatch` | no | **Y is narrower than X** (X is the more general) |
-| `mappings` (generic) | `skos:mappingRelation` | n/a | untyped; reserve for property-to-property alignments |
-
-Directionality is the common trap. The SKOS Reference states "`A skos:broader B`
-asserts that B, the object, is a broader concept than A," and `skos:broadMatch` is a
-sub-property of `skos:broader` (S41), so `X broad_mappings Y` means **Y subsumes X**.
-SKOS Primer example: `platypus skos:broadMatch eggLayingAnimals` (the specific concept
-points up to the broader one). In this schema `bacterial_rRNA_operon broad_mappings
-SO:0000178` (operon) reads correctly: operon is broader than that specific rRNA operon.
-
-**Current state (do not extend).** The schema still holds ~27 slot→class mappings
-(e.g. GTDB-Tk ranks → TAXRANK, mass-spec slots → MS/OBI, `mass` → PATO, DOI slots →
-OBI/NCIT) plus several `broad`/`narrow` mappings that are actually associative and
-should be `related_mappings` (e.g. `num_16s broad_mappings` an rRNA molecule — a
-count is not subsumed by the molecule). These are legacy: do not add new slot→class
-mappings, and use `broad`/`narrow` only for genuine subsumption.
 
 ## Documenting modeling decisions, not debates
 
@@ -299,8 +244,8 @@ or `nmdc_schema/nmdc_materialized_patterns.yaml`. These are regenerated
 by `make all` and are part of the packaged artifacts.
 
 - **Do not commit generated `nmdc_schema/` files during feature
-  development.** These artifacts are updated immediately before merge
-  or release, not in development PRs. If they show up in your diff,
+  development.** `make release` regenerates and commits these
+  artifacts; development PRs don't. If they show up in your diff,
   restore them from `main`:
   `git checkout origin/main -- nmdc_schema/nmdc.py nmdc_schema/nmdc_materialized_patterns.yaml nmdc_schema/nmdc_pydantic.py nmdc_schema/nmdc.schema.json nmdc_schema/nmdc_materialized_patterns.json nmdc_schema/nmdc_materialized_patterns.schema.json`
 - You should still run `make all` locally to verify your schema changes
@@ -375,64 +320,75 @@ has_raw_value: 2023-06-15
 has_raw_value: "2023-06-15"
 ```
 
-## Pre-release Process
+## Release Process
 
-Use pre-releases to test schema changes on PyPI before a full release.
-The authoritative publish workflow is `.github/workflows/pypi-publish.yaml`.
-See also `MAINTAINERS.md` for general release guidance (note: some details
-there may be outdated).
-
-### Tag format
-
-Use **`v{major}.{minor}.{patch}-rc.{N}`**, e.g. `v11.17.0-rc.1`.
-
-Historical tags used inconsistent formats (`rc1`, `-rc2`, `-rc.1`).
-The hyphen-dot format (`-rc.N`) is the current standard — use it for
-all new pre-releases.
-
-### Steps
-
-Follow the authoritative checklist at
+Releases are made with one command, `make release`, run on an up-to-date `main` by a member of the
+`schema-admins` team. The step-by-step checklist is
 [`infra-admin/releases/nmdc-schema.md`](https://github.com/microbiomedata/infra-admin/blob/main/releases/nmdc-schema.md).
-The key steps are:
+The publish workflow is `.github/workflows/pypi-publish.yaml`.
 
-1. Create a release-prep branch (e.g. `release/v11.17.0-rc.3`).
-2. Run `make squeaky-clean all test` locally.
-3. **Commit the regenerated artifacts** on the branch. The build produces
-   files like JSON Schema, OWL, and `nmdc_schema/nmdc_pydantic.py` that
-   must be checked in before tagging — otherwise the published package
-   will be missing them.
-4. Open a PR into `main` and get it merged. **Never push release-prep
-   commits directly to `main`**, even if you have admin access to bypass
-   branch protection.
-5. Go to **Releases → Draft a new release** on GitHub.
-6. Create a new tag matching the format above (e.g. `v11.17.0-rc.3`),
-   targeting `main`.
-7. Check the **"Set as a pre-release"** box (for pre-releases only).
-8. Click **Publish release**.
+### Version and tag format
 
-The existing `pypi-publish.yaml` workflow triggers on any release
-(including pre-releases) and publishes to PyPI via trusted publishing.
+- The version lives in `pyproject.toml` (`version = "..."`, PEP 440). It changes only in release commits.
+- Releases are `X.Y.Z` or `X.Y.ZrcN` in `pyproject.toml`. The tag is `vX.Y.Z` or `vX.Y.Z-rc.N`, and
+  `package.json` holds `X.Y.Z` or `X.Y.Z-rc.N`. `src/scripts/release.py` derives both from `pyproject.toml`.
+- Historical tags used other formats (`v11.25`, `rc1`, `-rc2`). Don't create tags by hand.
+- `src/schema/nmdc.yaml` stays `version: 0.0.0` in git. `make set-version` writes the `pyproject.toml`
+  version into it before a build. Never commit that change.
+- Between releases, `pyproject.toml`, `uv.lock`, `package.json` and the committed generated files on
+  `main` all carry the last release's version.
 
-### Dynamic versioning
+### Making a release
 
-The package version comes from the git tag through `uv-dynamic-versioning`, a hatchling version source:
+```bash
+make release BUMP='minor rc'   # 11.25.0 -> 11.26.0rc1, tag v11.26.0-rc.1
+make release BUMP=rc           # 11.26.0rc1 -> 11.26.0rc2
+make release BUMP=stable       # 11.26.0rc2 -> 11.26.0
+make release BUMP=patch        # 11.26.0 -> 11.26.1
+```
 
-- `[project]` must have `dynamic = ["version"]` and **no** hardcoded `version` field.
-- `[tool.hatch.version]` sets `source = "uv-dynamic-versioning"`, and `[build-system]` uses `hatchling.build` with `uv-dynamic-versioning` in `requires`.
-- The schema's own `version:` in `src/schema/nmdc.yaml` stays `0.0.0` in git. `make set-version` replaces it with the derived version before `make all`, so the generated artifacts carry the release version. The publish, docs and test-newest-deps workflows run it; never commit its result.
+`BUMP` takes one or more `uv version --bump` components: `major`, `minor`, `patch`, `rc`, `stable`.
+From a release candidate, `BUMP=minor` skips to the next minor (`11.26.0rc1` -> `11.27.0`); use
+`stable` to release the candidate.
+
+`make release` checks that you're on a clean `main` level with `origin/main`, that the tag is new, that
+`gh` is logged in, and that a migrator exists for the new version (see "Released migrators"). It shows the
+old and new versions and asks before changing anything. It then writes the version, runs
+`make squeaky-clean all test`, commits the regenerated artifacts with `pyproject.toml`, `uv.lock` and
+`package.json` as `Release vX.Y.Z`, tags, pushes the commit and tag with `git push --atomic`, and creates
+the GitHub release with generated notes. Creating the release triggers `pypi-publish.yaml`. Release
+commits go straight to `main`; there is no release-prep PR. If a step fails before the commit, the
+working tree is left as it is.
+
+Use a current uv. `uv version --bump` rewrites `uv.lock`, and an older uv than the one that last wrote
+the lock rewrites it in an older format; `make release` stops if `uv.lock` changes beyond the version line.
+
+`make release BUMP=... RELEASE_OPTS=--no-push` stops after the local commit and tag, for rehearsals.
+`RELEASE_OPTS=--yes` skips the confirmation prompt.
+
+### What the publish workflow checks
+
+`pypi-publish.yaml` runs `src/scripts/release.py check-artifacts --tag "$GITHUB_REF_NAME"`, then rebuilds
+the artifacts and fails if they differ from the committed ones (`git diff --exit-code -- nmdc_schema/`).
+The wheel ships the committed files. Changes to this workflow only fully run at publish time, so test
+them with a release candidate.
 
 ### PyPI behavior
 
-The git tag `v11.17.0-rc.1` is normalized to PEP 440 version `11.17.0rc1`
-on PyPI (the `v` prefix and `-rc.` punctuation are stripped/collapsed by
-`uv-dynamic-versioning`).
+The `pyproject.toml` version is the PyPI version: tag `v11.17.0-rc.1` is PyPI `11.17.0rc1`.
 
 Pre-release versions are **not installed by default**. Users must opt in:
 ```bash
 pip install nmdc-schema==11.17.0rc1   # specific version
 pip install --pre nmdc-schema          # latest including pre-releases
 ```
+
+### npm consumers
+
+`package.json` lets npm install the JSON artifacts from a release tag, e.g.
+`"nmdc-schema": "github:microbiomedata/nmdc-schema#v11.26.0"`, then
+`import schema from "nmdc-schema/nmdc_materialized_patterns.json"`. It is `private` and has no
+`scripts` on purpose (npm runs `prepare` on git dependencies). Never commit a `package-lock.json`.
 
 ### When to pre-release
 
@@ -441,6 +397,7 @@ pip install --pre nmdc-schema          # latest including pre-releases
   full release.
 - Large structural changes (new classes, slot migrations) where you
   want reviewers to `pip install` and test before merging follow-up PRs.
+- Changes to `pypi-publish.yaml` or `src/scripts/release.py`.
 
 ## Docker Development
 - Start env: `docker compose up --detach`
