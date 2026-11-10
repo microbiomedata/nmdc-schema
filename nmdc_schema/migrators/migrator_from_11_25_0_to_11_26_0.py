@@ -10,6 +10,8 @@ class Migrator(MigratorBase):
 
     Partial 1 rewrites malformed EFO CURIEs in Biosample `term.id` values, so they
     expand correctly under the EFO prefix fixed in nmdc-schema#3573.
+    Partial 2 rewrites `NCBI:txid` taxon ids to `NCBITaxon:`, because the placeholder `NCBI`
+    prefix is removed.
     """
 
     _from_version = "11.25.0"
