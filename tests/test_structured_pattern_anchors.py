@@ -133,8 +133,13 @@ def _doubled_resolved_patterns(view: SchemaView) -> list[tuple[str, str]]:
     for element, definition in definitions:
         if definition.structured_pattern is None:
             continue
+        # linkml adds no ^(?:...)$ wrapper to a partial_match: true pattern, so it can't be doubled.
+        if definition.structured_pattern.partial_match is True:
+            continue
         pattern = view.resolve_pattern(definition)
-        if pattern.startswith("^(?:^") or pattern.endswith("$)$"):
+        # An even run of backslashes before the inner $ leaves it an anchor. An odd run escapes it,
+        # as in ^(?:price\$)$, which is a literal dollar sign and not a second anchor.
+        if pattern.startswith("^(?:^") or re.search(r"(?<!\\)(?:\\\\)*\$\)\$$", pattern):
             doubled.append((element, pattern))
     return doubled
 
