@@ -30,7 +30,7 @@ from pydantic import (
 
 
 metamodel_version = "1.12.0"
-version = "11.26.0rc1"
+version = "11.26.0"
 
 
 class ConfiguredBaseModel(BaseModel):
@@ -123,7 +123,7 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
                   'EC': {'prefix_prefix': 'EC',
                          'prefix_reference': 'https://bioregistry.io/eccode:'},
                   'EFO': {'prefix_prefix': 'EFO',
-                          'prefix_reference': 'http://www.ebi.ac.uk/efo/'},
+                          'prefix_reference': 'http://www.ebi.ac.uk/efo/EFO_'},
                   'EGGNOG': {'prefix_prefix': 'EGGNOG',
                              'prefix_reference': 'https://bioregistry.io/eggnog:'},
                   'ENVO': {'prefix_prefix': 'ENVO',
@@ -153,7 +153,7 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
                   'MASSIVE': {'prefix_prefix': 'MASSIVE',
                               'prefix_reference': 'https://bioregistry.io/reference/massive:'},
                   'MCO': {'prefix_prefix': 'MCO',
-                          'prefix_reference': 'http://purl.obolibrary.org/obo/MICRO_'},
+                          'prefix_reference': 'http://purl.obolibrary.org/obo/MCO_'},
                   'MESH': {'prefix_prefix': 'MESH',
                            'prefix_reference': 'https://bioregistry.io/mesh:'},
                   'MISO': {'prefix_prefix': 'MISO',
@@ -306,8 +306,10 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
                            'prefix_reference': 'http://www.w3.org/ns/prov#'},
                   'pubmed': {'prefix_prefix': 'pubmed',
                              'prefix_reference': 'https://bioregistry.io/pubmed:'},
+                  'quantitykind': {'prefix_prefix': 'quantitykind',
+                                   'prefix_reference': 'http://qudt.org/vocab/quantitykind/'},
                   'qudt': {'prefix_prefix': 'qudt',
-                           'prefix_reference': 'http://qudt.org/1.1/schema/qudt#'},
+                           'prefix_reference': 'http://qudt.org/schema/qudt/'},
                   'rdf': {'prefix_prefix': 'rdf',
                           'prefix_reference': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'},
                   'rdfs': {'prefix_prefix': 'rdfs',
@@ -320,6 +322,8 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
                            'prefix_reference': 'http://www.w3.org/ns/shex#'},
                   'skos': {'prefix_prefix': 'skos',
                            'prefix_reference': 'http://www.w3.org/2004/02/skos/core#'},
+                  'unit': {'prefix_prefix': 'unit',
+                           'prefix_reference': 'http://qudt.org/vocab/unit/'},
                   'wgs84': {'prefix_prefix': 'wgs84',
                             'prefix_reference': 'http://www.w3.org/2003/01/geo/wgs84_pos#'},
                   'wikidata': {'prefix_prefix': 'wikidata',
@@ -359,8 +363,6 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
                             'setting_value': '[-+]?[0-9]*\\.?[0-9]+'},
                   'id_blade': {'setting_key': 'id_blade',
                                'setting_value': '([A-Za-z0-9]{1,})'},
-                  'id_locus': {'setting_key': 'id_locus',
-                               'setting_value': '(_[A-Za-z0-9_\\.-]+)?'},
                   'id_nmdc_prefix': {'setting_key': 'id_nmdc_prefix',
                                      'setting_value': '(nmdc)'},
                   'id_shoulder': {'setting_key': 'id_shoulder',
@@ -493,7 +495,54 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
                                                 'submission form.',
                                  'from_schema': 'https://w3id.org/nmdc/nmdc',
                                  'name': 'jgi_isolate',
-                                 'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/2803']}},
+                                 'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/2803']},
+                 'pha4ge_wastewater': {'comments': ['The first see_also link is '
+                                                    'the specification release the '
+                                                    'alignment was made against. '
+                                                    'The second is the '
+                                                    'DataHarmonizer template '
+                                                    '(cidgoh/pathogen-genomics-package '
+                                                    'tag PGPv5.6.5, '
+                                                    'templates/wastewater/schema.yaml) '
+                                                    'whose slot_uris supplied the '
+                                                    "GENEPIO ids in the members' "
+                                                    'close_mappings and '
+                                                    'related_mappings. When PHA4GE '
+                                                    'releases a new version, '
+                                                    'update the version and the '
+                                                    'two links here; the members '
+                                                    'carry no copy of them.',
+                                                    'Members are NMDC-native slots '
+                                                    'and enums in '
+                                                    'src/schema/core.yaml, '
+                                                    'basic_classes.yaml and '
+                                                    'external_identifiers.yaml, '
+                                                    'which carry in_subset in '
+                                                    'their own definitions, and '
+                                                    'MIxS slots in the generated '
+                                                    'src/schema/mixs.yaml, whose '
+                                                    'membership is asserted in '
+                                                    'assets/yq-for-mixs-customizations.txt '
+                                                    'after the build strips the '
+                                                    'upstream MIxS subsets.',
+                                                    "Each member's notes say which "
+                                                    'PHA4GE field it maps to and '
+                                                    'why the predicate is close or '
+                                                    'related. No member uses '
+                                                    'exact_mappings, even where '
+                                                    'the shapes agree.'],
+                                       'description': 'The slots and enums aligned '
+                                                      'to the PHA4GE Wastewater '
+                                                      'Contextual Data '
+                                                      'Specification 4.4.4, so '
+                                                      'that NMDC records and '
+                                                      'PHA4GE wastewater '
+                                                      'surveillance records can be '
+                                                      'crosswalked.',
+                                       'from_schema': 'https://w3id.org/nmdc/nmdc',
+                                       'name': 'pha4ge_wastewater',
+                                       'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
+                                                    'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml']}},
      'title': 'NMDC Schema',
      'types': {'boolean': {'base': 'Bool',
                            'description': 'A binary (true or false) value',
@@ -2410,6 +2459,7 @@ class InstrumentModelEnum(str, Enum):
     novaseq = "novaseq"
     novaseq_6000 = "novaseq_6000"
     novaseq_x = "novaseq_x"
+    novaseq_x_plus = "novaseq_x_plus"
     hiseq = "hiseq"
     hiseq_1000 = "hiseq_1000"
     hiseq_1500 = "hiseq_1500"
@@ -5013,7 +5063,7 @@ class QuantityValue(AttributeValue):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:QuantityValue',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'mappings': ['schema:QuantityValue'],
+         'mappings': ['schema:QuantitativeValue'],
          'slot_usage': {'has_numeric_value': {'description': 'The number part of the '
                                                              'quantity',
                                               'name': 'has_numeric_value'},
@@ -5034,7 +5084,7 @@ class QuantityValue(AttributeValue):
          'mappings': ['qudt:quantityValue', 'schema:value']} })
     has_unit: UnitEnum = Field(default=..., description="""The unit of the quantity""", json_schema_extra = { "linkml_meta": {'aliases': ['scale'],
          'domain_of': ['QuantityValue', 'PropertyAssertion'],
-         'mappings': ['qudt:unit', 'schema:unitCode']} })
+         'mappings': ['qudt:hasUnit', 'schema:unitCode']} })
     has_raw_value: Optional[str] = Field(default=None, description="""Unnormalized atomic string representation, should in syntax {number} {unit}""", json_schema_extra = { "linkml_meta": {'domain_of': ['AttributeValue']} })
     type: Literal["https://w3id.org/nmdc/QuantityValue","nmdc:QuantityValue"] = Field(default="nmdc:QuantityValue", title="Type", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'comments': ['Deprecating this slot was proposed and rejected: without it, a '
                       'document read back from a polymorphic MongoDB collection cannot '
@@ -5475,8 +5525,8 @@ class PropertyAssertion(AttributeValue):
                       'vocabularies improves data integration and enables automated '
                       'unit conversion.'],
          'domain_of': ['PropertyAssertion'],
-         'examples': [{'value': 'qudt:MassConcentration'},
-                      {'value': 'qudt:Temperature'}]} })
+         'examples': [{'value': 'quantitykind:MassConcentration'},
+                      {'value': 'quantitykind:Temperature'}]} })
     has_value_term_id: Optional[str] = Field(default=None, description="""CURIE or IRI for categorical values (ENVO, PATO, METPO, etc.).""", json_schema_extra = { "linkml_meta": {'comments': ['Use this slot when the value of the property is a controlled '
                       'vocabulary term rather than a numeric or free-text value.'],
          'domain_of': ['PropertyAssertion'],
@@ -5494,7 +5544,7 @@ class PropertyAssertion(AttributeValue):
          'is_a': 'has_numeric_value'} })
     has_unit: Optional[str] = Field(default=None, description="""UCUM unit code (required only when numeric value is present)""", json_schema_extra = { "linkml_meta": {'aliases': ['scale'],
          'domain_of': ['QuantityValue', 'PropertyAssertion'],
-         'mappings': ['qudt:unit', 'schema:unitCode']} })
+         'mappings': ['qudt:hasUnit', 'schema:unitCode']} })
     has_raw_value: str = Field(default=..., description="""Original contributor string representation (unparsed)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AttributeValue']} })
     type: Literal["https://w3id.org/nmdc/PropertyAssertion","nmdc:PropertyAssertion"] = Field(default="nmdc:PropertyAssertion", title="Type", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'comments': ['Deprecating this slot was proposed and rejected: without it, a '
                       'document read back from a polymorphic MongoDB collection cannot '
@@ -7832,19 +7882,19 @@ class Study(NamedThing):
          'examples': [{'description': 'Avena fatua rhizosphere microbial communities - '
                                       'H1_Rhizo_Litter_2 metatranscriptome',
                        'value': 'bioproject:PRJNA366857'}],
+         'in_subset': ['pha4ge_wastewater'],
          'is_a': 'study_identifiers',
          'mixins': ['insdc_identifiers'],
          'notes': ['Looking at schemas that follow the PHA4GE Wastewater Contextual '
-                   'Data Specification 4.4.4 standard (follow `see_also` for reference '
-                   'documentation) we can see that slots capturing INSDC BioProject '
-                   'accessions directly map to GENEPIO:0001136.',
+                   'Data Specification 4.4.4 standard (see the pha4ge_wastewater '
+                   'subset for reference documentation) we can see that slots '
+                   'capturing INSDC BioProject accessions directly map to '
+                   'GENEPIO:0001136.',
                    'In the PHA4GE schema the slot `bioproject_accession` is '
                    'single-valued whereas the NMDC slot '
                    '(`insdc_bioproject_identifiers`)  is multivalued.'],
          'see_also': ['https://www.ncbi.nlm.nih.gov/bioproject/',
-                      'https://www.ddbj.nig.ac.jp/bioproject/index-e.html',
-                      'https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml']} })
+                      'https://www.ddbj.nig.ac.jp/bioproject/index-e.html']} })
     jgi_portal_study_identifiers: Optional[list[str]] = Field(default=None, title="JGI Portal Study identifiers", description="""Identifiers that link a NMDC study to a website hosting raw and analyzed data for a JGI proposal.  The suffix of the curie can used to query the GOLD API and is interoperable with an award DOI from OSTI and a GOLD study identifier.""", json_schema_extra = { "linkml_meta": {'comments': ['Could this could be considered a related identifier?',
                       'Curie suffix is the Site Award Number from an OSTI award page',
                       'Site Award Number 507130 == award doi '
@@ -9104,14 +9154,13 @@ class DataObject(InformationObject):
          'see_also': ['https://www.ncbi.nlm.nih.gov/sra/docs/submitmeta/#sra-metadata-experiment']} })
     insdc_run_identifiers: Optional[list[str]] = Field(default=None, description="""Identifiers for the manifest of data file(s) that are derived from sequencing a library described by the associated INSDC experiment.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['GENEPIO:0101203'],
          'domain_of': ['DataObject'],
+         'in_subset': ['pha4ge_wastewater'],
          'is_a': 'external_database_identifiers',
          'mixins': ['insdc_identifiers'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: close match '
                    'to INSDC sequence read accession (GENEPIO:0101203); this slot is '
                    'multivalued, the PHA4GE field holds one accession.'],
-         'see_also': ['https://www.ncbi.nlm.nih.gov/sra/docs/submitmeta/#linking-metadata-and-data-run',
-                      'https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml']} })
+         'see_also': ['https://www.ncbi.nlm.nih.gov/sra/docs/submitmeta/#linking-metadata-and-data-run']} })
     md5_checksum: Optional[str] = Field(default=None, description="""MD5 checksum of file (pre-compressed)""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataObject'],
          'examples': [{'value': '0123456789abcdef0123456789abcdef'}],
          'notes': ['The submission portal already constrains the slots that feed this '
@@ -9485,16 +9534,15 @@ class DataGeneration(DataEmitterProcess):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(sty)-{id_shoulder}-{id_blade}'}} })
     instrument_used: Optional[list[str]] = Field(default=None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'MaterialProcessing'],
+         'in_subset': ['pha4ge_wastewater'],
          'notes': ['Looking at schemas that follow the PHA4GE Wastewater Contextual '
-                   'Data Specification 4.4.4 standard (follow `see_also` for reference '
-                   'documentation) we can see that slots representing sequencing '
-                   'instruments are mapped directly to GENEPIO:0001452. From the '
-                   "ontology term's documentation we can see that it is  composed in "
-                   'roughly the same way as a sequencing instrument instance is '
-                   'composed in NMDC.'],
+                   'Data Specification 4.4.4 standard (see the pha4ge_wastewater '
+                   'subset for reference documentation) we can see that slots '
+                   'representing sequencing instruments are mapped directly to '
+                   "GENEPIO:0001452. From the ontology term's documentation we can see "
+                   'that it is  composed in roughly the same way as a sequencing '
+                   'instrument instance is composed in NMDC.'],
          'related_mappings': ['GENEPIO:0001452'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}'}} })
     has_credit_associations: Optional[list[CreditAssociation]] = Field(default=None, description="""This slot links a study or a data generation to a credit association. The credit association is linked to an Agent (Person or Organization) and to a CRediT Contributor Roles term. Principal investigators are recorded here with applied_roles including Principal Investigator.""", json_schema_extra = { "linkml_meta": {'annotations': {'tooltip': {'tag': 'tooltip',
@@ -9719,19 +9767,19 @@ class NucleotideSequencing(DataGeneration):
          'examples': [{'description': 'Avena fatua rhizosphere microbial communities - '
                                       'H1_Rhizo_Litter_2 metatranscriptome',
                        'value': 'bioproject:PRJNA366857'}],
+         'in_subset': ['pha4ge_wastewater'],
          'is_a': 'study_identifiers',
          'mixins': ['insdc_identifiers'],
          'notes': ['Looking at schemas that follow the PHA4GE Wastewater Contextual '
-                   'Data Specification 4.4.4 standard (follow `see_also` for reference '
-                   'documentation) we can see that slots capturing INSDC BioProject '
-                   'accessions directly map to GENEPIO:0001136.',
+                   'Data Specification 4.4.4 standard (see the pha4ge_wastewater '
+                   'subset for reference documentation) we can see that slots '
+                   'capturing INSDC BioProject accessions directly map to '
+                   'GENEPIO:0001136.',
                    'In the PHA4GE schema the slot `bioproject_accession` is '
                    'single-valued whereas the NMDC slot '
                    '(`insdc_bioproject_identifiers`)  is multivalued.'],
          'see_also': ['https://www.ncbi.nlm.nih.gov/bioproject/',
-                      'https://www.ddbj.nig.ac.jp/bioproject/index-e.html',
-                      'https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml']} })
+                      'https://www.ddbj.nig.ac.jp/bioproject/index-e.html']} })
     insdc_experiment_identifiers: Optional[list[str]] = Field(default=None, description="""INSDC identifiers for the unique sequencing result for a specific sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['NucleotideSequencing', 'DataObject'],
          'is_a': 'external_database_identifiers',
          'mixins': ['insdc_identifiers'],
@@ -9743,16 +9791,15 @@ class NucleotideSequencing(DataGeneration):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(sty)-{id_shoulder}-{id_blade}'}} })
     instrument_used: Optional[list[str]] = Field(default=None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'MaterialProcessing'],
+         'in_subset': ['pha4ge_wastewater'],
          'notes': ['Looking at schemas that follow the PHA4GE Wastewater Contextual '
-                   'Data Specification 4.4.4 standard (follow `see_also` for reference '
-                   'documentation) we can see that slots representing sequencing '
-                   'instruments are mapped directly to GENEPIO:0001452. From the '
-                   "ontology term's documentation we can see that it is  composed in "
-                   'roughly the same way as a sequencing instrument instance is '
-                   'composed in NMDC.'],
+                   'Data Specification 4.4.4 standard (see the pha4ge_wastewater '
+                   'subset for reference documentation) we can see that slots '
+                   'representing sequencing instruments are mapped directly to '
+                   "GENEPIO:0001452. From the ontology term's documentation we can see "
+                   'that it is  composed in roughly the same way as a sequencing '
+                   'instrument instance is composed in NMDC.'],
          'related_mappings': ['GENEPIO:0001452'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}'}} })
     has_credit_associations: Optional[list[CreditAssociation]] = Field(default=None, description="""This slot links a study or a data generation to a credit association. The credit association is linked to an Agent (Person or Organization) and to a CRediT Contributor Roles term. Principal investigators are recorded here with applied_roles including Principal Investigator.""", json_schema_extra = { "linkml_meta": {'annotations': {'tooltip': {'tag': 'tooltip',
@@ -10062,16 +10109,15 @@ class MassSpectrometry(DataGeneration):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(sty)-{id_shoulder}-{id_blade}'}} })
     instrument_used: Optional[list[str]] = Field(default=None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'MaterialProcessing'],
+         'in_subset': ['pha4ge_wastewater'],
          'notes': ['Looking at schemas that follow the PHA4GE Wastewater Contextual '
-                   'Data Specification 4.4.4 standard (follow `see_also` for reference '
-                   'documentation) we can see that slots representing sequencing '
-                   'instruments are mapped directly to GENEPIO:0001452. From the '
-                   "ontology term's documentation we can see that it is  composed in "
-                   'roughly the same way as a sequencing instrument instance is '
-                   'composed in NMDC.'],
+                   'Data Specification 4.4.4 standard (see the pha4ge_wastewater '
+                   'subset for reference documentation) we can see that slots '
+                   'representing sequencing instruments are mapped directly to '
+                   "GENEPIO:0001452. From the ontology term's documentation we can see "
+                   'that it is  composed in roughly the same way as a sequencing '
+                   'instrument instance is composed in NMDC.'],
          'related_mappings': ['GENEPIO:0001452'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}'}} })
     has_credit_associations: Optional[list[CreditAssociation]] = Field(default=None, description="""This slot links a study or a data generation to a credit association. The credit association is linked to an Agent (Person or Organization) and to a CRediT Contributor Roles term. Principal investigators are recorded here with applied_roles including Principal Investigator.""", json_schema_extra = { "linkml_meta": {'annotations': {'tooltip': {'tag': 'tooltip',
@@ -11789,13 +11835,12 @@ class Biosample(Sample):
          'comments': ['this illustrates implementing a Biosample relation with a '
                       '(binary) slot'],
          'domain_of': ['Biosample'],
+         'in_subset': ['pha4ge_wastewater'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: close match '
                    'to sampling site ID (GENEPIO:0100760), a submitter-assigned '
                    'identifier reused for every sample from the same site.',
                    'NCBI BioSample: close match to the sampling_site_id attribute of '
                    'the PHA4GE.wwsurv.1.0 package.'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}'},
          'todos': ['add an OBO slot_uri ?']} })
@@ -11847,6 +11892,7 @@ class Biosample(Sample):
                       {'description': 'I13_N_5-10 sample from Soil fungal diversity '
                                       'along elevational gradients',
                        'value': 'biosample:SAMD00212331'}],
+         'in_subset': ['pha4ge_wastewater'],
          'is_a': 'biosample_identifiers',
          'mixins': ['insdc_identifiers'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: close match '
@@ -11855,9 +11901,7 @@ class Biosample(Sample):
          'see_also': ['https://github.com/bioregistry/bioregistry/issues/108',
                       'https://www.ebi.ac.uk/biosamples/',
                       'https://www.ncbi.nlm.nih.gov/biosample',
-                      'https://www.ddbj.nig.ac.jp/biosample/index-e.html',
-                      'https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml']} })
+                      'https://www.ddbj.nig.ac.jp/biosample/index-e.html']} })
     emsl_biosample_identifiers: Optional[list[str]] = Field(default=None, title="EMSL Biosample Identifiers", description="""A list of identifiers for the biosample from the EMSL database.  This is used to link the biosample, as modeled by NMDC, to the biosample in the planned EMSL NEXUS database.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
          'is_a': 'biosample_identifiers',
          'mixins': ['emsl_identifiers'],
@@ -11917,6 +11961,7 @@ class Biosample(Sample):
                                            'name': 'estuarine biome',
                                            'type': 'nmdc:OntologyClass'},
                                   'type': 'nmdc:ControlledTermValue'}}],
+         'in_subset': ['pha4ge_wastewater'],
          'keywords': ['adjacent', 'environment', 'site'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: close match '
                    'to proximal environmental site (GENEPIO:0101205); the PHA4GE field '
@@ -11925,8 +11970,6 @@ class Biosample(Sample):
                    'NCBI BioSample: close match to the adjacent_environment attribute '
                    'of the PHA4GE.wwsurv.1.0 package, the NCBI harmonized name for '
                    'this MIxS term.'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'slot_uri': 'MIXS:0001121',
          'string_serialization': '{termLabel} [{termID}]'} })
     aero_struc: Optional[AeroStrucEnum] = Field(default=None, title="aerospace structure", description="""Aerospace structures typically consist of thin plates with stiffeners for the external surfaces, bulkheads and frames to support the shape and fasteners such as welds, rivets, screws and bolts to hold the components together""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
@@ -11960,14 +12003,13 @@ class Biosample(Sample):
                                   'has_raw_value': '20 Cel',
                                   'has_unit': 'Cel',
                                   'type': 'nmdc:QuantityValue'}}],
+         'in_subset': ['pha4ge_wastewater'],
          'keywords': ['air', 'temperature'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: related '
                    'match to ambient temperature measurement value (GENEPIO:0100935) '
                    'and ambient temperature measurement unit (GENEPIO:0100936); one '
                    'QuantityValue here is split across PHA4GE value and unit fields.'],
          'related_mappings': ['GENEPIO:0100935', 'GENEPIO:0100936'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'slot_uri': 'MIXS:0000124',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
@@ -12030,15 +12072,13 @@ class Biosample(Sample):
                                   'has_raw_value': '50 mg/L',
                                   'has_unit': 'mg/L',
                                   'type': 'nmdc:QuantityValue'}}],
-         'in_subset': ['biogeochemistry'],
+         'in_subset': ['biogeochemistry', 'pha4ge_wastewater'],
          'keywords': ['alkalinity'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: related '
                    'match to alkalinity measurement value (GENEPIO:0100878) and '
                    'alkalinity measurement unit (GENEPIO:0100879); one QuantityValue '
                    'here is split across PHA4GE value and unit fields.'],
          'related_mappings': ['GENEPIO:0100878', 'GENEPIO:0100879'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'slot_uri': 'MIXS:0000421',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
@@ -12311,6 +12351,7 @@ class Biosample(Sample):
                                             'value': 'milligram per liter'},
                          'storage_units': {'tag': 'storage_units', 'value': 'mg/L'}},
          'domain_of': ['Biosample'],
+         'in_subset': ['pha4ge_wastewater'],
          'keywords': ['oxygen'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: related '
                    'match to carbonaceous biochemical oxygen demand (CBOD) measurement '
@@ -12318,8 +12359,6 @@ class Biosample(Sample):
                    'measures the carbonaceous component of the BOD this slot holds, '
                    'and splits value and unit.'],
          'related_mappings': ['GENEPIO:0100791', 'GENEPIO:0100792'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'slot_uri': 'MIXS:0000653',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
@@ -12594,14 +12633,13 @@ class Biosample(Sample):
                                             'value': 'milligram per liter'},
                          'storage_units': {'tag': 'storage_units', 'value': 'mg/L'}},
          'domain_of': ['Biosample'],
+         'in_subset': ['pha4ge_wastewater'],
          'keywords': ['oxygen'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: related '
                    'match to chemical oxygen demand (COD) measurement value '
                    '(GENEPIO:0100788) and unit (GENEPIO:0100789); one QuantityValue '
                    'here is split across PHA4GE value and unit fields.'],
          'related_mappings': ['GENEPIO:0100788', 'GENEPIO:0100789'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'slot_uri': 'MIXS:0000656',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
@@ -12679,6 +12717,7 @@ class Biosample(Sample):
          'domain_of': ['Biosample', 'OrganismSample'],
          'examples': [{'object': {'has_raw_value': '2013-03-25T12:42:31+01:00',
                                   'type': 'nmdc:TimestampValue'}}],
+         'in_subset': ['pha4ge_wastewater'],
          'keywords': ['date'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: related '
                    'match to sample collection start date (GENEPIO:0001174); this slot '
@@ -12687,8 +12726,6 @@ class Biosample(Sample):
                    'mandatory in the PHA4GE.wwsurv.1.0 package; both accept a date, a '
                    'date-time or a date range.'],
          'related_mappings': ['GENEPIO:0001174'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'slot_uri': 'MIXS:0000011'} })
     conduc: Optional[QuantityValue] = Field(default=None, title="conductivity", description="""Electrical conductivity of water""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
                                             'value': 'milliSiemens per centimeter'},
@@ -12722,6 +12759,7 @@ class Biosample(Sample):
          'keywords': ['culture'],
          'slot_uri': 'MIXS:0001041',
          'structured_pattern': {'interpolated': True,
+                                'partial_match': True,
                                 'syntax': '^({text}|{PMID}|{DOI}|{URL})$'}} })
     cur_land_use: Optional[str] = Field(default=None, title="current land use", description="""Present state of sample site""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
                                             'value': 'enumeration'}},
@@ -12982,7 +13020,7 @@ class Biosample(Sample):
                                   'has_raw_value': '175 umol/L',
                                   'has_unit': 'umol/L',
                                   'type': 'nmdc:QuantityValue'}}],
-         'in_subset': ['biogeochemistry'],
+         'in_subset': ['biogeochemistry', 'pha4ge_wastewater'],
          'keywords': ['dissolved', 'oxygen'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: related '
                    'match to dissolved oxygen concentration (GENEPIO:0000035) and '
@@ -12992,8 +13030,6 @@ class Biosample(Sample):
                    'harmonized name for this MIxS term, optional in the '
                    'PHA4GE.wwsurv.1.0 package.'],
          'related_mappings': ['GENEPIO:0000035', 'GENEPIO:0100784'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'slot_uri': 'MIXS:0000119',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
@@ -13182,6 +13218,7 @@ class Biosample(Sample):
                                   'term': {'id': 'ENVO:01000338',
                                            'type': 'nmdc:OntologyClass'},
                                   'type': 'nmdc:ControlledIdentifiedTermValue'}}],
+         'in_subset': ['pha4ge_wastewater'],
          'is_a': 'mixs_env_triad_field',
          'keywords': ['context', 'environmental'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: close match '
@@ -13190,8 +13227,6 @@ class Biosample(Sample):
                    'NCBI BioSample: close match to the env_local_scale attribute, the '
                    'NCBI harmonized name for this MIxS term, optional in the '
                    'PHA4GE.wwsurv.1.0 package.'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'slot_uri': 'MIXS:0000013',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
@@ -13217,6 +13252,7 @@ class Biosample(Sample):
                                   'term': {'id': 'ENVO:00001998',
                                            'type': 'nmdc:OntologyClass'},
                                   'type': 'nmdc:ControlledIdentifiedTermValue'}}],
+         'in_subset': ['pha4ge_wastewater'],
          'is_a': 'mixs_env_triad_field',
          'keywords': ['environmental'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: close match '
@@ -13225,8 +13261,6 @@ class Biosample(Sample):
                    'NCBI BioSample: close match to the env_medium attribute, the NCBI '
                    'harmonized name for this MIxS term, optional in the '
                    'PHA4GE.wwsurv.1.0 package.'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'slot_uri': 'MIXS:0000014',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
@@ -13473,11 +13507,13 @@ class Biosample(Sample):
          'examples': [{'value': 'PMID:19497774'}],
          'slot_uri': 'MIXS:0000859',
          'structured_pattern': {'interpolated': True,
+                                'partial_match': True,
                                 'syntax': '^({PMID}|{DOI}|{URL})$'}} })
     geo_loc_name: Optional[TextValue] = Field(default=None, title="geographic location (country and/or sea,region)", description="""The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (http://purl.bioontology.org/ontology/GAZ)""", json_schema_extra = { "linkml_meta": {'close_mappings': ['NCBI_BIOSAMPLE_ATTRIBUTE:geo_loc_name'],
          'domain_of': ['FieldResearchSite', 'Biosample'],
          'examples': [{'object': {'has_raw_value': 'USA: Maryland, Bethesda',
                                   'type': 'nmdc:TextValue'}}],
+         'in_subset': ['pha4ge_wastewater'],
          'keywords': ['geographic', 'location'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: related '
                    'match to geo loc name (country) (GENEPIO:0001181), geo loc name '
@@ -13492,8 +13528,6 @@ class Biosample(Sample):
                               'GENEPIO:0001185',
                               'GENEPIO:0001189',
                               'GENEPIO:0100436'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'slot_uri': 'MIXS:0000010',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
@@ -14067,12 +14101,11 @@ class Biosample(Sample):
                                   'latitude': 50.586825,
                                   'longitude': 6.408977,
                                   'type': 'nmdc:GeolocationValue'}}],
+         'in_subset': ['pha4ge_wastewater'],
          'keywords': ['geographic', 'location'],
          'notes': ["This is currently a required field but it's not clear if this "
                    'should be required for human hosts'],
          'related_mappings': ['GENEPIO:0100309', 'GENEPIO:0100310'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'slot_uri': 'MIXS:0000009',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
@@ -14296,6 +14329,7 @@ class Biosample(Sample):
                                             'value': 'enumeration or text'}},
          'close_mappings': ['NCBI_BIOSAMPLE_ATTRIBUTE:neg_cont_type'],
          'domain_of': ['Biosample'],
+         'in_subset': ['pha4ge_wastewater'],
          'keywords': ['type'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: related '
                    'match to experimental control details (GENEPIO:0100922); the '
@@ -14306,8 +14340,6 @@ class Biosample(Sample):
                    'wastewater packages.'],
          'recommended': True,
          'related_mappings': ['GENEPIO:0100922'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'slot_uri': 'MIXS:0001321'} })
     nitrate: Optional[QuantityValue] = Field(default=None, title="nitrate", description="""Concentration of nitrate in the sample""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
                                             'value': 'micromole per liter, milligram '
@@ -14605,7 +14637,7 @@ class Biosample(Sample):
     ph: Optional[float] = Field(default=None, title="pH", description="""pH measurement of the sample, or liquid portion of sample, or aqueous phase of the fluid""", json_schema_extra = { "linkml_meta": {'close_mappings': ['GENEPIO:0001736', 'NCBI_BIOSAMPLE_ATTRIBUTE:ph'],
          'domain_of': ['Biosample'],
          'examples': [{'value': '7.2'}],
-         'in_subset': ['biogeochemistry'],
+         'in_subset': ['biogeochemistry', 'pha4ge_wastewater'],
          'keywords': ['ph'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: close match '
                    'to pH measurement value (GENEPIO:0001736); PHA4GE records the '
@@ -14613,8 +14645,6 @@ class Biosample(Sample):
                    'NCBI BioSample: close match to the ph attribute, the NCBI '
                    'harmonized name for this MIxS term, optional in the '
                    'PHA4GE.wwsurv.1.0 package.'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'slot_uri': 'MIXS:0001001'} })
     ph_meth: Optional[TextValue] = Field(default=None, title="pH method", description="""Reference or method used in determining pH""", json_schema_extra = { "linkml_meta": {'annotations': {'method_for': {'tag': 'method_for', 'value': 'ph'}},
          'comments': ['This can include a link to the instrument used or a citation '
@@ -14737,6 +14767,7 @@ class Biosample(Sample):
          'string_serialization': '{float} - {float} {unit}'} })
     pos_cont_type: Optional[str] = Field(default=None, title="positive control type", description="""The substance, mixture, product, or apparatus used to verify that a process which is part of an investigation delivers a true positive""", json_schema_extra = { "linkml_meta": {'close_mappings': ['NCBI_BIOSAMPLE_ATTRIBUTE:pos_cont_type'],
          'domain_of': ['Biosample'],
+         'in_subset': ['pha4ge_wastewater'],
          'keywords': ['type'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: related '
                    'match to experimental control details (GENEPIO:0100922); the '
@@ -14747,8 +14778,6 @@ class Biosample(Sample):
                    'wastewater packages.'],
          'recommended': True,
          'related_mappings': ['GENEPIO:0100922'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'slot_uri': 'MIXS:0001322',
          'string_serialization': '{term} or {text}'} })
     potassium: Optional[QuantityValue] = Field(default=None, title="potassium", description="""Concentration of potassium in the sample""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
@@ -15144,7 +15173,7 @@ class Biosample(Sample):
                                   'has_raw_value': '70 mg/L',
                                   'has_unit': 'mg/L',
                                   'type': 'nmdc:QuantityValue'}}],
-         'in_subset': ['biogeochemistry'],
+         'in_subset': ['biogeochemistry', 'pha4ge_wastewater'],
          'keywords': ['salinity'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: related '
                    'match to salinity measurement value (GENEPIO:0100805) and unit '
@@ -15156,8 +15185,6 @@ class Biosample(Sample):
                    'attribute, the MIxS 5 term that MIxS 6 merged into salinity and '
                    'MIxS 7 removed, so that name is kept as a close match as well.'],
          'related_mappings': ['GENEPIO:0100805', 'GENEPIO:0100806'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'slot_uri': 'MIXS:0000183',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
@@ -15208,6 +15235,7 @@ class Biosample(Sample):
          'examples': [{'value': 'specimen collection swab stick [OBI:0002820]'},
                       {'value': 'PONAR grab sampler [GENEPIO:0100929]'},
                       {'value': 'trowel'}],
+         'in_subset': ['pha4ge_wastewater'],
          'keywords': ['device', 'sample'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: close match '
                    'to collection device (GENEPIO:0001234); the PHA4GE field is '
@@ -15215,12 +15243,11 @@ class Biosample(Sample):
                    'NCBI BioSample: close match to the collection_device attribute of '
                    'the PHA4GE.wwsurv.1.0 package (free text, for example '
                    'autosampler).'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'slot_uri': 'MIXS:0000002'} })
     samp_collec_method: Optional[str] = Field(default=None, title="sample collection method", description="""The method employed for collecting the sample""", json_schema_extra = { "linkml_meta": {'close_mappings': ['GENEPIO:0001241',
                             'NCBI_BIOSAMPLE_ATTRIBUTE:collection_method'],
          'domain_of': ['Biosample'],
+         'in_subset': ['pha4ge_wastewater'],
          'keywords': ['method', 'sample'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: close match '
                    'to collection method (GENEPIO:0001241); the PHA4GE field is '
@@ -15228,8 +15255,6 @@ class Biosample(Sample):
                    'NCBI BioSample: close match to the collection_method attribute, '
                    'the NCBI harmonized name for this MIxS term, optional in the '
                    'PHA4GE.wwsurv.1.0 package.'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'slot_uri': 'MIXS:0001225',
          'structured_aliases': [{'literal_form': 'samp_collect_method',
                                  'predicate': 'EXACT_SYNONYM',
@@ -15263,6 +15288,7 @@ class Biosample(Sample):
          'examples': [{'object': {'has_raw_value': 'filtering of seawater, storing '
                                                    'samples in ethanol',
                                   'type': 'nmdc:ControlledTermValue'}}],
+         'in_subset': ['pha4ge_wastewater'],
          'keywords': ['material', 'process', 'sample'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: close match '
                    'to specimen processing (GENEPIO:0001253); the PHA4GE field is '
@@ -15270,8 +15296,6 @@ class Biosample(Sample):
                    'NCBI BioSample: close match to the samp_mat_process attribute, the '
                    'NCBI harmonized name for this MIxS term, optional in the '
                    'PHA4GE.wwsurv.1.0 package.'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'slot_uri': 'MIXS:0000016'} })
     samp_md: Optional[QuantityValue] = Field(default=None, title="sample measured depth", description="""In non deviated well, measured depth is equal to the true vertical depth, TVD (TVD=TVDSS plus the reference or datum it refers to). In deviated wells, the MD is the length of trajectory of the borehole measured from the same reference or datum. Common datums used are ground level (GL), drilling rig floor (DF), rotary table (RT), kelly bushing (KB) and mean sea level (MSL). If \"other\" is specified, please propose entry in \"additional info\" field""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
                                             'value': 'measurement value;enumeration'},
@@ -15289,12 +15313,11 @@ class Biosample(Sample):
          'close_mappings': ['GENEPIO:0001123'],
          'domain_of': ['Biosample', 'OrganismSample'],
          'examples': [{'value': 'ISDsoil1'}],
+         'in_subset': ['pha4ge_wastewater'],
          'keywords': ['sample'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: close match '
                    'to specimen collector sample ID (GENEPIO:0001123); the PHA4GE '
                    'field is scoped to the name assigned by the specimen collector.'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'slot_uri': 'MIXS:0001107'} })
     samp_preserv: Optional[TextValue] = Field(default=None, title="preservative added to sample", description="""Preservative added to the sample (e.g. Rnalater, alcohol, formaldehyde, etc.). Where appropriate include volume added (e.g. Rnalater; 2 ml)""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
                                             'value': 'milliliter'}},
@@ -15310,6 +15333,7 @@ class Biosample(Sample):
                             'NCBI_BIOSAMPLE_ATTRIBUTE:purpose_of_sampling'],
          'domain_of': ['Biosample'],
          'examples': [{'value': 'field trial'}],
+         'in_subset': ['pha4ge_wastewater'],
          'keywords': ['purpose'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: close match '
                    'to purpose of sampling (GENEPIO:0001198); the PHA4GE field is '
@@ -15318,8 +15342,6 @@ class Biosample(Sample):
                    'purpose_of_sampling attribute, the NCBI harmonized name for this '
                    'MIxS term (samp purpose is listed there as a synonym), mandatory '
                    'in the PHA4GE.wwsurv.1.0 package.'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'slot_uri': 'MIXS:0001151',
          'string_serialization': '[active surveillance in response to an '
                                  'outbreak|active surveillance not initiated by an '
@@ -15339,14 +15361,13 @@ class Biosample(Sample):
                                   'has_raw_value': '3 mL',
                                   'has_unit': 'mL',
                                   'type': 'nmdc:QuantityValue'}}],
+         'in_subset': ['pha4ge_wastewater'],
          'keywords': ['sample', 'size'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: related '
                    'match to sample volume measurement value (GENEPIO:0100768) and '
                    'unit (GENEPIO:0100769); this slot holds any size measure (volume, '
                    'mass or area), PHA4GE holds volume with value and unit split.'],
          'related_mappings': ['GENEPIO:0100768', 'GENEPIO:0100769'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'slot_uri': 'MIXS:0000001',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
@@ -15357,14 +15378,13 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000216'} })
     samp_store_dur: Optional[TextValue] = Field(default=None, title="sample storage duration", description="""Duration for which the sample was stored. Indicate the duration for which the sample was stored written in ISO 8601 format""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
          'examples': [{'object': {'has_raw_value': 'P1Y6M', 'type': 'nmdc:TextValue'}}],
+         'in_subset': ['pha4ge_wastewater'],
          'keywords': ['duration', 'period', 'sample', 'storage'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: related '
                    'match to sample storage duration value (GENEPIO:0101014) and unit '
                    '(GENEPIO:0101015); this slot holds an ISO 8601 duration, PHA4GE '
                    'splits value and unit.'],
          'related_mappings': ['GENEPIO:0101014', 'GENEPIO:0101015'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'slot_uri': 'MIXS:0000116',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
@@ -15384,14 +15404,13 @@ class Biosample(Sample):
                                   'has_raw_value': '-80 Cel',
                                   'has_unit': 'Cel',
                                   'type': 'nmdc:QuantityValue'}}],
+         'in_subset': ['pha4ge_wastewater'],
          'keywords': ['sample', 'storage', 'temperature'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: related '
                    'match to sample storage method (GENEPIO:0100448); PHA4GE has no '
                    'storage temperature field, and its free-text storage method is the '
                    'nearest.'],
          'related_mappings': ['GENEPIO:0100448'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'slot_uri': 'MIXS:0000110',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
@@ -15405,14 +15424,13 @@ class Biosample(Sample):
     samp_taxon_id: Optional[ControlledIdentifiedTermValue] = Field(default=None, title="taxonomy ID of DNA sample", description="""NCBI taxon id of the sample.  Maybe be a single taxon or mixed taxa sample. Use 'synthetic metagenome  for mock community/positive controls, or 'blank sample' for negative controls""", json_schema_extra = { "linkml_meta": {'comments': ['coal metagenome [NCBITaxon:1260732] would be a reasonable '
                       'has_raw_value'],
          'domain_of': ['Biosample'],
+         'in_subset': ['pha4ge_wastewater'],
          'keywords': ['dna', 'identifier', 'sample', 'taxon'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: related '
                    'match to organism (GENEPIO:0001191); the PHA4GE field names the '
                    'surveillance target, this slot names the taxon of the sample '
                    'itself.'],
          'related_mappings': ['GENEPIO:0001191'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'slot_uri': 'MIXS:0001320',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
@@ -15455,6 +15473,7 @@ class Biosample(Sample):
     samp_weather: Optional[SampWeatherEnum] = Field(default=None, title="sampling day weather", description="""The weather on the sampling day""", json_schema_extra = { "linkml_meta": {'close_mappings': ['GENEPIO:0100779', 'NCBI_BIOSAMPLE_ATTRIBUTE:samp_weather'],
          'domain_of': ['Biosample'],
          'examples': [{'value': 'foggy'}],
+         'in_subset': ['pha4ge_wastewater'],
          'keywords': ['day', 'weather'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: close match '
                    'to sampling weather conditions (GENEPIO:0100779); the PHA4GE field '
@@ -15463,8 +15482,6 @@ class Biosample(Sample):
                    'NCBI harmonized name for this MIxS term, optional in the '
                    'PHA4GE.wwsurv.1.0 package; NCBI accepts free text there, this slot '
                    'is restricted to the MIxS list.'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'slot_uri': 'MIXS:0000827'} })
     samp_well_name: Optional[TextValue] = Field(default=None, title="sample well name", description="""Name of the well (e.g. BXA1123) where sample was taken""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
          'keywords': ['sample'],
@@ -15993,6 +16010,7 @@ class Biosample(Sample):
                                                      'liter, part per million'}},
          'close_mappings': ['NCBI_BIOSAMPLE_ATTRIBUTE:suspend_solids'],
          'domain_of': ['Biosample'],
+         'in_subset': ['pha4ge_wastewater'],
          'keywords': ['solids', 'suspended'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: related '
                    'match to total suspended solids (TSS) measurement value '
@@ -16002,8 +16020,6 @@ class Biosample(Sample):
                    'NCBI harmonized name for this MIxS term, optional in the '
                    'PHA4GE.wwsurv.1.0 package.'],
          'related_mappings': ['GENEPIO:0100794', 'GENEPIO:0100795'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'slot_uri': 'MIXS:0000150',
          'string_serialization': '{text};{float} {unit}'} })
     tan: Optional[QuantityValue] = Field(default=None, title="total acid number", description="""Total Acid Number (TAN) is a measurement of acidity that is determined by the amount of potassium hydroxide in milligrams that is needed to neutralize the acids in one gram of oil. It is an important quality measurement of crude oil. (source: https://en.wikipedia.org/wiki/Total_acid_number)""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
@@ -16025,6 +16041,7 @@ class Biosample(Sample):
                                   'has_raw_value': '25 Cel',
                                   'has_unit': 'Cel',
                                   'type': 'nmdc:QuantityValue'}}],
+         'in_subset': ['pha4ge_wastewater'],
          'keywords': ['temperature'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: related '
                    'match to sample temperature value (at collection) '
@@ -16032,8 +16049,6 @@ class Biosample(Sample):
                    '(GENEPIO:0100822); one QuantityValue here is split across PHA4GE '
                    'value and unit fields.'],
          'related_mappings': ['GENEPIO:0100821', 'GENEPIO:0100822'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'slot_uri': 'MIXS:0000113',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
@@ -16176,15 +16191,13 @@ class Biosample(Sample):
                                   'has_raw_value': '0.598 %',
                                   'has_unit': '%',
                                   'type': 'nmdc:QuantityValue'}}],
-         'in_subset': ['biogeochemistry'],
+         'in_subset': ['biogeochemistry', 'pha4ge_wastewater'],
          'keywords': ['concentration', 'nitrogen', 'total'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: related '
                    'match to total nitrogen (TN) measurement value (GENEPIO:0100808) '
                    'and unit (GENEPIO:0100809); one QuantityValue here is split across '
                    'PHA4GE value and unit fields.'],
          'related_mappings': ['GENEPIO:0100808', 'GENEPIO:0100809'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'slot_uri': 'MIXS:0000102',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
@@ -16279,14 +16292,13 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': 'ug/L|umol/L'}},
          'domain_of': ['Biosample'],
+         'in_subset': ['pha4ge_wastewater'],
          'keywords': ['phosphate', 'total'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: related '
                    'match to total phosphorus (TP) measurement value (GENEPIO:0100811) '
                    'and unit (GENEPIO:0100812); PHA4GE measures total phosphorus, this '
                    'slot total phosphate, and value and unit are split.'],
          'related_mappings': ['GENEPIO:0100811', 'GENEPIO:0100812'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'slot_uri': 'MIXS:0000689',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
@@ -16326,6 +16338,7 @@ class Biosample(Sample):
                                   'has_raw_value': '0.3 [NTU]',
                                   'has_unit': '[NTU]',
                                   'type': 'nmdc:QuantityValue'}}],
+         'in_subset': ['pha4ge_wastewater'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: related '
                    'match to turbidity measurement value (GENEPIO:0100783) and '
                    'turbidity measurement unit (GENEPIO:0100914); one QuantityValue '
@@ -16333,8 +16346,6 @@ class Biosample(Sample):
                    'close match to the turbidity attribute, the NCBI harmonized name '
                    'for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package.'],
          'related_mappings': ['GENEPIO:0100783', 'GENEPIO:0100914'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'slot_uri': 'MIXS:0000191',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
@@ -17064,6 +17075,7 @@ class Biosample(Sample):
                       'catchment_population_method.'],
          'domain_of': ['Biosample'],
          'examples': [{'value': '750000'}],
+         'in_subset': ['pha4ge_wastewater'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: close match '
                    'to water catchment area human population measurement value '
                    '(GENEPIO:0100773); related match to water catchment area human '
@@ -17072,9 +17084,7 @@ class Biosample(Sample):
                    'NCBI BioSample: close match to the water_catchment_area_population '
                    'attribute of the PHA4GE.wwsurv.1.0 package and to the '
                    'ww_population attribute of the SARS-CoV-2.wwsurv.1.0 package.'],
-         'related_mappings': ['GENEPIO:0100774'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml']} })
+         'related_mappings': ['GENEPIO:0100774']} })
     catchment_population_method: Optional[str] = Field(default=None, title="catchment population method", description="""How the catchment population was measured or estimated.""", json_schema_extra = { "linkml_meta": {'annotations': {'method_for': {'tag': 'method_for',
                                         'value': 'catchment_population'}},
          'close_mappings': ['GENEPIO:0100775',
@@ -17083,14 +17093,13 @@ class Biosample(Sample):
          'examples': [{'value': 'population of jurisdiction encompassing the '
                                 'wastewater service area'},
                       {'value': 'census blocks clipped to wastewater service area'}],
+         'in_subset': ['pha4ge_wastewater'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: close match '
                    'to water catchment area human population measurement method '
                    '(GENEPIO:0100775).',
                    'NCBI BioSample: close match to the ww_population_source attribute '
                    'of the SARS-CoV-2.wwsurv.1.0 package; the PHA4GE.wwsurv.1.0 '
-                   'package has no separate method attribute.'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml']} })
+                   'package has no separate method attribute.']} })
     collected_by: Optional[str] = Field(default=None, title="collected by", description="""The organization, or the person acting for an organization, that collected the sample.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['GENEPIO:0001153', 'NCBI_BIOSAMPLE_ATTRIBUTE:collected_by'],
          'comments': ['Write the organization name in full and spell it the same way '
                       'across samples. It names the utility, agency or laboratory that '
@@ -17098,6 +17107,7 @@ class Biosample(Sample):
          'domain_of': ['Biosample'],
          'examples': [{'value': 'Southeast San Francisco Wastewater Treatment Plant'},
                       {'value': 'Public Health Agency of Canada'}],
+         'in_subset': ['pha4ge_wastewater'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: close match '
                    'to sample collected by (GENEPIO:0001153), the organization the '
                    'sample collector is affiliated with; related match to sample '
@@ -17110,9 +17120,7 @@ class Biosample(Sample):
                    'that submissions and NCBI imports need no entity resolution; a '
                    'normalized link can be added later without losing the recorded '
                    'name.'],
-         'related_mappings': ['GENEPIO:0100428'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml']} })
+         'related_mappings': ['GENEPIO:0100428']} })
     experimental_specimen_role_type: Optional[ExperimentalSpecimenRoleTypeEnum] = Field(default=None, title="experimental specimen role type", description="""The role the sample plays in the experiment when it is not simply a sample under study: a positive or negative control, or a technical or biological replicate of another sample.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['GENEPIO:0100921',
                             'NCBI_BIOSAMPLE_ATTRIBUTE:experimental_specimen_role_type'],
          'comments': ['Leave the slot empty for an ordinary sample under study. '
@@ -17121,13 +17129,12 @@ class Biosample(Sample):
                       'technical_reps.'],
          'domain_of': ['Biosample'],
          'examples': [{'value': 'negative experimental control'}],
+         'in_subset': ['pha4ge_wastewater'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: close match '
                    'to experimental specimen role type (GENEPIO:0100921); the PHA4GE '
                    'field is multivalued, this slot holds one role.',
                    'NCBI BioSample: close match to the experimental_specimen_role_type '
-                   'attribute of the PHA4GE.wwsurv.1.0 package.'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml']} })
+                   'attribute of the PHA4GE.wwsurv.1.0 package.']} })
     fecal_contamination_indicator: Optional[FecalContaminationIndicatorEnum] = Field(default=None, title="fecal contamination indicator", description="""The gene, virus, bacterium or substance that was measured as an indicator of fecal contamination of the sample, for example crAssphage or pepper mild mottle virus.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['GENEPIO:0100814',
                             'NCBI_BIOSAMPLE_ATTRIBUTE:fecal_contamination_indicator'],
          'comments': ['Record the measured amount in fecal_contamination_value and the '
@@ -17135,6 +17142,7 @@ class Biosample(Sample):
                       'put further indicators in misc_param.'],
          'domain_of': ['Biosample'],
          'examples': [{'value': 'crAssphage'}],
+         'in_subset': ['pha4ge_wastewater'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: close match '
                    'to fecal contamination indicator (GENEPIO:0100814); '
                    'FecalContaminationIndicatorEnum carries the PHA4GE picklist.',
@@ -17142,22 +17150,19 @@ class Biosample(Sample):
                    'attribute of the PHA4GE.wwsurv.1.0 package; related match to the '
                    'ww_endog_control_1 attribute of the SARS-CoV-2.wwsurv.1.0 package, '
                    'which records the same organisms as endogenous process controls.'],
-         'related_mappings': ['NCBI_BIOSAMPLE_ATTRIBUTE:ww_endog_control_1'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml']} })
+         'related_mappings': ['NCBI_BIOSAMPLE_ATTRIBUTE:ww_endog_control_1']} })
     fecal_contamination_method: Optional[str] = Field(default=None, title="fecal contamination method", description="""The assay or protocol used to measure the fecal contamination indicator, as a name, reference or URL.""", json_schema_extra = { "linkml_meta": {'annotations': {'method_for': {'tag': 'method_for',
                                         'value': 'fecal_contamination_value'}},
          'close_mappings': ['GENEPIO:0100817'],
          'domain_of': ['Biosample'],
          'examples': [{'value': 'RT-ddPCR on a QIAcuity One'}],
+         'in_subset': ['pha4ge_wastewater'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: close match '
                    'to fecal contamination method (GENEPIO:0100817).',
                    'NCBI BioSample: related match to the ww_endog_control_1_protocol '
                    'attribute of the SARS-CoV-2.wwsurv.1.0 package; the '
                    'PHA4GE.wwsurv.1.0 package has no method attribute.'],
-         'related_mappings': ['NCBI_BIOSAMPLE_ATTRIBUTE:ww_endog_control_1_protocol'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml']} })
+         'related_mappings': ['NCBI_BIOSAMPLE_ATTRIBUTE:ww_endog_control_1_protocol']} })
     fecal_contamination_value: Optional[QuantityValue] = Field(default=None, title="fecal contamination value", description="""The measured amount of the indicator named in fecal_contamination_indicator, as a concentration in the wastewater.""", json_schema_extra = { "linkml_meta": {'annotations': {'storage_units': {'tag': 'storage_units',
                                            'value': '{copies}/L|{copies}/mL|{copies}/g'}},
          'close_mappings': ['NCBI_BIOSAMPLE_ATTRIBUTE:fecal_contamination_value'],
@@ -17171,6 +17176,7 @@ class Biosample(Sample):
                                   'has_raw_value': '1.92E+08 copies/L wastewater',
                                   'has_unit': '{copies}/L',
                                   'type': 'nmdc:QuantityValue'}}],
+         'in_subset': ['pha4ge_wastewater'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: related '
                    'match to fecal contamination value (GENEPIO:0100815) and fecal '
                    'contamination unit (GENEPIO:0100816); one QuantityValue here is '
@@ -17182,9 +17188,7 @@ class Biosample(Sample):
                    'ww_endog_control_1_units.'],
          'related_mappings': ['GENEPIO:0100815',
                               'GENEPIO:0100816',
-                              'NCBI_BIOSAMPLE_ATTRIBUTE:ww_endog_control_1_conc'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml']} })
+                              'NCBI_BIOSAMPLE_ATTRIBUTE:ww_endog_control_1_conc']} })
     instantaneous_flow_rate: Optional[QuantityValue] = Field(default=None, title="instantaneous flow rate", description="""The volumetric flow rate of the wastewater at the sampling site at the moment the sample was collected.""", json_schema_extra = { "linkml_meta": {'annotations': {'storage_units': {'tag': 'storage_units',
                                            'value': 'L/s|L/min|m3/s|m3/h'}},
          'close_mappings': ['NCBI_BIOSAMPLE_ATTRIBUTE:instantaneous_flow_rate'],
@@ -17193,6 +17197,7 @@ class Biosample(Sample):
                                   'has_raw_value': '25 m3/h',
                                   'has_unit': 'm3/h',
                                   'type': 'nmdc:QuantityValue'}}],
+         'in_subset': ['pha4ge_wastewater'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: related '
                    'match to instantaneous flow rate measurement value '
                    '(GENEPIO:0100908) and unit (GENEPIO:0100909); one QuantityValue '
@@ -17200,23 +17205,20 @@ class Biosample(Sample):
                    'measurement method (GENEPIO:0100910) has no slot.',
                    'NCBI BioSample: close match to the instantaneous_flow_rate '
                    'attribute of the PHA4GE.wwsurv.1.0 package.'],
-         'related_mappings': ['GENEPIO:0100908', 'GENEPIO:0100909'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml']} })
+         'related_mappings': ['GENEPIO:0100908', 'GENEPIO:0100909']} })
     presampling_weather: Optional[SampWeatherEnum] = Field(default=None, title="presampling weather", description="""The weather in the period before sample collection, when it may have affected the sample, for example rain that diluted the wastewater.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['GENEPIO:0100780',
                             'NCBI_BIOSAMPLE_ATTRIBUTE:presamp_weather'],
          'comments': ['samp_weather records the weather on the sampling day itself. '
                       'Both use SampWeatherEnum so the two stay comparable.'],
          'domain_of': ['Biosample'],
          'examples': [{'value': 'rain'}],
+         'in_subset': ['pha4ge_wastewater'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: close match '
                    'to presampling weather conditions (GENEPIO:0100780); the PHA4GE '
                    'field is multivalued and restricted to its own picklist, this slot '
                    'holds one value from the MIxS sampling day weather list.',
                    'NCBI BioSample: close match to the presamp_weather attribute of '
-                   'the PHA4GE.wwsurv.1.0 package.'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml']} })
+                   'the PHA4GE.wwsurv.1.0 package.']} })
     sample_collection_duration: Optional[QuantityValue] = Field(default=None, title="sample collection duration", description="""The length of time over which the sample was collected. A grab sample is collected at one moment and a composite sample accumulates over a period (commonly 24 hours).""", json_schema_extra = { "linkml_meta": {'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'h|min|d'}},
          'close_mappings': ['NCBI_BIOSAMPLE_ATTRIBUTE:sample_collection_time_duration',
                             'NCBI_BIOSAMPLE_ATTRIBUTE:ww_sample_duration'],
@@ -17231,6 +17233,7 @@ class Biosample(Sample):
                                   'has_raw_value': '24-hr flow-weighted composite',
                                   'has_unit': 'h',
                                   'type': 'nmdc:QuantityValue'}}],
+         'in_subset': ['pha4ge_wastewater'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: related '
                    'match to sample collection time duration value (GENEPIO:0100766) '
                    'and sample collection duration unit (GENEPIO:0100767); one '
@@ -17239,9 +17242,7 @@ class Biosample(Sample):
                    'attribute of the PHA4GE.wwsurv.1.0 package (an ISO 8601 duration) '
                    'and to the ww_sample_duration attribute of the '
                    'SARS-CoV-2.wwsurv.1.0 package (whole hours, 0 for a grab sample).'],
-         'related_mappings': ['GENEPIO:0100766', 'GENEPIO:0100767'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml']} })
+         'related_mappings': ['GENEPIO:0100766', 'GENEPIO:0100767']} })
     total_daily_flow_rate: Optional[QuantityValue] = Field(default=None, title="total daily flow rate", description="""The volume of wastewater that flowed through the sampling site over the day of collection.""", json_schema_extra = { "linkml_meta": {'annotations': {'storage_units': {'tag': 'storage_units',
                                            'value': 'L/d|m3/d|10*6.[gal_us]/d'}},
          'close_mappings': ['NCBI_BIOSAMPLE_ATTRIBUTE:total_daily_flow_rate',
@@ -17257,6 +17258,7 @@ class Biosample(Sample):
                                   'has_raw_value': '2 MGD',
                                   'has_unit': '10*6.[gal_us]/d',
                                   'type': 'nmdc:QuantityValue'}}],
+         'in_subset': ['pha4ge_wastewater'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: related '
                    'match to total daily flow rate measurement value (GENEPIO:0100905) '
                    'and unit (GENEPIO:0100906); one QuantityValue here is split across '
@@ -17265,9 +17267,7 @@ class Biosample(Sample):
                    'NCBI BioSample: close match to the total_daily_flow_rate attribute '
                    'of the PHA4GE.wwsurv.1.0 package and to the ww_flow attribute of '
                    'the SARS-CoV-2.wwsurv.1.0 package (liters per day).'],
-         'related_mappings': ['GENEPIO:0100905', 'GENEPIO:0100906'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml']} })
+         'related_mappings': ['GENEPIO:0100905', 'GENEPIO:0100906']} })
     wastewater_system_type: Optional[WastewaterSystemTypeEnum] = Field(default=None, title="wastewater system type", description="""The kind of wastewater system the sample was taken from, such as a sanitary sewer, a combined sewer, a septic tank or a latrine.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['GENEPIO:0100771',
                             'NCBI_BIOSAMPLE_ATTRIBUTE:ww_system_type'],
          'comments': ['This classifies the collection system itself. sewage_type '
@@ -17276,14 +17276,13 @@ class Biosample(Sample):
                       '(human waste, rainfall, storm drains); all three can be given.'],
          'domain_of': ['Biosample'],
          'examples': [{'value': 'sanitary sewer system'}],
+         'in_subset': ['pha4ge_wastewater'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: close match '
                    'to wastewater system type (GENEPIO:0100771); '
                    'WastewaterSystemTypeEnum carries the PHA4GE picklist.',
                    'NCBI BioSample: close match to the ww_system_type attribute of the '
                    'PHA4GE.wwsurv.1.0 package, where submitters have written '
-                   'Separated, Combined and sanitary sewer.'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml']} })
+                   'Separated, Combined and sanitary sewer.']} })
     id: str = Field(default=..., title="ID", description="""An NMDC assigned unique identifier for a biosample submitted to NMDC.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'],
          'examples': [{'description': 'a production Biosample',
                        'value': 'nmdc:bsm-11-001pmq31'}],
@@ -18016,7 +18015,7 @@ class Biosample(Sample):
 
     @field_validator('cult_root_med')
     def pattern_cult_root_med(cls, v):
-        pattern=re.compile(r"^(?:^(.*|PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$)$")
+        pattern=re.compile(r"^(.*|PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.search(element):
@@ -18432,7 +18431,7 @@ class Biosample(Sample):
 
     @field_validator('genetic_mod')
     def pattern_genetic_mod(cls, v):
-        pattern=re.compile(r"^(?:^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$)$")
+        pattern=re.compile(r"^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.search(element):
@@ -20323,16 +20322,15 @@ class MaterialProcessing(PlannedProcess):
                                                               'syntax': '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}'}}}})
 
     instrument_used: Optional[list[str]] = Field(default=None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'MaterialProcessing'],
+         'in_subset': ['pha4ge_wastewater'],
          'notes': ['Looking at schemas that follow the PHA4GE Wastewater Contextual '
-                   'Data Specification 4.4.4 standard (follow `see_also` for reference '
-                   'documentation) we can see that slots representing sequencing '
-                   'instruments are mapped directly to GENEPIO:0001452. From the '
-                   "ontology term's documentation we can see that it is  composed in "
-                   'roughly the same way as a sequencing instrument instance is '
-                   'composed in NMDC.'],
+                   'Data Specification 4.4.4 standard (see the pha4ge_wastewater '
+                   'subset for reference documentation) we can see that slots '
+                   'representing sequencing instruments are mapped directly to '
+                   "GENEPIO:0001452. From the ontology term's documentation we can see "
+                   'that it is  composed in roughly the same way as a sequencing '
+                   'instrument instance is composed in NMDC.'],
          'related_mappings': ['GENEPIO:0001452'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}'}} })
     has_input: Optional[list[str]] = Field(default=None, description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'aliases': ['input'],
@@ -20524,16 +20522,15 @@ class Pooling(MaterialProcessing):
                                                       'syntax': '{id_nmdc_prefix}:poolp-{id_shoulder}-{id_blade}'}}}})
 
     instrument_used: Optional[list[str]] = Field(default=None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'MaterialProcessing'],
+         'in_subset': ['pha4ge_wastewater'],
          'notes': ['Looking at schemas that follow the PHA4GE Wastewater Contextual '
-                   'Data Specification 4.4.4 standard (follow `see_also` for reference '
-                   'documentation) we can see that slots representing sequencing '
-                   'instruments are mapped directly to GENEPIO:0001452. From the '
-                   "ontology term's documentation we can see that it is  composed in "
-                   'roughly the same way as a sequencing instrument instance is '
-                   'composed in NMDC.'],
+                   'Data Specification 4.4.4 standard (see the pha4ge_wastewater '
+                   'subset for reference documentation) we can see that slots '
+                   'representing sequencing instruments are mapped directly to '
+                   "GENEPIO:0001452. From the ontology term's documentation we can see "
+                   'that it is  composed in roughly the same way as a sequencing '
+                   'instrument instance is composed in NMDC.'],
          'related_mappings': ['GENEPIO:0001452'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}'}} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", min_length=2, json_schema_extra = { "linkml_meta": {'aliases': ['input'],
@@ -20732,16 +20729,15 @@ class Isolation(MaterialProcessing):
                                                       'syntax': '{id_nmdc_prefix}:isnp-{id_shoulder}-{id_blade}'}}}})
 
     instrument_used: Optional[list[str]] = Field(default=None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'MaterialProcessing'],
+         'in_subset': ['pha4ge_wastewater'],
          'notes': ['Looking at schemas that follow the PHA4GE Wastewater Contextual '
-                   'Data Specification 4.4.4 standard (follow `see_also` for reference '
-                   'documentation) we can see that slots representing sequencing '
-                   'instruments are mapped directly to GENEPIO:0001452. From the '
-                   "ontology term's documentation we can see that it is  composed in "
-                   'roughly the same way as a sequencing instrument instance is '
-                   'composed in NMDC.'],
+                   'Data Specification 4.4.4 standard (see the pha4ge_wastewater '
+                   'subset for reference documentation) we can see that slots '
+                   'representing sequencing instruments are mapped directly to '
+                   "GENEPIO:0001452. From the ontology term's documentation we can see "
+                   'that it is  composed in roughly the same way as a sequencing '
+                   'instrument instance is composed in NMDC.'],
          'related_mappings': ['GENEPIO:0001452'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}'}} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'aliases': ['input'],
@@ -20942,16 +20938,15 @@ class Culturing(MaterialProcessing):
                                                       'syntax': '{id_nmdc_prefix}:cultp-{id_shoulder}-{id_blade}'}}}})
 
     instrument_used: Optional[list[str]] = Field(default=None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'MaterialProcessing'],
+         'in_subset': ['pha4ge_wastewater'],
          'notes': ['Looking at schemas that follow the PHA4GE Wastewater Contextual '
-                   'Data Specification 4.4.4 standard (follow `see_also` for reference '
-                   'documentation) we can see that slots representing sequencing '
-                   'instruments are mapped directly to GENEPIO:0001452. From the '
-                   "ontology term's documentation we can see that it is  composed in "
-                   'roughly the same way as a sequencing instrument instance is '
-                   'composed in NMDC.'],
+                   'Data Specification 4.4.4 standard (see the pha4ge_wastewater '
+                   'subset for reference documentation) we can see that slots '
+                   'representing sequencing instruments are mapped directly to '
+                   "GENEPIO:0001452. From the ontology term's documentation we can see "
+                   'that it is  composed in roughly the same way as a sequencing '
+                   'instrument instance is composed in NMDC.'],
          'related_mappings': ['GENEPIO:0001452'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}'}} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'aliases': ['input'],
@@ -21179,16 +21174,15 @@ class Extraction(MaterialProcessing):
                        'ChemicalConversionProcess'],
          'notes': ['Not to be confused with the MIXS:0000113']} })
     instrument_used: Optional[list[str]] = Field(default=None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'MaterialProcessing'],
+         'in_subset': ['pha4ge_wastewater'],
          'notes': ['Looking at schemas that follow the PHA4GE Wastewater Contextual '
-                   'Data Specification 4.4.4 standard (follow `see_also` for reference '
-                   'documentation) we can see that slots representing sequencing '
-                   'instruments are mapped directly to GENEPIO:0001452. From the '
-                   "ontology term's documentation we can see that it is  composed in "
-                   'roughly the same way as a sequencing instrument instance is '
-                   'composed in NMDC.'],
+                   'Data Specification 4.4.4 standard (see the pha4ge_wastewater '
+                   'subset for reference documentation) we can see that slots '
+                   'representing sequencing instruments are mapped directly to '
+                   "GENEPIO:0001452. From the ontology term's documentation we can see "
+                   'that it is  composed in roughly the same way as a sequencing '
+                   'instrument instance is composed in NMDC.'],
          'related_mappings': ['GENEPIO:0001452'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}'}} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'aliases': ['input'],
@@ -21444,16 +21438,15 @@ class LibraryPreparation(MaterialProcessing):
                                 'partial_match': True,
                                 'syntax': '^{primer_adapter_codes}+;{primer_adapter_codes}+$'}} })
     instrument_used: Optional[list[str]] = Field(default=None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'MaterialProcessing'],
+         'in_subset': ['pha4ge_wastewater'],
          'notes': ['Looking at schemas that follow the PHA4GE Wastewater Contextual '
-                   'Data Specification 4.4.4 standard (follow `see_also` for reference '
-                   'documentation) we can see that slots representing sequencing '
-                   'instruments are mapped directly to GENEPIO:0001452. From the '
-                   "ontology term's documentation we can see that it is  composed in "
-                   'roughly the same way as a sequencing instrument instance is '
-                   'composed in NMDC.'],
+                   'Data Specification 4.4.4 standard (see the pha4ge_wastewater '
+                   'subset for reference documentation) we can see that slots '
+                   'representing sequencing instruments are mapped directly to '
+                   "GENEPIO:0001452. From the ontology term's documentation we can see "
+                   'that it is  composed in roughly the same way as a sequencing '
+                   'instrument instance is composed in NMDC.'],
          'related_mappings': ['GENEPIO:0001452'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}'}} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'aliases': ['input'],
@@ -21705,16 +21698,15 @@ class IsotopeLabelingProcess(MaterialProcessing):
                        'ChemicalConversionProcess',
                        'MobilePhaseSegment']} })
     instrument_used: Optional[list[str]] = Field(default=None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'MaterialProcessing'],
+         'in_subset': ['pha4ge_wastewater'],
          'notes': ['Looking at schemas that follow the PHA4GE Wastewater Contextual '
-                   'Data Specification 4.4.4 standard (follow `see_also` for reference '
-                   'documentation) we can see that slots representing sequencing '
-                   'instruments are mapped directly to GENEPIO:0001452. From the '
-                   "ontology term's documentation we can see that it is  composed in "
-                   'roughly the same way as a sequencing instrument instance is '
-                   'composed in NMDC.'],
+                   'Data Specification 4.4.4 standard (see the pha4ge_wastewater '
+                   'subset for reference documentation) we can see that slots '
+                   'representing sequencing instruments are mapped directly to '
+                   "GENEPIO:0001452. From the ontology term's documentation we can see "
+                   'that it is  composed in roughly the same way as a sequencing '
+                   'instrument instance is composed in NMDC.'],
          'related_mappings': ['GENEPIO:0001452'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}'}} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'aliases': ['input'],
@@ -21912,16 +21904,15 @@ class DensityGradientFractionationProcess(MaterialProcessing):
     internal_standard_method: Optional[Protocol] = Field(default=None, title="internal standard method", description="""Method used for internal standard for SIP fractionation, if an internal standard was used (i.e., spiking in a heavy-labelled DNA sequence).""", json_schema_extra = { "linkml_meta": {'domain_of': ['DensityGradientFractionationProcess'],
          'exact_mappings': ['MIXS:0001351']} })
     instrument_used: Optional[list[str]] = Field(default=None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'MaterialProcessing'],
+         'in_subset': ['pha4ge_wastewater'],
          'notes': ['Looking at schemas that follow the PHA4GE Wastewater Contextual '
-                   'Data Specification 4.4.4 standard (follow `see_also` for reference '
-                   'documentation) we can see that slots representing sequencing '
-                   'instruments are mapped directly to GENEPIO:0001452. From the '
-                   "ontology term's documentation we can see that it is  composed in "
-                   'roughly the same way as a sequencing instrument instance is '
-                   'composed in NMDC.'],
+                   'Data Specification 4.4.4 standard (see the pha4ge_wastewater '
+                   'subset for reference documentation) we can see that slots '
+                   'representing sequencing instruments are mapped directly to '
+                   "GENEPIO:0001452. From the ontology term's documentation we can see "
+                   'that it is  composed in roughly the same way as a sequencing '
+                   'instrument instance is composed in NMDC.'],
          'related_mappings': ['GENEPIO:0001452'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}'}} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'aliases': ['input'],
@@ -22157,16 +22148,15 @@ class SubSamplingProcess(MaterialProcessing):
          'related_mappings': ['PATO:0000125']} })
     sampled_portion: Optional[list[SamplePortionEnum]] = Field(default=None, description="""The portion of the sample that is taken for downstream activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SubSamplingProcess', 'ProcessedSample']} })
     instrument_used: Optional[list[str]] = Field(default=None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'MaterialProcessing'],
+         'in_subset': ['pha4ge_wastewater'],
          'notes': ['Looking at schemas that follow the PHA4GE Wastewater Contextual '
-                   'Data Specification 4.4.4 standard (follow `see_also` for reference '
-                   'documentation) we can see that slots representing sequencing '
-                   'instruments are mapped directly to GENEPIO:0001452. From the '
-                   "ontology term's documentation we can see that it is  composed in "
-                   'roughly the same way as a sequencing instrument instance is '
-                   'composed in NMDC.'],
+                   'Data Specification 4.4.4 standard (see the pha4ge_wastewater '
+                   'subset for reference documentation) we can see that slots '
+                   'representing sequencing instruments are mapped directly to '
+                   "GENEPIO:0001452. From the ontology term's documentation we can see "
+                   'that it is  composed in roughly the same way as a sequencing '
+                   'instrument instance is composed in NMDC.'],
          'related_mappings': ['GENEPIO:0001452'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}'}} })
     has_input: Optional[list[str]] = Field(default=None, description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'aliases': ['input'],
@@ -22378,16 +22368,15 @@ class MixingProcess(MaterialProcessing):
                                   'has_unit': 'h',
                                   'type': 'nmdc:QuantityValue'}}]} })
     instrument_used: Optional[list[str]] = Field(default=None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'MaterialProcessing'],
+         'in_subset': ['pha4ge_wastewater'],
          'notes': ['Looking at schemas that follow the PHA4GE Wastewater Contextual '
-                   'Data Specification 4.4.4 standard (follow `see_also` for reference '
-                   'documentation) we can see that slots representing sequencing '
-                   'instruments are mapped directly to GENEPIO:0001452. From the '
-                   "ontology term's documentation we can see that it is  composed in "
-                   'roughly the same way as a sequencing instrument instance is '
-                   'composed in NMDC.'],
+                   'Data Specification 4.4.4 standard (see the pha4ge_wastewater '
+                   'subset for reference documentation) we can see that slots '
+                   'representing sequencing instruments are mapped directly to '
+                   "GENEPIO:0001452. From the ontology term's documentation we can see "
+                   'that it is  composed in roughly the same way as a sequencing '
+                   'instrument instance is composed in NMDC.'],
          'related_mappings': ['GENEPIO:0001452'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}'}} })
     has_input: Optional[list[str]] = Field(default=None, description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'aliases': ['input'],
@@ -22612,16 +22601,15 @@ class FiltrationProcess(MaterialProcessing):
                        'MobilePhaseSegment',
                        'PortionOfSubstance']} })
     instrument_used: Optional[list[str]] = Field(default=None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'MaterialProcessing'],
+         'in_subset': ['pha4ge_wastewater'],
          'notes': ['Looking at schemas that follow the PHA4GE Wastewater Contextual '
-                   'Data Specification 4.4.4 standard (follow `see_also` for reference '
-                   'documentation) we can see that slots representing sequencing '
-                   'instruments are mapped directly to GENEPIO:0001452. From the '
-                   "ontology term's documentation we can see that it is  composed in "
-                   'roughly the same way as a sequencing instrument instance is '
-                   'composed in NMDC.'],
+                   'Data Specification 4.4.4 standard (see the pha4ge_wastewater '
+                   'subset for reference documentation) we can see that slots '
+                   'representing sequencing instruments are mapped directly to '
+                   "GENEPIO:0001452. From the ontology term's documentation we can see "
+                   'that it is  composed in roughly the same way as a sequencing '
+                   'instrument instance is composed in NMDC.'],
          'related_mappings': ['GENEPIO:0001452'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}'}} })
     has_input: Optional[list[str]] = Field(default=None, description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'aliases': ['input'],
@@ -22829,16 +22817,15 @@ class ChromatographicSeparationProcess(MaterialProcessing):
                        'ChemicalConversionProcess'],
          'notes': ['Not to be confused with the MIXS:0000113']} })
     instrument_used: Optional[list[str]] = Field(default=None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'MaterialProcessing'],
+         'in_subset': ['pha4ge_wastewater'],
          'notes': ['Looking at schemas that follow the PHA4GE Wastewater Contextual '
-                   'Data Specification 4.4.4 standard (follow `see_also` for reference '
-                   'documentation) we can see that slots representing sequencing '
-                   'instruments are mapped directly to GENEPIO:0001452. From the '
-                   "ontology term's documentation we can see that it is  composed in "
-                   'roughly the same way as a sequencing instrument instance is '
-                   'composed in NMDC.'],
+                   'Data Specification 4.4.4 standard (see the pha4ge_wastewater '
+                   'subset for reference documentation) we can see that slots '
+                   'representing sequencing instruments are mapped directly to '
+                   "GENEPIO:0001452. From the ontology term's documentation we can see "
+                   'that it is  composed in roughly the same way as a sequencing '
+                   'instrument instance is composed in NMDC.'],
          'related_mappings': ['GENEPIO:0001452'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}'}} })
     has_input: Optional[list[str]] = Field(default=None, description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'aliases': ['input'],
@@ -23053,16 +23040,15 @@ class DissolvingProcess(MaterialProcessing):
                        'ChemicalConversionProcess',
                        'MobilePhaseSegment']} })
     instrument_used: Optional[list[str]] = Field(default=None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'MaterialProcessing'],
+         'in_subset': ['pha4ge_wastewater'],
          'notes': ['Looking at schemas that follow the PHA4GE Wastewater Contextual '
-                   'Data Specification 4.4.4 standard (follow `see_also` for reference '
-                   'documentation) we can see that slots representing sequencing '
-                   'instruments are mapped directly to GENEPIO:0001452. From the '
-                   "ontology term's documentation we can see that it is  composed in "
-                   'roughly the same way as a sequencing instrument instance is '
-                   'composed in NMDC.'],
+                   'Data Specification 4.4.4 standard (see the pha4ge_wastewater '
+                   'subset for reference documentation) we can see that slots '
+                   'representing sequencing instruments are mapped directly to '
+                   "GENEPIO:0001452. From the ontology term's documentation we can see "
+                   'that it is  composed in roughly the same way as a sequencing '
+                   'instrument instance is composed in NMDC.'],
          'related_mappings': ['GENEPIO:0001452'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}'}} })
     has_input: Optional[list[str]] = Field(default=None, description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'aliases': ['input'],
@@ -23282,16 +23268,15 @@ class ChemicalConversionProcess(MaterialProcessing):
     substances_volume: Optional[QuantityValue] = Field(default=None, description="""The volume of the combined substances that was included in a ChemicalConversionProcess.""", json_schema_extra = { "linkml_meta": {'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'mL'}},
          'domain_of': ['ChemicalConversionProcess']} })
     instrument_used: Optional[list[str]] = Field(default=None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'MaterialProcessing'],
+         'in_subset': ['pha4ge_wastewater'],
          'notes': ['Looking at schemas that follow the PHA4GE Wastewater Contextual '
-                   'Data Specification 4.4.4 standard (follow `see_also` for reference '
-                   'documentation) we can see that slots representing sequencing '
-                   'instruments are mapped directly to GENEPIO:0001452. From the '
-                   "ontology term's documentation we can see that it is  composed in "
-                   'roughly the same way as a sequencing instrument instance is '
-                   'composed in NMDC.'],
+                   'Data Specification 4.4.4 standard (see the pha4ge_wastewater '
+                   'subset for reference documentation) we can see that slots '
+                   'representing sequencing instruments are mapped directly to '
+                   "GENEPIO:0001452. From the ontology term's documentation we can see "
+                   'that it is  composed in roughly the same way as a sequencing '
+                   'instrument instance is composed in NMDC.'],
          'related_mappings': ['GENEPIO:0001452'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}'}} })
     has_input: Optional[list[str]] = Field(default=None, description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'aliases': ['input'],
@@ -23896,6 +23881,7 @@ class OrganismSample(Sample):
          'domain_of': ['Biosample', 'OrganismSample'],
          'examples': [{'object': {'has_raw_value': '2013-03-25T12:42:31+01:00',
                                   'type': 'nmdc:TimestampValue'}}],
+         'in_subset': ['pha4ge_wastewater'],
          'keywords': ['date'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: related '
                    'match to sample collection start date (GENEPIO:0001174); this slot '
@@ -23904,19 +23890,16 @@ class OrganismSample(Sample):
                    'mandatory in the PHA4GE.wwsurv.1.0 package; both accept a date, a '
                    'date-time or a date range.'],
          'related_mappings': ['GENEPIO:0001174'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'slot_uri': 'MIXS:0000011'} })
     samp_name: Optional[str] = Field(default=None, title="sample name", description="""A local identifier or name that for the material sample used for extracting nucleic acids, and subsequent sequencing. It can refer either to the original material collected or to any derived sub-samples. It can have any format, but we suggest that you make it concise, unique and consistent within your lab, and as informative as possible. INSDC requires every sample name from a single Submitter to be unique. Use of a globally unique identifier for the field source_mat_id is recommended in addition to sample_name""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit', 'value': ''}},
          'close_mappings': ['GENEPIO:0001123'],
          'domain_of': ['Biosample', 'OrganismSample'],
          'examples': [{'value': 'ISDsoil1'}],
+         'in_subset': ['pha4ge_wastewater'],
          'keywords': ['sample'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: close match '
                    'to specimen collector sample ID (GENEPIO:0001123); the PHA4GE '
                    'field is scoped to the name assigned by the specimen collector.'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'slot_uri': 'MIXS:0001107'} })
     host_taxid: Optional[ControlledIdentifiedTermValue] = Field(default=None, title="host taxid", description="""NCBI taxon id of the host, e.g. 9606""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
                                             'value': 'NCBI taxon identifier'}},
@@ -24319,6 +24302,7 @@ class FieldResearchSite(Site):
          'domain_of': ['FieldResearchSite', 'Biosample'],
          'examples': [{'object': {'has_raw_value': 'USA: Maryland, Bethesda',
                                   'type': 'nmdc:TextValue'}}],
+         'in_subset': ['pha4ge_wastewater'],
          'keywords': ['geographic', 'location'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: related '
                    'match to geo loc name (country) (GENEPIO:0001181), geo loc name '
@@ -24333,8 +24317,6 @@ class FieldResearchSite(Site):
                               'GENEPIO:0001185',
                               'GENEPIO:0001189',
                               'GENEPIO:0100436'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'slot_uri': 'MIXS:0000010',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
@@ -24346,6 +24328,7 @@ class FieldResearchSite(Site):
                                   'latitude': 50.586825,
                                   'longitude': 6.408977,
                                   'type': 'nmdc:GeolocationValue'}}],
+         'in_subset': ['pha4ge_wastewater'],
          'keywords': ['geographic', 'location'],
          'notes': ['PHA4GE Wastewater Contextual Data Specification 4.4.4: related '
                    'match to geo loc latitude (GENEPIO:0100309) and geo loc longitude '
@@ -24355,8 +24338,6 @@ class FieldResearchSite(Site):
                    'PHA4GE.wwsurv.1.0 package; NCBI writes the pair as decimal degrees '
                    'with N/S and E/W letters.'],
          'related_mappings': ['GENEPIO:0100309', 'GENEPIO:0100310'],
-         'see_also': ['https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4',
-                      'https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml'],
          'slot_uri': 'MIXS:0000009',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,

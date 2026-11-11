@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.26.0rc1
+version: 11.26.0
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -45,7 +45,7 @@ prefixes:
     prefix_reference: 'https://bioregistry.io/eccode:'
   EFO:
     prefix_prefix: EFO
-    prefix_reference: http://www.ebi.ac.uk/efo/
+    prefix_reference: http://www.ebi.ac.uk/efo/EFO_
   EGGNOG:
     prefix_prefix: EGGNOG
     prefix_reference: 'https://bioregistry.io/eggnog:'
@@ -87,7 +87,7 @@ prefixes:
     prefix_reference: 'https://bioregistry.io/reference/massive:'
   MCO:
     prefix_prefix: MCO
-    prefix_reference: http://purl.obolibrary.org/obo/MICRO_
+    prefix_reference: http://purl.obolibrary.org/obo/MCO_
   MESH:
     prefix_prefix: MESH
     prefix_reference: 'https://bioregistry.io/mesh:'
@@ -283,9 +283,12 @@ prefixes:
   prov:
     prefix_prefix: prov
     prefix_reference: http://www.w3.org/ns/prov#
+  quantitykind:
+    prefix_prefix: quantitykind
+    prefix_reference: http://qudt.org/vocab/quantitykind/
   qudt:
     prefix_prefix: qudt
-    prefix_reference: http://qudt.org/1.1/schema/qudt#
+    prefix_reference: http://qudt.org/schema/qudt/
   rdf:
     prefix_prefix: rdf
     prefix_reference: http://www.w3.org/1999/02/22-rdf-syntax-ns#
@@ -301,6 +304,9 @@ prefixes:
   skos:
     prefix_prefix: skos
     prefix_reference: http://www.w3.org/2004/02/skos/core#
+  unit:
+    prefix_prefix: unit
+    prefix_reference: http://qudt.org/vocab/unit/
   wgs84:
     prefix_prefix: wgs84
     prefix_reference: http://www.w3.org/2003/01/geo/wgs84_pos#
@@ -386,6 +392,29 @@ subsets:
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/issues/2803
+  pha4ge_wastewater:
+    name: pha4ge_wastewater
+    description: The slots and enums aligned to the PHA4GE Wastewater Contextual Data
+      Specification 4.4.4, so that NMDC records and PHA4GE wastewater surveillance
+      records can be crosswalked.
+    comments:
+    - The first see_also link is the specification release the alignment was made
+      against. The second is the DataHarmonizer template (cidgoh/pathogen-genomics-package
+      tag PGPv5.6.5, templates/wastewater/schema.yaml) whose slot_uris supplied the
+      GENEPIO ids in the members' close_mappings and related_mappings. When PHA4GE
+      releases a new version, update the version and the two links here; the members
+      carry no copy of them.
+    - Members are NMDC-native slots and enums in src/schema/core.yaml, basic_classes.yaml
+      and external_identifiers.yaml, which carry in_subset in their own definitions,
+      and MIxS slots in the generated src/schema/mixs.yaml, whose membership is asserted
+      in assets/yq-for-mixs-customizations.txt after the build strips the upstream
+      MIxS subsets.
+    - Each member's notes say which PHA4GE field it maps to and why the predicate
+      is close or related. No member uses exact_mappings, even where the shapes agree.
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
+    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
   badge_topic:
     name: badge_topic
     description: Group of subsets that each define a completeness-based metadata-quality
@@ -1180,7 +1209,7 @@ enums:
         exact_mappings:
         - UO:0000027
         - wikidata:Q25267
-        - qudt:DEG_C
+        - unit:DEG_C
         - OM:degreeCelsius
       cm:
         text: cm
@@ -3421,23 +3450,33 @@ enums:
           source: https://gold.jgi.doe.gov/
       novaseq_x:
         text: novaseq_x
+        meaning: OBI:0003663
         is_a: novaseq
         comments:
-        - Possible flowcell versions are 1.5B, 10B, 25B. Only difference between X
-          and X Plus is 2 flowcells for X Plus versus 1 flowcell for X.
+        - Possible flowcell versions are 1.5B, 10B, 25B. The NovaSeq X runs a single
+          flowcell whereas the NovaSeq X Plus runs two flowcells.
         see_also:
         - https://www.illumina.com/systems/sequencing-platforms/novaseq-x-plus/specifications.html
         aliases:
+        - NovaSeq X
         - Illumina NovaSeq X
-        - Illumina NovaSeq X Plus
         structured_aliases:
         - literal_form: Illumina NovaSeq X 25B
           predicate: NARROW_SYNONYM
           source: https://gold.jgi.doe.gov/
-        exact_mappings:
-        - OBI:0003663
-        narrow_mappings:
-        - OBI:0003664
+      novaseq_x_plus:
+        text: novaseq_x_plus
+        meaning: OBI:0003664
+        is_a: novaseq
+        comments:
+        - Possible flowcell versions are 1.5B, 10B, 25B. The NovaSeq X Plus runs two
+          flowcells, versus one for the NovaSeq X. Illumina markets the NovaSeq X
+          and NovaSeq X Plus together as the NovaSeq X Series.
+        see_also:
+        - https://www.illumina.com/systems/sequencing-platforms/novaseq-x-plus/specifications.html
+        aliases:
+        - NovaSeq X Plus
+        - Illumina NovaSeq X Plus
       hiseq:
         text: hiseq
         meaning: OBI:0003683
@@ -6471,10 +6510,9 @@ enums:
       cesspit classes that PHA4GE pins (ENVO:03501451 to ENVO:03501454) and the wastewater
       waste tank class (GENEPIO:0102057) are not released, so those values stay unmapped
       until they are.
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     permissible_values:
       combined sewer system:
         text: combined sewer system
@@ -6516,10 +6554,9 @@ enums:
     name: ExperimentalSpecimenRoleTypeEnum
     description: The roles a sample can play in an experiment other than being a sample
       under study.
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     permissible_values:
       positive experimental control:
         text: positive experimental control
@@ -6549,10 +6586,9 @@ enums:
     - The HF183, Lachno3 and F+ coliphage values stay unmapped because the GENEPIO
       classes PHA4GE pins for them (GENEPIO:0101000 to GENEPIO:0101002) are not in
       a released GENEPIO version.
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     permissible_values:
       crAssphage:
         text: crAssphage
@@ -7602,7 +7638,7 @@ slots:
     aliases:
     - scale
     mappings:
-    - qudt:unit
+    - qudt:hasUnit
     - schema:unitCode
     range: string
   type:
@@ -7742,8 +7778,8 @@ slots:
     - Using quantity kind identifiers from QUDT or similar vocabularies improves data
       integration and enables automated unit conversion.
     examples:
-    - value: qudt:MassConcentration
-    - value: qudt:Temperature
+    - value: quantitykind:MassConcentration
+    - value: quantitykind:Temperature
     from_schema: https://w3id.org/nmdc/nmdc
     range: uriorcurie
   has_value_term_id:
@@ -8712,8 +8748,9 @@ slots:
     description: identifiers for corresponding project in INSDC Bioproject
     notes:
     - Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification
-      4.4.4 standard (follow `see_also` for reference documentation) we can see that
-      slots capturing INSDC BioProject accessions directly map to GENEPIO:0001136.
+      4.4.4 standard (see the pha4ge_wastewater subset for reference documentation)
+      we can see that slots capturing INSDC BioProject accessions directly map to
+      GENEPIO:0001136.
     - In the PHA4GE schema the slot `bioproject_accession` is single-valued whereas
       the NMDC slot (`insdc_bioproject_identifiers`)  is multivalued.
     comments:
@@ -8723,12 +8760,12 @@ slots:
     - value: bioproject:PRJNA366857
       description: Avena fatua rhizosphere microbial communities - H1_Rhizo_Litter_2
         metatranscriptome
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://www.ncbi.nlm.nih.gov/bioproject/
     - https://www.ddbj.nig.ac.jp/bioproject/index-e.html
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     aliases:
     - NCBI bioproject identifiers
     - DDBJ bioproject identifiers
@@ -8850,14 +8887,14 @@ slots:
     - value: biosample:SAMD00212331
       description: I13_N_5-10 sample from Soil fungal diversity along elevational
         gradients
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://github.com/bioregistry/bioregistry/issues/108
     - https://www.ebi.ac.uk/biosamples/
     - https://www.ncbi.nlm.nih.gov/biosample
     - https://www.ddbj.nig.ac.jp/biosample/index-e.html
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     aliases:
     - EBI biosample identifiers
     - NCBI biosample identifiers
@@ -8940,11 +8977,11 @@ slots:
     - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: close match to INSDC
       sequence read accession (GENEPIO:0101203); this slot is multivalued, the PHA4GE
       field holds one accession.'
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://www.ncbi.nlm.nih.gov/sra/docs/submitmeta/#linking-metadata-and-data-run
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     close_mappings:
     - GENEPIO:0101203
     is_a: external_database_identifiers
@@ -9249,14 +9286,14 @@ slots:
     description: What instrument was used during DataGeneration or MaterialProcessing.
     notes:
     - Looking at schemas that follow the PHA4GE Wastewater Contextual Data Specification
-      4.4.4 standard (follow `see_also` for reference documentation) we can see that
-      slots representing sequencing instruments are mapped directly to GENEPIO:0001452.
-      From the ontology term's documentation we can see that it is  composed in roughly
-      the same way as a sequencing instrument instance is composed in NMDC.
+      4.4.4 standard (see the pha4ge_wastewater subset for reference documentation)
+      we can see that slots representing sequencing instruments are mapped directly
+      to GENEPIO:0001452. From the ontology term's documentation we can see that it
+      is  composed in roughly the same way as a sequencing instrument instance is
+      composed in NMDC.
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     related_mappings:
     - GENEPIO:0001452
     range: Instrument
@@ -9456,10 +9493,9 @@ slots:
           type: nmdc:OntologyClass
           id: ENVO:01000020
           name: estuarine biome
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     close_mappings:
     - GENEPIO:0101205
     - NCBI_BIOSAMPLE_ATTRIBUTE:adjacent_environment
@@ -9551,10 +9587,9 @@ slots:
         has_raw_value: 20 Cel
         has_numeric_value: 20
         has_unit: Cel
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     related_mappings:
     - GENEPIO:0100935
     - GENEPIO:0100936
@@ -9674,10 +9709,8 @@ slots:
         has_unit: mg/L
     in_subset:
     - biogeochemistry
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     related_mappings:
     - GENEPIO:0100878
     - GENEPIO:0100879
@@ -10280,10 +10313,9 @@ slots:
       biochemical oxygen demand (CBOD) measurement value (GENEPIO:0100791) and unit
       (GENEPIO:0100792); PHA4GE measures the carbonaceous component of the BOD this
       slot holds, and splits value and unit.'
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     related_mappings:
     - GENEPIO:0100791
     - GENEPIO:0100792
@@ -10898,10 +10930,9 @@ slots:
     - 'PHA4GE Wastewater Contextual Data Specification 4.4.4: related match to chemical
       oxygen demand (COD) measurement value (GENEPIO:0100788) and unit (GENEPIO:0100789);
       one QuantityValue here is split across PHA4GE value and unit fields.'
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     related_mappings:
     - GENEPIO:0100788
     - GENEPIO:0100789
@@ -11073,10 +11104,9 @@ slots:
     - object:
         type: nmdc:TimestampValue
         has_raw_value: '2013-03-25T12:42:31+01:00'
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     close_mappings:
     - NCBI_BIOSAMPLE_ATTRIBUTE:collection_date
     related_mappings:
@@ -11159,10 +11189,11 @@ slots:
     - culture
     slot_uri: MIXS:0001041
     range: TextValue
-    pattern: ^(?:^(.*|PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$)$
+    pattern: ^(.*|PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$
     structured_pattern:
       syntax: ^({text}|{PMID}|{DOI}|{URL})$
       interpolated: true
+      partial_match: true
   cur_land_use:
     name: cur_land_use
     annotations:
@@ -11638,10 +11669,8 @@ slots:
         has_unit: umol/L
     in_subset:
     - biogeochemistry
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     close_mappings:
     - NCBI_BIOSAMPLE_ATTRIBUTE:diss_oxygen
     related_mappings:
@@ -12038,10 +12067,9 @@ slots:
         term:
           id: ENVO:01000338
           type: nmdc:OntologyClass
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     close_mappings:
     - GENEPIO:0001232
     - NCBI_BIOSAMPLE_ATTRIBUTE:env_local_scale
@@ -12089,10 +12117,9 @@ slots:
         term:
           id: ENVO:00001998
           type: nmdc:OntologyClass
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     close_mappings:
     - GENEPIO:0001223
     - NCBI_BIOSAMPLE_ATTRIBUTE:env_medium
@@ -12630,10 +12657,11 @@ slots:
     - value: PMID:19497774
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000859
-    pattern: ^(?:^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$)$
+    pattern: ^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$
     structured_pattern:
       syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
+      partial_match: true
   geo_loc_name:
     name: geo_loc_name
     description: The geographical origin of the sample as defined by the country or
@@ -12653,10 +12681,9 @@ slots:
     - object:
         type: nmdc:TextValue
         has_raw_value: 'USA: Maryland, Bethesda'
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     close_mappings:
     - NCBI_BIOSAMPLE_ATTRIBUTE:geo_loc_name
     related_mappings:
@@ -13921,10 +13948,9 @@ slots:
         latitude: 50.586825
         longitude: 6.408977
         has_raw_value: 50.586825 6.408977
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     close_mappings:
     - NCBI_BIOSAMPLE_ATTRIBUTE:lat_lon
     related_mappings:
@@ -14405,10 +14431,9 @@ slots:
       in the sample, this slot names the negative control material from a fixed list.'
     - 'NCBI BioSample: close match to the neg_cont_type attribute, the NCBI harmonized
       name for this MIxS term, used by the MIxS wastewater packages.'
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     close_mappings:
     - NCBI_BIOSAMPLE_ATTRIBUTE:neg_cont_type
     related_mappings:
@@ -15121,10 +15146,8 @@ slots:
     - value: '7.2'
     in_subset:
     - biogeochemistry
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     close_mappings:
     - GENEPIO:0001736
     - NCBI_BIOSAMPLE_ATTRIBUTE:ph
@@ -15415,10 +15438,9 @@ slots:
       in the sample, this slot names the positive control material.'
     - 'NCBI BioSample: close match to the pos_cont_type attribute, the NCBI harmonized
       name for this MIxS term, used by the MIxS wastewater packages.'
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     close_mappings:
     - NCBI_BIOSAMPLE_ATTRIBUTE:pos_cont_type
     related_mappings:
@@ -16352,10 +16374,8 @@ slots:
         has_unit: mg/L
     in_subset:
     - biogeochemistry
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     close_mappings:
     - NCBI_BIOSAMPLE_ATTRIBUTE:salinity
     - NCBI_BIOSAMPLE_ATTRIBUTE:samp_salinity
@@ -16491,10 +16511,9 @@ slots:
     - object:
         type: nmdc:ControlledTermValue
         has_raw_value: filtering of seawater, storing samples in ethanol
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     close_mappings:
     - GENEPIO:0001253
     - NCBI_BIOSAMPLE_ATTRIBUTE:samp_mat_process
@@ -16557,10 +16576,9 @@ slots:
       assigned by the specimen collector.'
     examples:
     - value: ISDsoil1
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     close_mappings:
     - GENEPIO:0001123
     keywords:
@@ -16603,10 +16621,9 @@ slots:
       package.'
     examples:
     - value: field trial
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     close_mappings:
     - GENEPIO:0001198
     - NCBI_BIOSAMPLE_ATTRIBUTE:purpose_of_sampling
@@ -16649,10 +16666,9 @@ slots:
         has_raw_value: 3 mL
         has_numeric_value: 3
         has_unit: mL
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     related_mappings:
     - GENEPIO:0100768
     - GENEPIO:0100769
@@ -16696,10 +16712,9 @@ slots:
     - object:
         type: nmdc:TextValue
         has_raw_value: P1Y6M
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     related_mappings:
     - GENEPIO:0101014
     - GENEPIO:0101015
@@ -16755,10 +16770,9 @@ slots:
         has_raw_value: -80 Cel
         has_numeric_value: -80
         has_unit: Cel
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     related_mappings:
     - GENEPIO:0100448
     keywords:
@@ -16799,10 +16813,9 @@ slots:
       names the taxon of the sample itself.'
     comments:
     - coal metagenome [NCBITaxon:1260732] would be a reasonable has_raw_value
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     related_mappings:
     - GENEPIO:0001191
     keywords:
@@ -16949,10 +16962,9 @@ slots:
       free text there, this slot is restricted to the MIxS list.'
     examples:
     - value: foggy
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     close_mappings:
     - GENEPIO:0100779
     - NCBI_BIOSAMPLE_ATTRIBUTE:samp_weather
@@ -18100,10 +18112,9 @@ slots:
       this slot is multivalued text, PHA4GE holds one value and its unit.'
     - 'NCBI BioSample: close match to the suspend_solids attribute, the NCBI harmonized
       name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package.'
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     close_mappings:
     - NCBI_BIOSAMPLE_ATTRIBUTE:suspend_solids
     related_mappings:
@@ -18193,10 +18204,9 @@ slots:
         has_raw_value: 25 Cel
         has_numeric_value: 25
         has_unit: Cel
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     related_mappings:
     - GENEPIO:0100821
     - GENEPIO:0100822
@@ -18488,10 +18498,8 @@ slots:
         has_unit: '%'
     in_subset:
     - biogeochemistry
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     related_mappings:
     - GENEPIO:0100808
     - GENEPIO:0100809
@@ -18693,10 +18701,9 @@ slots:
       phosphorus (TP) measurement value (GENEPIO:0100811) and unit (GENEPIO:0100812);
       PHA4GE measures total phosphorus, this slot total phosphate, and value and unit
       are split.'
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     related_mappings:
     - GENEPIO:0100811
     - GENEPIO:0100812
@@ -18794,10 +18801,9 @@ slots:
         has_raw_value: 0.3 [NTU]
         has_numeric_value: 0.3
         has_unit: '[NTU]'
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     close_mappings:
     - NCBI_BIOSAMPLE_ATTRIBUTE:turbidity
     related_mappings:
@@ -19912,10 +19918,9 @@ slots:
     - value: specimen collection swab stick [OBI:0002820]
     - value: PONAR grab sampler [GENEPIO:0100929]
     - value: trowel
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     close_mappings:
     - GENEPIO:0001234
     - NCBI_BIOSAMPLE_ATTRIBUTE:collection_device
@@ -19934,10 +19939,9 @@ slots:
       method (GENEPIO:0001241); the PHA4GE field is restricted to its own picklist.'
     - 'NCBI BioSample: close match to the collection_method attribute, the NCBI harmonized
       name for this MIxS term, optional in the PHA4GE.wwsurv.1.0 package.'
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     structured_aliases:
     - literal_form: samp_collect_method
       predicate: EXACT_SYNONYM
@@ -20035,10 +20039,9 @@ slots:
       package.'
     comments:
     - this illustrates implementing a Biosample relation with a (binary) slot
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     close_mappings:
     - GENEPIO:0100760
     - NCBI_BIOSAMPLE_ATTRIBUTE:sampling_site_id
@@ -20065,10 +20068,9 @@ slots:
     examples:
     - value: Southeast San Francisco Wastewater Treatment Plant
     - value: Public Health Agency of Canada
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     close_mappings:
     - GENEPIO:0001153
     - NCBI_BIOSAMPLE_ATTRIBUTE:collected_by
@@ -20094,10 +20096,9 @@ slots:
       was measured or estimated in catchment_population_method.
     examples:
     - value: '750000'
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     close_mappings:
     - GENEPIO:0100773
     - NCBI_BIOSAMPLE_ATTRIBUTE:water_catchment_area_population
@@ -20122,10 +20123,9 @@ slots:
     examples:
     - value: population of jurisdiction encompassing the wastewater service area
     - value: census blocks clipped to wastewater service area
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     close_mappings:
     - GENEPIO:0100775
     - NCBI_BIOSAMPLE_ATTRIBUTE:ww_population_source
@@ -20160,10 +20160,9 @@ slots:
         has_raw_value: 24-hr flow-weighted composite
         has_numeric_value: 24
         has_unit: h
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     close_mappings:
     - NCBI_BIOSAMPLE_ATTRIBUTE:sample_collection_time_duration
     - NCBI_BIOSAMPLE_ATTRIBUTE:ww_sample_duration
@@ -20188,10 +20187,9 @@ slots:
       be given.
     examples:
     - value: sanitary sewer system
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     close_mappings:
     - GENEPIO:0100771
     - NCBI_BIOSAMPLE_ATTRIBUTE:ww_system_type
@@ -20225,10 +20223,9 @@ slots:
         has_raw_value: 2 MGD
         has_numeric_value: 2
         has_unit: 10*6.[gal_us]/d
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     close_mappings:
     - NCBI_BIOSAMPLE_ATTRIBUTE:total_daily_flow_rate
     - NCBI_BIOSAMPLE_ATTRIBUTE:ww_flow
@@ -20258,10 +20255,9 @@ slots:
         has_raw_value: 25 m3/h
         has_numeric_value: 25
         has_unit: m3/h
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     close_mappings:
     - NCBI_BIOSAMPLE_ATTRIBUTE:instantaneous_flow_rate
     related_mappings:
@@ -20285,10 +20281,9 @@ slots:
       so the two stay comparable.
     examples:
     - value: rain
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     close_mappings:
     - GENEPIO:0100780
     - NCBI_BIOSAMPLE_ATTRIBUTE:presamp_weather
@@ -20311,10 +20306,9 @@ slots:
       or technical_reps.
     examples:
     - value: negative experimental control
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     close_mappings:
     - GENEPIO:0100921
     - NCBI_BIOSAMPLE_ATTRIBUTE:experimental_specimen_role_type
@@ -20338,10 +20332,9 @@ slots:
       One indicator per sample; put further indicators in misc_param.
     examples:
     - value: crAssphage
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     close_mappings:
     - GENEPIO:0100814
     - NCBI_BIOSAMPLE_ATTRIBUTE:fecal_contamination_indicator
@@ -20376,10 +20369,9 @@ slots:
         has_raw_value: 1.92E+08 copies/L wastewater
         has_numeric_value: 192000000
         has_unit: '{copies}/L'
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     close_mappings:
     - NCBI_BIOSAMPLE_ATTRIBUTE:fecal_contamination_value
     related_mappings:
@@ -20404,10 +20396,9 @@ slots:
       attribute.'
     examples:
     - value: RT-ddPCR on a QIAcuity One
+    in_subset:
+    - pha4ge_wastewater
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/pha4ge/wastewater-contextual-data-specification/releases/tag/v4.4.4
-    - https://github.com/cidgoh/pathogen-genomics-package/blob/PGPv5.6.5/templates/wastewater/schema.yaml
     close_mappings:
     - GENEPIO:0100817
     related_mappings:
@@ -22872,7 +22863,7 @@ classes:
     description: A simple quantity, e.g. 2cm
     from_schema: https://w3id.org/nmdc/nmdc
     mappings:
-    - schema:QuantityValue
+    - schema:QuantitativeValue
     is_a: AttributeValue
     slots:
     - has_maximum_numeric_value
@@ -25601,9 +25592,6 @@ settings:
   id_version:
     setting_key: id_version
     setting_value: (\.[1-9]{1}[0-9]{0,})
-  id_locus:
-    setting_key: id_locus
-    setting_value: (_[A-Za-z0-9_\.-]+)?
   add_recov_methods:
     setting_key: add_recov_methods
     setting_value: Water Injection|Dump Flood|Gas Injection|Wag Immiscible Injection|Polymer

@@ -59,7 +59,7 @@ from linkml_runtime.linkml_model.types import Boolean, Datetime, Decimal, Float,
 from linkml_runtime.utils.metamodelcore import Bool, Decimal, URIorCURIE, XSDDateTime
 
 metamodel_version = "1.12.0"
-version = "11.26.0rc1"
+version = "11.26.0"
 
 # Namespaces
 BFO = CurieNamespace('BFO', 'http://purl.obolibrary.org/obo/BFO_')
@@ -72,7 +72,7 @@ COG = CurieNamespace('COG', 'https://bioregistry.io/cog:')
 CONTAMINANT = CurieNamespace('Contaminant', 'http://example.org/contaminant/')
 DRUGBANK = CurieNamespace('DRUGBANK', 'https://bioregistry.io/drugbank:')
 EC = CurieNamespace('EC', 'https://bioregistry.io/eccode:')
-EFO = CurieNamespace('EFO', 'http://www.ebi.ac.uk/efo/')
+EFO = CurieNamespace('EFO', 'http://www.ebi.ac.uk/efo/EFO_')
 EGGNOG = CurieNamespace('EGGNOG', 'https://bioregistry.io/eggnog:')
 ENVO = CurieNamespace('ENVO', 'http://purl.obolibrary.org/obo/ENVO_')
 FBCV = CurieNamespace('FBcv', 'http://purl.obolibrary.org/obo/FBcv_')
@@ -87,7 +87,7 @@ KEGG_ORTHOLOGY = CurieNamespace('KEGG_ORTHOLOGY', 'https://bioregistry.io/kegg.o
 KEGG_REACTION = CurieNamespace('KEGG_REACTION', 'https://bioregistry.io/kegg.reaction:')
 KEGG_PATHWAY = CurieNamespace('KEGG_PATHWAY', 'https://bioregistry.io/kegg.pathway:')
 MASSIVE = CurieNamespace('MASSIVE', 'https://bioregistry.io/reference/massive:')
-MCO = CurieNamespace('MCO', 'http://purl.obolibrary.org/obo/MICRO_')
+MCO = CurieNamespace('MCO', 'http://purl.obolibrary.org/obo/MCO_')
 MESH = CurieNamespace('MESH', 'https://bioregistry.io/mesh:')
 MISO = CurieNamespace('MISO', 'http://purl.obolibrary.org/obo/MISO_')
 MIXS = CurieNamespace('MIXS', 'https://w3id.org/mixs/')
@@ -155,12 +155,14 @@ ORCID = CurieNamespace('orcid', 'https://orcid.org/')
 OWL = CurieNamespace('owl', 'http://www.w3.org/2002/07/owl#')
 PROV = CurieNamespace('prov', 'http://www.w3.org/ns/prov#')
 PUBMED = CurieNamespace('pubmed', 'https://bioregistry.io/pubmed:')
-QUDT = CurieNamespace('qudt', 'http://qudt.org/1.1/schema/qudt#')
+QUANTITYKIND = CurieNamespace('quantitykind', 'http://qudt.org/vocab/quantitykind/')
+QUDT = CurieNamespace('qudt', 'http://qudt.org/schema/qudt/')
 RDF = CurieNamespace('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#')
 RDFS = CurieNamespace('rdfs', 'http://www.w3.org/2000/01/rdf-schema#')
 ROR = CurieNamespace('ror', 'https://bioregistry.io/ror:')
 SCHEMA = CurieNamespace('schema', 'http://schema.org/')
 SKOS = CurieNamespace('skos', 'http://www.w3.org/2004/02/skos/core#')
+UNIT = CurieNamespace('unit', 'http://qudt.org/vocab/unit/')
 WGS84 = CurieNamespace('wgs84', 'http://www.w3.org/2003/01/geo/wgs84_pos#')
 WIKIDATA = CurieNamespace('wikidata', 'http://www.wikidata.org/entity/')
 XSD = CurieNamespace('xsd', 'http://www.w3.org/2001/XMLSchema#')
@@ -9414,7 +9416,12 @@ class InstrumentModelEnum(EnumDefinitionImpl):
     novaseq_6000 = PermissibleValue(
         text="novaseq_6000",
         meaning=OBI["0002630"])
-    novaseq_x = PermissibleValue(text="novaseq_x")
+    novaseq_x = PermissibleValue(
+        text="novaseq_x",
+        meaning=OBI["0003663"])
+    novaseq_x_plus = PermissibleValue(
+        text="novaseq_x_plus",
+        meaning=OBI["0003664"])
     hiseq = PermissibleValue(
         text="hiseq",
         meaning=OBI["0003683"])
@@ -12384,7 +12391,7 @@ slots.has_raw_value = Slot(uri=NMDC['attribute_values/has_raw_value'], name="has
                    model_uri=NMDC.has_raw_value, domain=None, range=Optional[str])
 
 slots.has_unit = Slot(uri=NMDC['attribute_values/has_unit'], name="has_unit", curie=NMDC.curie('attribute_values/has_unit'),
-                   model_uri=NMDC.has_unit, domain=None, range=Optional[str], mappings = [QUDT["unit"], SCHEMA["unitCode"]])
+                   model_uri=NMDC.has_unit, domain=None, range=Optional[str], mappings = [QUDT["hasUnit"], SCHEMA["unitCode"]])
 
 slots.type = Slot(uri=RDF.type, name="type", curie=RDF.curie('type'),
                    model_uri=NMDC.type, domain=None, range=Union[str, URIorCURIE])
@@ -13255,7 +13262,7 @@ slots.crop_rotation = Slot(uri=MIXS['0000318'], name="crop_rotation", curie=MIXS
 
 slots.cult_root_med = Slot(uri=MIXS['0001041'], name="cult_root_med", curie=MIXS.curie('0001041'),
                    model_uri=NMDC.cult_root_med, domain=None, range=Optional[Union[dict, TextValue]],
-                   pattern=re.compile(r'^(?:^(.*|PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$)$'))
+                   pattern=re.compile(r'^(.*|PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$'))
 
 slots.cur_land_use = Slot(uri=MIXS['0001080'], name="cur_land_use", curie=MIXS.curie('0001080'),
                    model_uri=NMDC.cur_land_use, domain=None, range=Optional[str])
@@ -13505,7 +13512,7 @@ slots.gender_restroom = Slot(uri=MIXS['0000808'], name="gender_restroom", curie=
 
 slots.genetic_mod = Slot(uri=MIXS['0000859'], name="genetic_mod", curie=MIXS.curie('0000859'),
                    model_uri=NMDC.genetic_mod, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^(?:^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$)$'))
+                   pattern=re.compile(r'^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$'))
 
 slots.geo_loc_name = Slot(uri=MIXS['0000010'], name="geo_loc_name", curie=MIXS.curie('0000010'),
                    model_uri=NMDC.geo_loc_name, domain=None, range=Optional[Union[dict, TextValue]],
@@ -15353,7 +15360,7 @@ slots.QuantityValue_has_raw_value = Slot(uri=NMDC['attribute_values/has_raw_valu
                    model_uri=NMDC.QuantityValue_has_raw_value, domain=QuantityValue, range=Optional[str])
 
 slots.QuantityValue_has_unit = Slot(uri=NMDC['attribute_values/has_unit'], name="QuantityValue_has_unit", curie=NMDC.curie('attribute_values/has_unit'),
-                   model_uri=NMDC.QuantityValue_has_unit, domain=QuantityValue, range=Union[str, "UnitEnum"], mappings = [QUDT["unit"], SCHEMA["unitCode"]])
+                   model_uri=NMDC.QuantityValue_has_unit, domain=QuantityValue, range=Union[str, "UnitEnum"], mappings = [QUDT["hasUnit"], SCHEMA["unitCode"]])
 
 slots.QuantityValue_has_numeric_value = Slot(uri=NMDC['attribute_values/has_numeric_value'], name="QuantityValue_has_numeric_value", curie=NMDC.curie('attribute_values/has_numeric_value'),
                    model_uri=NMDC.QuantityValue_has_numeric_value, domain=QuantityValue, range=Optional[Decimal], mappings = [QUDT["quantityValue"], SCHEMA["value"]])
@@ -15374,7 +15381,7 @@ slots.PropertyAssertion_has_raw_value = Slot(uri=NMDC['attribute_values/has_raw_
                    model_uri=NMDC.PropertyAssertion_has_raw_value, domain=PropertyAssertion, range=str)
 
 slots.PropertyAssertion_has_unit = Slot(uri=NMDC['attribute_values/has_unit'], name="PropertyAssertion_has_unit", curie=NMDC.curie('attribute_values/has_unit'),
-                   model_uri=NMDC.PropertyAssertion_has_unit, domain=PropertyAssertion, range=Optional[str], mappings = [QUDT["unit"], SCHEMA["unitCode"]])
+                   model_uri=NMDC.PropertyAssertion_has_unit, domain=PropertyAssertion, range=Optional[str], mappings = [QUDT["hasUnit"], SCHEMA["unitCode"]])
 
 slots.OntologyClass_id = Slot(uri=NMDC.id, name="OntologyClass_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.OntologyClass_id, domain=OntologyClass, range=Union[str, OntologyClassId],
