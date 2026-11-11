@@ -205,7 +205,7 @@ slots:
     aliases:
       - scale
     mappings:
-      - qudt:unit
+      - qudt:hasUnit
       - schema:unitCode
     range: string
 
@@ -329,8 +329,8 @@ slots:
         Using quantity kind identifiers from QUDT or similar vocabularies improves data integration
         and enables automated unit conversion.
     examples:
-      - value: qudt:MassConcentration
-      - value: qudt:Temperature
+      - value: quantitykind:MassConcentration
+      - value: quantitykind:Temperature
 
   has_value_term_id:
     range: uriorcurie
@@ -387,7 +387,7 @@ enums:
         exact_mappings:
           - UO:0000027
           - wikidata:Q25267
-          - qudt:DEG_C
+          - unit:DEG_C
           - OM:degreeCelsius
       cm:
         description: The Unified Code for Units of Measure (UCUM) representation of centimeter.
