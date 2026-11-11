@@ -59,7 +59,7 @@ from linkml_runtime.linkml_model.types import Boolean, Datetime, Decimal, Float,
 from linkml_runtime.utils.metamodelcore import Bool, Decimal, URIorCURIE, XSDDateTime
 
 metamodel_version = "1.12.0"
-version = "0.0.0"
+version = "11.26.0rc1"
 
 # Namespaces
 BFO = CurieNamespace('BFO', 'http://purl.obolibrary.org/obo/BFO_')
@@ -96,8 +96,10 @@ METACYC = CurieNamespace('MetaCyc', 'https://bioregistry.io/metacyc.compound:')
 METANETX = CurieNamespace('MetaNetX', 'http://example.org/metanetx/')
 NCBI = CurieNamespace('NCBI', 'http://example.org/ncbitaxon/')
 NCBITAXON = CurieNamespace('NCBITaxon', 'http://purl.obolibrary.org/obo/NCBITaxon_')
+NCBI_BIOSAMPLE_ATTRIBUTE = CurieNamespace('NCBI_BIOSAMPLE_ATTRIBUTE', 'https://www.ncbi.nlm.nih.gov/biosample/docs/attributes/#')
 NCIT = CurieNamespace('NCIT', 'http://purl.obolibrary.org/obo/NCIT_')
 OBI = CurieNamespace('OBI', 'http://purl.obolibrary.org/obo/OBI_')
+OM = CurieNamespace('OM', 'http://www.ontology-of-units-of-measure.org/resource/om-2/')
 OMIT = CurieNamespace('OMIT', 'http://purl.obolibrary.org/obo/OMIT_')
 PANTHER_FAMILY = CurieNamespace('PANTHER_FAMILY', 'https://bioregistry.io/panther.family:')
 PATO = CurieNamespace('PATO', 'http://purl.obolibrary.org/obo/PATO_')
@@ -1820,6 +1822,7 @@ class Biosample(Sample):
     additional_info: Optional[Union[dict, TextValue]] = None
     address: Optional[str] = None
     adj_room: Optional[Union[dict, TextValue]] = None
+    adjacent_environment: Optional[Union[Union[dict, ControlledTermValue], list[Union[dict, ControlledTermValue]]]] = empty_list()
     aero_struc: Optional[Union[str, "AeroStrucEnum"]] = None
     agrochem_addition: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     air_PM_concen: Optional[Union[str, list[str]]] = empty_list()
@@ -2053,6 +2056,7 @@ class Biosample(Sample):
     mineral_nutr_regm: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     misc_param: Optional[Union[Union[dict, PropertyAssertion], list[Union[dict, PropertyAssertion]]]] = empty_list()
     n_alkanes: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
+    neg_cont_type: Optional[Union[str, "NegContTypeEnum"]] = None
     nitrate: Optional[Union[dict, QuantityValue]] = None
     nitrite: Optional[Union[dict, QuantityValue]] = None
     nitro: Optional[Union[dict, QuantityValue]] = None
@@ -2092,6 +2096,7 @@ class Biosample(Sample):
     plant_struc: Optional[Union[dict, ControlledTermValue]] = None
     pollutants: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     porosity: Optional[Union[dict, TextValue]] = None
+    pos_cont_type: Optional[str] = None
     potassium: Optional[Union[dict, QuantityValue]] = None
     pour_point: Optional[Union[dict, QuantityValue]] = None
     pre_treatment: Optional[Union[dict, TextValue]] = None
@@ -2154,6 +2159,7 @@ class Biosample(Sample):
     samp_md: Optional[Union[dict, QuantityValue]] = None
     samp_name: Optional[str] = None
     samp_preserv: Optional[Union[dict, TextValue]] = None
+    samp_purpose: Optional[str] = None
     samp_room_id: Optional[Union[dict, TextValue]] = None
     samp_size: Optional[Union[dict, QuantityValue]] = None
     samp_sort_meth: Optional[Union[str, list[str]]] = empty_list()
@@ -2341,6 +2347,18 @@ class Biosample(Sample):
     nitrite_nitrogen: Optional[Union[dict, QuantityValue]] = None
     lbc_thirty: Optional[Union[dict, QuantityValue]] = None
     lbceq: Optional[Union[dict, QuantityValue]] = None
+    catchment_population: Optional[int] = None
+    catchment_population_method: Optional[str] = None
+    collected_by: Optional[str] = None
+    experimental_specimen_role_type: Optional[Union[str, "ExperimentalSpecimenRoleTypeEnum"]] = None
+    fecal_contamination_indicator: Optional[Union[str, "FecalContaminationIndicatorEnum"]] = None
+    fecal_contamination_method: Optional[str] = None
+    fecal_contamination_value: Optional[Union[dict, QuantityValue]] = None
+    instantaneous_flow_rate: Optional[Union[dict, QuantityValue]] = None
+    presampling_weather: Optional[Union[str, "SampWeatherEnum"]] = None
+    sample_collection_duration: Optional[Union[dict, QuantityValue]] = None
+    total_daily_flow_rate: Optional[Union[dict, QuantityValue]] = None
+    wastewater_system_type: Optional[Union[str, "WastewaterSystemTypeEnum"]] = None
     alternative_identifiers: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -2437,6 +2455,8 @@ class Biosample(Sample):
 
         if self.adj_room is not None and not isinstance(self.adj_room, TextValue):
             self.adj_room = TextValue(**as_dict(self.adj_room))
+
+        self._normalize_inlined_as_list(slot_name="adjacent_environment", slot_type=ControlledTermValue, key_name="type", keyed=False)
 
         if self.aero_struc is not None and not isinstance(self.aero_struc, AeroStrucEnum):
             self.aero_struc = AeroStrucEnum(self.aero_struc)
@@ -3124,6 +3144,9 @@ class Biosample(Sample):
 
         self._normalize_inlined_as_list(slot_name="n_alkanes", slot_type=TextValue, key_name="type", keyed=False)
 
+        if self.neg_cont_type is not None and not isinstance(self.neg_cont_type, NegContTypeEnum):
+            self.neg_cont_type = NegContTypeEnum(self.neg_cont_type)
+
         if self.nitrate is not None and not isinstance(self.nitrate, QuantityValue):
             self.nitrate = QuantityValue(**as_dict(self.nitrate))
 
@@ -3232,6 +3255,9 @@ class Biosample(Sample):
 
         if self.porosity is not None and not isinstance(self.porosity, TextValue):
             self.porosity = TextValue(**as_dict(self.porosity))
+
+        if self.pos_cont_type is not None and not isinstance(self.pos_cont_type, str):
+            self.pos_cont_type = str(self.pos_cont_type)
 
         if self.potassium is not None and not isinstance(self.potassium, QuantityValue):
             self.potassium = QuantityValue(**as_dict(self.potassium))
@@ -3415,6 +3441,9 @@ class Biosample(Sample):
 
         if self.samp_preserv is not None and not isinstance(self.samp_preserv, TextValue):
             self.samp_preserv = TextValue(**as_dict(self.samp_preserv))
+
+        if self.samp_purpose is not None and not isinstance(self.samp_purpose, str):
+            self.samp_purpose = str(self.samp_purpose)
 
         if self.samp_room_id is not None and not isinstance(self.samp_room_id, TextValue):
             self.samp_room_id = TextValue(**as_dict(self.samp_room_id))
@@ -3976,6 +4005,42 @@ class Biosample(Sample):
 
         if self.lbceq is not None and not isinstance(self.lbceq, QuantityValue):
             self.lbceq = QuantityValue(**as_dict(self.lbceq))
+
+        if self.catchment_population is not None and not isinstance(self.catchment_population, int):
+            self.catchment_population = int(self.catchment_population)
+
+        if self.catchment_population_method is not None and not isinstance(self.catchment_population_method, str):
+            self.catchment_population_method = str(self.catchment_population_method)
+
+        if self.collected_by is not None and not isinstance(self.collected_by, str):
+            self.collected_by = str(self.collected_by)
+
+        if self.experimental_specimen_role_type is not None and not isinstance(self.experimental_specimen_role_type, ExperimentalSpecimenRoleTypeEnum):
+            self.experimental_specimen_role_type = ExperimentalSpecimenRoleTypeEnum(self.experimental_specimen_role_type)
+
+        if self.fecal_contamination_indicator is not None and not isinstance(self.fecal_contamination_indicator, FecalContaminationIndicatorEnum):
+            self.fecal_contamination_indicator = FecalContaminationIndicatorEnum(self.fecal_contamination_indicator)
+
+        if self.fecal_contamination_method is not None and not isinstance(self.fecal_contamination_method, str):
+            self.fecal_contamination_method = str(self.fecal_contamination_method)
+
+        if self.fecal_contamination_value is not None and not isinstance(self.fecal_contamination_value, QuantityValue):
+            self.fecal_contamination_value = QuantityValue(**as_dict(self.fecal_contamination_value))
+
+        if self.instantaneous_flow_rate is not None and not isinstance(self.instantaneous_flow_rate, QuantityValue):
+            self.instantaneous_flow_rate = QuantityValue(**as_dict(self.instantaneous_flow_rate))
+
+        if self.presampling_weather is not None and not isinstance(self.presampling_weather, SampWeatherEnum):
+            self.presampling_weather = SampWeatherEnum(self.presampling_weather)
+
+        if self.sample_collection_duration is not None and not isinstance(self.sample_collection_duration, QuantityValue):
+            self.sample_collection_duration = QuantityValue(**as_dict(self.sample_collection_duration))
+
+        if self.total_daily_flow_rate is not None and not isinstance(self.total_daily_flow_rate, QuantityValue):
+            self.total_daily_flow_rate = QuantityValue(**as_dict(self.total_daily_flow_rate))
+
+        if self.wastewater_system_type is not None and not isinstance(self.wastewater_system_type, WastewaterSystemTypeEnum):
+            self.wastewater_system_type = WastewaterSystemTypeEnum(self.wastewater_system_type)
 
         if not isinstance(self.alternative_identifiers, list):
             self.alternative_identifiers = [self.alternative_identifiers] if self.alternative_identifiers is not None else []
@@ -7746,6 +7811,128 @@ class ChemicalEntityEnum(EnumDefinitionImpl):
                 text="3,5,6-trichloro-2-pyridinol",
                 meaning=CHEBI["143794"]))
 
+class WastewaterSystemTypeEnum(EnumDefinitionImpl):
+    """
+    The kinds of wastewater collection system a sample can come from.
+    """
+    latrine = PermissibleValue(
+        text="latrine",
+        meaning=ENVO["01000519"])
+    cesspit = PermissibleValue(
+        text="cesspit",
+        description="A pit or underground container that receives sewage without treatment.")
+
+    _defn = EnumDefinition(
+        name="WastewaterSystemTypeEnum",
+        description="The kinds of wastewater collection system a sample can come from.",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "combined sewer system",
+            PermissibleValue(
+                text="combined sewer system",
+                description="A sewer system that carries sewage and stormwater runoff in the same pipes."))
+        setattr(cls, "sanitary sewer system",
+            PermissibleValue(
+                text="sanitary sewer system",
+                description="""A sewer system that carries sewage only, with stormwater carried separately. NCBI submissions have also called this a separated system."""))
+        setattr(cls, "waste stabilization pond",
+            PermissibleValue(
+                text="waste stabilization pond",
+                description="A pond or lagoon in which wastewater is held and treated by natural processes.",
+                meaning=ENVO["03600076"]))
+        setattr(cls, "septic tank",
+            PermissibleValue(
+                text="septic tank",
+                description="An underground tank in which sewage from a building settles and partly decomposes."))
+        setattr(cls, "chemical toilet",
+            PermissibleValue(
+                text="chemical toilet",
+                meaning=ENVO["01000529"]))
+        setattr(cls, "composting toilet",
+            PermissibleValue(
+                text="composting toilet",
+                meaning=ENVO["01000550"]))
+        setattr(cls, "plumbing drain",
+            PermissibleValue(
+                text="plumbing drain",
+                meaning=ENVO["01000924"]))
+        setattr(cls, "wastewater waste tank",
+            PermissibleValue(
+                text="wastewater waste tank",
+                description="""A tank that holds wastewater for later collection, for example on a ship or an aircraft."""))
+
+class ExperimentalSpecimenRoleTypeEnum(EnumDefinitionImpl):
+    """
+    The roles a sample can play in an experiment other than being a sample under study.
+    """
+    _defn = EnumDefinition(
+        name="ExperimentalSpecimenRoleTypeEnum",
+        description="The roles a sample can play in an experiment other than being a sample under study.",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "positive experimental control",
+            PermissibleValue(
+                text="positive experimental control",
+                description="The sample was included to confirm that the process detects what it should.",
+                meaning=GENEPIO["0101018"]))
+        setattr(cls, "negative experimental control",
+            PermissibleValue(
+                text="negative experimental control",
+                description="""The sample was included to show that the process does not detect anything when nothing is there.""",
+                meaning=GENEPIO["0101019"]))
+        setattr(cls, "technical replicate",
+            PermissibleValue(
+                text="technical replicate",
+                description="The sample is a repeat measurement of the same material as another sample.",
+                meaning=EFO["0002090"]))
+        setattr(cls, "biological replicate",
+            PermissibleValue(
+                text="biological replicate",
+                description="The sample is an independent sample of the same kind of material as another sample.",
+                meaning=EFO["0002091"]))
+
+class FecalContaminationIndicatorEnum(EnumDefinitionImpl):
+    """
+    Genes, viruses, bacteria and substances measured as indicators of fecal contamination of water.
+    """
+    crAssphage = PermissibleValue(
+        text="crAssphage",
+        description="A bacteriophage of human gut Bacteroides that is abundant in human feces.",
+        meaning=NCBITAXON["1211417"])
+    stercobilin = PermissibleValue(
+        text="stercobilin",
+        description="A bile pigment that gives feces their color, measured chemically as a fecal marker.",
+        meaning=CHEBI["26756"])
+
+    _defn = EnumDefinition(
+        name="FecalContaminationIndicatorEnum",
+        description="Genes, viruses, bacteria and substances measured as indicators of fecal contamination of water.",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "pepper mild mottle virus",
+            PermissibleValue(
+                text="pepper mild mottle virus",
+                description="""A plant virus that enters sewage through diet and is used as a human fecal indicator and process control.""",
+                meaning=NCBITAXON["12239"]))
+        setattr(cls, "Bacteroides HF183",
+            PermissibleValue(
+                text="Bacteroides HF183",
+                description="The HF183 16S rRNA gene marker of human-associated Bacteroides."))
+        setattr(cls, "Lachnospiraceae Lachno3",
+            PermissibleValue(
+                text="Lachnospiraceae Lachno3",
+                description="The Lachno3 16S rRNA gene marker of human-associated Lachnospiraceae."))
+        setattr(cls, "F+ coliphages",
+            PermissibleValue(
+                text="F+ coliphages",
+                description="""Bacteriophages that infect Escherichia coli through the F pilus, used as fecal indicators."""))
+
 class UnitEnum(EnumDefinitionImpl):
 
     Cel = PermissibleValue(
@@ -8259,6 +8446,41 @@ class UnitEnum(EnumDefinitionImpl):
                 text="[in_i]",
                 title="inches",
                 description="The Unified Code for Units of Measure (UCUM) representation of inch."))
+        setattr(cls, "L/d",
+            PermissibleValue(
+                text="L/d",
+                title="liters per day",
+                description="The Unified Code for Units of Measure (UCUM) representation of liters per day."))
+        setattr(cls, "L/min",
+            PermissibleValue(
+                text="L/min",
+                title="liters per minute",
+                description="The Unified Code for Units of Measure (UCUM) representation of liters per minute."))
+        setattr(cls, "m3/h",
+            PermissibleValue(
+                text="m3/h",
+                title="cubic meters per hour",
+                description="The Unified Code for Units of Measure (UCUM) representation of cubic meters per hour."))
+        setattr(cls, "10*6.[gal_us]/d",
+            PermissibleValue(
+                text="10*6.[gal_us]/d",
+                title="million US gallons per day",
+                description="""The Unified Code for Units of Measure (UCUM) representation of million US gallons per day, the flow unit United States wastewater utilities report."""))
+        setattr(cls, "{copies}/L",
+            PermissibleValue(
+                text="{copies}/L",
+                title="copies per liter",
+                description="""The Unified Code for Units of Measure (UCUM) representation of gene or genome copies per liter, written with a UCUM annotation because a copy count is dimensionless."""))
+        setattr(cls, "{copies}/mL",
+            PermissibleValue(
+                text="{copies}/mL",
+                title="copies per milliliter",
+                description="""The Unified Code for Units of Measure (UCUM) representation of gene or genome copies per milliliter."""))
+        setattr(cls, "{copies}/g",
+            PermissibleValue(
+                text="{copies}/g",
+                title="copies per gram",
+                description="""The Unified Code for Units of Measure (UCUM) representation of gene or genome copies per gram, used for wastewater solids."""))
 
 class MetadataBadgeEnum(EnumDefinitionImpl):
     """
@@ -8577,7 +8799,7 @@ class FileTypeEnum(EnumDefinitionImpl):
         setattr(cls, "GTDBTK Summary JSON",
             PermissibleValue(
                 text="GTDBTK Summary JSON",
-                description="GTDBTK bacterial and archaeal summary in JSON format"))
+                description="Log file for running GTDBTK, in JSON format"))
         setattr(cls, "GOTTCHA2 Krona Plot",
             PermissibleValue(
                 text="GOTTCHA2 Krona Plot",
@@ -9018,6 +9240,14 @@ class ProcessingInstitutionEnum(EnumDefinitionImpl):
         text="SeqCenter",
         title="SeqCenter",
         meaning=None)
+    Aalborg_University = PermissibleValue(
+        text="Aalborg_University",
+        title="Aalborg University",
+        meaning=ROR["04m5j1k67"])
+    Georgia_Institute_of_Technology = PermissibleValue(
+        text="Georgia_Institute_of_Technology",
+        title="Georgia Institute of Technology",
+        meaning=ROR["01zkghx44"])
 
     _defn = EnumDefinition(
         name="ProcessingInstitutionEnum",
@@ -10326,6 +10556,29 @@ class MoldVisibilityEnum(EnumDefinitionImpl):
         setattr(cls, "presence of mold visible",
             PermissibleValue(text="presence of mold visible"))
 
+class NegContTypeEnum(EnumDefinitionImpl):
+
+    _defn = EnumDefinition(
+        name="NegContTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "DNA-free PCR mix",
+            PermissibleValue(text="DNA-free PCR mix"))
+        setattr(cls, "distilled water",
+            PermissibleValue(text="distilled water"))
+        setattr(cls, "empty collection device",
+            PermissibleValue(text="empty collection device"))
+        setattr(cls, "empty collection tube",
+            PermissibleValue(text="empty collection tube"))
+        setattr(cls, "phosphate buffer",
+            PermissibleValue(text="phosphate buffer"))
+        setattr(cls, "sterile swab",
+            PermissibleValue(text="sterile swab"))
+        setattr(cls, "sterile syringe",
+            PermissibleValue(text="sterile syringe"))
+
 class OccupDocumentEnum(EnumDefinitionImpl):
 
     estimate = PermissibleValue(text="estimate")
@@ -10594,11 +10847,21 @@ class SampSubtypeEnum(EnumDefinitionImpl):
 class SampWeatherEnum(EnumDefinitionImpl):
 
     cloudy = PermissibleValue(text="cloudy")
-    foggy = PermissibleValue(text="foggy")
-    hail = PermissibleValue(text="hail")
-    rain = PermissibleValue(text="rain")
-    sleet = PermissibleValue(text="sleet")
-    snow = PermissibleValue(text="snow")
+    foggy = PermissibleValue(
+        text="foggy",
+        meaning=ENVO["01000844"])
+    hail = PermissibleValue(
+        text="hail",
+        meaning=ENVO["01000874"])
+    rain = PermissibleValue(
+        text="rain",
+        meaning=ENVO["01001564"])
+    sleet = PermissibleValue(
+        text="sleet",
+        meaning=ENVO["03400014"])
+    snow = PermissibleValue(
+        text="snow",
+        meaning=ENVO["01000895"])
     sunny = PermissibleValue(text="sunny")
     windy = PermissibleValue(text="windy")
 
@@ -11934,6 +12197,42 @@ slots.biosample_categories = Slot(uri=NMDC.biosample_categories, name="biosample
 slots.collected_from = Slot(uri=NMDC.collected_from, name="collected_from", curie=NMDC.curie('collected_from'),
                    model_uri=NMDC.collected_from, domain=None, range=Optional[Union[str, FieldResearchSiteId]])
 
+slots.collected_by = Slot(uri=NMDC.collected_by, name="collected_by", curie=NMDC.curie('collected_by'),
+                   model_uri=NMDC.collected_by, domain=None, range=Optional[str])
+
+slots.catchment_population = Slot(uri=NMDC.catchment_population, name="catchment_population", curie=NMDC.curie('catchment_population'),
+                   model_uri=NMDC.catchment_population, domain=None, range=Optional[int])
+
+slots.catchment_population_method = Slot(uri=NMDC.catchment_population_method, name="catchment_population_method", curie=NMDC.curie('catchment_population_method'),
+                   model_uri=NMDC.catchment_population_method, domain=None, range=Optional[str])
+
+slots.sample_collection_duration = Slot(uri=NMDC.sample_collection_duration, name="sample_collection_duration", curie=NMDC.curie('sample_collection_duration'),
+                   model_uri=NMDC.sample_collection_duration, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.wastewater_system_type = Slot(uri=NMDC.wastewater_system_type, name="wastewater_system_type", curie=NMDC.curie('wastewater_system_type'),
+                   model_uri=NMDC.wastewater_system_type, domain=None, range=Optional[Union[str, "WastewaterSystemTypeEnum"]])
+
+slots.total_daily_flow_rate = Slot(uri=NMDC.total_daily_flow_rate, name="total_daily_flow_rate", curie=NMDC.curie('total_daily_flow_rate'),
+                   model_uri=NMDC.total_daily_flow_rate, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.instantaneous_flow_rate = Slot(uri=NMDC.instantaneous_flow_rate, name="instantaneous_flow_rate", curie=NMDC.curie('instantaneous_flow_rate'),
+                   model_uri=NMDC.instantaneous_flow_rate, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.presampling_weather = Slot(uri=NMDC.presampling_weather, name="presampling_weather", curie=NMDC.curie('presampling_weather'),
+                   model_uri=NMDC.presampling_weather, domain=None, range=Optional[Union[str, "SampWeatherEnum"]])
+
+slots.experimental_specimen_role_type = Slot(uri=NMDC.experimental_specimen_role_type, name="experimental_specimen_role_type", curie=NMDC.curie('experimental_specimen_role_type'),
+                   model_uri=NMDC.experimental_specimen_role_type, domain=None, range=Optional[Union[str, "ExperimentalSpecimenRoleTypeEnum"]])
+
+slots.fecal_contamination_indicator = Slot(uri=NMDC.fecal_contamination_indicator, name="fecal_contamination_indicator", curie=NMDC.curie('fecal_contamination_indicator'),
+                   model_uri=NMDC.fecal_contamination_indicator, domain=None, range=Optional[Union[str, "FecalContaminationIndicatorEnum"]])
+
+slots.fecal_contamination_value = Slot(uri=NMDC.fecal_contamination_value, name="fecal_contamination_value", curie=NMDC.curie('fecal_contamination_value'),
+                   model_uri=NMDC.fecal_contamination_value, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.fecal_contamination_method = Slot(uri=NMDC.fecal_contamination_method, name="fecal_contamination_method", curie=NMDC.curie('fecal_contamination_method'),
+                   model_uri=NMDC.fecal_contamination_method, domain=None, range=Optional[str])
+
 slots.bulk_elect_conductivity = Slot(uri=NMDC.bulk_elect_conductivity, name="bulk_elect_conductivity", curie=NMDC.curie('bulk_elect_conductivity'),
                    model_uri=NMDC.bulk_elect_conductivity, domain=None, range=Optional[Union[dict, QuantityValue]])
 
@@ -12140,13 +12439,13 @@ slots.library_selection = Slot(uri=NMDC.library_selection, name="library_selecti
                    model_uri=NMDC.library_selection, domain=None, range=Optional[Union[str, "LibrarySelectionEnum"]])
 
 slots.processing_institution_workflow_metadata = Slot(uri=NMDC.processing_institution_workflow_metadata, name="processing_institution_workflow_metadata", curie=NMDC.curie('processing_institution_workflow_metadata'),
-                   model_uri=NMDC.processing_institution_workflow_metadata, domain=None, range=Optional[str], mappings = [NCIT["C165211"]])
+                   model_uri=NMDC.processing_institution_workflow_metadata, domain=None, range=Optional[str])
 
 slots.qc_comment = Slot(uri=NMDC.qc_comment, name="qc_comment", curie=NMDC.curie('qc_comment'),
                    model_uri=NMDC.qc_comment, domain=None, range=Optional[str])
 
 slots.objective = Slot(uri=NMDC.objective, name="objective", curie=NMDC.curie('objective'),
-                   model_uri=NMDC.objective, domain=None, range=Optional[str], mappings = [SIO["000337"]])
+                   model_uri=NMDC.objective, domain=None, range=Optional[str])
 
 slots.md5_checksum = Slot(uri=NMDC.md5_checksum, name="md5_checksum", curie=NMDC.curie('md5_checksum'),
                    model_uri=NMDC.md5_checksum, domain=None, range=Optional[str],
@@ -12683,6 +12982,9 @@ slots.address = Slot(uri=MIXS['0000218'], name="address", curie=MIXS.curie('0000
 slots.adj_room = Slot(uri=MIXS['0000219'], name="adj_room", curie=MIXS.curie('0000219'),
                    model_uri=NMDC.adj_room, domain=None, range=Optional[Union[dict, TextValue]],
                    pattern=re.compile(r'^([^\s-]{1,2}|[^\s-]+.+[^\s-]+);[1-9][0-9]*$'))
+
+slots.adjacent_environment = Slot(uri=MIXS['0001121'], name="adjacent_environment", curie=MIXS.curie('0001121'),
+                   model_uri=NMDC.adjacent_environment, domain=None, range=Optional[Union[Union[dict, ControlledTermValue], list[Union[dict, ControlledTermValue]]]])
 
 slots.aero_struc = Slot(uri=MIXS['0000773'], name="aero_struc", curie=MIXS.curie('0000773'),
                    model_uri=NMDC.aero_struc, domain=None, range=Optional[Union[str, "AeroStrucEnum"]])
@@ -13485,6 +13787,9 @@ slots.misc_param = Slot(uri=MIXS['0000752'], name="misc_param", curie=MIXS.curie
 slots.n_alkanes = Slot(uri=MIXS['0000503'], name="n_alkanes", curie=MIXS.curie('0000503'),
                    model_uri=NMDC.n_alkanes, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
+slots.neg_cont_type = Slot(uri=MIXS['0001321'], name="neg_cont_type", curie=MIXS.curie('0001321'),
+                   model_uri=NMDC.neg_cont_type, domain=None, range=Optional[Union[str, "NegContTypeEnum"]])
+
 slots.nitrate = Slot(uri=MIXS['0000425'], name="nitrate", curie=MIXS.curie('0000425'),
                    model_uri=NMDC.nitrate, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$'))
@@ -13637,6 +13942,9 @@ slots.pool_dna_extracts = Slot(uri=MIXS['0000325'], name="pool_dna_extracts", cu
 
 slots.porosity = Slot(uri=MIXS['0000211'], name="porosity", curie=MIXS.curie('0000211'),
                    model_uri=NMDC.porosity, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.pos_cont_type = Slot(uri=MIXS['0001322'], name="pos_cont_type", curie=MIXS.curie('0001322'),
+                   model_uri=NMDC.pos_cont_type, domain=None, range=Optional[str])
 
 slots.potassium = Slot(uri=MIXS['0000430'], name="potassium", curie=MIXS.curie('0000430'),
                    model_uri=NMDC.potassium, domain=None, range=Optional[Union[dict, QuantityValue]],
@@ -13837,6 +14145,9 @@ slots.samp_name = Slot(uri=MIXS['0001107'], name="samp_name", curie=MIXS.curie('
 slots.samp_preserv = Slot(uri=MIXS['0000463'], name="samp_preserv", curie=MIXS.curie('0000463'),
                    model_uri=NMDC.samp_preserv, domain=None, range=Optional[Union[dict, TextValue]],
                    pattern=re.compile(r'^.*;[-+]?[0-9]*\.?[0-9]+ ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
+
+slots.samp_purpose = Slot(uri=MIXS['0001151'], name="samp_purpose", curie=MIXS.curie('0001151'),
+                   model_uri=NMDC.samp_purpose, domain=None, range=Optional[str])
 
 slots.samp_room_id = Slot(uri=MIXS['0000244'], name="samp_room_id", curie=MIXS.curie('0000244'),
                    model_uri=NMDC.samp_room_id, domain=None, range=Optional[Union[dict, TextValue]])

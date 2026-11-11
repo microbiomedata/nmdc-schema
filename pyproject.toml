@@ -1,6 +1,6 @@
 [project]
 name = "nmdc_schema"
-dynamic = ["version"]
+version = "11.26.0rc1"
 description = "Schema resources for the National Microbiome Data Collaborative (NMDC)"
 readme = "README.md"
 license = "CC0-1.0"
@@ -123,9 +123,6 @@ deps = [
     "deptry>=0.23.0,<1.0.0",
 ]
 
-[tool.hatch.version]
-source = "uv-dynamic-versioning"
-
 [tool.hatch.build.targets.wheel]
 packages = ["nmdc_schema"]
 
@@ -133,28 +130,12 @@ packages = ["nmdc_schema"]
 # Match what the Poetry sdist contained: the package, not the whole repository.
 only-include = ["nmdc_schema"]
 
-[tool.uv-dynamic-versioning]
-# The package version comes from the git tag. The schema's own `version:` field
-# in src/schema/nmdc.yaml is a 0.0.0 placeholder that `make set-version` replaces
-# before the release artifacts are generated, so both carry the same version.
-vcs = "git"
-style = "pep440"
-# Dependabot runs `uv lock` without git history, which otherwise fails with "This does
-# not appear to be a Git project" (https://github.com/ninoseki/uv-dynamic-versioning/blob/main/docs/tips.md#dependabot).
-# `make set-version` refuses any 0.0.0-based version, so a release cannot ship without a tag.
-fallback-version = "0.0.0"
-
 [tool.uv]
 # Install both groups by default, as `make install` did with `poetry install --with dev,deps`.
 default-groups = ["dev", "deps"]
-# Rebuild the project when the git tag changes, so the installed version stays current.
-cache-keys = [
-    { file = "pyproject.toml" },
-    { git = { commit = true, tags = true } },
-]
 
 [build-system]
-requires = ["hatchling>=1.26.0,<2.0.0", "uv-dynamic-versioning>=0.5.0,<1.0.0"]
+requires = ["hatchling>=1.26.0,<2.0.0"]
 build-backend = "hatchling.build"
 
 [tool.pytest.ini_options]

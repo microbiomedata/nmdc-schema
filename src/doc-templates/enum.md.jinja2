@@ -18,6 +18,10 @@ _{{ element_description_line }}_
 
 URI: {{ gen.link(element) }}
 
+{% if element.in_subset %}
+* In Subsets: {% for s in element.in_subset %}{{ gen.link(schemaview.get_subset(s)) }}{% if not loop.last %}, {% endif %}{% endfor %}
+{% endif -%}
+
 {% if element.permissible_values -%}
 ## Permissible Values
 | Value | Meaning | Description |
