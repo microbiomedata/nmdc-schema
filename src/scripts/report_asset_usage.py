@@ -20,8 +20,8 @@ Verify its consumers before deciding to delete, regenerate, or retain it.
 
 Usage::
 
-    poetry run python src/scripts/report_asset_usage.py
-    poetry run python src/scripts/report_asset_usage.py --format tsv
+    uv run python src/scripts/report_asset_usage.py
+    uv run python src/scripts/report_asset_usage.py --format tsv
 
 Report-only; the exit status is 0 unless the script itself fails. The gate is
 ``tests/test_no_new_unreferenced_assets.py``, which ratchets the unreferenced set
