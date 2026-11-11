@@ -57,12 +57,11 @@ install:
 	uv sync
 
 # Replace the 0.0.0 placeholder `version:` in src/schema/nmdc.yaml with the
-# version uv-dynamic-versioning derives from the git tags. The release, docs and
-# test-newest-deps workflows run this before generating artifacts, so the schema
-# and the package carry the same version. Do not commit the result.
+# version in pyproject.toml. `make release`, the publish workflow, the docs
+# workflows and test-newest-deps run this before generating artifacts, so the
+# schema and the package carry the same version. Do not commit the result.
 set-version:
-	version="$$(uvx --from 'uv-dynamic-versioning>=0.5.0,<1.0.0' uv-dynamic-versioning)" && \
-	case "$$version" in 0.0.0*) echo "set-version: no version from git tags, got $$version (fetch the tags first)" >&2; exit 1;; esac && \
+	version="$$(uv version --short)" && \
 	sed -i.bak -E "s/^version: .*/version: $$version/" src/schema/nmdc.yaml && \
 	rm src/schema/nmdc.yaml.bak && \
 	grep -n '^version:' src/schema/nmdc.yaml
@@ -142,6 +141,7 @@ test-python:
 	$(RUN) python -m doctest nmdc_schema/nmdc_data.py
 	$(RUN) python -m doctest nmdc_schema/id_helpers.py
 	$(RUN) python -m doctest src/scripts/make_typecode_to_class_map.py
+	$(RUN) python -m doctest src/scripts/release.py
 
 # Lint all source schema modules and the materialized schema.
 # - Source modules (except deprecated.yaml): use .linkmllint.yaml
@@ -322,6 +322,7 @@ clean:
 include project.Makefile
 include makefiles/mixs.Makefile
 include makefiles/migrators.Makefile
+include makefiles/release.Makefile
 include makefiles/ontology-alignment.Makefile
 
 # Regenerate SVGs from Mermaid sources in src/docs/images/.
