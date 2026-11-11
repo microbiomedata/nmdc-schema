@@ -2,9 +2,12 @@ import pytest
 import yaml
 from linkml.validator import Validator
 from linkml.validator.plugins import JsonschemaValidationPlugin
+from linkml_runtime import SchemaView
 
 from nmdc_schema.nmdc_schema_validation_plugin import NmdcSchemaValidationPlugin
-from tests import SCHEMA_FILE, ROOT
+from tests import ROOT
+
+SOURCE_SCHEMA = ROOT / "src" / "schema" / "nmdc.yaml"
 
 
 @pytest.fixture
@@ -42,7 +45,21 @@ def minimal_biosample():
 
 
 @pytest.fixture(scope="module")
-def nmdc_schema_validator():
+def source_schema():
+    """The source schema with its structured patterns materialized.
+
+    This is what ``make all`` writes to nmdc_schema/nmdc_materialized_patterns.yaml. Building it
+    here means the tests check the schema as edited under src/schema/, not a committed artifact
+    that is only regenerated before a release.
+    """
+    view = SchemaView(str(SOURCE_SCHEMA))
+    view.merge_imports()
+    view.materialize_patterns()
+    return view.schema
+
+
+@pytest.fixture(scope="module")
+def nmdc_schema_validator(source_schema):
     """Validator that runs ONLY the NMDC plugin, for unit-testing the plugin itself.
 
     Passing ``validation_plugins`` replaces linkml's default ``JsonschemaValidationPlugin``
@@ -51,7 +68,7 @@ def nmdc_schema_validator():
     test that means "this instance is valid" needs ``fully_validating_validator`` instead.
     """
     return Validator(
-        schema=SCHEMA_FILE,
+        schema=source_schema,
         validation_plugins=[
             NmdcSchemaValidationPlugin(),
         ],
@@ -59,7 +76,7 @@ def nmdc_schema_validator():
 
 
 @pytest.fixture(scope="module")
-def fully_validating_validator():
+def fully_validating_validator(source_schema):
     """Validator that runs structural validation AND the NMDC plugin.
 
     ``JsonschemaValidationPlugin`` is linkml's default and covers required slots, id patterns,
@@ -68,7 +85,7 @@ def fully_validating_validator():
     subsumes the other, so example data needs both.
     """
     return Validator(
-        schema=SCHEMA_FILE,
+        schema=source_schema,
         validation_plugins=[
             JsonschemaValidationPlugin(closed=True),
             NmdcSchemaValidationPlugin(),
@@ -140,7 +157,7 @@ def test_structural_defects_need_the_jsonschema_plugin(
     assert full_report.results, "structural defects must be caught when jsonschema runs"
 
 
-def test_all_valid_examples(fully_validating_validator):
+def test_all_valid_examples(fully_validating_validator, source_schema):
     """Test that all example files in src/data/valid validate successfully.
 
     This would be better as part of the `linkml-run-examples` command, but that CLI doesn't allow
@@ -152,17 +169,11 @@ def test_all_valid_examples(fully_validating_validator):
     required slot, or an unexpected property passes it. The examples runner in `make test` catches
     those, but only there, which makes a green `pytest tests/` mean less than it appears to.
 
-    If any example file's target class is absent from the materialized-patterns artifact, the
-    test is marked skipped at the end with a list of affected files. This happens during feature
-    development when new classes have been added to source YAML but the artifact has not yet been
-    regenerated (per project policy, artifacts are only regenerated immediately before
-    merge/release).
+    The schema comes from src/schema/, so a class or slot added there is checked before the
+    committed artifact is regenerated. A file named for a class the schema doesn't define fails.
     """
-    from linkml_runtime import SchemaView
-
     examples_dir = ROOT / "src/data/valid"
-    schema_view = SchemaView(str(SCHEMA_FILE))
-    skipped = []
+    schema_view = SchemaView(source_schema)
 
     for example_file in sorted(examples_dir.glob("*.yaml")):
         with example_file.open(encoding="utf-8") as f:
@@ -172,12 +183,8 @@ def test_all_valid_examples(fully_validating_validator):
         else:
             target_class = example_file.stem
 
-        if schema_view.get_class(target_class) is None:
-            skipped.append(f"{example_file.name} (class '{target_class}' not in artifact)")
-            continue
-
+        assert schema_view.get_class(target_class) is not None, (
+            f"{example_file.name} is named for class '{target_class}', which the schema doesn't define"
+        )
         report = fully_validating_validator.validate(instance, target_class=target_class)
         assert not report.results, f"Validation errors in {example_file}"
-
-    if skipped:
-        pytest.skip(f"Skipped {len(skipped)} file(s) — artifact stale: {'; '.join(skipped)}")
