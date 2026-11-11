@@ -283,9 +283,12 @@ prefixes:
   prov:
     prefix_prefix: prov
     prefix_reference: http://www.w3.org/ns/prov#
+  quantitykind:
+    prefix_prefix: quantitykind
+    prefix_reference: http://qudt.org/vocab/quantitykind/
   qudt:
     prefix_prefix: qudt
-    prefix_reference: http://qudt.org/1.1/schema/qudt#
+    prefix_reference: http://qudt.org/schema/qudt/
   rdf:
     prefix_prefix: rdf
     prefix_reference: http://www.w3.org/1999/02/22-rdf-syntax-ns#
@@ -301,6 +304,9 @@ prefixes:
   skos:
     prefix_prefix: skos
     prefix_reference: http://www.w3.org/2004/02/skos/core#
+  unit:
+    prefix_prefix: unit
+    prefix_reference: http://qudt.org/vocab/unit/
   wgs84:
     prefix_prefix: wgs84
     prefix_reference: http://www.w3.org/2003/01/geo/wgs84_pos#
@@ -1203,7 +1209,7 @@ enums:
         exact_mappings:
         - UO:0000027
         - wikidata:Q25267
-        - qudt:DEG_C
+        - unit:DEG_C
         - OM:degreeCelsius
       cm:
         text: cm
@@ -7632,7 +7638,7 @@ slots:
     aliases:
     - scale
     mappings:
-    - qudt:unit
+    - qudt:hasUnit
     - schema:unitCode
     range: string
   type:
@@ -7772,8 +7778,8 @@ slots:
     - Using quantity kind identifiers from QUDT or similar vocabularies improves data
       integration and enables automated unit conversion.
     examples:
-    - value: qudt:MassConcentration
-    - value: qudt:Temperature
+    - value: quantitykind:MassConcentration
+    - value: quantitykind:Temperature
     from_schema: https://w3id.org/nmdc/nmdc
     range: uriorcurie
   has_value_term_id:

@@ -20613,8 +20613,8 @@
                 "has_quantity_kind_id": {
                     "description": "Optional CURIE or IRI for the physical quantity kind, which is a qudt:QuantityKind.",
                     "examples": [
-                        "qudt:MassConcentration",
-                        "qudt:Temperature"
+                        "quantitykind:MassConcentration",
+                        "quantitykind:Temperature"
                     ],
                     "type": [
                         "string",
