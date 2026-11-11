@@ -8067,10 +8067,11 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    pattern: ^(?:^(.*|PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*))$)$
+    pattern: ^(.*|PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*))$
     structured_pattern:
       syntax: ^({text}|{PMID}|{DOI}|{URL})$
       interpolated: true
+      partial_match: true
   cur_land_use:
     name: cur_land_use
     annotations:
@@ -9916,10 +9917,11 @@ attributes:
     domain_of:
     - Biosample
     range: string
-    pattern: ^(?:^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*))$)$
+    pattern: ^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*))$
     structured_pattern:
       syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
+      partial_match: true
   geo_loc_name:
     name: geo_loc_name
     description: The geographical origin of the sample as defined by the country or
