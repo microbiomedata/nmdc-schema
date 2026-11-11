@@ -14,7 +14,7 @@
         <link rel="prev" href="../maintaining-the-schema/">
       
       
-        <link rel="next" href="../schema-validation/">
+        <link rel="next" href="../asset-lifecycle/">
       
       
         
@@ -434,22 +434,27 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Second release cycle:">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#todo-section-on-updating-the-portal-schema-in-the-context-of-deprecation" class="md-nav__link">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#elements-named-outside-the-schema-source" class="md-nav__link">
     <span class="md-ellipsis">
       
-        TODO - section on updating the portal schema in the context of deprecation
+        Elements named outside the schema source
       
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#consumer-repositories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Consumer repositories
+      
+    </span>
+  </a>
   
 </li>
       
@@ -457,6 +462,33 @@
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../asset-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Retiring a file from assets/
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -750,22 +782,27 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Second release cycle:">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#todo-section-on-updating-the-portal-schema-in-the-context-of-deprecation" class="md-nav__link">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#elements-named-outside-the-schema-source" class="md-nav__link">
     <span class="md-ellipsis">
       
-        TODO - section on updating the portal schema in the context of deprecation
+        Elements named outside the schema source
       
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#consumer-repositories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Consumer repositories
+      
+    </span>
+  </a>
   
 </li>
       
@@ -839,7 +876,73 @@ main schema file nor participate in the validation of data.</li>
 </ul>
 <p>** note: For a deprecated class, references could be in the <code>is_a</code> or <code>mixin</code> elements of another class, 
 or in the <code>domain</code> or <code>range</code> elements of an existing slot. For deprecated slots, check all classes that reference that slot, etc.  </p>
-<h4 id="todo-section-on-updating-the-portal-schema-in-the-context-of-deprecation">TODO - section on updating the portal schema in the context of deprecation</h4>
+<ul>
+<li>Check whether anything outside the schema source still names the element, and deal with it in the same 
+pull request or in a linked issue. Mapping files and committed reports under <code>assets/</code> are the usual place 
+this shows up.</li>
+</ul>
+<h2 id="elements-named-outside-the-schema-source">Elements named outside the schema source</h2>
+<p>The steps above cover the schema YAML. They do not cover the mapping files, committed reports, and example 
+changesheets under <code>assets/</code>, which keep naming an element long after the schema stops exposing it. Run:</p>
+<pre><code class="language-bash">make report-asset-usage
+</code></pre>
+<p>The report lists which assets name an element defined in <code>deprecated.yaml</code>. For each one there are three 
+outcomes, and all three are fine as long as the choice is recorded in the pull request:</p>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nothing in the repo or the organization reads the file</td>
+<td>Delete it. See <a href="../asset-lifecycle/">Retiring a file from assets/</a>.</td>
+</tr>
+<tr>
+<td>A Makefile target regenerates it</td>
+<td>Regenerate it, and check that the target is a prerequisite of something, so it does not go stale again.</td>
+</tr>
+<tr>
+<td>It is read by something that still needs the old name</td>
+<td>Leave it, and say in the pull request why.</td>
+</tr>
+</tbody>
+</table>
+<p>Worked example: <a href="https://github.com/microbiomedata/nmdc-schema/pull/3370">Finalize Deprecation of <code>collection_date_inc</code></a> 
+deprecated <code>collection_date_inc</code>, and an automated review flagged that <code>assets/misc/neon_nmdc_term_mapping.tsv</code> still 
+mapped <code>incubationLength</code> to it. Nothing read that file, so it was deleted separately rather than remapped. 
+That question, "remove or remap?", was taken to the 2026-08-26 NMDC Schema and Metadata meeting because the 
+guide had no answer for it. This section is the answer.</p>
+<h2 id="consumer-repositories">Consumer repositories</h2>
+<p>The steps above cover this repository. Other repositories import specific elements by name and can 
+break the moment a named element disappears from here, whether or not they still use it.</p>
+<p><code>submission-schema</code> is the known case. Its <code>config/nmdc_schema_import.yaml</code> and 
+<code>src/nmdc_submission_schema/schema/nmdc_submission_schema_base.yaml</code> list individual slots to pull in, 
+and its build (<code>make schema-build</code>) fails outright, with <code>ValueError: Slot '&lt;name&gt;' not found in source 
+schema</code>, the moment a listed slot is removed here. Before finalizing a deprecation (the second release 
+cycle), check whether the element is named in submission-schema's import config, and either:</p>
+<ul>
+<li>get a submission-schema PR removing it merged first, or in the same release window, or</li>
+<li>say so explicitly on the nmdc-schema PR, so submission-schema does not repin to a release containing 
+  the removal until its own PR is ready.</li>
+</ul>
+<p>Worked example: building submission-schema against 
+<a href="https://github.com/microbiomedata/nmdc-schema/pull/3370">Finalize Deprecation of <code>collection_date_inc</code></a>'s 
+branch reproduces <code>ValueError: Slot 'collection_date_inc' not found in source schema.</code> immediately, 
+because submission-schema still imports it (<code>config/nmdc_schema_import.yaml</code> lines 864 and 891, checked 
+2026-09-16).</p>
+<p>Other repositories may depend on an element too, without going through this import mechanism. 
+<code>report_asset_usage.py</code> above only sees this repository, so search the rest of the microbiomedata 
+organization for the element's name before finalizing a deprecation:</p>
+<pre><code class="language-bash">gh search code --owner microbiomedata &quot;&lt;element name&gt;&quot; --limit 100 \
+  --json repository,path \
+  --jq '.[] | select(.repository.nameWithOwner != &quot;microbiomedata/nmdc-schema&quot;) | &quot;\(.repository.nameWithOwner) \(.path)&quot;'
+</code></pre>
+<p>For each hit, remove or update the reference in that repository, or open an issue there and link it 
+from the nmdc-schema pull request. GitHub code search only covers each repository's default branch 
+and does not index all code, so an empty result does not prove that nothing uses the element.</p>
 
 
 
