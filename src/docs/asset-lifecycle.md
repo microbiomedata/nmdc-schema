@@ -36,6 +36,8 @@ grouped with the reason each is still there and the issue tracking its retiremen
 prose and the detector's own fixtures do not count as consumers. An actual consumer using
 a constructed path may need a documentation reference or a reasoned allowlist entry.
 
+The test can fail on a branch that never touched `assets/`. When a deprecation lands on main, an unreferenced file that names the newly deprecated element joins the list of retirement candidates, and the test fails until that file is reviewed or added to `EXPECTED_UNREFERENCED_AND_DEPRECATED` with a reason. Run `make report-asset-usage` to see which file and which element.
+
 ## Checking one file
 
 Run the report:
