@@ -15,7 +15,7 @@ imports:
 
 prefixes:
   CHEBI: "http://purl.obolibrary.org/obo/CHEBI_"
-  EFO: "http://www.ebi.ac.uk/efo/" # for ExperimentalSpecimenRoleTypeEnum PVs only
+  EFO: "http://www.ebi.ac.uk/efo/EFO_" # for ExperimentalSpecimenRoleTypeEnum PVs only
   ENVO: "http://purl.obolibrary.org/obo/ENVO_" # for WastewaterSystemTypeEnum PVs only
   NCBITaxon: "http://purl.obolibrary.org/obo/NCBITaxon_" # for FecalContaminationIndicatorEnum PVs only
   EC: 'https://bioregistry.io/eccode:'
