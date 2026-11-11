@@ -205,7 +205,7 @@ slots:
     aliases:
       - scale
     mappings:
-      - qudt:unit
+      - qudt:hasUnit
       - schema:unitCode
     range: string
 
