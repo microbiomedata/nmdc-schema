@@ -3,7 +3,6 @@ from typing import List, Type
 from nmdc_schema.migrators.migrator_base import MigratorBase
 from nmdc_schema.migrators.partials.migrator_from_11_25_0_to_11_26_0 import (
     migrator_from_11_25_0_to_11_26_0_part_1,
-    migrator_from_11_25_0_to_11_26_0_part_2,
 )
 
 
@@ -13,7 +12,7 @@ def get_migrator_classes() -> List[Type[MigratorBase]]:
     were designed to be run.
 
     Part 1 rewrites malformed EFO CURIEs in Biosample `term.id` values
-    (nmdc-schema#3573). Part 2 rewrites `NCBI:txid` taxon ids to `NCBITaxon:`.
+    (nmdc-schema#3573).
 
     >>> migrator_classes = get_migrator_classes()
     >>> type(migrator_classes) is list and len(migrator_classes) > 0  # the function returns a list
@@ -27,5 +26,4 @@ def get_migrator_classes() -> List[Type[MigratorBase]]:
 
     return [
         migrator_from_11_25_0_to_11_26_0_part_1.Migrator,
-        migrator_from_11_25_0_to_11_26_0_part_2.Migrator,
     ]

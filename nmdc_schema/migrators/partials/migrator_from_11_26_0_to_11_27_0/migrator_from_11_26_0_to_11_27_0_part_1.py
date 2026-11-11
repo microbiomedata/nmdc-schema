@@ -1,7 +1,7 @@
 """Rewrite ``NCBI:txid`` taxon ids in Biosample ``term.id`` values to ``NCBITaxon:``.
 
 The ``NCBI`` prefix expanded to the placeholder ``http://example.org/ncbitaxon/``
-(https://github.com/microbiomedata/issues/issues/893), and this release removes it. Its only
+(https://github.com/microbiomedata/issues/issues/893), and 11.27.0 removes it. Its only
 production use was ``host_taxid``, so this partial rewrites those ids:
 
 - ``NCBI:txid15368`` becomes ``NCBITaxon:15368``
@@ -43,8 +43,8 @@ def normalize_term_id(term_id: str) -> str:
 class Migrator(MigratorBase):
     r"""Rewrite ``NCBI:txid`` term ids on ``biosample_set`` to ``NCBITaxon:``."""
 
-    _from_version = "11.26.0.part_1"
-    _to_version = "11.26.0.part_2"
+    _from_version = "11.26.0"
+    _to_version = "11.27.0.part_1"
 
     def upgrade(self, commit_changes: bool = False) -> None:
         r"""
