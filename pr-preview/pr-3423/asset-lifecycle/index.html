@@ -859,6 +859,7 @@ runs in <code>make test</code> and so in CI. Files that predate the check are li
 grouped with the reason each is still there and the issue tracking its retirement. Audit
 prose and the detector's own fixtures do not count as consumers. An actual consumer using
 a constructed path may need a documentation reference or a reasoned allowlist entry.</p>
+<p>The test can fail on a branch that never touched <code>assets/</code>. When a deprecation lands on main, an unreferenced file that names the newly deprecated element joins the list of retirement candidates, and the test fails until that file is reviewed or added to <code>EXPECTED_UNREFERENCED_AND_DEPRECATED</code> with a reason. Run <code>make report-asset-usage</code> to see which file and which element.</p>
 <h2 id="checking-one-file">Checking one file</h2>
 <p>Run the report:</p>
 <pre><code class="language-bash">make report-asset-usage
