@@ -3444,23 +3444,33 @@ enums:
           source: https://gold.jgi.doe.gov/
       novaseq_x:
         text: novaseq_x
+        meaning: OBI:0003663
         is_a: novaseq
         comments:
-        - Possible flowcell versions are 1.5B, 10B, 25B. Only difference between X
-          and X Plus is 2 flowcells for X Plus versus 1 flowcell for X.
+        - Possible flowcell versions are 1.5B, 10B, 25B. The NovaSeq X runs a single
+          flowcell whereas the NovaSeq X Plus runs two flowcells.
         see_also:
         - https://www.illumina.com/systems/sequencing-platforms/novaseq-x-plus/specifications.html
         aliases:
+        - NovaSeq X
         - Illumina NovaSeq X
-        - Illumina NovaSeq X Plus
         structured_aliases:
         - literal_form: Illumina NovaSeq X 25B
           predicate: NARROW_SYNONYM
           source: https://gold.jgi.doe.gov/
-        exact_mappings:
-        - OBI:0003663
-        narrow_mappings:
-        - OBI:0003664
+      novaseq_x_plus:
+        text: novaseq_x_plus
+        meaning: OBI:0003664
+        is_a: novaseq
+        comments:
+        - Possible flowcell versions are 1.5B, 10B, 25B. The NovaSeq X Plus runs two
+          flowcells, versus one for the NovaSeq X. Illumina markets the NovaSeq X
+          and NovaSeq X Plus together as the NovaSeq X Series.
+        see_also:
+        - https://www.illumina.com/systems/sequencing-platforms/novaseq-x-plus/specifications.html
+        aliases:
+        - NovaSeq X Plus
+        - Illumina NovaSeq X Plus
       hiseq:
         text: hiseq
         meaning: OBI:0003683
