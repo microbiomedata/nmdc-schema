@@ -45,7 +45,7 @@ prefixes:
     prefix_reference: 'https://bioregistry.io/eccode:'
   EFO:
     prefix_prefix: EFO
-    prefix_reference: http://www.ebi.ac.uk/efo/
+    prefix_reference: http://www.ebi.ac.uk/efo/EFO_
   EGGNOG:
     prefix_prefix: EGGNOG
     prefix_reference: 'https://bioregistry.io/eggnog:'
@@ -87,7 +87,7 @@ prefixes:
     prefix_reference: 'https://bioregistry.io/reference/massive:'
   MCO:
     prefix_prefix: MCO
-    prefix_reference: http://purl.obolibrary.org/obo/MICRO_
+    prefix_reference: http://purl.obolibrary.org/obo/MCO_
   MESH:
     prefix_prefix: MESH
     prefix_reference: 'https://bioregistry.io/mesh:'
