@@ -1891,7 +1891,7 @@
                             "type": "nmdc:TextValue"
                         }
                     ],
-                    "pattern": "^(?:^(.*|PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$)$"
+                    "pattern": "^(.*|PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$"
                 },
                 "cur_land_use": {
                     "description": "Present state of sample site",
@@ -3146,7 +3146,7 @@
                     "examples": [
                         "PMID:19497774"
                     ],
-                    "pattern": "^(?:^(PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$)$",
+                    "pattern": "^(PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$",
                     "type": [
                         "string",
                         "null"
@@ -13425,6 +13425,7 @@
                 "novaseq",
                 "novaseq_6000",
                 "novaseq_x",
+                "novaseq_x_plus",
                 "hiseq",
                 "hiseq_1000",
                 "hiseq_1500",
@@ -20612,8 +20613,8 @@
                 "has_quantity_kind_id": {
                     "description": "Optional CURIE or IRI for the physical quantity kind, which is a qudt:QuantityKind.",
                     "examples": [
-                        "qudt:MassConcentration",
-                        "qudt:Temperature"
+                        "quantitykind:MassConcentration",
+                        "quantitykind:Temperature"
                     ],
                     "type": [
                         "string",
@@ -23865,6 +23866,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.26.0rc1"
+    "version": "11.26.0"
 }
 

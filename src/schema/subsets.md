@@ -14,12 +14,16 @@ record what happened to them so the question does not get re-litigated.
 | subset | members | purpose |
 | --- | --- | --- |
 | `jgi_isolate` | 10 | slots that map to a field on the JGI Isolate (NA) v19 submission form |
+| `pha4ge_wastewater` | 50 | 47 slots and 3 enums aligned to the PHA4GE Wastewater Contextual Data Specification 4.4.4; the subset holds the spec version and reference links once, instead of a `see_also` copy on every member |
 | `badge_topic` | 2 | group subset: its members are the completeness badge subsets |
 | `biogeochemistry` | 44 | completeness badge subset, bar 2 |
 | `host_information` | 37 | completeness badge subset, bar 2 |
 
 A slot may belong to more than one subset. `host_genus`, `host_species`,
 `host_strain` and `host_taxid` are in both `jgi_isolate` and `host_information`.
+Five `pha4ge_wastewater` slots (`alkalinity`, `diss_oxygen`, `ph`, `salinity` and
+`tot_nitro`) are also in `biogeochemistry`, so their yq membership lines use `+=`
+and must stay after the badge assignments.
 
 `host_taxid` is the only MIxS slot carrying a JGI Isolate v19 structured_alias.
 The `jgi_isolate` rule is that membership is the alias, but the `mixs.yaml` build

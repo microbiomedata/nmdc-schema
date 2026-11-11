@@ -1,6 +1,6 @@
 {
   "name": "nmdc-schema",
-  "version": "11.26.0-rc.1",
+  "version": "11.26.0",
   "private": true,
   "description": "JSON artifacts of the NMDC schema. Install from a release tag, e.g. github:microbiomedata/nmdc-schema#v11.26.0.",
   "license": "CC0-1.0",
