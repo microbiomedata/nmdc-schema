@@ -22855,7 +22855,7 @@ classes:
     description: A simple quantity, e.g. 2cm
     from_schema: https://w3id.org/nmdc/nmdc
     mappings:
-    - schema:QuantityValue
+    - schema:QuantitativeValue
     is_a: AttributeValue
     slots:
     - has_maximum_numeric_value
