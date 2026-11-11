@@ -5,8 +5,10 @@ From linkml-runtime 1.12, a structured_pattern whose partial_match is not true i
 example ^(?:^(nmdc):sty-...$)$. So our syntax values carry no anchors, and linkml adds them.
 See https://github.com/microbiomedata/nmdc-schema/issues/3539.
 
-mixs.yaml is generated from MIxS, which anchors its own patterns. The MIxS pipeline strips those
-anchors from patterns that linkml wraps (assets/yq-for-mixs-dematerialize.yq), and the checks
+mixs.yaml is generated from MIxS, which anchors its own patterns. The MIxS pipeline sets
+partial_match: true on those anchored patterns (assets/yq-for-mixs-dematerialize.yq), so linkml
+adds no wrapper and the MIxS anchors still require a full match. Keeping the anchors matters for
+submission-schema, which builds with linkml-runtime 1.9.5 and adds none of its own. The checks
 below cover mixs.yaml too. See https://github.com/microbiomedata/nmdc-schema/issues/3579.
 """
 

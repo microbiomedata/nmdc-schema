@@ -62,10 +62,12 @@ del(.classes) |
 
 # MIxS anchors its own structured patterns (^...$). From linkml-runtime 1.12 a pattern whose
 # partial_match is not true is also wrapped as ^(?:...)$, so those anchors come out doubled.
-# Strip them from those patterns only. A partial_match: true pattern gets no wrapper and keeps
-# its anchors. [^\x5c] leaves an escaped \$ alone.
+# Set partial_match: true on those patterns, as MIxS already does for most of its anchored
+# patterns. linkml 1.12 then adds no wrapper, and the MIxS anchors still require a full match.
+# Stripping the anchors instead would leave them unanchored in submission-schema, which builds
+# with linkml-runtime 1.9.5 and adds no anchors of its own. [^\x5c] leaves an escaped \$ alone.
 # See https://github.com/microbiomedata/nmdc-schema/issues/3579.
-(.slots[] | select(.structured_pattern and .structured_pattern.partial_match != true) | .structured_pattern.syntax) |= sub("^\\^(.*[^\\x5c])\\$$"; "${1}") |
+(.slots[] | select(.structured_pattern and .structured_pattern.partial_match != true and (.structured_pattern.syntax | test("^\\^.*[^\\x5c]\\$$"))) | .structured_pattern.partial_match) = true |
 
 # Settings are deleted here on purpose. The sheets-and-friends do_shuttle tool
 # does not import settings from the source schema, and MIxS structured_pattern
