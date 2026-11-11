@@ -25590,9 +25590,6 @@ settings:
   id_version:
     setting_key: id_version
     setting_value: (\.[1-9]{1}[0-9]{0,})
-  id_locus:
-    setting_key: id_locus
-    setting_value: (_[A-Za-z0-9_\.-]+)?
   add_recov_methods:
     setting_key: add_recov_methods
     setting_value: Water Injection|Dump Flood|Gas Injection|Wag Immiscible Injection|Polymer
