@@ -1,0 +1,17 @@
+# Valid: ETL ingest setting env_broad_scale on a Biosample during initial
+# ingest. Whole-record create is not a slot-level operation and is not
+# in scope for this class; each slot the ingest sets gets its own record.
+id: nmdc:slp-00-goldcr01
+type: nmdc:SlotLevelProvenance
+target_record_id: nmdc:bsm-13-amrnys72
+target_class: nmdc:Biosample
+path: /env_broad_scale/term/id
+operation: create
+new_value: "ENVO:00002030"
+changed_at: "2024-10-30T00:00:00Z"
+agent_id: gold_etl_v2.4.1
+agent_role: external_ingest
+batch_id: "gold-ingest:2024-10-30-batch-7"
+reason: ingest
+source_record_locator: "gold:Gs0110115"
+schema_version_at_change: "10.7.0"
