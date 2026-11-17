@@ -15,11 +15,13 @@ RUN ARCH="$(dpkg --print-architecture)" && \
 # Install uv, a package and project manager for Python.
 RUN pip install uv
 
-# Install the project's Python dependencies.
+# Install the project's Python dependencies into /opt/venv, outside the repository directory that
+# docker-compose.yml mounts at /nmdc-schema, so the container and the host keep separate environments.
+# See https://github.com/microbiomedata/nmdc-schema/issues/1744
+ENV UV_PROJECT_ENVIRONMENT=/opt/venv
 ADD ./uv.lock        /nmdc-schema/uv.lock
 ADD ./pyproject.toml /nmdc-schema/pyproject.toml
-# TODO: Re-enable this as part of https://github.com/microbiomedata/nmdc-schema/issues/1744
-# RUN uv sync
+RUN uv sync --locked --no-install-project
 
 # Configure the container to display a welcome message and the OS name whenever
 # someone starts an interactive shell session (i.e. "connects to the shell").
