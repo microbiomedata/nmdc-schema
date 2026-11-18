@@ -122,7 +122,7 @@ Here's how you can instantiate the development environment on your computer.
    ```shell
    $ uv sync
    $ make squeaky-clean
-   $ source .venv/bin/activate
+   $ source /opt/venv/bin/activate
    # etc.
    ```
 8. (Optional) Done working on this project (e.g. for the day)? Stop the containers.
