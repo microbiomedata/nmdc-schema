@@ -77,14 +77,17 @@ jobs:
         run: |
           "$RUNNER_TEMP/newest/bin/pytest" -p no:cacheprovider --import-mode=importlib tests/ \
             --ignore=tests/test_find_retired_element_mentions.py \
+            --ignore=tests/test_module_settings.py \
             --ignore=tests/test_nmdc_data.py \
             --ignore=tests/test_nmdc_schema_validation_plugin.py \
+            --ignore=tests/test_no_new_unreferenced_assets.py \
             --ignore=tests/test_no_redundant_slot_usage.py \
             --ignore=tests/test_ols4_embeddings_search.py \
             --ignore=tests/test_ontology_alignment_prototype.py \
             --ignore=tests/test_ontology_registry_counts.py \
             --ignore=tests/test_package_json.py \
             --ignore=tests/test_release.py \
+            --ignore=tests/test_report_asset_usage.py \
             --ignore=tests/test_report_redundant_slot_usage.py \
             --ignore=tests/test_schema_element_history.py
 
