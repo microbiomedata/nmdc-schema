@@ -136,12 +136,12 @@ Here's how you can instantiate the development environment on your computer.
 
 ### Deriving release artifacts
 
-Here's a one-liner you can use to derive release artifacts (which are [stored in the repository](https://github.com/microbiomedata/nmdc-schema/issues/1960)). Maintainers of this repository typically run this command—from the root directory of the repository—immediately before creating a GitHub Release.
+Here's a one-liner you can use to derive release artifacts (which are [stored in the repository](https://github.com/microbiomedata/nmdc-schema/issues/1960)). Run it from the root directory of the repository, for example to check that a branch builds in the container. Releases are made with `make release`, which regenerates the artifacts itself (see [Making Releases](CONTRIBUTING.md#making-releases)).
 
-> This command runs a Docker container based upon the Docker image specified by the `app` service defined in `docker-compose.yml`, and overrides the container's startup command to be `uv sync && make squeaky-clean all test`.
+> This command runs a Docker container based upon the Docker image specified by the `app` service defined in `docker-compose.yml`, and overrides the container's startup command to be `uv sync --locked && make set-version && make squeaky-clean all test`. `make set-version` writes the version from `pyproject.toml` into `src/schema/nmdc.yaml` so the artifacts match the committed ones. Don't commit that change.
 
 ```shell
-docker compose run --rm -it --name nmdc-schema-builder app sh -c 'uv sync && make squeaky-clean all test'
+docker compose run --rm -it --name nmdc-schema-builder app sh -c 'uv sync --locked && make set-version && make squeaky-clean all test'
 ```
 
 > Advanced testing instructions for migrators can be found [here](nmdc_schema/migrators/README.md).
