@@ -1,0 +1,67 @@
+name: Spelling (report)
+
+# Runs the typos spell checker on the schema source and hand-written docs, with
+# the allowlist in _typos.toml. Generated files under nmdc_schema/ and data
+# under assets/ are not checked.
+#
+# Report-only for now: findings appear as warnings on the PR diff and in the job
+# summary, and the step fails only if typos itself errors. Making it blocking is
+# the second half of https://github.com/microbiomedata/nmdc-schema/issues/3541.
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+permissions: {}  # default deny; the job below grants only what it needs
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  typos:
+    name: typos
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read  # check out the repository to check it
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
+
+      # Installed in its own step so an install failure fails the job here,
+      # instead of reaching the exit-status check below as an ambiguous code.
+      - name: Install typos
+        run: uv tool install typos==1.51.1
+
+      # typos exits 0 when clean, 2 when it finds misspellings, and anything
+      # else when it fails to run. Only the last case fails the step.
+      - name: Run typos (report to annotations and job summary)
+        shell: bash
+        run: |
+          set +e
+          typos --format brief src/schema src/docs > typos.txt
+          rc=$?
+          set -e
+          if [ "$rc" -ne 0 ] && [ "$rc" -ne 2 ]; then
+            echo "::error::typos failed to run (exit $rc)"
+            exit "$rc"
+          fi
+          # brief lines look like: path:line:col: error: `word` should be `fix`
+          sed -E 's/^([^:]+):([0-9]+):([0-9]+): error: (.*)$/::warning file=\1,line=\2,col=\3::\4/' typos.txt
+          {
+            echo '## typos report'
+            if [ -s typos.txt ]; then
+              echo "$(wc -l < typos.txt | tr -d " ") possible misspellings. Fix them, or add a correct spelling to _typos.toml."
+              echo '```'
+              cat typos.txt
+              echo '```'
+            else
+              echo 'No misspellings found.'
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
