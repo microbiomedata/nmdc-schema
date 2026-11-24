@@ -1,6 +1,6 @@
 name: Workflow security audit (zizmor)
 
-# Audits the repository's GitHub Actions workflows with zizmor
+# Audits the repository's GitHub Actions workflows and Dependabot config with zizmor
 # (https://docs.zizmor.sh). Non-blocking: findings are reported to GitHub
 # code scanning (the Security tab), not by failing CI. zizmor is pinned to
 # a specific version so a tool upgrade cannot turn this red on unchanged
@@ -9,8 +9,14 @@ name: Workflow security audit (zizmor)
 on:
   push:
     branches: [ main ]
+    paths: [ '.github/**' ]
   pull_request:
     branches: [ main ]
+    paths: [ '.github/**' ]
+  # Weekly, so advisories published against pinned actions still reach code
+  # scanning when no file under .github/ has changed.
+  schedule:
+    - cron: '0 6 * * 1'
 
 permissions: {}
 
@@ -38,7 +44,7 @@ jobs:
         continue-on-error: true
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: pipx run zizmor==1.25.2 --format sarif .github/workflows/ > zizmor.sarif
+        run: pipx run zizmor==1.25.2 --format sarif .github/ > zizmor.sarif
 
       - name: Upload zizmor findings to code scanning
         if: always()
