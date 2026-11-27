@@ -188,3 +188,91 @@ def test_all_valid_examples(fully_validating_validator, source_schema):
         )
         report = fully_validating_validator.validate(instance, target_class=target_class)
         assert not report.results, f"Validation errors in {example_file}"
+
+
+def test_ontology_term_id_valid(nmdc_schema_validator, minimal_biosample):
+    """Test that a declared prefix without repetition in the local part passes validation."""
+    biosample_instance = {
+        **minimal_biosample,
+        "experimental_factor": {
+            "type": "nmdc:ControlledTermValue",
+            "has_raw_value": "EFO:0001779",
+            "term": {
+                "id": "EFO:0001779",
+                "type": "nmdc:OntologyClass",
+            },
+        },
+    }
+    report = nmdc_schema_validator.validate(biosample_instance, target_class="Biosample")
+    assert not report.results
+
+
+def test_ontology_term_id_undeclared_prefix(nmdc_schema_validator, minimal_biosample):
+    """Test that an OntologyClass id with an undeclared prefix is rejected."""
+    biosample_instance = {
+        **minimal_biosample,
+        "experimental_factor": {
+            "type": "nmdc:ControlledTermValue",
+            "has_raw_value": "efo:0001759",
+            "term": {
+                "id": "efo:0001759",
+                "type": "nmdc:OntologyClass",
+            },
+        },
+    }
+    report = nmdc_schema_validator.validate(biosample_instance, target_class="Biosample")
+    assert len(report.results) == 1
+    assert "/experimental_factor/term" in report.results[0].message
+    assert "efo:0001759" in report.results[0].message
+    assert "undeclared prefix 'efo'" in report.results[0].message
+
+
+def test_ontology_term_id_repeated_prefix(nmdc_schema_validator, minimal_biosample):
+    """Test that an OntologyClass id whose local part repeats its prefix is rejected."""
+    biosample_instance = {
+        **minimal_biosample,
+        "experimental_factor": {
+            "type": "nmdc:ControlledTermValue",
+            "has_raw_value": "EFO:EFO_0001779",
+            "term": {
+                "id": "EFO:EFO_0001779",
+                "type": "nmdc:OntologyClass",
+            },
+        },
+    }
+    report = nmdc_schema_validator.validate(biosample_instance, target_class="Biosample")
+    assert len(report.results) == 1
+    assert "/experimental_factor/term" in report.results[0].message
+    assert "EFO:EFO_0001779" in report.results[0].message
+
+
+def test_ontology_term_id_undeclared_and_repeated_prefix(
+    nmdc_schema_validator, minimal_biosample
+):
+    """Test that an id like efo:EFO_0001759 is rejected for both undeclared and repeated prefix."""
+    biosample_instance = {
+        **minimal_biosample,
+        "experimental_factor": {
+            "type": "nmdc:ControlledTermValue",
+            "has_raw_value": "efo:EFO_0001759",
+            "term": {
+                "id": "efo:EFO_0001759",
+                "type": "nmdc:OntologyClass",
+            },
+        },
+    }
+    report = nmdc_schema_validator.validate(biosample_instance, target_class="Biosample")
+    assert len(report.results) == 2
+    messages = " ".join(result.message for result in report.results)
+    assert "undeclared prefix 'efo'" in messages
+    assert "repeats its prefix" in messages
+
+
+def test_ontology_term_id_top_level_target_class(nmdc_schema_validator):
+    """Test that direct validation of an OntologyClass instance checks its id."""
+    report = nmdc_schema_validator.validate(
+        {"id": "EFO:EFO_0001779", "type": "nmdc:OntologyClass"},
+        target_class="OntologyClass",
+    )
+    assert len(report.results) == 1
+    assert "EFO:EFO_0001779" in report.results[0].message
