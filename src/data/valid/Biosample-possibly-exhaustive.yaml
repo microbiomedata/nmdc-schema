@@ -1114,9 +1114,9 @@ samp_store_temp:
 samp_subtype: biofilm
 samp_taxon_id:
   type: nmdc:ControlledIdentifiedTermValue
-  has_raw_value: soil metagenome [NCBItaxon:410658]
+  has_raw_value: soil metagenome [NCBITaxon:410658]
   term:
-    id: NCBItaxon:410658
+    id: NCBITaxon:410658
     type: nmdc:OntologyClass
     name: soil metagenome
 samp_time_out:

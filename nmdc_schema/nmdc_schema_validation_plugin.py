@@ -23,6 +23,29 @@ def _yield_quantity_value_objects(data: Any, path: Optional[list[Union[str, int]
             yield from _yield_quantity_value_objects(item, path + [i])
 
 
+def _yield_ontology_class_objects(
+    data: Any,
+    ontology_class_types: set[str],
+    target_is_ontology_class: bool = False,
+    path: Optional[list[Union[str, int]]] = None,
+) -> Iterator[tuple[list[Union[str, int]], dict[str, Any]]]:
+    """Recursively yield OntologyClass (and subclass) objects from data."""
+    if path is None:
+        path = []
+    if isinstance(data, dict):
+        if data.get("type") in ontology_class_types or (not path and target_is_ontology_class):
+            yield path, data
+        for key, value in data.items():
+            yield from _yield_ontology_class_objects(
+                value, ontology_class_types, False, path + [key]
+            )
+    elif isinstance(data, list):
+        for i, item in enumerate(data):
+            yield from _yield_ontology_class_objects(
+                item, ontology_class_types, False, path + [i]
+            )
+
+
 class NmdcSchemaValidationPlugin(ValidationPlugin):
     """A validation plugin which validates instances using NMDC-specific validation logic.
 
@@ -32,11 +55,46 @@ class NmdcSchemaValidationPlugin(ValidationPlugin):
 
       1. Ensure that values for slots with range `QuantityValue` have a `unit` property that is in
          agreement with the `storage_unit` annotation on the slot
+      2. Ensure that `OntologyClass` (and subclass) `id` values use a prefix declared by the schema
+         and do not repeat that prefix with an underscore at the start of the local part
     """
 
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
         self._slot_storage_units_cache = {}
+        self._declared_prefixes_cache: dict[int, set[str]] = {}
+        self._ontology_class_names_cache: dict[int, set[str]] = {}
+        self._ontology_class_types_cache: dict[int, set[str]] = {}
+
+    def _declared_prefixes(self, schema_view: SchemaView) -> set[str]:
+        """Return the set of prefix names explicitly declared by the schema and its imports."""
+        cache_key = id(schema_view.schema)
+        if cache_key not in self._declared_prefixes_cache:
+            prefixes: set[str] = set()
+            for schema in schema_view.all_schema():
+                if schema.prefixes:
+                    prefixes.update(schema.prefixes.keys())
+            self._declared_prefixes_cache[cache_key] = prefixes
+        return self._declared_prefixes_cache[cache_key]
+
+    def _ontology_class_info(self, schema_view: SchemaView) -> tuple[set[str], set[str]]:
+        """Return (class_names, class_type_curies) for OntologyClass and its descendants."""
+        cache_key = id(schema_view.schema)
+        if cache_key not in self._ontology_class_names_cache:
+            names = set(schema_view.class_descendants("OntologyClass"))
+            type_curies: set[str] = set()
+            for name in names:
+                cls = schema_view.get_class(name)
+                if cls and cls.class_uri:
+                    type_curies.add(str(cls.class_uri))
+                else:
+                    type_curies.add(f"nmdc:{name}")
+            self._ontology_class_names_cache[cache_key] = names
+            self._ontology_class_types_cache[cache_key] = type_curies
+        return (
+            self._ontology_class_names_cache[cache_key],
+            self._ontology_class_types_cache[cache_key],
+        )
 
     def _slot_storage_units(self, schema_view: SchemaView, slot_name: str) -> Optional[list[str]]:
         """Get allowed storage_units for a slot."""
@@ -100,4 +158,40 @@ class NmdcSchemaValidationPlugin(ValidationPlugin):
                         f"QuantityValue at /{str_data_path} has unit '{unit}' which is not allowed for "
                         f"slot '{slot_name}' (allowed: {', '.join(storage_units)})"
                     )
+                )
+
+        declared_prefixes = self._declared_prefixes(context.schema_view)
+        ontology_class_names, ontology_class_types = self._ontology_class_info(
+            context.schema_view
+        )
+        target_is_ontology_class = context.target_class in ontology_class_names
+        for data_path, term_obj in _yield_ontology_class_objects(
+            instance, ontology_class_types, target_is_ontology_class
+        ):
+            term_id = term_obj.get("id")
+            if not isinstance(term_id, str) or ":" not in term_id:
+                continue
+            prefix, local_id = term_id.split(":", 1)
+            str_data_path = "/".join(str(p) for p in data_path)
+            if prefix not in declared_prefixes:
+                yield ValidationResult(
+                    type="nmdc-schema validation",
+                    severity=Severity.ERROR,
+                    instance=instance,
+                    instantiates=context.target_class,
+                    message=(
+                        f"OntologyClass at /{str_data_path} has id '{term_id}' "
+                        f"with undeclared prefix '{prefix}'"
+                    ),
+                )
+            if local_id.lower().startswith(f"{prefix.lower()}_"):
+                yield ValidationResult(
+                    type="nmdc-schema validation",
+                    severity=Severity.ERROR,
+                    instance=instance,
+                    instantiates=context.target_class,
+                    message=(
+                        f"OntologyClass at /{str_data_path} has id '{term_id}' "
+                        f"whose local part repeats its prefix '{prefix}'"
+                    ),
                 )
